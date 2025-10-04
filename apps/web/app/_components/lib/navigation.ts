@@ -39,7 +39,7 @@ export const navigation: NavigationItem[] = [
     children: [
       { label: 'Blog', href: '/resources/blog' },
       { label: 'Case Studies', href: '/resources/case-studies' },
-      { label: 'Documentation', href: '/resources/docs' },
+      { label: 'Documentation', href: '/resources/documentation' },
       { label: 'Guides', href: '/resources/guides' },
       { label: 'Whitepapers', href: '/resources/whitepapers' },
     ],

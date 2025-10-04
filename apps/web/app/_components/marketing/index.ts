@@ -18,3 +18,4 @@ export { TrustSignals } from './TrustSignals';
 export { SocialProof } from './SocialProof';
 export { FeatureGrid } from './FeatureGrid';
 export { CTASection } from './CTASection';
+export { MarketingSection, MarketingSectionHeader, MarketingCard, MarketingStatGrid } from './layout/Section';

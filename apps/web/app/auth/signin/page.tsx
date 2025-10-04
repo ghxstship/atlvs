@@ -1,67 +1,71 @@
 'use client';
 
-
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useMemo, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { AuthLayout } from '../_components/AuthLayout';
 import { AuthForm, AuthInput, AuthLink, AuthText } from '../_components/AuthForm';
 
 export default function SignInPage() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
-  const supabase = createClient()
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const supabase = useMemo(() => createClient(), []);
 
-  const handleSignIn = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setError(null)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const redirectPath = searchParams?.get('next') || '/dashboard';
+
+  const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+    setError(null);
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { error: signInError } = await supabase.auth.signInWithPassword({
         email,
         password,
-      })
+      });
 
-      if (error) throw error
+      if (signInError) {
+        throw signInError;
+      }
 
-      router.push('/dashboard')
+      router.replace(redirectPath);
     } catch (err: unknown) {
-      const msg = typeof err === 'object' && err && 'message' in err ? String((err as any).message) : 'Sign in error';
-      setError(msg)
+      const message =
+        typeof err === 'object' && err && 'message' in err
+          ? String((err as { message?: string }).message)
+          : 'Unable to sign in. Please try again.';
+      setError(message);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <AuthLayout
-      title="Sign In"
-      subtitle="Access your production management dashboard"
-      badge="WELCOME BACK"
+      title="Sign in"
+      subtitle="Access your production management dashboard."
+      badge="Welcome back"
+      showFooter
     >
-      <AuthForm
-        onSubmit={handleSignIn}
-        submitText="Sign In"
-        loading={loading}
-        error={error}
-      >
+      <AuthForm onSubmit={handleSignIn} submitText="Sign in" loading={loading} error={error}>
         <AuthInput
           id="email"
           name="email"
           type="email"
-          label="Email Address"
-          placeholder="Enter your email"
+          label="Email address"
+          placeholder="you@studio.com"
           value={email}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-          required
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)}
           autoComplete="email"
+          required
         />
-        
+
         <AuthInput
           id="password"
           name="password"
@@ -69,26 +73,24 @@ export default function SignInPage() {
           label="Password"
           placeholder="Enter your password"
           value={password}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-          required
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPassword(event.target.value)}
           autoComplete="current-password"
+          required
           showPassword={showPassword}
-          onTogglePassword={() => setShowPassword(!showPassword)}
+          onTogglePassword={() => setShowPassword((prev) => !prev)}
         />
-        
-        <div className="brand-ghostship text-center">
-          <AuthLink href="/auth/forgot-password">
-            Forgot your password?
-          </AuthLink>
+
+        <div className="text-right">
+          <AuthLink href="/auth/forgot-password">Forgot password?</AuthLink>
         </div>
       </AuthForm>
-      
-      <div className="brand-ghostship text-center mt-lg">
+
+      <div className="mt-lg text-center">
         <AuthText>
-          Don't have an account?{' '}
-          <AuthLink href="/auth/signup">Sign up for free</AuthLink>
+          New to GHXSTSHIP?{' '}
+          <AuthLink href="/auth/signup">Create an account</AuthLink>
         </AuthText>
       </div>
     </AuthLayout>
-  )
+  );
 }

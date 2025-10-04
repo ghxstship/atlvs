@@ -77,7 +77,7 @@ describe('Projects API Integration Tests', () => {
       expect(response.status).toBe(200);
       const data = await response.json();
 
-      data.data.forEach((project: any) => {
+      data.data.forEach((project: Record<string, unknown>) => {
         expect(project.status).toBe('active');
       });
     });

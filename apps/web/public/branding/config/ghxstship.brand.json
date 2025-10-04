@@ -1,0 +1,177 @@
+{
+  "version": "1.0.0",
+  "brand": {
+    "id": "ghxstship",
+    "name": "GHXSTSHIP",
+    "slug": "ghxstship",
+    "tagline": "Enterprise Command Center for Creative Industries",
+    "description": "Military-grade project management for the modern fleet.",
+    "website": "https://ghxstship.com",
+    "support": {
+      "email": "support@ghxstship.com",
+      "phone": "+1 (800) 555-0123",
+      "website": "https://help.ghxstship.com"
+    },
+    "legal": {
+      "company": "GHXSTSHIP — Blackwater Fleet Inc.",
+      "address": "123 Fleet Street, San Francisco, CA 94105",
+      "termsUrl": "/legal/terms",
+      "privacyUrl": "/legal/privacy"
+    }
+  },
+  "theme": {
+    "mode": "light",
+    "colors": {
+      "brand": {
+        "primary": "#0F172A",
+        "secondary": "#64748B",
+        "accent": "#3B82F6"
+      },
+      "semantic": {
+        "success": "#10B981",
+        "warning": "#F59E0B",
+        "error": "#EF4444",
+        "info": "#3B82F6"
+      },
+      "neutral": {
+        "50": "#F8FAFC",
+        "100": "#F1F5F9",
+        "200": "#E2E8F0",
+        "300": "#CBD5E1",
+        "400": "#94A3B8",
+        "500": "#64748B",
+        "600": "#475569",
+        "700": "#334155",
+        "800": "#1E293B",
+        "900": "#0F172A"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "heading": "ANTON, Impact, sans-serif",
+        "body": "Inter, system-ui, sans-serif",
+        "mono": "JetBrains Mono, monospace"
+      },
+      "fontSize": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "lg": "1.125rem",
+        "xl": "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "1.875rem",
+        "4xl": "2.25rem",
+        "5xl": "3rem"
+      },
+      "fontWeight": {
+        "normal": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700,
+        "black": 900
+      }
+    },
+    "spacing": {
+      "xs": "0.25rem",
+      "sm": "0.5rem",
+      "md": "1rem",
+      "lg": "1.5rem",
+      "xl": "2rem",
+      "2xl": "3rem",
+      "3xl": "4rem"
+    },
+    "borderRadius": {
+      "sm": "0.125rem",
+      "base": "0.25rem",
+      "md": "0.375rem",
+      "lg": "0.5rem",
+      "xl": "0.75rem",
+      "full": "9999px"
+    },
+    "shadows": {
+      "sm": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+      "base": "0 1px 3px 0 rgb(0 0 0 / 0.1)",
+      "md": "0 4px 6px -1px rgb(0 0 0 / 0.1)",
+      "lg": "0 10px 15px -3px rgb(0 0 0 / 0.1)"
+    }
+  },
+  "assets": {
+    "logos": {
+      "primary": "/branding/ghxstship/logos/primary.svg",
+      "icon": "/branding/ghxstship/logos/icon.svg",
+      "wordmark": "/branding/ghxstship/logos/wordmark.svg"
+    },
+    "favicon": "/branding/ghxstship/logos/favicon.ico",
+    "images": {
+      "hero": "/branding/ghxstship/images/hero-background.jpg",
+      "auth": "/branding/ghxstship/images/auth-background.jpg",
+      "placeholder": "/branding/ghxstship/images/placeholder-avatar.png"
+    }
+  },
+  "content": {
+    "app": {
+      "name": "GHXSTSHIP",
+      "shortName": "GHXST",
+      "welcomeMessage": "Welcome to GHXSTSHIP",
+      "loginPrompt": "Sign in to your fleet",
+      "signupPrompt": "Join the fleet"
+    },
+    "navigation": {
+      "dashboard": "Command Center",
+      "projects": "Missions",
+      "people": "Crew",
+      "finance": "Treasury",
+      "assets": "Inventory",
+      "jobs": "Operations",
+      "companies": "Fleet Network",
+      "programming": "Events",
+      "analytics": "Intelligence",
+      "files": "Documents",
+      "settings": "Configurations",
+      "profile": "Sailor Profile"
+    },
+    "terminology": {
+      "project": "mission",
+      "task": "assignment",
+      "team": "crew",
+      "member": "sailor",
+      "budget": "allocation",
+      "expense": "outlay"
+    },
+    "marketing": {
+      "hero": {
+        "headline": "Enterprise Command Center for the Modern Fleet",
+        "subheadline": "Manage missions, crew, and resources with military precision",
+        "cta": "Set Sail"
+      }
+    }
+  },
+  "features": {
+    "modules": {
+      "dashboard": true,
+      "projects": true,
+      "people": true,
+      "finance": true,
+      "assets": true,
+      "jobs": true,
+      "companies": true,
+      "programming": true,
+      "analytics": true,
+      "files": true,
+      "settings": true,
+      "profile": true
+    }
+  },
+  "seo": {
+    "title": "GHXSTSHIP — Enterprise Project Management",
+    "description": "Military-grade project management for the modern fleet.",
+    "keywords": [
+      "project management",
+      "enterprise",
+      "creative industries",
+      "fleet management"
+    ],
+    "ogImage": "/branding/ghxstship/images/og-image.jpg",
+    "twitterHandle": "@ghxstship"
+  }
+}

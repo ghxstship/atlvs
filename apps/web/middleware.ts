@@ -25,10 +25,16 @@ export function middleware(request: Request) {
     '/security',
     '/accessibility',
     '/contact',
+    '/products',
+    '/solutions',
+    '/resources',
+    '/community',
+    '/company'
   ];
   
   const publicPrefixes = [
     '/auth/',
+    '/opendeck/',
     '/products/',
     '/solutions/',
     '/resources/',

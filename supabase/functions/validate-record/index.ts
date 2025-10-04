@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Edge Function: Record Validation
  * Handles complex business logic validation for all ATLVS modules
@@ -9,7 +10,7 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 interface ValidationRequest {
   table: string;
   operation: 'insert' | 'update' | 'delete';
-  record: Record<string, any>;
+  record: Record<string, unknown>;
   organizationId: string;
   userId: string;
 }

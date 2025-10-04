@@ -1,5 +1,5 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, CheckSquare, Eye, Download, Users } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { FilesService } from '../lib/files-service';

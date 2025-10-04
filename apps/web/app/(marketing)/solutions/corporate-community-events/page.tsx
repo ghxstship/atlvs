@@ -1,443 +1,237 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Building, Shield, Users, Zap, CheckCircle, Play, Star, TrendingUp, Globe } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
+import {
+  ArrowRight,
+  Building,
+  Calendar,
+  GlassWater,
+  Key,
+  Sparkle,
+  Users,
+} from 'lucide-react';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingStatGrid,
+} from '../../../_components/marketing';
 
 export const metadata: Metadata = {
-  title: 'Corporate & Private Events Solutions | GHXSTSHIP',
-  description: 'Orchestrate exceptional corporate and private events with GHXSTSHIP. Manage executive meetings, galas, product launches, and exclusive gatherings.',
-  openGraph: {
-    title: 'Corporate & Private Events Solutions | GHXSTSHIP',
-    description: 'Orchestrate exceptional corporate and private events with GHXSTSHIP. Manage executive meetings, galas, product launches, and exclusive gatherings.',
-    url: 'https://ghxstship.com/solutions/corporate-private-events',
-  },
+  title: 'Corporate & Private Events | GHXSTSHIP',
+  description:
+    'Deliver executive meetings, investor gatherings, and luxury client experiences with GHXSTSHIP’s white-glove event workflows.',
 };
 
-const challenges = [
+const heroStats = [
+  { label: 'Premium Events Delivered', value: '2,500+' },
+  { label: 'Executive Clients', value: '500+' },
+  { label: 'Confidentiality', value: '100%' },
+  { label: 'Client Satisfaction', value: '9.8/10' },
+];
+
+const eventPillars = [
   {
+    title: 'Executive Production',
+    description: 'Board meetings, investor summits, and strategic retreats orchestrated with enterprise precision.',
     icon: Building,
-    title: 'Executive-Level Expectations',
-    description: 'Meeting the high standards and complex requirements of C-suite and VIP attendees',
-    solution: 'White-glove service coordination with dedicated executive support and concierge services',
   },
   {
-    icon: Shield,
-    title: 'Privacy & Security Management',
-    description: 'Ensuring confidentiality, security protocols, and discretion for high-profile events',
-    solution: 'Advanced security coordination with NDA management and confidential guest handling',
+    title: 'Luxury Guest Services',
+    description: 'Concierge support, bespoke itineraries, and amenity management for VIP attendees.',
+    icon: GlassWater,
   },
   {
-    icon: Users,
-    title: 'Exclusive Guest Experience',
-    description: 'Creating personalized, memorable experiences for discerning corporate and private clients',
-    solution: 'Luxury event management with personalization tools and premium vendor networks',
+    title: 'Security & Protocol',
+    description: 'Confidential briefings, security checks, and discreet vendor coordination for high-profile guests.',
+    icon: Key,
   },
   {
-    icon: TrendingUp,
-    title: 'Business Impact Measurement',
-    description: 'Demonstrating ROI and business value from corporate events and private gatherings',
-    solution: 'Executive reporting with business impact analytics and relationship tracking',
+    title: 'Hybrid Experiences',
+    description: 'Broadcast-ready production, simultaneous translation, and digital attendee hubs.',
+    icon: Sparkle,
   },
 ];
 
-const features = [
+const serviceHighlights = [
   {
-    title: 'Executive Event Management',
-    description: 'Premium coordination for board meetings, product launches, and corporate galas',
-    benefits: ['Executive logistics', 'VIP coordination', 'Security management', 'Protocol services'],
+    title: 'Personalized Guest Journeys',
+    description: 'Capture preferences, dietary needs, and travel details to deliver white-glove touchpoints.',
   },
   {
-    title: 'Private Event Orchestration',
-    description: 'Exclusive management for private parties, celebrations, and intimate gatherings',
-    benefits: ['Luxury planning', 'Personalized service', 'Vendor curation', 'Guest experience'],
+    title: 'Stakeholder Alignment',
+    description: 'Keep executives, communications teams, and venue partners aligned with centralized updates.',
   },
   {
-    title: 'Corporate Hospitality',
-    description: 'Sophisticated client entertainment and relationship-building events',
-    benefits: ['Client relations', 'Hospitality suites', 'Entertainment booking', 'Relationship tracking'],
+    title: 'Confidential Planning',
+    description: 'Secure document sharing, NDAs, and restricted access ensure sensitive information stays protected.',
   },
   {
-    title: 'Business Impact Analytics',
-    description: 'Measure event success and business outcomes with executive reporting',
-    benefits: ['ROI tracking', 'Relationship metrics', 'Business impact', 'Executive dashboards'],
+    title: 'Impact & ROI Reporting',
+    description: 'Measure engagement, sponsorship ROI, and pipeline influence from every event.',
   },
 ];
 
 const caseStudies = [
   {
-    title: 'Fortune 100 Technology Company',
+    company: 'Global Financial Group',
     project: 'Annual Shareholder Meeting',
-    challenge: 'Orchestrating a high-profile shareholder meeting for 2,000+ attendees with global media coverage',
-    solution: 'Implemented GHXSTSHIP for comprehensive event management with security protocols and media coordination',
-    results: [
-      '100% flawless execution with zero incidents',
-      '95% attendee satisfaction rating',
-      '50% reduction in planning time',
-      'Seamless integration of virtual and in-person attendees',
-    ],
-    testimonial: 'GHXSTSHIP delivered the most professional and seamless shareholder meeting in our company history.',
+    challenge: 'Delivering a hybrid shareholder meeting for 2,000+ attendees with global media coverage.',
+    result: '100% incident-free · 95% attendee satisfaction · 50% faster planning · Seamless hybrid execution',
+    quote:
+      'GHXSTSHIP delivered the most professional, seamless shareholder meeting in our history. Every detail was flawless.',
     author: 'Sarah Chen, Chief Communications Officer',
   },
   {
-    title: 'Private Equity Firm',
-    project: 'Exclusive Client Appreciation Gala',
-    challenge: 'Creating an intimate, luxury experience for 150 ultra-high-net-worth clients and partners',
-    solution: 'Used GHXSTSHIP for white-glove event coordination with personalized service and discretion protocols',
-    results: [
-      '10/10 client satisfaction scores',
-      '100% confidentiality maintained',
-      '40% increase in client engagement',
-      '$25M+ in new business relationships formed',
-    ],
-    testimonial: 'The attention to detail and discretion exceeded our highest expectations. Truly world-class service.',
+    company: 'Private Equity Firm',
+    project: 'Exclusive Client Gala',
+    challenge: 'Designing a luxury experience for 150 UHNW clients while maintaining strict confidentiality.',
+    result: '10/10 satisfaction · 100% confidentiality · 40% higher client engagement · $25M new business',
+    quote:
+      'The attention to detail and discretion exceeded expectations. GHXSTSHIP knows how to deliver five-star experiences.',
     author: 'Michael Torres, Managing Partner',
   },
 ];
 
 const integrations = [
-  { name: 'Concierge Services', category: 'Luxury Services' },
-  { name: 'Private Security', category: 'Security' },
-  { name: 'Luxury Catering', category: 'F&B' },
-  { name: 'Executive Transport', category: 'Transportation' },
-  { name: 'Premium Venues', category: 'Venues' },
-  { name: 'Entertainment Booking', category: 'Entertainment' },
-  { name: 'Floral Design', category: 'Decor' },
-  { name: 'Photography/Video', category: 'Media' },
+  'Concierge Services',
+  'Executive Transport',
+  'Luxury Catering',
+  'Private Security',
+  'Premium Venues',
+  'Entertainment Booking',
+  'Floral Design',
+  'Photography & Video Teams',
 ];
 
-export default function CorporatePage() {
+export default function CorporateCommunityEventsPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-to-br from-primary/5 via-background to-info/5">
-        <div className="container mx-auto px-md">
-          <div className="grid lg:grid-cols-2 gap-xsxl items-center">
-            <div className="stack-xl">
-              <div>
-                <Badge variant="outline" className="mb-md">
-                  Corporate & Private Events
-                </Badge>
-                <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
-                  ORCHESTRATE
-                  <br />
-                  <span className="text-gradient-accent">
-                    EXCEPTIONAL
-                  </span>
-                  <br />
-                  EVENTS
-                </h1>
-                <p className="text-heading-4 color-muted">
-                  From executive board meetings to exclusive private celebrations, GHXSTSHIP 
-                  delivers white-glove event management that exceeds the highest expectations 
-                  and creates unforgettable experiences for discerning clients.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-lg">
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>2,500+</div>
-                  <div className="text-body-sm color-muted">Premium Events</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>500+</div>
-                  <div className="text-body-sm color-muted">Executive Clients</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>100%</div>
-                  <div className="text-body-sm color-muted">Confidentiality</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>9.8/10</div>
-                  <div className="text-body-sm color-muted">Client Satisfaction</div>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-md">
-                <Link href="/auth/signup">
-                  <Button className="w-full sm:w-auto group">
-                    Start Premium Trial
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-                <Button variant="outline" className="w-full sm:w-auto group">
-                  <Play className="mr-sm h-icon-xs w-icon-xs" />
-                  View Portfolio
-                </Button>
-              </div>
-            </div>
-
-            {/* Enterprise Dashboard Preview */}
-            <div className="relative">
-              <Card className="bg-background border shadow-popover overflow-hidden">
-                <div className="flex items-center gap-sm px-md py-sm bg-secondary/50 border-b">
-                  <div className="flex gap-sm">
-                    <div className="w-3 h-3 rounded-full bg-destructive"></div>
-                    <div className="w-3 h-3 rounded-full bg-warning"></div>
-                    <div className="w-3 h-3 rounded-full bg-success"></div>
-                  </div>
-                  <div className="flex-1 text-center">
-                    <div className="inline-flex items-center gap-sm  px-md py-xs bg-background rounded-md text-body-sm color-muted">
-                      <Building className="w-3 h-3" />
-                      enterprise.ghxstship.com
-                    </div>
-                  </div>
-                </div>
-
-                <CardContent className="p-lg stack-md">
-                  <div className="flex items-center justify-between">
-                    <h3 className={`${anton.className} text-body text-heading-3 uppercase`}>EXECUTIVE GALA 2024</h3>
-                    <Badge variant="outline" className="color-success border-success">
-                      Active
-                    </Badge>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-sm">
-                    <div className="bg-secondary/30 rounded-lg p-sm">
-                      <div className="text-body-sm color-muted mb-xs">VIP Guests</div>
-                      <div>150</div>
-                      <div className="flex items-center gap-xs mt-xs">
-                        <div className="w-2 h-2 bg-warning rounded-full animate-pulse"></div>
-                        <span className="text-body-sm color-warning">Confirmed</span>
-                      </div>
-                    </div>
-                    <div className="bg-secondary/30 rounded-lg p-sm">
-                      <div className="text-body-sm color-muted mb-xs">Vendors</div>
-                      <div>12</div>
-                      <div className="flex -cluster-xs mt-xs">
-                        {[1, 2, 3, 4].map((i: any) => (
-                          <div key={i} className="w-3 h-3 bg-accent rounded-full border border-background"></div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="bg-secondary/30 rounded-lg p-sm">
-                      <div className="text-body-sm color-muted mb-xs">Timeline</div>
-                      <div>On Track</div>
-                      <div className="w-full bg-secondary rounded-full h-1 mt-sm">
-                        <div className="bg-success h-1 rounded-full w-icon-sm/6"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="stack-sm">
-                    <div className="text-body-sm form-label color-muted">Event Schedule</div>
-                    {[
-                      { event: 'VIP Reception', time: '6:00 PM', status: 'Ready', color: 'bg-success' },
-                      { event: 'Dinner Service', time: '7:30 PM', status: 'Prep', color: 'bg-accent' },
-                      { event: 'Awards Ceremony', time: '9:00 PM', status: 'Setup', color: 'bg-info' },
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-sm text-body-sm">
-                        <div className={`w-2 h-2 rounded-full ${item.color}`}></div>
-                        <span className="form-label flex-1">{item.event}</span>
-                        <span className="color-muted">{item.time}</span>
-                        <span className="color-muted">({item.status})</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-sm pt-sm border-t">
-                    <Globe className="w-icon-xs h-icon-xs text-foreground" />
-                    <span className="text-body-sm form-label">White-Glove Service Active</span>
-                    <div className="ml-auto">
-                      <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Challenges Section */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              PREMIUM EVENT CHALLENGES
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Corporate and private events demand the highest standards of execution and discretion.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-xl">
-            {challenges.map((challenge: any) => {
-              const Icon = challenge.icon;
-              return (
-                <Card key={challenge.title} className="hover:shadow-floating transition-shadow">
-                  <CardContent className="p-xl">
-                    <div className="flex items-start gap-md">
-                      <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-primary to-info">
-                        <Icon className="h-icon-md w-icon-md text-background" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>{challenge.title}</h3>
-                        <p className="color-muted mb-md">{challenge.description}</p>
-                        <div className="flex items-start gap-sm">
-                          <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0 mt-0.5" />
-                          <p className="text-body-sm form-label color-foreground">{challenge.solution}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              WHITE-GLOVE EVENT PLATFORM
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Premium event management designed for the most discerning corporate and private clients.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-xl">
-            {features.map((feature: any) => (
-              <Card key={feature.title} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-xl">
-                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-md uppercase`}>{feature.title}</h3>
-                  <p className="color-muted mb-lg">{feature.description}</p>
-                  
-                  <div className="stack-sm">
-                    {feature.benefits.map((benefit: any) => (
-                      <div key={benefit} className="flex items-center gap-sm">
-                        <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0" />
-                        <span className="text-body-sm color-foreground">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              PREMIUM EVENT SUCCESS STORIES
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              See how discerning clients create exceptional corporate and private events with GHXSTSHIP.
-            </p>
-          </div>
-
-          <div className="space-y-xsxl">
-            {caseStudies.map((study: any) => (
-              <Card key={study.title} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-xl">
-                  <div className="grid lg:grid-cols-2 gap-xl">
-                    <div>
-                      <Badge variant="outline" className="mb-md">{study.project}</Badge>
-                      <h3 className={`${anton.className} text-heading-3 text-heading-3 mb-md uppercase`}>{study.title}</h3>
-                      
-                      <div className="stack-md">
-                        <div>
-                          <h4 className="text-heading-4 text-body-sm color-muted mb-sm uppercase">CHALLENGE</h4>
-                          <p className="color-foreground">{study.challenge}</p>
-                        </div>
-                        
-                        <div>
-                          <h4 className="text-heading-4 text-body-sm color-muted mb-sm uppercase">SOLUTION</h4>
-                          <p className="color-foreground">{study.solution}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="text-heading-4 text-body-sm color-muted mb-md uppercase">RESULTS</h4>
-                      <div className="stack-sm mb-lg">
-                        {study.results.map((result: any) => (
-                          <div key={result} className="flex items-center gap-sm">
-                            <Star className="h-icon-xs w-icon-xs color-warning flex-shrink-0" />
-                            <span className="text-body-sm form-label color-foreground">{result}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <blockquote className="border-l-4 border-primary pl-md">
-                        <p className="color-foreground italic mb-sm">"{study.testimonial}"</p>
-                        <cite className="text-body-sm color-muted">— {study.author}</cite>
-                      </blockquote>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Integrations */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              PREMIUM VENDOR NETWORK
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Access our curated network of luxury vendors and premium service providers.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-lg">
-            {integrations.map((integration: any) => (
-              <Card key={integration.name} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-lg text-center">
-                  <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-info rounded-lg flex items-center justify-center mx-auto mb-md">
-                    <Zap className="h-icon-md w-icon-md text-background" />
-                  </div>
-                  <h3 className="text-heading-4 color-foreground mb-xs">{integration.name}</h3>
-                  <p className="text-body-sm color-muted">{integration.category}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-info/5">
-        <div className="container mx-auto px-md">
-          <div className="text-center">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              READY FOR WHITE-GLOVE SERVICE?
-            </h2>
-            <p className="text-body color-muted mb-xl max-w-2xl mx-auto">
-              Join discerning clients using GHXSTSHIP to create exceptional corporate 
-              and private events that exceed the highest expectations.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-md justify-center">
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Industry Solutions"
+          title="Corporate & Private Events"
+          highlight="Corporate"
+          description="Deliver VIP gatherings, board meetings, and investor showcases with GHXSTSHIP’s luxury event operations toolkit."
+          actions={
+            <div className="flex flex-col items-center gap-sm sm:flex-row">
               <Link href="/auth/signup">
-                <Button className="w-full sm:w-auto group">
+                <Button className="group" size="lg">
                   Start Premium Trial
                   <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" className="w-full sm:w-auto">
-                  Schedule Consultation
+                <Button variant="outline" size="lg">
+                  Talk To Concierge Team
                 </Button>
               </Link>
             </div>
-          </div>
+          }
+        />
+        <div className="mt-2xl">
+          <MarketingStatGrid items={heroStats} />
         </div>
-      </section>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Experience Design"
+          title="White-Glove Coordination"
+          description="Plan itineraries, manage security, and execute flawless corporate gatherings." 
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {eventPillars.map((pillar) => {
+            const Icon = pillar.icon;
+            return (
+              <MarketingCard
+                key={pillar.title}
+                title={pillar.title}
+                description={pillar.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
+            );
+          })}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Value"
+          title="Exceed Expectations"
+          description="GHXSTSHIP equips corporate planners to deliver memorable, high-touch experiences."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {serviceHighlights.map((highlight) => (
+            <MarketingCard key={highlight.title} title={highlight.title} description={highlight.description} icon={<Users className="h-icon-md w-icon-md" />} />
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Proof"
+          title="Events Powered By GHXSTSHIP"
+          description="See how global brands and private equity firms orchestrate premium experiences."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2">
+          {caseStudies.map((study) => (
+            <Card key={study.company} className="border border-border/40 bg-background/95 shadow-sm">
+              <CardContent className="space-y-md p-xl">
+                <div className="flex items-center gap-sm">
+                  <h3 className="text-heading-4 uppercase leading-tight">{study.company}</h3>
+                  <Badge variant="outline">{study.project}</Badge>
+                </div>
+                <p className="text-body-sm text-muted-foreground">{study.challenge}</p>
+                <div className="text-body font-medium text-foreground">{study.result}</div>
+                <blockquote className="border-l-4 border-primary pl-md text-body text-muted-foreground italic">“{study.quote}”</blockquote>
+                <cite className="text-body-sm text-muted-foreground">— {study.author}</cite>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Integrations"
+          title="Coordinate Premium Partners"
+          description="Connect with concierge vendors, luxury services, and security partners directly inside GHXSTSHIP."
+          align="center"
+        />
+        <div className="mt-2xl grid gap-md md:grid-cols-4">
+          {integrations.map((service) => (
+            <div key={service} className="rounded-xl border border-border/60 bg-muted/30 px-lg py-md text-center text-body-sm text-muted-foreground">
+              {service}
+            </div>
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="primaryGradient" padding="lg">
+        <MarketingSectionHeader
+          title="Ready To Impress Your Guests?"
+          description="Partner with GHXSTSHIP to deliver flawless corporate and private events that leave lasting impact."
+          align="center"
+        />
+        <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">
+          <Link href="/contact">
+            <Button className="group" size="lg">
+              Book A Concierge Consultation
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <Link href="/auth/signup">
+            <Button variant="outline" size="lg">
+              Start Premium Trial
+            </Button>
+          </Link>
+        </div>
+      </MarketingSection>
     </div>
   );
 }

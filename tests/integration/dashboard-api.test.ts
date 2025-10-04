@@ -5,7 +5,6 @@ import { app } from '../../../app'; // Next.js app instance for testing
 
 // Mock environment variables
 const TEST_SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'http://localhost:54321';
-const TEST_SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'test-anon-key';
 const TEST_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || 'test-service-key';
 
 // Test data setup
@@ -185,7 +184,7 @@ describe('Dashboard API Integration Tests', () => {
         .set('x-organization-id', testOrgId);
 
       expect(response.status).toBe(200);
-      response.body.data.forEach((dashboard: any) => {
+      response.body.data.forEach((dashboard: Record<string, unknown>) => {
         expect(dashboard.type).toBe('custom');
       });
     });
@@ -198,7 +197,7 @@ describe('Dashboard API Integration Tests', () => {
 
       expect(response.status).toBe(200);
       // Check that results are sorted by name ascending
-      const names = response.body.data.map((d: any) => d.name);
+      const names = response.body.data.map((d: Record<string, unknown>) => d.name as string);
       const sortedNames = [...names].sort();
       expect(names).toEqual(sortedNames);
     });
@@ -434,7 +433,7 @@ describe('Dashboard API Integration Tests', () => {
     it('should handle rate limiting gracefully', async () => {
       // This test would need actual rate limiting middleware
       // For now, just verify the endpoint handles normal load
-      const promises = Array(10).fill().map(() =>
+      const promises = Array.from({ length: 10 }, () =>
         request(app)
           .get('/api/v1/dashboard')
           .set('Authorization', `Bearer ${authToken}`)
@@ -442,8 +441,8 @@ describe('Dashboard API Integration Tests', () => {
       );
 
       const responses = await Promise.all(promises);
-      responses.forEach(response => {
-        expect([200, 429]).toContain(response.status);
+      responses.forEach((response: Record<string, unknown>) => {
+        expect([200, 429]).toContain(response.status as number);
       });
     });
   });

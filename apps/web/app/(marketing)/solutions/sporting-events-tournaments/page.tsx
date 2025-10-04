@@ -1,446 +1,229 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Trophy, Target, Users, Zap, CheckCircle, Play, Star, Calendar, Activity } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
+import { Activity, ArrowRight, Calendar, Megaphone, Trophy, Users } from 'lucide-react';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingStatGrid,
+} from '../../../_components/marketing';
 
 export const metadata: Metadata = {
-  title: 'Sporting Events & Tournaments Solutions | GHXSTSHIP',
-  description: 'Power athletic excellence with GHXSTSHIP. Manage tournaments, championships, sporting events, and athletic competitions with precision.',
-  openGraph: {
-    title: 'Sporting Events & Tournaments Solutions | GHXSTSHIP',
-    description: 'Power athletic excellence with GHXSTSHIP. Manage tournaments, championships, sporting events, and athletic competitions with precision.',
-    url: 'https://ghxstship.com/solutions/sporting-events-tournaments',
-  },
+  title: 'Sporting Events & Tournaments | GHXSTSHIP',
+  description:
+    'Deliver world-class sporting events with GHXSTSHIP’s tournament operations, athlete management, and broadcast coordination tools.',
 };
 
-const challenges = [
+const heroStats = [
+  { label: 'Athletes Coordinated', value: '10M+' },
+  { label: 'Tournaments Managed', value: '25,000+' },
+  { label: 'Sports Covered', value: '500+' },
+  { label: 'Event Success Rate', value: '99.9%' },
+];
+
+const tournamentPhases = [
   {
-    icon: Trophy,
-    title: 'Tournament Bracket Management',
-    description: 'Complex scheduling, seeding, and bracket progression across multiple divisions and skill levels',
-    solution: 'Automated bracket generation with real-time updates, seeding algorithms, and multi-division management',
-  },
-  {
-    icon: Target,
-    title: 'Athletic Performance Tracking',
-    description: 'Recording statistics, managing athlete data, and providing real-time performance analytics',
-    solution: 'Comprehensive athlete management with performance metrics, statistics tracking, and analytics dashboards',
-  },
-  {
-    icon: Users,
-    title: 'Multi-Venue Coordination',
-    description: 'Synchronizing events across multiple venues, fields, and facilities with different capacities',
-    solution: 'Venue management system with capacity tracking, scheduling optimization, and resource allocation',
-  },
-  {
+    title: 'Planning & Scheduling',
+    description: 'Manage venues, brackets, officials, and logistics across multiple divisions and leagues.',
     icon: Calendar,
-    title: 'Season & Championship Planning',
-    description: 'Long-term planning for seasons, playoffs, and championship tournaments with weather contingencies',
-    solution: 'Season planning tools with weather integration, contingency scheduling, and championship workflows',
+  },
+  {
+    title: 'Athlete & Team Ops',
+    description: 'Coordinate registration, health checks, and credentialing for athletes, coaches, and staff.',
+    icon: Users,
+  },
+  {
+    title: 'Live Competition',
+    description: 'Monitor live scoring, timing integrations, replay queues, and fan engagement in real time.',
+    icon: Activity,
+  },
+  {
+    title: 'Broadcast & Sponsorship',
+    description: 'Deliver broadcast-ready assets, manage sponsorship activations, and report on media impact.',
+    icon: Megaphone,
   },
 ];
 
-const features = [
+const operationsHighlights = [
   {
-    title: 'Tournament Management System',
-    description: 'Complete tournament organization from registration to championship with automated brackets',
-    benefits: ['Bracket generation', 'Seeding algorithms', 'Real-time scoring', 'Championship tracking'],
+    title: 'Precision Scheduling',
+    description: 'Automate seeding, brackets, and officiating assignments with conflict detection.',
   },
   {
-    title: 'Athlete & Team Coordination',
-    description: 'Comprehensive management of athletes, teams, coaches, and support staff',
-    benefits: ['Team registration', 'Athlete profiles', 'Coach coordination', 'Performance tracking'],
+    title: 'Athlete Safety',
+    description: 'Track medical clearances, incident reports, and compliance requirements.',
   },
   {
-    title: 'Venue & Facility Management',
-    description: 'Multi-venue coordination with scheduling, capacity management, and resource allocation',
-    benefits: ['Venue scheduling', 'Capacity tracking', 'Equipment management', 'Facility coordination'],
+    title: 'Fan Experience',
+    description: 'Sync ticketing, fan zones, and mobile updates to keep audiences engaged.',
   },
   {
-    title: 'Broadcasting & Media Integration',
-    description: 'Live streaming, media coordination, and fan engagement for sporting events',
-    benefits: ['Live streaming', 'Media coordination', 'Fan engagement', 'Social integration'],
+    title: 'Commercial Growth',
+    description: 'Manage sponsor deliverables, merchandising, and hospitality packages with clear visibility.',
   },
 ];
 
 const caseStudies = [
   {
-    title: 'National Youth Soccer Championship',
-    project: 'Multi-Division Tournament Series',
-    challenge: 'Managing 500+ teams across 12 age divisions with 50+ venues over 10 days with live streaming requirements',
-    solution: 'Deployed GHXSTSHIP for tournament management with automated brackets, venue coordination, and streaming integration',
-    results: [
-      '100% tournament completion on schedule',
-      '99.8% bracket accuracy maintained',
-      '2M+ live stream viewers engaged',
-      '95% participant satisfaction rating',
-    ],
-    testimonial: 'GHXSTSHIP transformed our championship from logistical nightmare to seamless sporting excellence.',
+    company: 'National Youth Championships',
+    project: 'Nationwide Multi-Sport Tournament',
+    challenge: 'Overseeing 15,000 athletes across 50 venues with live streams and international qualifiers.',
+    result: '100% on-time completion · 99.8% bracket accuracy · 2M+ stream viewers · 95% satisfaction',
+    quote:
+      'GHXSTSHIP turned a logistical maze into a championship showcase. Our teams, officials, and fans felt the difference.',
     author: 'Michael Rodriguez, Tournament Director',
   },
   {
-    title: 'Olympic Trials Swimming',
-    project: 'Elite Athletic Competition',
-    challenge: 'Coordinating 1,000+ elite swimmers with precise timing, qualifying standards, and broadcast requirements',
-    solution: 'Implemented GHXSTSHIP for athlete management with performance tracking, timing integration, and media coordination',
-    results: [
-      '100% timing accuracy achieved',
-      '50+ Olympic qualifiers identified',
-      '10M+ broadcast audience reached',
-      '0 scheduling conflicts or delays',
-    ],
-    testimonial: 'The precision and reliability of GHXSTSHIP helped us identify our next generation of Olympic champions.',
+    company: 'Olympic Trials Swimming',
+    project: 'Elite Athletic Qualification',
+    challenge: 'Coordinating elite swimmers, precision timing, media, and security across a tight schedule.',
+    result: '100% timing accuracy · 50+ qualifiers identified · 10M+ broadcast reach · Zero delays',
+    quote:
+      'The precision of GHXSTSHIP helped us deliver an unforgettable trials meet. Every stakeholder had what they needed.',
     author: 'Sarah Chen, Competition Manager',
   },
 ];
 
 const integrations = [
-  { name: 'Sports Federations', category: 'Governing Bodies' },
-  { name: 'Timing Systems', category: 'Technology' },
-  { name: 'Broadcast Networks', category: 'Media' },
-  { name: 'Venue Management', category: 'Facilities' },
-  { name: 'Athlete Databases', category: 'Registration' },
-  { name: 'Streaming Platforms', category: 'Broadcasting' },
-  { name: 'Sponsorship Systems', category: 'Commercial' },
-  { name: 'Medical Services', category: 'Health & Safety' },
+  'Sports Federations',
+  'Timing & Scoring Systems',
+  'Broadcast Networks',
+  'Venue Management Platforms',
+  'Athlete Databases',
+  'Streaming Platforms',
+  'Sponsorship Systems',
+  'Medical & Safety Services',
 ];
 
 export default function SportingEventsTournamentsPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-to-br from-primary/5 via-background to-success/5">
-        <div className="container mx-auto px-md">
-          <div className="grid lg:grid-cols-2 gap-xsxl items-center">
-            <div className="stack-xl">
-              <div>
-                <Badge variant="outline" className="mb-md">
-                  Sporting Events & Tournaments
-                </Badge>
-                <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
-                  POWER
-                  <br />
-                  <span className="bg-gradient-to-r from-primary to-success bg-clip-text text-transparent">
-                    ATHLETIC
-                  </span>
-                  <br />
-                  EXCELLENCE
-                </h1>
-                <p className="text-heading-4 color-muted">
-                  From local tournaments to championship events, GHXSTSHIP empowers sports 
-                  organizers to create world-class athletic competitions that inspire athletes, 
-                  engage fans, and celebrate sporting excellence.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-lg">
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>10M+</div>
-                  <div className="text-body-sm color-muted">Athletes Managed</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>25,000+</div>
-                  <div className="text-body-sm color-muted">Tournaments</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>500+</div>
-                  <div className="text-body-sm color-muted">Sports Covered</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>99.9%</div>
-                  <div className="text-body-sm color-muted">Event Success Rate</div>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-md">
-                <Link href="/auth/signup">
-                  <Button className="w-full sm:w-auto group">
-                    Start Competing
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-                <Button className="w-full sm:w-auto group">
-                  <Play className="mr-sm h-icon-xs w-icon-xs" />
-                  Watch Demo
-                </Button>
-              </div>
-            </div>
-
-            {/* Tournament Dashboard Preview */}
-            <div className="relative">
-              <Card className="bg-background border shadow-popover overflow-hidden">
-                <div className="flex items-center gap-sm px-md py-sm bg-secondary/50 border-b">
-                  <div className="flex gap-sm">
-                    <div className="w-3 h-3 rounded-full bg-destructive"></div>
-                    <div className="w-3 h-3 rounded-full bg-warning"></div>
-                    <div className="w-3 h-3 rounded-full bg-success"></div>
-                  </div>
-                  <div className="flex-1 text-center">
-                    <div className="inline-flex items-center gap-sm  px-md py-xs bg-background rounded-md text-body-sm color-muted">
-                      <Activity className="w-3 h-3" />
-                      tournament.ghxstship.com
-                    </div>
-                  </div>
-                </div>
-
-                <CardContent className="p-lg stack-md">
-                  <div className="flex items-center justify-between">
-                    <h3 className={`${anton.className} text-body text-heading-3 uppercase`}>CHAMPIONSHIP 2024</h3>
-                    <Badge variant="outline" className="text-foreground border-primary">
-                      Live
-                    </Badge>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-sm">
-                    <div className="bg-secondary/30 rounded-lg p-sm">
-                      <div className="text-body-sm color-muted mb-xs">Teams</div>
-                      <div>128</div>
-                      <div className="flex items-center gap-xs mt-xs">
-                        <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
-                        <span className="text-body-sm text-foreground">Active</span>
-                      </div>
-                    </div>
-                    <div className="bg-secondary/30 rounded-lg p-sm">
-                      <div className="text-body-sm color-muted mb-xs">Matches</div>
-                      <div>127</div>
-                      <div className="flex -cluster-xs mt-xs">
-                        {[1, 2, 3, 4].map((i: any) => (
-                          <div key={i} className="w-3 h-3 bg-success rounded-full border border-background"></div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="bg-secondary/30 rounded-lg p-sm">
-                      <div className="text-body-sm color-muted mb-xs">Progress</div>
-                      <div>85%</div>
-                      <div className="w-full bg-secondary rounded-full h-1 mt-sm">
-                        <div className="bg-accent h-1 rounded-full w-icon-xs/5"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="stack-sm">
-                    <div className="text-body-sm form-label color-muted">Current Matches</div>
-                    {[
-                      { match: 'Eagles vs Hawks', venue: 'Stadium A', time: '14:30', status: 'Live' },
-                      { match: 'Lions vs Tigers', venue: 'Stadium B', time: '15:00', status: 'Starting' },
-                      { match: 'Wolves vs Bears', venue: 'Stadium C', time: '15:30', status: 'Scheduled' },
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-sm text-body-sm">
-                        <div className={`w-2 h-2 rounded-full ${
-                          item.status === 'Live' ? 'bg-destructive animate-pulse' : 
-                          item.status === 'Starting' ? 'bg-warning' : 'bg-secondary-foreground'
-                        }`}></div>
-                        <span className="form-label flex-1">{item.match}</span>
-                        <span className="color-muted">{item.venue}</span>
-                        <span className="color-muted">{item.time}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-sm pt-sm border-t">
-                    <Trophy className="w-icon-xs h-icon-xs text-foreground" />
-                    <span className="text-body-sm form-label">Championship Final: Tomorrow 19:00</span>
-                    <div className="ml-auto">
-                      <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Challenges Section */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              SPORTING EVENT CHALLENGES
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Athletic competitions demand precision, fairness, and seamless coordination across all aspects.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-xl">
-            {challenges.map((challenge: any) => {
-              const Icon = challenge.icon;
-              return (
-                <Card key={challenge.title} className="hover:shadow-floating transition-shadow">
-                  <CardContent className="p-xl">
-                    <div className="flex items-start gap-md">
-                      <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-primary to-success">
-                        <Icon className="h-icon-md w-icon-md text-background" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>{challenge.title}</h3>
-                        <p className="color-muted mb-md">{challenge.description}</p>
-                        <div className="flex items-start gap-sm">
-                          <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0 mt-0.5" />
-                          <p className="text-body-sm form-label color-foreground">{challenge.solution}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              ATHLETIC COMPETITION PLATFORM
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Everything you need to organize world-class sporting events and tournaments.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-xl">
-            {features.map((feature: any) => (
-              <Card key={feature.title} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-xl">
-                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-md uppercase`}>{feature.title}</h3>
-                  <p className="color-muted mb-lg">{feature.description}</p>
-                  
-                  <div className="stack-sm">
-                    {feature.benefits.map((benefit: any) => (
-                      <div key={benefit} className="flex items-center gap-sm">
-                        <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0" />
-                        <span className="text-body-sm color-foreground">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              CHAMPIONSHIP SUCCESS STORIES
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              See how sporting organizations are creating world-class competitions with GHXSTSHIP.
-            </p>
-          </div>
-
-          <div className="space-y-xsxl">
-            {caseStudies.map((study: any) => (
-              <Card key={study.title} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-xl">
-                  <div className="grid lg:grid-cols-2 gap-xl">
-                    <div>
-                      <Badge variant="outline" className="mb-md">{study.project}</Badge>
-                      <h3 className={`${anton.className} text-heading-3 text-heading-3 mb-md uppercase`}>{study.title}</h3>
-                      
-                      <div className="stack-md">
-                        <div>
-                          <h4 className="text-heading-4 text-body-sm color-muted mb-sm uppercase">CHALLENGE</h4>
-                          <p className="color-foreground">{study.challenge}</p>
-                        </div>
-                        
-                        <div>
-                          <h4 className="text-heading-4 text-body-sm color-muted mb-sm uppercase">SOLUTION</h4>
-                          <p className="color-foreground">{study.solution}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="text-heading-4 text-body-sm color-muted mb-md uppercase">RESULTS</h4>
-                      <div className="stack-sm mb-lg">
-                        {study.results.map((result: any) => (
-                          <div key={result} className="flex items-center gap-sm">
-                            <Star className="h-icon-xs w-icon-xs color-warning flex-shrink-0" />
-                            <span className="text-body-sm form-label color-foreground">{result}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <blockquote className="border-l-4 border-primary pl-md">
-                        <p className="color-foreground italic mb-sm">"{study.testimonial}"</p>
-                        <cite className="text-body-sm color-muted">— {study.author}</cite>
-                      </blockquote>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Integrations */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              SPORTS ECOSYSTEM CONNECTIONS
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Connect with sports federations, timing systems, broadcast networks, and athletic organizations.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-lg">
-            {integrations.map((integration: any) => (
-              <Card key={integration.name} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-lg text-center">
-                  <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
-                    <Zap className="h-icon-md w-icon-md text-background" />
-                  </div>
-                  <h3 className="text-heading-4 color-foreground mb-xs">{integration.name}</h3>
-                  <p className="text-body-sm color-muted">{integration.category}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-md">
-          <div className="text-center">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              READY TO CHAMPION EXCELLENCE?
-            </h2>
-            <p className="text-body color-muted mb-xl max-w-2xl mx-auto">
-              Join sports organizations using GHXSTSHIP to create world-class tournaments 
-              and athletic competitions that inspire athletes and engage fans worldwide.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-md justify-center">
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Industry Solutions"
+          title="Sporting Events & Tournaments"
+          highlight="Sporting"
+          description="Plan brackets, manage athletes, and deliver broadcasts with GHXSTSHIP’s comprehensive tournament operations toolkit."
+          actions={
+            <div className="flex flex-col items-center gap-sm sm:flex-row">
               <Link href="/auth/signup">
-                <Button className="w-full sm:w-auto group">
+                <Button className="group" size="lg">
                   Start Competing
                   <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button className="w-full sm:w-auto">
-                  Schedule Demo
+                <Button variant="outline" size="lg">
+                  Talk To Sports Ops Team
                 </Button>
               </Link>
             </div>
-          </div>
+          }
+        />
+        <div className="mt-2xl">
+          <MarketingStatGrid items={heroStats} />
         </div>
-      </section>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Lifecycle"
+          title="Control Every Stage Of Competition"
+          description="Keep governing bodies, broadcast teams, and athletes fully aligned from planning to podium."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {tournamentPhases.map((phase) => {
+            const Icon = phase.icon;
+            return (
+              <MarketingCard
+                key={phase.title}
+                title={phase.title}
+                description={phase.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
+            );
+          })}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Why GHXSTSHIP"
+          title="Run Tournaments Without Bench Time"
+          description="Sports organizations rely on GHXSTSHIP to deliver precision, safety, and fan excitement." 
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {operationsHighlights.map((highlight) => (
+            <MarketingCard key={highlight.title} title={highlight.title} description={highlight.description} icon={<Trophy className="h-icon-md w-icon-md" />} />
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Proof"
+          title="Championships Powered By GHXSTSHIP"
+          description="See how tournaments deliver flawless experiences for athletes, officials, and fans." 
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2">
+          {caseStudies.map((study) => (
+            <Card key={study.company} className="border border-border/40 bg-background/95 shadow-sm">
+              <CardContent className="space-y-md p-xl">
+                <div className="flex items-center gap-sm">
+                  <h3 className="text-heading-4 uppercase leading-tight">{study.company}</h3>
+                  <Badge variant="outline">{study.project}</Badge>
+                </div>
+                <p className="text-body-sm text-muted-foreground">{study.challenge}</p>
+                <div className="text-body font-medium text-foreground">{study.result}</div>
+                <blockquote className="border-l-4 border-primary pl-md text-body text-muted-foreground italic">“{study.quote}”</blockquote>
+                <cite className="text-body-sm text-muted-foreground">— {study.author}</cite>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Integrations"
+          title="Connect The Sports Ecosystem"
+          description="Integrate GHXSTSHIP with timing, broadcast, and sponsorship platforms for frictionless operations."
+          align="center"
+        />
+        <div className="mt-2xl grid gap-md md:grid-cols-4">
+          {integrations.map((integration) => (
+            <div key={integration} className="rounded-xl border border-border/60 bg-muted/30 px-lg py-md text-center text-body-sm text-muted-foreground">
+              {integration}
+            </div>
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          title="Ready To Crown Champions?"
+          description="Partner with GHXSTSHIP to deliver tournaments that athletes and fans will never forget."
+          align="center"
+        />
+        <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">
+          <Link href="/contact">
+            <Button className="group" size="lg">
+              Book A Sports Ops Demo
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <Link href="/auth/signup">
+            <Button variant="outline" size="lg">
+              Start Free Trial
+            </Button>
+          </Link>
+        </div>
+      </MarketingSection>
     </div>
   );
 }

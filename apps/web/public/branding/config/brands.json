@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "defaultBrand": "default",
+  "brands": [
+    {
+      "id": "default",
+      "name": "ATLVS",
+      "slug": "atlvs",
+      "description": "ATLVS - Experiential Project Management Platform",
+      "domains": ["atlvs.one", "app.atlvs.one", "localhost"],
+      "enabled": true,
+      "isDefault": true
+    },
+    {
+      "id": "ghxstship",
+      "name": "GHXSTSHIP",
+      "slug": "ghxstship",
+      "description": "GHXSTSHIP — Experiential Entertainment Solutions and Technologies",
+      "domains": ["ghxstship.xyz", "app.ghxstship.xyz"],
+      "enabled": true,
+      "isDefault": false
+    },
+    {
+      "id": "opendeck",
+      "name": "OPENDECK",
+      "slug": "opendeck",
+      "description": "OPENDECK Marketplace - Experiential Entertainment Products, Services, and Teams",
+      "domains": ["opendeck.com", "marketplace.opendeck.com"],
+      "enabled": true,
+      "isDefault": false
+    }
+  ]
+}

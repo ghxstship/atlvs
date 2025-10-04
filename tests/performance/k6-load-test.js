@@ -1,7 +1,5 @@
 import http from 'k6/http'
 import { check, sleep } from 'k6'
-import { Rate, Trend } from 'k6/metrics'
-
 // Custom metrics
 const errorRate = new Rate('errors')
 const responseTime = new Trend('response_time')
@@ -26,7 +24,6 @@ const BASE_URL = __ENV.BASE_URL || 'http://localhost:3000'
 
 export default function () {
   // Test homepage
-  let res = http.get(`${BASE_URL}/`)
   check(res, {
     'homepage status is 200': (r) => r.status === 200,
     'homepage loads in <500ms': (r) => r.timings.duration < 500,
@@ -72,7 +69,6 @@ export function handleSummary(data) {
 
 function textSummary(data, options) {
   const indent = options.indent || ''
-  const enableColors = options.enableColors || false
 
   let summary = `
 ${indent}Test Summary:

@@ -1,51 +1,71 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Mail, Phone, MapPin, Clock, MessageSquare, Users, Zap, Globe } from 'lucide-react';
-import { anton } from '../../_components/lib/typography';
+import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
+import {
+  ArrowRight,
+  Globe,
+  Mail,
+  MapPin,
+  MessageCircle,
+  MessageSquare,
+  Phone,
+  Users,
+} from 'lucide-react';
+
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingStatGrid,
+} from '../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Contact Us - We Actually Respond | GHXSTSHIP',
-  description: 'Reach the production management team that survived Formula 1 chaos. We answer emails, solve problems, and don\'t ghost you.',
+  description:
+    "Reach the GHXSTSHIP team for support, sales, and partnerships. We answer emails, solve problems, and don't ghost you.",
   openGraph: {
     title: 'Contact Us - We Actually Respond | GHXSTSHIP',
-    description: 'Reach the production management team that actually responds to emails.',
+    description:
+      "Reach the GHXSTSHIP team for support, sales, and partnerships. We answer emails, solve problems, and don't ghost you.",
     url: 'https://ghxstship.com/contact',
   },
 };
+
+const contactStats = [
+  { label: 'Avg. First Response', value: '< 2 hrs' },
+  { label: '24/7 Support Coverage', value: 'Global' },
+  { label: 'Customer Satisfaction', value: '98%' },
+  { label: 'Dedicated Specialists', value: '45' },
+];
 
 const contactMethods = [
   {
     icon: Mail,
     title: 'Email Support',
-    description: 'Get help from people who actually know the product',
+    description: 'Talk with product specialists who understand production ops.',
     contact: 'support@ghxstship.com',
-    response: 'Response within 24 hours',
-    color: 'from-primary to-secondary',
+    response: 'Replies within 24 hours',
   },
   {
     icon: MessageSquare,
     title: 'Sales Inquiries',
-    description: 'Talk to sales people who won\'t waste your time',
+    description: 'Discover the right plan, integrations, and onboarding program.',
     contact: 'sales@ghxstship.com',
-    response: 'Response within 4 hours',
-    color: 'from-primary to-secondary',
+    response: 'Replies within 4 hours',
   },
   {
     icon: Users,
     title: 'Partnerships',
-    description: 'Partner with people who actually deliver',
+    description: 'Collaborate on co-marketing, integrations, or strategic alliances.',
     contact: 'partnerships@ghxstship.com',
-    response: 'Response within 48 hours',
-    color: 'from-primary to-secondary',
+    response: 'Replies within 48 hours',
   },
   {
     icon: Phone,
     title: 'Phone Support',
-    description: 'Talk to humans, not phone trees',
+    description: 'Speak to a human—no endless phone trees.',
     contact: '+1 (555) 123-4567',
-    response: 'Mon-Fri, 9AM-6PM PST',
-    color: 'from-primary to-secondary',
+    response: 'Mon–Fri, 9am–6pm PST',
   },
 ];
 
@@ -66,7 +86,6 @@ const offices = [
     phone: '+1 (555) 987-6543',
     email: 'ny@ghxstship.com',
     timezone: 'EST',
-    isHeadquarters: false,
   },
   {
     city: 'London',
@@ -75,332 +94,238 @@ const offices = [
     phone: '+44 20 7123 4567',
     email: 'london@ghxstship.com',
     timezone: 'GMT',
-    isHeadquarters: false,
   },
 ];
 
 const faqs = [
   {
     question: 'How do I get started with GHXSTSHIP?',
-    answer: 'You can start with a free 14-day trial of either ATLVS or OPENDECK. No credit card required. Simply sign up and explore all features.',
+    answer: 'Launch a free 14-day trial of ATLVS or OPENDECK—no credit card required. Explore features with guided tours and onboarding resources.',
   },
   {
     question: 'Do you offer enterprise pricing?',
-    answer: 'Yes, we offer custom enterprise pricing for teams with 50+ members. Contact our sales team for a personalized quote and demo.',
+    answer: 'Yes. Our sales team will craft a plan that includes volume licensing, implementation support, and dedicated success managers.',
   },
   {
-    question: 'Can I integrate GHXSTSHIP with my existing tools?',
-    answer: 'Absolutely! We offer integrations with popular tools like Slack, Trello, Asana, and many more. Our API also allows custom integrations.',
+    question: 'Can GHXSTSHIP integrate with our existing tools?',
+    answer: 'Absolutely. We offer Slack, Asana, and finance integrations out-of-the-box, plus an API for custom workflows.',
   },
   {
-    question: 'What kind of support do you provide?',
-    answer: 'We provide 24/7 email support, live chat during business hours, comprehensive documentation, and video tutorials.',
+    question: 'What support options are available?',
+    answer: '24/7 email support, live chat during business hours, a comprehensive knowledge base, and guided training sessions.',
   },
   {
-    question: 'Is my data secure with GHXSTSHIP?',
-    answer: 'Yes, we take security seriously. We\'re SOC 2 certified, GDPR compliant, and use enterprise-grade encryption for all data.',
+    question: 'Is my data secure?',
+    answer: 'We are SOC 2 Type II certified, GDPR compliant, and encrypt data at rest and in transit. Security is prioritized in every release.',
   },
 ];
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-subtle">
-        <div className="container mx-auto px-md">
-          <div className="text-center">
-            <Badge variant="outline" className="mb-md">
-              Contact Us
-            </Badge>
-            <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
-              NEED HELP?
-              <br />
-              <span className="text-gradient-accent">
-                WE ACTUALLY RESPOND
-              </span>
-            </h1>
-            <p className="text-heading-4 color-muted max-w-3xl mx-auto">
-              Questions about production management that doesn't suck? Need support from people who've 
-              actually managed real productions? We're here and we don't ghost you.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Methods */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              MULTIPLE WAYS TO REACH US
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Pick your preferred way to reach humans who actually know what they're talking about.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
-            {contactMethods.map((method: any) => {
-              const Icon = method.icon;
-              return (
-                <Card key={method.title} className="hover:shadow-floating transition-shadow">
-                  <CardContent className="p-lg text-center">
-                    <div className={`inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r ${method.color} mb-md`}>
-                      <Icon className="h-icon-md w-icon-md text-background" />
-                    </div>
-                    <h3 className={`${anton.className} text-body text-heading-3 mb-sm uppercase`}>{method.title}</h3>
-                    <p className="text-body-sm color-muted mb-md">{method.description}</p>
-                    <div className="stack-sm">
-                      <p className="text-heading-4 color-foreground">{method.contact}</p>
-                      <p className="text-body-sm color-muted">{method.response}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-3xl">
-              <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-                SEND US A MESSAGE
-              </h2>
-              <p className="text-body color-muted">
-                Tell us what's going on and we'll actually get back to you (no auto-responders).
-              </p>
-            </div>
-
-            <Card>
-              <CardContent className="p-xl">
-                <form className="stack-lg">
-                  <div className="grid md:grid-cols-2 gap-lg">
-                    <div>
-                      <label htmlFor="firstName" className="block text-body-sm form-label color-foreground mb-sm">
-                        First Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="firstName"
-                        name="firstName"
-                        required
-                        className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="lastName" className="block text-body-sm form-label color-foreground mb-sm">
-                        Last Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="lastName"
-                        name="lastName"
-                        required
-                        className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-lg">
-                    <div>
-                      <label htmlFor="email" className="block text-body-sm form-label color-foreground mb-sm">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="company" className="block text-body-sm form-label color-foreground mb-sm">
-                        Company
-                      </label>
-                      <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="subject" className="block text-body-sm form-label color-foreground mb-sm">
-                      Subject *
-                    </label>
-                    <select
-                      id="subject"
-                      name="subject"
-                      required
-                      className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                    >
-                      <option value="">Select a subject</option>
-                      <option value="sales">Sales Inquiry</option>
-                      <option value="support">Technical Support</option>
-                      <option value="partnership">Partnership Opportunity</option>
-                      <option value="billing">Billing Question</option>
-                      <option value="general">General Question</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-body-sm form-label color-foreground mb-sm">
-                      Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={6}
-                      required
-                      placeholder="Tell us more about your inquiry..."
-                      className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                    ></textarea>
-                  </div>
-
-                  <div className="flex items-center gap-sm">
-                    <input
-                      type="checkbox"
-                      id="newsletter"
-                      name="newsletter"
-                      className="h-icon-xs w-icon-xs text-foreground focus:ring-primary border-input rounded"
-                    />
-                    <label htmlFor="newsletter" className="text-body-sm color-muted">
-                      I'd like to receive updates about GHXSTSHIP products and features
-                    </label>
-                  </div>
-
-                  <Button className="w-full group">
-                    Send Message
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Office Locations */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              OUR OFFICES
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Find us in the real world, where we're probably managing some kind of organized chaos.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-xl">
-            {offices.map((office: any) => (
-              <Card key={office.city} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-xl">
-                  <div className="flex items-center gap-sm mb-lg">
-                    <MapPin className="h-icon-md w-icon-md text-foreground" />
-                    <div>
-                      <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase`}>{office.city}</h3>
-                      {office.isHeadquarters && (
-                        <Badge variant="outline" className="mt-xs">Headquarters</Badge>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="stack-md">
-                    <div>
-                      <h4 className="text-heading-4 text-body-sm color-muted mb-sm uppercase">ADDRESS</h4>
-                      <p className="text-body-sm color-foreground">{office.address}</p>
-                      <p className="text-body-sm color-foreground">{office.zipcode}</p>
-                    </div>
-
-                    <div>
-                      <h4 className="text-heading-4 text-body-sm color-muted mb-sm uppercase">CONTACT</h4>
-                      <p className="text-body-sm color-foreground">{office.phone}</p>
-                      <p className="text-body-sm color-foreground">{office.email}</p>
-                    </div>
-
-                    <div>
-                      <h4 className="text-heading-4 text-body-sm color-muted mb-sm uppercase">TIMEZONE</h4>
-                      <p className="text-body-sm color-foreground">{office.timezone}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              FREQUENTLY ASKED QUESTIONS
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Answers to questions we get asked a lot. If yours isn't here, just ask us directly.
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto stack-lg">
-            {faqs.map((faq, index) => (
-              <Card key={index}>
-                <CardContent className="p-lg">
-                  <h3 className="text-heading-4 color-foreground mb-sm">{faq.question}</h3>
-                  <p className="color-muted">{faq.answer}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-2xl">
-            <p className="color-muted mb-md">Still have questions?</p>
-            <Link href="/resources">
-              <Button>
-                Visit Help Center
-                <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Contact"
+          title="Need Help? We Actually Respond"
+          highlight="Actually Respond"
+          description="Questions about production management that doesn’t quit? Reach the GHXSTSHIP crew and connect with people who’ve managed the chaos themselves."
+          actions={
+            <Link href="#contact-form">
+              <Button className="group" size="lg">
+                Send A Message
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-          </div>
+          }
+        />
+        <div className="mt-2xl">
+          <MarketingStatGrid items={contactStats} />
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-md">
-          <div className="text-center">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              READY TO GET STARTED?
-            </h2>
-            <p className="text-body color-muted mb-xl max-w-2xl mx-auto">
-              Don't wait - start your free trial today and see why thousands of creative teams choose GHXSTSHIP.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-md justify-center">
-              <Link href="/auth/signup">
-                <Button className="w-full sm:w-auto group">
-                  Start Free Trial
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Talk To Us"
+          title="Multiple Ways To Reach Humans"
+          description="Pick your preferred channel—email, phone, or partnerships. We’ll route you straight to the right team."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {contactMethods.map((method) => {
+            const Icon = method.icon;
+            return (
+              <MarketingCard
+                key={method.title}
+                title={method.title}
+                description={method.description}
+                highlight={method.contact}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+                footer={<span className="text-body-sm text-muted-foreground">{method.response}</span>}
+              />
+            );
+          })}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Send A Message"
+          title="Drop Us A Line"
+          description="Share what you need and we’ll follow up with answers, resources, or a hands-on walkthrough."
+          align="center"
+        />
+
+        <Card id="contact-form" className="mx-auto mt-2xl max-w-4xl border border-border/40 bg-background/95 shadow-sm">
+          <CardContent className="p-xl">
+            <form className="grid gap-lg md:grid-cols-2">
+              <div className="space-y-md">
+                <div className="space-y-xs">
+                  <label htmlFor="name" className="text-body-sm text-muted-foreground uppercase tracking-[0.2em]">
+                    Name *
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    placeholder="Jane Doe"
+                    className="w-full rounded-lg border border-border/60 bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+                <div className="space-y-xs">
+                  <label htmlFor="email" className="text-body-sm text-muted-foreground uppercase tracking-[0.2em]">
+                    Email *
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="you@company.com"
+                    className="w-full rounded-lg border border-border/60 bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+                <div className="space-y-xs">
+                  <label htmlFor="company" className="text-body-sm text-muted-foreground uppercase tracking-[0.2em]">
+                    Company
+                  </label>
+                  <input
+                    id="company"
+                    name="company"
+                    placeholder="Production Studio"
+                    className="w-full rounded-lg border border-border/60 bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-md">
+                <div className="space-y-xs">
+                  <label htmlFor="topic" className="text-body-sm text-muted-foreground uppercase tracking-[0.2em]">
+                    Topic *
+                  </label>
+                  <select
+                    id="topic"
+                    name="topic"
+                    required
+                    className="w-full rounded-lg border border-border/60 bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
+                    <option value="support">Support Request</option>
+                    <option value="sales">Sales Inquiry</option>
+                    <option value="partnership">Partnership Opportunity</option>
+                    <option value="billing">Billing Question</option>
+                    <option value="general">General Question</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div className="space-y-xs">
+                  <label htmlFor="message" className="text-body-sm text-muted-foreground uppercase tracking-[0.2em]">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={6}
+                    required
+                    placeholder="Tell us more about your inquiry..."
+                    className="w-full rounded-lg border border-border/60 bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+                <label className="inline-flex items-center gap-sm text-body-sm text-muted-foreground">
+                  <input type="checkbox" className="h-icon-xs w-icon-xs rounded border-border/60 text-primary focus:ring-primary" />
+                  I’d like product and feature updates from GHXSTSHIP.
+                </label>
+                <Button className="w-full group">
+                  Send Message
                   <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
-              </Link>
-              <Link href="/pricing">
-                <Button className="w-full sm:w-auto">
-                  View Pricing
-                </Button>
-              </Link>
-            </div>
-          </div>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Global Offices"
+          title="Find Us Around The World"
+          description="Visit a regional hub or schedule time with teams operating across your timezone."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {offices.map((office) => (
+            <MarketingCard
+              key={office.city}
+              title={office.city}
+              description={`${office.address} • ${office.zipcode}`}
+              highlight={office.isHeadquarters ? 'Headquarters' : `${office.timezone} timezone`}
+              icon={<MapPin className="h-icon-md w-icon-md" />}
+              footer={
+                <div className="text-body-sm text-muted-foreground">
+                  <div>{office.phone}</div>
+                  <div>{office.email}</div>
+                </div>
+              }
+            />
+          ))}
         </div>
-      </section>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="FAQ"
+          title="Answers Before You Ask"
+          description="A quick primer for the most common questions we hear from producers, coordinators, and operations teams."
+        />
+
+        <div className="mt-2xl space-y-lg">
+          {faqs.map((faq) => (
+            <MarketingCard key={faq.question} title={faq.question} description={faq.answer} icon={<MessageCircle className="h-icon-md w-icon-md" />} />
+          ))}
+        </div>
+
+        <div className="mt-xl text-center text-body-sm text-muted-foreground">
+          Still need a hand? Visit our <Link href="/resources" className="underline">Help Center</Link> or email <Link href="mailto:support@ghxstship.com" className="underline">support@ghxstship.com</Link>.
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="primaryGradient" padding="lg">
+        <MarketingSectionHeader
+          title="Ready To Get Started?"
+          description="Join thousands of creative teams who trust GHXSTSHIP to manage productions end-to-end."
+          align="center"
+        />
+        <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">
+          <Link href="/auth/signup">
+            <Button className="group">
+              Start Free Trial
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <Link href="/pricing">
+            <Button variant="outline">View Pricing</Button>
+          </Link>
+        </div>
+      </MarketingSection>
     </div>
   );
 }

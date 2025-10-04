@@ -1,114 +1,126 @@
-import { Metadata } from 'next';
-import { anton } from '../../_components/lib/typography';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { MarketingCard, MarketingSection, MarketingSectionHeader } from '../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Cookie Policy | GHXSTSHIP',
-  description: 'Learn about how GHXSTSHIP uses cookies to improve your experience on our platform.',
+  description: 'Understand how GHXSTSHIP uses cookies to improve your experience on ATLVS and OPENDECK.',
 };
 
+const cookieCategories = [
+  {
+    title: 'Essential Cookies',
+    description: 'Required for secure login, load balancing, and basic platform navigation. These cannot be disabled.',
+  },
+  {
+    title: 'Performance Cookies',
+    description: 'Help us analyze product usage and optimize workflows with aggregated metrics.',
+  },
+  {
+    title: 'Functional Cookies',
+    description: 'Remember your preferences such as language, theme, and saved filters.',
+  },
+  {
+    title: 'Targeting Cookies',
+    description: 'Support relevant marketing campaigns and partner attribution programs.',
+  },
+];
+
+const thirdParties = [
+  {
+    title: 'Analytics Tools',
+    description: 'Google Analytics, Segment, and similar tools measuring engagement so we can improve your experience.',
+  },
+  {
+    title: 'Advertising Partners',
+    description: 'Platforms that help us provide relevant content and measure campaign performance.',
+  },
+  {
+    title: 'Social Integrations',
+    description: 'Cookies from networks such as LinkedIn or YouTube when you interact with embedded content.',
+  },
+];
+
+const managementSteps = [
+  {
+    title: 'Browser Controls',
+    description: 'Most browsers let you view, delete, or block cookies. Check your browser settings for instructions.',
+  },
+  {
+    title: 'Do Not Track',
+    description: 'We honor browser Do Not Track signals for non-essential cookies when detected.',
+  },
+  {
+    title: 'Consent Preferences',
+    description: 'Use the cookie banner to update your preferences at any time. Changes apply immediately.',
+  },
+];
+
 export default function CookiePolicyPage() {
+  const lastUpdated = new Date('2024-12-15').toLocaleDateString(undefined, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
   return (
-    <div className="container mx-auto px-md py-smxl max-w-4xl">
-      <div className="prose prose-lg max-w-none">
-        <h1 className={`${anton.className} uppercase text-heading-1 text-heading-3 mb-xl`}>
-          COOKIE POLICY
-        </h1>
-        
-        <p className="text-body color-muted mb-xl">
-          Last updated: {new Date().toLocaleDateString()}
-        </p>
-
-        <div className="stack-xl">
-          <section>
-            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-md`}>
-              WHAT ARE COOKIES
-            </h2>
-            <p>
-              Cookies are small text files that are placed on your computer or mobile device when you visit our website. 
-              They are widely used to make websites work more efficiently and provide information to website owners.
-            </p>
-          </section>
-
-          <section>
-            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-md`}>
-              HOW WE USE COOKIES
-            </h2>
-            <p>We use cookies for several purposes:</p>
-            <ul className="list-disc pl-lg stack-sm">
-              <li><strong>Essential Cookies:</strong> Required for the website to function properly</li>
-              <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with our website</li>
-              <li><strong>Marketing Cookies:</strong> Used to deliver relevant advertisements</li>
-              <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-md`}>
-              TYPES OF COOKIES WE USE
-            </h2>
-            <div className="stack-md">
-              <div>
-                <h3>Strictly Necessary Cookies</h3>
-                <p>These cookies are essential for the website to function and cannot be disabled.</p>
-              </div>
-              <div>
-                <h3>Performance Cookies</h3>
-                <p>These cookies collect information about how you use our website to help us improve it.</p>
-              </div>
-              <div>
-                <h3>Functional Cookies</h3>
-                <p>These cookies remember your preferences and provide enhanced features.</p>
-              </div>
-              <div>
-                <h3>Targeting Cookies</h3>
-                <p>These cookies are used to deliver relevant advertisements based on your interests.</p>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-md`}>
-              MANAGING COOKIES
-            </h2>
-            <p>
-              You can control and manage cookies in various ways. Most browsers allow you to:
-            </p>
-            <ul className="list-disc pl-lg stack-sm">
-              <li>View what cookies are stored on your device</li>
-              <li>Delete cookies individually or all at once</li>
-              <li>Block cookies from specific sites</li>
-              <li>Block all cookies from being set</li>
-              <li>Delete all cookies when you close your browser</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-md`}>
-              THIRD-PARTY COOKIES
-            </h2>
-            <p>
-              We may use third-party services that set cookies on our website, including:
-            </p>
-            <ul className="list-disc pl-lg stack-sm">
-              <li>Google Analytics for website analytics</li>
-              <li>Social media platforms for sharing content</li>
-              <li>Advertising networks for targeted ads</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-md`}>
-              CONTACT US
-            </h2>
-            <p>
-              If you have any questions about our Cookie Policy, please contact us at{' '}
-              <a href="mailto:privacy@ghxstship.com" className="text-foreground hover:underline">
-                privacy@ghxstship.com
-              </a>
-            </p>
-          </section>
+    <div className="min-h-screen">
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Policies"
+          title="Cookie Policy"
+          description="We use cookies to keep GHXSTSHIP secure, reliable, and tailored to your workflow. This page explains what we collect and how you can control it."
+        />
+        <div className="mt-xl text-body-sm text-muted-foreground text-center">
+          Last updated: {lastUpdated}
         </div>
-      </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Overview"
+          title="How Cookies Support Your Experience"
+          description="Cookies are small text files stored on your device. They help us provide secure sessions, remember preferences, and improve product performance."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2">
+          {cookieCategories.map((category) => (
+            <MarketingCard key={category.title} title={category.title} description={category.description} />
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Third Parties"
+          title="Services That May Set Cookies"
+          description="Some cookies originate from trusted partners who help us analyze usage, run campaigns, or embed external content."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {thirdParties.map((item) => (
+            <MarketingCard key={item.title} title={item.title} description={item.description} />
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Your Choices"
+          title="Manage Your Cookie Preferences"
+          description="You can change cookie settings at any time. These steps help you stay in control of your data."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {managementSteps.map((step) => (
+            <MarketingCard key={step.title} title={step.title} description={step.description} />
+          ))}
+        </div>
+
+        <div className="mt-xl text-body-sm text-muted-foreground">
+          Need more information? Email <Link href="mailto:privacy@ghxstship.com" className="underline">privacy@ghxstship.com</Link> and we’ll respond within two business days.
+        </div>
+      </MarketingSection>
     </div>
   );
 }

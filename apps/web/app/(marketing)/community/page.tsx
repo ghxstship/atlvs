@@ -1,49 +1,70 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, MessageCircle, Users, Calendar, Trophy, ExternalLink, Github, Twitter, Youtube, Instagram, Twitch, MessageSquare } from 'lucide-react';
-import { anton } from '../../_components/lib/typography';
+import { Badge, Button } from '@ghxstship/ui';
+import {
+  ArrowRight,
+  Calendar,
+  Github,
+  Instagram,
+  MessageCircle,
+  MessageSquare,
+  Trophy,
+  Twitter,
+  Twitch,
+  Users,
+  Youtube,
+} from 'lucide-react';
+
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingStatGrid,
+} from '../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Community - Production Pros Who Actually Help | GHXSTSHIP',
-  description: 'Join 40K+ production professionals who share real advice, not just humble brags. Get help from people who\'ve been there.',
+  description:
+    "Join 25,000+ production professionals who share real advice, collaborate on projects, and push the industry forward. Connect with peers who actually show up.",
   openGraph: {
     title: 'Community - Production Pros Who Actually Help | GHXSTSHIP',
-    description: 'Join 40K+ production professionals who share real advice, not just humble brags.',
+    description:
+      "Join 25,000+ production professionals who share real advice, collaborate on projects, and push the industry forward.",
     url: 'https://ghxstship.com/community',
   },
 };
 
+const communityStats = [
+  { label: 'Members', value: '25K+' },
+  { label: 'Active Conversations', value: '1,800+' },
+  { label: 'Live Events / Year', value: '120+' },
+  { label: 'Mentorship Matches', value: '530+' },
+];
+
 const communityChannels = [
   {
     name: 'Skool Community',
-    description: 'Real-time chat with production pros who actually answer questions',
-    members: '15,247',
-    activity: 'Very Active',
-    icon: MessageSquare,
+    description: 'Real-time chat with production pros who answer questions and share resources.',
+    members: '15,247 members',
+    activity: 'Very active',
     href: 'https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed',
-    gradient: 'from-primary to-secondary',
-    features: ['Real-time chat', 'Voice channels', 'Screen sharing', 'Industry channels'],
+    icon: MessageSquare,
   },
   {
     name: 'Forums',
-    description: 'Deep dives into production problems and solutions that actually work',
-    members: '12,456',
+    description: 'Deep-dive discussions, project breakdowns, and long-form AMAs with experts.',
+    members: '12,456 members',
     activity: 'Active',
-    icon: MessageCircle,
     href: '/community/forums',
-    gradient: 'from-primary to-secondary',
-    features: ['Technical discussions', 'Project showcases', 'Q&A sessions', 'Industry insights'],
+    icon: MessageCircle,
   },
   {
     name: 'Events & Meetups',
-    description: 'Network with people who won\'t just pitch you their services',
-    members: '5,678',
+    description: 'Workshops, networking, and office hours hosted weekly across regions.',
+    members: '5,678 attendees',
     activity: 'Weekly',
-    icon: Calendar,
     href: '/community/events',
-    gradient: 'from-primary to-secondary',
-    features: ['Monthly meetups', 'Workshops', 'Conferences', 'Networking sessions'],
+    icon: Calendar,
   },
 ];
 
@@ -51,71 +72,65 @@ const socialChannels = [
   {
     name: 'Twitter',
     handle: '@ghxstship',
-    followers: '25K',
+    followers: '25K followers',
     icon: Twitter,
     href: 'https://twitter.com/ghxstship',
-    description: 'Hot takes and production tips that don\'t suck',
   },
   {
     name: 'LinkedIn',
     handle: 'GHXSTSHIP',
-    followers: '18K',
-    icon: Github,
+    followers: '18K followers',
+    icon: Users,
     href: 'https://linkedin.com/company/ghxstship',
-    description: 'Professional content without the corporate fluff',
   },
   {
     name: 'YouTube',
     handle: '@ghxstship',
-    followers: '12K',
+    followers: '12K subscribers',
     icon: Youtube,
     href: 'https://youtube.com/@ghxstship',
-    description: 'Tutorials from real productions, not stock footage demos',
   },
   {
     name: 'GitHub',
     handle: 'ghxstship',
-    followers: '8K',
+    followers: '8K stars',
     icon: Github,
     href: 'https://github.com/ghxstship',
-    description: 'Code that actually works in production environments',
   },
   {
     name: 'Instagram',
     handle: '@ghxstship',
-    followers: '10K',
+    followers: '10K followers',
     icon: Instagram,
     href: 'https://instagram.com/ghxstship',
-    description: 'Behind-the-scenes content that isn\'t just humble brags',
   },
   {
     name: 'Twitch',
     handle: '@ghxstship',
-    followers: '5K',
+    followers: '5K followers',
     icon: Twitch,
     href: 'https://twitch.tv/ghxstship',
-    description: 'Live streams where we actually build stuff (not just talk about it)',
   },
 ];
 
-const testimonials = [
+const highlights = [
   {
-    quote: "The GHXSTSHIP community has been invaluable for my career growth. The connections I've made and knowledge I've gained are incredible.",
-    author: "Sarah Chen",
-    role: "VP of Production, Meridian Studios",
-    avatar: "SC",
+    title: 'Community Champion',
+    description: 'Recognizes members who provide consistent support, insights, and mentorship.',
+    icon: Trophy,
+    metric: '156 honorees',
   },
   {
-    quote: "Being part of this community has opened doors I never knew existed. The mentorship and collaboration opportunities are amazing.",
-    author: "Marcus Rodriguez",
-    role: "Creative Director, Apex Advertising",
-    avatar: "MR",
+    title: 'Knowledge Sharer',
+    description: 'Celebrates detailed breakdowns, templates, and resources shared with peers.',
+    icon: Users,
+    metric: '500+ contributions',
   },
   {
-    quote: "The Skool community is my go-to place for quick answers and industry insights. The community is incredibly supportive and knowledgeable.",
-    author: "Emily Watson",
-    role: "Head of Operations, Harmony Events",
-    avatar: "EW",
+    title: 'Event Organizers',
+    description: 'Spotlights volunteers who host meetups, workshops, and showcases.',
+    icon: Calendar,
+    metric: '45 active hosts',
   },
 ];
 
@@ -123,370 +138,186 @@ const upcomingEvents = [
   {
     title: 'Production Management Masterclass',
     date: 'Dec 15, 2024',
-    time: '2:00 PM EST',
+    time: '2:00 PM ET',
     type: 'Workshop',
-    attendees: 247,
-    description: 'Learn advanced production management techniques from industry experts.',
+    description: 'Hands-on training for managing multi-location shoots and live events.',
   },
   {
     title: 'Creative Networking Mixer',
     date: 'Dec 20, 2024',
-    time: '6:00 PM EST',
+    time: '6:00 PM ET',
     type: 'Networking',
-    attendees: 156,
-    description: 'Connect with creative professionals from around the world.',
+    description: 'Meet agency producers, freelance talent, and studio leads building big campaigns.',
   },
   {
     title: 'ATLVS Feature Deep Dive',
     date: 'Jan 8, 2025',
-    time: '1:00 PM EST',
-    type: 'Product Demo',
-    attendees: 89,
-    description: 'Explore the latest ATLVS features and best practices.',
-  },
-];
-
-const achievements = [
-  {
-    title: 'Community Champion',
-    description: 'Awarded to active community members who help others',
-    icon: Trophy,
-    metric: '100+',
-    recipients: 156,
-  },
-  {
-    title: 'Knowledge Sharer',
-    description: 'For members who contribute valuable insights and resources',
-    icon: Users,
-    metric: '500+',
-    recipients: 89,
-  },
-  {
-    title: 'Event Organizer',
-    description: 'Recognizing those who organize community events',
-    icon: Calendar,
-    metric: '20+',
-    recipients: 23,
+    time: '1:00 PM ET',
+    type: 'Product Session',
+    description: 'Explore the latest production scheduling features and workflow automation.',
   },
 ];
 
 export default function CommunityPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-subtle">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <Badge variant="outline" className="mb-md">
-              Community
-            </Badge>
-            <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
-              JOIN THE
-              <br />
-              <span className="text-gradient-accent">
-                GHXSTSHIP COMMUNITY
-              </span>
-            </h1>
-            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-xl">
-              Connect with 25,000+ creative professionals, share knowledge, and grow your career 
-              in the world's most vibrant creative community.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-md justify-center">
-              <a href="https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed" target="_blank" rel="noopener noreferrer">
-                <Button className="w-full sm:w-auto group">
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Community"
+          title="Join The GHXSTSHIP Network"
+          highlight="GHXSTSHIP"
+          description="Connect with producers, designers, technologists, and showrunners who exchange knowledge, collaborate on projects, and open doors for each other."
+          actions={
+            <>
+              <Link
+                href="https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="group">
                   Join Skool Community
                   <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
-              </a>
-              <a href="/auth/signup">
-                <Button variant="outline" className="w-full sm:w-auto">
-                  Create Account
-                </Button>
-              </a>
-            </div>
-          </div>
-
-          {/* Community Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-xl text-center">
-            <div>
-              <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>50K+</div>
-              <div className="text-body-sm color-muted">Community Members</div>
-            </div>
-            <div>
-              <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>200+</div>
-              <div className="text-body-sm color-muted">Countries</div>
-            </div>
-            <div>
-              <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>24/7</div>
-              <div className="text-body-sm color-muted">Support Available</div>
-            </div>
-            <div>
-              <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>98%</div>
-              <div className="text-body-sm color-muted">Satisfaction Rate</div>
-            </div>
-          </div>
+              </Link>
+              <Link href="/community/opportunities">
+                <Button variant="outline">Explore Opportunities</Button>
+              </Link>
+            </>
+          }
+        />
+        <div className="mt-2xl">
+          <MarketingStatGrid items={communityStats} />
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* Community Channels */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              CONNECT WITH CREATORS
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Choose how you want to engage with the community. Each platform offers 
-              unique opportunities for learning, networking, and collaboration.
-            </p>
-          </div>
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Where We Gather"
+          title="Spaces Designed For Real Collaboration"
+          description="Three hubs where conversations stay high-signal, resources flow freely, and events keep relationships strong."
+        />
 
-          <div className="grid md:grid-cols-2 gap-xl mb-3xl">
-            {communityChannels.map((channel: any) => {
-              const Icon = channel.icon;
-              return (
-                <Card key={channel.name} className="group hover:shadow-floating transition-all duration-300 hover:-translate-y-1">
-                  <CardContent className="p-xl">
-                    <div className="flex items-start gap-md mb-lg">
-                      <div className={`p-sm rounded-lg bg-gradient-to-r ${channel.gradient}`}>
-                        <Icon className="h-icon-md w-icon-md text-background" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-sm mb-sm">
-                          <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>{channel.name}</h3>
-                          <Badge variant="secondary">
-                            {channel.activity}
-                          </Badge>
-                        </div>
-                        <p className="color-muted mb-sm">{channel.description}</p>
-                        <div className="text-body-sm color-muted">
-                          <span className="text-heading-4 color-foreground">{channel.members}</span> members
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-sm mb-lg">
-                      {channel.features.map((feature: any) => (
-                        <div key={feature} className="flex items-center gap-sm">
-                          <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${channel.gradient}`}></div>
-                          <span className="text-body-sm color-muted">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {channel.href.startsWith('http') ? (
-                      <a href="#" target="_blank" rel="noopener noreferrer">
-                        <Button className="w-full group transition-all duration-200 hover:scale-105">
-                          Join Community
-                          <ExternalLink className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                        </Button>
-                      </a>
-                    ) : (
-                      <a href="#">
-                        <Button className="w-full group transition-all duration-200 hover:scale-105">
-                          Join Community
-                          <ExternalLink className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                        </Button>
-                      </a>
-                    )}
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Social Media */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              FOLLOW US EVERYWHERE
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Stay updated with the latest news, insights, and community highlights 
-              across all our social media channels.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
-            {socialChannels.map((social: any) => {
-              const Icon = social.icon;
-              return (
-                <Card key={social.name} className="text-center hover:shadow-floating transition-shadow">
-                  <CardContent className="p-lg">
-                    <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-full bg-accent/10 mb-md">
-                      <Icon className="h-icon-md w-icon-md text-foreground" />
-                    </div>
-                    <h3 className="text-heading-4 color-foreground mb-sm">{social.name}</h3>
-                    <p className="text-body-sm color-muted mb-sm">{social.handle}</p>
-                    <div className="text-body-sm text-heading-4 text-foreground mb-md">
-                      {social.followers} followers
-                    </div>
-                    <p className="text-body-sm color-muted mb-md">{social.description}</p>
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                      <Button className="w-full group transition-all duration-200 hover:scale-105">
-                        Follow
-                        <ExternalLink className="ml-sm h-3 w-3 transition-transform group-hover:translate-x-1" />
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {communityChannels.map((channel) => {
+            const Icon = channel.icon;
+            return (
+              <MarketingCard
+                key={channel.name}
+                title={channel.name}
+                description={channel.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+                highlight={channel.members}
+                footer={
+                  <div className="flex items-center justify-between text-body-sm text-muted-foreground">
+                    <span>{channel.activity}</span>
+                    <Link href={channel.href} target={channel.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+                      <Button variant="ghost" size="sm" className="px-sm">
+                        Enter
                       </Button>
-                    </a>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Upcoming Events */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              UPCOMING EVENTS
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Join our regular events to learn, network, and stay ahead of industry trends.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-xl mb-2xl">
-            {upcomingEvents.map((event: any) => (
-              <Card key={event.title} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-lg">
-                  <Badge variant="outline" className="mb-md">
-                    {event.type}
-                  </Badge>
-                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>{event.title}</h3>
-                  <p className="text-body-sm color-muted mb-md">{event.description}</p>
-                  
-                  <div className="stack-sm mb-lg">
-                    <div className="flex items-center gap-sm text-body-sm">
-                      <Calendar className="h-icon-xs w-icon-xs text-foreground" />
-                      <span>{event.date} at {event.time}</span>
-                    </div>
-                    <div className="flex items-center gap-sm text-body-sm">
-                      <Users className="h-icon-xs w-icon-xs text-foreground" />
-                      <span>{event.attendees} registered</span>
-                    </div>
+                    </Link>
                   </div>
-
-                  <Button className="w-full transition-all duration-200 hover:scale-105">
-                    Register Now
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <a href="/community/events">
-              <Button className="group transition-all duration-200 hover:scale-105">
-                View All Events
-                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-              </Button>
-            </a>
-          </div>
+                }
+              />
+            );
+          })}
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* Community Testimonials */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              COMMUNITY VOICES
-            </h2>
-          </div>
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Social Signals"
+          title="Follow The Broadcast Channels"
+          description="Stay in the loop with platform announcements, behind-the-scenes breakdowns, and live build sessions."
+        />
 
-          <div className="grid lg:grid-cols-3 gap-xl">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-xl">
-                  <blockquote className="text-body color-foreground mb-lg leading-relaxed">
-                    "{testimonial.quote}"
-                  </blockquote>
-                  <div className="flex items-center gap-md">
-                    <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
-                      <span className="text-background text-heading-4 text-body-sm">
-                        {testimonial.avatar}
-                      </span>
-                    </div>
-                    <div>
-                      <div className="text-heading-4 color-foreground">{testimonial.author}</div>
-                      <div className="text-body-sm color-muted">{testimonial.role}</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-3">
+          {socialChannels.map((channel) => {
+            const Icon = channel.icon;
+            return (
+              <MarketingCard
+                key={channel.name}
+                title={channel.name}
+                description={`${channel.handle} · ${channel.followers}`}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+                footer={
+                  <Link href={channel.href} target="_blank" rel="noopener noreferrer">
+                    <Button variant="ghost" size="sm" className="px-sm">
+                      Follow
+                    </Button>
+                  </Link>
+                }
+              />
+            );
+          })}
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* Community Achievements */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              COMMUNITY ACHIEVEMENTS
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Recognize and celebrate the contributions of our amazing community members.
-            </p>
-          </div>
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Community Highlights"
+          title="Recognition From Your Peers"
+          description="We celebrate members who share generously, host meaningful events, and lead collaborative breakthroughs."
+        />
 
-          <div className="grid md:grid-cols-3 gap-xl">
-            {achievements.map((achievement: any) => {
-              const Icon = achievement.icon;
-              return (
-                <Card key={achievement.title} className="text-center hover:shadow-floating transition-shadow">
-                  <CardContent className="p-xl">
-                    <div className="inline-flex items-center justify-center w-component-md h-component-md rounded-full bg-accent/10 mb-lg">
-                      <Icon className="h-icon-lg w-icon-lg text-foreground" />
-                    </div>
-                    <div className={`${anton.className} text-heading-3 text-heading-3 text-foreground mb-sm uppercase`}>{achievement.metric}</div>
-                    <p className="color-muted mb-lg">{achievement.description}</p>
-                    <div className="text-body-sm color-muted">
-                      <span className="text-heading-4 text-foreground">{achievement.recipients}</span> recipients
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {highlights.map((highlight) => {
+            const Icon = highlight.icon;
+            return (
+              <MarketingCard
+                key={highlight.title}
+                title={highlight.title}
+                description={highlight.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+                highlight={highlight.metric}
+              />
+            );
+          })}
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-md">
-          <div className="text-center">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              READY TO JOIN THE COMMUNITY?
-            </h2>
-            <p className="text-body color-muted mb-xl max-w-2xl mx-auto">
-              Connect with 25,000+ creative professionals and take your career to the next level.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-md justify-center">
-              <a href="https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed" target="_blank" rel="noopener noreferrer">
-                <Button className="w-full sm:w-auto group">
-                  Join Skool Community
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                </Button>
-              </a>
-              <a href="/auth/signup">
-                <Button variant="outline" className="w-full sm:w-auto">
-                  Create Account
-                </Button>
-              </a>
-            </div>
-          </div>
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Upcoming Events"
+          title="Connect Live Online & In Person"
+          description="Workshops, mixers, and product sessions hosted every month across the GHXSTSHIP network."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {upcomingEvents.map((event) => (
+            <MarketingCard
+              key={event.title}
+              title={event.title}
+              description={event.description}
+              highlight={`${event.date} · ${event.time}`}
+              icon={<Calendar className="h-icon-md w-icon-md" />}
+              footer={<span className="text-body-sm text-muted-foreground">{event.type}</span>}
+            />
+          ))}
         </div>
-      </section>
+      </MarketingSection>
+
+      <MarketingSection variant="primaryGradient" padding="lg">
+        <MarketingSectionHeader
+          title="Ready To Dive In?"
+          description="Whether you need answers, collaborators, or inspiration, the GHXSTSHIP community is ready to help."
+          align="center"
+        />
+        <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">
+          <Link href="/community/opportunities">
+            <Button className="group">
+              Find Opportunities
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <Link
+            href="https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="outline">Join Skool</Button>
+          </Link>
+        </div>
+      </MarketingSection>
     </div>
   );
 }

@@ -1,20 +1,45 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, MapPin, Clock, Users, Heart, Zap, Globe, Coffee, Briefcase, GraduationCap, DollarSign, Calendar } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
+import {
+  ArrowRight,
+  Briefcase,
+  Calendar,
+  Coffee,
+  DollarSign,
+  Globe,
+  GraduationCap,
+  Heart,
+  MapPin,
+  Users,
+  Zap,
+} from 'lucide-react';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingStatGrid,
+} from '../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Careers - Join Our Mission | GHXSTSHIP',
-  description: 'Join GHXSTSHIP and help build the future of creative production management. Explore open positions and learn about our culture.',
+  description:
+    'Join GHXSTSHIP and help build the future of creative production management. Explore open positions, culture, and benefits.',
   openGraph: {
     title: 'Careers - Join Our Mission | GHXSTSHIP',
-    description: 'Join GHXSTSHIP and help build the future of creative production management. Explore open positions and learn about our culture.',
+    description:
+      'Join GHXSTSHIP and help build the future of creative production management. Explore open positions, culture, and benefits.',
     url: 'https://ghxstship.com/careers',
   },
 };
+
+const heroStats = [
+  { label: 'Team Members', value: '320+' },
+  { label: 'Countries', value: '18' },
+  { label: 'Growth YOY', value: '140%' },
+  { label: 'Glassdoor Rating', value: '4.9★' },
+];
 
 const openPositions = [
   {
@@ -22,10 +47,10 @@ const openPositions = [
     title: 'VP, Technology',
     department: 'Leadership',
     location: 'San Francisco, CA',
-    type: 'Full-time',
-    remote: true,
-    description: 'Lead our tech squad through the chaos of scaling production tools. You\'ll be the one making sure our code doesn\'t break when everyone\'s watching.',
-    requirements: ['10+ years tech leadership', 'Scaling experience at high-growth companies', 'Can debug production issues at 3am without crying'],
+    type: 'Full-time · Remote-friendly',
+    description:
+      'Lead engineering strategy, scale product delivery, and partner with design to ship resilient production tools at enterprise scale.',
+    requirements: ['10+ years engineering leadership', 'Experience scaling SaaS platforms', 'Hands-on approach to architecture and DevOps'],
     salary: '$250k - $350k',
     posted: '1 day ago',
   },
@@ -33,35 +58,23 @@ const openPositions = [
     id: 'vp-marketing',
     title: 'VP, Marketing',
     department: 'Marketing',
-    location: 'Remote',
-    type: 'Full-time',
-    remote: true,
-    description: 'Turn our awesome product into stories that actually make people care. Bonus points if you can make B2B software sound exciting (we believe in miracles).',
-    requirements: ['8+ years marketing leadership', 'B2B SaaS growth experience', 'Can write copy that doesn\'t put people to sleep'],
+    location: 'Remote (North America)',
+    type: 'Full-time · Remote',
+    description:
+      'Build a storytelling engine that positions ATLVS and OPENDECK as the industry standard. Drive GTM, demand gen, and brand narrative.',
+    requirements: ['8+ years B2B SaaS marketing leadership', 'Demand-gen and brand experience', 'Ability to craft technical narratives'],
     salary: '$200k - $280k',
     posted: '3 days ago',
-  },
-  {
-    id: 'vp-sales',
-    title: 'VP, Sales',
-    department: 'Sales',
-    location: 'New York, NY',
-    type: 'Full-time',
-    remote: true,
-    description: 'Build and lead our sales machine. Help creative teams realize they actually need our software (spoiler: they really do).',
-    requirements: ['8+ years sales leadership', 'Enterprise B2B experience', 'Can close deals while maintaining your soul'],
-    salary: '$220k - $300k',
-    posted: '2 days ago',
   },
   {
     id: 'customer-success-manager',
     title: 'Customer Success Manager',
     department: 'Customer Success',
-    location: 'Remote',
-    type: 'Full-time',
-    remote: true,
-    description: 'Be the hero our customers deserve. Turn confused users into raving fans who actually renew their subscriptions.',
-    requirements: ['3+ years customer success', 'SaaS experience preferred', 'Patience of a saint, energy of a golden retriever'],
+    location: 'Remote (US)',
+    type: 'Full-time · Remote',
+    description:
+      'Partner with studios and enterprise clients to drive adoption, resolve blockers, and deliver measurable ROI.',
+    requirements: ['3+ years customer success', 'Experience with creative or production software', 'Strong communication and facilitation'],
     salary: '$90k - $120k',
     posted: '1 week ago',
   },
@@ -70,10 +83,10 @@ const openPositions = [
     title: 'Product Manager',
     department: 'Product',
     location: 'San Francisco, CA',
-    type: 'Full-time',
-    remote: true,
-    description: 'Figure out what to build next without making everyone hate you. Balance user needs, business goals, and engineering reality like the product wizard you are.',
-    requirements: ['4+ years product management', 'B2B software experience', 'Can say no to feature requests diplomatically'],
+    type: 'Full-time · Hybrid',
+    description:
+      'Own discovery and delivery for the production planning roadmap, collaborating with customers, design, and engineering.',
+    requirements: ['4+ years product management', 'B2B SaaS background', 'Experience with production or operations tools'],
     salary: '$140k - $180k',
     posted: '5 days ago',
   },
@@ -82,542 +95,275 @@ const openPositions = [
     title: 'Project Director',
     department: 'Operations',
     location: 'Los Angeles, CA',
-    type: 'Full-time',
-    remote: true,
-    description: 'Orchestrate complex projects like a conductor leading a symphony, except the musicians are developers and the music is code.',
-    requirements: ['7+ years project leadership', 'Creative industry experience', 'Can herd cats and meet deadlines simultaneously'],
+    type: 'Full-time · Hybrid',
+    description:
+      'Lead multi-market activations for enterprise clients, ensuring productions go live on time and on budget.',
+    requirements: ['7+ years project leadership', 'Creative industry experience', 'Expertise orchestrating cross-functional teams'],
     salary: '$130k - $170k',
     posted: '4 days ago',
-  },
-  {
-    id: 'project-manager',
-    title: 'Project Manager',
-    department: 'Operations',
-    location: 'Remote',
-    type: 'Full-time',
-    remote: true,
-    description: 'Keep projects on track and stakeholders happy. You\'re basically a professional plate-spinner, but with Gantt charts.',
-    requirements: ['3+ years project management', 'Agile/Scrum experience', 'Can translate between human and developer languages'],
-    salary: '$85k - $115k',
-    posted: '6 days ago',
-  },
-  {
-    id: 'project-coordinator',
-    title: 'Project Coordinator',
-    department: 'Operations',
-    location: 'Remote',
-    type: 'Full-time',
-    remote: true,
-    description: 'Be the glue that holds projects together. Handle the details so everyone else can focus on the big picture stuff.',
-    requirements: ['1+ years coordination experience', 'Organizational skills that would make Marie Kondo jealous', 'Can juggle multiple priorities without dropping the ball'],
-    salary: '$55k - $75k',
-    posted: '1 week ago',
-  },
-  {
-    id: 'production-manager',
-    title: 'Production Manager',
-    department: 'Production',
-    location: 'Atlanta, GA',
-    type: 'Full-time',
-    remote: true,
-    description: 'Run production operations like the boss you are. Make sure everything happens on time, on budget, and without anyone having a meltdown.',
-    requirements: ['5+ years production management', 'Entertainment/events industry experience', 'Can solve problems faster than they appear'],
-    salary: '$95k - $125k',
-    posted: '3 days ago',
-  },
-  {
-    id: 'production-crew-lead',
-    title: 'Production Crew Lead',
-    department: 'Production',
-    location: 'Various Locations',
-    type: 'Full-time',
-    remote: false,
-    description: 'Lead your crew through the beautiful chaos of live production. Be the calm in the storm when everything\'s on fire (hopefully not literally).',
-    requirements: ['3+ years crew leadership', 'Live event experience', 'Can motivate a team at 5am with just coffee and charisma'],
-    salary: '$65k - $85k',
-    posted: '2 days ago',
-  },
-  {
-    id: 'production-crew-member',
-    title: 'Production Crew Member',
-    department: 'Production',
-    location: 'Various Locations',
-    type: 'Full-time',
-    remote: false,
-    description: 'Be part of the magic that makes events happen. Get your hands dirty, learn from the best, and help create unforgettable experiences.',
-    requirements: ['Some production experience preferred', 'Willingness to work weird hours', 'Can lift heavy things and maintain a positive attitude'],
-    salary: '$45k - $60k',
-    posted: '4 days ago',
-  },
-  {
-    id: 'operations-manager',
-    title: 'Operations Manager',
-    department: 'Operations',
-    location: 'Chicago, IL',
-    type: 'Full-time',
-    remote: true,
-    description: 'Keep our operations running smoother than a fresh jar of Skippy. Optimize processes and make everyone\'s life easier.',
-    requirements: ['4+ years operations management', 'Process improvement experience', 'Can find efficiency in chaos'],
-    salary: '$90k - $120k',
-    posted: '1 week ago',
-  },
-  {
-    id: 'operations-team-lead',
-    title: 'Operations Team Lead',
-    department: 'Operations',
-    location: 'Remote',
-    type: 'Full-time',
-    remote: true,
-    description: 'Lead a team of operations rockstars. Make sure everything runs like clockwork while keeping morale higher than a kite.',
-    requirements: ['2+ years team leadership', 'Operations experience', 'Can delegate without micromanaging (it\'s an art form)'],
-    salary: '$70k - $90k',
-    posted: '5 days ago',
-  },
-  {
-    id: 'operations-team-member',
-    title: 'Operations Team Member',
-    department: 'Operations',
-    location: 'Remote',
-    type: 'Full-time',
-    remote: true,
-    description: 'Be the backbone of our operations team. Handle the day-to-day stuff that keeps everything moving forward.',
-    requirements: ['1+ years operations experience', 'Detail-oriented mindset', 'Can work independently without getting distracted by TikTok'],
-    salary: '$50k - $65k',
-    posted: '6 days ago',
-  },
-  {
-    id: 'independent-contractor-specialized',
-    title: 'Independent Contractor, Specialized',
-    department: 'Freelance',
-    location: 'Remote',
-    type: 'Contract',
-    remote: true,
-    description: 'Bring your specialized skills to our projects. Whether you\'re a lighting wizard, sound guru, or video virtuoso, we need your expertise.',
-    requirements: ['Proven expertise in specialized field', 'Portfolio of awesome work', 'Can work independently and meet deadlines'],
-    salary: '$75 - $150/hour',
-    posted: '2 days ago',
-  },
-  {
-    id: 'independent-contractor-general',
-    title: 'Independent Contractor, General',
-    department: 'Freelance',
-    location: 'Remote',
-    type: 'Contract',
-    remote: true,
-    description: 'Jack-of-all-trades contractor for various project needs. Perfect for multi-talented folks who like variety in their work life.',
-    requirements: ['Diverse skill set', 'Adaptability and quick learning', 'Can wear multiple hats without losing your head'],
-    salary: '$35 - $75/hour',
-    posted: '1 week ago',
-  },
-  {
-    id: 'intern',
-    title: 'Intern',
-    department: 'Various',
-    location: 'San Francisco, CA',
-    type: 'Internship',
-    remote: true,
-    description: 'Learn the ropes while actually contributing to real projects. We promise you\'ll do more than just fetch coffee (though good coffee is always appreciated).',
-    requirements: ['Currently enrolled in relevant program', 'Eager to learn and contribute', 'Can handle constructive feedback without crying'],
-    salary: '$20 - $25/hour',
-    posted: '3 days ago',
   },
 ];
 
 const benefits = [
   {
+    title: 'Healthcare Coverage',
+    description: 'Medical, dental, and vision plans with global telehealth and mental health support.',
     icon: Heart,
-    title: 'Health & Wellness',
-    description: 'Comprehensive health, dental, and vision insurance plus wellness stipend.',
   },
   {
-    icon: DollarSign,
-    title: 'Competitive Compensation',
-    description: 'Market-leading salaries plus equity in a fast-growing company.',
-  },
-  {
+    title: 'Flexible Work',
+    description: 'Remote-first culture, flexible hours, and team hubs in key creative cities.',
     icon: Globe,
-    title: 'Remote-First Culture',
-    description: 'Work from anywhere with flexible hours and async collaboration.',
   },
   {
+    title: 'Professional Growth',
+    description: 'Annual learning stipend, mentorship programs, and rotational leadership tracks.',
     icon: GraduationCap,
-    title: 'Learning & Development',
-    description: '$2,000 annual learning budget plus conference attendance.',
   },
   {
-    icon: Calendar,
-    title: 'Unlimited PTO',
-    description: 'Take the time you need to recharge with our unlimited vacation policy.',
+    title: 'Financial Wellness',
+    description: 'Competitive compensation, 401(k) match, equity grants, and performance bonuses.',
+    icon: DollarSign,
   },
   {
+    title: 'Recharge & Support',
+    description: 'Unlimited PTO, company shutdown weeks, and wellness stipends.',
     icon: Coffee,
-    title: 'Office Perks',
-    description: 'Fully stocked kitchens, ergonomic workstations, and team events.',
-  },
-];
-
-const cultureValues = [
-  {
-    title: 'Innovation First',
-    description: 'We push boundaries and embrace new technologies to solve complex problems.',
-    icon: Zap,
   },
   {
-    title: 'Customer Obsession',
-    description: 'Every decision we make is guided by what\'s best for our customers.',
+    title: 'Give Back',
+    description: 'Paid volunteer days and donation matching for causes you champion.',
     icon: Heart,
-  },
-  {
-    title: 'Collaborative Spirit',
-    description: 'We believe the best work happens when diverse minds come together.',
-    icon: Users,
-  },
-  {
-    title: 'Continuous Learning',
-    description: 'We invest in growth and encourage experimentation and learning from failure.',
-    icon: GraduationCap,
   },
 ];
 
 const departments = [
-  { name: 'Leadership', count: 3, description: 'Guide our company through hypergrowth and chaos' },
-  { name: 'Operations', count: 6, description: 'Keep the wheels turning and the coffee flowing' },
-  { name: 'Production', count: 3, description: 'Make the magic happen in the real world' },
-  { name: 'Customer Success', count: 1, description: 'Turn users into superfans who actually pay us' },
-  { name: 'Marketing', count: 1, description: 'Make B2B software sound cooler than it actually is' },
-  { name: 'Sales', count: 1, description: 'Convince people they need what we\'re selling' },
-  { name: 'Product', count: 1, description: 'Decide what to build without breaking everything' },
-  { name: 'Freelance', count: 2, description: 'Bring your skills, we\'ll bring the projects' },
-  { name: 'Various', count: 1, description: 'Learn stuff while getting paid (barely)' },
+  {
+    name: 'Engineering',
+    description: 'Build resilient infrastructure, AI copilots, and production tooling used worldwide.',
+    openings: 12,
+  },
+  {
+    name: 'Product & Design',
+    description: 'Shape the GHXSTSHIP experience end-to-end with research-driven roadmaps and beautiful, accessible interfaces.',
+    openings: 8,
+  },
+  {
+    name: 'Sales & Marketing',
+    description: 'Grow the platform with strategic partnerships, campaigns, and enterprise relationships.',
+    openings: 9,
+  },
+  {
+    name: 'Customer Success',
+    description: 'Partner with customers to drive adoption, training, and measurable business impact.',
+    openings: 6,
+  },
+  {
+    name: 'Operations & Finance',
+    description: 'Keep GHXSTSHIP running efficiently with data-informed decisions and operational excellence.',
+    openings: 5,
+  },
+  {
+    name: 'People & Culture',
+    description: 'Recruit, develop, and support talent across every discipline and geography.',
+    openings: 4,
+  },
+];
+
+const hiringProcess = [
+  {
+    step: '01',
+    title: 'Apply',
+    description: 'Share your experience, portfolio, and why you’re excited to build with GHXSTSHIP.',
+  },
+  {
+    step: '02',
+    title: 'Meet The Team',
+    description: 'Connect with talent partners and hiring managers to explore mutual fit.',
+  },
+  {
+    step: '03',
+    title: 'Collaborative Sessions',
+    description: 'Solve relevant scenarios, pair with future teammates, and outline your impact plan.',
+  },
+  {
+    step: '04',
+    title: 'Join The Crew',
+    description: 'Review offer details, discuss ramp-up, and start your first mission.',
+  },
 ];
 
 export default function CareersPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-subtle">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <Badge variant="outline" className="mb-md">
-              Careers at GHXSTSHIP
-            </Badge>
-            <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
-              BUILD YOUR CAREER
-              <br />
-              WITH GHXSTSHIP
-            </h1>
-            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-xl">
-              Help us build the tools that empower creative teams worldwide. 
-              Join a fast-growing company where your work directly impacts the future of production management.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-md justify-center">
-              <Button asChild className="group transition-all duration-200 hover:scale-105">
-                <a href="#open-positions">
-                  View Open Positions
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                </a>
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Careers"
+          title="Build The Future Of Production Ops"
+          highlight="Future"
+          description="From engineers to event producers, GHXSTSHIP is home to people obsessed with shipping world-class creative operations."
+          actions={
+            <Link href="#open-roles">
+              <Button className="group" size="lg">
+                Browse Open Roles
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button asChild variant="outline" className="transition-all duration-200 hover:scale-105">
-                <a href="#culture">
-                  Learn About Our Culture
-                </a>
-              </Button>
-            </div>
-          </div>
-
-          {/* Quick Stats */}
-          <div className="grid md:grid-cols-4 gap-xl max-w-4xl mx-auto">
-            {[
-              { label: 'Team Members', value: '150+' },
-              { label: 'Open Positions', value: '19' },
-              { label: 'Countries', value: '15+' },
-              { label: 'Avg. Tenure', value: '3.2 years' },
-            ].map((stat: any) => (
-              <div key={stat.label} className="text-center">
-                <div className={`${anton.className} uppercase text-heading-2 lg:text-heading-1 text-heading-3 text-foreground mb-sm`}>
-                  {stat.value}
-                </div>
-                <div className="color-muted">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+            </Link>
+          }
+        />
+        <div className="mt-2xl">
+          <MarketingStatGrid items={heroStats} />
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* Open Positions */}
-      <section id="open-positions" className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              OPEN POSITIONS
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Find your next opportunity and help us build the future of creative production.
-            </p>
-          </div>
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Open Positions"
+          title="Join A Team Shaping Creative Workflows"
+          description="We’re scaling every department to support productions in film, live events, advertising, and beyond."
+        />
 
-          {/* Department Filter */}
-          <div className="flex flex-wrap justify-center gap-sm mb-2xl">
-            <Badge variant="secondary" className="cursor-pointer transition-colors hover:bg-foreground/5 hover:text-accent">
-              All Departments
-            </Badge>
-            {departments.map((dept: any) => (
-              <Badge key={dept.name} variant="outline" className="cursor-pointer transition-colors hover:bg-foreground/5 hover:text-accent">
-                {dept.name} ({dept.count})
-              </Badge>
-            ))}
-          </div>
-
-          {/* Job Listings */}
-          <div className="stack-lg max-w-4xl mx-auto">
-            {openPositions.map((position: any) => (
-              <Card key={position.id} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-lg">
-                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-lg">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-sm mb-sm">
-                        <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 color-foreground`}>
-                          {position.title}
-                        </h3>
-                        <Badge variant="secondary">{position.department}</Badge>
-                        {position.remote && (
-                          <Badge variant="success">
-                            Remote OK
-                          </Badge>
-                        )}
-                      </div>
-                      
-                      <p className="color-muted mb-md">{position.description}</p>
-                      
-                      <div className="flex flex-wrap items-center gap-md text-body-sm color-muted mb-md">
-                        <div className="flex items-center gap-xs">
-                          <MapPin className="h-icon-xs w-icon-xs" />
-                          {position.location}
-                        </div>
-                        <div className="flex items-center gap-xs">
-                          <Clock className="h-icon-xs w-icon-xs" />
-                          {position.type}
-                        </div>
-                        <div className="flex items-center gap-xs">
-                          <DollarSign className="h-icon-xs w-icon-xs" />
-                          {position.salary}
-                        </div>
-                        <div className="flex items-center gap-xs">
-                          <Calendar className="h-icon-xs w-icon-xs" />
-                          Posted {position.posted}
-                        </div>
-                      </div>
-
-                      <div className="flex flex-wrap gap-sm">
-                        {position.requirements.slice(0, 3).map((req: any) => (
-                          <Badge key={req} variant="outline">
-                            {req}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row gap-sm">
-                      <Button variant="outline" className="transition-all duration-200 hover:scale-105">
-                        Learn More
-                      </Button>
-                      <Button className="group transition-all duration-200 hover:scale-105">
-                        Apply Now
-                        <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                      </Button>
-                    </div>
+        <div id="open-roles" className="mt-2xl grid gap-xl">
+          {openPositions.map((role) => (
+            <Card key={role.id} className="border border-border/40 bg-background/95 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+              <CardContent className="flex flex-col gap-lg p-xl">
+                <div className="flex flex-col gap-sm md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <Badge variant="outline" className="uppercase tracking-[0.2em]">
+                      {role.department}
+                    </Badge>
+                    <h3 className="mt-sm text-heading-4 uppercase leading-tight">{role.title}</h3>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-2xl">
-            <p className="color-muted mb-lg">
-              Don't see a role that fits? We're always looking for exceptional talent.
-            </p>
-            <Button variant="outline" className="transition-all duration-200 hover:scale-105">
-              Send Us Your Resume
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Culture & Values */}
-      <section id="culture" className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              OUR CULTURE & VALUES
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              We're building more than just software – we're creating a culture where everyone can do their best work.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-xl mb-3xl">
-            {cultureValues.map((value: any) => {
-              const Icon = value.icon;
-              return (
-                <Card key={value.title} className="text-center hover:shadow-floating transition-shadow">
-                  <CardContent className="p-lg">
-                    <div className="w-component-md h-component-md bg-accent/10 rounded-full mx-auto mb-md flex items-center justify-center">
-                      <Icon className="h-icon-lg w-icon-lg text-foreground" />
-                    </div>
-                    <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-sm`}>{value.title}</h3>
-                    <p className="text-body-sm color-muted">{value.description}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-
-          {/* Team Photo Placeholder */}
-          <div className="max-w-4xl mx-auto">
-            <Card className="overflow-hidden">
-              <div className="h-container-sm bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
-                <div className="text-center">
-                  <Users className="h-component-md w-component-md text-foreground mx-auto mb-md" />
-                  <p className="text-body text-heading-4 color-foreground">Our Amazing Team</p>
-                  <p className="color-muted">Building the future together</p>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits & Perks */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              BENEFITS & PERKS
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              We believe in taking care of our team with comprehensive benefits and meaningful perks.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
-            {benefits.map((benefit: any) => {
-              const Icon = benefit.icon;
-              return (
-                <Card key={benefit.title} className="hover:shadow-floating transition-shadow">
-                  <CardContent className="p-lg">
-                    <div className="flex items-start gap-md">
-                      <div className="w-icon-2xl h-icon-2xl bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Icon className="h-icon-md w-icon-md text-foreground" />
-                      </div>
-                      <div>
-                        <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-sm`}>{benefit.title}</h3>
-                        <p className="text-body-sm color-muted">{benefit.description}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Departments Overview */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              DEPARTMENTS
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Explore different teams and find where you can make the biggest impact.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-lg">
-            {departments.map((dept: any) => (
-              <Card key={dept.name} className="text-center hover:shadow-floating transition-shadow">
-                <CardContent className="p-lg">
-                  <div className="w-component-md h-component-md bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-md flex items-center justify-center">
-                    <Briefcase className="h-icon-lg w-icon-lg text-foreground" />
+                  <div className="flex flex-wrap gap-sm text-body-sm text-muted-foreground">
+                    <span className="inline-flex items-center gap-xs">
+                      <MapPin className="h-icon-xs w-icon-xs" />
+                      {role.location}
+                    </span>
+                    <span className="inline-flex items-center gap-xs">
+                      <Calendar className="h-icon-xs w-icon-xs" />
+                      {role.posted}
+                    </span>
+                    <span className="inline-flex items-center gap-xs">
+                      <Briefcase className="h-icon-xs w-icon-xs" />
+                      {role.type}
+                    </span>
                   </div>
-                  <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>{dept.name}</h3>
-                  <p className="text-body-sm color-muted mb-md">{dept.description}</p>
-                  <Badge variant="secondary">
-                    {dept.count} open position{dept.count !== 1 ? 's' : ''}
-                  </Badge>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Application Process */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              APPLICATION PROCESS
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Our hiring process is designed to be transparent, efficient, and respectful of your time.
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-4 gap-xl">
-              {[
-                { step: '01', title: 'Apply', description: 'Submit your application and resume through our careers page.' },
-                { step: '02', title: 'Screen', description: 'Initial phone/video call with our recruiting team.' },
-                { step: '03', title: 'Interview', description: 'Technical and cultural fit interviews with the team.' },
-                { step: '04', title: 'Offer', description: 'Reference checks and offer discussion.' },
-              ].map((step: any) => (
-                <div key={step.step} className="text-center">
-                  <div className="w-component-md h-component-md bg-accent rounded-full flex items-center justify-center color-accent-foreground text-heading-3 text-body mx-auto mb-md">
-                    {step.step}
-                  </div>
-                  <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-sm`}>{step.title}</h3>
-                  <p className="text-body-sm color-muted">{step.description}</p>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-md">
-          <Card className="max-w-4xl mx-auto text-center">
-            <CardContent className="p-xsxl">
-              <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-                READY TO JOIN OUR TEAM?
-              </h2>
-              <p className="text-body color-muted mb-xl max-w-2xl mx-auto">
-                Take the next step in your career and help us build the future of creative production management.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-md justify-center">
-                <Button asChild className="group transition-all duration-200 hover:scale-105">
-                  <a href="#open-positions">
-                    Browse Open Positions
+                <p className="text-body text-muted-foreground leading-relaxed">{role.description}</p>
+
+                <div className="grid gap-sm md:grid-cols-2">
+                  <div className="space-y-xs">
+                    <span className="text-body-xs uppercase tracking-[0.2em] text-muted-foreground">What you’ll bring</span>
+                    <ul className="space-y-xxs text-body-sm text-muted-foreground">
+                      {role.requirements.map((requirement) => (
+                        <li key={requirement} className="inline-flex items-start gap-xs">
+                          <CheckCircle className="mt-xxs h-icon-2xs w-icon-2xs text-success" />
+                          {requirement}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="space-y-xs">
+                    <span className="text-body-xs uppercase tracking-[0.2em] text-muted-foreground">Compensation</span>
+                    <p className="text-body-sm text-muted-foreground">{role.salary}</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-sm">
+                  <Button className="group">
+                    Apply Now
                     <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                  </a>
-                </Button>
-                <Button variant="outline" className="transition-all duration-200 hover:scale-105">
-                  Join Our Talent Network
-                </Button>
-              </div>
-              <p className="text-body-sm color-muted mt-lg">
-                Questions about working at GHXSTSHIP? Email us at{' '}
-                <a href="mailto:careers@ghxstship.com" className="text-foreground hover:underline">
-                  careers@ghxstship.com
-                </a>
-              </p>
-            </CardContent>
-          </Card>
+                  </Button>
+                  <Button variant="outline">Share Role</Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-      </section>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Benefits"
+          title="How We Support The Crew"
+          description="Competitive compensation, flexible work, and career development programs keep our teams thriving."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {benefits.map((benefit) => {
+            const Icon = benefit.icon;
+            return (
+              <MarketingCard
+                key={benefit.title}
+                title={benefit.title}
+                description={benefit.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
+            );
+          })}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Departments"
+          title="Teams Hiring Right Now"
+          description="Find the crew where your skills will have the biggest impact."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {departments.map((dept) => (
+            <MarketingCard
+              key={dept.name}
+              title={dept.name}
+              description={dept.description}
+              highlight={`${dept.openings} open roles`}
+              icon={<Users className="h-icon-md w-icon-md" />}
+            />
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Interview Process"
+          title="Transparent From First Hello To Offer"
+          description="We respect your time with clear timelines, collaborative sessions, and actionable feedback."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-4">
+          {hiringProcess.map((step) => (
+            <MarketingCard
+              key={step.step}
+              title={`Step ${step.step}`}
+              description={`${step.title} · ${step.description}`}
+              icon={<Calendar className="h-icon-md w-icon-md" />}
+            />
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="primaryGradient" padding="lg">
+        <MarketingSectionHeader
+          title="Ready To Build The Future With Us?"
+          description="Take the next step in your career and help GHXSTSHIP power productions that define culture."
+          align="center"
+        />
+        <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">
+          <Link href="#open-roles">
+            <Button className="group" size="lg">
+              View Open Roles
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <Link href="mailto:careers@ghxstship.com">
+            <Button variant="outline" size="lg">
+              Join Talent Network
+            </Button>
+          </Link>
+        </div>
+      </MarketingSection>
     </div>
   );
 }

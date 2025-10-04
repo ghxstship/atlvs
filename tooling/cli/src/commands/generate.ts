@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import chalk from 'chalk'
 import ora from 'ora'
 import inquirer from 'inquirer'
@@ -40,21 +41,25 @@ export async function generateCommand(type: string, options: GenerateOptions) {
   const template = templates[type as keyof typeof templates]
 
   // Get name if not provided
-  let name = options.name
+  let name = options.name?.trim()
   if (!name) {
     const answers = await inquirer.prompt([
       {
         type: 'input',
         name: 'name',
         message: `Enter ${type} name:`,
-        validate: (input) => input.length > 0 || 'Name is required',
+        validate: (input: string) => input.trim().length > 0 || 'Name is required',
       },
-    ])
-    name = answers.name
+    ]) as { name: string }
+    name = answers.name.trim()
+  }
+
+  if (!name) {
+    throw new Error('Name is required')
   }
 
   // Get path if not provided
-  let targetPath = options.path
+  let targetPath = options.path?.trim()
   if (!targetPath) {
     const answers = await inquirer.prompt([
       {
@@ -63,8 +68,12 @@ export async function generateCommand(type: string, options: GenerateOptions) {
         message: 'Enter path (relative to project root):',
         default: getDefaultPath(type),
       },
-    ])
-    targetPath = answers.path
+    ]) as { path: string }
+    targetPath = answers.path.trim()
+  }
+
+  if (!targetPath) {
+    targetPath = getDefaultPath(type)
   }
 
   const spinner = ora(`Generating ${type}...`).start()
@@ -76,7 +85,7 @@ export async function generateCommand(type: string, options: GenerateOptions) {
     for (const file of template.files) {
       const fileName = file.replace(type, name)
       const filePath = path.join(fullPath, fileName)
-      const content = generateFileContent(type, name, file)
+      const content = generateFileContent(name, file)
       await fs.writeFile(filePath, content)
     }
 
@@ -98,21 +107,21 @@ function getDefaultPath(type: string): string {
     api: 'apps/web/app/api',
     test: 'tests/unit',
   }
-  return paths[type] || '.'
+  return paths[type] ?? '.'
 }
 
-function generateFileContent(type: string, name: string, file: string): string {
+function generateFileContent(name: string, file: string): string {
   const pascalName = toPascalCase(name)
-  const camelName = toCamelCase(name)
 
-  if (file.includes('component.tsx')) {
-    return `import { FC } from 'react'
+  switch (file) {
+    case 'component.tsx':
+      return `import { FC } from 'react'
 
 interface ${pascalName}Props {
   // Add props here
 }
 
-export const ${pascalName}: FC<${pascalName}Props> = (props) => {
+export const ${pascalName}: FC<${pascalName}Props> = () => {
   return (
     <div>
       <h1>${pascalName}</h1>
@@ -120,10 +129,8 @@ export const ${pascalName}: FC<${pascalName}Props> = (props) => {
   )
 }
 `
-  }
-
-  if (file.includes('component.test.tsx')) {
-    return `import { render, screen } from '@testing-library/react'
+    case 'component.test.tsx':
+      return `import { render, screen } from '@testing-library/react'
 import { ${pascalName} } from './${name}'
 
 describe('${pascalName}', () => {
@@ -133,10 +140,28 @@ describe('${pascalName}', () => {
   })
 })
 `
-  }
+    case 'component.stories.tsx':
+      return `import type { Meta, StoryObj } from '@storybook/react'
+import { ${pascalName} } from './${name}'
 
-  if (file.includes('page.tsx')) {
-    return `export default function ${pascalName}Page() {
+const meta = {
+  title: '${pascalName}',
+  component: ${pascalName},
+} satisfies Meta<typeof ${pascalName}>
+
+export default meta
+
+type Story = StoryObj<typeof ${pascalName}>
+
+export const Default: Story = {
+  args: {},
+}
+`
+    case 'index.ts':
+      return `export * from './${name}'
+`
+    case 'page.tsx':
+      return `export default function ${pascalName}Page() {
   return (
     <div>
       <h1>${pascalName}</h1>
@@ -144,12 +169,45 @@ describe('${pascalName}', () => {
   )
 }
 `
-  }
+    case 'layout.tsx':
+      return `import type { ReactNode } from 'react'
 
-  if (file.includes('route.ts')) {
-    return `import { NextRequest, NextResponse } from 'next/server'
+interface ${pascalName}LayoutProps {
+  children: ReactNode
+}
 
-export async function GET(request: NextRequest) {
+export default function ${pascalName}Layout({ children }: ${pascalName}LayoutProps) {
+  return <div>{children}</div>
+}
+`
+    case 'loading.tsx':
+      return `export default function Loading() {
+  return <div>Loading ${pascalName}...</div>
+}
+`
+    case 'error.tsx':
+      return `'use client'
+
+interface ${pascalName}ErrorProps {
+  error: Error
+  reset: () => void
+}
+
+export default function ${pascalName}Error({ error, reset }: ${pascalName}ErrorProps) {
+  return (
+    <div>
+      <p>Something went wrong: {error.message}</p>
+      <button type="button" onClick={reset}>
+        Try again
+      </button>
+    </div>
+  )
+}
+`
+    case 'route.ts':
+      return `import { NextRequest, NextResponse } from 'next/server'
+
+export async function GET(_request: NextRequest) {
   return NextResponse.json({ message: '${pascalName} API' })
 }
 
@@ -158,19 +216,42 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({ data: body })
 }
 `
-  }
+    case 'route.test.ts':
+      return `import { describe, it, expect } from 'vitest'
 
-  return `// Generated file for ${name}\n`
+describe('${pascalName} API route', () => {
+  it('should be implemented', () => {
+    expect(true).toBe(true)
+  })
+})
+`
+    case 'schema.ts':
+      return `import { z } from 'zod'
+
+export const ${pascalName}Schema = z.object({
+  id: z.string().uuid(),
+})
+
+export type ${pascalName}Data = z.infer<typeof ${pascalName}Schema>
+`
+    case 'test.ts':
+      return `import { describe, it, expect } from 'vitest'
+
+describe('${pascalName} Test', () => {
+  it('should run successfully', () => {
+    expect(true).toBe(true)
+  })
+})
+`
+    default:
+      return `// Generated file for ${name}\n`
+  }
 }
 
 function toPascalCase(str: string): string {
   return str
     .split(/[-_]/)
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .filter(Boolean)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join('')
-}
-
-function toCamelCase(str: string): string {
-  const pascal = toPascalCase(str)
-  return pascal.charAt(0).toLowerCase() + pascal.slice(1)
 }

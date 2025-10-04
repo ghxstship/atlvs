@@ -12,10 +12,10 @@ import path from 'path';
 /**
  * Get active brand ID from cookies or environment
  */
-export function getActiveBrandId(): string {
+export async function getActiveBrandId(): Promise<string> {
   // Try to get from cookies first (set by middleware)
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const brandCookie = cookieStore.get('brand_id');
     if (brandCookie?.value) {
       return brandCookie.value;
@@ -33,27 +33,34 @@ export function getActiveBrandId(): string {
  * Cached per request to avoid multiple file reads
  */
 export const loadBrandConfig = cache(async (brandId: string): Promise<BrandConfiguration> => {
-  try {
-    // In development, read from branding directory
-    // In production, read from public directory
-    const isDev = process.env.NODE_ENV === 'development';
-    const configPath = isDev
-      ? path.join(process.cwd(), 'branding', 'config', `${brandId}.brand.json`)
-      : path.join(process.cwd(), 'public', 'branding', 'config', `${brandId}.brand.json`);
+  const searchRoots = [
+    path.join(process.cwd(), 'public', 'branding', 'config'),
+    path.join(process.cwd(), 'branding', 'config'),
+    path.join(process.cwd(), '..', 'branding', 'config')
+  ];
 
-    const fileContent = fs.readFileSync(configPath, 'utf-8');
-    const config: BrandConfiguration = JSON.parse(fileContent);
-    return config;
-  } catch (error) {
-    console.error(`Failed to load brand config for ${brandId}:`, error);
-    
-    // Fallback to default brand
-    if (brandId !== 'default') {
-      return loadBrandConfig('default');
+  for (const root of searchRoots) {
+    const configPath = path.join(root, `${brandId}.brand.json`);
+    if (!fs.existsSync(configPath)) {
+      continue;
     }
-    
-    throw error;
+
+    try {
+      const fileContent = fs.readFileSync(configPath, 'utf-8');
+      const config: BrandConfiguration = JSON.parse(fileContent);
+      return config;
+    } catch (error) {
+      console.error(`Failed to parse brand config at ${configPath}:`, error);
+    }
   }
+
+  console.error(`Failed to locate brand config for ${brandId}`);
+
+  if (brandId !== 'default') {
+    return loadBrandConfig('default');
+  }
+
+  throw new Error(`Brand configuration not found for id: ${brandId}`);
 });
 
 /**
@@ -61,7 +68,7 @@ export const loadBrandConfig = cache(async (brandId: string): Promise<BrandConfi
  * Use this in server components and API routes
  */
 export async function getActiveBrand(): Promise<BrandConfiguration> {
-  const brandId = getActiveBrandId();
+  const brandId = await getActiveBrandId();
   return loadBrandConfig(brandId);
 }
 

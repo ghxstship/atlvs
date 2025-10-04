@@ -1,443 +1,243 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Users, Calendar, TrendingUp, Zap, CheckCircle, Play, Star, Network, Presentation } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
+import {
+  ArrowRight,
+  Calendar,
+  ChartBar,
+  Handshake,
+  Network,
+  Users,
+  Zap,
+} from 'lucide-react';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingStatGrid,
+} from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Trade Shows & Conferences Solutions | GHXSTSHIP',
-  description: 'Master trade shows and conferences with GHXSTSHIP. Manage exhibitions, attendee engagement, lead generation, and networking events.',
+  description:
+    'Deliver growth-driving trade shows and conferences with GHXSTSHIP. Manage exhibitions, attendees, and business outcomes from one platform.',
   openGraph: {
     title: 'Trade Shows & Conferences Solutions | GHXSTSHIP',
-    description: 'Master trade shows and conferences with GHXSTSHIP. Manage exhibitions, attendee engagement, lead generation, and networking events.',
+    description:
+      'Deliver growth-driving trade shows and conferences with GHXSTSHIP. Manage exhibitions, attendees, and business outcomes from one platform.',
     url: 'https://ghxstship.com/solutions/trade-shows-conferences',
   },
 };
 
-const challenges = [
+const heroStats = [
+  { label: 'Attendees Managed', value: '5M+' },
+  { label: 'Events Powered', value: '10K+' },
+  { label: 'Lead Capture Rate', value: '95%' },
+  { label: 'Average ROI Lift', value: '4.2×' },
+];
+
+const eventPillars = [
   {
-    icon: Users,
     title: 'Large-Scale Attendee Management',
-    description: 'Coordinating thousands of attendees, exhibitors, and speakers across multiple venues and sessions',
-    solution: 'Comprehensive attendee management with registration, check-in, and real-time tracking systems',
+    description: 'Deliver registration, check-in, and live tracking for thousands of attendees, exhibitors, and speakers.',
+    icon: Users,
   },
   {
-    icon: Calendar,
     title: 'Complex Scheduling Coordination',
-    description: 'Managing overlapping sessions, workshops, and networking events with resource conflicts',
-    solution: 'Intelligent scheduling engine with conflict resolution and automated resource allocation',
+    description: 'Control overlapping sessions, workshops, and venues with conflict resolution and resource allocation.',
+    icon: Calendar,
   },
   {
-    icon: TrendingUp,
     title: 'Lead Generation & ROI Tracking',
-    description: 'Maximizing business value and measuring success across exhibitors and attendees',
-    solution: 'Advanced lead capture tools with ROI analytics and business impact measurement',
+    description: 'Capture leads, score opportunities, and tie business outcomes directly to the event experience.',
+    icon: ChartBar,
   },
   {
-    icon: Network,
     title: 'Networking Facilitation',
-    description: 'Creating meaningful connections between diverse attendees with varying interests and goals',
-    solution: 'AI-powered networking tools with matchmaking algorithms and structured networking events',
+    description: 'Match attendees, cultivate meetings, and track engagement across structured networking formats.',
+    icon: Network,
   },
 ];
 
-const features = [
+const featureHighlights = [
   {
     title: 'Exhibition Management',
-    description: 'Complete coordination of trade show floors, booth assignments, and exhibitor services',
-    benefits: ['Floor planning', 'Booth management', 'Exhibitor portal', 'Lead tracking'],
+    description: 'Coordinate floor plans, booth services, and exhibitor portals with real-time updates.',
   },
   {
     title: 'Conference Orchestration',
-    description: 'End-to-end management of multi-track conferences with speakers and sessions',
-    benefits: ['Session scheduling', 'Speaker coordination', 'Content management', 'Live streaming'],
+    description: 'Run multi-track agendas, speaker workflows, and virtual simulcasts from a unified command center.',
   },
   {
     title: 'Attendee Experience Platform',
-    description: 'Personalized attendee journeys with networking and engagement tools',
-    benefits: ['Mobile app', 'Networking matching', 'Gamification', 'Real-time updates'],
+    description: 'Deliver mobile apps, networking journeys, and gamification to keep participants engaged.',
   },
   {
     title: 'Business Intelligence',
-    description: 'Comprehensive analytics for exhibitors, organizers, and attendees',
-    benefits: ['Lead analytics', 'Engagement metrics', 'ROI reporting', 'Performance dashboards'],
+    description: 'Measure lead quality, sponsor ROI, and engagement metrics across exhibitors and audiences.',
   },
 ];
 
 const caseStudies = [
   {
-    title: 'Global Tech Summit',
+    company: 'Global Tech Summit',
     project: 'International Technology Conference',
-    challenge: 'Managing 15,000+ attendees across 5 days with 200+ sessions and 500+ exhibitors',
-    solution: 'Implemented GHXSTSHIP for comprehensive event management with mobile app and networking platform',
-    results: [
-      '98% attendee satisfaction rating',
-      '300% increase in networking connections',
-      '85% exhibitor lead generation improvement',
-      '40% reduction in operational costs',
-    ],
-    testimonial: 'GHXSTSHIP transformed our conference from logistical nightmare to seamless experience for all stakeholders.',
+    challenge: 'Managing 15,000 attendees, 200 sessions, and 500 exhibitors for a five-day global summit.',
+    result: '98% satisfaction · 300% networking lift · 85% lead boost · 40% lower operations cost',
+    quote:
+      'GHXSTSHIP transformed our summit into a frictionless experience. We finally delivered insights to every stakeholder.',
     author: 'Maria Rodriguez, Event Director',
   },
   {
-    title: 'Manufacturing Trade Expo',
+    company: 'Manufacturing Trade Expo',
     project: 'Industrial Equipment Exhibition',
-    challenge: 'Coordinating 800+ exhibitors and 25,000+ visitors with complex logistics and lead tracking',
-    solution: 'Used GHXSTSHIP for exhibitor management, lead capture, and real-time floor analytics',
-    results: [
-      '95% exhibitor renewal rate',
-      '250% increase in qualified leads',
-      '60% improvement in floor traffic flow',
-      '$50M+ in business deals facilitated',
-    ],
-    testimonial: 'The platform delivered unprecedented ROI for our exhibitors and created the most successful expo in our history.',
+    challenge: 'Coordinating 800 exhibitors, 25,000 visitors, and complex logistics with real-time analytics.',
+    result: '95% exhibitor renewal · 250% more qualified leads · 60% better traffic flow · $50M deals closed',
+    quote:
+      'Our exhibitors saw record ROI. GHXSTSHIP kept operations, leads, and insights perfectly aligned.',
     author: 'David Chen, Trade Show Manager',
   },
 ];
 
 const integrations = [
-  { name: 'Salesforce', category: 'CRM' },
-  { name: 'HubSpot', category: 'Marketing' },
-  { name: 'Eventbrite', category: 'Registration' },
-  { name: 'Zoom', category: 'Virtual Events' },
-  { name: 'LinkedIn', category: 'Networking' },
-  { name: 'Mailchimp', category: 'Email Marketing' },
-  { name: 'Stripe', category: 'Payments' },
-  { name: 'Google Analytics', category: 'Analytics' },
+  'Salesforce',
+  'HubSpot',
+  'Eventbrite',
+  'Zoom',
+  'LinkedIn',
+  'Mailchimp',
+  'Stripe',
+  'Google Analytics',
 ];
 
 export default function TradeShowsConferencesPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-to-br from-primary/5 via-background to-primary/5">
-        <div className="container mx-auto px-md">
-          <div className="grid lg:grid-cols-2 gap-xsxl items-center">
-            <div className="stack-xl">
-              <div>
-                <Badge variant="outline" className="mb-md">
-                  Trade Shows & Conferences
-                </Badge>
-                <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
-                  MASTER
-                  <br />
-                  <span className="text-gradient-accent">
-                    BUSINESS
-                  </span>
-                  <br />
-                  EVENTS
-                </h1>
-                <p className="text-heading-4 color-muted">
-                  From intimate conferences to massive trade shows, GHXSTSHIP empowers 
-                  organizers to create business events that drive connections, generate 
-                  leads, and deliver measurable ROI for all stakeholders.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-lg">
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>5M+</div>
-                  <div className="text-body-sm color-muted">Attendees Managed</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>10K+</div>
-                  <div className="text-body-sm color-muted">Events Powered</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>95%</div>
-                  <div className="text-body-sm color-muted">Lead Capture Rate</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>4.2X</div>
-                  <div className="text-body-sm color-muted">Average ROI Increase</div>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-md">
-                <Link href="/auth/signup">
-                  <Button className="w-full sm:w-auto group">
-                    Start Building
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-                <Button className="w-full sm:w-auto group">
-                  <Play className="mr-sm h-icon-xs w-icon-xs" />
-                  View Success Stories
-                </Button>
-              </div>
-            </div>
-
-            {/* Conference Dashboard Preview */}
-            <div className="relative">
-              <Card className="bg-background border shadow-popover overflow-hidden">
-                <div className="flex items-center gap-sm px-md py-sm bg-secondary/50 border-b">
-                  <div className="flex gap-sm">
-                    <div className="w-3 h-3 rounded-full bg-destructive"></div>
-                    <div className="w-3 h-3 rounded-full bg-warning"></div>
-                    <div className="w-3 h-3 rounded-full bg-success"></div>
-                  </div>
-                  <div className="flex-1 text-center">
-                    <div className="inline-flex items-center gap-sm  px-md py-xs bg-background rounded-md text-body-sm color-muted">
-                      <Presentation className="w-3 h-3" />
-                      events.ghxstship.com
-                    </div>
-                  </div>
-                </div>
-
-                <CardContent className="p-lg stack-md">
-                  <div className="flex items-center justify-between">
-                    <h3 className={`${anton.className} text-body text-heading-3 uppercase`}>TECH SUMMIT 2024</h3>
-                    <Badge variant="outline" className="color-success border-success">
-                      Live
-                    </Badge>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-sm">
-                    <div className="bg-secondary/30 rounded-lg p-sm">
-                      <div className="text-body-sm color-muted mb-xs">Attendees</div>
-                      <div>12.5K</div>
-                      <div className="flex items-center gap-xs mt-xs">
-                        <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
-                        <span className="text-body-sm color-success">Active</span>
-                      </div>
-                    </div>
-                    <div className="bg-secondary/30 rounded-lg p-sm">
-                      <div className="text-body-sm color-muted mb-xs">Sessions</div>
-                      <div>45</div>
-                      <div className="flex -cluster-xs mt-xs">
-                        {[1, 2, 3, 4].map((i: any) => (
-                          <div key={i} className="w-3 h-3 bg-accent rounded-full border border-background"></div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="bg-secondary/30 rounded-lg p-sm">
-                      <div className="text-body-sm color-muted mb-xs">Engagement</div>
-                      <div>87%</div>
-                      <div className="w-full bg-secondary rounded-full h-1 mt-sm">
-                        <div className="bg-accent h-1 rounded-full w-icon-sm/6"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="stack-sm">
-                    <div className="text-body-sm form-label color-muted">Live Sessions</div>
-                    {[
-                      { session: 'AI Innovation Keynote', attendees: 3200, room: 'Main Hall', color: 'bg-destructive' },
-                      { session: 'Startup Pitch Competition', attendees: 850, room: 'Hall B', color: 'bg-accent' },
-                      { session: 'Networking Lunch', attendees: 5600, room: 'Exhibition', color: 'bg-success' },
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-sm text-body-sm">
-                        <div className={`w-2 h-2 rounded-full ${item.color}`}></div>
-                        <span className="form-label flex-1">{item.session}</span>
-                        <span className="color-muted">{item.room}</span>
-                        <span className="color-muted">({item.attendees})</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-sm pt-sm border-t">
-                    <Network className="w-icon-xs h-icon-xs text-foreground" />
-                    <span className="text-body-sm form-label">2,847 new connections made today</span>
-                    <div className="ml-auto">
-                      <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Challenges Section */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              BUSINESS EVENT CHALLENGES
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Trade shows and conferences require sophisticated coordination to deliver value for all stakeholders.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-xl">
-            {challenges.map((challenge: any) => {
-              const Icon = challenge.icon;
-              return (
-                <Card key={challenge.title} className="hover:shadow-floating transition-shadow">
-                  <CardContent className="p-xl">
-                    <div className="flex items-start gap-md">
-                      <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-primary to-primary">
-                        <Icon className="h-icon-md w-icon-md text-background" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>{challenge.title}</h3>
-                        <p className="color-muted mb-md">{challenge.description}</p>
-                        <div className="flex items-start gap-sm">
-                          <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0 mt-0.5" />
-                          <p className="text-body-sm form-label color-foreground">{challenge.solution}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              COMPREHENSIVE EVENT PLATFORM
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Everything you need to create successful trade shows and conferences that drive business results.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-xl">
-            {features.map((feature: any) => (
-              <Card key={feature.title} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-xl">
-                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-md uppercase`}>{feature.title}</h3>
-                  <p className="color-muted mb-lg">{feature.description}</p>
-                  
-                  <div className="stack-sm">
-                    {feature.benefits.map((benefit: any) => (
-                      <div key={benefit} className="flex items-center gap-sm">
-                        <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0" />
-                        <span className="text-body-sm color-foreground">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              BUSINESS EVENT SUCCESS STORIES
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              See how event organizers are creating exceptional business experiences with GHXSTSHIP.
-            </p>
-          </div>
-
-          <div className="space-y-xsxl">
-            {caseStudies.map((study: any) => (
-              <Card key={study.title} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-xl">
-                  <div className="grid lg:grid-cols-2 gap-xl">
-                    <div>
-                      <Badge variant="outline" className="mb-md">{study.project}</Badge>
-                      <h3 className={`${anton.className} text-heading-3 text-heading-3 mb-md uppercase`}>{study.title}</h3>
-                      
-                      <div className="stack-md">
-                        <div>
-                          <h4 className="text-heading-4 text-body-sm color-muted mb-sm uppercase">CHALLENGE</h4>
-                          <p className="color-foreground">{study.challenge}</p>
-                        </div>
-                        
-                        <div>
-                          <h4 className="text-heading-4 text-body-sm color-muted mb-sm uppercase">SOLUTION</h4>
-                          <p className="color-foreground">{study.solution}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="text-heading-4 text-body-sm color-muted mb-md uppercase">RESULTS</h4>
-                      <div className="stack-sm mb-lg">
-                        {study.results.map((result: any) => (
-                          <div key={result} className="flex items-center gap-sm">
-                            <Star className="h-icon-xs w-icon-xs color-warning flex-shrink-0" />
-                            <span className="text-body-sm form-label color-foreground">{result}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <blockquote className="border-l-4 border-primary pl-md">
-                        <p className="color-foreground italic mb-sm">"{study.testimonial}"</p>
-                        <cite className="text-body-sm color-muted">— {study.author}</cite>
-                      </blockquote>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Integrations */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              BUSINESS EVENT INTEGRATIONS
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Connect with leading business platforms to maximize event ROI and lead generation.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-lg">
-            {integrations.map((integration: any) => (
-              <Card key={integration.name} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-lg text-center">
-                  <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
-                    <Zap className="h-icon-md w-icon-md text-background" />
-                  </div>
-                  <h3 className="text-heading-4 color-foreground mb-xs">{integration.name}</h3>
-                  <p className="text-body-sm color-muted">{integration.category}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-md">
-          <div className="text-center">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              READY TO DRIVE BUSINESS RESULTS?
-            </h2>
-            <p className="text-body color-muted mb-xl max-w-2xl mx-auto">
-              Join event organizers using GHXSTSHIP to create trade shows and conferences 
-              that generate leads, build relationships, and deliver measurable ROI.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-md justify-center">
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Industry Solutions"
+          title="Trade Shows & Conferences"
+          highlight="Conferences"
+          description="Power exhibitions, keynotes, and networking experiences with GHXSTSHIP’s business event platform."
+          actions={
+            <div className="flex flex-col items-center gap-sm sm:flex-row">
               <Link href="/auth/signup">
-                <Button className="w-full sm:w-auto group">
+                <Button className="group" size="lg">
                   Start Building
                   <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button className="w-full sm:w-auto">
-                  Schedule Demo
+                <Button variant="outline" size="lg">
+                  Talk To Event Strategist
                 </Button>
               </Link>
             </div>
-          </div>
+          }
+        />
+        <div className="mt-2xl">
+          <MarketingStatGrid items={heroStats} />
         </div>
-      </section>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Event Pillars"
+          title="Deliver Business Impact"
+          description="Keep exhibitors, attendees, and sponsors aligned from call for papers through post-event analytics." 
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {eventPillars.map((pillar) => {
+            const Icon = pillar.icon;
+            return (
+              <MarketingCard
+                key={pillar.title}
+                title={pillar.title}
+                description={pillar.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
+            );
+          })}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Capabilities"
+          title="Orchestrate Every Touchpoint"
+          description="GHXSTSHIP centralizes the tools organizers need to deliver growth-driving trade shows and conferences." 
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {featureHighlights.map((feature) => (
+            <MarketingCard key={feature.title} title={feature.title} description={feature.description} icon={<Handshake className="h-icon-md w-icon-md" />} />
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Proof"
+          title="Events Powered By GHXSTSHIP"
+          description="See how global organizers turn conferences into measurable pipelines." 
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2">
+          {caseStudies.map((study) => (
+            <Card key={study.company} className="border border-border/40 bg-background/95 shadow-sm">
+              <CardContent className="space-y-md p-xl">
+                <div className="flex items-center gap-sm">
+                  <h3 className="text-heading-4 uppercase leading-tight">{study.company}</h3>
+                  <Badge variant="outline">{study.project}</Badge>
+                </div>
+                <p className="text-body-sm text-muted-foreground">{study.challenge}</p>
+                <div className="text-body font-medium text-foreground">{study.result}</div>
+                <blockquote className="border-l-4 border-primary pl-md text-body text-muted-foreground italic">“{study.quote}”</blockquote>
+                <cite className="text-body-sm text-muted-foreground">— {study.author}</cite>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Integrations"
+          title="Connect Your Business Stack"
+          description="Sync GHXSTSHIP with CRM, marketing automation, payments, and analytics tools."
+          align="center"
+        />
+        <div className="mt-2xl grid gap-md md:grid-cols-4">
+          {integrations.map((tool) => (
+            <div key={tool} className="rounded-xl border border-border/60 bg-muted/30 px-lg py-md text-center text-body-sm text-muted-foreground">
+              {tool}
+            </div>
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="primaryGradient" padding="lg">
+        <MarketingSectionHeader
+          title="Ready To Drive Business Results?"
+          description="Partner with GHXSTSHIP to deliver trade shows and conferences that turn relationships into revenue."
+          align="center"
+        />
+        <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">
+          <Link href="/contact">
+            <Button className="group" size="lg">
+              Book An Event Strategy Session
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <Link href="/auth/signup">
+            <Button variant="outline" size="lg">
+              Start Building
+            </Button>
+          </Link>
+        </div>
+      </MarketingSection>
     </div>
   );
 }

@@ -1,168 +1,234 @@
-import { Metadata } from 'next';
-import { anton } from '../../_components/lib/typography';
-import { Shield, Lock, Eye, Server, Users, FileCheck } from 'lucide-react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
+import {
+  AlertTriangle,
+  ArrowRight,
+  Database,
+  Eye,
+  FileCheck,
+  Lock,
+  Server,
+  Shield,
+  Users,
+} from 'lucide-react';
 
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingStatGrid,
+} from '../../_components/marketing';
 
 export const metadata: Metadata = {
-  title: 'Security | GHXSTSHIP',
-  description: 'Learn about GHXSTSHIP\'s comprehensive security measures and data protection practices.',
+  title: 'Security & Trust | GHXSTSHIP',
+  description: 'See how GHXSTSHIP protects customer data with enterprise-grade security, compliance, and incident response.',
 };
 
+const securityStats = [
+  { label: 'Uptime SLA', value: '99.9%' },
+  { label: 'Security Reviews / Year', value: '12' },
+  { label: 'Dedicated Security Engineers', value: '18' },
+  { label: 'Average Response Time', value: '< 1 hr' },
+];
+
+const securityPillars = [
+  {
+    title: 'Enterprise-Grade Security',
+    description: 'SOC 2 Type II controls, ISO 27001 alignment, and 24/7 monitoring across every environment.',
+    icon: Shield,
+  },
+  {
+    title: 'Defense In Depth',
+    description: 'Network segmentation, vulnerability scanning, and hardened infrastructure in every region.',
+    icon: Server,
+  },
+  {
+    title: 'Privacy By Design',
+    description: 'GDPR, CCPA, and regional privacy programs embedded in product development.',
+    icon: Users,
+  },
+  {
+    title: 'Transparent Operations',
+    description: 'Detailed audit logging, real-time status page, and incident communications within SLA.',
+    icon: Eye,
+  },
+];
+
+const complianceHighlights = [
+  {
+    title: 'SOC 2 Type II',
+    description: 'Independently audited controls for security, availability, confidentiality, and processing integrity.',
+  },
+  {
+    title: 'ISO 27001',
+    description: 'Certified information security management system with annual third-party audits.',
+  },
+  {
+    title: 'GDPR & CCPA',
+    description: 'Global privacy compliance with data processing agreements and regional data residency options.',
+  },
+  {
+    title: 'Penetration Testing',
+    description: 'Semi-annual third-party penetration tests with remediation SLAs tracked to completion.',
+  },
+];
+
+const protectionLayers = [
+  {
+    title: 'Encryption Everywhere',
+    description: 'TLS 1.2+ for data in transit and AES-256 for data at rest. Keys are rotated automatically.',
+    icon: Lock,
+  },
+  {
+    title: 'Access Controls',
+    description: 'Role-based access, SSO, SCIM provisioning, and mandatory MFA for admin roles.',
+    icon: Users,
+  },
+  {
+    title: 'Audit Logging',
+    description: 'Immutable logs for user actions, API usage, and configuration changes retained for seven years.',
+    icon: FileCheck,
+  },
+  {
+    title: 'Data Lifecycle',
+    description: 'Granular retention policies, secure deletion, and customer-managed archive exports.',
+    icon: Database,
+  },
+];
+
+const incidentPlaybook = [
+  '24/7 monitoring with automated alerting and escalation runbooks.',
+  'Initial triage, containment, and threat analysis within 60 minutes.',
+  'Customer notifications within 72 hours if data is impacted.',
+  'Collaboration with regulators and law enforcement where required.',
+  'Post-incident reviews with corrective actions shared to stakeholders.',
+];
+
 export default function SecurityPage() {
-  const securityFeatures = [
-    {
-      icon: Shield,
-      title: 'Enterprise-Grade Security',
-      description: 'SOC 2 Type II compliant infrastructure with 24/7 monitoring and threat detection.',
-    },
-    {
-      icon: Lock,
-      title: 'Data Encryption',
-      description: 'End-to-end encryption for data in transit and at rest using AES-256 encryption.',
-    },
-    {
-      icon: Eye,
-      title: 'Access Controls',
-      description: 'Role-based access control (RBAC) with multi-factor authentication (MFA) support.',
-    },
-    {
-      icon: Server,
-      title: 'Secure Infrastructure',
-      description: 'Cloud-native architecture with automated security updates and vulnerability scanning.',
-    },
-    {
-      icon: Users,
-      title: 'Privacy by Design',
-      description: 'GDPR and CCPA compliant data handling with user consent management.',
-    },
-    {
-      icon: FileCheck,
-      title: 'Audit Logging',
-      description: 'Comprehensive audit trails for all user actions and system events.',
-    },
-  ];
-
   return (
-    <div className="container mx-auto px-md py-smxl">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-3xl">
-          <h1 className={`${anton.className} uppercase text-heading-1 md:text-display text-heading-3 mb-lg`}>
-            SECURITY & TRUST
-          </h1>
-          <p className="text-heading-4 color-muted max-w-3xl mx-auto">
-            Your data security is our top priority. Learn about the comprehensive measures we take 
-            to protect your information and maintain the highest security standards.
-          </p>
+    <div className="min-h-screen">
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Security & Trust"
+          title="Your Data, Protected"
+          highlight="Protected"
+          description="From infrastructure hardening to privacy programs, GHXSTSHIP safeguards productions with enterprise-grade security." 
+          actions={
+            <Link href="/security/status">
+              <Button className="group" size="lg">
+                View Status Page
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          }
+        />
+        <div className="mt-2xl">
+          <MarketingStatGrid items={securityStats} />
         </div>
+      </MarketingSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl mb-3xl">
-          {securityFeatures.map((feature: any) => {
-            const Icon = feature.icon;
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Our Approach"
+          title="Built For Mission-Critical Work"
+          description="Security is layered into every product decision, infrastructure component, and customer workflow."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {securityPillars.map((pillar) => {
+            const Icon = pillar.icon;
             return (
-              <div key={feature.title} className="bg-card rounded-lg p-lg border">
-                <div className="flex items-center mb-md">
-                  <div className="bg-accent/10 p-sm rounded-lg mr-md">
-                    <Icon className="h-icon-md w-icon-md text-foreground" />
-                  </div>
-                  <h3 className={`${anton.className} uppercase text-body text-heading-3`}>
-                    {feature.title}
-                  </h3>
-                </div>
-                <p className="color-muted">{feature.description}</p>
-              </div>
+              <MarketingCard
+                key={pillar.title}
+                title={pillar.title}
+                description={pillar.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
             );
           })}
         </div>
+      </MarketingSection>
 
-        <div className="prose prose-lg max-w-none stack-xl">
-          <section>
-            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-md`}>
-              COMPLIANCE & CERTIFICATIONS
-            </h2>
-            <div className="grid md:grid-cols-2 gap-lg">
-              <div className="bg-secondary/30 p-lg rounded-lg">
-                <h3 className="text-heading-4 mb-sm">SOC 2 Type II</h3>
-                <p className="text-body-sm color-muted">
-                  Independently audited security controls for availability, confidentiality, and processing integrity.
-                </p>
-              </div>
-              <div className="bg-secondary/30 p-lg rounded-lg">
-                <h3 className="text-heading-4 mb-sm">ISO 27001</h3>
-                <p className="text-body-sm color-muted">
-                  International standard for information security management systems (ISMS).
-                </p>
-              </div>
-              <div className="bg-secondary/30 p-lg rounded-lg">
-                <h3 className="text-heading-4 mb-sm">GDPR Compliant</h3>
-                <p className="text-body-sm color-muted">
-                  Full compliance with European data protection regulations and user privacy rights.
-                </p>
-              </div>
-              <div className="bg-secondary/30 p-lg rounded-lg">
-                <h3 className="text-heading-4 mb-sm">CCPA Compliant</h3>
-                <p className="text-body-sm color-muted">
-                  California Consumer Privacy Act compliance for user data rights and transparency.
-                </p>
-              </div>
-            </div>
-          </section>
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Compliance"
+          title="Independently Verified"
+          description="Global standards and regulatory frameworks guide our security and privacy programs."
+        />
 
-          <section>
-            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-md`}>
-              DATA PROTECTION
-            </h2>
-            <div className="stack-md">
-              <div>
-                <h3>Encryption</h3>
-                <p>All data is encrypted using industry-standard AES-256 encryption both in transit and at rest.</p>
-              </div>
-              <div>
-                <h3>Data Residency</h3>
-                <p>Your data is stored in secure, geographically distributed data centers with strict access controls.</p>
-              </div>
-              <div>
-                <h3>Backup & Recovery</h3>
-                <p>Automated daily backups with point-in-time recovery and disaster recovery procedures.</p>
-              </div>
-              <div>
-                <h3>Data Retention</h3>
-                <p>Clear data retention policies with secure deletion procedures when data is no longer needed.</p>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-md`}>
-              INCIDENT RESPONSE
-            </h2>
-            <p>
-              We maintain a comprehensive incident response plan with 24/7 monitoring and rapid response capabilities. 
-              In the unlikely event of a security incident, we will:
-            </p>
-            <ul className="list-disc pl-lg stack-sm">
-              <li>Immediately contain and assess the incident</li>
-              <li>Notify affected users within 72 hours</li>
-              <li>Work with law enforcement and regulatory bodies as required</li>
-              <li>Provide regular updates throughout the resolution process</li>
-              <li>Conduct a thorough post-incident review and implement improvements</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-md`}>
-              SECURITY CONTACT
-            </h2>
-            <p>
-              If you discover a security vulnerability or have security-related questions, please contact our security team:
-            </p>
-            <div className="bg-secondary/30 p-lg rounded-lg mt-md">
-              <p><strong>Email:</strong> <a href="mailto:security@ghxstship.com" className="text-foreground hover:underline">security@ghxstship.com</a></p>
-              <p><strong>PGP Key:</strong> Available upon request</p>
-              <p><strong>Response Time:</strong> Within 24 hours for critical issues</p>
-            </div>
-          </section>
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {complianceHighlights.map((item) => (
+            <MarketingCard key={item.title} title={item.title} description={item.description} />
+          ))}
         </div>
-      </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Data Protection"
+          title="Layered Controls From Login To Logs"
+          description="Encryption, access management, and lifecycle policies work together to keep your data resilient."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {protectionLayers.map((layer) => {
+            const Icon = layer.icon;
+            return (
+              <MarketingCard
+                key={layer.title}
+                title={layer.title}
+                description={layer.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
+            );
+          })}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Incident Response"
+          title="Prepared For The Unexpected"
+          description="Dedicated teams monitor, respond, and communicate with transparency if an incident occurs."
+        />
+
+        <Card className="mx-auto mt-2xl max-w-4xl border border-border/40 bg-background/95 shadow-sm">
+          <CardContent className="space-y-sm p-xl text-body text-muted-foreground">
+            {incidentPlaybook.map((step) => (
+              <div key={step} className="flex items-start gap-sm">
+                <Badge variant="outline" className="mt-xxs">
+                  <AlertTriangle className="h-icon-xs w-icon-xs" />
+                </Badge>
+                <span>{step}</span>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Security Contact"
+          title="Report A Vulnerability"
+          description="We welcome responsible disclosure and respond quickly to security researchers and customers."
+          align="center"
+        />
+
+        <Card className="mx-auto mt-2xl max-w-3xl border border-border/40 bg-background/95 shadow-sm">
+          <CardContent className="space-y-sm p-xl text-body text-muted-foreground">
+            <div>
+              <strong>Email:</strong> <Link href="mailto:security@ghxstship.com" className="underline">security@ghxstship.com</Link>
+            </div>
+            <div>
+              <strong>PGP Key:</strong> Available on request for encrypted submissions
+            </div>
+            <div>
+              <strong>Response Time:</strong> Critical issues acknowledged within 24 hours
+            </div>
+          </CardContent>
+        </Card>
+      </MarketingSection>
     </div>
   );
 }

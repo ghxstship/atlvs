@@ -8,7 +8,7 @@ const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
     defaultOptions: {
       queries: {
         retry: false,
-        cacheTime: 0,
+        gcTime: 0,
       },
     },
   })
@@ -34,7 +34,7 @@ export const waitForLoadingToFinish = () => {
 }
 
 // Helper to create mock API handlers
-export function createMockApiHandler(endpoint: string, response: any, status = 200) {
+export function createMockApiHandler(endpoint: string, response: Record<string, unknown>, status = 200) {
   return {
     url: endpoint,
     method: 'GET',

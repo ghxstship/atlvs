@@ -11,23 +11,23 @@ export const anton = Anton({
 // Typography utility classes
 export const typography = {
   // Hero titles
-  heroTitle: `${anton.className} text-4xl lg:text-6xl font-bold tracking-tight uppercase`,
-  heroSubtitle: 'text-xl text-muted-foreground max-w-3xl mx-auto',
+  heroTitle: `${anton.className} text-4xl md:text-5xl lg:text-6xl uppercase tracking-[-0.02em] leading-[1.05]`,
+  heroSubtitle: 'text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto',
   
   // Section titles
-  sectionTitle: `${anton.className} text-3xl lg:text-4xl font-bold mb-lg uppercase`,
-  sectionSubtitle: 'text-lg text-muted-foreground max-w-3xl mx-auto',
+  sectionTitle: `${anton.className} text-3xl md:text-4xl uppercase tracking-[-0.01em] leading-tight`,
+  sectionSubtitle: 'text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto',
   
   // Card titles
-  cardTitle: `${anton.className} text-xl font-bold mb-sm uppercase`,
-  cardSubtitle: 'text-sm font-semibold text-accent mb-sm',
+  cardTitle: `${anton.className} text-2xl uppercase leading-tight`,
+  cardSubtitle: 'text-sm font-semibold text-primary uppercase tracking-[0.18em]',
   
   // Stats and metrics
-  statValue: `${anton.className} text-3xl lg:text-4xl font-bold text-accent uppercase`,
-  statLabel: 'text-muted-foreground',
+  statValue: `${anton.className} text-3xl md:text-4xl uppercase text-gradient-accent`,
+  statLabel: 'text-body-md color-muted uppercase tracking-[0.18em]',
   
   // Body text
-  bodyLarge: 'text-lg text-muted-foreground',
+  bodyLarge: 'text-lg md:text-xl text-muted-foreground',
   bodyMedium: 'text-base text-muted-foreground',
   bodySmall: 'text-sm text-muted-foreground',
   

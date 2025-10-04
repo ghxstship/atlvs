@@ -1,10 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import request from 'supertest';
-import { createClient } from '@supabase/supabase-js';
+
+type SupertestApp = Parameters<typeof request>[0];
 
 // Mock Next.js app for testing
 const mockApp = {
-  get: (path: string) => ({
+  get: (_path: string) => ({
     set: () => ({
       send: () => ({
         expect: () => ({
@@ -13,7 +14,19 @@ const mockApp = {
       })
     })
   })
+} satisfies {
+  get: (path: string) => {
+    set: () => {
+      send: () => {
+        expect: () => {
+          expect: () => Promise<unknown>;
+        };
+      };
+    };
+  };
 };
+
+const app = mockApp as unknown as SupertestApp;
 
 describe('Security Testing Suite', () => {
   describe('Authentication Security', () => {
@@ -25,7 +38,7 @@ describe('Security Testing Suite', () => {
 
       // Attempt multiple failed logins
       for (const attempt of loginAttempts) {
-        const response = await request(mockApp as any)
+        const response = await request(app)
           .post('/api/auth/signin')
           .send(attempt);
 
@@ -44,7 +57,7 @@ describe('Security Testing Suite', () => {
       ];
 
       for (const password of weakPasswords) {
-        const response = await request(mockApp as any)
+        const response = await request(app)
           .post('/api/auth/signup')
           .send({
             email: 'test@example.com',
@@ -59,7 +72,7 @@ describe('Security Testing Suite', () => {
     it('should prevent session fixation attacks', async () => {
       // This test would need actual session implementation
       // For now, verify that sessions are properly invalidated on login
-      const response = await request(mockApp as any)
+      const response = await request(app)
         .post('/api/auth/signin')
         .send({
           email: 'test@example.com',
@@ -88,7 +101,7 @@ describe('Security Testing Suite', () => {
 
       for (const endpoint of endpoints) {
         // Test with insufficient permissions
-        const response = await request(mockApp as any)
+        const response = await request(app)
           .post(endpoint.path)
           .set('Authorization', 'Bearer insufficient-token')
           .send({});
@@ -99,7 +112,7 @@ describe('Security Testing Suite', () => {
 
     it('should prevent privilege escalation', async () => {
       // Attempt to modify own role to admin
-      const response = await request(mockApp as any)
+      const response = await request(app)
         .put('/api/users/profile')
         .set('Authorization', 'Bearer user-token')
         .send({
@@ -113,7 +126,7 @@ describe('Security Testing Suite', () => {
 
     it('should validate organization membership', async () => {
       // Try to access resources from different organization
-      const response = await request(mockApp as any)
+      const response = await request(app)
         .get('/api/organizations/other-org/dashboard')
         .set('Authorization', 'Bearer user-token')
         .set('x-organization-id', 'other-org-id');
@@ -135,7 +148,7 @@ describe('Security Testing Suite', () => {
       ];
 
       for (const input of maliciousInputs) {
-        const response = await request(mockApp as any)
+        const response = await request(app)
           .post('/api/search')
           .send({ query: input });
 
@@ -154,7 +167,7 @@ describe('Security Testing Suite', () => {
       ];
 
       for (const file of maliciousFiles) {
-        const response = await request(mockApp as any)
+        const response = await request(app)
           .post('/api/files/upload')
           .attach('file', Buffer.from('malicious content'), file);
 
@@ -171,7 +184,7 @@ describe('Security Testing Suite', () => {
       ];
 
       for (const cmd of commandInjection) {
-        const response = await request(mockApp as any)
+        const response = await request(app)
           .post('/api/system/execute')
           .send({ command: cmd });
 
@@ -189,7 +202,7 @@ describe('Security Testing Suite', () => {
       ];
 
       for (const json of malformedJSON) {
-        const response = await request(mockApp as any)
+        const response = await request(app)
           .post('/api/data/process')
           .set('Content-Type', 'application/json')
           .send(json);
@@ -203,7 +216,7 @@ describe('Security Testing Suite', () => {
   describe('Data Protection & Privacy', () => {
     it('should encrypt sensitive data at rest', async () => {
       // This would test that sensitive fields are encrypted in database
-      const response = await request(mockApp as any)
+      const response = await request(app)
         .get('/api/users/profile')
         .set('Authorization', 'Bearer user-token');
 
@@ -217,7 +230,7 @@ describe('Security Testing Suite', () => {
 
     it('should implement proper data retention policies', async () => {
       // Test GDPR right to erasure
-      const response = await request(mockApp as any)
+      const response = await request(app)
         .delete('/api/gdpr/delete')
         .set('Authorization', 'Bearer user-token');
 
@@ -227,7 +240,7 @@ describe('Security Testing Suite', () => {
 
     it('should prevent data leakage in error messages', async () => {
       // Trigger an error that might leak sensitive information
-      const response = await request(mockApp as any)
+      const response = await request(app)
         .get('/api/debug/error')
         .set('Authorization', 'Bearer invalid-token');
 
@@ -251,8 +264,8 @@ describe('Security Testing Suite', () => {
 
       for (const endpoint of sensitiveEndpoints) {
         // Make multiple rapid requests
-        const requests = Array(20).fill().map(() =>
-          request(mockApp as any).post(endpoint).send({})
+        const requests = Array.from({ length: 20 }, () =>
+          request(app).post(endpoint).send({})
         );
 
         const responses = await Promise.all(requests);
@@ -266,7 +279,7 @@ describe('Security Testing Suite', () => {
 
   describe('API Security', () => {
     it('should implement proper CORS policies', async () => {
-      const response = await request(mockApp as any)
+      const response = await request(app)
         .options('/api/dashboard')
         .set('Origin', 'https://malicious-site.com')
         .set('Access-Control-Request-Method', 'POST');
@@ -277,7 +290,7 @@ describe('Security Testing Suite', () => {
 
     it('should prevent CSRF attacks', async () => {
       // CSRF tokens should be required for state-changing operations
-      const response = await request(mockApp as any)
+      const response = await request(app)
         .post('/api/dashboard')
         .set('Authorization', 'Bearer user-token')
         .send({
@@ -292,7 +305,7 @@ describe('Security Testing Suite', () => {
       const versions = ['v1', 'v2', 'latest'];
 
       for (const version of versions) {
-        const response = await request(mockApp as any)
+        const response = await request(app)
           .get(`/api/${version}/dashboard`)
           .set('Authorization', 'Bearer user-token');
 
@@ -304,8 +317,8 @@ describe('Security Testing Suite', () => {
       const endpoints = ['/api/dashboard', '/api/projects', '/api/users'];
 
       for (const endpoint of endpoints) {
-        const requests = Array(100).fill().map(() =>
-          request(mockApp as any)
+        const requests = Array.from({ length: 100 }, () =>
+          request(app)
             .get(endpoint)
             .set('Authorization', 'Bearer user-token')
         );
@@ -332,7 +345,7 @@ describe('Security Testing Suite', () => {
       ];
 
       for (const file of testCases) {
-        const response = await request(mockApp as any)
+        const response = await request(app)
           .post('/api/files/upload')
           .attach('file', Buffer.from('test content'), file);
 
@@ -353,7 +366,7 @@ describe('Security Testing Suite', () => {
       ];
 
       for (const path of traversalPaths) {
-        const response = await request(mockApp as any)
+        const response = await request(app)
           .get(`/api/files/download/${encodeURIComponent(path)}`)
           .set('Authorization', 'Bearer user-token');
 
@@ -365,7 +378,7 @@ describe('Security Testing Suite', () => {
       // This would integrate with a malware scanning service
       const maliciousContent = Buffer.from('X5O!P%@AP[4\\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*');
 
-      const response = await request(mockApp as any)
+      const response = await request(app)
         .post('/api/files/upload')
         .attach('file', maliciousContent, 'eicar.com');
 
@@ -382,7 +395,7 @@ describe('Security Testing Suite', () => {
         error: 'access_denied',
       };
 
-      const response = await request(mockApp as any)
+      const response = await request(app)
         .get('/api/auth/oauth/callback')
         .query(maliciousParams);
 
@@ -393,7 +406,7 @@ describe('Security Testing Suite', () => {
       const webhookPayload = { event: 'test', data: { id: 123 } };
       const invalidSignature = 'invalid_signature';
 
-      const response = await request(mockApp as any)
+      const response = await request(app)
         .post('/api/webhooks/stripe')
         .set('stripe-signature', invalidSignature)
         .send(webhookPayload);
@@ -410,7 +423,7 @@ describe('Security Testing Suite', () => {
       ];
 
       for (const url of internalUrls) {
-        const response = await request(mockApp as any)
+        const response = await request(app)
           .post('/api/integrations/webhook-test')
           .send({ url });
 
@@ -429,7 +442,7 @@ describe('Security Testing Suite', () => {
       ];
 
       for (const payload of injectionPayloads) {
-        const response = await request(mockApp as any)
+        const response = await request(app)
           .post('/api/auth/signin')
           .send(payload);
 
@@ -449,7 +462,7 @@ describe('Security Testing Suite', () => {
         organizationId: 'other-org', // Should not be allowed
       };
 
-      const response = await request(mockApp as any)
+      const response = await request(app)
         .put('/api/users/profile')
         .set('Authorization', 'Bearer user-token')
         .send(maliciousUpdate);
@@ -464,8 +477,8 @@ describe('Security Testing Suite', () => {
 
     it('should handle race conditions securely', async () => {
       // Simulate concurrent requests that might cause race conditions
-      const concurrentRequests = Array(5).fill().map(() =>
-        request(mockApp as any)
+      const concurrentRequests = Array.from({ length: 5 }, () =>
+        request(app)
           .post('/api/projects/create')
           .set('Authorization', 'Bearer user-token')
           .send({

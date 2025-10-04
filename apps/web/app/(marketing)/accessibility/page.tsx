@@ -1,400 +1,312 @@
 import type { Metadata } from 'next';
-import { Card, CardContent, Badge } from '@ghxstship/ui';
-import { Eye, Ear, Hand, Brain, Heart, Mail, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
+import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
+import {
+  Accessibility,
+  CheckCircle,
+  ExternalLink,
+  Globe,
+  Headphones,
+  Laptop,
+  Mail,
+  Shield,
+  Users,
+} from 'lucide-react';
+
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingStatGrid,
+} from '../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Accessibility Statement | GHXSTSHIP',
-  description: 'Learn about GHXSTSHIP\'s commitment to accessibility and how we ensure our platform is usable by everyone.',
+  description:
+    'GHXSTSHIP is committed to inclusive design, accessible experiences, and continuous improvement across ATLVS and OPENDECK.',
   openGraph: {
     title: 'Accessibility Statement | GHXSTSHIP',
-    description: 'Learn about GHXSTSHIP\'s commitment to accessibility and how we ensure our platform is usable by everyone.',
+    description:
+      'GHXSTSHIP is committed to inclusive design, accessible experiences, and continuous improvement across ATLVS and OPENDECK.',
     url: 'https://ghxstship.com/accessibility',
   },
 };
 
+const accessibilityStats = [
+  { label: 'WCAG Coverage', value: '2.2 AA' },
+  { label: 'Assistive Tech Pairings', value: '15+' },
+  { label: 'Accessibility Reviews / Year', value: '12' },
+  { label: 'Dedicated Specialists', value: '8' },
+];
+
+const commitmentPillars = [
+  {
+    title: 'Inclusive By Design',
+    description: 'Accessibility requirements are built into our product roadmap, design system, and QA gates.',
+    icon: Accessibility,
+  },
+  {
+    title: 'Shared Responsibility',
+    description: 'Cross-functional teams receive ongoing training on inclusive design, content standards, and WCAG updates.',
+    icon: Users,
+  },
+  {
+    title: 'Continuous Improvement',
+    description: 'Internal audits, third-party reviews, and customer feedback loops drive measurable upgrades every quarter.',
+    icon: Shield,
+  },
+];
+
+const complianceStatements = [
+  {
+    title: 'WCAG 2.2 AA Alignment',
+    body: 'ATLVS and OPENDECK target Web Content Accessibility Guidelines (WCAG 2.2 AA) for all core user journeys and components.',
+  },
+  {
+    title: 'Global Standards',
+    body: 'We monitor ADA, EN 301 549, AODA, and other regional regulations to ensure compliance for our enterprise customers.',
+  },
+  {
+    title: 'Policy Reviews',
+    body: 'Accessibility documentation, support scripts, and partner guidelines are reviewed at least twice per year.',
+  },
+];
+
+const testingPractices = [
+  {
+    title: 'Assistive Technology Labs',
+    description: 'Screen readers (JAWS, NVDA, VoiceOver), screen magnifiers, voice control software, and switch devices.',
+    icon: Laptop,
+  },
+  {
+    title: 'Manual Audits',
+    description: 'Keyboard-only testing, color contrast validation, and semantic structure reviews on every major release.',
+    icon: CheckCircle,
+  },
+  {
+    title: 'Automated Scans',
+    description: 'CI pipelines run axe-core, Lighthouse, and custom accessibility linting with alerts to responsible teams.',
+    icon: Shield,
+  },
+];
+
+const resourceLinks = [
+  {
+    name: 'Accessibility User Guide',
+    href: '/help/accessibility-guide',
+  },
+  {
+    name: 'Keyboard Shortcuts Reference',
+    href: '/help/keyboard-shortcuts',
+  },
+  {
+    name: 'Screen Reader Setup Guide',
+    href: '/help/screen-reader-guide',
+  },
+];
+
+const externalResources = [
+  {
+    name: 'W3C Web Accessibility Initiative',
+    href: 'https://www.w3.org/WAI/',
+  },
+  {
+    name: 'WebAIM Accessibility Resources',
+    href: 'https://webaim.org/',
+  },
+  {
+    name: 'ADA.gov Accessibility Guidance',
+    href: 'https://www.ada.gov/',
+  },
+];
+
+const legalRegions = [
+  {
+    region: 'United States',
+    items: ['Americans with Disabilities Act (ADA)', 'Section 508 of the Rehabilitation Act', '21st Century Communications and Video Accessibility Act'],
+  },
+  {
+    region: 'International',
+    items: ['European Accessibility Act (EAA)', 'EN 301 549 European Standard', 'Accessibility for Ontarians with Disabilities Act (AODA)'],
+  },
+];
+
 export default function AccessibilityPage() {
   return (
-    <div className="min-h-screen py-mdxl">
-      <div className="container mx-auto px-md max-w-4xl">
-        {/* Header */}
-        <div className="text-center mb-3xl">
-          <Badge variant="outline" className="mb-md">
-            Accessibility
-          </Badge>
-          <h1 className="font-title text-heading-1 lg:text-display text-heading-3 mb-lg">
-            ACCESSIBILITY STATEMENT
-          </h1>
-          <p className="text-body color-muted mb-md">
-            We're committed to ensuring our platform is accessible to everyone, regardless of ability or technology.
-          </p>
-          <p className="text-body-sm color-muted">
-            Last updated: December 15, 2024
-          </p>
+    <div className="min-h-screen">
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Accessibility"
+          title="Accessible Experiences For Every Creator"
+          highlight="Every Creator"
+          description="We design GHXSTSHIP for inclusivity across workflows, devices, and abilities. Accessibility is an ongoing partnership between our teams, customers, and community."
+          actions={
+            <Link href="mailto:accessibility@ghxstship.com">
+              <Button className="group" size="lg">
+                Contact Accessibility Team
+                <Mail className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          }
+        />
+        <div className="mt-2xl">
+          <MarketingStatGrid items={accessibilityStats} />
         </div>
+      </MarketingSection>
 
-        {/* Commitment Overview */}
-        <Card className="mb-2xl bg-gradient-to-r from-primary/5 to-accent/5">
-          <CardContent className="p-xl">
-            <div className="flex items-center gap-sm mb-lg">
-              <Heart className="h-icon-lg w-icon-lg text-foreground" />
-              <h2 className="font-title text-heading-3 text-heading-3">Our Commitment</h2>
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Our Commitment"
+          title="How GHXSTSHIP Delivers Accessible Products"
+          description="Accessibility is a company-wide standard embedded in research, design, engineering, and customer success."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {commitmentPillars.map((pillar) => {
+            const Icon = pillar.icon;
+            return (
+              <MarketingCard
+                key={pillar.title}
+                title={pillar.title}
+                description={pillar.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
+            );
+          })}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Compliance"
+          title="Standards & Regulatory Alignment"
+          description="We align with accessibility best practices and legal requirements across multiple regions."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {complianceStatements.map((item) => (
+            <MarketingCard key={item.title} title={item.title} description={item.body} icon={<Shield className="h-icon-md w-icon-md" />} />
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Testing & Validation"
+          title="How We Measure Accessibility"
+          description="Teams run manual and automated checks across assistive technology labs, regression suites, and usability studies."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {testingPractices.map((practice) => {
+            const Icon = practice.icon;
+            return (
+              <MarketingCard
+                key={practice.title}
+                title={practice.title}
+                description={practice.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
+            );
+          })}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Feedback & Support"
+          title="Need Assistance Or Want To Report An Issue?"
+          description="Share feedback, request alternative formats, or connect with our accessibility specialists."
+          align="center"
+        />
+
+        <Card className="mx-auto mt-2xl max-w-4xl border border-border/40 bg-background/95 shadow-sm">
+          <CardContent className="flex flex-col gap-xl p-xl md:flex-row">
+            <div className="rounded-full bg-primary/10 p-lg text-primary">
+              <Headphones className="h-icon-lg w-icon-lg" />
             </div>
-            <p className="color-muted mb-lg">
-              GHXSTSHIP is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply relevant accessibility standards.
-            </p>
-            <div className="grid md:grid-cols-2 gap-lg">
-              <div>
-                <h3 className="text-heading-4 mb-sm">WCAG 2.2 AA Compliance</h3>
-                <p className="text-body-sm color-muted">We strive to meet Web Content Accessibility Guidelines (WCAG) 2.2 Level AA standards.</p>
+            <div className="space-y-lg">
+              <div className="space-y-xs">
+                <h3 className="text-heading-4 uppercase leading-tight">Accessibility Team</h3>
+                <p className="text-body text-muted-foreground">
+                  Email <Link href="mailto:accessibility@ghxstship.com" className="underline">accessibility@ghxstship.com</Link> or call +1 (555) 123-4567 (TTY available). We aim to respond within 2 business days.
+                </p>
               </div>
-              <div>
-                <h3 className="text-heading-4 mb-sm">Ongoing Improvement</h3>
-                <p className="text-body-sm color-muted">We regularly audit our platform and implement improvements based on user feedback.</p>
+              <div className="space-y-xs">
+                <h3 className="text-heading-4 uppercase leading-tight">Alternative Formats</h3>
+                <p className="text-body-sm text-muted-foreground">
+                  We can provide product documentation and training materials in large print, audio, or other accessible formats upon request.
+                </p>
               </div>
             </div>
           </CardContent>
         </Card>
+      </MarketingSection>
 
-        {/* Accessibility Features */}
-        <section className="mb-2xl">
-          <h2 className="font-title text-heading-2 mb-xl">Accessibility Features</h2>
-          
-          <div className="grid md:grid-cols-2 gap-lg">
-            <Card>
-              <CardContent className="p-lg">
-                <div className="flex items-center gap-sm mb-md">
-                  <Eye className="h-icon-md w-icon-md text-foreground" />
-                  <h3>Visual Accessibility</h3>
-                </div>
-                <ul className="stack-sm text-body-sm color-muted">
-                  <li>• High contrast color schemes</li>
-                  <li>• Scalable text up to 200% without loss of functionality</li>
-                  <li>• Clear focus indicators for keyboard navigation</li>
-                  <li>• Alternative text for all meaningful images</li>
-                  <li>• Color is not the only means of conveying information</li>
-                </ul>
-              </CardContent>
-            </Card>
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Resources"
+          title="Guides & Reference Material"
+          description="Explore internal and external resources to help your team deliver accessible creative work."
+        />
 
-            <Card>
-              <CardContent className="p-lg">
-                <div className="flex items-center gap-sm mb-md">
-                  <Ear className="h-icon-md w-icon-md text-foreground" />
-                  <h3>Auditory Accessibility</h3>
-                </div>
-                <ul className="stack-sm text-body-sm color-muted">
-                  <li>• Captions for all video content</li>
-                  <li>• Transcripts for audio content</li>
-                  <li>• Visual indicators for audio alerts</li>
-                  <li>• No auto-playing audio content</li>
-                  <li>• Screen reader compatible audio descriptions</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-lg">
-                <div className="flex items-center gap-sm mb-md">
-                  <Hand className="h-icon-md w-icon-md text-foreground" />
-                  <h3>Motor Accessibility</h3>
-                </div>
-                <ul className="stack-sm text-body-sm color-muted">
-                  <li>• Full keyboard navigation support</li>
-                  <li>• Generous click targets (minimum 44px)</li>
-                  <li>• No time-sensitive actions without extensions</li>
-                  <li>• Drag and drop alternatives</li>
-                  <li>• Voice control compatibility</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-lg">
-                <div className="flex items-center gap-sm mb-md">
-                  <Brain className="h-icon-md w-icon-md text-foreground" />
-                  <h3>Cognitive Accessibility</h3>
-                </div>
-                <ul className="stack-sm text-body-sm color-muted">
-                  <li>• Clear, consistent navigation</li>
-                  <li>• Simple, plain language</li>
-                  <li>• Error prevention and clear error messages</li>
-                  <li>• Consistent page layouts and interactions</li>
-                  <li>• Help and documentation readily available</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Technical Standards */}
-        <section className="mb-2xl">
-          <h2 className="font-title text-heading-2 text-heading-3 mb-xl">Technical Standards</h2>
-          
-          <div className="stack-lg">
-            <Card>
-              <CardContent className="p-lg">
-                <h3 className="text-heading-4 text-body mb-md">Web Content Accessibility Guidelines (WCAG) 2.2</h3>
-                <p className="color-muted mb-md">
-                  Our platform aims to conform to WCAG 2.2 Level AA standards, which include:
-                </p>
-                <div className="grid md:grid-cols-3 gap-md">
-                  <div>
-                    <h4 className="text-heading-4 mb-sm">Perceivable</h4>
-                    <p className="text-body-sm color-muted">Information must be presentable in ways users can perceive.</p>
-                  </div>
-                  <div>
-                    <h4 className="text-heading-4 mb-sm">Operable</h4>
-                    <p className="text-body-sm color-muted">Interface components must be operable by all users.</p>
-                  </div>
-                  <div>
-                    <h4 className="text-heading-4 mb-sm">Understandable</h4>
-                    <p className="text-body-sm color-muted">Information and UI operation must be understandable.</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-lg">
-                <h3 className="text-heading-4 text-body mb-md">Assistive Technology Support</h3>
-                <p className="color-muted mb-md">
-                  Our platform is tested with and supports:
-                </p>
-                <div className="grid md:grid-cols-2 gap-md">
-                  <ul className="stack-sm text-body-sm color-muted">
-                    <li>• JAWS (Windows)</li>
-                    <li>• NVDA (Windows)</li>
-                    <li>• VoiceOver (macOS/iOS)</li>
-                    <li>• TalkBack (Android)</li>
-                  </ul>
-                  <ul className="stack-sm text-body-sm color-muted">
-                    <li>• Dragon NaturallySpeaking</li>
-                    <li>• Switch navigation devices</li>
-                    <li>• High contrast displays</li>
-                    <li>• Screen magnification software</li>
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Browser Compatibility */}
-        <section className="mb-2xl">
-          <h2 className="font-title text-heading-2 text-heading-3 mb-xl">Browser & Device Compatibility</h2>
-          
-          <Card>
-            <CardContent className="p-lg">
-              <div className="grid md:grid-cols-2 gap-lg">
-                <div>
-                  <h3 className="text-heading-4 mb-md">Supported Browsers</h3>
-                  <ul className="stack-sm text-body-sm color-muted">
-                    <li>• Chrome 90+ (Windows, macOS, Linux)</li>
-                    <li>• Firefox 88+ (Windows, macOS, Linux)</li>
-                    <li>• Safari 14+ (macOS, iOS)</li>
-                    <li>• Edge 90+ (Windows, macOS)</li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-heading-4 mb-md">Mobile Devices</h3>
-                  <ul className="stack-sm text-body-sm color-muted">
-                    <li>• iOS 14+ (Safari, Chrome)</li>
-                    <li>• Android 8+ (Chrome, Firefox)</li>
-                    <li>• Responsive design for all screen sizes</li>
-                    <li>• Touch-friendly interface elements</li>
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Known Issues */}
-        <section className="mb-2xl">
-          <h2 className="font-title text-heading-2 text-heading-3 mb-xl">Known Issues & Limitations</h2>
-          
-          <Card className="bg-warning/10 border-warning/30">
-            <CardContent className="p-lg">
-              <p className="color-muted mb-md">
-                We're actively working to address the following known accessibility issues:
-              </p>
-              <ul className="stack-sm text-body-sm color-muted">
-                <li>• Some complex data visualizations may have limited screen reader support</li>
-                <li>• Certain third-party integrations may not meet full WCAG standards</li>
-                <li>• File upload drag-and-drop areas require keyboard alternatives (available via context menu)</li>
-                <li>• Some dynamic content updates may not be immediately announced to screen readers</li>
+        <div className="mt-2xl grid gap-xl md:grid-cols-2">
+          <Card className="border border-border/40 bg-background/95 shadow-sm">
+            <CardContent className="space-y-lg p-xl">
+              <h3 className="text-heading-4 uppercase leading-tight">Getting Started</h3>
+              <ul className="space-y-sm text-body-sm text-muted-foreground">
+                {resourceLinks.map((resource) => (
+                  <li key={resource.name} className="flex items-center gap-sm">
+                    <ExternalLink className="h-icon-xs w-icon-xs" />
+                    <Link href={resource.href} className="underline">
+                      {resource.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
-              <p className="text-body-sm color-muted mt-md">
-                <strong>Timeline:</strong> We aim to address these issues in our next major release (Q2 2025).
-              </p>
             </CardContent>
           </Card>
-        </section>
 
-        {/* Testing & Validation */}
-        <section className="mb-2xl">
-          <h2 className="font-title text-heading-2 text-heading-3 mb-xl">Testing & Validation</h2>
-          
-          <div className="grid md:grid-cols-2 gap-lg">
-            <Card>
-              <CardContent className="p-lg">
-                <h3 className="text-heading-4 mb-md">Automated Testing</h3>
-                <ul className="stack-sm text-body-sm color-muted">
-                  <li>• axe-core accessibility engine</li>
-                  <li>• WAVE Web Accessibility Evaluation Tool</li>
-                  <li>• Lighthouse accessibility audits</li>
-                  <li>• Pa11y command line testing</li>
-                </ul>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardContent className="p-lg">
-                <h3 className="text-heading-4 mb-md">Manual Testing</h3>
-                <ul className="stack-sm text-body-sm color-muted">
-                  <li>• Screen reader navigation testing</li>
-                  <li>• Keyboard-only navigation testing</li>
-                  <li>• High contrast mode validation</li>
-                  <li>• User testing with disability community</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Feedback & Support */}
-        <section className="mb-2xl">
-          <h2 className="font-title text-heading-2 text-heading-3 mb-xl">Feedback & Support</h2>
-          
-          <Card>
-            <CardContent className="p-lg">
-              <div className="flex items-start gap-md">
-                <Mail className="h-icon-md w-icon-md text-foreground mt-xs" />
-                <div>
-                  <h3 className="text-heading-4 mb-sm">We Want to Hear From You</h3>
-                  <p className="color-muted mb-md">
-                    Your feedback helps us improve accessibility for everyone. If you encounter any accessibility barriers or have suggestions for improvement, please contact us:
-                  </p>
-                  
-                  <div className="stack-sm">
-                    <div>
-                      <h4 className="text-heading-4 mb-sm">Accessibility Team</h4>
-                      <div className="stack-xs text-body-sm">
-                        <p><strong>Email:</strong> accessibility@ghxstship.com</p>
-                        <p><strong>Phone:</strong> +1 (555) 123-4567 (TTY available)</p>
-                        <p><strong>Response Time:</strong> We aim to respond within 2 business days</p>
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <h4 className="text-heading-4 mb-sm">Alternative Formats</h4>
-                      <p className="text-body-sm color-muted">
-                        We can provide information in alternative formats such as large print, audio, or electronic formats upon request.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <Card className="border border-border/40 bg-background/95 shadow-sm">
+            <CardContent className="space-y-lg p-xl">
+              <h3 className="text-heading-4 uppercase leading-tight">External Resources</h3>
+              <ul className="space-y-sm text-body-sm text-muted-foreground">
+                {externalResources.map((resource) => (
+                  <li key={resource.name} className="flex items-center gap-sm">
+                    <Globe className="h-icon-xs w-icon-xs" />
+                    <Link href={resource.href} target="_blank" rel="noopener noreferrer" className="underline">
+                      {resource.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </CardContent>
           </Card>
-        </section>
+        </div>
+      </MarketingSection>
 
-        {/* Accessibility Resources */}
-        <section className="mb-2xl">
-          <h2 className="font-title text-heading-2 text-heading-3 mb-xl">Accessibility Resources</h2>
-          
-          <div className="grid md:grid-cols-2 gap-lg">
-            <Card>
-              <CardContent className="p-lg">
-                <h3 className="text-heading-4 mb-md">Getting Started</h3>
-                <ul className="stack-sm">
-                  <li className="flex items-center gap-sm">
-                    <ExternalLink className="h-icon-xs w-icon-xs text-foreground" />
-                    <a href="/help/accessibility-guide" className="text-foreground hover:underline">
-                      Accessibility User Guide
-                    </a>
-                  </li>
-                  <li className="flex items-center gap-sm">
-                    <ExternalLink className="h-icon-xs w-icon-xs text-foreground" />
-                    <a href="/help/keyboard-shortcuts" className="text-foreground hover:underline">
-                      Keyboard Shortcuts Reference
-                    </a>
-                  </li>
-                  <li className="flex items-center gap-sm">
-                    <ExternalLink className="h-icon-xs w-icon-xs text-foreground" />
-                    <a href="/help/screen-reader-guide" className="text-foreground hover:underline">
-                      Screen Reader Setup Guide
-                    </a>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardContent className="p-lg">
-                <h3 className="text-heading-4 mb-md">External Resources</h3>
-                <ul className="stack-sm">
-                  <li className="flex items-center gap-sm">
-                    <ExternalLink className="h-icon-xs w-icon-xs text-foreground" />
-                    <a href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline">
-                      W3C Web Accessibility Initiative
-                    </a>
-                  </li>
-                  <li className="flex items-center gap-sm">
-                    <ExternalLink className="h-icon-xs w-icon-xs text-foreground" />
-                    <a href="https://webaim.org/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline">
-                      WebAIM Accessibility Resources
-                    </a>
-                  </li>
-                  <li className="flex items-center gap-sm">
-                    <ExternalLink className="h-icon-xs w-icon-xs text-foreground" />
-                    <a href="https://www.ada.gov/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline">
-                      ADA.gov Information
-                    </a>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
+      <MarketingSection variant="primaryGradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Legal Compliance"
+          title="Regulatory Coverage"
+          description="GHXSTSHIP monitors and adheres to the accessibility regulations that affect our customers around the world."
+        />
 
-        {/* Legal Compliance */}
-        <section>
-          <h2 className="font-title text-heading-2 text-heading-3 mb-xl">Legal Compliance</h2>
-          
-          <Card>
-            <CardContent className="p-lg">
-              <p className="color-muted mb-md">
-                GHXSTSHIP is committed to compliance with applicable accessibility laws and regulations, including:
-              </p>
-              
-              <div className="grid md:grid-cols-2 gap-lg">
-                <div>
-                  <h3 className="text-heading-4 mb-sm">United States</h3>
-                  <ul className="stack-sm text-body-sm color-muted">
-                    <li>• Americans with Disabilities Act (ADA)</li>
-                    <li>• Section 508 of the Rehabilitation Act</li>
-                    <li>• 21st Century Communications and Video Accessibility Act</li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h3 className="text-heading-4 mb-sm">International</h3>
-                  <ul className="stack-sm text-body-sm color-muted">
-                    <li>• European Accessibility Act (EAA)</li>
-                    <li>• EN 301 549 European Standard</li>
-                    <li>• Accessibility for Ontarians with Disabilities Act (AODA)</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <p className="text-body-sm color-muted mt-lg">
-                This accessibility statement was last reviewed and updated on December 15, 2024. We review and update this statement regularly to ensure it remains current and accurate.
-              </p>
-            </CardContent>
-          </Card>
-        </section>
-      </div>
+        <div className="mt-2xl grid gap-xl md:grid-cols-2">
+          {legalRegions.map((region) => (
+            <MarketingCard
+              key={region.region}
+              title={region.region}
+              description={region.items.join(' • ')}
+              icon={<Shield className="h-icon-md w-icon-md" />}
+            />
+          ))}
+        </div>
+
+        <div className="mt-xl text-center text-body-sm text-muted-foreground">
+          This accessibility statement was last reviewed on December 15, 2024. We revisit and update the statement regularly to keep it current.
+        </div>
+      </MarketingSection>
     </div>
   );
 }

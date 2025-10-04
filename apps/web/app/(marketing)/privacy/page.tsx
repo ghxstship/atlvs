@@ -1,371 +1,235 @@
 import type { Metadata } from 'next';
-import { Card, CardContent, Badge } from '@ghxstship/ui';
-import { Shield, Eye, Lock, Users, Globe, Mail } from 'lucide-react';
+import Link from 'next/link';
+import { Badge, Card, CardContent } from '@ghxstship/ui';
+import {
+  Database,
+  FileCheck,
+  Globe,
+  Lock,
+  Mail,
+  Shield,
+  Users,
+} from 'lucide-react';
+
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+} from '../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | GHXSTSHIP',
-  description: 'Learn how GHXSTSHIP collects, uses, and protects your personal information.',
-  openGraph: {
-    title: 'Privacy Policy | GHXSTSHIP',
-    description: 'Learn how GHXSTSHIP collects, uses, and protects your personal information.',
-    url: 'https://ghxstship.com/privacy',
-  },
+  description: 'Learn how GHXSTSHIP collects, uses, and protects your information across ATLVS and OPENDECK.',
 };
+
+const principles = [
+  {
+    title: 'Transparency',
+    description: 'Clear documentation shows what data we collect, why, and how it supports your experience.',
+    icon: Globe,
+  },
+  {
+    title: 'Security',
+    description: 'Data is encrypted in transit and at rest with enterprise-grade controls.',
+    icon: Shield,
+  },
+  {
+    title: 'Control',
+    description: 'You can access, export, or delete your data at any time through your account or by contacting us.',
+    icon: Users,
+  },
+];
+
+const datapoints = [
+  {
+    title: 'Account & Profile Information',
+    description: 'Name, email, team role, and authentication credentials required to provision access.',
+  },
+  {
+    title: 'Usage Analytics',
+    description: 'Product interactions and device information to optimize workflows and reliability.',
+  },
+  {
+    title: 'Transactional Data',
+    description: 'Billing records, contracts, and invoices stored for compliance and support.',
+  },
+  {
+    title: 'Support Communications',
+    description: 'Conversations with our teams to improve service quality and troubleshoot issues.',
+  },
+];
+
+const securityMeasures = [
+  {
+    title: 'Encryption Everywhere',
+    description: 'TLS 1.2+ for data in transit and AES-256 for data at rest across GHXSTSHIP systems.',
+    icon: Lock,
+  },
+  {
+    title: 'Access Controls',
+    description: 'Role-based permissions, SSO, and MFA secure your organization’s environment.',
+    icon: Users,
+  },
+  {
+    title: 'Compliance Audits',
+    description: 'SOC 2 Type II and GDPR compliance with annual third-party reviews.',
+    icon: FileCheck,
+  },
+  {
+    title: 'Incident Response',
+    description: '24/7 monitoring, logging, and breach notification protocols aligned with global standards.',
+    icon: Database,
+  },
+];
+
+const rights = [
+  'Access, export, or correct your personal data',
+  'Request deletion of your account information',
+  'Object to processing for marketing communications',
+  'Appeal decisions made via automated processing',
+];
+
+const lastUpdated = new Date('2024-12-15').toLocaleDateString(undefined, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen py-mdxl">
-      <div className="container mx-auto px-md max-w-4xl">
-        {/* Header */}
-        <div className="text-center mb-3xl">
-          <Badge variant="outline" className="mb-md">
-            Legal
-          </Badge>
-          <h1 className="font-title text-heading-1 lg:text-display text-heading-3 mb-lg">
-            PRIVACY POLICY
-          </h1>
-          <p className="text-body color-muted mb-md">
-            Your privacy is important to us. This policy explains how we collect, use, and protect your information.
-          </p>
-          <p className="text-body-sm color-muted">
-            Last updated: December 15, 2024
-          </p>
-        </div>
+    <div className="min-h-screen">
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Policies"
+          title="Privacy Policy"
+          description="Your trust matters. This policy explains how GHXSTSHIP handles personal information and keeps productions secure."
+        />
+        <div className="mt-xl text-body-sm text-muted-foreground text-center">Last updated: {lastUpdated}</div>
+      </MarketingSection>
 
-        {/* Quick Overview */}
-        <Card className="mb-2xl bg-gradient-to-r from-primary/5 to-accent/5">
-          <CardContent className="p-xl">
-            <div className="flex items-center gap-sm mb-lg">
-              <Shield className="h-icon-lg w-icon-lg text-foreground" />
-              <h2 className="font-title text-heading-3 text-heading-3">Privacy at a Glance</h2>
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Our Principles"
+          title="How We Approach Privacy"
+          description="The GHXSTSHIP platform is designed with privacy, security, and control at every layer."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {principles.map((principle) => {
+            const Icon = principle.icon;
+            return (
+              <MarketingCard
+                key={principle.title}
+                title={principle.title}
+                description={principle.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
+            );
+          })}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Data We Collect"
+          title="Information You Share With GHXSTSHIP"
+          description="We collect the minimum data needed to deliver secure, compliant production workflows."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2">
+          {datapoints.map((item) => (
+            <MarketingCard key={item.title} title={item.title} description={item.description} />
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Security & Compliance"
+          title="How We Protect Your Data"
+          description="Enterprise security, audits, and incident response keep your productions safe."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {securityMeasures.map((measure) => {
+            const Icon = measure.icon;
+            return (
+              <MarketingCard
+                key={measure.title}
+                title={measure.title}
+                description={measure.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
+            );
+          })}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Your Rights"
+          title="Control Your Information"
+          description="You remain in command of your data. These rights apply regardless of where you’re located."
+        />
+
+        <Card className="mx-auto mt-2xl max-w-4xl border border-border/40 bg-background/95 shadow-sm">
+          <CardContent className="space-y-sm p-xl text-body text-muted-foreground">
+            {rights.map((right) => (
+              <div key={right} className="flex items-start gap-sm">
+                <Badge variant="outline" className="mt-xxs">Right</Badge>
+                <span>{right}</span>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Cookies"
+          title="How We Use Cookies"
+          description="Essential, analytics, and preference cookies help us deliver reliable, personalized experiences."
+        />
+
+        <div className="mt-2xl text-body-sm text-muted-foreground">
+          Manage your preferences anytime via the cookie banner or browser settings. See our <Link href="/cookies" className="underline">Cookie Policy</Link> for details.
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Global Operations"
+          title="International Data Transfers"
+          description="We operate worldwide. Safeguards like Standard Contractual Clauses and data residency options keep international transfers compliant."
+        />
+
+        <div className="mt-2xl text-body-sm text-muted-foreground">
+          Questions about regional storage? Connect with our data protection team at <Link href="mailto:dpo@ghxstship.com" className="underline">dpo@ghxstship.com</Link>.
+        </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Contact"
+          title="Need Clarity Or Want To Exercise Your Rights?"
+          description="Reach out and we’ll respond within two business days."
+          align="center"
+        />
+
+        <Card className="mx-auto mt-2xl max-w-3xl border border-border/40 bg-background/95 shadow-sm">
+          <CardContent className="space-y-sm p-xl text-body text-muted-foreground">
+            <div>
+              <strong>Email:</strong> <Link href="mailto:privacy@ghxstship.com" className="underline">privacy@ghxstship.com</Link>
             </div>
-            <div className="grid md:grid-cols-3 gap-lg">
-              <div className="flex items-start gap-sm">
-                <Eye className="h-icon-sm w-icon-sm text-foreground mt-xs" />
-                <div>
-                  <h3 className="text-heading-4 mb-sm">What We Collect</h3>
-                  <p className="text-body-sm color-muted">Account info, usage data, and technical information to provide our services.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-sm">
-                <Lock className="h-icon-sm w-icon-sm text-foreground mt-xs" />
-                <div>
-                  <h3 className="text-heading-4 mb-sm">How We Protect</h3>
-                  <p className="text-body-sm color-muted">Enterprise-grade security, encryption, and access controls protect your data.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-sm">
-                <Users className="h-icon-sm w-icon-sm text-foreground mt-xs" />
-                <div>
-                  <h3 className="text-heading-4 mb-sm">Your Rights</h3>
-                  <p className="text-body-sm color-muted">Access, correct, delete, or export your data at any time.</p>
-                </div>
-              </div>
+            <div>
+              <strong>Data Protection Officer:</strong> <Link href="mailto:dpo@ghxstship.com" className="underline">dpo@ghxstship.com</Link>
+            </div>
+            <div>
+              <strong>Mailing Address:</strong> GHXSTSHIP, Inc., 123 Market Street, Suite 500, San Francisco, CA 94105
             </div>
           </CardContent>
         </Card>
-
-        {/* Main Content */}
-        <div className="space-y-xsxl">
-          {/* Information We Collect */}
-          <section>
-            <h2 className="font-title text-heading-3 text-heading-3 mb-lg">1. Information We Collect</h2>
-            
-            <div className="stack-lg">
-              <div>
-                <h3 className="text-heading-4 text-body mb-sm">Account Information</h3>
-                <p className="color-muted mb-sm">
-                  When you create an account, we collect:
-                </p>
-                <ul className="list-disc list-inside stack-sm color-muted ml-md">
-                  <li>Name and email address</li>
-                  <li>Company name and role</li>
-                  <li>Profile information you choose to provide</li>
-                  <li>Billing and payment information (processed securely by Stripe)</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-heading-4 text-body mb-sm">Usage Data</h3>
-                <p className="color-muted mb-sm">
-                  To improve our services, we collect:
-                </p>
-                <ul className="list-disc list-inside stack-sm color-muted ml-md">
-                  <li>How you use our platform and features</li>
-                  <li>Projects and content you create (stored securely)</li>
-                  <li>Performance and error data</li>
-                  <li>Communication preferences</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-heading-4 text-body mb-sm">Technical Information</h3>
-                <p className="color-muted mb-sm">
-                  For security and functionality:
-                </p>
-                <ul className="list-disc list-inside stack-sm color-muted ml-md">
-                  <li>IP address and device information</li>
-                  <li>Browser type and version</li>
-                  <li>Operating system</li>
-                  <li>Cookies and similar technologies</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          {/* How We Use Information */}
-          <section>
-            <h2 className="font-title text-heading-3 text-heading-3 mb-lg">2. How We Use Your Information</h2>
-            
-            <div className="stack-md">
-              <div className="flex items-start gap-sm">
-                <div className="w-2 h-2 bg-accent rounded-full mt-sm"></div>
-                <div>
-                  <h3 className="text-heading-4 mb-sm">Provide Our Services</h3>
-                  <p className="color-muted">Create and manage your account, process payments, and deliver our platform features.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-sm">
-                <div className="w-2 h-2 bg-accent rounded-full mt-sm"></div>
-                <div>
-                  <h3 className="text-heading-4 mb-sm">Improve Our Platform</h3>
-                  <p className="color-muted">Analyze usage patterns, fix bugs, and develop new features based on user needs.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-sm">
-                <div className="w-2 h-2 bg-accent rounded-full mt-sm"></div>
-                <div>
-                  <h3 className="text-heading-4 mb-sm">Communicate With You</h3>
-                  <p className="color-muted">Send important updates, security alerts, and optional marketing communications.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-sm">
-                <div className="w-2 h-2 bg-accent rounded-full mt-sm"></div>
-                <div>
-                  <h3 className="text-heading-4 mb-sm">Ensure Security</h3>
-                  <p className="color-muted">Detect and prevent fraud, abuse, and security threats to protect all users.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Information Sharing */}
-          <section>
-            <h2 className="font-title text-heading-3 text-heading-3 mb-lg">3. Information Sharing</h2>
-            
-            <Card className="bg-secondary/20">
-              <CardContent className="p-lg">
-                <p className="color-muted mb-md">
-                  <strong>We do not sell your personal information.</strong> We only share information in these limited circumstances:
-                </p>
-                
-                <div className="stack-md">
-                  <div>
-                    <h3 className="text-heading-4 mb-sm">Service Providers</h3>
-                    <p className="text-body-sm color-muted">Trusted partners who help us operate our platform (hosting, payments, analytics) under strict data protection agreements.</p>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-heading-4 mb-sm">Legal Requirements</h3>
-                    <p className="text-body-sm color-muted">When required by law, court order, or to protect our rights and safety.</p>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-heading-4 mb-sm">Business Transfers</h3>
-                    <p className="text-body-sm color-muted">In the event of a merger, acquisition, or sale of assets, with proper notice to users.</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </section>
-
-          {/* Data Security */}
-          <section>
-            <h2 className="font-title text-heading-3 text-heading-3 mb-lg">4. Data Security</h2>
-            
-            <div className="grid md:grid-cols-2 gap-lg">
-              <Card>
-                <CardContent className="p-lg">
-                  <div className="flex items-center gap-sm mb-md">
-                    <Lock className="h-icon-md w-icon-md text-foreground" />
-                    <h3>Encryption</h3>
-                  </div>
-                  <p className="text-body-sm color-muted">All data is encrypted in transit and at rest using industry-standard AES-256 encryption.</p>
-                </CardContent>
-              </Card>
-              
-              <Card>
-                <CardContent className="p-lg">
-                  <div className="flex items-center gap-sm mb-md">
-                    <Shield className="h-icon-md w-icon-md text-foreground" />
-                    <h3>Access Controls</h3>
-                  </div>
-                  <p className="text-body-sm color-muted">Strict access controls and regular security audits protect your information.</p>
-                </CardContent>
-              </Card>
-              
-              <Card>
-                <CardContent className="p-lg">
-                  <div className="flex items-center gap-sm mb-md">
-                    <Globe className="h-icon-md w-icon-md text-foreground" />
-                    <h3>Compliance</h3>
-                  </div>
-                  <p className="text-body-sm color-muted">SOC 2 Type II certified and GDPR/CCPA compliant data handling practices.</p>
-                </CardContent>
-              </Card>
-              
-              <Card>
-                <CardContent className="p-lg">
-                  <div className="flex items-center gap-sm mb-md">
-                    <Users className="h-icon-md w-icon-md text-foreground" />
-                    <h3>Team Training</h3>
-                  </div>
-                  <p className="text-body-sm color-muted">Regular security training for all employees with access to user data.</p>
-                </CardContent>
-              </Card>
-            </div>
-          </section>
-
-          {/* Your Rights */}
-          <section>
-            <h2 className="font-title text-heading-3 text-heading-3 mb-lg">5. Your Rights and Choices</h2>
-            
-            <div className="stack-lg">
-              <div>
-                <h3 className="text-heading-4 text-body mb-sm">Data Access and Portability</h3>
-                <p className="color-muted">
-                  You can access and export your data at any time through your account settings or by contacting us.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-heading-4 text-body mb-sm">Correction and Updates</h3>
-                <p className="color-muted">
-                  Update your profile information directly in your account or contact us for assistance.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-heading-4 text-body mb-sm">Data Deletion</h3>
-                <p className="color-muted">
-                  Request deletion of your account and associated data. Some information may be retained for legal or security purposes.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-heading-4 text-body mb-sm">Marketing Communications</h3>
-                <p className="color-muted">
-                  Opt out of marketing emails at any time using the unsubscribe link or account preferences.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Cookies */}
-          <section>
-            <h2 className="font-title text-heading-3 text-heading-3 mb-lg">6. Cookies and Tracking</h2>
-            
-            <p className="color-muted mb-md">
-              We use cookies and similar technologies to enhance your experience:
-            </p>
-            
-            <div className="stack-sm">
-              <div className="flex items-start gap-sm">
-                <Badge variant="secondary" className="mt-xs">Essential</Badge>
-                <p className="text-body-sm color-muted">Required for basic platform functionality and security.</p>
-              </div>
-              <div className="flex items-start gap-sm">
-                <Badge variant="outline" className="mt-xs">Analytics</Badge>
-                <p className="text-body-sm color-muted">Help us understand how you use our platform to improve it.</p>
-              </div>
-              <div className="flex items-start gap-sm">
-                <Badge variant="outline" className="mt-xs">Preferences</Badge>
-                <p className="text-body-sm color-muted">Remember your settings and preferences across sessions.</p>
-              </div>
-            </div>
-            
-            <p className="text-body-sm color-muted mt-md">
-              You can manage cookie preferences through our cookie consent banner or browser settings.
-            </p>
-          </section>
-
-          {/* International Transfers */}
-          <section>
-            <h2 className="font-title text-heading-3 text-heading-3 mb-lg">7. International Data Transfers</h2>
-            
-            <p className="color-muted mb-md">
-              GHXSTSHIP operates globally. Your information may be transferred to and processed in countries other than your own, including the United States. We ensure appropriate safeguards are in place:
-            </p>
-            
-            <ul className="list-disc list-inside stack-sm color-muted ml-md">
-              <li>Standard Contractual Clauses for EU data transfers</li>
-              <li>Adequacy decisions where available</li>
-              <li>Binding corporate rules for internal transfers</li>
-              <li>Your explicit consent where required</li>
-            </ul>
-          </section>
-
-          {/* Children's Privacy */}
-          <section>
-            <h2 className="font-title text-heading-3 text-heading-3 mb-lg">8. Children's Privacy</h2>
-            
-            <Card className="bg-warning/10 border-warning/30">
-              <CardContent className="p-lg">
-                <p className="color-muted">
-                  Our services are not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us immediately.
-                </p>
-              </CardContent>
-            </Card>
-          </section>
-
-          {/* Changes to Policy */}
-          <section>
-            <h2 className="font-title text-heading-3 text-heading-3 mb-lg">9. Changes to This Policy</h2>
-            
-            <p className="color-muted mb-md">
-              We may update this privacy policy from time to time. We will notify you of any material changes by:
-            </p>
-            
-            <ul className="list-disc list-inside stack-sm color-muted ml-md mb-md">
-              <li>Email notification to your registered address</li>
-              <li>Prominent notice on our website</li>
-              <li>In-app notification when you next log in</li>
-            </ul>
-            
-            <p className="color-muted">
-              Your continued use of our services after any changes indicates your acceptance of the updated policy.
-            </p>
-          </section>
-
-          {/* Contact Information */}
-          <section>
-            <h2 className="font-title text-heading-3 text-heading-3 mb-lg">10. Contact Us</h2>
-            
-            <Card>
-              <CardContent className="p-lg">
-                <div className="flex items-start gap-md">
-                  <Mail className="h-icon-md w-icon-md text-foreground mt-xs" />
-                  <div>
-                    <h3 className="text-heading-4 mb-sm">Questions About This Policy?</h3>
-                    <p className="color-muted mb-md">
-                      If you have any questions about this privacy policy or our data practices, please contact us:
-                    </p>
-                    
-                    <div className="stack-sm text-body-sm">
-                      <p><strong>Email:</strong> privacy@ghxstship.com</p>
-                      <p><strong>Address:</strong> GHXSTSHIP, Inc.<br />123 Market Street, Suite 500<br />San Francisco, CA 94105</p>
-                      <p><strong>Data Protection Officer:</strong> dpo@ghxstship.com</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </section>
-        </div>
-      </div>
+      </MarketingSection>
     </div>
   );
 }

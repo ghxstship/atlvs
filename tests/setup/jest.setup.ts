@@ -2,8 +2,10 @@ import '@testing-library/jest-dom'
 import { TextEncoder, TextDecoder } from 'util'
 
 // Polyfills
-global.TextEncoder = TextEncoder
-global.TextDecoder = TextDecoder as any
+Object.assign(globalThis, {
+  TextEncoder,
+  TextDecoder,
+})
 
 // Mock Next.js router
 jest.mock('next/navigation', () => ({
@@ -49,12 +51,12 @@ jest.mock('@supabase/supabase-js', () => ({
 // Mock environment variables
 process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://test.supabase.co'
 process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = 'test-anon-key'
-process.env.NODE_ENV = 'test'
+Object.assign(process.env, { NODE_ENV: 'test' })
 
 // Suppress console errors in tests
 const originalError = console.error
 beforeAll(() => {
-  console.error = (...args: any[]) => {
+  console.error = (...args: unknown[]) => {
     if (
       typeof args[0] === 'string' &&
       args[0].includes('Warning: ReactDOM.render')

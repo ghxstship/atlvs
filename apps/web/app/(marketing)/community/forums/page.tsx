@@ -1,118 +1,210 @@
-import { Metadata } from 'next';
-import { Anton } from 'next/font/google';
-import { Button } from '@ghxstship/ui';
-import { MessageSquare, Users, TrendingUp, Clock } from 'lucide-react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Badge, Button } from '@ghxstship/ui';
+import { Calendar, Clock, MessageCircle, MessageSquare, TrendingUp, Users } from 'lucide-react';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingStatGrid,
+} from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Community Forums | GHXSTSHIP',
   description: 'Join the GHXSTSHIP community forums to connect with other users, share knowledge, and get support.',
 };
 
+const forumStats = [
+  { label: 'Threads', value: '4,735' },
+  { label: 'Active Members', value: '3,276' },
+  { label: 'Answers Resolved', value: '2,189' },
+  { label: 'Daily Posts', value: '120+' },
+];
+
+const forumCategories = [
+  {
+    title: 'General Discussion',
+    description: 'Production strategies, vendor recommendations, and shared learnings from live projects.',
+    posts: 1247,
+    members: 892,
+    icon: MessageSquare,
+    link: '#',
+  },
+  {
+    title: 'Product Support',
+    description: 'Workflow tips, integration guidance, and troubleshooting for ATLVS & OPENDECK.',
+    posts: 2156,
+    members: 1340,
+    icon: Users,
+    link: '#',
+  },
+  {
+    title: 'Feature Requests',
+    description: 'Shape the roadmap by highlighting the workflows and automations you need next.',
+    posts: 543,
+    members: 678,
+    icon: TrendingUp,
+    link: '#',
+  },
+  {
+    title: 'Announcements',
+    description: 'Release notes, program updates, and community news direct from the GHXSTSHIP team.',
+    posts: 89,
+    members: 2456,
+    icon: Clock,
+    link: '#',
+  },
+];
+
+const guidelines = [
+  {
+    title: 'Respect Every Voice',
+    description: 'Keep discussions constructive, inclusive, and grounded in real experience.',
+  },
+  {
+    title: 'Share What Works',
+    description: 'Help others by detailing the tactics, templates, and workflows driving results.',
+  },
+  {
+    title: 'Stay Focused',
+    description: 'Use tags, pick the right category, and keep threads on-topic to help others find answers.',
+  },
+];
+
+const upcomingSessions = [
+  {
+    title: 'Office Hours: Production Planning',
+    date: 'Dec 12, 2024',
+    time: '1:00 PM ET',
+    description: 'Drop in with your scheduling, budgeting, or staffing questions and leave with expert guidance.',
+  },
+  {
+    title: 'Automation Deep Dive',
+    date: 'Dec 19, 2024',
+    time: '3:00 PM ET',
+    description: 'See how power users are leveraging ATLVS automations to reduce manual effort by 40%.',
+  },
+  {
+    title: 'Open Feedback Forum',
+    date: 'Jan 9, 2025',
+    time: '2:00 PM ET',
+    description: 'Bring your feature requests and collaborate with the product team on future releases.',
+  },
+];
+
 export default function ForumsPage() {
-  const forumCategories = [
-    {
-      title: 'General Discussion',
-      description: 'General topics about GHXSTSHIP and the industry',
-      posts: 1247,
-      members: 892,
-      icon: MessageSquare,
-    },
-    {
-      title: 'Product Support',
-      description: 'Get help with ATLVS and OPENDECK',
-      posts: 2156,
-      members: 1340,
-      icon: Users,
-    },
-    {
-      title: 'Feature Requests',
-      description: 'Suggest new features and improvements',
-      posts: 543,
-      members: 678,
-      icon: TrendingUp,
-    },
-    {
-      title: 'Announcements',
-      description: 'Official updates and news from GHXSTSHIP',
-      posts: 89,
-      members: 2456,
-      icon: Clock,
-    },
-  ];
-
   return (
-    <div className="container mx-auto px-md py-smxl">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-3xl">
-          <h1 className={`${anton.className} uppercase text-heading-1 md:text-display text-heading-3 mb-lg`}>
-            COMMUNITY FORUMS
-          </h1>
-          <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-xl">
-            Connect with fellow creators, share knowledge, and get support from the GHXSTSHIP community.
-          </p>
-          <Button>
-            Join the Discussion
-          </Button>
+    <div className="min-h-screen">
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Community Forums"
+          title="Ask, Answer, Accelerate"
+          highlight="Accelerate"
+          description="Tap into thousands of professionals shipping productions daily. Share what works, troubleshoot fast, and stay ahead of the curve."
+          actions={
+            <Link href="#">
+              <Button className="group">
+                Join The Discussion
+                <MessageCircle className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          }
+        />
+        <div className="mt-2xl">
+          <MarketingStatGrid items={forumStats} />
         </div>
+      </MarketingSection>
 
-        <div className="grid md:grid-cols-2 gap-lg mb-3xl">
-          {forumCategories.map((category: any) => {
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Choose Your Channel"
+          title="High-Signal Spaces For Every Need"
+          description="Find the right room for your question—whether you need workflow support, inspiration, or a new integration."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2">
+          {forumCategories.map((category) => {
             const Icon = category.icon;
             return (
-              <div key={category.title} className="bg-card rounded-lg p-lg border hover:shadow-floating transition-shadow">
-                <div className="flex items-start justify-between mb-md">
-                  <div className="flex items-center">
-                    <div className="bg-accent/10 p-sm rounded-lg mr-md">
-                      <Icon className="h-icon-md w-icon-md text-foreground" />
-                    </div>
-                    <div>
-                      <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-xs`}>
-                        {category.title}
-                      </h3>
-                      <p className="text-body-sm color-muted">{category.description}</p>
-                    </div>
+              <MarketingCard
+                key={category.title}
+                title={category.title}
+                description={category.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+                highlight={`${category.posts.toLocaleString()} posts`}
+                footer={
+                  <div className="flex items-center justify-between text-body-sm text-muted-foreground">
+                    <span>{category.members.toLocaleString()} members</span>
+                    <Link href={category.link}>
+                      <Button variant="ghost" size="sm" className="px-sm">
+                        Enter
+                      </Button>
+                    </Link>
                   </div>
-                </div>
-                <div className="flex justify-between text-body-sm color-muted">
-                  <span>{category.posts.toLocaleString()} posts</span>
-                  <span>{category.members.toLocaleString()} members</span>
-                </div>
-              </div>
+                }
+              />
             );
           })}
         </div>
+      </MarketingSection>
 
-        <div className="bg-secondary/30 rounded-lg p-xl text-center">
-          <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-md`}>
-            COMMUNITY GUIDELINES
-          </h2>
-          <p className="color-muted mb-lg max-w-2xl mx-auto">
-            Help us maintain a welcoming and productive community by following our guidelines.
-          </p>
-          <div className="grid md:grid-cols-3 gap-lg text-left">
-            <div>
-              <h3 className="text-heading-4 mb-sm">Be Respectful</h3>
-              <p className="text-body-sm color-muted">
-                Treat all community members with respect and courtesy.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-heading-4 mb-sm">Stay On Topic</h3>
-              <p className="text-body-sm color-muted">
-                Keep discussions relevant to the forum category.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-heading-4 mb-sm">Help Others</h3>
-              <p className="text-body-sm color-muted">
-                Share your knowledge and help fellow community members.
-              </p>
-            </div>
-          </div>
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Live Programming"
+          title="Meet The Team In Real Time"
+          description="Regular office hours and deep-dive sessions designed to keep your productions running smoothly."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {upcomingSessions.map((session) => (
+            <MarketingCard
+              key={session.title}
+              title={session.title}
+              description={session.description}
+              highlight={`${session.date} · ${session.time}`}
+              icon={<Calendar className="h-icon-md w-icon-md" />}
+            />
+          ))}
         </div>
-      </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Guidelines"
+          title="Keep The Signal High"
+          description="A quick playbook so every thread remains actionable, respectful, and worth your time."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {guidelines.map((guideline) => (
+            <MarketingCard
+              key={guideline.title}
+              title={guideline.title}
+              description={guideline.description}
+            />
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="primaryGradient" padding="lg">
+        <MarketingSectionHeader
+          title="Ready To Post Your First Thread?"
+          description="Introduce yourself, share a win, or ask for help—this forum is built to respond."
+          align="center"
+        />
+        <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">
+          <Link href="#">
+            <Button className="group">
+              Start A Topic
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <Link href="/community/opportunities">
+            <Button variant="outline">Explore Opportunities</Button>
+          </Link>
+        </div>
+      </MarketingSection>
     </div>
   );
 }

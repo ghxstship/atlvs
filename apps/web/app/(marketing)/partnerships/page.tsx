@@ -1,465 +1,298 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Users, Globe, Zap, CheckCircle, Star, Building, Target } from 'lucide-react';
-import { anton } from '../../_components/lib/typography';
+import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
+import {
+  ArrowRight,
+  Award,
+  BarChart3,
+  Globe,
+  Handshake,
+  Lightbulb,
+  Rocket,
+  Users,
+} from 'lucide-react';
+
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingStatGrid,
+} from '../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Partnerships | GHXSTSHIP',
-  description: 'Partner with GHXSTSHIP to expand your reach and enhance your offerings. Explore integration partnerships, channel partnerships, and strategic alliances.',
+  description:
+    'Join the GHXSTSHIP partner ecosystem. Integrate technology, co-launch solutions, and reach global production teams.',
   openGraph: {
     title: 'Partnerships | GHXSTSHIP',
-    description: 'Partner with GHXSTSHIP to expand your reach and enhance your offerings. Explore integration partnerships, channel partnerships, and strategic alliances.',
+    description:
+      'Join the GHXSTSHIP partner ecosystem. Integrate technology, co-launch solutions, and reach global production teams.',
     url: 'https://ghxstship.com/partnerships',
   },
 };
 
-const partnershipTypes = [
-  {
-    icon: Zap,
-    title: 'Technology Partners',
-    description: 'Integrate your tools and services with the GHXSTSHIP platform to provide seamless workflows for creative professionals.',
-    benefits: ['API access', 'Co-marketing opportunities', 'Technical support', 'Joint go-to-market'],
-    color: 'from-primary to-secondary',
-  },
-  {
-    icon: Users,
-    title: 'Channel Partners',
-    description: 'Resell GHXSTSHIP solutions to your clients and earn competitive commissions while expanding your service offerings.',
-    benefits: ['Revenue sharing', 'Sales training', 'Marketing materials', 'Dedicated support'],
-    color: 'from-primary to-secondary',
-  },
-  {
-    icon: Building,
-    title: 'Strategic Partners',
-    description: 'Form strategic alliances to co-develop solutions, enter new markets, and create innovative offerings together.',
-    benefits: ['Joint development', 'Market expansion', 'Shared resources', 'Strategic alignment'],
-    color: 'from-primary to-secondary',
-  },
-  {
-    icon: Globe,
-    title: 'Regional Partners',
-    description: 'Represent GHXSTSHIP in your local market and help us expand our global presence while growing your business.',
-    benefits: ['Territory exclusivity', 'Local market expertise', 'Cultural adaptation', 'Regional support'],
-    color: 'from-primary to-secondary',
-  },
+const partnerStats = [
+  { label: 'Certified Partners', value: '185' },
+  { label: 'Co-launched Products', value: '60+' },
+  { label: 'Global Markets', value: '32' },
+  { label: 'Avg. Partner ROI', value: '3.1x' },
 ];
 
-const currentPartners = [
+const partnerTracks = [
   {
-    name: 'Adobe Creative Suite',
-    type: 'Technology Integration',
-    description: 'Seamless integration with Adobe Creative Cloud applications for enhanced creative workflows.',
-    logo: '/api/placeholder/120/60',
+    title: 'Technology Partners',
+    description: 'Integrate your platform with ATLVS and OPENDECK to unlock automation, shared analytics, and a joint product roadmap.',
+    icon: Lightbulb,
   },
   {
-    name: 'Slack',
-    type: 'Communication Platform',
-    description: 'Real-time notifications and project updates directly in your Slack workspace.',
-    logo: '/api/placeholder/120/60',
+    title: 'Solution Partners',
+    description: 'Implement GHXSTSHIP for clients, deliver change management, and build managed service offerings that scale.',
+    icon: Handshake,
   },
   {
-    name: 'Google Workspace',
-    type: 'Productivity Suite',
-    description: 'Integration with Google Drive, Docs, and Calendar for seamless collaboration.',
-    logo: '/api/placeholder/120/60',
-  },
-  {
-    name: 'Figma',
-    type: 'Design Platform',
-    description: 'Direct integration with Figma for design collaboration and version control.',
-    logo: '/api/placeholder/120/60',
-  },
-  {
-    name: 'Zoom',
-    type: 'Video Conferencing',
-    description: 'Integrated video calls and screen sharing for remote creative collaboration.',
-    logo: '/api/placeholder/120/60',
-  },
-  {
-    name: 'Dropbox',
-    type: 'File Storage',
-    description: 'Secure file sharing and storage integration for creative assets.',
-    logo: '/api/placeholder/120/60',
+    title: 'Channel & Resellers',
+    description: 'Grow revenue with localized marketing, lead sharing, and co-branded campaigns tailored to your territory.',
+    icon: Rocket,
   },
 ];
 
 const partnerBenefits = [
   {
-    title: 'Expand Your Market Reach',
-    description: 'Access GHXSTSHIP\'s global network of 100K+ creative professionals and enterprise clients.',
+    title: 'Launch Support',
+    description: 'Partner enablement, dedicated success managers, and technical validation ensure a smooth go-to-market.',
+    icon: Rocket,
+  },
+  {
+    title: 'Revenue Programs',
+    description: 'Tiered incentives, referral bonuses, and recurring revenue shares for long-term success.',
+    icon: BarChart3,
+  },
+  {
+    title: 'Co-Marketing Kits',
+    description: 'Campaign assets, event sponsorships, and press opportunities to amplify your brand.',
     icon: Globe,
   },
   {
-    title: 'Increase Revenue Streams',
-    description: 'Generate new revenue through partnerships, integrations, and joint solutions.',
-    icon: Target,
-  },
-  {
-    title: 'Enhance Your Offering',
-    description: 'Provide more value to your customers by integrating with our comprehensive platform.',
-    icon: Zap,
-  },
-  {
-    title: 'Co-Marketing Opportunities',
-    description: 'Leverage joint marketing initiatives to increase brand visibility and lead generation.',
-    icon: Users,
+    title: 'Product Influence',
+    description: 'Access to beta programs, roadmap councils, and direct collaboration with GHXSTSHIP product teams.',
+    icon: Lightbulb,
   },
 ];
 
-const partnershipProcess = [
+const partnerProcess = [
   {
-    step: '1',
-    title: 'Initial Discussion',
-    description: 'Schedule a call to discuss partnership opportunities and alignment.',
+    step: '01',
+    title: 'Apply & Align',
+    description: 'Share your offerings, customer segments, and goals. We’ll identify the best partnership track together.',
   },
   {
-    step: '2',
-    title: 'Proposal Review',
-    description: 'We review your proposal and assess mutual benefits and technical requirements.',
+    step: '02',
+    title: 'Enable & Integrate',
+    description: 'Complete enablement, build integrations or service packages, and finalize go-to-market plans.',
   },
   {
-    step: '3',
-    title: 'Agreement & Onboarding',
-    description: 'Finalize partnership agreement and begin the technical integration process.',
+    step: '03',
+    title: 'Launch & Grow',
+    description: 'Co-market your solution, activate success programs, and iterate with ongoing support from GHXSTSHIP.',
+  },
+];
+
+const successStories = [
+  {
+    company: 'CreativeFlow Solutions',
+    type: 'Channel Partner',
+    result: '300% revenue growth in 18 months',
+    testimonial:
+      'Partnering with GHXSTSHIP transformed our services business. We co-created offerings and tripled our revenue.',
+    author: 'Sarah Martinez, CEO',
   },
   {
-    step: '4',
-    title: 'Launch & Support',
-    description: 'Go live with the partnership and receive ongoing support for success.',
+    company: 'TechIntegrate Inc.',
+    type: 'Technology Partner',
+    result: '50K+ new users through integration',
+    testimonial:
+      'The GHXSTSHIP integration expanded our reach and generated tangible outcomes for joint customers.',
+    author: 'David Chen, CTO',
+  },
+];
+
+const partnerResources = [
+  {
+    title: 'API Documentation',
+    description: 'Explore authentication, webhooks, and integration guides for ATLVS and OPENDECK.',
+    href: '/resources/docs',
+  },
+  {
+    title: 'Marketing Playbooks',
+    description: 'Access co-branding guidelines, event kits, and launch checklists.',
+    href: '/resources/guides',
+  },
+  {
+    title: 'Partner Support Center',
+    description: 'Submit tickets, request enablement sessions, or chat with partner success.',
+    href: '/contact',
   },
 ];
 
 export default function PartnershipsPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <Badge variant="outline" className="mb-md">
-              Partner Program
-            </Badge>
-            <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
-              GROW
-              <br />
-              <span className="text-gradient-accent">
-                TOGETHER
-              </span>
-            </h1>
-            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-xl">
-              Join GHXSTSHIP's partner ecosystem and unlock new opportunities for growth. 
-              Whether you're a technology provider, reseller, or strategic partner, 
-              we'll help you succeed in the creative collaboration market.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-md justify-center mb-2xl">
-              <Button className="group">
-                Become a Partner
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Partner Ecosystem"
+          title="Build With GHXSTSHIP"
+          highlight="GHXSTSHIP"
+          description="Deliver smarter production workflows with ATLVS and OPENDECK. Partner with the platform designed for the creative economy."
+          actions={
+            <Link href="#partner-apply">
+              <Button className="group" size="lg">
+                Start Partnership Conversation
                 <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button>
-                Partner Portal
-              </Button>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-lg max-w-2xl mx-auto">
-              <div className="text-center">
-                <div className={`${anton.className} text-heading-3 text-heading-3 color-foreground mb-sm uppercase`}>200+</div>
-                <div className="text-body-sm color-muted">Active Partners</div>
-              </div>
-              <div className="text-center">
-                <div className={`${anton.className} text-heading-3 text-heading-3 color-foreground mb-sm uppercase`}>50+</div>
-                <div className="text-body-sm color-muted">Integrations</div>
-              </div>
-              <div className="text-center">
-                <div className={`${anton.className} text-heading-3 text-heading-3 color-foreground mb-sm uppercase`}>25+</div>
-                <div className="text-body-sm color-muted">Countries</div>
-              </div>
-              <div className="text-center">
-                <div className={`${anton.className} text-heading-3 text-heading-3 color-foreground mb-sm uppercase`}>$50M+</div>
-                <div className="text-body-sm color-muted">Partner Revenue</div>
-              </div>
-            </div>
-          </div>
+            </Link>
+          }
+        />
+        <div className="mt-2xl">
+          <MarketingStatGrid items={partnerStats} />
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* Partnership Types */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              PARTNERSHIP OPPORTUNITIES
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Choose the partnership model that best fits your business goals and capabilities.
-            </p>
-          </div>
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Partner Tracks"
+          title="Choose How You Collaborate"
+          description="Three partnership paths—technology, solution, and channel—built to match your strengths and business goals."
+        />
 
-          <div className="grid md:grid-cols-2 gap-xl">
-            {partnershipTypes.map((type: any) => {
-              const Icon = type.icon;
-              return (
-                <Card key={type.title} className="hover:shadow-floating transition-shadow">
-                  <CardContent className="p-xl">
-                    <div className={`w-icon-2xl h-icon-2xl bg-gradient-to-r ${type.color} rounded-lg flex items-center justify-center mb-lg`}>
-                      <Icon className="h-icon-md w-icon-md text-background" />
-                    </div>
-                    
-                    <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-md uppercase`}>
-                      {type.title}
-                    </h3>
-                    <p className="color-muted mb-lg">{type.description}</p>
-                    
-                    <div className="stack-sm mb-lg">
-                      <h4 className="text-heading-4 text-body-sm color-muted uppercase">Benefits</h4>
-                      {type.benefits.map((benefit: any) => (
-                        <div key={benefit} className="flex items-center gap-sm">
-                          <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0" />
-                          <span className="text-body-sm color-foreground">{benefit}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <Button variant="outline" className="w-full group">
-                      Learn More
-                      <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {partnerTracks.map((track) => {
+            const Icon = track.icon;
+            return (
+              <MarketingCard
+                key={track.title}
+                title={track.title}
+                description={track.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
+            );
+          })}
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* Current Partners */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              OUR PARTNERS
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              We're proud to work with industry-leading companies to provide the best experience for our users.
-            </p>
-          </div>
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Benefits"
+          title="Why Partners Choose GHXSTSHIP"
+          description="Scale faster with a team that co-invests in launch, revenue, and long-term success."
+        />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-lg">
-            {currentPartners.map((partner: any) => (
-              <Card key={partner.name} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-lg text-center">
-                  <div className="w-component-md h-component-md bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg mx-auto mb-md flex items-center justify-center">
-                    <Users className="h-icon-lg w-icon-lg text-foreground" />
-                  </div>
-                  <h3 className={`${anton.className} text-body text-heading-3 mb-sm uppercase`}>
-                    {partner.name}
-                  </h3>
-                  <Badge variant="outline" className="text-body-sm mb-sm">
-                    {partner.type}
-                  </Badge>
-                  <p className="text-body-sm color-muted">{partner.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {partnerBenefits.map((benefit) => {
+            const Icon = benefit.icon;
+            return (
+              <MarketingCard
+                key={benefit.title}
+                title={benefit.title}
+                description={benefit.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
+            );
+          })}
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* Partner Benefits */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              WHY PARTNER WITH US?
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Discover the advantages of joining the GHXSTSHIP partner ecosystem.
-            </p>
-          </div>
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Process"
+          title="From Alignment To Launch"
+          description="We make partnering simple: align on goals, enable your team, and go to market with GHXSTSHIP."
+        />
 
-          <div className="grid md:grid-cols-2 gap-xl">
-            {partnerBenefits.map((benefit: any) => {
-              const Icon = benefit.icon;
-              return (
-                <Card key={benefit.title} className="hover:shadow-floating transition-shadow">
-                  <CardContent className="p-xl">
-                    <div className="flex items-start gap-md">
-                      <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-primary to-secondary">
-                        <Icon className="h-icon-md w-icon-md text-background" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>{benefit.title}</h3>
-                        <p className="color-muted">{benefit.description}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {partnerProcess.map((step) => (
+            <MarketingCard
+              key={step.step}
+              title={`Step ${step.step}: ${step.title}`}
+              description={step.description}
+              icon={<ArrowRight className="h-icon-md w-icon-md rotate-90" />}
+            />
+          ))}
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* Partnership Process */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              HOW TO BECOME A PARTNER
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Our streamlined process makes it easy to start partnering with GHXSTSHIP.
-            </p>
-          </div>
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Success Stories"
+          title="Proof In The Results"
+          description="Hear from partners growing faster, serving clients better, and unlocking new revenue streams with GHXSTSHIP."
+        />
 
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-border hidden lg:block"></div>
-            
-            <div className="space-y-xsxl">
-              {partnershipProcess.map((step, index) => (
-                <div key={step.step} className={`flex items-center gap-xl ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
-                  <div className={`flex-1 ${index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
-                    <Card className="hover:shadow-floating transition-shadow">
-                      <CardContent className="p-lg">
-                        <h3 className={`${anton.className} text-body text-heading-3 mb-sm uppercase`}>
-                          {step.title}
-                        </h3>
-                        <p className="color-muted">{step.description}</p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                  
-                  <div className="relative z-10 hidden lg:block">
-                    <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-background text-heading-3">
-                      {step.step}
-                    </div>
-                  </div>
-                  
-                  <div className="flex-1 hidden lg:block"></div>
+        <div className="mt-2xl grid gap-xl md:grid-cols-2">
+          {successStories.map((story) => (
+            <Card key={story.company} className="border border-border/40 bg-background/95 shadow-sm">
+              <CardContent className="space-y-lg p-xl">
+                <div className="flex items-center gap-sm">
+                  <h3 className="text-heading-4 uppercase leading-tight">{story.company}</h3>
+                  <Badge variant="outline">{story.type}</Badge>
                 </div>
-              ))}
-            </div>
-          </div>
+                <div className="flex items-center gap-sm text-body font-medium text-foreground">
+                  <Award className="h-icon-xs w-icon-xs text-warning" />
+                  {story.result}
+                </div>
+                <blockquote className="border-l-4 border-primary pl-md text-body text-muted-foreground italic">
+                  “{story.testimonial}”
+                </blockquote>
+                <cite className="text-body-sm text-muted-foreground">— {story.author}</cite>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* Partner Success Stories */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              PARTNER SUCCESS STORIES
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              See how our partners have grown their business with GHXSTSHIP.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-xl">
-            {[
-              {
-                company: 'CreativeFlow Solutions',
-                type: 'Channel Partner',
-                result: '300% revenue growth in 18 months',
-                testimonial: 'Partnering with GHXSTSHIP has transformed our business. We\'ve expanded our service offerings and tripled our revenue.',
-                author: 'Sarah Martinez, CEO',
-              },
-              {
-                company: 'TechIntegrate Inc.',
-                type: 'Technology Partner',
-                result: '50K+ new users through integration',
-                testimonial: 'The GHXSTSHIP integration has brought us thousands of new users and strengthened our platform significantly.',
-                author: 'David Chen, CTO',
-              },
-            ].map((story: any) => (
-              <Card key={story.company} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-xl">
-                  <div className="flex items-center gap-sm mb-md">
-                    <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase`}>
-                      {story.company}
-                    </h3>
-                    <Badge variant="outline">
-                      {story.type}
-                    </Badge>
-                  </div>
-                  
-                  <div className="flex items-center gap-sm mb-md">
-                    <Star className="h-icon-xs w-icon-xs color-warning" />
-                    <span className="text-heading-4 text-foreground">{story.result}</span>
-                  </div>
-                  
-                  <blockquote className="border-l-4 border-primary pl-md mb-md">
-                    <p className="color-foreground italic">"{story.testimonial}"</p>
-                  </blockquote>
-                  
-                  <cite className="text-body-sm color-muted">— {story.author}</cite>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+      <MarketingSection id="partner-apply" variant="primaryGradient" padding="lg">
+        <MarketingSectionHeader
+          title="Ready To Partner?"
+          description="Tell us about your solutions and goals. We’ll reach out with next steps, enablement resources, and launch timelines."
+          align="center"
+        />
+        <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">
+          <Link href="/contact">
+            <Button className="group" size="lg">
+              Start Partnership Discussion
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <Button variant="outline" size="lg">
+            Download Partner Guide
+          </Button>
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-md">
-          <div className="text-center">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              READY TO PARTNER?
-            </h2>
-            <p className="text-body color-muted mb-xl max-w-2xl mx-auto">
-              Join our growing partner ecosystem and unlock new opportunities for growth. 
-              Let's build the future of creative collaboration together.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-md justify-center">
-              <Link href="/contact">
-                <Button className="w-full sm:w-auto group">
-                  Start Partnership Discussion
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-              <Button className="w-full sm:w-auto">
-                Download Partner Guide
-              </Button>
-            </div>
-          </div>
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Resources"
+          title="Equip Your Team"
+          description="Access technical documentation, marketing assets, and support channels to launch successfully."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-3">
+          {partnerResources.map((resource) => (
+            <MarketingCard
+              key={resource.title}
+              title={resource.title}
+              description={resource.description}
+              icon={<Globe className="h-icon-md w-icon-md" />}
+              footer={
+                <Link href={resource.href}>
+                  <Button variant="ghost" size="sm" className="px-sm">
+                    View Resource
+                  </Button>
+                </Link>
+              }
+            />
+          ))}
         </div>
-      </section>
-
-      {/* Related Resources */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              PARTNER RESOURCES
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-lg">
-            {[
-              { title: 'API Documentation', href: '/resources/docs', description: 'Technical integration guides' },
-              { title: 'Marketing Materials', href: '/resources/guides', description: 'Co-marketing resources' },
-              { title: 'Support Center', href: '/contact', description: 'Partner support and assistance' },
-            ].map((resource: any) => (
-              <a key={resource.title} href={resource.href}>
-                <Card className="hover:shadow-floating transition-shadow group">
-                  <CardContent className="p-lg text-center">
-                    <h3 className={`${anton.className} text-body text-heading-3 mb-sm uppercase group-hover:text-foreground transition-colors`}>
-                      {resource.title}
-                    </h3>
-                    <p className="text-body-sm color-muted">
-                      {resource.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      </MarketingSection>
     </div>
   );
 }

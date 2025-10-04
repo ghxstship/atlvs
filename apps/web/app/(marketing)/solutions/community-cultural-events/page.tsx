@@ -1,443 +1,249 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Heart, Globe, Users, Zap, CheckCircle, Play, Star, Calendar, Sparkles } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
+import {
+  ArrowRight,
+  Calendar,
+  Flag,
+  Globe,
+  Handshake,
+  Heart,
+  Megaphone,
+  Sparkles,
+  Users,
+} from 'lucide-react';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingStatGrid,
+} from '../../../_components/marketing';
 
 export const metadata: Metadata = {
-  title: 'Community & Cultural Events Solutions | GHXSTSHIP',
-  description: 'Celebrate community and culture with GHXSTSHIP. Manage festivals, cultural celebrations, community gatherings, and heritage events.',
-  openGraph: {
-    title: 'Community & Cultural Events Solutions | GHXSTSHIP',
-    description: 'Celebrate community and culture with GHXSTSHIP. Manage festivals, cultural celebrations, community gatherings, and heritage events.',
-    url: 'https://ghxstship.com/solutions/community-cultural-events',
-  },
+  title: 'Community & Cultural Events | GHXSTSHIP',
+  description:
+    'Celebrate heritage, coordinate volunteers, and partner with local organizations using GHXSTSHIP’s cultural event workflows.',
 };
 
-const challenges = [
+const heroStats = [
+  { label: 'Community Members Reached', value: '2M+' },
+  { label: 'Cultural Events Orchestrated', value: '5,000+' },
+  { label: 'Traditions Preserved', value: '150+' },
+  { label: 'Authenticity Rating', value: '98%' },
+];
+
+const programPillars = [
   {
-    icon: Heart,
-    title: 'Cultural Sensitivity & Authenticity',
-    description: 'Respecting traditions while creating inclusive experiences that honor cultural heritage',
-    solution: 'Cultural advisory integration with community stakeholder management and authenticity protocols',
+    title: 'Cultural Programming',
+    description: 'Curate performances, exhibitions, and storytelling tracks with cultural advisors and heritage groups.',
+    icon: Sparkles,
   },
   {
-    icon: Globe,
-    title: 'Diverse Community Coordination',
-    description: 'Bringing together multiple cultural groups, languages, and traditions in harmony',
-    solution: 'Multi-cultural coordination tools with translation services and inclusive planning workflows',
+    title: 'Community Engagement',
+    description: 'Coordinate neighborhood outreach, youth workshops, and multi-language communications.',
+    icon: Megaphone,
   },
   {
+    title: 'Cultural Partnerships',
+    description: 'Manage collaborations with cultural centers, faith leaders, and heritage organizations.',
+    icon: Handshake,
+  },
+  {
+    title: 'Volunteer Operations',
+    description: 'Recruit, schedule, and train volunteers with shift bidding and credential management.',
     icon: Users,
-    title: 'Volunteer & Community Engagement',
-    description: 'Mobilizing large volunteer networks and ensuring meaningful community participation',
-    solution: 'Volunteer management platform with skill matching and community engagement tracking',
   },
   {
+    title: 'Logistics & Compliance',
+    description: 'Secure permits, coordinate municipal services, and document accessibility plans.',
+    icon: Flag,
+  },
+  {
+    title: 'Production Technology',
+    description: 'Track staging, sound, lighting, and broadcast support with real-time updates from the field.',
     icon: Calendar,
-    title: 'Seasonal & Traditional Timing',
-    description: 'Coordinating events around cultural calendars, religious observances, and seasonal celebrations',
-    solution: 'Cultural calendar integration with traditional timing considerations and conflict avoidance',
   },
 ];
 
-const features = [
+const engagementHighlights = [
   {
-    title: 'Cultural Festival Management',
-    description: 'Comprehensive coordination of cultural festivals, parades, and heritage celebrations',
-    benefits: ['Cultural programming', 'Vendor coordination', 'Performance scheduling', 'Heritage displays'],
+    title: 'Inclusive Programming',
+    description: 'Collect cultural requirements, dietary preferences, and ceremonial needs directly from stakeholders.',
   },
   {
-    title: 'Community Engagement Platform',
-    description: 'Tools to involve local communities in planning and executing cultural events',
-    benefits: ['Stakeholder involvement', 'Community feedback', 'Local partnerships', 'Volunteer coordination'],
+    title: 'Language Access',
+    description: 'Coordinate translators, signage, and ASL interpreters so every community feels represented.',
   },
   {
-    title: 'Multicultural Event Support',
-    description: 'Specialized tools for managing diverse cultural requirements and traditions',
-    benefits: ['Cultural protocols', 'Language support', 'Religious considerations', 'Dietary accommodations'],
+    title: 'Economic Impact',
+    description: 'Track local vendor spend, sponsorship activation, and grant outcomes for reporting.',
   },
   {
-    title: 'Impact & Legacy Tracking',
-    description: 'Measure community impact and preserve cultural heritage through events',
-    benefits: ['Community metrics', 'Cultural preservation', 'Legacy documentation', 'Impact reporting'],
+    title: 'Legacy Documentation',
+    description: 'Archive traditions, recordings, and oral histories for future generations.',
   },
 ];
 
 const caseStudies = [
   {
-    title: 'International Heritage Festival',
-    project: 'Multi-Cultural Community Celebration',
-    challenge: 'Coordinating 25+ cultural groups for a 3-day festival with 100,000+ attendees and authentic cultural programming',
-    solution: 'Implemented GHXSTSHIP for cultural coordination with community stakeholder management and volunteer platform',
-    results: [
-      '100% cultural group participation',
-      '95% community satisfaction rating',
-      '50% increase in cultural awareness',
-      '200+ new community partnerships formed',
-    ],
-    testimonial: 'GHXSTSHIP helped us create the most inclusive and authentic cultural celebration our city has ever seen.',
+    company: 'Citywide Heritage Festival',
+    project: 'Multicultural Celebration Series',
+    challenge: 'Coordinating 80 cultural groups with multilingual programming across the region.',
+    result: '100% cultural participation · 95% community satisfaction · 50% increase in cultural awareness · 200+ new partnerships',
+    quote:
+      'GHXSTSHIP helped us deliver the most inclusive celebration our city has ever seen. Every community felt heard and represented.',
     author: 'Elena Vasquez, Cultural Events Director',
   },
   {
-    title: 'Annual Harvest Festival',
+    company: 'Annual Harvest Festival',
     project: 'Traditional Agricultural Celebration',
-    challenge: 'Preserving century-old traditions while engaging modern audiences across 5,000+ rural community members',
-    solution: 'Used GHXSTSHIP for tradition preservation workflows with modern engagement tools and volunteer coordination',
-    results: [
-      '300% increase in youth participation',
-      '100% tradition authenticity maintained',
-      '80% improvement in volunteer coordination',
-      '$500K+ economic impact for local community',
-    ],
-    testimonial: 'The platform allowed us to honor our heritage while creating new traditions for future generations.',
+    challenge: 'Preserving century-old traditions while engaging modern audiences across 5,000+ residents.',
+    result: '300% youth participation lift · 100% tradition authenticity · 80% better volunteer coordination · $500K local impact',
+    quote:
+      'The platform honored our heritage while introducing new experiences for the next generation. Nothing slipped through the cracks.',
     author: 'Robert Thompson, Community Leader',
   },
 ];
 
 const integrations = [
-  { name: 'Cultural Centers', category: 'Community' },
-  { name: 'Local Government', category: 'Municipal' },
-  { name: 'Heritage Organizations', category: 'Cultural' },
-  { name: 'Volunteer Networks', category: 'Community' },
-  { name: 'Translation Services', category: 'Language' },
-  { name: 'Local Media', category: 'Communications' },
-  { name: 'Community Sponsors', category: 'Funding' },
-  { name: 'Cultural Performers', category: 'Entertainment' },
+  'Community Cultural Centers',
+  'Municipal Services',
+  'Heritage Organizations',
+  'Volunteer Networks',
+  'Translation Services',
+  'Local Media Partners',
+  'Community Sponsors',
+  'Cultural Performers',
 ];
 
 export default function CommunityCulturalEventsPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-to-br from-warning/5 via-background to-destructive/5">
-        <div className="container mx-auto px-md">
-          <div className="grid lg:grid-cols-2 gap-xsxl items-center">
-            <div className="stack-xl">
-              <div>
-                <Badge variant="outline" className="mb-md">
-                  Community & Cultural Events
-                </Badge>
-                <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
-                  CELEBRATE
-                  <br />
-                  <span className="bg-gradient-to-r from-warning to-destructive bg-clip-text text-transparent">
-                    COMMUNITY
-                  </span>
-                  <br />
-                  CULTURE
-                </h1>
-                <p className="text-heading-4 color-muted">
-                  From vibrant cultural festivals to intimate community gatherings, GHXSTSHIP 
-                  empowers organizers to create authentic celebrations that honor heritage, 
-                  build connections, and strengthen community bonds.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-lg">
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>2M+</div>
-                  <div className="text-body-sm color-muted">Community Members</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>5,000+</div>
-                  <div className="text-body-sm color-muted">Cultural Events</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>150+</div>
-                  <div className="text-body-sm color-muted">Cultural Traditions</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-sm uppercase`}>98%</div>
-                  <div className="text-body-sm color-muted">Cultural Authenticity</div>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-md">
-                <Link href="/auth/signup">
-                  <Button className="w-full sm:w-auto group">
-                    Start Celebrating
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-                <Button variant="outline" className="w-full sm:w-auto group">
-                  <Play className="mr-sm h-icon-xs w-icon-xs" />
-                  Explore Traditions
-                </Button>
-              </div>
-            </div>
-
-            {/* Cultural Dashboard Preview */}
-            <div className="relative">
-              <Card className="bg-background border shadow-popover overflow-hidden">
-                <div className="flex items-center gap-sm px-md py-sm bg-secondary/50 border-b">
-                  <div className="flex gap-sm">
-                    <div className="w-3 h-3 rounded-full bg-destructive"></div>
-                    <div className="w-3 h-3 rounded-full bg-warning"></div>
-                    <div className="w-3 h-3 rounded-full bg-success"></div>
-                  </div>
-                  <div className="flex-1 text-center">
-                    <div className="inline-flex items-center gap-sm  px-md py-xs bg-background rounded-md text-body-sm color-muted">
-                      <Sparkles className="w-3 h-3" />
-                      cultural.ghxstship.com
-                    </div>
-                  </div>
-                </div>
-
-                <CardContent className="p-lg stack-md">
-                  <div className="flex items-center justify-between">
-                    <h3 className={`${anton.className} text-body text-heading-3 uppercase`}>HERITAGE FESTIVAL 2024</h3>
-                    <Badge variant="outline" className="color-warning border-warning">
-                      Active
-                    </Badge>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-sm">
-                    <div className="bg-secondary/30 rounded-lg p-sm">
-                      <div className="text-body-sm color-muted mb-xs">Communities</div>
-                      <div>25</div>
-                      <div className="flex items-center gap-xs mt-xs">
-                        <div className="w-2 h-2 bg-warning rounded-full animate-pulse"></div>
-                        <span className="text-body-sm color-warning">United</span>
-                      </div>
-                    </div>
-                    <div className="bg-secondary/30 rounded-lg p-sm">
-                      <div className="text-body-sm color-muted mb-xs">Volunteers</div>
-                      <div>450</div>
-                      <div className="flex -cluster-xs mt-xs">
-                        {[1, 2, 3, 4].map((i: any) => (
-                          <div key={i} className="w-3 h-3 bg-warning rounded-full border border-background"></div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="bg-secondary/30 rounded-lg p-sm">
-                      <div className="text-body-sm color-muted mb-xs">Traditions</div>
-                      <div>100%</div>
-                      <div className="w-full bg-secondary rounded-full h-1 mt-sm">
-                        <div className="bg-success h-1 rounded-full w-full"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="stack-sm">
-                    <div className="text-body-sm form-label color-muted">Cultural Programming</div>
-                    {[
-                      { program: 'Traditional Dance', participants: 120, stage: 'Main', color: 'bg-destructive' },
-                      { program: 'Heritage Crafts', participants: 85, stage: 'Pavilion', color: 'bg-accent' },
-                      { program: 'Cultural Food Fair', participants: 300, stage: 'Plaza', color: 'bg-success' },
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-sm text-body-sm">
-                        <div className={`w-2 h-2 rounded-full ${item.color}`}></div>
-                        <span className="form-label flex-1">{item.program}</span>
-                        <span className="color-muted">{item.stage}</span>
-                        <span className="color-muted">({item.participants})</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-sm pt-sm border-t">
-                    <Heart className="w-icon-xs h-icon-xs color-warning" />
-                    <span className="text-body-sm form-label">Community Unity Score: 9.8/10</span>
-                    <div className="ml-auto">
-                      <div className="w-2 h-2 bg-warning rounded-full animate-pulse"></div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Challenges Section */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              CULTURAL EVENT CHALLENGES
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Community and cultural events require deep understanding of traditions and inclusive coordination.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-xl">
-            {challenges.map((challenge: any) => {
-              const Icon = challenge.icon;
-              return (
-                <Card key={challenge.title} className="hover:shadow-floating transition-shadow">
-                  <CardContent className="p-xl">
-                    <div className="flex items-start gap-md">
-                      <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-warning to-destructive">
-                        <Icon className="h-icon-md w-icon-md text-background" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>{challenge.title}</h3>
-                        <p className="color-muted mb-md">{challenge.description}</p>
-                        <div className="flex items-start gap-sm">
-                          <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0 mt-0.5" />
-                          <p className="text-body-sm form-label color-foreground">{challenge.solution}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              CULTURAL CELEBRATION PLATFORM
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Everything you need to create authentic cultural events that honor traditions and build community.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-xl">
-            {features.map((feature: any) => (
-              <Card key={feature.title} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-xl">
-                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-md uppercase`}>{feature.title}</h3>
-                  <p className="color-muted mb-lg">{feature.description}</p>
-                  
-                  <div className="stack-sm">
-                    {feature.benefits.map((benefit: any) => (
-                      <div key={benefit} className="flex items-center gap-sm">
-                        <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0" />
-                        <span className="text-body-sm color-foreground">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              CULTURAL CELEBRATION STORIES
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              See how communities are preserving heritage and building connections with GHXSTSHIP.
-            </p>
-          </div>
-
-          <div className="space-y-xsxl">
-            {caseStudies.map((study: any) => (
-              <Card key={study.title} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-xl">
-                  <div className="grid lg:grid-cols-2 gap-xl">
-                    <div>
-                      <Badge variant="outline" className="mb-md">{study.project}</Badge>
-                      <h3 className={`${anton.className} text-heading-3 text-heading-3 mb-md uppercase`}>{study.title}</h3>
-                      
-                      <div className="stack-md">
-                        <div>
-                          <h4 className="text-heading-4 text-body-sm color-muted mb-sm uppercase">CHALLENGE</h4>
-                          <p className="color-foreground">{study.challenge}</p>
-                        </div>
-                        
-                        <div>
-                          <h4 className="text-heading-4 text-body-sm color-muted mb-sm uppercase">SOLUTION</h4>
-                          <p className="color-foreground">{study.solution}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="text-heading-4 text-body-sm color-muted mb-md uppercase">RESULTS</h4>
-                      <div className="stack-sm mb-lg">
-                        {study.results.map((result: any) => (
-                          <div key={result} className="flex items-center gap-sm">
-                            <Star className="h-icon-xs w-icon-xs color-warning flex-shrink-0" />
-                            <span className="text-body-sm form-label color-foreground">{result}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <blockquote className="border-l-4 border-primary pl-md">
-                        <p className="color-foreground italic mb-sm">"{study.testimonial}"</p>
-                        <cite className="text-body-sm color-muted">— {study.author}</cite>
-                      </blockquote>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Integrations */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              COMMUNITY NETWORK CONNECTIONS
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Connect with cultural organizations, community groups, and heritage preservation networks.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-lg">
-            {integrations.map((integration: any) => (
-              <Card key={integration.name} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-lg text-center">
-                  <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-warning to-destructive rounded-lg flex items-center justify-center mx-auto mb-md">
-                    <Zap className="h-icon-md w-icon-md text-background" />
-                  </div>
-                  <h3 className="text-heading-4 color-foreground mb-xs">{integration.name}</h3>
-                  <p className="text-body-sm color-muted">{integration.category}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-warning/5 to-destructive/5">
-        <div className="container mx-auto px-md">
-          <div className="text-center">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
-              READY TO UNITE COMMUNITIES?
-            </h2>
-            <p className="text-body color-muted mb-xl max-w-2xl mx-auto">
-              Join community leaders using GHXSTSHIP to create authentic cultural celebrations 
-              that honor heritage, preserve traditions, and strengthen community bonds.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-md justify-center">
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Industry Solutions"
+          title="Community & Cultural Events"
+          highlight="Cultural"
+          description="Design authentic celebrations, coordinate volunteers, and spotlight heritage with GHXSTSHIP’s community event toolkit."
+          actions={
+            <div className="flex flex-col items-center gap-sm sm:flex-row">
               <Link href="/auth/signup">
-                <Button className="w-full sm:w-auto group">
+                <Button className="group" size="lg">
                   Start Celebrating
                   <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" className="w-full sm:w-auto">
-                  Schedule Demo
+                <Button variant="outline" size="lg">
+                  Speak With Community Team
                 </Button>
               </Link>
             </div>
-          </div>
+          }
+        />
+        <div className="mt-2xl">
+          <MarketingStatGrid items={heroStats} />
         </div>
-      </section>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Program Pillars"
+          title="Plan With Cultural Sensitivity"
+          description="Coordinate performers, elders, and municipal partners while respecting traditions and community needs."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-3">
+          {programPillars.map((pillar) => {
+            const Icon = pillar.icon;
+            return (
+              <MarketingCard
+                key={pillar.title}
+                title={pillar.title}
+                description={pillar.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
+            );
+          })}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Impact"
+          title="Strengthen Community Bonds"
+          description="Organizers use GHXSTSHIP to deliver inclusive, well-documented celebrations that leave lasting impact."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {engagementHighlights.map((highlight) => (
+            <MarketingCard key={highlight.title} title={highlight.title} description={highlight.description} icon={<Heart className="h-icon-md w-icon-md" />} />
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Proof"
+          title="Celebrations Powered By GHXSTSHIP"
+          description="See how organizers preserve heritage, grow participation, and measure cultural impact."
+        />
+
+        <div className="mt-2xl grid gap-xl md:grid-cols-2">
+          {caseStudies.map((study) => (
+            <Card key={study.company} className="border border-border/40 bg-background/95 shadow-sm">
+              <CardContent className="space-y-md p-xl">
+                <div className="flex items-center gap-sm">
+                  <h3 className="text-heading-4 uppercase leading-tight">{study.company}</h3>
+                  <Badge variant="outline">{study.project}</Badge>
+                </div>
+                <p className="text-body-sm text-muted-foreground">{study.challenge}</p>
+                <div className="text-body font-medium text-foreground">{study.result}</div>
+                <blockquote className="border-l-4 border-primary pl-md text-body text-muted-foreground italic">“{study.quote}”</blockquote>
+                <cite className="text-body-sm text-muted-foreground">— {study.author}</cite>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Integrations"
+          title="Unite Partners & Stakeholders"
+          description="Connect GHXSTSHIP with cultural institutions, municipal services, and volunteer platforms."
+          align="center"
+        />
+        <div className="mt-2xl grid gap-md md:grid-cols-4">
+          {integrations.map((partner) => (
+            <div key={partner} className="rounded-xl border border-border/60 bg-muted/30 px-lg py-md text-center text-body-sm text-muted-foreground">
+              {partner}
+            </div>
+          ))}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection variant="primaryGradient" padding="lg">
+        <MarketingSectionHeader
+          title="Ready To Honor Your Community?"
+          description="Partner with GHXSTSHIP to design celebrations that uplift voices, preserve tradition, and create shared memories."
+          align="center"
+        />
+        <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">
+          <Link href="/contact">
+            <Button className="group" size="lg">
+              Book A Cultural Planning Session
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <Link href="/auth/signup">
+            <Button variant="outline" size="lg">
+              Start Free Trial
+            </Button>
+          </Link>
+        </div>
+      </MarketingSection>
     </div>
   );
 }

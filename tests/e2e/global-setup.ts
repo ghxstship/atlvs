@@ -1,7 +1,7 @@
 import { chromium, type FullConfig } from '@playwright/test';
 import { createClient } from '@supabase/supabase-js';
 
-async function globalSetup(config: FullConfig) {
+async function globalSetup(_config: FullConfig) {
   // Setup test database with test data
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,

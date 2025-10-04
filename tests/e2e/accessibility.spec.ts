@@ -45,7 +45,6 @@ test.describe('Accessibility Testing', () => {
   test('should have proper heading hierarchy', async ({ page }) => {
     await page.goto('/dashboard');
     
-    const headings = await page.locator('h1, h2, h3, h4, h5, h6').allTextContents();
     const headingLevels = await page.locator('h1, h2, h3, h4, h5, h6').evaluateAll(
       elements => elements.map(el => parseInt(el.tagName.charAt(1)))
     );
@@ -97,6 +96,7 @@ test.describe('Accessibility Testing', () => {
 
     // Allow some contrast issues for demo purposes, but log them
     if (accessibilityScanResults.violations.length > 0) {
+      // eslint-disable-next-line no-console
       console.log('Color contrast violations found:', accessibilityScanResults.violations);
     }
     

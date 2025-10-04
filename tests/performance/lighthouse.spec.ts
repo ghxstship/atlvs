@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import type { Response } from '@playwright/test';
 import { playAudit } from 'playwright-lighthouse';
 
 test.describe('Performance Testing with Lighthouse', () => {
@@ -75,7 +76,9 @@ test.describe('Performance Testing with Lighthouse', () => {
     await page.waitForLoadState('networkidle');
     
     // Collect Core Web Vitals
-    const metrics = await client.send('Performance.getMetrics');
+    const metrics = await client.send('Performance.getMetrics') as {
+      metrics: Array<{ name: string; value: number }>;
+    };
     
     const lcp = metrics.metrics.find(m => m.name === 'LargestContentfulPaint');
     const fid = metrics.metrics.find(m => m.name === 'FirstInputDelay');
@@ -133,16 +136,14 @@ test.describe('Performance Testing with Lighthouse', () => {
     expect(loadTime).toBeLessThan(2000);
     
     // Check memory usage (if available)
-    const performance = await page.evaluate(() => {
-      if ('memory' in performance) {
-        return (performance as any).memory;
-      }
-      return null;
+    const memoryUsage = await page.evaluate(() => {
+      const navPerformance = window.performance as Performance & { memory?: { usedJSHeapSize: number } };
+      return navPerformance.memory?.usedJSHeapSize ?? null;
     });
     
-    if (performance) {
+    if (memoryUsage !== null) {
       // Memory usage should be reasonable (< 50MB)
-      expect(performance.usedJSHeapSize).toBeLessThan(50 * 1024 * 1024);
+      expect(memoryUsage).toBeLessThan(50 * 1024 * 1024);
     }
   });
 
@@ -150,15 +151,21 @@ test.describe('Performance Testing with Lighthouse', () => {
     await page.goto('/projects');
     
     // Measure interaction performance
-    const interactions = [];
+    const interactions: Array<{ url: string; durationMs: number }> = [];
+    const requestTimings = new Map<string, number>();
     
-    page.on('response', response => {
-      const startTime = Date.now();
-      interactions.push({
-        url: response.url(),
-        startTime,
-        endTime: Date.now(),
-      });
+    page.on('request', (request) => {
+      requestTimings.set(request.url(), Date.now());
+    });
+
+    page.on('response', (response) => {
+      const url = response.url();
+      const startedAt = requestTimings.get(response.request().url());
+      if (startedAt) {
+        const durationMs = Date.now() - startedAt;
+        interactions.push({ url, durationMs });
+        requestTimings.delete(response.request().url());
+      }
     });
     
     // Perform typical user interactions
@@ -174,8 +181,7 @@ test.describe('Performance Testing with Lighthouse', () => {
     
     // Check that interactions completed within reasonable time
     for (const interaction of interactions.slice(-5)) { // Last 5 interactions
-      const duration = interaction.endTime - interaction.startTime;
-      expect(duration).toBeLessThan(1000); // Under 1 second per interaction
+      expect(interaction.durationMs).toBeLessThan(1000); // Under 1 second per interaction
     }
   });
 
@@ -223,15 +229,20 @@ test.describe('Performance Testing with Lighthouse', () => {
 
   test('should optimize bundle size', async ({ page }) => {
     // Check bundle size by examining network requests
-    const requests: any[] = [];
+    const bundleRequests: Array<{ url: string; size: number }> = [];
     
-    page.on('response', response => {
+    page.on('response', (response: Response) => {
       const contentLength = response.headers()['content-length'];
-      if (contentLength && response.url().includes('.js')) {
-        requests.push({
-          url: response.url(),
-          size: parseInt(contentLength),
-        });
+      if (!contentLength) return;
+
+      if (response.url().includes('.js')) {
+        const size = Number.parseInt(contentLength, 10);
+        if (!Number.isNaN(size)) {
+          bundleRequests.push({
+            url: response.url(),
+            size,
+          });
+        }
       }
     });
     
@@ -239,13 +250,13 @@ test.describe('Performance Testing with Lighthouse', () => {
     await page.waitForLoadState('networkidle');
     
     // Calculate total JS bundle size
-    const totalSize = requests.reduce((sum, req) => sum + req.size, 0);
+    const totalSize = bundleRequests.reduce<number>((sum, req) => sum + req.size, 0);
     
     // Should be under 2MB total
     expect(totalSize).toBeLessThan(2 * 1024 * 1024);
     
     // Main bundle should be under 500KB
-    const mainBundle = requests.find(req => req.url.includes('main') || req.url.includes('app'));
+    const mainBundle = bundleRequests.find(req => req.url.includes('main') || req.url.includes('app'));
     if (mainBundle) {
       expect(mainBundle.size).toBeLessThan(500 * 1024);
     }

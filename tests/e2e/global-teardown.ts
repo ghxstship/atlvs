@@ -1,3 +1,4 @@
+import { unlinkSync, existsSync } from 'fs';
 import { createClient } from '@supabase/supabase-js';
 
 async function globalTeardown() {
@@ -12,9 +13,8 @@ async function globalTeardown() {
   await supabase.auth.admin.deleteUser(process.env.TEST_USER_ID!);
 
   // Clean up stored auth state
-  const fs = require('fs');
-  if (fs.existsSync('tests/e2e/auth-state.json')) {
-    fs.unlinkSync('tests/e2e/auth-state.json');
+  if (existsSync('tests/e2e/auth-state.json')) {
+    unlinkSync('tests/e2e/auth-state.json');
   }
 }
 

@@ -1,443 +1,284 @@
 import type { Metadata } from 'next';
-import { anton } from '../../_components/lib/typography';
 import Link from 'next/link';
-import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Film, Megaphone, Music, Building, CheckCircle, Users, BarChart3, Zap, Globe } from 'lucide-react';
-import { typography } from '../../_components/lib/typography';
+import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
+import {
+  ArrowRight,
+  BarChart3,
+  Building,
+  Film,
+  Globe,
+  Megaphone,
+  Music,
+  Target,
+  Users,
+  Zap,
+} from 'lucide-react';
+
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingStatGrid,
+} from '../../_components/marketing';
 
 export const metadata: Metadata = {
-  title: 'Solutions - Production Management That Actually Works | GHXSTSHIP',
-  description: 'Real production management for Film & TV, Advertising, Music & Events, and Corporate teams who are tired of juggling 47 different apps.',
+  title: 'Industry Solutions | GHXSTSHIP',
+  description:
+    'Discover how GHXSTSHIP powers film & TV, advertising, live events, and corporate production teams with tailored workflows.',
   openGraph: {
-    title: 'Solutions - Production Management That Actually Works | GHXSTSHIP',
-    description: 'Real production management for teams who are tired of juggling 47 different apps.',
+    title: 'Industry Solutions | GHXSTSHIP',
+    description:
+      'Discover how GHXSTSHIP powers film & TV, advertising, live events, and corporate production teams with tailored workflows.',
     url: 'https://ghxstship.com/solutions',
   },
 };
 
-const solutions = [
+const solutionStats = [
+  { label: 'Productions Managed', value: '120K+' },
+  { label: 'Average Time Saved', value: '45%' },
+  { label: 'Vendors & Talent', value: '25K+' },
+  { label: 'Global Markets', value: '50+' },
+];
+
+const industries = [
   {
     id: 'film-tv',
     icon: Film,
     title: 'Film & TV',
-    tagline: 'Production Management That Doesn\'t Crash Under Pressure',
-    description: 'Stop losing your mind coordinating shoots. Manage crews, locations, and budgets without the usual chaos.',
-    longDescription: 'Built by people who\'ve actually managed $50M+ productions. From pre-production planning to post-delivery, we handle the complexity so you can focus on making great content instead of babysitting spreadsheets and Slack channels.',
-    features: [
-      'Script breakdown and scheduling',
-      'Multi-location shoot coordination',
-      'Crew and talent management',
-      'Equipment and location tracking',
-      'Budget and expense management',
-      'Post-production workflow',
-    ],
-    benefits: [
-      'Reduce production timelines by 45%',
-      'Improve crew coordination and communication',
-      'Real-time budget and schedule tracking',
-      'Streamlined approval processes',
-      'Enhanced post-production collaboration',
-    ],
-    stats: {
-      projects: '15K+',
-      savings: '45%',
-      satisfaction: '99%',
-      clients: '500+',
-    },
-    gradient: 'from-primary to-secondary',
+    tagline: 'Orchestrate multi-location shoots with confidence.',
+    description:
+      'Crew coordination, asset approvals, and budget tracking built for productions that can’t afford delays.',
     href: '/solutions/film-tv',
-    caseStudy: {
-      company: 'Meridian Studios',
-      project: 'The Last Frontier',
-      challenge: 'Managing a $50M production across 12 locations with 200+ crew members',
-      result: 'Completed 2 weeks ahead of schedule, 15% under budget',
-    },
+    stats: { projects: '15K+', savings: '45%', satisfaction: '99%', clients: '500+' },
   },
   {
     id: 'advertising',
     icon: Megaphone,
     title: 'Advertising',
-    tagline: 'Campaigns That Actually Launch On Time',
-    description: 'Stop chasing approvals and missing deadlines. Manage creative workflows without losing your sanity.',
-    longDescription: 'Built for agencies tired of client revision hell and missed launch dates. From concept to delivery, we streamline the chaos so you can focus on creating great work instead of managing endless email chains and version control nightmares.',
-    features: [
-      'Campaign planning and strategy',
-      'Creative asset management',
-      'Client approval workflows',
-      'Multi-channel campaign coordination',
-      'Performance tracking and analytics',
-      'Brand compliance monitoring',
-    ],
-    benefits: [
-      'Accelerate campaign delivery by 35%',
-      'Streamline client approval processes',
-      'Improve creative asset organization',
-      'Enhanced team collaboration',
-      'Real-time campaign performance insights',
-    ],
-    stats: {
-      projects: '25K+',
-      savings: '35%',
-      satisfaction: '97%',
-      clients: '750+',
-    },
-    gradient: 'from-primary to-secondary',
+    tagline: 'Ship campaigns on time across every channel.',
+    description:
+      'Creative approvals, client collaboration, and media planning in one workflow.',
     href: '/solutions/advertising',
-    caseStudy: {
-      company: 'Apex Advertising',
-      project: 'Global Brand Campaign',
-      challenge: 'Coordinating a multi-market campaign across 15 countries with tight deadlines',
-      result: 'Delivered on time across all markets, 25% increase in campaign effectiveness',
-    },
+    stats: { projects: '25K+', savings: '35%', satisfaction: '97%', clients: '750+' },
   },
   {
     id: 'music-events',
     icon: Music,
-    title: 'Music & Events',
-    tagline: 'Events That Don\'t Fall Apart Last Minute',
-    description: 'Stop panicking about vendor no-shows and talent drama. Coordinate events that actually happen as planned.',
-    longDescription: 'Built by event producers who\'ve survived festival meltdowns and last-minute venue changes. From planning to execution, we handle the logistics nightmare so you can focus on creating amazing experiences instead of putting out fires.',
-    features: [
-      'Event planning and timeline management',
-      'Venue and logistics coordination',
-      'Talent and vendor management',
-      'Ticketing and audience engagement',
-      'Live event monitoring and support',
-      'Post-event analytics and reporting',
-    ],
-    benefits: [
-      'Improve event success rate to 99.8%',
-      'Reduce planning time by 40%',
-      'Enhanced vendor and talent coordination',
-      'Real-time event monitoring',
-      'Comprehensive post-event insights',
-    ],
-    stats: {
-      projects: '8K+',
-      savings: '40%',
-      satisfaction: '98%',
-      clients: '300+',
-    },
-    gradient: 'from-primary to-secondary',
+    title: 'Live Events',
+    tagline: 'Keep festivals, tours, and broadcasts running on schedule.',
+    description:
+      'Vendor management, run-of-show logistics, and real-time monitoring built for live ops.',
     href: '/solutions/music-events',
-    caseStudy: {
-      company: 'Harmony Events',
-      project: 'Music Festival Series',
-      challenge: 'Managing 5 simultaneous festivals across different cities with shared resources',
-      result: '99.8% event success rate, 50% reduction in coordination overhead',
-    },
+    stats: { projects: '8K+', savings: '40%', satisfaction: '98%', clients: '300+' },
   },
   {
     id: 'corporate',
     icon: Building,
-    title: 'Corporate',
-    tagline: 'Corporate Content Without the Corporate Headaches',
-    description: 'Scale content production without drowning in approval workflows and compliance nightmares.',
-    longDescription: 'Built for corporate teams tired of endless approval chains and brand guideline chaos. From training videos to marketing materials, we streamline enterprise content production so you can actually ship things instead of living in revision purgatory.',
-    features: [
-      'Content strategy and planning',
-      'Internal communications management',
-      'Training and educational content',
-      'Brand asset management',
-      'Compliance and approval workflows',
-      'Global content distribution',
-    ],
-    benefits: [
-      'Accelerate content production by 50%',
-      'Ensure brand consistency across all content',
-      'Streamline approval and compliance processes',
-      'Improve internal communication effectiveness',
-      'Scale content operations globally',
-    ],
-    stats: {
-      projects: '35K+',
-      savings: '50%',
-      satisfaction: '98%',
-      clients: '1K+',
-    },
-    gradient: 'from-primary to-secondary',
+    title: 'Corporate Content',
+    tagline: 'Enterprise-ready workflows for internal production teams.',
+    description:
+      'Compliance, translations, and distribution workflows designed for global enterprises.',
     href: '/solutions/corporate',
-    caseStudy: {
-      company: 'Global Tech Corp',
-      project: 'Worldwide Training Initiative',
-      challenge: 'Creating and distributing training content for 50,000+ employees across 40 countries',
-      result: 'Reduced production time by 60%, improved training completion rates by 35%',
-    },
+    stats: { projects: '35K+', savings: '50%', satisfaction: '98%', clients: '1K+' },
   },
 ];
 
 const commonFeatures = [
   {
-    icon: Users,
     title: 'Team Collaboration',
-    description: 'Real-time communication and file sharing across all team members',
+    description: 'Real-time chat, shared calendars, and asset reviews keep crews aligned across time zones.',
+    icon: Users,
   },
   {
+    title: 'Analytics & Forecasting',
+    description: 'Dashboards, burn-down charts, and predictive alerts surface bottlenecks before they hit.',
     icon: BarChart3,
-    title: 'Analytics & Insights',
-    description: 'Comprehensive reporting and performance analytics',
   },
   {
-    icon: Zap,
     title: 'Automation',
-    description: 'Automated workflows and intelligent task management',
+    description: 'Trigger workflows from milestones, auto-assign tasks, and sync with finance tools.',
+    icon: Zap,
   },
   {
+    title: 'Global Coordination',
+    description: 'Localization, regional compliance, and vendor sourcing support productions worldwide.',
     icon: Globe,
-    title: 'Global Scale',
-    description: 'Multi-region support with local compliance and regulations',
   },
 ];
+
+const integrationVendors = ['Slack', 'Adobe CC', 'Google Workspace', 'Microsoft 365'];
 
 export default function SolutionsPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-subtle">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <Badge variant="outline" className="mb-md">
-              Industry Solutions
-            </Badge>
-            <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
-              TAILORED FOR
-              <br />
-              <span className="text-gradient-accent">
-                YOUR INDUSTRY
-              </span>
-            </h1>
-            <p className={`max-w-3xl mx-auto ${typography.heroSubtitle}`}>
-              Stop juggling 47 different apps. We built production management that actually works 
-              for your industry's specific chaos, not generic project management fluff.
-            </p>
-          </div>
+      <MarketingSection variant="gradient" padding="lg">
+        <MarketingSectionHeader
+          eyebrow="Industry Solutions"
+          title="Built For High-Stakes Productions"
+          highlight="High-Stakes"
+          description="GHXSTSHIP adapts to the way film crews, agencies, event teams, and enterprises produce work—with workflows tuned to each industry."
+          actions={
+            <Link href="/solutions/film-tv">
+              <Button className="group" size="lg">
+                Explore Film & TV
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          }
+        />
+        <div className="mt-2xl">
+          <MarketingStatGrid items={solutionStats} />
+        </div>
+      </MarketingSection>
 
-          {/* Industry Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
-            {solutions.map((solution: any) => {
-              const Icon = solution.icon;
-              return (
-                <Card key={solution.id} className="group hover:shadow-floating transition-all duration-300 hover:-translate-y-1">
-                  <CardContent className="p-lg text-center">
-                    <div className={`inline-flex items-center justify-center w-component-md h-component-md rounded-lg bg-gradient-to-r ${solution.gradient} mb-md`}>
-                      <Icon className="h-icon-lg w-icon-lg text-background" />
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Industries"
+          title="Tailored For Your Mission"
+          description="Choose the solution that matches your production complexity, team structure, and compliance requirements."
+        />
+
+        <div className="mt-2xl space-y-2xl">
+          {industries.map((industry, index) => {
+            const Icon = industry.icon;
+            return (
+              <div
+                key={industry.id}
+                className={`grid gap-2xl lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-start ${index % 2 === 1 ? 'lg:[&>*:first-child]:order-last' : ''}`}
+              >
+                <Card className="rounded-3xl border border-border/40 bg-background/95 shadow-sm">
+                  <CardContent className="space-y-xl p-xl">
+                    <div className="flex flex-wrap items-center gap-md">
+                      <div className="inline-flex h-icon-xl w-icon-xl items-center justify-center rounded-full bg-primary/10 text-primary">
+                        <Icon className="h-icon-md w-icon-md" />
+                      </div>
+                      <div>
+                        <Badge variant="outline" className="uppercase tracking-[0.2em]">
+                          {industry.title}
+                        </Badge>
+                        <h3 className="mt-xs text-heading-3 uppercase leading-tight">{industry.tagline}</h3>
+                      </div>
                     </div>
-                    <h3 className="font-title text-heading-4 text-heading-3 mb-sm">{solution.title}</h3>
-                    <p className="text-body-sm color-muted mb-md">{solution.tagline}</p>
-                    <a href={solution.href}>
-                      <Button className="transition-all duration-200 hover:scale-105 group-hover:text-accent">
-                        Learn More
-                        <ArrowRight className="ml-sm h-3 w-3 transition-transform group-hover:translate-x-1" />
+                    <p className="text-body text-muted-foreground leading-relaxed">{industry.description}</p>
+                    <div className="grid gap-md md:grid-cols-2">
+                      <MarketingCard
+                        title="Projects"
+                        description={industry.stats.projects}
+                        icon={<Target className="h-icon-md w-icon-md" />}
+                      />
+                      <MarketingCard
+                        title="Time Saved"
+                        description={industry.stats.savings}
+                        icon={<Zap className="h-icon-md w-icon-md" />}
+                      />
+                      <MarketingCard
+                        title="Satisfaction"
+                        description={industry.stats.satisfaction}
+                        icon={<Users className="h-icon-md w-icon-md" />}
+                      />
+                      <MarketingCard
+                        title="Clients"
+                        description={industry.stats.clients}
+                        icon={<Globe className="h-icon-md w-icon-md" />}
+                      />
+                    </div>
+                    <Link href={industry.href}>
+                      <Button className="group">
+                        View {industry.title} Solution
+                        <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                       </Button>
-                    </a>
+                    </Link>
                   </CardContent>
                 </Card>
-              );
-            })}
-          </div>
+
+                <Card className="rounded-3xl border border-border/40 bg-background/85 shadow-sm">
+                  <CardContent className="space-y-lg p-xl">
+                    <h4 className="text-heading-4 uppercase leading-tight">What Teams Achieve</h4>
+                    <p className="text-body-sm text-muted-foreground leading-relaxed">
+                      Explore case studies, playbooks, and metrics from organizations operating in {industry.title}.
+                    </p>
+                    <Button variant="outline">Download Industry Brief</Button>
+                  </CardContent>
+                </Card>
+              </div>
+            );
+          })}
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* Detailed Solutions */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="space-y-mdxl">
-            {solutions.map((solution, index) => {
-              const Icon = solution.icon;
-              return (
-                <div key={solution.id} className={`grid lg:grid-cols-2 gap-xsxl items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
-                  {/* Content */}
-                  <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                    <div className="stack-lg">
-                      <div>
-                        <div className="flex items-center gap-sm mb-sm">
-                          <div className={`p-sm rounded-lg bg-gradient-to-r ${solution.gradient}`}>
-                            <Icon className="h-icon-md w-icon-md text-background" />
-                          </div>
-                          <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3">{solution.title}</h2>
-                        </div>
-                        <p className="text-heading-4 form-label text-foreground mb-md">{solution.tagline}</p>
-                        <p className="text-body color-muted">{solution.longDescription}</p>
-                      </div>
+      <MarketingSection variant="muted">
+        <MarketingSectionHeader
+          eyebrow="Shared Power"
+          title="Across Every Industry"
+          description="No matter the production, these features keep budgets tight, teams aligned, and stakeholders informed."
+        />
 
-                      {/* Features */}
-                      <div>
-                        <h3 className="text-heading-4 color-foreground mb-sm">Key Features</h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-sm">
-                          {solution.features.map((feature: any) => (
-                            <div key={feature} className="flex items-center gap-sm">
-                              <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0" />
-                              <span className="text-body-sm color-muted">{feature}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
+        <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
+          {commonFeatures.map((feature) => {
+            const Icon = feature.icon;
+            return (
+              <MarketingCard
+                key={feature.title}
+                title={feature.title}
+                description={feature.description}
+                icon={<Icon className="h-icon-md w-icon-md" />}
+              />
+            );
+          })}
+        </div>
+      </MarketingSection>
 
-                      {/* Benefits */}
-                      <div>
-                        <h3 className="text-heading-4 color-foreground mb-sm">Benefits</h3>
-                        <div className="stack-sm">
-                          {solution.benefits.map((benefit: any) => (
-                            <div key={benefit} className="flex items-center gap-sm">
-                              <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${solution.gradient}`}></div>
-                              <span className="text-body-sm color-muted">{benefit}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
+      <MarketingSection>
+        <MarketingSectionHeader
+          eyebrow="Integrations"
+          title="Works With Your Current Stack"
+          description="Over 100 integrations connect GHXSTSHIP to creative suites, communication tools, and finance systems."
+        />
 
-                      {/* CTA */}
-                      <div className="flex flex-col sm:flex-row gap-md">
-                        <a href={solution.href}>
-                          <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
-                            Explore {solution.title}
-                            <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                          </Button>
-                        </a>
-                        <Link href="/auth/signup">
-                          <Button variant="outline" className="w-full sm:w-auto transition-all duration-200 hover:scale-105">
-                            Start Free Trial
-                          </Button>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Stats & Case Study Card */}
-                  <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
-                    <Card className={`bg-gradient-to-br ${solution.gradient} bg-opacity-5 border-opacity-20`}>
-                      <CardContent className="p-xl">
-                        {/* Stats */}
-                        <div className="mb-xl">
-                          <h3 className="font-title text-heading-3 text-heading-3 mb-lg text-center">
-                            {solution.title} by the Numbers
-                          </h3>
-                          <div className="grid grid-cols-2 gap-lg">
-                            <div className="text-center">
-                              <div className="font-title text-heading-2 text-heading-3 color-foreground mb-sm">
-                                {solution.stats.projects}
-                              </div>
-                              <div className="text-body-sm color-muted">Projects</div>
-                            </div>
-                            <div className="text-center">
-                              <div className="font-title text-heading-2 text-heading-3 color-foreground mb-sm">
-                                {solution.stats.savings}
-                              </div>
-                              <div className="text-body-sm color-muted">Time Saved</div>
-                            </div>
-                            <div className="text-center">
-                              <div className="font-title text-heading-2 text-heading-3 color-foreground mb-sm">
-                                {solution.stats.satisfaction}
-                              </div>
-                              <div className="text-body-sm color-muted">Satisfaction</div>
-                            </div>
-                            <div className="text-center">
-                              <div className="font-title text-heading-2 text-heading-3 color-foreground mb-sm">
-                                {solution.stats.clients}
-                              </div>
-                              <div className="text-body-sm color-muted">Clients</div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Case Study */}
-                        <div className="pt-xl border-t">
-                          <h4 className="text-heading-4 color-foreground mb-md">Success Story</h4>
-                          <div className="stack-sm">
-                            <div>
-                              <span className="text-heading-4 text-body-sm">{solution.caseStudy.company}</span>
-                              <span className="text-body-sm color-muted"> - {solution.caseStudy.project}</span>
-                            </div>
-                            <div>
-                              <div className="text-body-sm color-muted mb-xs">CHALLENGE</div>
-                              <div className="text-body-sm color-foreground">{solution.caseStudy.challenge}</div>
-                            </div>
-                            <div>
-                              <div className="text-body-sm color-muted mb-xs">RESULT</div>
-                              <div className="text-body-sm text-heading-4 text-foreground">{solution.caseStudy.result}</div>
-                            </div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
+        <Card className="mx-auto mt-2xl max-w-4xl border border-border/40 bg-background/95 shadow-sm">
+          <CardContent className="space-y-xl p-xl text-center">
+            <div className="grid grid-cols-2 gap-md md:grid-cols-4">
+              {integrationVendors.map((vendor) => (
+                <div key={vendor} className="rounded-xl border border-border/60 bg-muted/40 px-lg py-md text-body-sm text-muted-foreground">
+                  {vendor}
                 </div>
-              );
-            })}
-          </div>
+              ))}
+            </div>
+            <div className="flex flex-col items-center justify-center gap-md sm:flex-row">
+              <Link href="/resources/integrations">
+                <Button variant="outline">View All Integrations</Button>
+              </Link>
+              <Link href="/auth/signup">
+                <Button className="group">
+                  Start Free Trial
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      </MarketingSection>
+
+      <MarketingSection variant="primaryGradient" padding="lg">
+        <MarketingSectionHeader
+          title="Ready To Tailor GHXSTSHIP To Your Team?"
+          description="Tell us about your productions and we’ll map the workflows, automations, and integrations that deliver impact fast."
+          align="center"
+        />
+        <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">
+          <Link href="/contact">
+            <Button className="group" size="lg">
+              Talk To Solutions Team
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <Link href="/auth/signup">
+            <Button variant="outline" size="lg">
+              Start Free Trial
+            </Button>
+          </Link>
         </div>
-      </section>
-
-      {/* Common Features Section */}
-      <section className="py-mdxl bg-secondary/20">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-lg">
-              POWERFUL FEATURES
-              <br />
-              <span className="text-gradient-accent">
-                ACROSS ALL INDUSTRIES
-              </span>
-            </h2>
-            <p className="text-body color-muted max-w-3xl mx-auto">
-              Every industry has its own special brand of chaos. These features work across 
-              all of them to keep your productions from falling apart.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg mb-3xl">
-            {commonFeatures.map((feature: any) => {
-              const Icon = feature.icon;
-              return (
-                <Card key={feature.title} className="text-center hover:shadow-floating transition-shadow">
-                  <CardContent className="p-lg">
-                    <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-full bg-accent/10 mb-md">
-                      <Icon className="h-icon-md w-icon-md text-foreground" />
-                    </div>
-                    <h3 className="text-heading-4 color-foreground mb-sm">{feature.title}</h3>
-                    <p className="text-body-sm color-muted">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-
-          {/* Integration Highlight */}
-          <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
-            <CardContent className="p-xl lg:p-xsxl text-center">
-              <h3 className="font-title text-heading-3 text-heading-3 mb-lg">
-                SEAMLESS INTEGRATIONS
-              </h3>
-              <p className="color-muted mb-xl max-w-2xl mx-auto">
-                Works with the tools you're already stuck with. Over 100+ integrations so you don't 
-                have to convince your team to abandon everything they know.
-              </p>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-lg mb-xl">
-                {['Slack', 'Adobe CC', 'Google Workspace', 'Microsoft 365'].map((integration: any) => (
-                  <div key={integration} className="flex items-center justify-center p-md bg-background rounded-lg border">
-                    <span className="text-body-sm form-label color-muted">{integration}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-md justify-center">
-                <a href="/resources/integrations">
-                  <Button variant="outline" className="transition-all duration-200 hover:scale-105">
-                    View All Integrations
-                  </Button>
-                </a>
-                <Link href="/auth/signup">
-                  <Button className="group transition-all duration-200 hover:scale-105">
-                    Start Free Trial
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      </MarketingSection>
     </div>
   );
 }

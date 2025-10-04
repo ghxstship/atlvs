@@ -36,7 +36,7 @@ const colorRe = /#[0-9a-fA-F]{3,8}|rgba?\(\s*\d+\s*,\s*\d+\s*,\s*\d+(?:\s*,\s*[\
 const pixelsRe = /(?<![\w-])\d+px(?!\]|;?\s*\/\*.*allowed.*\*\/)/g;
 const remEmRe = /(?<![\w-])\d*\.?\d+(rem|em)(?!\]|;?\s*\/\*.*allowed.*\*\/)/g;
 
-export default {
+module.exports = {
   rules: {
     'no-hardcoded-colors': {
       meta: { type: 'problem', docs: { description: 'Disallow hardcoded colors; use design tokens' } },
@@ -72,7 +72,7 @@ export default {
           ImportDeclaration(node) {
             const src = node.source && node.source.value;
             if (!src || typeof src !== 'string') return;
-            if (src.includes('@ghxstship/ui/legacy') || src.includes('styled-components') || /\/legacy(\b|\//).test(src)) {
+            if (src.includes('@ghxstship/ui/legacy') || src.includes('styled-components') || /\/legacy(\b|\/)/.test(src)) {
               context.report({ node, message: `Legacy import detected: "${src}"` });
             }
           },
