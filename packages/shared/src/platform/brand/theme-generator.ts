@@ -1,15 +1,80 @@
 /**
- * Theme Generator
  * Generates CSS custom properties and Tailwind config from brand theme
  */
 
 import type { ThemeConfig } from './types';
+
+function hexToHslString(hexColor: string, fallback: string): string {
+  const hex = hexColor?.trim().replace('#', '') ?? '';
+  const normalized = hex.length === 3
+    ? hex.split('').map(char => `${char}${char}`).join('')
+    : hex;
+
+  if (!/^[0-9a-fA-F]{6}$/.test(normalized)) {
+    return fallback;
+  }
+
+  const r = parseInt(normalized.slice(0, 2), 16) / 255;
+  const g = parseInt(normalized.slice(2, 4), 16) / 255;
+  const b = parseInt(normalized.slice(4, 6), 16) / 255;
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h = 0;
+  let s = 0;
+  const l = (max + min) / 2;
+
+  if (max !== min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+    switch (max) {
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      default:
+        h = (r - g) / d + 4;
+        break;
+    }
+
+    h /= 6;
+  }
+
+  const hue = Math.round(h * 360);
+  const saturation = Math.round(s * 100);
+  const lightness = Math.round(l * 100);
+
+  return `${hue} ${saturation}% ${lightness}%`;
+}
 
 /**
  * Generate CSS custom properties from brand theme configuration
  */
 export function generateThemeCSS(theme: ThemeConfig): string {
   const { colors, typography, spacing, borderRadius, shadows } = theme;
+
+  const background = hexToHslString(colors.neutral['50'], '0 0% 100%');
+  const foreground = hexToHslString(colors.neutral['900'], '222 47% 11%');
+  const card = hexToHslString(colors.neutral['100'], '0 0% 100%');
+  const cardForeground = foreground;
+  const popover = card;
+  const popoverForeground = foreground;
+  const border = hexToHslString(colors.neutral['200'], '214 32% 91%');
+  const muted = hexToHslString(colors.neutral['100'], '210 40% 96%');
+  const mutedForeground = hexToHslString(colors.neutral['600'], '215 16% 47%');
+  const primary = hexToHslString(colors.brand.primary, '158 64% 52%');
+  const primaryForeground = hexToHslString('#FFFFFF', '0 0% 100%');
+  const secondary = hexToHslString(colors.brand.secondary, '210 40% 96%');
+  const secondaryForeground = foreground;
+  const accent = hexToHslString(colors.brand.accent, primary);
+  const accentForeground = primaryForeground;
+  const success = hexToHslString(colors.semantic.success, '142 76% 36%');
+  const warning = hexToHslString(colors.semantic.warning, '43 96% 56%');
+  const error = hexToHslString(colors.semantic.error, '0 84% 60%');
+  const info = hexToHslString(colors.semantic.info, primary);
 
   return `
     :root {
@@ -19,13 +84,34 @@ export function generateThemeCSS(theme: ThemeConfig): string {
       --color-brand-primary: ${colors.brand.primary};
       --color-brand-secondary: ${colors.brand.secondary};
       --color-brand-accent: ${colors.brand.accent};
-      
+      --color-background: ${background};
+      --color-foreground: ${foreground};
+      --color-card: ${card};
+      --color-card-foreground: ${cardForeground};
+      --color-popover: ${popover};
+      --color-popover-foreground: ${popoverForeground};
+      --color-border: ${border};
+      --color-muted: ${muted};
+      --color-muted-foreground: ${mutedForeground};
+
       /* Semantic Colors */
-      --color-success: ${colors.semantic.success};
-      --color-warning: ${colors.semantic.warning};
-      --color-error: ${colors.semantic.error};
-      --color-info: ${colors.semantic.info};
-      
+      --color-primary: ${primary};
+      --color-primary-foreground: ${primaryForeground};
+      --color-secondary: ${secondary};
+      --color-secondary-foreground: ${secondaryForeground};
+      --color-accent: ${accent};
+      --color-accent-foreground: ${accentForeground};
+      --color-success: ${success};
+      --color-success-foreground: ${primaryForeground};
+      --color-warning: ${warning};
+      --color-warning-foreground: ${primaryForeground};
+      --color-destructive: ${error};
+      --color-destructive-foreground: ${primaryForeground};
+      --color-info: ${info};
+      --color-info-foreground: ${primaryForeground};
+      --color-input: ${border};
+      --color-ring: ${primary};
+
       /* Neutral Scale */
       --color-neutral-50: ${colors.neutral['50']};
       --color-neutral-100: ${colors.neutral['100']};
@@ -37,6 +123,33 @@ export function generateThemeCSS(theme: ThemeConfig): string {
       --color-neutral-700: ${colors.neutral['700']};
       --color-neutral-800: ${colors.neutral['800']};
       --color-neutral-900: ${colors.neutral['900']};
+
+      /* Shorthand aliases for Tailwind preset compatibility */
+      --background: ${background};
+      --foreground: ${foreground};
+      --card: ${card};
+      --card-foreground: ${cardForeground};
+      --popover: ${popover};
+      --popover-foreground: ${popoverForeground};
+      --primary: ${primary};
+      --primary-foreground: ${primaryForeground};
+      --secondary: ${secondary};
+      --secondary-foreground: ${secondaryForeground};
+      --muted: ${muted};
+      --muted-foreground: ${mutedForeground};
+      --accent: ${accent};
+      --accent-foreground: ${accentForeground};
+      --success: ${success};
+      --success-foreground: ${primaryForeground};
+      --warning: ${warning};
+      --warning-foreground: ${primaryForeground};
+      --destructive: ${error};
+      --destructive-foreground: ${primaryForeground};
+      --info: ${info};
+      --info-foreground: ${primaryForeground};
+      --border: ${border};
+      --input: ${border};
+      --ring: ${primary};
 
       /* ========================================
          Typography
