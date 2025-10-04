@@ -3,9 +3,9 @@
 
 export const spacing = {
   // Section spacing
-  sectionPadding: 'py-mdxl',
-  sectionPaddingLarge: 'py-mdxl',
-  sectionPaddingSmall: 'py-smxl',
+  sectionPadding: 'py-4xl',
+  sectionPaddingLarge: 'py-5xl',
+  sectionPaddingSmall: 'py-3xl',
   
   // Container spacing
   containerPadding: 'px-md',
@@ -13,7 +13,7 @@ export const spacing = {
   
   // Content spacing
   contentGap: 'gap-xl',
-  contentGapLarge: 'gap-xsxl',
+  contentGapLarge: 'gap-3xl',
   contentGapSmall: 'gap-lg',
   
   // Grid spacing

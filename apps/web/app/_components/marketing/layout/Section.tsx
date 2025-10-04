@@ -25,8 +25,8 @@ interface MarketingSectionProps {
 const paddingMap: Record<NonNullable<MarketingSectionProps['padding']>, string> = {
   none: 'py-0',
   sm: 'py-xl',
-  md: 'py-xsxl',
-  lg: 'py-mdxl',
+  md: 'py-3xl',
+  lg: 'py-4xl',
 };
 
 export function MarketingSection({
