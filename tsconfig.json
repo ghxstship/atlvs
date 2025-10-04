@@ -40,7 +40,8 @@
       "@ghxstship/utils": ["./packages/utils/src"],
       "@ghxstship/auth": ["./packages/auth/src"],
       "@ghxstship/domain": ["./packages/domain/src"],
-      "@ghxstship/application": ["./packages/application/src"]
+      "@ghxstship/application": ["./packages/application/src"],
+      "@branding/*": ["./branding/*"]
     }
   },
   "include": [

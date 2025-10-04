@@ -8,6 +8,13 @@ import { cache } from 'react';
 import type { BrandConfiguration } from './types';
 import fs from 'fs';
 import path from 'path';
+import defaultBrandConfigJson from '@branding/config/default.brand.json';
+import ghxstshipBrandConfigJson from '@branding/config/ghxstship.brand.json';
+
+const bundledBrandConfigs: Record<string, BrandConfiguration> = {
+  default: defaultBrandConfigJson as BrandConfiguration,
+  ghxstship: ghxstshipBrandConfigJson as BrandConfiguration,
+};
 
 /**
  * Get active brand ID from cookies or environment
@@ -20,7 +27,7 @@ export async function getActiveBrandId(): Promise<string> {
     if (brandCookie?.value) {
       return brandCookie.value;
     }
-  } catch (error) {
+  } catch {
     // Cookies not available in this context
   }
 
@@ -55,6 +62,11 @@ export const loadBrandConfig = cache(async (brandId: string): Promise<BrandConfi
   }
 
   console.error(`Failed to locate brand config for ${brandId}`);
+
+  const bundledConfig = bundledBrandConfigs[brandId];
+  if (bundledConfig) {
+    return bundledConfig;
+  }
 
   if (brandId !== 'default') {
     return loadBrandConfig('default');

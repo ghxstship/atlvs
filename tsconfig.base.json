@@ -33,7 +33,8 @@
       "@ghxstship/application": ["packages/application/src/index.ts"],
       "@ghxstship/application/*": ["packages/application/src/*"],
       "@ghxstship/infrastructure": ["packages/infrastructure/src/index.ts"],
-      "@ghxstship/infrastructure/*": ["packages/infrastructure/src/*"]
+      "@ghxstship/infrastructure/*": ["packages/infrastructure/src/*"],
+      "@branding/*": ["branding/*"]
     },
     "strict": true,
     "noEmit": true,
