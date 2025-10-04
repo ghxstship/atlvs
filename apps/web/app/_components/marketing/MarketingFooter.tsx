@@ -2,14 +2,24 @@
 
 
 import Link from 'next/link';
-import { typography, anton } from '../lib/typography';
+import { anton } from '../lib/typography';
 import { layouts } from '../lib/layouts';
 import { NewsletterSignup } from '../../_components/marketing/NewsletterSignup';
 import { FooterSection } from './footer/FooterSection';
 import { SocialLinks } from './footer/SocialLinks';
 import { TrustBadges } from './footer/TrustBadges';
 
-const footerSections = [
+interface FooterLink {
+  label: string;
+  href: string;
+}
+
+interface FooterSection {
+  title: string;
+  links: FooterLink[];
+}
+
+const footerSections: FooterSection[] = [
   {
     title: 'Products',
     links: [
@@ -106,7 +116,7 @@ export function MarketingFooter() {
         <div className={`${layouts.container} ${layouts.sectionPadding} py-xsxl`}>
           {/* Footer Links */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-lg mb-xl">
-            {footerSections.map((section: any) => (
+            {footerSections.map((section: FooterSection) => (
               <FooterSection key={section.title} title={section.title} links={section.links} />
             ))}
           </div>

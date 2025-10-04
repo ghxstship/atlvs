@@ -38,7 +38,7 @@ export function MobileMenu({ navigation, activeDropdown, onDropdownChange }: Mob
       <div className="px-md py-lg max-h-[70vh] overflow-y-auto">
         {/* Navigation Items with staggered animation */}
         <div className="space-y-xs">
-          {navigation.map((item: any, index: number) => (
+          {navigation.map((item: NavigationItem, index: number) => (
             <div 
               key={item.label}
               className={cn(

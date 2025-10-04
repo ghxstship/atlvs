@@ -65,7 +65,7 @@ export function NavigationDropdown({
           )}
         >
           <div className="pl-md pt-xs stack-xs">
-            {item.children?.map((child: any, index: number) => (
+            {item.children?.map((child: NavigationItem, index: number) => (
               <Link
                 key={child.href}
                 href={child.href}
@@ -170,7 +170,7 @@ export function NavigationDropdown({
             "p-xs shadow-xl z-[calc(var(--z-dropdown)+1)]"
           )}
         >
-          {item.children?.map((child: any, index: number) => (
+          {item.children?.map((child: NavigationItem, index: number) => (
             <Link
               key={child.href}
               href={child.href}
