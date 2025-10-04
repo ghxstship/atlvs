@@ -5,10 +5,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Play, CheckCircle, Star, Users, Zap } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { Anton } from 'next/font/google';
 import { Button } from '@ghxstship/ui';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 const stats = [
   { label: 'Active Users', value: '50K+', icon: Users },
@@ -29,7 +26,7 @@ export function HeroSection() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentFeature((prev: any) => (prev + 1) % features.length);
+      setCurrentFeature((prev: number) => (prev + 1) % features.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -108,7 +105,7 @@ export function HeroSection() {
 
             {/* Feature List */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-xl">
-              {features.map((feature, index) => (
+              {features.map((feature, _index) => (
                 <div key={feature} className="flex items-center gap-xl">
                   <CheckCircle className="h-icon-sm w-icon-sm color-accent flex-shrink-0" />
                   <span className="text-body-sm color-muted">{feature}</span>
@@ -180,7 +177,7 @@ export function HeroSection() {
                     <div className="text-body-sm color-muted mb-xs">Team</div>
                     <span className="text-body-sm">12</span>
                     <div className="flex -cluster-xs mt-xs">
-                      {[1, 2, 3].map((i: any) => (
+                      {[1, 2, 3].map((i: number) => (
                         <div key={i} className="w-icon-xs h-icon-xs bg-accent rounded-full border border-background"></div>
                       ))}
                     </div>
@@ -219,7 +216,7 @@ export function HeroSection() {
         {/* Stats - full width under both columns */}
         <div className="mt-3xl pt-3xl pb-5xl border-t">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-xl">
-            {stats.map((stat: any) => {
+            {stats.map((stat: { label: string; value: string; icon: React.ComponentType<{ className?: string }> }) => {
               const Icon = stat.icon;
               return (
                 <div key={stat.label} className="text-center lg:text-left">
