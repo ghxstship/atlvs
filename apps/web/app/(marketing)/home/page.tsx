@@ -13,6 +13,7 @@ import { HeroSection } from '../../_components/marketing/HeroSection';
 import { ProductHighlights } from '../../_components/marketing/ProductHighlights';
 import { SocialProof } from '../../_components/marketing/SocialProof';
 import { TrustSignals } from '../../_components/marketing/TrustSignals';
+import { analytics } from '@ghxstship/analytics';
 
 export const metadata: Metadata = {
   title: 'GHXSTSHIP - Enterprise Production Management Platform',
@@ -45,6 +46,29 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  // Analytics event handlers
+  const handleTrialSignup = () => {
+    analytics.trackCTAInteraction('Start Free Trial', 'click', {
+      variant: 'primary',
+      destination: '/auth/signup',
+      user_intent: 'trial_signup',
+      page: '/',
+      section: 'hero_cta',
+      conversion_value: 1,
+    });
+  };
+
+  const handleDemoRequest = () => {
+    analytics.trackCTAInteraction('Watch Platform Demo', 'click', {
+      variant: 'outline',
+      destination: '#',
+      user_intent: 'demo_request',
+      page: '/',
+      section: 'hero_cta',
+      conversion_value: 0.5, // Lower value for demo vs trial
+    });
+  };
+
   return (
     <div className="min-h-screen">
       <HeroSection />
@@ -61,13 +85,22 @@ export default function HomePage() {
         />
         <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">
           <Link href="/auth/signup">
-            <Button className="group" size="lg">
+            <Button
+              className="group"
+              size="lg"
+              onClick={handleTrialSignup}
+            >
               Start Free Trial
               <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
           <Link href="#">
-            <Button variant="outline" size="lg" className="group">
+            <Button
+              variant="outline"
+              size="lg"
+              className="group"
+              onClick={handleDemoRequest}
+            >
               Watch Platform Demo
               <Play className="ml-sm h-icon-xs w-icon-xs" />
             </Button>

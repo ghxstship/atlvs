@@ -124,6 +124,8 @@ export class MarketingAnalytics {
       destination?: string;
       user_intent?: string;
       conversion_value?: number;
+      page?: string;
+      section?: string;
     } = {}
   ): void {
     this.trackMarketingInteraction('cta', action, {
