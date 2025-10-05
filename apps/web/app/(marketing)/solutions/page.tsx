@@ -121,7 +121,7 @@ export default function SolutionsPage() {
             <Link href="/solutions/film-tv">
               <Button className="group" size="lg">
                 Explore Film & TV
-                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
               </Button>
             </Link>
           }
@@ -146,7 +146,7 @@ export default function SolutionsPage() {
                 key={industry.id}
                 className={`grid gap-2xl lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-start ${index % 2 === 1 ? 'lg:[&>*:first-child]:order-last' : ''}`}
               >
-                <Card className="rounded-3xl border border-border/40 bg-background/95 shadow-sm">
+                <Card className="rounded-3xl border border-border bg-card shadow-sm">
                   <CardContent className="space-y-xl p-xl">
                     <div className="flex flex-wrap items-center gap-md">
                       <div className="inline-flex h-icon-xl w-icon-xl items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -185,13 +185,13 @@ export default function SolutionsPage() {
                     <Link href={industry.href}>
                       <Button className="group">
                         View {industry.title} Solution
-                        <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                       </Button>
                     </Link>
                   </CardContent>
                 </Card>
 
-                <Card className="rounded-3xl border border-border/40 bg-background/85 shadow-sm">
+                <Card className="rounded-3xl border border-border bg-card shadow-sm">
                   <CardContent className="space-y-lg p-xl">
                     <h4 className="text-heading-4 uppercase leading-tight">What Teams Achieve</h4>
                     <p className="text-body-sm text-muted-foreground leading-relaxed">
@@ -235,11 +235,11 @@ export default function SolutionsPage() {
           description="Over 100 integrations connect GHXSTSHIP to creative suites, communication tools, and finance systems."
         />
 
-        <Card className="mx-auto mt-2xl max-w-4xl border border-border/40 bg-background/95 shadow-sm">
+        <Card className="mx-auto mt-2xl max-w-4xl border border-border bg-card shadow-sm">
           <CardContent className="space-y-xl p-xl text-center">
             <div className="grid grid-cols-2 gap-md md:grid-cols-4">
               {integrationVendors.map((vendor) => (
-                <div key={vendor} className="rounded-xl border border-border/60 bg-muted/40 px-lg py-md text-body-sm text-muted-foreground">
+                <div key={vendor} className="rounded-xl border border-border bg-muted px-lg py-md text-body-sm text-muted-foreground">
                   {vendor}
                 </div>
               ))}
@@ -251,7 +251,7 @@ export default function SolutionsPage() {
               <Link href="/auth/signup">
                 <Button className="group">
                   Start Free Trial
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
             </div>
@@ -259,7 +259,7 @@ export default function SolutionsPage() {
         </Card>
       </MarketingSection>
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="Ready To Tailor GHXSTSHIP To Your Team?"
           description="Tell us about your productions and we’ll map the workflows, automations, and integrations that deliver impact fast."
@@ -269,7 +269,7 @@ export default function SolutionsPage() {
           <Link href="/contact">
             <Button className="group" size="lg">
               Talk To Solutions Team
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
           <Link href="/auth/signup">

@@ -165,7 +165,7 @@ export default function ProductsPage() {
               <Link href="/products/compare">
                 <Button className="group" size="lg">
                   Compare Platforms
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
               <Link href="/auth/signup">
@@ -194,7 +194,7 @@ export default function ProductsPage() {
               key={product.id}
               className="grid gap-2xl lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-start"
             >
-              <Card className="rounded-3xl border border-border/40 bg-background/95 shadow-sm">
+              <Card className="rounded-3xl border border-border bg-card shadow-sm">
                 <CardContent className="space-y-xl p-xl">
                   <div className="flex flex-wrap items-center gap-md">
                     <Badge variant="outline" className="uppercase tracking-[0.2em]">
@@ -224,7 +224,7 @@ export default function ProductsPage() {
                     })}
                   </div>
 
-                  <div className="space-y-sm rounded-2xl bg-muted/30 p-lg">
+                  <div className="space-y-sm rounded-2xl bg-muted p-lg">
                     <span className="text-body-xs uppercase tracking-[0.2em] text-muted-foreground">Why teams choose {product.name}</span>
                     <ul className="space-y-xs text-body-sm text-muted-foreground">
                       {product.benefits.map((benefit) => (
@@ -240,7 +240,7 @@ export default function ProductsPage() {
                     <Link href={product.href}>
                       <Button className="group">
                         {product.cta}
-                        <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                       </Button>
                     </Link>
                     <Link href="/auth/signup">
@@ -250,12 +250,12 @@ export default function ProductsPage() {
                 </CardContent>
               </Card>
 
-              <Card className="rounded-3xl border border-border/40 bg-background/85 shadow-sm">
+              <Card className="rounded-3xl border border-border bg-card shadow-sm">
                 <CardContent className="space-y-lg p-xl">
                   <h3 className="text-heading-4 uppercase leading-tight">{product.name} by the numbers</h3>
                   <div className="grid gap-lg sm:grid-cols-2">
                     {product.stats.map((stat) => (
-                      <div key={stat.label} className="rounded-2xl bg-muted/20 p-lg text-center">
+                      <div key={stat.label} className="rounded-2xl bg-muted p-lg text-center">
                         <div className="text-heading-3 text-foreground">{stat.value}</div>
                         <p className="text-body-sm text-muted-foreground">{stat.label}</p>
                       </div>
@@ -290,7 +290,7 @@ export default function ProductsPage() {
         </div>
       </MarketingSection>
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="Launch Your Suite"
           description="Bundle ATLVS and OPENDECK to orchestrate productions end-to-end with unified data, automation, and talent at your fingertips."
@@ -300,7 +300,7 @@ export default function ProductsPage() {
           <Link href="/products/compare">
             <Button className="group" size="lg">
               Compare Plans
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
           <Link href="/auth/signup">

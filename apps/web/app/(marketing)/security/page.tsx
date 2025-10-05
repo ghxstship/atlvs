@@ -118,7 +118,7 @@ export default function SecurityPage() {
             <Link href="/security/status">
               <Button className="group" size="lg">
                 View Status Page
-                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
               </Button>
             </Link>
           }
@@ -193,7 +193,7 @@ export default function SecurityPage() {
           description="Dedicated teams monitor, respond, and communicate with transparency if an incident occurs."
         />
 
-        <Card className="mx-auto mt-2xl max-w-4xl border border-border/40 bg-background/95 shadow-sm">
+        <Card className="mx-auto mt-2xl max-w-4xl border border-border bg-card shadow-sm">
           <CardContent className="space-y-sm p-xl text-body text-muted-foreground">
             {incidentPlaybook.map((step) => (
               <div key={step} className="flex items-start gap-sm">
@@ -215,7 +215,7 @@ export default function SecurityPage() {
           align="center"
         />
 
-        <Card className="mx-auto mt-2xl max-w-3xl border border-border/40 bg-background/95 shadow-sm">
+        <Card className="mx-auto mt-2xl max-w-3xl border border-border bg-card shadow-sm">
           <CardContent className="space-y-sm p-xl text-body text-muted-foreground">
             <div>
               <strong>Email:</strong> <Link href="mailto:security@ghxstship.com" className="underline">security@ghxstship.com</Link>

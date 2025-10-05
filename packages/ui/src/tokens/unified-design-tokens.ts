@@ -416,36 +416,6 @@ export const SEMANTIC_TOKENS = {
 
 type SemanticPalette = typeof SEMANTIC_TOKENS['light'];
 
-function createComponentTokens(palette: SemanticPalette) {
-  return {
-    button: {
-      background: palette.primary,
-      foreground: palette.primaryForeground,
-      border: palette.primary,
-      hoverBackground: palette.accent,
-      disabledBackground: palette.muted,
-      disabledForeground: palette.mutedForeground,
-    },
-    surface: {
-      background: palette.card,
-      foreground: palette.cardForeground,
-      border: palette.border,
-      shadow: DESIGN_TOKENS.shadows.sm,
-    },
-    input: {
-      background: palette.background,
-      foreground: palette.foreground,
-      border: palette.input,
-      focusRing: palette.ring,
-      placeholder: palette.mutedForeground,
-    },
-    tooltip: {
-      background: palette.popover,
-      foreground: palette.popoverForeground,
-      border: palette.border,
-    },
-  } as const;
-}
 
 export const COMPONENT_TOKENS = {
   light: createEnhancedComponentTokens(SEMANTIC_TOKENS.light),

@@ -144,7 +144,7 @@ export default function AccessibilityPage() {
             <Link href="mailto:accessibility@ghxstship.com">
               <Button className="group" size="lg">
                 Contact Accessibility Team
-                <Mail className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                <Mail className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
               </Button>
             </Link>
           }
@@ -220,7 +220,7 @@ export default function AccessibilityPage() {
           align="center"
         />
 
-        <Card className="mx-auto mt-2xl max-w-4xl border border-border/40 bg-background/95 shadow-sm">
+        <Card className="mx-auto mt-2xl max-w-4xl border border-border bg-card shadow-sm">
           <CardContent className="flex flex-col gap-xl p-xl md:flex-row">
             <div className="rounded-full bg-primary/10 p-lg text-primary">
               <Headphones className="h-icon-lg w-icon-lg" />
@@ -251,7 +251,7 @@ export default function AccessibilityPage() {
         />
 
         <div className="mt-2xl grid gap-xl md:grid-cols-2">
-          <Card className="border border-border/40 bg-background/95 shadow-sm">
+          <Card className="border border-border bg-card shadow-sm">
             <CardContent className="space-y-lg p-xl">
               <h3 className="text-heading-4 uppercase leading-tight">Getting Started</h3>
               <ul className="space-y-sm text-body-sm text-muted-foreground">
@@ -267,7 +267,7 @@ export default function AccessibilityPage() {
             </CardContent>
           </Card>
 
-          <Card className="border border-border/40 bg-background/95 shadow-sm">
+          <Card className="border border-border bg-card shadow-sm">
             <CardContent className="space-y-lg p-xl">
               <h3 className="text-heading-4 uppercase leading-tight">External Resources</h3>
               <ul className="space-y-sm text-body-sm text-muted-foreground">
@@ -285,7 +285,7 @@ export default function AccessibilityPage() {
         </div>
       </MarketingSection>
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           eyebrow="Legal Compliance"
           title="Regulatory Coverage"

@@ -8,13 +8,23 @@ import { cache } from 'react';
 import type { BrandConfiguration } from './types';
 import fs from 'fs';
 import path from 'path';
-import defaultBrandConfigJson from '@branding/config/default.brand.json';
-import ghxstshipBrandConfigJson from '@branding/config/ghxstship.brand.json';
 
-const bundledBrandConfigs: Record<string, BrandConfiguration> = {
-  default: defaultBrandConfigJson as BrandConfiguration,
-  ghxstship: ghxstshipBrandConfigJson as BrandConfiguration,
-};
+/**
+ * Load bundled brand configs synchronously from file system
+ * This ensures reliability in all deployment environments
+ */
+function loadBundledBrandConfig(brandId: string): BrandConfiguration | null {
+  try {
+    const configPath = path.join(process.cwd(), 'branding', 'config', `${brandId}.brand.json`);
+    if (fs.existsSync(configPath)) {
+      const fileContent = fs.readFileSync(configPath, 'utf-8');
+      return JSON.parse(fileContent) as BrandConfiguration;
+    }
+  } catch (error) {
+    console.error(`Failed to load bundled brand config for ${brandId}:`, error);
+  }
+  return null;
+}
 
 /**
  * Get active brand ID from cookies or environment
@@ -63,7 +73,7 @@ export const loadBrandConfig = cache(async (brandId: string): Promise<BrandConfi
 
   console.error(`Failed to locate brand config for ${brandId}`);
 
-  const bundledConfig = bundledBrandConfigs[brandId];
+  const bundledConfig = loadBundledBrandConfig(brandId);
   if (bundledConfig) {
     return bundledConfig;
   }

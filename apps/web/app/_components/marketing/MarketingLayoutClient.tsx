@@ -15,7 +15,7 @@ interface MarketingLayoutClientProps {
 export function MarketingLayoutClient({ children }: MarketingLayoutClientProps) {
   return (
     <>
-      <div className="min-h-screen flex flex-col overflow-x-hidden brand-ghostship">
+      <div className="marketing-surface min-h-screen flex flex-col overflow-x-hidden brand-ghostship">
         <MarketingHeader />
         <main id="main-content" className="flex-1" tabIndex={-1}>
           {children}

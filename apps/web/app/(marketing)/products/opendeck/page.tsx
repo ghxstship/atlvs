@@ -177,7 +177,7 @@ export default function OPENDECKPage() {
                 <Link href="/auth/signup">
                   <Button className="w-full sm:w-auto group">
                     Join OPENDECK
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                   </Button>
                 </Link>
                 <Button className="w-full sm:w-auto group">
@@ -268,7 +268,7 @@ export default function OPENDECKPage() {
 
           <div className="grid lg:grid-cols-3 gap-xl mb-3xl">
             {categories.map((category: any) => (
-              <Card key={category.title} className="hover:shadow-floating transition-shadow">
+              <Card key={category.title} className="hover:shadow-elevation-3 transition-shadow">
                 <CardContent className="p-xl text-center">
                   <div className={`${anton.className} text-heading-1 color-secondary mb-md uppercase`}>
                     {category.count}
@@ -308,7 +308,7 @@ export default function OPENDECKPage() {
             {features.map((feature: any) => {
               const Icon = feature.icon;
               return (
-                <Card key={feature.title} className="hover:shadow-floating transition-shadow">
+                <Card key={feature.title} className="hover:shadow-elevation-3 transition-shadow">
                   <CardContent className="p-lg">
                     <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-secondary to-primary mb-md">
                       <Icon className="h-icon-md w-icon-md text-background" />
@@ -345,7 +345,7 @@ export default function OPENDECKPage() {
 
           <div className="grid lg:grid-cols-3 gap-xl mb-3xl">
             {successStories.map((story: any) => (
-              <Card key={story.title} className="hover:shadow-floating transition-shadow">
+              <Card key={story.title} className="hover:shadow-elevation-3 transition-shadow">
                 <CardContent className="p-xl">
                   <Badge variant="outline" className="mb-md">{story.industry}</Badge>
                   <h3 className={`${anton.className} text-heading-3 mb-md uppercase`}>{story.title}</h3>
@@ -374,7 +374,7 @@ export default function OPENDECKPage() {
           {/* Testimonials */}
           <div className="grid lg:grid-cols-2 gap-xl max-w-4xl mx-auto">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover:shadow-floating transition-shadow">
+              <Card key={index} className="hover:shadow-elevation-3 transition-shadow">
                 <CardContent className="p-xl">
                   <div className="flex items-center gap-xs mb-md">
                     {[...Array(testimonial.rating)].map((_, i) => (
@@ -419,7 +419,7 @@ export default function OPENDECKPage() {
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group">
                   Join OPENDECK
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
               <Link href="/pricing">

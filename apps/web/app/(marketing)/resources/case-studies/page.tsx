@@ -126,7 +126,7 @@ export default function CaseStudiesPage() {
               <Link href="/auth/signup">
                 <Button className="group">
                   Access Full Case Studies
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
               <Link href="#featured">
@@ -170,7 +170,7 @@ export default function CaseStudiesPage() {
 
           <div className="stack-xl">
             {featuredStudies.map((study, index) => (
-              <Card key={study.id} className="hover:shadow-floating transition-all duration-300 group overflow-hidden">
+              <Card key={study.id} className="hover:shadow-elevation-3 transition-all duration-normal group overflow-hidden">
                 <CardContent className="p-0">
                   <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                     <div className={`relative ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
@@ -267,7 +267,7 @@ export default function CaseStudiesPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
             {regularStudies.map((study: any) => (
-              <Card key={study.id} className="hover:shadow-floating transition-all duration-300 group">
+              <Card key={study.id} className="hover:shadow-elevation-3 transition-all duration-normal group">
                 <div className="relative">
                   <div className="h-container-xs bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
@@ -339,7 +339,7 @@ export default function CaseStudiesPage() {
                 <Link href="/auth/signup">
                   <Button size="lg" className="group">
                     Access All Case Studies
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                   </Button>
                 </Link>
                 <Link href="/auth/signin">

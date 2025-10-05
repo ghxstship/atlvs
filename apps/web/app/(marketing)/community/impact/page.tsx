@@ -151,7 +151,7 @@ export default function ImpactPage() {
               <Link href="/community/opportunities">
                 <Button className="group">
                   Get Involved
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
               <Button variant="outline">Download Impact Report</Button>
@@ -162,7 +162,7 @@ export default function ImpactPage() {
           {impactMetrics.map((metric) => {
             const Icon = metric.icon;
             return (
-              <Card key={metric.title} className="rounded-2xl border border-border/40 bg-background/90 p-lg text-center shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+              <Card key={metric.title} className="rounded-2xl border border-border bg-card p-lg text-center shadow-sm transition hover:-translate-y-1 motion-reduce:hover:translate-y-0 hover:shadow-elevation-4">
                 <div className="mx-auto mb-lg flex h-icon-2xl w-icon-2xl items-center justify-center rounded-full bg-primary/10 text-primary">
                   <Icon className="h-icon-lg w-icon-lg" />
                 </div>
@@ -240,12 +240,12 @@ export default function ImpactPage() {
           description="GHXSTSHIP projects span five continents, lifting local economies, creating jobs, and connecting creatives to global opportunities."
         />
 
-        <Card className="mt-2xl overflow-hidden border border-border/40 bg-background/95 shadow-sm">
+        <Card className="mt-2xl overflow-hidden border border-border bg-card shadow-sm">
           <CardContent className="p-xl">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[640px] text-left">
                 <thead>
-                  <tr className="border-b border-border/60 text-body-sm uppercase tracking-[0.18em] text-muted-foreground">
+                  <tr className="border-b border-border text-body-sm uppercase tracking-[0.18em] text-muted-foreground">
                     <th className="py-sm pr-md font-medium">Region</th>
                     <th className="py-sm pr-md font-medium">Projects</th>
                     <th className="py-sm pr-md font-medium">Jobs Created</th>
@@ -255,7 +255,7 @@ export default function ImpactPage() {
                 </thead>
                 <tbody>
                   {regionalImpact.map((region) => (
-                    <tr key={region.region} className="border-b border-border/40 text-body">
+                    <tr key={region.region} className="border-b border-border text-body">
                       <td className="py-md pr-md font-medium text-foreground">{region.region}</td>
                       <td className="py-md pr-md text-muted-foreground">{region.projects.toLocaleString()}</td>
                       <td className="py-md pr-md text-muted-foreground">{region.jobs.toLocaleString()}</td>
@@ -270,7 +270,7 @@ export default function ImpactPage() {
         </Card>
       </MarketingSection>
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="Set Impactful Goals With Us"
           description="We are scaling programs that open doors for talent, elevate sustainable practices, and expand creative economies. Join us to build what’s next."

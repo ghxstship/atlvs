@@ -123,7 +123,7 @@ export default function DocumentationPage() {
               <Link href="/auth/signup">
                 <Button className="group">
                   Get API Access
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
               <Link href="#sections">
@@ -183,7 +183,7 @@ export default function DocumentationPage() {
             {docSections.map((section: any) => {
               const Icon = section.icon;
               return (
-                <Card key={section.id} className="hover:shadow-floating transition-all duration-300 group">
+                <Card key={section.id} className="hover:shadow-elevation-3 transition-all duration-normal group">
                   <CardContent className="p-xl">
                     <div className="flex items-start justify-between mb-lg">
                       <div className="w-component-md h-component-md bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -247,7 +247,7 @@ export default function DocumentationPage() {
 
           <div className="grid md:grid-cols-2 gap-lg">
             {popularDocs.map((doc, index) => (
-              <Card key={index} className="hover:shadow-floating transition-all duration-300 group">
+              <Card key={index} className="hover:shadow-elevation-3 transition-all duration-normal group">
                 <CardContent className="p-lg">
                   <div className="flex items-center justify-between mb-md">
                     <Badge variant="outline">{doc.category}</Badge>
@@ -321,7 +321,7 @@ export default function DocumentationPage() {
                 isPremium: true,
               },
             ].map((resource, index) => (
-              <Card key={index} className="hover:shadow-floating transition-shadow text-center">
+              <Card key={index} className="hover:shadow-elevation-3 transition-shadow text-center">
                 <CardContent className="p-xl">
                   <div className="w-component-md h-component-md bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-md">
                     <resource.icon className="h-icon-lg w-icon-lg text-background" />
@@ -362,7 +362,7 @@ export default function DocumentationPage() {
                 <Link href="/auth/signup">
                   <Button size="lg" className="group">
                     Get API Keys
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                   </Button>
                 </Link>
                 <Link href="/auth/signin">

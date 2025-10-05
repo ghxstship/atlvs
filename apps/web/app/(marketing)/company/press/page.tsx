@@ -181,7 +181,7 @@ export default function PressPage() {
             <h2 className={`${anton.className} text-heading-2 text-heading-3 mb-lg uppercase`}>Latest News</h2>
           </div>
 
-          <Card className="overflow-hidden hover:shadow-floating transition-shadow mb-2xl">
+          <Card className="overflow-hidden hover:shadow-elevation-3 transition-shadow mb-2xl">
             <CardContent className="p-xl">
               <div className="grid lg:grid-cols-2 gap-xl">
                 <div>
@@ -204,7 +204,7 @@ export default function PressPage() {
                   </p>
                   <Button className="group">
                     Read Full Release
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                   </Button>
                 </div>
 
@@ -226,7 +226,7 @@ export default function PressPage() {
 
           <div className="stack-lg">
             {pressReleases.slice(1).map((release, index) => (
-              <Card key={index} className="hover:shadow-floating transition-shadow">
+              <Card key={index} className="hover:shadow-elevation-3 transition-shadow">
                 <CardContent className="p-lg">
                   <div className="flex items-start justify-between gap-md">
                     <div className="flex-1">
@@ -252,7 +252,7 @@ export default function PressPage() {
                     </div>
                     <Button className="group">
                       Read More
-                      <ArrowRight className="ml-xs h-3 w-3 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="ml-xs h-3 w-3 transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                     </Button>
                   </div>
                 </CardContent>
@@ -280,7 +280,7 @@ export default function PressPage() {
 
           <div className="grid md:grid-cols-2 gap-lg">
             {mediaCoverage.map((article, index) => (
-              <Card key={index} className="hover:shadow-floating transition-shadow group">
+              <Card key={index} className="hover:shadow-elevation-3 transition-shadow group">
                 <CardContent className="p-lg">
                   <div className="flex items-start justify-between gap-md mb-md">
                     <Badge variant="outline">
@@ -333,7 +333,7 @@ export default function PressPage() {
 
           <div className="grid md:grid-cols-2 gap-lg">
             {awards.map((award, index) => (
-              <Card key={index} className="hover:shadow-floating transition-shadow">
+              <Card key={index} className="hover:shadow-elevation-3 transition-shadow">
                 <CardContent className="p-lg">
                   <div className="flex items-start gap-md">
                     <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center flex-shrink-0">
@@ -375,7 +375,7 @@ export default function PressPage() {
 
           <div className="grid md:grid-cols-2 gap-xl">
             {mediaKit.map((kit: any) => (
-              <Card key={kit.title} className="hover:shadow-floating transition-shadow">
+              <Card key={kit.title} className="hover:shadow-elevation-3 transition-shadow">
                 <CardContent className="p-lg">
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>
                     {kit.title}
@@ -422,7 +422,7 @@ export default function PressPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-xl max-w-4xl mx-auto">
-            <Card className="hover:shadow-floating transition-shadow">
+            <Card className="hover:shadow-elevation-3 transition-shadow">
               <CardContent className="p-xl text-center">
                 <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
                   <Mail className="h-icon-md w-icon-md text-foreground" />
@@ -440,7 +440,7 @@ export default function PressPage() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-floating transition-shadow">
+            <Card className="hover:shadow-elevation-3 transition-shadow">
               <CardContent className="p-xl text-center">
                 <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
                   <Phone className="h-icon-md w-icon-md text-background" />
@@ -481,7 +481,7 @@ export default function PressPage() {
               />
               <Button className="group">
                 Subscribe
-                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
               </Button>
             </div>
           </div>
@@ -504,7 +504,7 @@ export default function PressPage() {
               { title: 'Careers', href: '/careers', description: 'Join our growing team' },
             ].map((link: any) => (
               <a key={link.title} href="#">
-                <Card className="hover:shadow-floating transition-shadow group">
+                <Card className="hover:shadow-elevation-3 transition-shadow group">
                   <CardContent className="p-lg text-center">
                     <h3 className={`${anton.className} text-body text-heading-3 mb-sm uppercase group-hover:text-foreground transition-colors`}>
                       {link.title}

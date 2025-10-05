@@ -1,13 +1,15 @@
 import { ReactNode } from 'react';
-
+import { MARKETING_CLASSES } from '@ghxstship/ui/components/marketing/animations';
 import { anton } from '../../lib/typography';
 import { cn } from '../../lib/utils';
 
 const variantBase = {
   light: 'bg-background text-foreground',
   dark: 'bg-foreground text-background',
-  muted: 'bg-muted/30 text-foreground',
-  gradient: 'bg-gradient-to-br from-primary/10 via-background to-secondary/10 text-foreground',
+  muted: 'bg-muted text-foreground',
+  card: 'bg-card text-card-foreground border border-border',
+  elevated: 'bg-card text-card-foreground shadow-elevation-2 border border-border',
+  gradient: 'bg-gradient-to-br from-primary/5 via-background to-secondary/5 text-foreground',
 };
 
 type SectionVariant = keyof typeof variantBase;
@@ -22,13 +24,6 @@ interface MarketingSectionProps {
   bleed?: boolean;
 }
 
-const paddingMap: Record<NonNullable<MarketingSectionProps['padding']>, string> = {
-  none: 'py-0',
-  sm: 'py-xl',
-  md: 'py-3xl',
-  lg: 'py-4xl',
-};
-
 export function MarketingSection({
   id,
   children,
@@ -42,27 +37,26 @@ export function MarketingSection({
     <section
       id={id}
       className={cn(
-        'relative overflow-hidden',
+        'marketing-section relative overflow-hidden',
         variantBase[variant],
-        paddingMap[padding],
         className,
       )}
       data-marketing-section
+      data-padding={padding}
     >
       <div
         className={cn(
-          'container mx-auto px-lg md:px-xl',
+          'marketing-section-container container mx-auto px-lg md:px-xl',
           bleed && 'max-w-none px-0',
           containerClassName,
         )}
       >
-        {children}
       </div>
     </section>
   );
 }
 
-interface SectionHeaderProps {
+interface MarketingSectionHeaderProps {
   eyebrow?: string;
   title: string;
   description?: string;
@@ -79,7 +73,7 @@ export function MarketingSectionHeader({
   align = 'center',
   actions,
   highlight,
-}: SectionHeaderProps) {
+}: MarketingSectionHeaderProps) {
   const heading = highlight
     ? title.replace(
         highlight,
@@ -95,7 +89,7 @@ export function MarketingSectionHeader({
       )}
     >
       {eyebrow ? (
-        <span className="inline-flex items-center rounded-full bg-primary/10 px-md py-xs text-body-sm uppercase tracking-widest">
+        <span className="eyebrow-label inline-flex items-center rounded-full bg-primary/10 px-md py-xs">
           {eyebrow}
         </span>
       ) : null}
@@ -112,7 +106,9 @@ export function MarketingSectionHeader({
           {description}
         </p>
       ) : null}
-      {actions ? <div className={cn('mt-md flex flex-wrap gap-md', align === 'center' ? 'justify-center' : '')}>{actions}</div> : null}
+      {actions ? <div className={cn('mt-md flex flex-wrap gap-md', align === 'center' ? 'justify-center' : '')}>
+        {actions}
+      </div> : null}
     </div>
   );
 }
@@ -125,6 +121,7 @@ interface MarketingCardProps {
   footer?: ReactNode;
   className?: string;
   highlight?: string;
+  accent?: 'primary' | 'success' | 'warning';
 }
 
 export function MarketingCard({
@@ -135,25 +132,33 @@ export function MarketingCard({
   footer,
   className,
   highlight,
+  accent = 'primary',
 }: MarketingCardProps) {
   const heading = highlight
     ? title.replace(
         highlight,
-        `<span class="text-gradient-accent">${highlight}</span>`,
+        `<span class="text-heading-gradient">${highlight}</span>`,
       )
     : title;
+
+  const accentClass = {
+    primary: 'bg-primary/10 text-primary',
+    success: 'bg-success/10 text-success',
+    warning: 'bg-warning/10 text-warning',
+  }[accent];
 
   return (
     <div
       className={cn(
-        'flex h-full flex-col gap-md rounded-2xl border border-border/40 bg-background/80 p-xl shadow-sm transition-shadow hover:shadow-lg backdrop-blur',
+        'marketing-card marketing-interactive flex h-full flex-col gap-md p-xl',
+        MARKETING_CLASSES.card.interactive,
         className,
       )}
     >
       <div className="flex items-center justify-between gap-lg">
         <div className="flex items-center gap-md">
           {icon ? (
-            <div className="inline-flex h-icon-xl w-icon-xl items-center justify-center rounded-full bg-primary/10 text-primary">
+            <div className={cn('inline-flex h-icon-xl w-icon-xl items-center justify-center rounded-full', accentClass)}>
               {icon}
             </div>
           ) : null}
@@ -163,7 +168,7 @@ export function MarketingCard({
       <h3
         className={cn(
           anton.className,
-          'text-heading-3 font-medium uppercase leading-tight text-balance',
+          'text-heading-3 font-medium uppercase leading-tight text-balance text-heading-gradient',
         )}
         dangerouslySetInnerHTML={{ __html: heading }}
       />
@@ -196,8 +201,10 @@ export function MarketingStatGrid({ items, columns = 4, className }: MarketingSt
       )}
     >
       {items.map((item) => (
-        <div key={item.label} className="rounded-2xl border border-border/50 bg-background/70 p-lg text-center shadow-sm">
-          <div className={cn(anton.className, 'text-4xl font-semibold uppercase text-gradient-accent mb-sm')}>{item.value}</div>
+        <div key={item.label} className="marketing-card text-center p-lg">
+          <div className={cn(anton.className, 'text-heading-2 lg:text-heading-1 font-semibold uppercase text-heading-gradient mb-sm')}>
+            {item.value}
+          </div>
           <div className="text-body font-medium text-foreground">{item.label}</div>
           {item.caption ? <div className="mt-xs text-body-sm color-muted">{item.caption}</div> : null}
         </div>

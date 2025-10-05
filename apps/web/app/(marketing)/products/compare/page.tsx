@@ -133,7 +133,7 @@ export default function ComparePage() {
 
           <div className="bg-success/10 border border-success/20 rounded-lg p-md mb-lg">
             {productOverview.map((product: any) => (
-              <Card key={product.name} className="hover:shadow-floating transition-shadow">
+              <Card key={product.name} className="hover:shadow-elevation-3 transition-shadow">
                 <CardContent className="p-xl">
                   <div className="text-center mb-xl">
                     <div className={`inline-flex items-center justify-center w-component-md h-component-md rounded-2xl bg-gradient-to-r ${product.color} mb-md`}>
@@ -169,7 +169,7 @@ export default function ComparePage() {
                     <a href={product.href}>
                       <Button className="w-full group">
                         Explore {product.name}
-                        <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                       </Button>
                     </a>
                   </div>
@@ -252,7 +252,7 @@ export default function ComparePage() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-xl">
-            <Card className="hover:shadow-floating transition-shadow">
+            <Card className="hover:shadow-elevation-3 transition-shadow">
               <CardContent className="p-xl">
                 <div className="flex items-center gap-sm mb-lg">
                   <div className="w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
@@ -296,14 +296,14 @@ export default function ComparePage() {
                   <Link href="/products/atlvs">
                     <Button className="w-full group">
                       Get Started with ATLVS
-                      <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                     </Button>
                   </Link>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-floating transition-shadow">
+            <Card className="hover:shadow-elevation-3 transition-shadow">
               <CardContent className="p-xl">
                 <div className="flex items-center gap-sm mb-lg">
                   <div className="w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
@@ -347,7 +347,7 @@ export default function ComparePage() {
                   <Link href="/products/opendeck">
                     <Button className="w-full group">
                       Join OPENDECK
-                      <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                     </Button>
                   </Link>
                 </div>
@@ -372,7 +372,7 @@ export default function ComparePage() {
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group">
                   Start Free Trial
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
               <Link href="/pricing">

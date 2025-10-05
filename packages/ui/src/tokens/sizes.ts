@@ -11,12 +11,12 @@ export const sizes = {
    * Usage: Icons, small UI elements
    */
   icon: {
-    xs: '16px',   // w-icon-xs, h-icon-xs
-    sm: '20px',   // w-icon-sm, h-icon-sm
-    md: '24px',   // w-icon-md, h-icon-md
-    lg: '32px',   // w-icon-lg, h-icon-lg
-    xl: '40px',   // w-icon-xl, h-icon-xl
-    '2xl': '48px', // w-icon-2xl, h-icon-2xl
+    xs: 'var(--space-4)',
+    sm: 'var(--space-5)',
+    md: 'var(--space-6)',
+    lg: 'var(--space-8)',
+    xl: 'var(--space-10)',
+    '2xl': 'var(--space-12)',
   },
 
   /**
@@ -24,13 +24,13 @@ export const sizes = {
    * Usage: Buttons, inputs, small components
    */
   component: {
-    xs: '32px',    // w-icon-lg, h-icon-lg
-    sm: '48px',    // w-icon-2xl, h-icon-2xl
-    md: '64px',    // w-component-md, h-component-md
-    lg: '96px',    // w-component-lg, h-component-lg
-    xl: '128px',   // w-component-xl, h-component-xl
-    '2xl': '192px', // w-container-xs, h-container-xs
-    '3xl': '256px', // w-container-sm, h-container-sm
+    xs: 'var(--space-8)',
+    sm: 'var(--space-12)',
+    md: 'var(--space-16)',
+    lg: 'var(--space-24)',
+    xl: 'var(--space-32)',
+    '2xl': 'var(--space-48)',
+    '3xl': 'var(--space-64)',
   },
 
   /**
@@ -38,15 +38,15 @@ export const sizes = {
    * Usage: Cards, panels, modals
    */
   container: {
-    xs: '192px',   // w-container-xs
-    sm: '256px',   // w-container-sm
-    md: '320px',   // w-container-md
-    lg: '384px',   // w-container-lg
-    xl: '512px',   // w-128
-    '2xl': '640px', // w-160
-    '3xl': '768px', // w-192
-    '4xl': '896px', // w-224
-    '5xl': '1024px', // w-256
+    xs: 'var(--container-xs, 12rem)',
+    sm: 'var(--container-sm, 16rem)',
+    md: 'var(--container-md, 20rem)',
+    lg: 'var(--container-lg, 24rem)',
+    xl: 'var(--container-xl, 32rem)',
+    '2xl': 'var(--container-2xl, 40rem)',
+    '3xl': 'var(--container-3xl, 48rem)',
+    '4xl': 'var(--container-4xl, 56rem)',
+    '5xl': 'var(--container-5xl, 64rem)',
   },
 
   /**
@@ -55,9 +55,9 @@ export const sizes = {
    */
   width: {
     // Layout
-    sidebar: '256px',           // w-container-sm
-    sidebarCollapsed: '64px',   // w-component-md
-    content: 'calc(100% - 256px)',
+    sidebar: 'var(--layout-sidebar, 16rem)',
+    sidebarCollapsed: 'var(--layout-sidebar-collapsed, 4rem)',
+    content: 'calc(100% - var(--layout-sidebar, 16rem))',
     
     // Fractions
     full: '100%',
@@ -69,11 +69,11 @@ export const sizes = {
     
     // Screen-based
     screen: '100vw',
-    screenSm: '640px',
-    screenMd: '768px',
-    screenLg: '1024px',
-    screenXl: '1280px',
-    screen2xl: '1536px',
+    screenSm: 'var(--breakpoint-sm, 40rem)',
+    screenMd: 'var(--breakpoint-md, 48rem)',
+    screenLg: 'var(--breakpoint-lg, 64rem)',
+    screenXl: 'var(--breakpoint-xl, 80rem)',
+    screen2xl: 'var(--breakpoint-2xl, 96rem)',
   },
 
   /**
@@ -82,10 +82,10 @@ export const sizes = {
    */
   height: {
     // Layout
-    header: '64px',      // h-component-md
-    footer: '64px',      // h-component-md
-    navbar: '56px',      // h-14
-    toolbar: '48px',     // h-icon-2xl
+    header: 'var(--layout-header, 4rem)',
+    footer: 'var(--layout-footer, 4rem)',
+    navbar: 'var(--layout-navbar, 3.5rem)',
+    toolbar: 'var(--layout-toolbar, 3rem)',
     
     // Fractions
     full: '100%',
@@ -95,7 +95,7 @@ export const sizes = {
     
     // Screen-based
     screen: '100vh',
-    screenMinus: 'calc(100vh - 64px)',
+    screenMinus: 'calc(100vh - var(--layout-header, 4rem))',
   },
 
   /**
@@ -104,15 +104,15 @@ export const sizes = {
    */
   minWidth: {
     none: '0px',
-    xs: '192px',   // min-w-48
-    sm: '256px',   // min-w-64
-    md: '320px',   // min-w-80
-    lg: '384px',   // min-w-96
-    xl: '512px',
-    '2xl': '640px',
-    '3xl': '768px',
-    '4xl': '896px',
-    '5xl': '1024px',
+    xs: 'var(--container-xs, 12rem)',
+    sm: 'var(--container-sm, 16rem)',
+    md: 'var(--container-md, 20rem)',
+    lg: 'var(--container-lg, 24rem)',
+    xl: 'var(--container-xl, 32rem)',
+    '2xl': 'var(--container-2xl, 40rem)',
+    '3xl': 'var(--container-3xl, 48rem)',
+    '4xl': 'var(--container-4xl, 56rem)',
+    '5xl': 'var(--container-5xl, 64rem)',
     full: '100%',
   },
 
@@ -122,25 +122,25 @@ export const sizes = {
    */
   maxWidth: {
     none: 'none',
-    xs: '320px',    // max-w-xs
-    sm: '384px',    // max-w-sm
-    md: '448px',    // max-w-md
-    lg: '512px',    // max-w-lg
-    xl: '576px',    // max-w-xl
-    '2xl': '672px', // max-w-2xl
-    '3xl': '768px', // max-w-3xl
-    '4xl': '896px', // max-w-4xl
-    '5xl': '1024px', // max-w-5xl
-    '6xl': '1152px', // max-w-6xl
-    '7xl': '1280px', // max-w-7xl
+    xs: 'var(--max-width-xs, 20rem)',
+    sm: 'var(--max-width-sm, 24rem)',
+    md: 'var(--max-width-md, 28rem)',
+    lg: 'var(--max-width-lg, 32rem)',
+    xl: 'var(--max-width-xl, 36rem)',
+    '2xl': 'var(--max-width-2xl, 42rem)',
+    '3xl': 'var(--max-width-3xl, 48rem)',
+    '4xl': 'var(--max-width-4xl, 56rem)',
+    '5xl': 'var(--max-width-5xl, 64rem)',
+    '6xl': 'var(--max-width-6xl, 72rem)',
+    '7xl': 'var(--max-width-7xl, 80rem)',
     full: '100%',
     prose: '65ch',
     screen: '100vw',
-    screenSm: '640px',
-    screenMd: '768px',
-    screenLg: '1024px',
-    screenXl: '1280px',
-    screen2xl: '1536px',
+    screenSm: 'var(--breakpoint-sm, 40rem)',
+    screenMd: 'var(--breakpoint-md, 48rem)',
+    screenLg: 'var(--breakpoint-lg, 64rem)',
+    screenXl: 'var(--breakpoint-xl, 80rem)',
+    screen2xl: 'var(--breakpoint-2xl, 96rem)',
   },
 
   /**
@@ -149,12 +149,12 @@ export const sizes = {
    */
   minHeight: {
     none: '0px',
-    xs: '192px',
-    sm: '256px',
-    md: '320px',
-    lg: '384px',
-    xl: '512px',
-    '2xl': '640px',
+    xs: 'var(--container-xs, 12rem)',
+    sm: 'var(--container-sm, 16rem)',
+    md: 'var(--container-md, 20rem)',
+    lg: 'var(--container-lg, 24rem)',
+    xl: 'var(--container-xl, 32rem)',
+    '2xl': 'var(--container-2xl, 40rem)',
     full: '100%',
     screen: '100vh',
   },
@@ -165,13 +165,13 @@ export const sizes = {
    */
   maxHeight: {
     none: 'none',
-    xs: '192px',
-    sm: '256px',
-    md: '320px',
-    lg: '384px',
-    xl: '512px',
-    '2xl': '640px',
-    '3xl': '768px',
+    xs: 'var(--container-xs, 12rem)',
+    sm: 'var(--container-sm, 16rem)',
+    md: 'var(--container-md, 20rem)',
+    lg: 'var(--container-lg, 24rem)',
+    xl: 'var(--container-xl, 32rem)',
+    '2xl': 'var(--container-2xl, 40rem)',
+    '3xl': 'var(--container-3xl, 48rem)',
     full: '100%',
     screen: '100vh',
   },
@@ -213,7 +213,6 @@ export const legacyToSemantic = {
   'w-icon-2xl': 'icon.2xl',
   'w-component-md': 'component.md',
   'w-component-lg': 'component.lg',
-  'w-component-lg': 'component.lg',
   'w-component-xl': 'component.xl',
   'w-container-xs': 'container.xs',
   'w-container-sm': 'container.sm',
@@ -228,7 +227,6 @@ export const legacyToSemantic = {
   'h-icon-xl': 'icon.xl',
   'h-icon-2xl': 'icon.2xl',
   'h-component-md': 'component.md',
-  'h-component-lg': 'component.lg',
   'h-component-lg': 'component.lg',
   'h-component-xl': 'component.xl',
   'h-container-xs': 'container.xs',

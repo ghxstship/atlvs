@@ -133,7 +133,7 @@ export default function ContactPage() {
             <Link href="#contact-form">
               <Button className="group" size="lg">
                 Send A Message
-                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
               </Button>
             </Link>
           }
@@ -175,7 +175,7 @@ export default function ContactPage() {
           align="center"
         />
 
-        <Card id="contact-form" className="mx-auto mt-2xl max-w-4xl border border-border/40 bg-background/95 shadow-sm">
+        <Card id="contact-form" className="mx-auto mt-2xl max-w-4xl border border-border bg-card shadow-sm">
           <CardContent className="p-xl">
             <form className="grid gap-lg md:grid-cols-2">
               <div className="space-y-md">
@@ -189,7 +189,7 @@ export default function ContactPage() {
                     type="text"
                     required
                     placeholder="Jane Doe"
-                    className="w-full rounded-lg border border-border/60 bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full rounded-lg border border-border bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
                 <div className="space-y-xs">
@@ -202,7 +202,7 @@ export default function ContactPage() {
                     type="email"
                     required
                     placeholder="you@company.com"
-                    className="w-full rounded-lg border border-border/60 bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full rounded-lg border border-border bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
                 <div className="space-y-xs">
@@ -213,7 +213,7 @@ export default function ContactPage() {
                     id="company"
                     name="company"
                     placeholder="Production Studio"
-                    className="w-full rounded-lg border border-border/60 bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full rounded-lg border border-border bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
               </div>
@@ -227,7 +227,7 @@ export default function ContactPage() {
                     id="topic"
                     name="topic"
                     required
-                    className="w-full rounded-lg border border-border/60 bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full rounded-lg border border-border bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     <option value="support">Support Request</option>
                     <option value="sales">Sales Inquiry</option>
@@ -247,16 +247,16 @@ export default function ContactPage() {
                     rows={6}
                     required
                     placeholder="Tell us more about your inquiry..."
-                    className="w-full rounded-lg border border-border/60 bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full rounded-lg border border-border bg-background px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
                 <label className="inline-flex items-center gap-sm text-body-sm text-muted-foreground">
-                  <input type="checkbox" className="h-icon-xs w-icon-xs rounded border-border/60 text-primary focus:ring-primary" />
+                  <input type="checkbox" className="h-icon-xs w-icon-xs rounded border-border text-primary focus:ring-primary" />
                   I’d like product and feature updates from GHXSTSHIP.
                 </label>
                 <Button className="w-full group">
                   Send Message
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </div>
             </form>
@@ -308,7 +308,7 @@ export default function ContactPage() {
         </div>
       </MarketingSection>
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="Ready To Get Started?"
           description="Join thousands of creative teams who trust GHXSTSHIP to manage productions end-to-end."
@@ -318,7 +318,7 @@ export default function ContactPage() {
           <Link href="/auth/signup">
             <Button className="group">
               Start Free Trial
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
           <Link href="/pricing">

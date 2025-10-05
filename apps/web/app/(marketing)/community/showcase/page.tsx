@@ -123,7 +123,7 @@ export default function ShowcasePage() {
               <Link href="/community/opportunities">
                 <Button className="group">
                   Submit Your Project
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
               <Link href="/community">
@@ -148,7 +148,7 @@ export default function ShowcasePage() {
           {featuredProjects.map((project) => (
             <Card
               key={project.id}
-              className="overflow-hidden rounded-3xl border border-border/40 bg-background/90 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+              className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition hover:-translate-y-1 motion-reduce:hover:translate-y-0 hover:shadow-elevation-4"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <div
@@ -157,7 +157,7 @@ export default function ShowcasePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
                 <div className="absolute top-md left-md right-md flex items-center justify-between text-background/90">
-                  <Badge variant="secondary" className="bg-background/90 backdrop-blur">
+                  <Badge variant="secondary" className="bg-card backdrop-blur">
                     {project.category}
                   </Badge>
                   <div className="flex items-center gap-md text-body-sm font-medium">
@@ -298,7 +298,7 @@ export default function ShowcasePage() {
           <Link href="/community/opportunities">
             <Button className="group">
               Submit Project
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
           <Link href="/auth/signup">

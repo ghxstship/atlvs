@@ -150,7 +150,7 @@ export default function CompanyPage() {
             <Link href="/company/about">
               <Button className="group" size="lg">
                 Explore Our Journey
-                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
               </Button>
             </Link>
           }
@@ -195,7 +195,7 @@ export default function CompanyPage() {
 
         <div className="mt-2xl grid gap-xl md:grid-cols-3">
           {leadership.map((leader) => (
-            <Card key={leader.name} className="border border-border/40 bg-background/95 shadow-sm">
+            <Card key={leader.name} className="border border-border bg-card shadow-sm">
               <CardContent className="flex flex-col gap-md p-xl">
                 <div className="aspect-square w-full overflow-hidden rounded-2xl bg-muted">
                   <img src={leader.image} alt={leader.name} className="h-full w-full object-cover" />
@@ -265,7 +265,7 @@ export default function CompanyPage() {
 
         <div className="mt-2xl space-y-lg">
           {pressReleases.map((press) => (
-            <Card key={press.href} className="border border-border/40 bg-background/95 shadow-sm">
+            <Card key={press.href} className="border border-border bg-card shadow-sm">
               <CardContent className="flex flex-col gap-md p-xl md:flex-row md:items-center md:justify-between">
                 <div className="space-y-xs">
                   <h3 className="text-heading-4 uppercase leading-tight">{press.title}</h3>
@@ -276,7 +276,7 @@ export default function CompanyPage() {
                 <Link href={press.href}>
                   <Button variant="outline" className="group">
                     Read More
-                    <ExternalLink className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                    <ExternalLink className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                   </Button>
                 </Link>
               </CardContent>
@@ -288,7 +288,7 @@ export default function CompanyPage() {
           <Link href="/press">
             <Button className="group">
               View Press Room
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
         </div>
@@ -314,7 +314,7 @@ export default function CompanyPage() {
         </div>
       </MarketingSection>
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="Let’s Build The Future Together"
           description="Interested in partnering, joining the team, or covering GHXSTSHIP? We’d love to connect."

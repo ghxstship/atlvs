@@ -106,7 +106,7 @@ export default function ForumsPage() {
             <Link href="#">
               <Button className="group">
                 Join The Discussion
-                <MessageCircle className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                <MessageCircle className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
               </Button>
             </Link>
           }
@@ -187,7 +187,7 @@ export default function ForumsPage() {
         </div>
       </MarketingSection>
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="Ready To Post Your First Thread?"
           description="Introduce yourself, share a win, or ask for help—this forum is built to respond."
@@ -197,7 +197,7 @@ export default function ForumsPage() {
           <Link href="#">
             <Button className="group">
               Start A Topic
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
           <Link href="/community/opportunities">

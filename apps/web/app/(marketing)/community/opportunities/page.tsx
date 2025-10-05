@@ -195,7 +195,7 @@ export default function OpportunitiesPage() {
             <>
               <Button className="group">
                 Browse Opportunities
-                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
               </Button>
               <Button variant="outline">Create Profile</Button>
             </>
@@ -248,7 +248,7 @@ export default function OpportunitiesPage() {
           {featuredOpportunities.map((opportunity) => {
             const Icon = opportunity.icon;
             return (
-              <Card key={opportunity.id} className="flex h-full flex-col justify-between gap-xl rounded-3xl border border-border/40 bg-background/90 p-xl shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+              <Card key={opportunity.id} className="flex h-full flex-col justify-between gap-xl rounded-3xl border border-border bg-card p-xl shadow-sm transition hover:-translate-y-1 motion-reduce:hover:translate-y-0 hover:shadow-elevation-4">
                 <div className="flex items-start gap-md">
                   <div className="inline-flex h-icon-xl w-icon-xl items-center justify-center rounded-full bg-primary/10 text-primary">
                     <Icon className="h-icon-md w-icon-md" />
@@ -337,7 +337,7 @@ export default function OpportunitiesPage() {
           {gettingStartedSteps.map((step) => {
             const Icon = step.icon;
             return (
-              <Card key={step.step} className="flex h-full flex-col gap-md rounded-3xl border border-border/40 bg-background/95 p-xl shadow-sm">
+              <Card key={step.step} className="flex h-full flex-col gap-md rounded-3xl border border-border bg-card p-xl shadow-sm">
                 <div className="flex items-center justify-between">
                   <span className="text-body-xs uppercase tracking-[0.25em] text-muted-foreground">Step {step.step}</span>
                   <div className="inline-flex h-icon-xl w-icon-xl items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -352,7 +352,7 @@ export default function OpportunitiesPage() {
         </div>
       </MarketingSection>
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="Ready To Get Involved?"
           description="Join thousands of creative professionals who are learning, collaborating, and succeeding together inside GHXSTSHIP."

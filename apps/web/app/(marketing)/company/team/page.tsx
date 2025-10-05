@@ -1,26 +1,68 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
+import { Badge } from '@ghxstship/ui';
 import { ArrowRight, Mail, Globe, Users, TrendingUp, Heart, Shield, Target, MapPin, Linkedin } from 'lucide-react';
-import { anton, typography } from '../../../_components/lib/typography';
-// import { Section, SectionHeader } from '../../components/layout/Section';
-// import { TeamMemberCard } from '../../components/team/TeamMemberCard';
-// import { LeadershipCard } from '../../components/team/LeadershipCard';
-// import { DepartmentCard } from '../../components/team/DepartmentCard';
-// import { TeamStats } from '../../components/team/TeamStats';
-// import { FeatureCard } from '../../components/ui/FeatureCard';
 
-export const metadata: Metadata = {
-  title: 'Our Team - People Who Actually Get It | GHXSTSHIP',
-  description: 'Meet the team that survived Formula 1 chaos and festival meltdowns. We build production tools because we\'ve lived the pain.',
-  openGraph: {
-    title: 'Our Team - People Who Actually Get It | GHXSTSHIP',
-    description: 'Meet the team that survived Formula 1 chaos and festival meltdowns.',
-    url: 'https://ghxstship.com/company/team',
-  },
-};
+import {
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingCard,
+  MarketingStatGrid,
+} from '../../../_components/marketing/layout/Section';
+import { anton } from '../../../_components/lib/typography';
 
-const leadership = [
+type IconType = ComponentType<SVGProps<SVGSVGElement>>;
+
+interface LeaderItem {
+  name: string;
+  role: string;
+  bio: string;
+  location: string;
+  image: string;
+  social?: {
+    linkedin?: string;
+  };
+}
+
+interface DepartmentItem {
+  code: string;
+  name: string;
+  count: number;
+  description: string;
+  leads: string[];
+  color: string;
+}
+
+interface TeamMemberItem {
+  name: string;
+  role: string;
+  department: string;
+  departmentCode: string;
+  location: string;
+  image: string;
+  tagline: string;
+  profile: string;
+}
+
+interface StatItem {
+  metric: string;
+  label: string;
+  description: string;
+}
+
+interface CultureValue {
+  title: string;
+  description: string;
+  icon: IconType;
+}
+
+interface RelatedLink {
+  title: string;
+  href: string;
+  description: string;
+}
+
+const leadership: LeaderItem[] = [
   {
     name: 'Julian Clarkson',
     role: 'Founder, CXO',
@@ -83,7 +125,7 @@ const leadership = [
   },
 ];
 
-const departments = [
+const departments: DepartmentItem[] = [
   {
     code: 'XLA',
     name: 'Executive Leadership & Administration',
@@ -206,7 +248,7 @@ const departments = [
   },
 ];
 
-const teamMembers = [
+const teamMembers: TeamMemberItem[] = [
   {
     name: 'Alexandra Sterling',
     role: 'Executive Operations Director',
@@ -265,7 +307,7 @@ const teamMembers = [
     location: 'Denver, CO',
     image: '/api/placeholder/150/150',
     tagline: 'Builds festival grounds that don\'t flood, collapse, or become mud pits of despair',
-    profile: 'River turns empty fields into functional event spaces. He thinks about drainage, power distribution, and crowd flow so you don\'t have to.',
+    profile: 'River turns empty fields into functional event spaces. He thinks about drainage, power distribution, and crowd flow so you don&apos;t have to.',
   },
   {
     name: 'Casey Wilson',
@@ -359,318 +401,237 @@ const teamMembers = [
   },
 ];
 
-const stats = [
+const stats: StatItem[] = [
   { metric: '318', label: 'Team Members', description: 'Across 15 departments' },
   { metric: '25+', label: 'Countries', description: 'Global distributed team' },
   { metric: '40+', label: 'Languages', description: 'Spoken by our team' },
   { metric: '100%', label: 'Remote-First', description: 'Flexible work culture' },
 ];
 
+const cultureValues: CultureValue[] = [
+  {
+    title: 'Remote-First',
+    description: 'We believe great work can happen anywhere. Our team spans the globe, working flexibly while staying connected.',
+    icon: Globe,
+  },
+  {
+    title: 'Creative Freedom',
+    description: 'We encourage experimentation, creative thinking, and innovative approaches to solving complex problems.',
+    icon: Users,
+  },
+  {
+    title: 'Continuous Learning',
+    description: 'We invest in our team\'s growth through learning opportunities, conferences, and skill development programs.',
+    icon: TrendingUp,
+  },
+  {
+    title: 'Inclusive Environment',
+    description: 'We celebrate diverse perspectives and create an environment where everyone feels valued and heard.',
+    icon: Heart,
+  },
+  {
+    title: 'Work-Life Balance',
+    description: 'We respect personal time and promote healthy boundaries between work and life.',
+    icon: Shield,
+  },
+  {
+    title: 'Impact-Driven',
+    description: 'Every team member contributes to meaningful work that impacts creative professionals worldwide.',
+    icon: Target,
+  },
+];
+
+const relatedLinks: RelatedLink[] = [
+  { title: 'About Us', href: '/company/about', description: 'Our mission, vision, and values' },
+  { title: 'Careers', href: '/careers', description: 'Join our growing team' },
+  { title: 'Press & Media', href: '/company/press', description: 'Latest news and coverage' },
+];
+
 export default function TeamPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <Badge variant="outline" className="mb-md">
-              Our People
-            </Badge>
-            <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase mb-lg`}>
-              MEET THE<br /><span className="text-gradient-accent">TEAM</span>
-            </h1>
-            <p className={`${typography.heroSubtitle} mb-xl`}>
-              We're a diverse, global team of creators, builders, and innovators united by our passion for empowering creative collaboration worldwide.
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-lg max-w-4xl mx-auto">
-              {stats.map((stat: any) => (
-                <div key={stat.metric} className="text-center">
-                  <div className={`${typography.statValue} mb-sm`}>
-                    {stat.metric}
+      <MarketingSection variant="gradient" padding="lg">
+        <div className="stack-4xl text-center">
+          <MarketingSectionHeader
+            eyebrow="Our People"
+            title="MEET THE TEAM"
+            highlight="THE TEAM"
+            description="We're a diverse, global team of creators, builders, and innovators united by our passion for empowering creative collaboration worldwide."
+          />
+          <MarketingStatGrid items={stats.map(s => ({ value: s.metric, label: s.label, caption: s.description }))} className="max-w-4xl mx-auto" />
+        </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <div className="stack-3xl">
+          <MarketingSectionHeader
+            title="LEADERSHIP TEAM"
+            description="Meet the experienced leaders guiding GHXSTSHIP's vision and growth."
+            align="center"
+          />
+          <div className="grid gap-lg md:grid-cols-2 lg:grid-cols-3">
+            {leadership.map((leader) => (
+              <MarketingCard
+                key={leader.name}
+                title={leader.name}
+                description={leader.bio}
+                icon={<Users className="h-icon-lg w-icon-lg" />}
+                accent="primary"
+                highlight={leader.role}
+                className="items-start text-left"
+                footer={
+                  <div className="flex items-center justify-between w-full mt-4">
+                    <div className="flex items-center gap-2 marketing-microcopy">
+                      <MapPin className="h-3 w-3" />
+                      <span>{leader.location}</span>
+                    </div>
+                    {leader.social?.linkedin && (
+                      <a href={leader.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+                        <Linkedin className="w-icon-sm h-icon-sm" />
+                      </a>
+                    )}
                   </div>
-                  <div className="font-semibold text-foreground mb-xs">{stat.label}</div>
-                  <div className="text-sm text-muted-foreground">{stat.description}</div>
-                </div>
-              ))}
-            </div>
+                }
+              />
+            ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
-      {/* Leadership Team */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
-              LEADERSHIP TEAM
-            </h2>
-            <p className={`${typography.sectionSubtitle}`}>
-              Meet the experienced leaders guiding GHXSTSHIP's vision and growth.
-            </p>
+      <MarketingSection variant="muted">
+        <div className="stack-3xl">
+          <MarketingSectionHeader
+            title="OUR DEPARTMENTS"
+            description="Each department brings unique expertise to building the future of creative collaboration."
+            align="center"
+          />
+          <div className="grid gap-lg md:grid-cols-2 lg:grid-cols-3">
+            {departments.map((dept) => (
+              <MarketingCard
+                key={dept.name}
+                title={dept.name}
+                description={dept.description}
+                icon={<Users className="h-icon-lg w-icon-lg" />}
+                accent="primary"
+                className="items-start text-left"
+                footer={
+                  <div className="marketing-microcopy mt-4">
+                    <div className="font-medium">{dept.count} team members</div>
+                    <div className="text-sm text-muted-foreground mt-1">
+                      Leads: {dept.leads.join(', ')}
+                    </div>
+                  </div>
+                }
+              />
+            ))}
           </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl max-w-7xl mx-auto">
-          {leadership.map((leader: any) => (
-            <Card key={leader.name} className="group hover:shadow-floating transition-all duration-300 h-modal-sm flex flex-col">
-              <CardContent className="p-lg flex flex-col h-full">
-                {/* Header Section - Fixed Height */}
-                <div className="flex items-center cluster mb-md h-icon-2xl">
-                  <div className="w-icon-2xl h-icon-2xl bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center flex-shrink-0">
-                    <Users className="w-icon-md h-icon-md text-background" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg truncate`}>{leader.name}</h3>
-                    <p className="text-sm text-muted-foreground truncate">{leader.role}</p>
-                  </div>
-                  {leader.social?.linkedin && (
-                    <a href={leader.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors flex-shrink-0">
-                      <Linkedin className="w-icon-sm h-icon-sm" />
-                    </a>
-                  )}
-                </div>
-                
-                {/* Content Section - Flexible Height with Scroll */}
-                <div className="flex-1 mb-md overflow-hidden">
-                  <div className="h-full overflow-y-auto">
-                    <p className="text-sm text-muted-foreground">{leader.bio}</p>
-                  </div>
-                </div>
-                
-                {/* Footer Section - Fixed Height */}
-                <div className="flex items-center text-sm text-muted-foreground h-icon-xs">
-                  <MapPin className="w-icon-xs h-icon-xs mr-xs flex-shrink-0" />
-                  <span className="truncate">{leader.location}</span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
         </div>
-        </div>
-      </section>
+      </MarketingSection>
 
-      {/* Departments */}
-      <section className="py-mdxl bg-muted">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
-              OUR DEPARTMENTS
-            </h2>
-            <p className={`${typography.sectionSubtitle}`}>
-              Each department brings unique expertise to building the future of creative collaboration.
-            </p>
+      <MarketingSection>
+        <div className="stack-3xl">
+          <MarketingSectionHeader
+            title="TEAM MEMBERS"
+            description="Get to know some of the talented individuals who make GHXSTSHIP possible."
+            align="center"
+          />
+          <div className="grid gap-lg md:grid-cols-2 lg:grid-cols-3">
+            {teamMembers.map((member) => (
+              <MarketingCard
+                key={member.name}
+                title={member.name}
+                description={member.profile}
+                icon={<Users className="h-icon-lg w-icon-lg" />}
+                accent="primary"
+                highlight={member.role}
+                className="items-start text-left"
+                footer={
+                  <div className="space-y-2 mt-4">
+                    <div className="marketing-microcopy italic">"{member.tagline}"</div>
+                    <div className="flex items-center gap-2 marketing-microcopy">
+                      <MapPin className="h-3 w-3" />
+                      <span>{member.location}</span>
+                    </div>
+                  </div>
+                }
+              />
+            ))}
           </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
-          {departments.map((dept: any) => (
-            <Card key={dept.name} className="hover:shadow-floating transition-shadow h-content-sm flex flex-col">
-              <CardContent className="p-lg flex flex-col h-full">
-                {/* Header Section - Fixed Height */}
-                <div className="flex items-center gap-md mb-md h-icon-2xl">
-                  <div className={`w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center flex-shrink-0`}>
-                    <Users className="h-icon-md w-icon-md text-background" />
-                  </div>
-                  <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg flex-1 min-w-0`}>
-                    {dept.name}
-                  </h3>
-                </div>
-                
-                {/* Content Section - Flexible Height with Scroll */}
-                <div className="flex-1 overflow-hidden">
-                  <div className="h-full overflow-y-auto">
-                    <p className="text-muted-foreground text-sm">{dept.description}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        </div>
-      </section>
-
-      {/* Team Members */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
-              TEAM MEMBERS
-            </h2>
-            <p className={`${typography.sectionSubtitle}`}>
-              Get to know some of the talented individuals who make GHXSTSHIP possible.
-            </p>
-          </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
-          {teamMembers.map((member: any) => (
-            <Card key={member.name} className="hover:shadow-floating transition-all duration-300 group h-content-lg flex flex-col">
-              <CardContent className="p-lg flex flex-col h-full">
-                {/* Header Section - Fixed Height */}
-                <div className="flex items-center cluster mb-md h-component-md">
-                  <div className="w-component-md h-component-md bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Users className="h-icon-md w-icon-md text-accent" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg mb-xs truncate`}>
-                      {member.name}
-                    </h3>
-                    <p className="text-sm font-semibold text-accent mb-xs truncate">{member.role}</p>
-                    <Badge variant="outline" className="text-xs">
-                      {member.departmentCode}
-                    </Badge>
-                  </div>
-                </div>
-                
-                {/* Content Section - Flexible Height with Scroll */}
-                <div className="flex-1 mb-md overflow-hidden">
-                  <p className="text-sm font-medium text-foreground mb-sm italic line-clamp-xs">
-                    "{member.tagline}"
-                  </p>
-                  <div className="h-component-lg overflow-y-auto">
-                    <p className="text-sm text-muted-foreground">
-                      {member.profile}
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Footer Section - Fixed Height */}
-                <div className="flex items-center gap-xs text-xs text-muted-foreground h-icon-xs">
-                  <MapPin className="h-3 w-3 flex-shrink-0" />
-                  <span className="truncate">{member.location}</span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="text-center mt-2xl">
-          <p className="text-muted-foreground mb-lg">
-            And many more talented individuals across all departments!
-          </p>
-          <Link href="/careers">
-            <Button className="group">
-              Join Our Team
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-            </Button>
-          </Link>
-        </div>
-        </div>
-      </section>
-
-      {/* Culture & Values */}
-      <section className="py-mdxl bg-muted">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
-              OUR CULTURE
-            </h2>
-            <p className={`${typography.sectionSubtitle}`}>
-              We've built a culture that celebrates creativity, embraces diversity, and empowers every team member to do their best work.
-            </p>
-          </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
-          {[
-            {
-              title: 'Remote-First',
-              description: 'We believe great work can happen anywhere. Our team spans the globe, working flexibly while staying connected.',
-              icon: Globe,
-            },
-            {
-              title: 'Creative Freedom',
-              description: 'We encourage experimentation, creative thinking, and innovative approaches to solving complex problems.',
-              icon: Users,
-            },
-            {
-              title: 'Continuous Learning',
-              description: 'We invest in our team\'s growth through learning opportunities, conferences, and skill development programs.',
-              icon: TrendingUp,
-            },
-            {
-              title: 'Inclusive Environment',
-              description: 'We celebrate diverse perspectives and create an environment where everyone feels valued and heard.',
-              icon: Heart,
-            },
-            {
-              title: 'Work-Life Balance',
-              description: 'We respect personal time and promote healthy boundaries between work and life.',
-              icon: Shield,
-            },
-            {
-              title: 'Impact-Driven',
-              description: 'Every team member contributes to meaningful work that impacts creative professionals worldwide.',
-              icon: Target,
-            },
-          ].map((value: any) => {
-            const Icon = value.icon;
-            return (
-              <Card key={value.title} className="hover:shadow-floating transition-shadow">
-                <CardContent className="p-lg text-center">
-                  <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
-                    <Icon className="h-icon-md w-icon-md text-background" />
-                  </div>
-                  <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase mb-sm`}>
-                    {value.title}
-                  </h3>
-                  <p className="text-muted-foreground">{value.description}</p>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-mdxl bg-accent text-accent-foreground">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
-              WANT TO JOIN US?
-            </h2>
-            <p className={`${typography.sectionSubtitle}`}>
-              We're always looking for talented individuals who share our passion for empowering creative collaboration. Explore our open positions.
-            </p>
-          </div>
-        <div className="flex flex-col sm:flex-row gap-md justify-center">
-          <Link href="/careers">
-            <Button className="w-full sm:w-auto group">
-              View Open Positions
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
-            </Button>
-          </Link>
-          <Button className="w-full sm:w-auto">
-            <Mail className="mr-sm h-icon-xs w-icon-xs" />
-            Contact Us
-          </Button>
-        </div>
-        </div>
-      </section>
-
-      {/* Related Pages */}
-      <section className="py-mdxl">
-        <div className="container mx-auto px-md">
-          <div className="text-center mb-3xl">
-            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
-              LEARN MORE
-            </h2>
-          </div>
-        <div className="grid md:grid-cols-3 gap-lg">
-          {[
-            { title: 'About Us', href: '/company/about', description: 'Our mission, vision, and values' },
-            { title: 'Careers', href: '/careers', description: 'Join our growing team' },
-            { title: 'Press & Media', href: '/company/press', description: 'Latest news and coverage' },
-          ].map((link: any) => (
-            <Link key={link.title} href="#">
-              <Card className="hover:shadow-floating transition-shadow group">
-                <CardContent className="p-lg text-center">
-                  <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg mb-sm group-hover:text-accent transition-colors`}>
-                    {link.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {link.description}
-                  </p>
-                </CardContent>
-              </Card>
+          <div className="text-center stack-4xl">
+            <p className="marketing-microcopy">And many more talented individuals across all departments!</p>
+            <Link href="/careers">
+              <Button className="marketing-interactive w-auto">
+                Join Our Team
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
+              </Button>
             </Link>
-          ))}
+          </div>
         </div>
+      </MarketingSection>
+
+      <MarketingSection variant="muted">
+        <div className="stack-3xl">
+          <MarketingSectionHeader
+            title="OUR CULTURE"
+            description="We've built a culture that celebrates creativity, embraces diversity, and empowers every team member to do their best work."
+            align="center"
+          />
+          <div className="grid gap-lg md:grid-cols-2 lg:grid-cols-3">
+            {cultureValues.map(({ icon: Icon, title, description }) => (
+              <MarketingCard
+                key={title}
+                title={title}
+                description={description}
+                icon={<Icon className="h-icon-lg w-icon-lg" />}
+                accent="primary"
+                className="items-start text-left"
+              />
+            ))}
+          </div>
         </div>
-      </section>
+      </MarketingSection>
+
+      <MarketingSection variant="gradient" padding="lg">
+        <div className="stack-2xl text-center">
+          <MarketingSectionHeader
+            title="WANT TO JOIN US?"
+            description="We're always looking for talented individuals who share our passion for empowering creative collaboration. Explore our open positions."
+            align="center"
+          />
+          <div className="cluster-lg flex-wrap justify-center">
+            <Link href="/careers">
+              <Button className="marketing-interactive w-full sm:w-auto">
+                View Open Positions
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
+              </Button>
+            </Link>
+            <Button className="marketing-interactive w-full sm:w-auto">
+              <Mail className="mr-sm h-icon-xs w-icon-xs" />
+              Contact Us
+            </Button>
+          </div>
+        </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <div className="stack-2xl">
+          <MarketingSectionHeader title="LEARN MORE" align="center" />
+          <div className="grid gap-lg md:grid-cols-3">
+            {relatedLinks.map((link) => (
+              <Link
+                key={link.title}
+                href={link.href}
+                className="marketing-card marketing-interactive block p-xl text-left"
+              >
+                <h3 className={`${anton.className} text-heading-3 uppercase text-heading-gradient mb-sm`}>
+                  {link.title}
+                </h3>
+                <p className="marketing-microcopy">{link.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </MarketingSection>
     </div>
   );
 }

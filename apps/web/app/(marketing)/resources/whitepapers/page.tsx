@@ -127,7 +127,7 @@ export default function WhitepapersPage() {
               <Link href="/auth/signup">
                 <Button className="group">
                   Download All Reports
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
               <Link href="#whitepapers">
@@ -175,7 +175,7 @@ export default function WhitepapersPage() {
 
           <div className="grid lg:grid-cols-2 gap-xl mb-4xl">
             {featuredPapers.map((paper: any) => (
-              <Card key={paper.id} className="hover:shadow-modal transition-all duration-300 group">
+              <Card key={paper.id} className="hover:shadow-elevation-4 transition-all duration-normal group">
                 <div className="relative">
                   <div className="h-container-sm bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
@@ -272,7 +272,7 @@ export default function WhitepapersPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
             {regularPapers.map((paper: any) => (
-              <Card key={paper.id} className="hover:shadow-floating transition-all duration-300 group">
+              <Card key={paper.id} className="hover:shadow-elevation-3 transition-all duration-normal group">
                 <div className="relative">
                   <div className="h-container-xs bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
@@ -376,7 +376,7 @@ export default function WhitepapersPage() {
                 frequency: 'On demand',
               },
             ].map((benefit, index) => (
-              <Card key={index} className="hover:shadow-floating transition-shadow text-center">
+              <Card key={index} className="hover:shadow-elevation-3 transition-shadow text-center">
                 <CardContent className="p-xl">
                   <div className="w-component-md h-component-md bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-md">
                     <FileText className="h-icon-lg w-icon-lg text-background" />
@@ -412,7 +412,7 @@ export default function WhitepapersPage() {
                 <Link href="/auth/signup">
                   <Button size="lg" className="group">
                     Download All Reports
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                   </Button>
                 </Link>
                 <Link href="/auth/signin">

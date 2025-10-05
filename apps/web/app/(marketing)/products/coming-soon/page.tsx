@@ -118,7 +118,7 @@ export default function ComingSoonPage() {
               <Link href="/auth/signup">
                 <Button className="group">
                   Get Early Access
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
               <Link href="#products">
@@ -180,7 +180,7 @@ export default function ComingSoonPage() {
             {upcomingProducts.map((product, index) => (
               <div key={product.id} className={`${index % 2 === 1 ? 'md:flex-row-reverse' : ''} md:flex items-center gap-xsxl`}>
                 <div className="md:w-1/2 mb-xl md:mb-0">
-                  <Card className="hover:shadow-modal transition-all duration-300">
+                  <Card className="hover:shadow-elevation-4 transition-all duration-normal">
                     <div className={`h-container-md bg-gradient-to-br ${product.gradient} flex items-center justify-center relative overflow-hidden`}>
                       <div className="text-center text-background">
                         <div className="text-display text-heading-3 mb-md opacity-90">
@@ -191,7 +191,7 @@ export default function ComingSoonPage() {
                         </div>
                       </div>
                       <div className="absolute top-md right-4">
-                        <Badge className="bg-background/20 color-foreground border-foreground/30">
+                        <Badge className="bg-muted color-foreground border-foreground/30">
                           {product.status}
                         </Badge>
                       </div>
@@ -290,7 +290,7 @@ export default function ComingSoonPage() {
                 description: 'Get early access to new features and help us test before public release',
               },
             ].map((item, index) => (
-              <Card key={index} className="hover:shadow-floating transition-shadow text-center">
+              <Card key={index} className="hover:shadow-elevation-3 transition-shadow text-center">
                 <CardContent className="p-xl">
                   <div className="w-component-md h-component-md bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-md">
                     <item.icon className="h-icon-lg w-icon-lg text-background" />
@@ -320,7 +320,7 @@ export default function ComingSoonPage() {
                 <Link href="https://ghxstship.canny.io" target="_blank" rel="noopener noreferrer">
                   <Button className="group">
                     Open Feature Portal
-                    <ExternalLink className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                    <ExternalLink className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                   </Button>
                 </Link>
                 <p className="text-body-sm color-muted mt-sm">
@@ -353,7 +353,7 @@ export default function ComingSoonPage() {
                 <Link href="/auth/signup">
                   <Button size="lg" className="group">
                     Join Early Access Program
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                   </Button>
                 </Link>
                 <Link href="/contact">

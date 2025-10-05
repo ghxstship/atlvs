@@ -147,7 +147,7 @@ export default function PartnershipsPage() {
             <Link href="#partner-apply">
               <Button className="group" size="lg">
                 Start Partnership Conversation
-                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
               </Button>
             </Link>
           }
@@ -229,7 +229,7 @@ export default function PartnershipsPage() {
 
         <div className="mt-2xl grid gap-xl md:grid-cols-2">
           {successStories.map((story) => (
-            <Card key={story.company} className="border border-border/40 bg-background/95 shadow-sm">
+            <Card key={story.company} className="border border-border bg-card shadow-sm">
               <CardContent className="space-y-lg p-xl">
                 <div className="flex items-center gap-sm">
                   <h3 className="text-heading-4 uppercase leading-tight">{story.company}</h3>
@@ -249,7 +249,7 @@ export default function PartnershipsPage() {
         </div>
       </MarketingSection>
 
-      <MarketingSection id="partner-apply" variant="primaryGradient" padding="lg">
+      <MarketingSection id="partner-apply" variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="Ready To Partner?"
           description="Tell us about your solutions and goals. We’ll reach out with next steps, enablement resources, and launch timelines."
@@ -259,7 +259,7 @@ export default function PartnershipsPage() {
           <Link href="/contact">
             <Button className="group" size="lg">
               Start Partnership Discussion
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
           <Button variant="outline" size="lg">

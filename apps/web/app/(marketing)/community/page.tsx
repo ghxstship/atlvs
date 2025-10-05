@@ -176,7 +176,7 @@ export default function CommunityPage() {
               >
                 <Button className="group">
                   Join Skool Community
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
               <Link href="/community/opportunities">
@@ -296,7 +296,7 @@ export default function CommunityPage() {
         </div>
       </MarketingSection>
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="Ready To Dive In?"
           description="Whether you need answers, collaborators, or inspiration, the GHXSTSHIP community is ready to help."
@@ -306,7 +306,7 @@ export default function CommunityPage() {
           <Link href="/community/opportunities">
             <Button className="group">
               Find Opportunities
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
           <Link

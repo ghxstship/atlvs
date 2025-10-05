@@ -129,7 +129,7 @@ export default function PartnersPage() {
 
         <div className="mt-2xl grid gap-xl md:grid-cols-2 xl:grid-cols-4">
           {featuredPartners.map((partner) => (
-            <Card key={partner.name} className="rounded-3xl border border-border/40 bg-background/95 shadow-sm">
+            <Card key={partner.name} className="rounded-3xl border border-border bg-card shadow-sm">
               <CardContent className="flex h-full flex-col items-center gap-md p-xl text-center">
                 <div className="flex h-20 w-full items-center justify-center rounded-2xl bg-muted">
                   <span className="text-body-sm text-muted-foreground">{partner.logo ? 'Logo' : 'Partner'}</span>
@@ -160,7 +160,7 @@ export default function PartnersPage() {
         </div>
       </MarketingSection>
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="Let’s Build The Future Of Production"
           description="Tell us about your products, services, and vision. We’ll co-design a partnership that unlocks new value for the creators we serve."

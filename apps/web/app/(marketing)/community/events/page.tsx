@@ -83,7 +83,7 @@ export default function EventsPage() {
           {upcomingEvents.map((event) => (
             <Card
               key={event.title}
-              className="flex flex-col gap-xl rounded-3xl border border-border/40 bg-background/95 p-xl shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+              className="flex flex-col gap-xl rounded-3xl border border-border bg-card p-xl shadow-sm transition hover:-translate-y-1 motion-reduce:hover:translate-y-0 hover:shadow-elevation-4"
             >
               <div className="flex flex-col gap-md md:flex-row md:items-center md:justify-between">
                 <div className="space-y-sm">

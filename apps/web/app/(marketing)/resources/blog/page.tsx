@@ -117,7 +117,7 @@ export default function BlogPage() {
               <Link href="/auth/signup">
                 <Button className="group">
                   Unlock Premium Content
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
               <Link href="#posts">
@@ -152,7 +152,7 @@ export default function BlogPage() {
         <div className="container mx-auto px-md">
           <div className="grid lg:grid-cols-2 gap-xl">
             {blogPosts.map((post: any) => (
-              <Card key={post.id} className="hover:shadow-floating transition-all duration-300 group overflow-hidden">
+              <Card key={post.id} className="hover:shadow-elevation-3 transition-all duration-normal group overflow-hidden">
                 <div className="relative">
                   <div className="h-container-xs bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
@@ -242,7 +242,7 @@ export default function BlogPage() {
                 <Link href="/auth/signup">
                   <Button className="group">
                     Subscribe to Blog
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                   </Button>
                 </Link>
                 <Link href="/auth/signin">

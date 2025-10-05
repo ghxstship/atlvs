@@ -134,7 +134,7 @@ export default function ResourcesPage() {
             <Link href="#featured">
               <Button className="group" size="lg">
                 Browse Featured Resources
-                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
               </Button>
             </Link>
           }
@@ -181,7 +181,7 @@ export default function ResourcesPage() {
 
         <div className="mt-2xl grid gap-xl md:grid-cols-3">
           {featuredResources.map((resource) => (
-            <Card key={resource.title} className="border border-border/40 bg-background/95 shadow-sm">
+            <Card key={resource.title} className="border border-border bg-card shadow-sm">
               <CardContent className="flex h-full flex-col gap-md p-xl">
                 <div className="flex items-center justify-between">
                   <Badge variant="outline">{resource.category}</Badge>
@@ -195,7 +195,7 @@ export default function ResourcesPage() {
                   <span>{resource.readTime}</span>
                   <Button variant="ghost" size="sm" className="group px-sm">
                     {resource.type === 'Premium' ? 'Unlock' : 'Open'}
-                    <ArrowRight className="ml-xxs h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-xxs h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                   </Button>
                 </div>
               </CardContent>
@@ -226,7 +226,7 @@ export default function ResourcesPage() {
         </div>
       </MarketingSection>
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="Unlock The Full Library"
           description="Access every template, guide, and webinar with a free 14-day trial of GHXSTSHIP."
@@ -236,7 +236,7 @@ export default function ResourcesPage() {
           <Link href="/auth/signup">
             <Button className="group" size="lg">
               Start Free Trial
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
           <Link href="/auth/signin">

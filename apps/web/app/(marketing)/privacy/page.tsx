@@ -172,7 +172,7 @@ export default function PrivacyPolicyPage() {
           description="You remain in command of your data. These rights apply regardless of where you’re located."
         />
 
-        <Card className="mx-auto mt-2xl max-w-4xl border border-border/40 bg-background/95 shadow-sm">
+        <Card className="mx-auto mt-2xl max-w-4xl border border-border bg-card shadow-sm">
           <CardContent className="space-y-sm p-xl text-body text-muted-foreground">
             {rights.map((right) => (
               <div key={right} className="flex items-start gap-sm">
@@ -216,7 +216,7 @@ export default function PrivacyPolicyPage() {
           align="center"
         />
 
-        <Card className="mx-auto mt-2xl max-w-3xl border border-border/40 bg-background/95 shadow-sm">
+        <Card className="mx-auto mt-2xl max-w-3xl border border-border bg-card shadow-sm">
           <CardContent className="space-y-sm p-xl text-body text-muted-foreground">
             <div>
               <strong>Email:</strong> <Link href="mailto:privacy@ghxstship.com" className="underline">privacy@ghxstship.com</Link>

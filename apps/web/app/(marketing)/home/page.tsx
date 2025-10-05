@@ -53,7 +53,7 @@ export default function HomePage() {
       <FeatureGrid />
       <SocialProof />
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="See GHXSTSHIP In Action"
           description="Launch your first project with ATLVS, explore OPENDECK’s talent marketplace, and experience production workflows that scale."
@@ -63,7 +63,7 @@ export default function HomePage() {
           <Link href="/auth/signup">
             <Button className="group" size="lg">
               Start Free Trial
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
           <Link href="#">

@@ -206,7 +206,7 @@ export default function CareersPage() {
             <Link href="#open-roles">
               <Button className="group" size="lg">
                 Browse Open Roles
-                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
               </Button>
             </Link>
           }
@@ -225,7 +225,7 @@ export default function CareersPage() {
 
         <div id="open-roles" className="mt-2xl grid gap-xl">
           {openPositions.map((role) => (
-            <Card key={role.id} className="border border-border/40 bg-background/95 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+            <Card key={role.id} className="border border-border bg-card shadow-sm transition hover:-translate-y-1 motion-reduce:hover:translate-y-0 hover:shadow-elevation-4">
               <CardContent className="flex flex-col gap-lg p-xl">
                 <div className="flex flex-col gap-sm md:flex-row md:items-center md:justify-between">
                   <div>
@@ -273,7 +273,7 @@ export default function CareersPage() {
                 <div className="flex flex-wrap gap-sm">
                   <Button className="group">
                     Apply Now
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                   </Button>
                   <Button variant="outline">Share Role</Button>
                 </div>
@@ -344,7 +344,7 @@ export default function CareersPage() {
         </div>
       </MarketingSection>
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="Ready To Build The Future With Us?"
           description="Take the next step in your career and help GHXSTSHIP power productions that define culture."
@@ -354,7 +354,7 @@ export default function CareersPage() {
           <Link href="#open-roles">
             <Button className="group" size="lg">
               View Open Roles
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
           <Link href="mailto:careers@ghxstship.com">

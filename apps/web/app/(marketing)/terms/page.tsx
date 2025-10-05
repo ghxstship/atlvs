@@ -232,7 +232,7 @@ const sections = [
   {
     title: '15. Contact Information',
     body: (
-      <Card className="border border-border/60">
+      <Card className="border border-border">
         <CardContent className="space-y-sm p-xl text-body-sm">
           <p><strong>Email:</strong> legal@ghxstship.com</p>
           <p>
@@ -324,7 +324,7 @@ export default function TermsOfServicePage() {
 
         <div className="mt-2xl space-y-2xl">
           {sections.map((section) => (
-            <Card key={section.title} className="border border-border/40 bg-background/95">
+            <Card key={section.title} className="border border-border bg-card">
               <CardContent className="space-y-md p-xl">
                 <h2 className="text-heading-4 uppercase tracking-wide">{section.title}</h2>
                 <div className="space-y-sm text-body text-muted-foreground">{section.body}</div>

@@ -328,13 +328,13 @@ export default function PricingPage() {
           </div>
         <div className="flex flex-col sm:flex-row gap-md justify-center items-center">
           <Link href="/auth/signup">
-            <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105 min-h-icon-xl flex items-center justify-center gap-sm whitespace-nowrap">
+            <Button className="w-full sm:w-auto group transition-all duration-fast hover:scale-105 motion-reduce:hover:scale-100 min-h-icon-xl flex items-center justify-center gap-sm whitespace-nowrap">
               <span>Start Free Trial</span>
-              <ArrowRight className="h-icon-xs w-icon-xs flex-shrink-0 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-icon-xs w-icon-xs flex-shrink-0 transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
           <Link href="/contact">
-            <Button variant="outline" className="w-full sm:w-auto transition-all duration-200 hover:scale-105 min-h-icon-xl flex items-center justify-center whitespace-nowrap">
+            <Button variant="outline" className="w-full sm:w-auto transition-all duration-fast hover:scale-105 motion-reduce:hover:scale-100 min-h-icon-xl flex items-center justify-center whitespace-nowrap">
               Contact Sales
             </Button>
           </Link>

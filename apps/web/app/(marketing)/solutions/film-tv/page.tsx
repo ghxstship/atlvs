@@ -115,7 +115,7 @@ export default function FilmTVPage() {
               <Link href="/auth/signup">
                 <Button className="group" size="lg">
                   Start Free Trial
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
               <Link href="/contact">
@@ -176,7 +176,7 @@ export default function FilmTVPage() {
 
         <div className="mt-2xl grid gap-xl md:grid-cols-2">
           {caseStudies.map((study) => (
-            <Card key={study.company} className="border border-border/40 bg-background/95 shadow-sm">
+            <Card key={study.company} className="border border-border bg-card shadow-sm">
               <CardContent className="space-y-md p-xl">
                 <div className="flex items-center gap-sm">
                   <h3 className="text-heading-4 uppercase leading-tight">{study.company}</h3>
@@ -201,14 +201,14 @@ export default function FilmTVPage() {
         />
         <div className="mt-2xl grid gap-md md:grid-cols-4">
           {integrations.map((tool) => (
-            <div key={tool} className="rounded-xl border border-border/60 bg-muted/30 px-lg py-md text-center text-body-sm text-muted-foreground">
+            <div key={tool} className="rounded-xl border border-border bg-muted px-lg py-md text-center text-body-sm text-muted-foreground">
               {tool}
             </div>
           ))}
         </div>
       </MarketingSection>
 
-      <MarketingSection variant="primaryGradient" padding="lg">
+      <MarketingSection variant="gradient" padding="lg">
         <MarketingSectionHeader
           title="Ready For Your Next Slate?"
           description="Walk through the GHXSTSHIP production playbook and see how studios accelerate every season."
@@ -218,7 +218,7 @@ export default function FilmTVPage() {
           <Link href="/contact">
             <Button className="group" size="lg">
               Book A Production Demo
-              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Button>
           </Link>
           <Link href="/auth/signup">

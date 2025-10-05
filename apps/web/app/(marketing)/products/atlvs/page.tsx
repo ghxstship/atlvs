@@ -148,7 +148,7 @@ export default function ATLVSPage() {
                 <Link href="/auth/signup">
                   <Button className="w-full sm:w-auto group">
                     Start Free Trial
-                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                   </Button>
                 </Link>
                 <Button className="w-full sm:w-auto group">
@@ -251,7 +251,7 @@ export default function ATLVSPage() {
             {features.map((feature: any) => {
               const Icon = feature.icon;
               return (
-                <Card key={feature.title} className="hover:shadow-floating transition-shadow">
+                <Card key={feature.title} className="hover:shadow-elevation-3 transition-shadow">
                   <CardContent className="p-lg">
                     <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-primary to-secondary mb-md">
                       <Icon className="h-icon-md w-icon-md text-background" />
@@ -289,7 +289,7 @@ export default function ATLVSPage() {
 
           <div className="grid lg:grid-cols-3 gap-xl">
             {useCases.map((useCase: any) => (
-              <Card key={useCase.title} className="hover:shadow-floating transition-shadow">
+              <Card key={useCase.title} className="hover:shadow-elevation-3 transition-shadow">
                 <CardContent className="p-xl">
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-md uppercase`}>{useCase.title}</h3>
                   <p className="color-muted mb-lg">{useCase.description}</p>
@@ -326,7 +326,7 @@ export default function ATLVSPage() {
 
           <div className="grid lg:grid-cols-2 gap-xl max-w-4xl mx-auto">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover:shadow-floating transition-shadow">
+              <Card key={index} className="hover:shadow-elevation-3 transition-shadow">
                 <CardContent className="p-xl">
                   <blockquote className="text-body color-foreground mb-lg leading-relaxed">
                     "{testimonial.quote}"
@@ -366,7 +366,7 @@ export default function ATLVSPage() {
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group">
                   Start Free Trial
-                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform duration-normal ease-out group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
                 </Button>
               </Link>
               <Link href="/pricing">
