@@ -123,8 +123,7 @@ export function MarketingHeader() {
           // Base styling
           'w-full border-b transition-all duration-300 ease-out',
           // Glass morphism effects
-          'bg-background/80 backdrop-blur-xl border-border/50',
-          'supports-[backdrop-filter]:bg-background/60',
+          'bg-surface-glass border-border/50',
           // Scroll-based styling
           isScrolled && 'shadow-lg shadow-black/5 bg-background/95 backdrop-blur-2xl border-border/80',
           // Mobile menu open state

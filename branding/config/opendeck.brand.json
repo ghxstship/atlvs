@@ -1,20 +1,20 @@
 {
   "version": "1.0.0",
   "brand": {
-    "id": "default",
-    "name": "Default Brand",
-    "slug": "default",
-    "tagline": "Generic SaaS Platform",
-    "description": "A generic SaaS platform for various applications.",
-    "website": "https://atlvs.com",
+    "id": "opendeck",
+    "name": "OPENDECK",
+    "slug": "opendeck",
+    "tagline": "Marketplace for Experiential Entertainment",
+    "description": "OPENDECK Marketplace - Event Services Platform",
+    "website": "https://opendeck.com",
     "support": {
-      "email": "support@atlvs.com",
-      "phone": "+1 (800) 555-0100",
-      "website": "https://help.atlvs.com"
+      "email": "support@opendeck.com",
+      "phone": "+1 (800) 555-0124",
+      "website": "https://help.opendeck.com"
     },
     "legal": {
-      "company": "ATLVS Inc.",
-      "address": "123 Enterprise Blvd, San Francisco, CA 94105",
+      "company": "OPENDECK Inc.",
+      "address": "123 Marketplace Blvd, San Francisco, CA 94105",
       "termsUrl": "/legal/terms",
       "privacyUrl": "/legal/privacy"
     }
@@ -23,9 +23,9 @@
     "mode": "light",
     "colors": {
       "brand": {
-        "primary": "#0F172A",
+        "primary": "#3B82F6",
         "secondary": "#64748B",
-        "accent": "#94A3B8"
+        "accent": "#00BFFF"
       },
       "semantic": {
         "success": "#10B981",
@@ -96,22 +96,22 @@
   },
   "assets": {
     "logos": {
-      "primary": "/branding/default/logos/primary.svg",
-      "icon": "/branding/default/logos/icon.svg",
-      "wordmark": "/branding/default/logos/wordmark.svg"
+      "primary": "/branding/opendeck/logos/primary.svg",
+      "icon": "/branding/opendeck/logos/icon.svg",
+      "wordmark": "/branding/opendeck/logos/wordmark.svg"
     },
-    "favicon": "/branding/default/logos/favicon.ico",
+    "favicon": "/branding/opendeck/logos/favicon.ico",
     "images": {
-      "hero": "/branding/default/images/hero-background.jpg",
-      "auth": "/branding/default/images/auth-background.jpg",
-      "placeholder": "/branding/default/images/placeholder-avatar.png"
+      "hero": "/branding/opendeck/images/hero-background.jpg",
+      "auth": "/branding/opendeck/images/auth-background.jpg",
+      "placeholder": "/branding/opendeck/images/placeholder-avatar.png"
     }
   },
   "content": {
     "app": {
-      "name": "Default Brand",
-      "shortName": "Default",
-      "welcomeMessage": "Welcome to Default Brand",
+      "name": "OPENDECK",
+      "shortName": "OPENDECK",
+      "welcomeMessage": "Welcome to OPENDECK",
       "loginPrompt": "Sign in to your account",
       "signupPrompt": "Create your account"
     },
@@ -155,9 +155,9 @@
     }
   },
   "seo": {
-    "title": "Default Brand — Generic SaaS Platform",
-    "description": "A generic SaaS platform for various applications.",
-    "keywords": ["saas", "platform", "generic"],
-    "ogImage": "/branding/default/images/og-image.jpg"
+    "title": "OPENDECK — Event Services Marketplace",
+    "description": "Marketplace for experiential entertainment products, services, and teams.",
+    "keywords": ["marketplace", "event services", "experiential", "entertainment"],
+    "ogImage": "/branding/opendeck/images/og-image.jpg"
   }
 }

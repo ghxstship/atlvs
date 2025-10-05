@@ -58,7 +58,7 @@ export function HeroSection() {
           {/* Left Column - Content */}
           <div className="stack-2xl">
             {/* Badge */}
-            <div className="inline-flex items-center gap-sm px-md py-sm rounded-full bg-accent/10 color-accent text-body-sm form-label">
+            <div className="inline-flex items-center gap-sm px-md py-sm rounded-full bg-accent color-accent-foreground text-body-sm form-label">
               <Zap className="h-icon-xs w-icon-xs" />
               Now with AI-powered insights
             </div>

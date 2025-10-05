@@ -1,15 +1,24 @@
 {
   "version": "1.0.0",
-  "defaultBrand": "default",
+  "defaultBrand": "ghxstship",
   "brands": [
     {
       "id": "default",
+      "name": "Default",
+      "slug": "default",
+      "description": "Generic greyscale brand for basic SaaS applications",
+      "domains": ["localhost"],
+      "enabled": true,
+      "isDefault": false
+    },
+    {
+      "id": "atlvs",
       "name": "ATLVS",
       "slug": "atlvs",
-      "description": "ATLVS Default Brand - Enterprise SaaS Platform",
-      "domains": ["atlvs.com", "app.atlvs.com", "localhost"],
+      "description": "ATLVS — Miami/Vaporwave Neon Pink Enterprise Platform",
+      "domains": ["atlvs.com", "app.atlvs.com"],
       "enabled": true,
-      "isDefault": true
+      "isDefault": false
     },
     {
       "id": "ghxstship",
@@ -18,7 +27,7 @@
       "description": "GHXSTSHIP — Blackwater Fleet Enterprise Management",
       "domains": ["ghxstship.com", "app.ghxstship.com"],
       "enabled": true,
-      "isDefault": false
+      "isDefault": true
     },
     {
       "id": "opendeck",
@@ -26,6 +35,15 @@
       "slug": "opendeck",
       "description": "OPENDECK Marketplace - Event Services Platform",
       "domains": ["opendeck.com", "marketplace.opendeck.com"],
+      "enabled": true,
+      "isDefault": false
+    },
+    {
+      "id": "whitelabel",
+      "name": "White Label",
+      "slug": "whitelabel",
+      "description": "White Label Template - Ready for customization",
+      "domains": [],
       "enabled": true,
       "isDefault": false
     }

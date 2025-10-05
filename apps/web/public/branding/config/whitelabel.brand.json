@@ -1,20 +1,20 @@
 {
   "version": "1.0.0",
   "brand": {
-    "id": "default",
-    "name": "Default Brand",
-    "slug": "default",
-    "tagline": "Generic SaaS Platform",
-    "description": "A generic SaaS platform for various applications.",
-    "website": "https://atlvs.com",
+    "id": "whitelabel",
+    "name": "[Your Company Name]",
+    "slug": "whitelabel",
+    "tagline": "[Your Tagline Here]",
+    "description": "[Your Company Description]",
+    "website": "https://yourcompany.com",
     "support": {
-      "email": "support@atlvs.com",
-      "phone": "+1 (800) 555-0100",
-      "website": "https://help.atlvs.com"
+      "email": "support@yourcompany.com",
+      "phone": "+1 (555) 123-4567",
+      "website": "https://help.yourcompany.com"
     },
     "legal": {
-      "company": "ATLVS Inc.",
-      "address": "123 Enterprise Blvd, San Francisco, CA 94105",
+      "company": "[Your Company Name] Inc.",
+      "address": "123 Your Street, Your City, ST 12345",
       "termsUrl": "/legal/terms",
       "privacyUrl": "/legal/privacy"
     }
@@ -96,22 +96,22 @@
   },
   "assets": {
     "logos": {
-      "primary": "/branding/default/logos/primary.svg",
-      "icon": "/branding/default/logos/icon.svg",
-      "wordmark": "/branding/default/logos/wordmark.svg"
+      "primary": "/branding/whitelabel/logos/primary.svg",
+      "icon": "/branding/whitelabel/logos/icon.svg",
+      "wordmark": "/branding/whitelabel/logos/wordmark.svg"
     },
-    "favicon": "/branding/default/logos/favicon.ico",
+    "favicon": "/branding/whitelabel/logos/favicon.ico",
     "images": {
-      "hero": "/branding/default/images/hero-background.jpg",
-      "auth": "/branding/default/images/auth-background.jpg",
-      "placeholder": "/branding/default/images/placeholder-avatar.png"
+      "hero": "/branding/whitelabel/images/hero-background.jpg",
+      "auth": "/branding/whitelabel/images/auth-background.jpg",
+      "placeholder": "/branding/whitelabel/images/placeholder-avatar.png"
     }
   },
   "content": {
     "app": {
-      "name": "Default Brand",
-      "shortName": "Default",
-      "welcomeMessage": "Welcome to Default Brand",
+      "name": "[Your Company Name]",
+      "shortName": "[Short Name]",
+      "welcomeMessage": "Welcome to [Your Company Name]",
       "loginPrompt": "Sign in to your account",
       "signupPrompt": "Create your account"
     },
@@ -155,9 +155,9 @@
     }
   },
   "seo": {
-    "title": "Default Brand — Generic SaaS Platform",
-    "description": "A generic SaaS platform for various applications.",
-    "keywords": ["saas", "platform", "generic"],
-    "ogImage": "/branding/default/images/og-image.jpg"
+    "title": "[Your Company Name] — [Your Tagline]",
+    "description": "[Your Company Description]",
+    "keywords": ["[keyword1]", "[keyword2]", "[keyword3]"],
+    "ogImage": "/branding/whitelabel/images/og-image.jpg"
   }
 }

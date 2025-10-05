@@ -4,7 +4,25 @@
 import { Badge } from '@ghxstship/ui';
 import { Shield, Award, Users, Globe, Zap, CheckCircle } from 'lucide-react';
 
-const trustBadges = [
+interface TrustBadge {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  description: string;
+}
+
+interface ClientLogo {
+  name: string;
+  logo: string;
+}
+
+interface Metric {
+  icon: React.ComponentType<{ className?: string }>;
+  value: string;
+  label: string;
+  description: string;
+}
+
+const trustBadges: TrustBadge[] = [
   {
     icon: Shield,
     label: 'SOC 2 Type II',
@@ -27,7 +45,7 @@ const trustBadges = [
   },
 ];
 
-const clientLogos = [
+const clientLogos: ClientLogo[] = [
   { name: 'Netflix', logo: '/logos/netflix.svg' },
   { name: 'Disney', logo: '/logos/disney.svg' },
   { name: 'Warner Bros', logo: '/logos/warner.svg' },
@@ -38,7 +56,7 @@ const clientLogos = [
   { name: 'Amazon Studios', logo: '/logos/amazon.svg' },
 ];
 
-const metrics = [
+const metrics: Metric[] = [
   {
     icon: Users,
     value: '500+',
@@ -75,7 +93,7 @@ export function TrustSignals() {
             TRUSTED BY INDUSTRY LEADERS
           </p>
           <div className="flex flex-wrap justify-center items-center gap-xl">
-            {trustBadges.map((badge: any) => {
+            {trustBadges.map((badge: TrustBadge) => {
               const Icon = badge.icon;
               return (
                 <div key={badge.label} className="flex items-center gap-xl color-muted">
@@ -93,7 +111,7 @@ export function TrustSignals() {
         {/* Client Logos */}
         <div className="mb-lg">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-xl items-center opacity-60 hover:opacity-80 transition-opacity">
-            {clientLogos.map((client: any) => (
+            {clientLogos.map((client: ClientLogo) => (
               <div key={client.name} className="flex items-center justify-center">
                 <div className="w-component-lg h-icon-2xl bg-secondary/30 rounded-lg flex items-center justify-center">
                   <span className="text-body-sm form-label color-muted">
@@ -107,11 +125,11 @@ export function TrustSignals() {
 
         {/* Key Metrics */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-xl">
-          {metrics.map((metric: any) => {
+          {metrics.map((metric: Metric) => {
             const Icon = metric.icon;
             return (
               <div key={metric.label} className="text-center">
-                <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-full bg-accent/10 mb-sm">
+                <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-full bg-accent color-accent-foreground mb-sm">
                   <Icon className="h-icon-md w-icon-md color-accent" />
                 </div>
                 <div className="font-title text-heading-2 text-heading-3 color-foreground mb-xs">

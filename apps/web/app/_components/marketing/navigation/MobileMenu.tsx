@@ -63,7 +63,7 @@ export function MobileMenu({ navigation, activeDropdown, onDropdownChange }: Mob
                   href={item.href}
                   className={cn(
                     "block px-sm py-sm text-body form-label rounded-md transition-all duration-200 uppercase relative group",
-                    "hover:bg-accent/10 hover:color-accent hover:translate-x-1",
+                    "hover:bg-accent hover:color-accent-foreground hover:translate-x-1",
                     "focus:outline-none focus:ring-2 focus:ring-primary/20",
                     "border border-transparent hover:border-primary/20",
                     anton.className,

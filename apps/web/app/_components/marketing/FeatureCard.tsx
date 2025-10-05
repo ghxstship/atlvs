@@ -83,7 +83,7 @@ export function StatsCard({
     <Card className={cn('text-center', className)}>
       <CardContent className="p-lg">
         {Icon && (
-          <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-accent/10 mb-sm">
+          <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-accent color-accent-foreground mb-sm">
             <Icon className="h-icon-md w-icon-md color-accent" />
           </div>
         )}
@@ -130,7 +130,7 @@ export function TestimonialCard({
     <Card className={cn(className)}>
       <CardContent className="p-lg">
         <blockquote className="text-body mb-md italic">
-          "{quote}"
+          &ldquo;{quote}&rdquo;
         </blockquote>
         
         <div className="flex items-center gap-xl">

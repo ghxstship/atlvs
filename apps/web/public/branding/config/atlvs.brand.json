@@ -1,11 +1,11 @@
 {
   "version": "1.0.0",
   "brand": {
-    "id": "default",
-    "name": "Default Brand",
-    "slug": "default",
-    "tagline": "Generic SaaS Platform",
-    "description": "A generic SaaS platform for various applications.",
+    "id": "atlvs",
+    "name": "ATLVS",
+    "slug": "atlvs",
+    "tagline": "Enterprise SaaS Platform for Modern Teams",
+    "description": "Complete enterprise solution for managing projects, people, and resources.",
     "website": "https://atlvs.com",
     "support": {
       "email": "support@atlvs.com",
@@ -23,9 +23,9 @@
     "mode": "light",
     "colors": {
       "brand": {
-        "primary": "#0F172A",
+        "primary": "#3B82F6",
         "secondary": "#64748B",
-        "accent": "#94A3B8"
+        "accent": "#FF00FF"
       },
       "semantic": {
         "success": "#10B981",
@@ -96,22 +96,22 @@
   },
   "assets": {
     "logos": {
-      "primary": "/branding/default/logos/primary.svg",
-      "icon": "/branding/default/logos/icon.svg",
-      "wordmark": "/branding/default/logos/wordmark.svg"
+      "primary": "/branding/atlvs/logos/primary.svg",
+      "icon": "/branding/atlvs/logos/icon.svg",
+      "wordmark": "/branding/atlvs/logos/wordmark.svg"
     },
-    "favicon": "/branding/default/logos/favicon.ico",
+    "favicon": "/branding/atlvs/logos/favicon.ico",
     "images": {
-      "hero": "/branding/default/images/hero-background.jpg",
-      "auth": "/branding/default/images/auth-background.jpg",
-      "placeholder": "/branding/default/images/placeholder-avatar.png"
+      "hero": "/branding/atlvs/images/hero-background.jpg",
+      "auth": "/branding/atlvs/images/auth-background.jpg",
+      "placeholder": "/branding/atlvs/images/placeholder-avatar.png"
     }
   },
   "content": {
     "app": {
-      "name": "Default Brand",
-      "shortName": "Default",
-      "welcomeMessage": "Welcome to Default Brand",
+      "name": "ATLVS",
+      "shortName": "ATLVS",
+      "welcomeMessage": "Welcome to ATLVS",
       "loginPrompt": "Sign in to your account",
       "signupPrompt": "Create your account"
     },
@@ -155,9 +155,9 @@
     }
   },
   "seo": {
-    "title": "Default Brand — Generic SaaS Platform",
-    "description": "A generic SaaS platform for various applications.",
-    "keywords": ["saas", "platform", "generic"],
-    "ogImage": "/branding/default/images/og-image.jpg"
+    "title": "ATLVS — Enterprise SaaS Platform",
+    "description": "Complete enterprise solution for managing projects, people, and resources.",
+    "keywords": ["enterprise", "saas", "project management", "collaboration"],
+    "ogImage": "/branding/atlvs/images/og-image.jpg"
   }
 }

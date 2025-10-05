@@ -41,14 +41,14 @@ export async function getActiveBrandId(): Promise<string> {
     // Cookies not available in this context
   }
 
-  // Fall back to environment variable
-  return process.env.NEXT_PUBLIC_BRAND_ID || 'default';
+  // Fall back to environment variable or default brand (ghxstship for green accent)
+  return process.env.NEXT_PUBLIC_BRAND_ID || 'ghxstship';
 }
 
 /**
  * Load brand configuration from file system (server-side only)
  * Cached per request to avoid multiple file reads
- */
+{{ ... }}
 export const loadBrandConfig = cache(async (brandId: string): Promise<BrandConfiguration> => {
   const searchRoots = [
     path.join(process.cwd(), 'public', 'branding', 'config'),

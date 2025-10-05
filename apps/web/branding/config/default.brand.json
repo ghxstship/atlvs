@@ -2,18 +2,18 @@
   "version": "1.0.0",
   "brand": {
     "id": "default",
-    "name": "GHXSTSHIP",
-    "slug": "ghxstship",
-    "tagline": "Enterprise Event Management Platform",
-    "description": "Modern, multi-tenant, real-time platform for productions, festivals, and complex events.",
-    "website": "https://ghxstship.com",
+    "name": "Default Brand",
+    "slug": "default",
+    "tagline": "Generic SaaS Platform",
+    "description": "A generic SaaS platform for various applications.",
+    "website": "https://example.com",
     "support": {
-      "email": "support@ghxstship.com",
+      "email": "support@example.com",
       "phone": "+1-555-0100",
-      "website": "https://support.ghxstship.com"
+      "website": "https://support.example.com"
     },
     "legal": {
-      "company": "GHXSTSHIP Inc.",
+      "company": "Default Brand Inc.",
       "address": "123 Main St, City, State 12345",
       "termsUrl": "/terms",
       "privacyUrl": "/privacy"
@@ -23,9 +23,9 @@
     "mode": "auto",
     "colors": {
       "brand": {
-        "primary": "240 5.9% 10%",
-        "secondary": "240 4.8% 95.9%",
-        "accent": "346 77% 50%"
+        "primary": "222 47% 11%",
+        "secondary": "210 20% 50%",
+        "accent": "210 20% 60%"
       },
       "semantic": {
         "success": "142 76% 36%",
@@ -110,10 +110,10 @@
   },
   "content": {
     "app": {
-      "name": "GHXSTSHIP",
-      "shortName": "GHXST",
-      "welcomeMessage": "Welcome to GHXSTSHIP",
-      "loginPrompt": "Sign in to continue",
+      "name": "Default Brand",
+      "shortName": "Default",
+      "welcomeMessage": "Welcome to Default Brand",
+      "loginPrompt": "Sign in to your account",
       "signupPrompt": "Create your account"
     },
     "navigation": {
@@ -149,9 +149,9 @@
     }
   },
   "seo": {
-    "title": "GHXSTSHIP - Enterprise Event Management",
-    "description": "Modern, multi-tenant, real-time platform for productions, festivals, and complex events.",
-    "keywords": ["event management", "production", "platform", "enterprise"],
+    "title": "Default Brand — Generic SaaS Platform",
+    "description": "A generic SaaS platform for various applications.",
+    "keywords": ["saas", "platform", "generic"],
     "ogImage": "/og-image.jpg"
   }
 }

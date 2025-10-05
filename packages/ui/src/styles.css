@@ -338,6 +338,13 @@
   }
 }
 
+@layer utilities {
+  .bg-surface-glass {
+    background-color: hsla(var(--color-background), 0.85);
+    backdrop-filter: blur(20px);
+  }
+}
+
 
 @layer components {
   .btn { 

@@ -6,7 +6,28 @@ import { Card, CardContent, Badge } from '@ghxstship/ui';
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@ghxstship/ui';
 
-const testimonials = [
+interface Testimonial {
+  id: number;
+  name: string;
+  role: string;
+  company: string;
+  avatar: string;
+  rating: number;
+  quote: string;
+  project: string;
+  industry: string;
+}
+
+interface CaseStudy {
+  company: string;
+  industry: string;
+  challenge: string;
+  result: string;
+  metric: string;
+  logo: string;
+}
+
+const testimonials: Testimonial[] = [
   {
     id: 1,
     name: 'Sarah Chen',
@@ -64,7 +85,7 @@ const testimonials = [
   },
 ];
 
-const caseStudies = [
+const caseStudies: CaseStudy[] = [
   {
     company: 'Meridian Studios',
     industry: 'Film & TV',
@@ -95,11 +116,11 @@ export function SocialProof() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const nextTestimonial = () => {
-    setCurrentTestimonial((prev: any) => (prev + 1) % testimonials.length);
+    setCurrentTestimonial((prev: number) => (prev + 1) % testimonials.length);
   };
 
   const prevTestimonial = () => {
-    setCurrentTestimonial((prev: any) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentTestimonial((prev: number) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   return (
@@ -130,7 +151,7 @@ export function SocialProof() {
               <div className="flex items-start gap-lg">
                 {/* Quote Icon */}
                 <div className="flex-shrink-0">
-                  <div className="w-icon-2xl h-icon-2xl bg-accent/10 rounded-full flex items-center justify-center">
+                  <div className="w-icon-2xl h-icon-2xl bg-accent color-accent-foreground rounded-full flex items-center justify-center">
                     <Quote className="h-icon-md w-icon-md color-accent" />
                   </div>
                 </div>
@@ -146,7 +167,7 @@ export function SocialProof() {
 
                   {/* Quote */}
                   <blockquote className="text-heading-4 lg:text-heading-3 color-foreground mb-md leading-relaxed">
-                    "{testimonials[currentTestimonial].quote}"
+                    &ldquo;{testimonials[currentTestimonial].quote}&rdquo;
                   </blockquote>
 
                   {/* Author Info */}
@@ -213,7 +234,7 @@ export function SocialProof() {
             SUCCESS STORIES
           </h3>
           <div className="grid md:grid-cols-3 gap-xl">
-            {caseStudies.map((study: any) => (
+            {caseStudies.map((study: CaseStudy) => (
               <Card key={study.company} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg">
                   {/* Company Logo */}

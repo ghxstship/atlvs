@@ -2,10 +2,10 @@
   "version": "1.0.0",
   "brand": {
     "id": "default",
-    "name": "ATLVS",
-    "slug": "atlvs",
-    "tagline": "Enterprise SaaS Platform for Modern Teams",
-    "description": "Complete enterprise solution for managing projects, people, and resources.",
+    "name": "Default Brand",
+    "slug": "default",
+    "tagline": "Generic SaaS Platform",
+    "description": "A generic SaaS platform for various applications.",
     "website": "https://atlvs.com",
     "support": {
       "email": "support@atlvs.com",
@@ -25,7 +25,7 @@
       "brand": {
         "primary": "#3B82F6",
         "secondary": "#64748B",
-        "accent": "#8B5CF6"
+        "accent": "#94A3B8"
       },
       "semantic": {
         "success": "#10B981",
