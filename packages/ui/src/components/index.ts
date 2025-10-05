@@ -11,3 +11,4 @@ export * from './Sidebar';
 
 // Template Components
 export * from './templates';
+export * from "./marketing/animations";
