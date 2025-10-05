@@ -169,7 +169,10 @@ describe('Security Testing Suite', () => {
       for (const file of maliciousFiles) {
         const response = await request(app)
           .post('/api/files/upload')
-          .attach('file', Buffer.from('malicious content'), file);
+          .attach('file', Buffer.from('malicious content'), {
+            filename: file.name || 'test.txt',
+            contentType: file.type || 'text/plain',
+          });
 
         expect([400, 413, 415]).toContain(response.status);
       }
@@ -347,7 +350,10 @@ describe('Security Testing Suite', () => {
       for (const file of testCases) {
         const response = await request(app)
           .post('/api/files/upload')
-          .attach('file', Buffer.from('test content'), file);
+          .attach('file', Buffer.from('test content'), {
+            filename: file.name || 'test.txt',
+            contentType: file.type || 'text/plain',
+          });
 
         if (file.name.includes('malicious') || file.name.includes('script') || file.size > 10 * 1024 * 1024) {
           expect([400, 413, 415]).toContain(response.status);

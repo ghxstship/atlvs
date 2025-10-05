@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Card, CardContent } from '@ghxstship/ui';
-import { AlertTriangle, ArrowRight, Gavel, Scale, Shield, Users } from 'lucide-react';
+import { AlertTriangle, Gavel, Scale, Shield, Users } from 'lucide-react';
 
 import {
   MarketingCard,

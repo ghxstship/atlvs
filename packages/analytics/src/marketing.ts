@@ -6,7 +6,7 @@
 
 export interface AnalyticsEvent {
   name: string;
-  properties: Record<string, any>;
+  properties: Record<string, unknown>;
   timestamp: number;
   session_id: string;
   user_id?: string;
@@ -58,7 +58,7 @@ export class MarketingAnalytics {
   }
 
   // Core tracking method
-  track(eventName: string, properties: Record<string, any> = {}): void {
+  track(eventName: string, properties: Record<string, unknown> = {}): void {
     if (!this.initialized || !this.consent.analytics) return;
 
     const event: AnalyticsEvent = {
@@ -73,8 +73,8 @@ export class MarketingAnalytics {
     };
 
     // Use existing PostHog analytics
-    if (typeof window !== 'undefined' && (window as any).posthog) {
-      (window as any).posthog.capture(event.name, event.properties);
+    if (typeof window !== 'undefined' && window.posthog) {
+      window.posthog.capture(event.name, event.properties);
     }
 
     // Store locally for debugging (development only)
@@ -87,7 +87,7 @@ export class MarketingAnalytics {
   trackMarketingInteraction(
     component: string,
     action: string,
-    properties: Record<string, any> = {}
+    properties: Record<string, unknown> = {}
   ): void {
     const eventName = `marketing.${component}.${action}`;
 
@@ -166,7 +166,6 @@ export class MarketingAnalytics {
       metric_name: metric,
       metric_value: value,
       rating: properties.rating || this.calculatePerformanceRating(metric, value),
-      ...properties,
     });
   }
 
@@ -216,8 +215,7 @@ export class MarketingAnalytics {
     if (typeof navigator === 'undefined') return false;
 
     return navigator.doNotTrack === '1' ||
-           (window as any).doNotTrack === '1' ||
-           navigator.msDoNotTrack === '1';
+           (typeof window !== 'undefined' && (window as Window & { doNotTrack?: string }).doNotTrack === '1');
   }
 
   private inferIntent(text: string): string {
@@ -261,12 +259,12 @@ export class MarketingAnalytics {
 
   private trackWebVitals(): void {
     // Import and initialize web-vitals library
-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS((metric) => this.trackPerformanceMetric('cls', metric.value));
-      getFID((metric) => this.trackPerformanceMetric('fid', metric.value));
-      getFCP((metric) => this.trackPerformanceMetric('fcp', metric.value));
-      getLCP((metric) => this.trackPerformanceMetric('lcp', metric.value));
-      getTTFB((metric) => this.trackPerformanceMetric('ttfb', metric.value));
+    import('web-vitals').then(({ onCLS, onFCP, onINP, onLCP, onTTFB }) => {
+      onCLS((metric) => this.trackPerformanceMetric('cls', metric.value));
+      onINP((metric) => this.trackPerformanceMetric('inp', metric.value)); // FID replaced by INP
+      onFCP((metric) => this.trackPerformanceMetric('fcp', metric.value));
+      onLCP((metric) => this.trackPerformanceMetric('lcp', metric.value));
+      onTTFB((metric) => this.trackPerformanceMetric('ttfb', metric.value));
     }).catch(() => {
       // Graceful degradation if web-vitals is not available
     });
@@ -290,8 +288,12 @@ export function useAnalytics() {
 // Type declarations for external libraries
 declare global {
   interface Window {
-    posthog?: any;
-    mixpanel?: any;
-    gtag?: (...args: any[]) => void;
+    posthog?: {
+      capture: (name: string, properties: Record<string, unknown>) => void;
+    };
+    mixpanel?: {
+      track: (name: string, properties: Record<string, unknown>) => void;
+    };
+    gtag?: (...args: unknown[]) => void;
   }
 }

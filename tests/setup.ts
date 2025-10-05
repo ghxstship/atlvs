@@ -82,3 +82,8 @@ global.IntersectionObserver = jest.fn().mockImplementation(() => ({
   unobserve: jest.fn(),
   disconnect: jest.fn(),
 }));
+
+// Mock test server for integration tests
+export const testServer = {
+  url: 'http://localhost:3000',
+};

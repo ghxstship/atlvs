@@ -48,7 +48,7 @@ export async function generateCommand(type: string, options: GenerateOptions) {
         type: 'input',
         name: 'name',
         message: `Enter ${type} name:`,
-        validate: (input: string) => input.trim().length > 0 || 'Name is required',
+        validate: (input) => String(input).trim().length > 0 || 'Name is required',
       },
     ]) as { name: string }
     name = answers.name.trim()

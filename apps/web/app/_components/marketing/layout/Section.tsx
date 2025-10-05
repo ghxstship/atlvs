@@ -51,6 +51,7 @@ export function MarketingSection({
           containerClassName,
         )}
       >
+        {children}
       </div>
     </section>
   );

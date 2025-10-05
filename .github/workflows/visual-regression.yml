@@ -36,9 +36,12 @@ jobs:
         run: npm run build-storybook
 
       - name: Publish to Chromatic
+        if: github.event_name == 'push' || github.event_name == 'pull_request'
         uses: chromaui/action@v1
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
         with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          projectToken: ${{ env.CHROMATIC_PROJECT_TOKEN }}
           buildScriptName: build-storybook
           exitZeroOnChanges: true
           autoAcceptChanges: main

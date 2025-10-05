@@ -6,7 +6,6 @@ import {
   Clapperboard,
   Drama,
   Palette,
-  Sparkles,
   Users,
   Wand2,
 } from 'lucide-react';

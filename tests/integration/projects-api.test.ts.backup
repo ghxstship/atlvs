@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { createClient } from '@supabase/supabase-js';
 import { testServer } from '../../setup';
-import type { Database } from '@ghxstship/domain';
+import type { Database } from '../../../../packages/domain/src/types/database';
 
 const supabase = createClient<Database>(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
