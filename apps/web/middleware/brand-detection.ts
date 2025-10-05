@@ -6,6 +6,9 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
 // Brand registry configuration
+const DEFAULT_BRAND = 'ghxstship';
+const PREVIEW_BRAND = 'default';
+
 const BRAND_DOMAINS: Record<string, string> = {
   'atlvs.com': 'default',
   'app.atlvs.com': 'default',
@@ -13,7 +16,7 @@ const BRAND_DOMAINS: Record<string, string> = {
   'app.ghxstship.com': 'ghxstship',
   'opendeck.com': 'opendeck',
   'marketplace.opendeck.com': 'opendeck',
-  'localhost': process.env.NEXT_PUBLIC_BRAND_ID || 'default',
+  'localhost': process.env.NEXT_PUBLIC_BRAND_ID || DEFAULT_BRAND,
 };
 
 /**
@@ -25,6 +28,11 @@ export async function brandDetectionMiddleware(request: NextRequest): Promise<Ne
 
   // Determine brand from hostname
   let detectedBrandId = BRAND_DOMAINS['localhost']; // default fallback
+
+  // Detect Vercel generated preview domains (e.g. *.vercel.app)
+  if (hostname.endsWith('.vercel.app') || hostname.includes('-git-') || hostname.includes('-vercel-')) {
+    detectedBrandId = process.env.NEXT_PUBLIC_BRAND_ID || PREVIEW_BRAND;
+  }
 
   // Check each domain pattern
   for (const [domain, brandId] of Object.entries(BRAND_DOMAINS)) {
