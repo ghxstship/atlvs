@@ -101,7 +101,15 @@ async function readBrandConfig(brandId: string): Promise<BrandConfiguration> {
   }
 
   if (brandId !== 'default') {
-    return loadBrandConfig('default');
+    const defaultConfig = await readBrandConfig('default').catch(() => null);
+    if (defaultConfig) {
+      return defaultConfig;
+    }
+
+    const bundledDefault = loadBundledBrandConfig('default');
+    if (bundledDefault) {
+      return bundledDefault;
+    }
   }
 
   throw new Error(`Brand configuration not found for id: ${brandId}`);
