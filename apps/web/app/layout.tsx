@@ -5,7 +5,6 @@ import { WebVitals } from './web-vitals';
 import { GHXSTSHIPProvider } from '@ghxstship/ui';
 import { BrandProvider } from '@ghxstship/shared/platform/brand/context';
 import { generateThemeCSS, generateFontImports } from '@ghxstship/shared/platform/brand/theme-generator';
-import { getActiveBrand } from '@ghxstship/shared/platform/brand/server';
 
 // Force dynamic rendering to avoid cookies() error during build
 export const dynamic = 'force-dynamic';
@@ -50,7 +49,9 @@ export const viewport = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   // Load active brand configuration
-  const brandConfig = await getActiveBrand();
+  const { getActiveBrandId, loadBrandConfig } = await import('@ghxstship/shared/platform/brand/server');
+  const activeBrandId = await getActiveBrandId();
+  const brandConfig = await loadBrandConfig(activeBrandId);
   
   // Generate theme CSS from brand configuration
   const themeCSS = generateThemeCSS(brandConfig.theme);

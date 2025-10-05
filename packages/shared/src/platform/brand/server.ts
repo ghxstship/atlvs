@@ -66,13 +66,12 @@ export async function getActiveBrandId(): Promise<string> {
 /**
  * Load brand configuration from file system (server-side only)
  * Cached per request to avoid multiple file reads
-{{ ... }}
+ */
 const configPromiseCache = new Map<string, Promise<BrandConfiguration>>();
 
 const searchRoots = [
   path.join(process.cwd(), 'public', 'branding', 'config'),
   path.join(process.cwd(), 'branding', 'config'),
-  path.join(process.cwd(), '..', 'branding', 'config'),
   path.join(process.cwd(), 'apps', 'web', 'branding', 'config'),
   path.join(process.cwd(), '..', 'apps', 'web', 'branding', 'config')
 ];
@@ -124,13 +123,13 @@ async function readBrandConfig(brandId: string): Promise<BrandConfiguration> {
   throw new Error(`Brand configuration not found for id: ${brandId}`);
 }
 
-export const loadBrandConfig = (brandId: string): Promise<BrandConfiguration> => {
+export async function loadBrandConfig(brandId: string): Promise<BrandConfiguration> {
   if (!configPromiseCache.has(brandId)) {
     configPromiseCache.set(brandId, readBrandConfig(brandId));
   }
 
   return configPromiseCache.get(brandId)!;
-};
+}
 
 /**
  * Get active brand configuration (server-side)
