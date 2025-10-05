@@ -1,7 +1,18 @@
+'use client';
+
 // Offline Manager Hook - Handles offline functionality and sync
 // Integrates with Service Worker for offline-first architecture
 
 import { useState, useEffect, useCallback } from 'react';
+
+// Type declarations for Background Sync API
+declare global {
+  interface ServiceWorkerRegistration {
+    sync: {
+      register(tag: string): Promise<void>;
+    };
+  }
+}
 
 interface OfflineState {
   isOnline: boolean;

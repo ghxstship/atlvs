@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useCallback, useTransition } from 'react';
 
 export interface OptimisticUpdateConfig<T> {

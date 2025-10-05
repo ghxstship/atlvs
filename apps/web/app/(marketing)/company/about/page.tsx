@@ -1,3 +1,158 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Anton } from 'next/font/google';
+import { Button } from '@ghxstship/ui';
+import {
+  ArrowRight,
+  Award,
+  Users,
+  Target,
+  Shield,
+  Heart,
+  Lightbulb,
+  Rocket,
+} from 'lucide-react';
+
+import {
+  MarketingCard,
+  MarketingSection,
+  MarketingSectionHeader,
+  MarketingStatGrid,
+} from '../../../_components/marketing';
+
+const anton = Anton({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  title: 'About GHXSTSHIP - Built by Production Veterans | GHXSTSHIP',
+  description: 'Learn about GHXSTSHIP\'s mission, journey, and the experienced team revolutionizing creative production management.',
+  openGraph: {
+    title: 'About GHXSTSHIP - Built by Production Veterans | GHXSTSHIP',
+    description: 'Learn about GHXSTSHIP\'s mission, journey, and the experienced team revolutionizing creative production management.',
+    url: 'https://ghxstship.com/company/about',
+  },
+};
+
+const stats = [
+  { label: 'Years of Combined Experience', value: '50+' },
+  { label: 'Major Productions Managed', value: '500+' },
+  { label: 'Countries Served', value: '45+' },
+  { label: 'Active Users', value: '25K+' },
+];
+
+const missionPoints = [
+  {
+    icon: Target,
+    title: 'PURPOSE-BUILT TOOLS',
+    description: 'We build software that actually works when the pressure is high and deadlines are non-negotiable.',
+  },
+  {
+    icon: Users,
+    title: 'TEAM-FIRST DESIGN',
+    description: 'Every feature is designed with the people who use it in mind - not just what they need, but how they work.',
+  },
+  {
+    icon: Shield,
+    title: 'ENTERPRISE RELIABILITY',
+    description: 'When millions are on the line, you need systems that don\'t break. We\'ve built for that reality.',
+  },
+];
+
+const values = [
+  {
+    icon: Heart,
+    title: 'People First',
+    description: 'Creative professionals deserve tools that amplify their talents, not complicate their lives.',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Innovation Through Experience',
+    description: 'Every feature comes from years of hands-on production experience, not theoretical assumptions.',
+  },
+  {
+    icon: Rocket,
+    title: 'Relentless Improvement',
+    description: 'We never stop pushing boundaries to make creative work more efficient and enjoyable.',
+  },
+];
+
+const milestones = [
+  { year: '2018', title: 'The Spark', description: 'Julian Clarkson realizes production management software is stuck in the 90s after managing Formula 1 hospitality for 1,000+ crew.' },
+  { year: '2019', title: 'GHXSTSHIP Founded', description: 'Launched with a clear mission: build tools that don\'t suck when lives depend on them.' },
+  { year: '2020', title: 'ATLVS Platform Launch', description: 'Released our production management platform, quickly adopted by studios and agencies worldwide.' },
+  { year: '2021', title: 'Global Expansion', description: 'Opened offices in London and Singapore to support international productions and creative teams.' },
+  { year: '2022', title: 'OPENDECK Marketplace', description: 'Launched the creative talent marketplace, connecting professionals with opportunities worldwide.' },
+  { year: '2023', title: 'AI Integration', description: 'Introduced AI-powered features to automate scheduling, budgeting, and resource allocation.' },
+  { year: '2024', title: 'Enterprise Scale', description: 'Now managing $75K+ projects with 25K+ active creators across 45+ countries.' },
+];
+
+const leadership = [
+  {
+    name: 'Julian Clarkson',
+    role: 'Founder & CEO',
+    bio: 'Former Formula 1 hospitality director who managed 1,000+ crew members. Built GHXSTSHIP after realizing existing tools were inadequate for real production demands.',
+  },
+  {
+    name: 'Sarah Chen',
+    role: 'Chief Technology Officer',
+    bio: 'Former Netflix production technology lead. Pioneered digital workflow systems for major film studios and streaming platforms.',
+  },
+  {
+    name: 'Marcus Thompson',
+    role: 'VP of Product',
+    bio: 'Ex-Disney Imagineering director who designed operations for theme park openings and global entertainment events.',
+  },
+  {
+    name: 'Lisa Rodriguez',
+    role: 'Chief Operating Officer',
+    bio: 'Former Universal Studios operations executive who managed logistics for blockbuster movie premieres and world tours.',
+  },
+];
+
+const awards = [
+  {
+    title: 'Best Production Management Platform',
+    organization: 'Creative Industry Awards 2024',
+    description: 'Recognized for revolutionizing how creative teams manage complex productions.',
+  },
+  {
+    title: 'Innovation in SaaS',
+    organization: 'TechCrunch Awards 2024',
+    description: 'Honored for building enterprise software that actually works in high-stakes creative environments.',
+  },
+  {
+    title: 'Best Workplace Culture',
+    organization: 'Great Place to Work 2023',
+    description: 'Celebrated for our commitment to supporting creative professionals and fostering innovation.',
+  },
+  {
+    title: 'Fastest Growing SaaS Company',
+    organization: 'Forrester Wave 2023',
+    description: 'Recognized for rapid adoption and market disruption in the creative technology space.',
+  },
+];
+
+const relatedLinks = [
+  {
+    title: 'Our Solutions',
+    description: 'Explore how GHXSTSHIP serves different creative industries and production types.',
+    href: '/solutions',
+  },
+  {
+    title: 'Careers',
+    description: 'Join our team of production veterans building the future of creative operations.',
+    href: '/careers',
+  },
+  {
+    title: 'Press & Media',
+    description: 'Read the latest news and coverage about GHXSTSHIP from leading publications.',
+    href: '/press',
+  },
+];
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
@@ -18,7 +173,7 @@ export default function AboutPage() {
           <div className="stack-xl text-left">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 uppercase text-heading-gradient`}>OUR MISSION</h2>
             <p className="marketing-microcopy max-w-xl text-left text-base text-foreground/80">
-              To build production management tools that don't make you toss your laptop across the room. After managing everything from cruise ship entertainment to Formula 1 hospitality, we know what actually works when the pressure's high and the clock is merciless.
+              To build production management tools that don&apos;t make you toss your laptop across the room. After managing everything from cruise ship entertainment to Formula 1 hospitality, we know what actually works when the pressure&apos;s high and the clock is merciless.
             </p>
             <div className="stack-lg">
               {missionPoints.map(({ icon: Icon, title, description }) => (
@@ -38,12 +193,12 @@ export default function AboutPage() {
           <div className="marketing-card marketing-interactive p-xl text-left">
             <h3 className={`${anton.className} text-heading-3 uppercase text-heading-gradient mb-md`}>Our Vision</h3>
             <p className="marketing-microcopy mb-lg">
-              A world where production management doesn't require a PhD in chaos theory. Where creative professionals can focus on creating instead of fighting with spreadsheets that break when you look at them wrong.
+              A world where production management doesn&apos;t require a PhD in chaos theory. Where creative professionals can focus on creating instead of fighting with spreadsheets that break when you look at them wrong.
             </p>
             <blockquote className="border-l-2 border-accent/60 pl-md italic text-foreground">
-              "We're building the tools I wish I had when managing 1,000+ crew members at 3am during Formula 1 weekend. Spoiler alert: it would've been nice."
+              &ldquo;We&apos;re building the tools I wish I had when managing 1,000+ crew members at 3am during Formula 1 weekend. Spoiler alert: it would&apos;ve been nice.&rdquo;
             </blockquote>
-            <cite className="marketing-microcopy mt-sm block">— Julian Clarkson, Founder & CXO</cite>
+            <cite className="marketing-microcopy mt-sm block">— Julian Clarkson, Founder &amp; CXO</cite>
           </div>
         </div>
       </MarketingSection>
