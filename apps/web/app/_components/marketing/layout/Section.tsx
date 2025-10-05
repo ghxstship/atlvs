@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { MARKETING_CLASSES } from '@ghxstship/ui/components/marketing/animations';
 import { anton } from '../../lib/typography';
 import { cn } from '../../lib/utils';
 
@@ -12,7 +11,16 @@ const variantBase = {
   gradient: 'bg-gradient-to-br from-primary/5 via-background to-secondary/5 text-foreground',
 };
 
+const paddingMap = {
+  none: 'py-0',
+  sm: 'py-3xl',
+  md: 'py-4xl',
+  lg: 'py-5xl',
+} as const;
+
 type SectionVariant = keyof typeof variantBase;
+
+const interactiveCardClasses = 'transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg cursor-pointer';
 
 interface MarketingSectionProps {
   id?: string;
@@ -39,6 +47,7 @@ export function MarketingSection({
       className={cn(
         'marketing-section relative overflow-hidden',
         variantBase[variant],
+        paddingMap[padding],
         className,
       )}
       data-marketing-section
@@ -152,7 +161,7 @@ export function MarketingCard({
     <div
       className={cn(
         'marketing-card marketing-interactive flex h-full flex-col gap-md p-xl',
-        MARKETING_CLASSES.card.interactive,
+        interactiveCardClasses,
         className,
       )}
     >

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, TrendingUp, Users, DollarSign, Calendar, Lock, Eye, Award } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
+import { MarketingSection } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Case Studies | GHXSTSHIP Resources',
@@ -104,7 +105,7 @@ export default function CaseStudiesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-subtle">
+      <MarketingSection className=" bg-gradient-subtle" padding="lg">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -137,10 +138,10 @@ export default function CaseStudiesPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Industry Filter */}
-      <section className="py-xl border-b">
+      <MarketingSection className="py-xl border-b" padding="md">
         <div className="container mx-auto px-md">
           <div className="flex flex-wrap justify-center gap-sm">
             {industries.map((industry: any) => (
@@ -154,10 +155,10 @@ export default function CaseStudiesPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Featured Case Studies */}
-      <section id="featured" className="py-mdxl">
+      <MarketingSection id="featured"  padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -254,10 +255,10 @@ export default function CaseStudiesPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Regular Case Studies */}
-      <section className="py-mdxl bg-secondary/20">
+      <MarketingSection className=" bg-secondary/20" padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -320,10 +321,10 @@ export default function CaseStudiesPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
+      <MarketingSection className=" bg-gradient-to-r from-primary/5 to-accent/5" padding="md">
         <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-xsxl">
@@ -351,7 +352,7 @@ export default function CaseStudiesPage() {
             </CardContent>
           </Card>
         </div>
-      </section>
+      </MarketingSection>
     </div>
   );
 }

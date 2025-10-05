@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, FileText, Code, Zap, Lock, Search, BookOpen, ExternalLink } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
+import { MarketingSection } from '../../../_components/marketing';
 
 
 export const metadata: Metadata = {
@@ -102,7 +103,7 @@ export default function DocumentationPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-subtle">
+      <MarketingSection className=" bg-gradient-subtle" padding="lg">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -149,10 +150,10 @@ export default function DocumentationPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Quick Links */}
-      <section className="py-xl border-b">
+      <MarketingSection className="py-xl border-b" padding="md">
         <div className="container mx-auto px-md">
           <div className="flex flex-wrap justify-center gap-md">
             {quickLinks.map((link: any) => (
@@ -165,10 +166,10 @@ export default function DocumentationPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Documentation Sections */}
-      <section id="sections" className="py-mdxl">
+      <MarketingSection id="sections"  padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -231,10 +232,10 @@ export default function DocumentationPage() {
             })}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Popular Documentation */}
-      <section className="py-mdxl bg-secondary/20">
+      <MarketingSection className=" bg-secondary/20" padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -289,10 +290,10 @@ export default function DocumentationPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Developer Resources */}
-      <section className="py-mdxl">
+      <MarketingSection  padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -343,10 +344,10 @@ export default function DocumentationPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
+      <MarketingSection className=" bg-gradient-to-r from-primary/5 to-accent/5" padding="md">
         <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-xsxl">
@@ -377,7 +378,7 @@ export default function DocumentationPage() {
             </CardContent>
           </Card>
         </div>
-      </section>
+      </MarketingSection>
     </div>
   );
 }

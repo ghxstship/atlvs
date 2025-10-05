@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Calendar, ExternalLink, Download, Mail, Phone, Globe, FileText } from 'lucide-react';
 import { Anton } from 'next/font/google';
+import { MarketingSection } from '../../../_components/marketing';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
@@ -142,7 +143,7 @@ export default function PressPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <MarketingSection className=" bg-gradient-to-br from-primary/5 via-background to-accent/5" padding="lg">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -172,10 +173,10 @@ export default function PressPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Featured Press Release */}
-      <section className="py-mdxl">
+      <MarketingSection  padding="md">
         <div className="container mx-auto px-md">
           <div className="mb-2xl">
             <h2 className={`${anton.className} text-heading-2 text-heading-3 mb-lg uppercase`}>Latest News</h2>
@@ -215,10 +216,10 @@ export default function PressPage() {
             </CardContent>
           </Card>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Press Releases */}
-      <section className="py-mdxl bg-secondary/20">
+      <MarketingSection className=" bg-secondary/20" padding="md">
         <div className="container mx-auto px-md">
           <div className="mb-2xl">
             <h2 className={`${anton.className} text-heading-2 text-heading-3 mb-lg uppercase`}>Press Releases</h2>
@@ -266,10 +267,10 @@ export default function PressPage() {
             </Button>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Media Coverage */}
-      <section className="py-mdxl">
+      <MarketingSection  padding="md">
         <div className="container mx-auto px-md">
           <div className="mb-2xl">
             <h2 className={`${anton.className} text-heading-2 text-heading-3 mb-lg uppercase`}>Media Coverage</h2>
@@ -317,10 +318,10 @@ export default function PressPage() {
             </Button>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Awards & Recognition */}
-      <section className="py-mdxl bg-secondary/20">
+      <MarketingSection className=" bg-secondary/20" padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -359,10 +360,10 @@ export default function PressPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Media Kit */}
-      <section className="py-mdxl">
+      <MarketingSection  padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -407,10 +408,10 @@ export default function PressPage() {
             </Button>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Media Contact */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
+      <MarketingSection className=" bg-gradient-to-r from-primary/5 to-accent/5" padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-2xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -459,10 +460,10 @@ export default function PressPage() {
             </Card>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* CTA Section */}
-      <section className="py-mdxl">
+      <MarketingSection  padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -486,10 +487,10 @@ export default function PressPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Related Pages */}
-      <section className="py-mdxl bg-secondary/20">
+      <MarketingSection className=" bg-secondary/20" padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -518,7 +519,7 @@ export default function PressPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
     </div>
   );
 }

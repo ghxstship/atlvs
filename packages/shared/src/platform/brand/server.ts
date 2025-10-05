@@ -3,7 +3,7 @@
  * Functions for loading brand configuration in server components
  */
 
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import type { BrandConfiguration } from './types';
 import fs from 'fs';
 import path from 'path';
@@ -48,6 +48,56 @@ function loadBundledBrandConfig(brandId: string): BrandConfiguration | null {
  * Get active brand ID from cookies or environment
  */
 export async function getActiveBrandId(): Promise<string> {
+  let requestPath = '';
+
+  try {
+    const headerList = await headers();
+    const rawPath = headerList.get('x-invoke-path')
+      ?? headerList.get('x-middleware-pathname')
+      ?? headerList.get('next-url');
+
+    if (rawPath) {
+      if (rawPath.startsWith('http')) {
+        requestPath = new URL(rawPath).pathname;
+      } else {
+        requestPath = rawPath.split('?')[0] || '';
+      }
+    }
+  } catch {
+    // headers() may not be available in some execution contexts
+  }
+
+  const marketingPrefixes = [
+    '/',
+    '/home',
+    '/solutions',
+    '/products',
+    '/community',
+    '/company',
+    '/partnerships',
+    '/pricing',
+    '/resources',
+    '/security',
+    '/privacy',
+    '/terms',
+    '/cookies',
+    '/accessibility',
+    '/contact'
+  ];
+
+  const isMarketingRoute = requestPath
+    ? marketingPrefixes.some(prefix => {
+        if (prefix === '/') {
+          return requestPath === '/';
+        }
+        return requestPath === prefix || requestPath.startsWith(`${prefix}/`);
+      })
+    : false;
+
+  if (isMarketingRoute) {
+    return process.env.MARKETING_DEFAULT_BRAND_ID || 'ghxstship';
+  }
+
   // Try to get from cookies first (set by middleware)
   try {
     const cookieStore = await cookies();

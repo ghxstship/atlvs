@@ -1,8 +1,14 @@
+import React from 'react'
 import { Tabs } from 'expo-router'
 import { Platform } from 'react-native'
 
+type TabBarIconProps = {
+  color: string
+}
+
 export default function TabLayout() {
   return (
+    // @ts-expect-error expo-router typings rely on React 18 definitions which differ from monorepo root; safe to ignore
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: '#007AFF',
@@ -22,36 +28,28 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <HomeIcon color={color} />,
+          tabBarIcon: ({ color }) => <PlaceholderIcon color={color} />,
         }}
       />
       <Tabs.Screen
         name="projects"
         options={{
           title: 'Projects',
-          tabBarIcon: ({ color }) => <ProjectsIcon color={color} />,
+          tabBarIcon: ({ color }) => <PlaceholderIcon color={color} />,
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
           title: 'Settings',
-          tabBarIcon: ({ color }) => <SettingsIcon color={color} />,
+          tabBarIcon: ({ color }) => <PlaceholderIcon color={color} />,
         }}
       />
     </Tabs>
   )
 }
 
-// Icon components (placeholder - replace with actual icons)
-function HomeIcon({ color }: { color: string }) {
-  return null // Use expo-vector-icons or custom icons
-}
-
-function ProjectsIcon({ color }: { color: string }) {
-  return null
-}
-
-function SettingsIcon({ color }: { color: string }) {
+function PlaceholderIcon({ color }: TabBarIconProps) {
+  void color
   return null
 }

@@ -14,20 +14,25 @@ import { cn } from '../../lib/utils';
 // ==========================================
 
 const buttonVariants = cva(
-  // Base styles
+  // Base styles shared with card surfaces
   [
     'inline-flex',
     'items-center',
     'justify-center',
     'whitespace-nowrap',
-    'rounded-md',
+    'rounded-lg',
+    'border',
+    'border-border',
+    'bg-card',
+    'text-card-foreground',
     'text-sm',
     'font-medium',
+    'shadow-sm',
     'transition-all',
-    'duration-150',
-    'ease-in-out',
+    'duration-200',
+    'ease-out',
+    'hover:shadow-elevation-3',
     'cursor-pointer',
-    'border',
     'focus-visible:outline-none',
     'focus-visible:ring-2',
     'focus-visible:ring-offset-2',
@@ -42,7 +47,7 @@ const buttonVariants = cva(
         default: [
           'bg-foreground',
           'text-background',
-          'border-transparent',
+          'border-border/10',
           'hover:bg-foreground/90',
           // Accent only appears as focus ring (microinteraction)
           'focus-visible:ring-accent',
@@ -53,16 +58,16 @@ const buttonVariants = cva(
         destructive: [
           'bg-destructive',
           'text-destructive-foreground',
-          'border-transparent',
+          'border-destructive/20',
           'hover:bg-destructive/90',
           'focus-visible:ring-destructive',
         ],
         outline: [
           // Neutral surface with subtle hover using accent tint only as microinteraction
           'border-border',
-          'bg-background',
+          'bg-card',
           'text-foreground',
-          'hover:bg-foreground/5',
+          'hover:bg-card/80',
           'focus-visible:ring-accent',
           'hover:ring-2',
           'hover:ring-[hsl(var(--color-accent)/0.25)]',
@@ -72,7 +77,7 @@ const buttonVariants = cva(
           'bg-muted',
           'text-foreground',
           'border-border',
-          'hover:bg-muted/80',
+          'hover:bg-muted/70',
           'focus-visible:ring-accent',
           'hover:ring-2',
           'hover:ring-[hsl(var(--color-accent)/0.25)]',

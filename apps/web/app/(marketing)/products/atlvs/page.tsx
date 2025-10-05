@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Calendar, Users, BarChart3, Shield, CheckCircle, Play, Zap, Clock, FileText, Settings, MessageSquare } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
+import { MarketingSection } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'ATLVS - Production Management That Actually Works | GHXSTSHIP',
@@ -102,7 +103,7 @@ export default function ATLVSPage() {
   return (
     <div className="min-h-screen brand-ghostship">
       {/* Hero Section */}
-      <section className="py-mdxl pb-5xl bg-gradient-subtle">
+      <MarketingSection className=" pb-5xl bg-gradient-subtle" padding="lg">
         <div className="container mx-auto px-md">
           <div className="grid lg:grid-cols-2 gap-xsxl items-center">
             <div className="stack-xl">
@@ -232,10 +233,10 @@ export default function ATLVSPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Features Section */}
-      <section className="py-mdxl">
+      <MarketingSection  padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -272,10 +273,10 @@ export default function ATLVSPage() {
             })}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Use Cases Section */}
-      <section className="py-mdxl bg-secondary/20">
+      <MarketingSection className=" bg-secondary/20" padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -313,10 +314,10 @@ export default function ATLVSPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Testimonials Section */}
-      <section className="py-mdxl">
+      <MarketingSection  padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -348,10 +349,10 @@ export default function ATLVSPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
+      <MarketingSection className=" bg-gradient-to-r from-primary/5 to-accent/5" padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -392,7 +393,7 @@ export default function ATLVSPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
     </div>
   );
 }

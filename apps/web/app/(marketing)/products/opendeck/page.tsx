@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, ShoppingBag, Briefcase, Globe, Zap, CheckCircle, Play, Users, Star, Award, Search, Filter } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
+import { MarketingSection } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'OPENDECK - Find Talent That Actually Shows Up | GHXSTSHIP',
@@ -131,7 +132,7 @@ export default function OPENDECKPage() {
   return (
     <div className="min-h-screen brand-opendeck">
       {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-to-br from-secondary/5 via-background to-primary/5">
+      <MarketingSection className=" bg-gradient-to-br from-secondary/5 via-background to-primary/5" padding="lg">
         <div className="container mx-auto px-md">
           <div className="grid lg:grid-cols-2 gap-xsxl items-center">
             <div className="stack-xl">
@@ -251,10 +252,10 @@ export default function OPENDECKPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Categories Section */}
-      <section className="py-mdxl">
+      <MarketingSection  padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -289,10 +290,10 @@ export default function OPENDECKPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Features Section */}
-      <section className="py-mdxl bg-secondary/20">
+      <MarketingSection className=" bg-secondary/20" padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -329,10 +330,10 @@ export default function OPENDECKPage() {
             })}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Success Stories Section */}
-      <section className="py-mdxl">
+      <MarketingSection  padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -401,10 +402,10 @@ export default function OPENDECKPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-secondary/5 to-primary/5">
+      <MarketingSection className=" bg-gradient-to-r from-secondary/5 to-primary/5" padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -445,7 +446,7 @@ export default function OPENDECKPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
     </div>
   );
 }

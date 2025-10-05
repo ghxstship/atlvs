@@ -3,6 +3,7 @@ import { anton } from '../../../_components/lib/typography';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, BookOpen, Clock, Users, Star, Lock, Eye, CheckCircle } from 'lucide-react';
+import { MarketingSection } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Guides | GHXSTSHIP Resources',
@@ -102,7 +103,7 @@ export default function GuidesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-subtle">
+      <MarketingSection className=" bg-gradient-subtle" padding="lg">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -135,10 +136,10 @@ export default function GuidesPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Filters */}
-      <section className="py-xl border-b">
+      <MarketingSection className="py-xl border-b" padding="md">
         <div className="container mx-auto px-md">
           <div className="stack-md">
             <div>
@@ -171,10 +172,10 @@ export default function GuidesPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Guides Grid */}
-      <section id="guides" className="py-mdxl">
+      <MarketingSection id="guides"  padding="md">
         <div className="container mx-auto px-md">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
             {guides.map((guide: any) => (
@@ -253,10 +254,10 @@ export default function GuidesPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Learning Path CTA */}
-      <section className="py-mdxl bg-secondary/20">
+      <MarketingSection className=" bg-secondary/20" padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-2xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -325,10 +326,10 @@ export default function GuidesPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
+      <MarketingSection className=" bg-gradient-to-r from-primary/5 to-accent/5" padding="md">
         <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-xsxl">
@@ -359,7 +360,7 @@ export default function GuidesPage() {
             </CardContent>
           </Card>
         </div>
-      </section>
+      </MarketingSection>
     </div>
   );
 }

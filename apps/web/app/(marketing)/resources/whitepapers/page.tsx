@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, FileText, Download, Lock, Calendar, Users, TrendingUp, Eye } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
+import { MarketingSection } from '../../../_components/marketing';
 
 
 export const metadata: Metadata = {
@@ -105,7 +106,7 @@ export default function WhitepapersPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-subtle">
+      <MarketingSection className=" bg-gradient-subtle" padding="lg">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -138,10 +139,10 @@ export default function WhitepapersPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Categories Filter */}
-      <section className="py-xl border-b">
+      <MarketingSection className="py-xl border-b" padding="md">
         <div className="container mx-auto px-md">
           <div className="stack-md">
             <h3 className="text-body-sm text-heading-4 color-foreground mb-sm">Categories</h3>
@@ -158,10 +159,10 @@ export default function WhitepapersPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Featured Whitepapers */}
-      <section className="py-mdxl">
+      <MarketingSection  padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -259,10 +260,10 @@ export default function WhitepapersPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* All Whitepapers */}
-      <section id="whitepapers" className="py-mdxl bg-secondary/20">
+      <MarketingSection id="whitepapers" className=" bg-secondary/20" padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -344,10 +345,10 @@ export default function WhitepapersPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Research Subscription */}
-      <section className="py-mdxl">
+      <MarketingSection  padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-2xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -393,10 +394,10 @@ export default function WhitepapersPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* CTA Section */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
+      <MarketingSection className=" bg-gradient-to-r from-primary/5 to-accent/5" padding="md">
         <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-xsxl">
@@ -427,7 +428,7 @@ export default function WhitepapersPage() {
             </CardContent>
           </Card>
         </div>
-      </section>
+      </MarketingSection>
     </div>
   );
 }

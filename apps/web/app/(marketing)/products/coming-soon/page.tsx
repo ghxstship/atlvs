@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Calendar, Users, Shield, Zap, ExternalLink, MessageSquare, Lightbulb } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
+import { MarketingSection } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Coming Soon | GHXSTSHIP Products',
@@ -96,7 +97,7 @@ export default function ComingSoonPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-mdxl bg-gradient-subtle">
+      <MarketingSection className=" bg-gradient-subtle" padding="lg">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -129,10 +130,10 @@ export default function ComingSoonPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Timeline */}
-      <section className="py-smxl border-b">
+      <MarketingSection className="py-smxl border-b" padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-2xl">
             <h2 className={`mb-md ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -171,10 +172,10 @@ export default function ComingSoonPage() {
             </div>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Product Previews */}
-      <section id="products" className="py-mdxl">
+      <MarketingSection id="products"  padding="md">
         <div className="container mx-auto px-md">
           <div className="space-y-mdxl">
             {upcomingProducts.map((product, index) => (
@@ -257,10 +258,10 @@ export default function ComingSoonPage() {
             ))}
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Feature Request Section */}
-      <section className="py-mdxl bg-secondary/20">
+      <MarketingSection className=" bg-secondary/20" padding="md">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -330,10 +331,10 @@ export default function ComingSoonPage() {
             </Card>
           </div>
         </div>
-      </section>
+      </MarketingSection>
 
       {/* Early Access CTA */}
-      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
+      <MarketingSection className=" bg-gradient-to-r from-primary/5 to-accent/5" padding="md">
         <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-xsxl">
@@ -368,7 +369,7 @@ export default function ComingSoonPage() {
             </CardContent>
           </Card>
         </div>
-      </section>
+      </MarketingSection>
     </div>
   );
 }
