@@ -15,7 +15,7 @@
     "package:win": "electron-builder --win",
     "package:linux": "electron-builder --linux",
     "package:all": "electron-builder -mwl",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings 0",
     "type-check": "tsc --noEmit"
   },
   "build": {

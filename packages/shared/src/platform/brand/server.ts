@@ -124,13 +124,13 @@ async function readBrandConfig(brandId: string): Promise<BrandConfiguration> {
   throw new Error(`Brand configuration not found for id: ${brandId}`);
 }
 
-export function loadBrandConfig(brandId: string): Promise<BrandConfiguration> {
+export const loadBrandConfig = (brandId: string): Promise<BrandConfiguration> => {
   if (!configPromiseCache.has(brandId)) {
     configPromiseCache.set(brandId, readBrandConfig(brandId));
   }
 
   return configPromiseCache.get(brandId)!;
-}
+};
 
 /**
  * Get active brand configuration (server-side)

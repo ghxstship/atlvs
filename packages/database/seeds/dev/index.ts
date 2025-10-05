@@ -20,6 +20,20 @@ async function main() {
   // await prisma.organization.deleteMany();
 
   // Create demo organization
+  /*
+  const org = await prisma.organization.upsert({
+    where: { slug: 'ghxstship-demo' },
+    update: {},
+    create: {
+      name: 'GHXSTSHIP Demo',
+      slug: 'ghxstship-demo',
+      // Add other required fields based on your schema
+    },
+  });
+
+  console.log('✅ Created demo organization:', org.slug);
+  */
+
   const org = await prisma.organization.upsert({
     where: { slug: 'ghxstship-demo' },
     update: {},

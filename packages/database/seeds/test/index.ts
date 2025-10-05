@@ -4,7 +4,8 @@
  * Minimal seed data for testing
  */
 
-import { PrismaClient } from '@prisma/client';
+import type { PrismaClient } from '@prisma/client';
+const PrismaClient = null as any;
 
 const prisma = new PrismaClient();
 

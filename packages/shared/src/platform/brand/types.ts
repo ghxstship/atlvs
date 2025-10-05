@@ -54,8 +54,10 @@ export interface LegalInfo {
   privacyUrl: string;
 }
 
+export type ThemeMode = 'light' | 'dark' | 'auto' | string;
+
 export interface ThemeConfig {
-  mode: 'light' | 'dark' | 'auto';
+  mode: ThemeMode;
   colors: ColorSystem;
   typography: TypographySystem;
   spacing: SpacingSystem;
@@ -177,6 +179,7 @@ export interface FontDefinition {
   src: string;
   weight: number;
   style: string;
+  cssVar?: string;
 }
 
 export interface ContentConfig {

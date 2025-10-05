@@ -37,6 +37,8 @@
       "@/lib/*": ["./apps/web/lib/*"],
       "@ghxstship/ui": ["./packages/ui/src"],
       "@ghxstship/ui/*": ["./packages/ui/src/*"],
+      "@ghxstship/shared": ["./packages/shared/src"],
+      "@ghxstship/shared/*": ["./packages/shared/src/*"],
       "@ghxstship/utils": ["./packages/utils/src"],
       "@ghxstship/auth": ["./packages/auth/src"],
       "@ghxstship/domain": ["./packages/domain/src"],

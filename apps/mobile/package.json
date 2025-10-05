@@ -13,7 +13,7 @@
     "build:all": "eas build --platform all",
     "submit:android": "eas submit --platform android",
     "submit:ios": "eas submit --platform ios",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings 0",
     "type-check": "tsc --noEmit",
     "test": "jest"
   },
