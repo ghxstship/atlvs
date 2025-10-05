@@ -102,3 +102,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     </html>
   );
 }
+
+// Force Vercel redeploy - Sun Oct  5 13:47:12 EDT 2025
+
