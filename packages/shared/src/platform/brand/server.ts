@@ -4,16 +4,34 @@
  */
 
 import { cookies } from 'next/headers';
-import { cache } from 'react';
 import type { BrandConfiguration } from './types';
 import fs from 'fs';
 import path from 'path';
+
+import defaultBrand from '@branding/config/default.brand.json';
+import ghxstshipBrand from '@branding/config/ghxstship.brand.json';
+import atlvsBrand from '@branding/config/atlvs.brand.json';
+import opendeckBrand from '@branding/config/opendeck.brand.json';
+import whitelabelBrand from '@branding/config/whitelabel.brand.json';
+
+const bundledBrandConfigs: Record<string, BrandConfiguration> = {
+  default: defaultBrand,
+  ghxstship: ghxstshipBrand,
+  atlvs: atlvsBrand,
+  opendeck: opendeckBrand,
+  whitelabel: whitelabelBrand,
+};
 
 /**
  * Load bundled brand configs synchronously from file system
  * This ensures reliability in all deployment environments
  */
 function loadBundledBrandConfig(brandId: string): BrandConfiguration | null {
+  const normalizedId = brandId.toLowerCase();
+  if (normalizedId in bundledBrandConfigs) {
+    return bundledBrandConfigs[normalizedId];
+  }
+
   try {
     const configPath = path.join(process.cwd(), 'branding', 'config', `${brandId}.brand.json`);
     if (fs.existsSync(configPath)) {
@@ -49,11 +67,15 @@ export async function getActiveBrandId(): Promise<string> {
  * Load brand configuration from file system (server-side only)
  * Cached per request to avoid multiple file reads
 {{ ... }}
-export const loadBrandConfig = cache(async (brandId: string): Promise<BrandConfiguration> => {
+const configPromiseCache = new Map<string, Promise<BrandConfiguration>>();
+
+async function readBrandConfig(brandId: string): Promise<BrandConfiguration> {
   const searchRoots = [
     path.join(process.cwd(), 'public', 'branding', 'config'),
     path.join(process.cwd(), 'branding', 'config'),
-    path.join(process.cwd(), '..', 'branding', 'config')
+    path.join(process.cwd(), '..', 'branding', 'config'),
+    path.join(process.cwd(), 'apps', 'web', 'branding', 'config'),
+    path.join(process.cwd(), '..', 'apps', 'web', 'branding', 'config')
   ];
 
   for (const root of searchRoots) {
@@ -83,7 +105,15 @@ export const loadBrandConfig = cache(async (brandId: string): Promise<BrandConfi
   }
 
   throw new Error(`Brand configuration not found for id: ${brandId}`);
-});
+}
+
+export function loadBrandConfig(brandId: string): Promise<BrandConfiguration> {
+  if (!configPromiseCache.has(brandId)) {
+    configPromiseCache.set(brandId, readBrandConfig(brandId));
+  }
+
+  return configPromiseCache.get(brandId)!;
+}
 
 /**
  * Get active brand configuration (server-side)

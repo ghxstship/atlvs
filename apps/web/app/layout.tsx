@@ -4,8 +4,8 @@ import { Anton, Share_Tech, Share_Tech_Mono } from 'next/font/google';
 import { WebVitals } from './web-vitals';
 import { GHXSTSHIPProvider } from '@ghxstship/ui';
 import { BrandProvider } from '@ghxstship/shared/platform/brand/context';
-import { getActiveBrand } from '@ghxstship/shared/platform/brand/server';
 import { generateThemeCSS, generateFontImports } from '@ghxstship/shared/platform/brand/theme-generator';
+import { getActiveBrand } from '@ghxstship/shared/platform/brand/server';
 
 // Force dynamic rendering to avoid cookies() error during build
 export const dynamic = 'force-dynamic';

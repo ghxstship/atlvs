@@ -14,7 +14,18 @@ export const PerformanceOptimizations = () => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const img = entry.target as HTMLImageElement;
-            img.src = img.dataset.src || '';
+            const dataSrc = img.dataset.src;
+
+            if (!dataSrc) {
+              observer.unobserve(img);
+              return;
+            }
+
+            if (img.src !== dataSrc) {
+              img.src = dataSrc;
+            }
+
+            img.removeAttribute('data-src');
             img.classList.remove('lazy');
             observer.unobserve(img);
           }
@@ -79,52 +90,49 @@ export const PerformanceOptimizations = () => {
 
     // Service Worker registration for caching
     if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-      navigator.serviceWorker.register('/sw.js')
-        .then(registration => {
-          console.log('SW registered: ', registration);
-        })
-        .catch(registrationError => {
-          console.log('SW registration failed: ', registrationError);
-        });
+      navigator.serviceWorker.register('/sw.js').catch(() => {
+        // Intentionally swallow service worker registration errors in production
+      });
     }
 
     // Performance monitoring
     if ('PerformanceObserver' in window) {
       // Monitor Largest Contentful Paint
-      const lcpObserver = new PerformanceObserver((list: any) => {
+      const lcpObserver = new PerformanceObserver((list: PerformanceObserverEntryList) => {
         const entries = list.getEntries();
-        const lastEntry = entries[entries.length - 1];
+        const lastEntry = entries[entries.length - 1] as PerformanceEntry | undefined;
         
         // Send to analytics if LCP is poor (>2.5s)
-        if (lastEntry.startTime > 2500) {
-          console.warn('Poor LCP detected:', lastEntry.startTime);
+        if (lastEntry && lastEntry.startTime > 2500) {
+          // Hook for future analytics reporting of poor LCP
         }
       });
       
       try {
         lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
-      } catch (e) {
+      } catch {
         // Fallback for browsers that don't support LCP
       }
 
       // Monitor Cumulative Layout Shift
-      const clsObserver = new PerformanceObserver((list: any) => {
+      const clsObserver = new PerformanceObserver((list: PerformanceObserverEntryList) => {
         let clsValue = 0;
         for (const entry of list.getEntries()) {
-          if (!(entry as any).hadRecentInput) {
-            clsValue += (entry as any).value;
+          const layoutShiftEntry = entry as PerformanceEntry & { value?: number; hadRecentInput?: boolean };
+          if (layoutShiftEntry.value && !layoutShiftEntry.hadRecentInput) {
+            clsValue += layoutShiftEntry.value;
           }
         }
         
         // Send to analytics if CLS is poor (>0.1)
         if (clsValue > 0.1) {
-          console.warn('Poor CLS detected:', clsValue);
+          // Hook for future analytics reporting of poor CLS
         }
       });
       
       try {
         clsObserver.observe({ entryTypes: ['layout-shift'] });
-      } catch (e) {
+      } catch {
         // Fallback for browsers that don't support CLS
       }
     }
@@ -157,7 +165,7 @@ export const OptimizedImage = ({
   height?: number;
   priority?: boolean;
   className?: string;
-  [key: string];
+  [key: string]: unknown;
 }) => {
   const imageSrc = priority ? src : undefined;
   const dataSrc = priority ? undefined : src;

@@ -34,6 +34,8 @@
       "@ghxstship/application/*": ["packages/application/src/*"],
       "@ghxstship/infrastructure": ["packages/infrastructure/src/index.ts"],
       "@ghxstship/infrastructure/*": ["packages/infrastructure/src/*"],
+      "@ghxstship/shared": ["packages/shared/src/index.ts"],
+      "@ghxstship/shared/*": ["packages/shared/src/*"],
       "@branding/*": ["branding/*"]
     },
     "strict": true,
