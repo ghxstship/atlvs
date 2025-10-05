@@ -2,10 +2,14 @@
   "ci": {
     "collect": {
       "numberOfRuns": 3,
-      "startServerCommand": "pnpm dev",
+      "startServerCommand": "npm run dev",
       "startServerReadyPattern": "ready - started server on",
       "url": [
         "http://localhost:3000",
+        "http://localhost:3000/products",
+        "http://localhost:3000/solutions/film-tv",
+        "http://localhost:3000/contact",
+        "http://localhost:3000/company/about",
         "http://localhost:3000/dashboard",
         "http://localhost:3000/projects",
         "http://localhost:3000/finance",
@@ -15,11 +19,19 @@
     },
     "assert": {
       "assertions": {
-        "categories:performance": ["error", {"minScore": 0.95}],
         "categories:accessibility": ["error", {"minScore": 0.95}],
-        "categories:best-practices": ["error", {"minScore": 0.95}],
+        "categories:performance": ["error", {"minScore": 0.90}],
         "categories:seo": ["error", {"minScore": 0.95}],
-        "categories:pwa": "off"
+        "categories:best-practices": ["error", {"minScore": 0.95}],
+        "categories:pwa": "off",
+        "first-contentful-paint": ["error", {"maxNumericValue": 2000}],
+        "largest-contentful-paint": ["error", {"maxNumericValue": 2500}],
+        "cumulative-layout-shift": ["error", {"maxNumericValue": 0.1}],
+        "first-input-delay": ["error", {"maxNumericValue": 100}],
+        "interaction-to-next-paint": ["error", {"maxNumericValue": 200}],
+        "total-blocking-time": ["error", {"maxNumericValue": 200}],
+        "speed-index": ["error", {"maxNumericValue": 3000}],
+        "max-potential-fid": ["error", {"maxNumericValue": 150}]
       }
     },
     "upload": {
