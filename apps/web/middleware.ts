@@ -1,15 +1,29 @@
-// Edge Runtime compatible middleware using native Web APIs
-// Avoiding NextRequest/NextResponse which were causing MIDDLEWARE_INVOCATION_FAILED
+import { NextRequest, NextResponse } from 'next/server';
 
-export function middleware(request: Request) {
-  const url = new URL(request.url);
-  const pathname = url.pathname;
-  
+// Middleware with robust guards to prevent runtime errors on undefined pathname
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Fallback to default handling if pathname is unavailable for any reason
+  if (!pathname) {
+    return NextResponse.next();
+  }
+
+  // Skip framework/static assets explicitly to avoid hitting auth logic
+  if (
+    pathname.startsWith('/_next/') ||
+    pathname.startsWith('/favicon.ico') ||
+    pathname.startsWith('/assets/') ||
+    pathname.match(/\.([a-zA-Z0-9]+)$/)
+  ) {
+    return NextResponse.next();
+  }
+
   // Skip API routes
   if (pathname.startsWith('/api/')) {
-    return;
+    return NextResponse.next();
   }
-  
+
   // Public routes that don't require authentication
   const publicRoutes = [
     '/',
@@ -31,7 +45,7 @@ export function middleware(request: Request) {
     '/community',
     '/company'
   ];
-  
+
   const publicPrefixes = [
     '/auth/',
     '/opendeck/',
@@ -42,22 +56,23 @@ export function middleware(request: Request) {
     '/careers/',
     '/community/',
   ];
-  
+
   // Check if route is public
   if (publicRoutes.includes(pathname) || publicPrefixes.some(prefix => pathname.startsWith(prefix))) {
-    return;
+    return NextResponse.next();
   }
-  
+
   // Check for auth cookie
-  const cookies = request.headers.get('cookie') || '';
-  const hasAuthToken = cookies.includes('sb-access-token=');
-  
+  const hasAuthToken = request.cookies.has('sb-access-token');
+
   if (!hasAuthToken) {
     // Redirect to signin with next parameter
-    const signinUrl = new URL('/auth/signin', url.origin);
+    const signinUrl = new URL('/auth/signin', request.url);
     signinUrl.searchParams.set('next', pathname);
-    return Response.redirect(signinUrl.toString(), 307);
+    return NextResponse.redirect(signinUrl, 307);
   }
+
+  return NextResponse.next();
 }
 
 export const config = {
