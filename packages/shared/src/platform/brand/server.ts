@@ -69,15 +69,15 @@ export async function getActiveBrandId(): Promise<string> {
 {{ ... }}
 const configPromiseCache = new Map<string, Promise<BrandConfiguration>>();
 
-async function readBrandConfig(brandId: string): Promise<BrandConfiguration> {
-  const searchRoots = [
-    path.join(process.cwd(), 'public', 'branding', 'config'),
-    path.join(process.cwd(), 'branding', 'config'),
-    path.join(process.cwd(), '..', 'branding', 'config'),
-    path.join(process.cwd(), 'apps', 'web', 'branding', 'config'),
-    path.join(process.cwd(), '..', 'apps', 'web', 'branding', 'config')
-  ];
+const searchRoots = [
+  path.join(process.cwd(), 'public', 'branding', 'config'),
+  path.join(process.cwd(), 'branding', 'config'),
+  path.join(process.cwd(), '..', 'branding', 'config'),
+  path.join(process.cwd(), 'apps', 'web', 'branding', 'config'),
+  path.join(process.cwd(), '..', 'apps', 'web', 'branding', 'config')
+];
 
+function readConfigFromFileSystem(brandId: string): BrandConfiguration | null {
   for (const root of searchRoots) {
     const configPath = path.join(root, `${brandId}.brand.json`);
     if (!fs.existsSync(configPath)) {
@@ -93,6 +93,15 @@ async function readBrandConfig(brandId: string): Promise<BrandConfiguration> {
     }
   }
 
+  return null;
+}
+
+async function readBrandConfig(brandId: string): Promise<BrandConfiguration> {
+  const configFromFs = readConfigFromFileSystem(brandId);
+  if (configFromFs) {
+    return configFromFs;
+  }
+
   console.error(`Failed to locate brand config for ${brandId}`);
 
   const bundledConfig = loadBundledBrandConfig(brandId);
@@ -101,9 +110,9 @@ async function readBrandConfig(brandId: string): Promise<BrandConfiguration> {
   }
 
   if (brandId !== 'default') {
-    const defaultConfig = await readBrandConfig('default').catch(() => null);
-    if (defaultConfig) {
-      return defaultConfig;
+    const defaultConfigFromFs = readConfigFromFileSystem('default');
+    if (defaultConfigFromFs) {
+      return defaultConfigFromFs;
     }
 
     const bundledDefault = loadBundledBrandConfig('default');
