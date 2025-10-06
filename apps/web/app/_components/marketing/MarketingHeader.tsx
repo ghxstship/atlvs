@@ -122,12 +122,12 @@ export function MarketingHeader() {
           'fixed top-0 left-0 right-0 z-[90]',
           // Base styling
           'w-full border-b transition-all duration-300 ease-out',
-          // Glass morphism effects
-          'bg-surface-glass border-border/50',
+          // Solid surface treatment (no translucency)
+          'bg-background border-border',
           // Scroll-based styling
-          isScrolled && 'shadow-lg shadow-black/5 bg-background/95 backdrop-blur-2xl border-border/80',
+          isScrolled && 'shadow-lg shadow-black/5 bg-background border-border',
           // Mobile menu open state
-          isOpen && 'bg-background/95 backdrop-blur-2xl'
+          isOpen && 'bg-background'
         )}
       >
         <div className="container mx-auto px-lg">

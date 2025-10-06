@@ -586,7 +586,7 @@
 }
 
 .marketing-surface {
-  --marketing-accent: var(--accent-atlvs);
+  --marketing-accent: hsl(var(--accent-ghostship));
   --color-primary: var(--marketing-accent);
   --color-primary-foreground: 0 0% 100%;
   --color-accent: var(--marketing-accent);
@@ -599,6 +599,18 @@
   --marketing-card-border: hsl(var(--color-border) / 0.55);
   --marketing-card-shadow: var(--shadow-soft);
   --marketing-card-shadow-hover: var(--shadow-lg);
+}
+
+.brand-atlvs.marketing-surface {
+  --marketing-accent: hsl(var(--accent-atlvs));
+}
+
+.brand-opendeck.marketing-surface {
+  --marketing-accent: hsl(var(--accent-opendeck));
+}
+
+.brand-ghostship.marketing-surface {
+  --marketing-accent: hsl(var(--accent-ghostship));
 }
 
 .marketing-surface main {

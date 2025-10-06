@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { createServerClient } from '@supabase/ssr';
+import type { Database } from '@/types/database';
 
 // Middleware with robust guards to prevent runtime errors on undefined pathname
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Fallback to default handling if pathname is unavailable for any reason
@@ -62,17 +64,49 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Check for auth cookie
-  const hasAuthToken = request.cookies.has('sb-access-token');
+  const isAuthRoute = pathname.startsWith('/auth/');
+  const isPublicRoute =
+    publicRoutes.includes(pathname) || publicPrefixes.some(prefix => pathname.startsWith(prefix));
 
-  if (!hasAuthToken) {
-    // Redirect to signin with next parameter
+  if (!isAuthRoute && isPublicRoute) {
+    return NextResponse.next();
+  }
+
+  const response = NextResponse.next();
+
+  const supabase = createServerClient<Database>(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll();
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) => {
+            response.cookies.set(name, value, options);
+          });
+        },
+      },
+    }
+  );
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session && !isAuthRoute) {
     const signinUrl = new URL('/auth/signin', request.url);
     signinUrl.searchParams.set('next', pathname);
     return NextResponse.redirect(signinUrl, 307);
   }
 
-  return NextResponse.next();
+  if (session && isAuthRoute) {
+    const nextUrl = request.nextUrl.searchParams.get('next') ?? '/dashboard';
+    return NextResponse.redirect(new URL(nextUrl, request.url));
+  }
+
+  return response;
 }
 
 export const config = {
