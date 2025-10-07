@@ -60,8 +60,8 @@ export class RealtimeService {
   private supabase = createClient();
   private channels = new Map<string, RealtimeChannel>();
   private presenceStates = new Map<string, PresenceState>();
-  private eventListeners = new Map<RealtimeEvent, Array<(payload: RealtimePayload) => void>();
-  private conflictResolvers = new Map<string, (conflict: ConflictResolution) => Promise<unknown>();
+  private eventListeners = new Map<RealtimeEvent, Array<(payload: RealtimePayload) => void>>();
+  private conflictResolvers = new Map<string, (conflict: ConflictResolution) => Promise<unknown>>();
   private connectionStatus: 'connecting' | 'connected' | 'disconnected' | 'error' = 'disconnected';
 
   constructor() {

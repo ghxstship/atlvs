@@ -4,7 +4,7 @@ import { Card, Badge } from "@ghxstship/ui";
 import type { Risk } from "../RisksClient";
 
 interface RiskMatrixViewProps {
- riskMatrix: Record<string, Record<string, Risk[]>;
+ riskMatrix: Record<string, Record<string, Risk[]>>;
  onView: (risk: Risk) => void;
  getRiskLevelColor: (score: number) => string;
 }

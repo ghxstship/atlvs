@@ -2,18 +2,76 @@
 
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Download, Upload, Plus, Settings, Layout, Grip, BarChart3, Users, DollarSign, TrendingUp, Edit, Trash2, Bell, Activity, AlertCircle } from 'lucide-react';
+import { Plus, Layout, BarChart3, TrendingUp, Edit, Trash2, Bell, Activity, AlertCircle } from 'lucide-react';
 
 import { Card, Button, Badge } from '@ghxstship/ui';
+import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts';
+
+type ProjectsStats = {
+  total: number;
+  active: number;
+  completed: number;
+  budget_total: number;
+  budget_used: number;
+};
+
+type PeopleStats = {
+  total: number;
+  active: number;
+  on_leave: number;
+  contractors: number;
+  departments: string[];
+};
+
+type FinanceStats = {
+  revenue_monthly: number;
+  expenses_monthly: number;
+  profit_margin: number;
+  pending_invoices: number;
+  overdue_payments: number;
+};
+
+type AnalyticsStats = {
+  page_views: number;
+  unique_visitors: number;
+  conversion_rate: number;
+  bounce_rate: number;
+};
+
+type CrossModuleData = {
+  projects?: ProjectsStats;
+  people?: PeopleStats;
+  finance?: FinanceStats;
+  analytics?: AnalyticsStats;
+};
 
 
 // Dashboard types
+interface WidgetConfig {
+  value?: number | string;
+  change?: number;
+  status?: 'up' | 'down' | 'neutral';
+  subtitle?: string;
+  format?: 'currency' | 'number';
+  chartType?: 'line' | 'bar' | 'pie';
+  data?: number[];
+  headers?: string[];
+  rows?: string[][];
+  activities?: Array<{
+    user: string;
+    action: string;
+    item: string;
+    time: string;
+    module?: string;
+  }>;
+}
+
 interface DashboardWidget {
   id: string;
   dashboard_id: string;
   type: 'metric' | 'chart' | 'activity' | 'table' | 'text';
   title: string;
-  config: Record<string, any>;
+  config: WidgetConfig;
   position: {
     x: number;
     y: number;
@@ -27,11 +85,17 @@ interface DashboardWidget {
   updated_at: string;
 }
 
+interface DashboardLayout {
+  columns: number;
+  gutters: 'sm' | 'md' | 'lg';
+  padding: 'sm' | 'md' | 'lg';
+}
+
 interface Dashboard {
   id: string;
   name: string;
   description?: string;
-  layout: Record<string, any>;
+  layout: DashboardLayout;
   is_default: boolean;
   is_public: boolean;
   organization_id: string;
@@ -46,7 +110,7 @@ interface DashboardClientProps {
 }
 
 // Cross-module data integration functions
-const fetchProjectsData = async (orgId: string) => {
+const fetchProjectsData = async (_orgId: string): Promise<ProjectsStats> => {
   // Mock integration with Projects module
   return {
     total: 24,
@@ -57,7 +121,7 @@ const fetchProjectsData = async (orgId: string) => {
   };
 };
 
-const fetchPeopleData = async (orgId: string) => {
+const fetchPeopleData = async (_orgId: string): Promise<PeopleStats> => {
   // Mock integration with People module
   return {
     total: 156,
@@ -68,7 +132,7 @@ const fetchPeopleData = async (orgId: string) => {
   };
 };
 
-const fetchFinanceData = async (orgId: string) => {
+const fetchFinanceData = async (_orgId: string): Promise<FinanceStats> => {
   // Mock integration with Finance module
   return {
     revenue_monthly: 125000,
@@ -79,30 +143,44 @@ const fetchFinanceData = async (orgId: string) => {
   };
 };
 
-const fetchAnalyticsData = async (orgId: string) => {
+const fetchAnalyticsData = async (_orgId: string): Promise<AnalyticsStats> => {
   // Mock integration with Analytics module
   return {
     page_views: 45230,
     unique_visitors: 12450,
     conversion_rate: 3.2,
-    bounce_rate: 42.1
+    bounce_rate: 42.1,
   };
 };
 
 // Mock data for demonstration with cross-module integration
 const mockDashboard: Dashboard = {
   id: 'mock-dashboard-1',
-  name: 'Enterprise Dashboard',
-  description: 'Your comprehensive business overview with real-time cross-module data',
-  layout: { breakpoints: { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }, cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 } },
+  name: 'Executive Overview',
+  description: 'Unified view of key metrics across modules',
+  layout: {
+    columns: 12,
+    gutters: 'lg',
+    padding: 'lg',
+  },
   is_default: true,
   is_public: false,
-  organization_id: 'mock-org',
+  organization_id: 'org-1',
   created_by: 'mock-user',
   widgets: [],
   created_at: new Date().toISOString(),
-  updated_at: new Date().toISOString()
+  updated_at: new Date().toISOString(),
 };
+
+interface WidgetDraft {
+  id?: string;
+  type: DashboardWidget['type'];
+  title: string;
+  config: WidgetConfig;
+  position: DashboardWidget['position'];
+  data_source?: string;
+  refresh_interval?: number;
+}
 
 const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
   const [dashboard, setDashboard] = useState<Dashboard | null>(null);
@@ -110,10 +188,18 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [editMode, setEditMode] = useState(false);
-  const [crossModuleData, setCrossModuleData] = useState<any>({});
-  const [notifications, setNotifications] = useState<any[]>([]);
+  const [crossModuleData, setCrossModuleData] = useState<CrossModuleData>({});
+  const [notifications, setNotifications] = useState<Array<{ id: number; type: string; message: string; timestamp: string }>>([]);
   const [isWidgetDrawerOpen, setIsWidgetDrawerOpen] = useState(false);
-  const [selectedWidget, setSelectedWidget] = useState<DashboardWidget | null>(null);
+  const [widgetDraft, setWidgetDraft] = useState<WidgetDraft | null>(null);
+
+  const createDefaultDraft = useCallback((): WidgetDraft => ({
+    type: 'metric',
+    title: '',
+    config: {},
+    position: { x: 0, y: 0, w: 4, h: 3 },
+    refresh_interval: 300,
+  }), []);
 
   // Real-time notifications simulation
   useEffect(() => {
@@ -172,10 +258,10 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
           type: 'metric',
           title: 'Total Projects',
           config: { 
-            value: crossModuleData.projects?.total || 24, 
+            value: crossModuleData.projects?.total ?? 24, 
             change: 12, 
             status: 'up',
-            subtitle: `${crossModuleData.projects?.active || 18} active`
+            subtitle: `${crossModuleData.projects?.active ?? 18} active`
           },
           position: { x: 0, y: 0, w: 3, h: 2 },
           organization_id: orgId,
@@ -188,10 +274,10 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
           type: 'metric',
           title: 'Team Members',
           config: { 
-            value: crossModuleData.people?.total || 156, 
+            value: crossModuleData.people?.total ?? 156, 
             change: -3, 
             status: 'down',
-            subtitle: `${crossModuleData.people?.active || 142} active`
+            subtitle: `${crossModuleData.people?.active ?? 142} active`
           },
           position: { x: 3, y: 0, w: 3, h: 2 },
           organization_id: orgId,
@@ -204,10 +290,10 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
           type: 'metric',
           title: 'Monthly Revenue',
           config: { 
-            value: crossModuleData.finance?.revenue_monthly || 125000, 
+            value: crossModuleData.finance?.revenue_monthly ?? 125000, 
             change: 8.5, 
             status: 'up',
-            subtitle: `${crossModuleData.finance?.profit_margin || 28.8}% margin`,
+            subtitle: `${crossModuleData.finance?.profit_margin ?? 28.8}% margin`,
             format: 'currency'
           },
           position: { x: 6, y: 0, w: 3, h: 2 },
@@ -285,38 +371,51 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
     if (!dashboard) return;
 
     try {
-      const newWidget: DashboardWidget = {
-        id: `widget-${Date.now()}`,
+      const base = {
         dashboard_id: dashboard.id,
-        type: widgetData.type || 'metric',
-        title: widgetData.title || 'New Widget',
-        config: widgetData.config || {},
-        position: widgetData.position || { x: 0, y: 0, w: 4, h: 3 },
-        data_source: widgetData.data_source,
-        refresh_interval: widgetData.refresh_interval || 300,
         organization_id: orgId,
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString()
       };
 
-      setWidgets(prev => [...prev, newWidget]);
+      if (widgetData.id) {
+        setWidgets(prev => prev.map(widget =>
+          widget.id === widgetData.id
+            ? {
+                ...widget,
+                ...base,
+                type: widgetData.type ?? widget.type,
+                title: widgetData.title ?? widget.title,
+                config: widgetData.config ?? widget.config,
+                position: widgetData.position ?? widget.position,
+                data_source: widgetData.data_source ?? widget.data_source,
+                refresh_interval: widgetData.refresh_interval ?? widget.refresh_interval,
+                updated_at: new Date().toISOString(),
+              }
+            : widget
+        ));
+      } else {
+        const newWidget: DashboardWidget = {
+          id: `widget-${Date.now()}`,
+          ...base,
+          type: widgetData.type || 'metric',
+          title: widgetData.title || 'New Widget',
+          config: widgetData.config || {},
+          position: widgetData.position || { x: 0, y: 0, w: 4, h: 3 },
+          data_source: widgetData.data_source,
+          refresh_interval: widgetData.refresh_interval || 300,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        };
+
+        setWidgets(prev => [...prev, newWidget]);
+      }
+
       setIsWidgetDrawerOpen(false);
+      setWidgetDraft(null);
     } catch (err) {
       console.error('Error adding widget:', err);
       setError(err instanceof Error ? err.message : 'Failed to add widget');
     }
   }, [dashboard, orgId]);
-
-  const handleUpdateWidget = useCallback(async (widgetId: string, updates: Partial<DashboardWidget>) => {
-    try {
-      setWidgets(prev => prev.map(w => w.id === widgetId ? { ...w, ...updates, updated_at: new Date().toISOString() } : w));
-      setSelectedWidget(null);
-      setIsWidgetDrawerOpen(false);
-    } catch (err) {
-      console.error('Error updating widget:', err);
-      setError(err instanceof Error ? err.message : 'Failed to update widget');
-    }
-  }, []);
 
   const handleDeleteWidget = useCallback(async (widgetId: string) => {
     try {
@@ -332,7 +431,15 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
       key: widget.id,
       widget,
       onEdit: () => {
-        setSelectedWidget(widget);
+        setWidgetDraft({
+          id: widget.id,
+          type: widget.type,
+          title: widget.title,
+          config: widget.config,
+          position: widget.position,
+          data_source: widget.data_source,
+          refresh_interval: widget.refresh_interval,
+        });
         setIsWidgetDrawerOpen(true);
       },
       onDelete: () => handleDeleteWidget(widget.id),
@@ -545,55 +652,54 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
 
   if (loading) {
     return (
-      <div className="stack-lg">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Dashboard</h1>
+      <Stack spacing="lg">
+        <HStack justify="between" align="center">
+          <Stack spacing="xs">
+            <h1 className="text-heading-3 font-anton uppercase">Dashboard</h1>
             <p className="text-body-sm opacity-80">Loading your dashboard...</p>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+          </Stack>
+        </HStack>
+        <Grid cols={1} responsive={{ md: 2, lg: 3 }} spacing="lg">
           {[...Array(6)].map((_, i) => (
             <Card key={i} className="h-component-xl animate-pulse bg-secondary/50" />
           ))}
-        </div>
-      </div>
+        </Grid>
+      </Stack>
     );
   }
 
   if (error) {
     return (
-      <div className="stack-lg">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Dashboard</h1>
+      <Stack spacing="lg">
+        <HStack justify="between" align="center">
+          <Stack spacing="xs">
+            <h1 className="text-heading-3 font-anton uppercase">Dashboard</h1>
             <p className="text-body-sm opacity-80">Error loading dashboard</p>
-          </div>
-        </div>
+          </Stack>
+        </HStack>
         <Card className="p-lg text-center">
           <p className="color-destructive mb-md">{error}</p>
           <Button onClick={loadDashboard}>Retry</Button>
         </Card>
-      </div>
+      </Stack>
     );
   }
 
   return (
-    <div className="stack-lg">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">
+    <Stack spacing="lg">
+      <HStack justify="between" align="center">
+        <Stack spacing="xs">
+          <h1 className="text-heading-3 font-anton uppercase">
             {dashboard?.name || 'Dashboard'}
           </h1>
           <p className="text-body-sm opacity-80">
             {dashboard?.description || 'Your personalized dashboard'}
           </p>
-        </div>
-        <div className="flex gap-sm">
+        </Stack>
+        <HStack spacing="sm" align="center">
           {notifications.length > 0 && (
             <Button
               variant="outline"
-             
               className="relative"
             >
               <Bell className="h-icon-xs w-icon-xs" />
@@ -609,68 +715,76 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
             <Layout className="h-icon-xs w-icon-xs mr-sm" />
             {editMode ? 'Done' : 'Edit'}
           </Button>
-          <Button onClick={() => setIsWidgetDrawerOpen(true)}>
+          <Button
+            onClick={() => {
+              setWidgetDraft(createDefaultDraft());
+              setIsWidgetDrawerOpen(true);
+            }}
+          >
             <Plus className="h-icon-xs w-icon-xs mr-sm" />
             Add Widget
           </Button>
-        </div>
-      </div>
+        </HStack>
+      </HStack>
 
       {widgets.length === 0 ? (
-        <Card className="p-xsxl text-center">
-          <BarChart3 className="h-icon-2xl w-icon-2xl mx-auto color-muted mb-md" />
-          <h3 className="text-body form-label mb-sm">No widgets yet</h3>
-          <p className="color-muted mb-md">
-            Add your first widget to start building your dashboard
-          </p>
-          <Button onClick={() => setIsWidgetDrawerOpen(true)}>
-            <Plus className="h-icon-xs w-icon-xs mr-sm" />
-            Add Widget
-          </Button>
+        <Card className="p-xl text-center space-y-md">
+          <BarChart3 className="h-icon-2xl w-icon-2xl mx-auto color-muted" />
+          <Stack spacing="sm" align="center">
+            <h3 className="text-body form-label">No widgets yet</h3>
+            <p className="color-muted">Add your first widget to start building your dashboard.</p>
+            <Button
+              onClick={() => {
+                setWidgetDraft(createDefaultDraft());
+                setIsWidgetDrawerOpen(true);
+              }}
+            >
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
+              Add Widget
+            </Button>
+          </Stack>
         </Card>
       ) : (
         <>
-          {/* Real-time notifications panel */}
           {notifications.length > 0 && (
             <Card className="p-md mb-lg bg-info/10 border-info/20">
-              <div className="flex items-center justify-between mb-sm">
-                <div className="flex items-center gap-sm">
+              <HStack justify="between" align="center" className="mb-sm">
+                <HStack align="center" spacing="sm">
                   <Bell className="h-icon-xs w-icon-xs text-info" />
                   <h3 className="form-label text-info">Real-time Updates</h3>
-                </div>
+                </HStack>
                 <Button
                   variant="ghost"
-                 
                   onClick={() => setNotifications([])}
                   className="text-info hover:text-info/80"
                 >
                   Clear All
                 </Button>
-              </div>
-              <div className="stack-sm">
-                {notifications.slice(0, 3).map((notification: any) => (
-                  <div key={notification.id} className="flex items-center gap-sm text-body-sm text-info">
+              </HStack>
+              <Stack spacing="sm">
+                {notifications.slice(0, 3).map((notification) => (
+                  <HStack key={notification.id} spacing="sm" align="center">
                     <AlertCircle className="h-3 w-3" />
                     <span>{notification.message}</span>
-                    <span className="text-body-sm text-info ml-auto">
+                    <span className="ml-auto text-body-sm text-info">
                       {new Date(notification.timestamp).toLocaleTimeString()}
                     </span>
-                  </div>
+                  </HStack>
                 ))}
-              </div>
+              </Stack>
             </Card>
           )}
 
-          {/* Dashboard widgets grid with responsive design */}
-          <div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg"
+          <Grid
+            cols={1}
+            responsive={{ md: 2, lg: 3, xl: 4 }}
+            spacing="lg"
             role="main"
             aria-label="Dashboard widgets"
           >
             {widgets.map(renderWidget)}
-          </div>
+          </Grid>
 
-          {/* Accessibility: Skip to content link */}
           <a 
             href="#main-content" 
             className="sr-only focus:not-sr-only focus:absolute focus:top-md focus:left-4 bg-accent color-accent-foreground px-md py-sm rounded-md z-50"
@@ -684,20 +798,29 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
       {isWidgetDrawerOpen && (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center">
           <Card className="w-full max-w-md p-lg m-md">
-            <div className="flex items-center justify-between mb-md">
+            <HStack justify="between" align="center" className="mb-md">
               <h3 className="text-body form-label">Add New Widget</h3>
               <Button
                 variant="ghost"
-               
                 onClick={() => setIsWidgetDrawerOpen(false)}
+                aria-label="Close widget drawer"
               >
                 ×
               </Button>
-            </div>
-            <div className="stack-md">
+            </HStack>
+            <Stack spacing="md">
               <div>
                 <label className="block text-body-sm form-label mb-sm">Widget Type</label>
-                <select className="w-full p-sm border border-border rounded-md bg-background">
+                <select
+                  className="w-full p-sm border border-border rounded-md bg-background"
+                  value={widgetDraft?.type ?? 'metric'}
+                  onChange={(event) =>
+                    setWidgetDraft((prev) => ({
+                      ...(prev ?? createDefaultDraft()),
+                      type: event.target.value as DashboardWidget['type'],
+                    }))
+                  }
+                >
                   <option value="metric">Metric</option>
                   <option value="chart">Chart</option>
                   <option value="activity">Activity</option>
@@ -706,19 +829,30 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
               </div>
               <div>
                 <label className="block text-body-sm form-label mb-sm">Title</label>
-                <input 
-                  type="text" 
-                  className="w-full p-sm border border-border rounded-md bg-background" 
+                <input
+                  type="text"
+                  className="w-full p-sm border border-border rounded-md bg-background"
                   placeholder="Enter widget title"
+                  value={widgetDraft?.title ?? ''}
+                  onChange={(event) =>
+                    setWidgetDraft((prev) => ({
+                      ...(prev ?? createDefaultDraft()),
+                      title: event.target.value,
+                    }))
+                  }
                 />
               </div>
-              <div className="flex gap-sm pt-md">
+              <HStack spacing="sm" className="pt-md">
                 <Button 
                   onClick={() => {
                     handleAddWidget({
-                      type: 'metric',
-                      title: 'New Widget',
-                      config: { value: 0, change: 0, status: 'stable' }
+                      id: widgetDraft?.id,
+                      type: widgetDraft?.type ?? 'metric',
+                      title: widgetDraft?.title ?? 'New Widget',
+                      config: widgetDraft?.config,
+                      position: widgetDraft?.position,
+                      data_source: widgetDraft?.data_source,
+                      refresh_interval: widgetDraft?.refresh_interval,
                     });
                   }}
                   className="flex-1"
@@ -727,19 +861,22 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                 </Button>
                 <Button 
                   variant="outline" 
-                  onClick={() => setIsWidgetDrawerOpen(false)}
+                  onClick={() => {
+                    setIsWidgetDrawerOpen(false);
+                    setWidgetDraft(null);
+                  }}
                   className="flex-1"
                 >
                   Cancel
                 </Button>
-              </div>
-            </div>
+              </HStack>
+            </Stack>
           </Card>
         </div>
       )}
-    </div>
+    </Stack>
   );
-};
+}
 
 export default DashboardClient;
 export { DashboardClient };

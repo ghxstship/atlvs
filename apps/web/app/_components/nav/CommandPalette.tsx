@@ -55,6 +55,26 @@ export function CommandPalette({ navSections }: { navSections: NavSection[] }) {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
 
+  // Allow programmatic toggling via custom event
+  React.useEffect(() => {
+    const onToggle = (event: Event) => {
+      if (!(event instanceof CustomEvent)) {
+        setOpen(prev => !prev);
+        return;
+      }
+
+      const desiredState = event.detail?.open as boolean | undefined;
+      if (typeof desiredState === 'boolean') {
+        setOpen(desiredState);
+      } else {
+        setOpen(prev => !prev);
+      }
+    };
+
+    window.addEventListener('command-palette:toggle', onToggle as EventListener);
+    return () => window.removeEventListener('command-palette:toggle', onToggle as EventListener);
+  }, []);
+
   // Telemetry for search queries
   React.useEffect(() => {
     trackSearchQuery('CommandPalette', query, filtered.length);
@@ -63,7 +83,7 @@ export function CommandPalette({ navSections }: { navSections: NavSection[] }) {
   const onSelect = (cmd: Command) => {
     trackFeatureUsage('CommandPalette', 'navigate', { href: cmd.href, label: cmd.label });
     setOpen(false);
-    router.push(cmd.href as any);
+    router.push(cmd.href);
   };
 
   if (!open) return null;

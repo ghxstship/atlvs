@@ -72,7 +72,7 @@ export class FilesService {
       });
 
       const path = query ? `/api/v1/files?${query}` : '/api/v1/files';
-      const result = await http<ListResponse<DigitalAsset>(path);
+      const result = await http<ListResponse<DigitalAsset>>(path);
       return { data: result };
     } catch (error) {
       return { error: error instanceof Error ? error.message : 'Failed to fetch assets' };

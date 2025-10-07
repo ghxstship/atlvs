@@ -165,7 +165,7 @@ export function NavigationDropdown({
         {/* Inner container ensures solid theme-aware surface */}
         <div
           className={cn(
-            "relative rounded-xl border border-border bg-popover text-popover-foreground",
+            "relative rounded-xl border border-border bg-card text-card-foreground",
             // Elevation and stacking context
             "p-xs shadow-xl z-[calc(var(--z-dropdown)+1)]"
           )}

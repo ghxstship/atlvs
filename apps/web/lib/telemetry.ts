@@ -1,8 +1,10 @@
 import { createBrowserClient } from '@ghxstship/auth';
 
+type TelemetryProperties = Record<string, unknown>;
+
 export interface TelemetryEvent {
   event: string;
-  properties?: Record<string, any>;
+  properties?: TelemetryProperties;
   userId?: string;
   organizationId?: string;
   timestamp?: string;
@@ -23,7 +25,7 @@ class TelemetryService {
   private isInitialized = false;
   private supabase = createBrowserClient();
 
-  async initialize(context: Partial<TelemetryContext>) {
+  async initialize(context: Partial<TelemetryContext>): Promise<void> {
     this.context = { ...this.context, ...context };
     this.isInitialized = true;
 
@@ -37,7 +39,7 @@ class TelemetryService {
     }
   }
 
-  async track(event: string, properties: Record<string, any> = {}) {
+  async track(event: string, properties: TelemetryProperties = {}): Promise<void> {
     const telemetryEvent: TelemetryEvent = {
       event,
       properties: {
@@ -57,7 +59,7 @@ class TelemetryService {
     await this.sendEvent(telemetryEvent);
   }
 
-  async identify(userId: string, traits: Record<string, any> = {}) {
+  async identify(userId: string, traits: TelemetryProperties = {}): Promise<void> {
     this.context.userId = userId;
     
     await this.track('User Identified', {
@@ -66,7 +68,7 @@ class TelemetryService {
     });
   }
 
-  async page(name: string, properties: Record<string, any> = {}) {
+  async page(name: string, properties: TelemetryProperties = {}): Promise<void> {
     await this.track('Page Viewed', {
       page: name,
       url: typeof window !== 'undefined' ? window.location.href : undefined,
@@ -75,7 +77,7 @@ class TelemetryService {
     });
   }
 
-  async error(error: Error, context: Record<string, any> = {}) {
+  async error(error: Error, context: TelemetryProperties = {}): Promise<void> {
     await this.track('Error Occurred', {
       error: {
         name: error.name,
@@ -86,7 +88,7 @@ class TelemetryService {
     });
   }
 
-  private async sendEvent(event: TelemetryEvent) {
+  private async sendEvent(event: TelemetryEvent): Promise<void> {
     try {
       // Store in Supabase audit_logs table
       const { error } = await this.supabase
@@ -106,15 +108,19 @@ class TelemetryService {
       }
 
       // Also send to external analytics if configured
-      if (typeof window !== 'undefined' && (window as any).analytics) {
-        (window as any).analytics.track(event.event, event.properties);
+      if (typeof window !== 'undefined') {
+        const analytics = (window as unknown as {
+          analytics?: { track: (name: string, props?: TelemetryProperties) => void };
+        }).analytics;
+
+        analytics?.track(event.event, event.properties);
       }
     } catch (error) {
       console.error('Telemetry error:', error);
     }
   }
 
-  private async flushQueue() {
+  private async flushQueue(): Promise<void> {
     const events = [...this.queue];
     this.queue = [];
 
@@ -123,8 +129,8 @@ class TelemetryService {
     }
   }
 
-  private getContextProperties() {
-    const properties: Record<string, any> = {};
+  private getContextProperties(): TelemetryProperties {
+    const properties: TelemetryProperties = {};
 
     if (typeof window !== 'undefined') {
       properties.url = window.location.href;
@@ -146,7 +152,7 @@ class TelemetryService {
   }
 
   // Performance tracking
-  async trackPerformance(metric: string, value: number, unit: string = 'ms') {
+  async trackPerformance(metric: string, value: number, unit = 'ms'): Promise<void> {
     await this.track('Performance Metric', {
       metric,
       value,
@@ -156,7 +162,7 @@ class TelemetryService {
   }
 
   // Feature usage tracking
-  async trackFeatureUsage(feature: string, action: string, metadata: Record<string, any> = {}) {
+  async trackFeatureUsage(feature: string, action: string, metadata: TelemetryProperties = {}): Promise<void> {
     await this.track('Feature Used', {
       feature,
       action,
@@ -165,7 +171,7 @@ class TelemetryService {
   }
 
   // Business metrics tracking
-  async trackBusinessMetric(metric: string, value: number, metadata: Record<string, any> = {}) {
+  async trackBusinessMetric(metric: string, value: number, metadata: TelemetryProperties = {}): Promise<void> {
     await this.track('Business Metric', {
       metric,
       value,
@@ -191,7 +197,7 @@ export function useTelemetry() {
 }
 
 // Utility functions for common tracking patterns
-export const trackModuleAction = (module: string, action: string, metadata: Record<string, any> = {}) => {
+export const trackModuleAction = (module: string, action: string, metadata: TelemetryProperties = {}) => {
   return telemetry.track(`${module} ${action}`, {
     module,
     action,
@@ -199,7 +205,7 @@ export const trackModuleAction = (module: string, action: string, metadata: Reco
   });
 };
 
-export const trackDrawerInteraction = (drawer: string, action: 'opened' | 'closed' | 'tab_changed', metadata: Record<string, any> = {}) => {
+export const trackDrawerInteraction = (drawer: string, action: 'opened' | 'closed' | 'tab_changed', metadata: TelemetryProperties = {}) => {
   return telemetry.track('Drawer Interaction', {
     drawer,
     action,
@@ -207,7 +213,7 @@ export const trackDrawerInteraction = (drawer: string, action: 'opened' | 'close
   });
 };
 
-export const trackFormSubmission = (form: string, success: boolean, metadata: Record<string, any> = {}) => {
+export const trackFormSubmission = (form: string, success: boolean, metadata: TelemetryProperties = {}) => {
   return telemetry.track('Form Submission', {
     form,
     success,
@@ -234,7 +240,7 @@ export const trackDemoDataLoad = (module: string, organizationId: string) => {
 // Initialize telemetry when module loads
 if (typeof window !== 'undefined') {
   // Auto-initialize with basic context
-  telemetry.initialize({
+  void telemetry.initialize({
     sessionId: `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
   });
 }

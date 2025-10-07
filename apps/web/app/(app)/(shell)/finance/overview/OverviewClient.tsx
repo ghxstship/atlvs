@@ -1,20 +1,28 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
-import { User } from '@supabase/supabase-js';
-import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, Skeleton } from '@ghxstship/ui';
-// Using Lucide React icons as alternative to Heroicons
-import { 
+import { useState, useEffect, useCallback, useMemo } from 'react'
+import type { SupabaseClient } from '@supabase/supabase-js'
+import { User } from '@supabase/supabase-js'
+import { createBrowserClient } from '@ghxstship/auth'
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  Badge,
+  Button,
+} from '@ghxstship/ui'
+import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
+import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
+import {
   DollarSign,
   TrendingUp,
-  TrendingDown,
   Banknote,
   CreditCard,
   BarChart3,
   AlertTriangle,
-  CheckCircle,
   Clock,
   Calendar,
   ArrowUp,
@@ -22,9 +30,7 @@ import {
   ArrowUpRight,
   ArrowDownRight,
   PieChart,
-  Calculator,
-  Target
-} from 'lucide-react';
+} from 'lucide-react'
 
 interface FinanceOverviewClientProps {
   user: User;
@@ -66,323 +72,460 @@ interface BudgetAlert {
   status: 'warning' | 'critical';
 }
 
-export default function FinanceOverviewClient({ user, orgId, translations }: FinanceOverviewClientProps) {
-  const [loading, setLoading] = useState(true);
-  const [summary, setSummary] = useState<FinancialSummary | null>(null);
-  const [recentTransactions, setRecentTransactions] = useState<RecentTransaction[]>([]);
-  const [budgetAlerts, setBudgetAlerts] = useState<BudgetAlert[]>([]);
+const toNumber = (value: unknown): number => {
+  const parsed = Number(value ?? 0)
+  return Number.isFinite(parsed) ? parsed : 0
+}
 
-  const supabase = createBrowserClient();
+const formatCurrency = (amount: number, currency = 'USD') =>
+  new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
+  }).format(amount)
+
+const formatDate = (dateString: string) =>
+  new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(new Date(dateString))
+
+const useFinanceOverview = (supabase: SupabaseClient, orgId: string) => {
+  const [loading, setLoading] = useState(true)
+  const [refreshing, setRefreshing] = useState(false)
+  const [summary, setSummary] = useState<FinancialSummary | null>(null)
+  const [recentTransactions, setRecentTransactions] = useState<RecentTransaction[]>([])
+  const [budgetAlerts, setBudgetAlerts] = useState<BudgetAlert[]>([])
+
+  const loadFinanceOverview = useCallback(
+    async (mode: 'initial' | 'refresh' = 'initial') => {
+      if (mode === 'initial') {
+        setLoading(true)
+      } else {
+        setRefreshing(true)
+      }
+
+      try {
+        const [revenueData, expensesData, budgetsData, invoicesData, accountsData, transactionsData] =
+          await Promise.all([
+            supabase
+              .from('revenue')
+              .select('amount, currency')
+              .eq('organization_id', orgId)
+              .eq('status', 'received'),
+            supabase
+              .from('expenses')
+              .select('amount, currency')
+              .eq('organization_id', orgId)
+              .eq('status', 'approved'),
+            supabase
+              .from('budgets')
+              .select('id, amount, spent, currency, name')
+              .eq('organization_id', orgId),
+            supabase.from('invoices').select('amount_due, status').eq('organization_id', orgId),
+            supabase.from('finance_accounts').select('balance, currency').eq('organization_id', orgId),
+            supabase
+              .from('finance_transactions')
+              .select('id, description, amount, kind, occurred_at, finance_accounts(name)')
+              .eq('organization_id', orgId)
+              .order('occurred_at', { ascending: false })
+              .limit(10),
+          ])
+
+        const errors = [
+          revenueData.error,
+          expensesData.error,
+          budgetsData.error,
+          invoicesData.error,
+          accountsData.error,
+          transactionsData.error,
+        ].filter(Boolean)
+
+        if (errors.length > 0) {
+          throw errors[0]
+        }
+
+        const revenueRows = revenueData.data ?? []
+        const expenseRows = expensesData.data ?? []
+        const budgetRows = budgetsData.data ?? []
+        const invoiceRows = invoicesData.data ?? []
+        const accountRows = accountsData.data ?? []
+        const transactionRows = transactionsData.data ?? []
+
+        const totalRevenue = revenueRows.reduce((sum, row) => sum + toNumber(row.amount), 0)
+        const totalExpenses = expenseRows.reduce((sum, row) => sum + toNumber(row.amount), 0)
+        const totalBudget = budgetRows.reduce((sum, row) => sum + toNumber(row.amount), 0)
+        const budgetSpent = budgetRows.reduce((sum, row) => sum + toNumber(row.spent), 0)
+        const accountsBalance = accountRows.reduce((sum, row) => sum + toNumber(row.balance), 0)
+
+        const primaryCurrency =
+          revenueRows.find((row) => row.currency)?.currency ||
+          expenseRows.find((row) => row.currency)?.currency ||
+          accountRows.find((row) => row.currency)?.currency ||
+          'USD'
+
+        const pendingInvoices = invoiceRows.filter((invoice) => invoice.status === 'sent').length
+        const overdueInvoices = invoiceRows.filter((invoice) => invoice.status === 'overdue').length
+
+        const financialSummary: FinancialSummary = {
+          totalRevenue,
+          totalExpenses,
+          netIncome: totalRevenue - totalExpenses,
+          totalBudget,
+          budgetUtilization: totalBudget > 0 ? (budgetSpent / totalBudget) * 100 : 0,
+          pendingInvoices,
+          overdueInvoices,
+          cashFlow: totalRevenue - totalExpenses,
+          accountsBalance,
+          currency: primaryCurrency ?? 'USD',
+        }
+
+        setSummary(financialSummary)
+
+        const alerts = budgetRows.reduce<BudgetAlert[]>((acc, budget, index) => {
+          const amount = toNumber(budget.amount)
+          const spent = toNumber(budget.spent)
+          const utilization = amount > 0 ? (spent / amount) * 100 : 0
+
+          if (utilization >= 75) {
+            acc.push({
+              id: (budget.id as string) ?? `budget-${index}`,
+              budgetName: (budget.name as string) ?? 'Unnamed Budget',
+              spent,
+              amount,
+              utilization,
+              status: utilization >= 90 ? 'critical' : 'warning',
+            })
+          }
+
+          return acc
+        }, [])
+
+        setBudgetAlerts(alerts)
+
+        const transactions = transactionRows.map((tx) => {
+          const kind = (tx.kind as RecentTransaction['kind']) ?? 'expense'
+          const financeAccount = Array.isArray(tx.finance_accounts)
+            ? tx.finance_accounts[0]
+            : (tx.finance_accounts as { name?: string } | null)
+
+          return {
+            id: String(tx.id),
+            description: (tx.description as string) ?? 'Untitled Transaction',
+            amount: toNumber(tx.amount),
+            kind,
+            occurredAt: tx.occurred_at as string,
+            accountName: financeAccount?.name ?? 'Unknown Account',
+          }
+        })
+
+        setRecentTransactions(transactions)
+      } catch (error) {
+        console.error('Error loading finance overview:', error)
+      } finally {
+        if (mode === 'initial') {
+          setLoading(false)
+        } else {
+          setRefreshing(false)
+        }
+      }
+    },
+    [supabase, orgId],
+  )
 
   useEffect(() => {
-    loadFinanceOverview();
-  }, [orgId]);
+    loadFinanceOverview('initial')
+  }, [loadFinanceOverview])
 
-  const loadFinanceOverview = async () => {
-    try {
-      setLoading(true);
-      
-      // Load financial summary data
-      const [
-        revenueData,
-        expensesData,
-        budgetsData,
-        invoicesData,
-        accountsData,
-        transactionsData
-      ] = await Promise.all([
-        supabase.from('revenue').select('amount, currency').eq('organization_id', orgId).eq('status', 'received'),
-        supabase.from('expenses').select('amount, currency').eq('organization_id', orgId).eq('status', 'approved'),
-        supabase.from('budgets').select('id, amount, spent, currency, name').eq('organization_id', orgId),
-        supabase.from('invoices').select('amount_due, status').eq('organization_id', orgId),
-        supabase.from('finance_accounts').select('balance, currency').eq('organization_id', orgId),
-        supabase.from('finance_transactions').select('*, finance_accounts(name)').eq('organization_id', orgId).order('occurred_at', { ascending: false }).limit(10)
-      ]);
+  return {
+    loading,
+    refreshing,
+    summary,
+    recentTransactions,
+    budgetAlerts,
+    refresh: () => loadFinanceOverview('refresh'),
+  }
+}
 
-      // Calculate summary metrics
-      const totalRevenue = (revenueData.data || []).reduce((sum, item) => sum + Number(item.amount), 0);
-      const totalExpenses = (expensesData.data || []).reduce((sum, item) => sum + Number(item.amount), 0);
-      const totalBudget = (budgetsData.data || []).reduce((sum, item) => sum + Number(item.amount), 0);
-      const budgetSpent = (budgetsData.data || []).reduce((sum, item) => sum + Number(item.spent), 0);
-      const accountsBalance = (accountsData.data || []).reduce((sum, item) => sum + Number(item.balance), 0);
-      
-      const pendingInvoices = (invoicesData.data || []).filter(inv => inv.status === 'sent').length;
-      const overdueInvoices = (invoicesData.data || []).filter(inv => inv.status === 'overdue').length;
-
-      const financialSummary: FinancialSummary = {
-        totalRevenue,
-        totalExpenses,
-        netIncome: totalRevenue - totalExpenses,
-        totalBudget,
-        budgetUtilization: totalBudget > 0 ? (budgetSpent / totalBudget) * 100 : 0,
-        pendingInvoices,
-        overdueInvoices,
-        cashFlow: totalRevenue - totalExpenses,
-        accountsBalance,
-        currency: 'USD'
-      };
-
-      setSummary(financialSummary);
-
-      // Process recent transactions
-      const transactions = (transactionsData.data || []).map(tx => ({
-        id: tx.id,
-        description: tx.description,
-        amount: tx.amount,
-        kind: tx.kind,
-        occurredAt: tx.occurred_at,
-        accountName: tx.finance_accounts?.name || 'Unknown Account'
-      }));
-      setRecentTransactions(transactions);
-
-      // Generate budget alerts
-      const alerts = (budgetsData.data || [])
-        .map((budget, index) => {
-          const utilization = budget.amount > 0 ? (budget.spent / budget.amount) * 100 : 0;
-          return {
-            id: budget.id || `budget-${index}`,
-            budgetName: budget.name,
-            spent: budget.spent,
-            amount: budget.amount,
-            utilization,
-            status: utilization >= 90 ? 'critical' as const : utilization >= 75 ? 'warning' as const : null
-          };
-        })
-        .filter(alert => alert.status !== null) as BudgetAlert[];
-      setBudgetAlerts(alerts);
-
-    } catch (error) {
-      console.error('Error loading finance overview:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const formatCurrency = (amount: number, currency = 'USD') => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: currency,
-    }).format(amount);
-  };
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString();
-  };
+export default function FinanceOverviewClient({ user: _user, orgId, translations }: FinanceOverviewClientProps) {
+  const supabase = useMemo(() => createBrowserClient(), []) as unknown as SupabaseClient
+  const { loading, refreshing, summary, recentTransactions, budgetAlerts, refresh } = useFinanceOverview(supabase, orgId)
 
   if (loading) {
     return (
-      <div className="stack-lg">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <Card key={i} className="p-lg">
-              <Skeleton className="h-icon-xs w-component-lg mb-sm" />
-              <Skeleton className="h-icon-lg w-component-xl mb-xs" />
-              <Skeleton className="h-3 w-component-md" />
+      <Stack spacing="lg">
+        <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <Card key={index}>
+              <CardContent className="space-y-sm">
+                <Skeleton className="h-icon-xs w-component-lg" />
+                <Skeleton className="h-icon-lg w-component-xl" />
+                <Skeleton className="h-3 w-component-md" />
+              </CardContent>
             </Card>
           ))}
-        </div>
-      </div>
-    );
+        </Grid>
+      </Stack>
+    )
   }
 
   return (
-    <div className="stack-lg">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-heading-3 text-heading-3 color-foreground">Finance Overview</h1>
-          <p className="text-body-sm color-foreground/70 mt-xs">{translations.subtitle}</p>
-        </div>
-        <Button onClick={loadFinanceOverview}>
-          <BarChart3 className="h-icon-xs w-icon-xs mr-sm" />
-          Refresh Data
+    <Stack spacing="lg">
+      <HStack justify="between" align="center">
+        <Stack spacing="xs">
+          <h1 className="text-heading-3 font-anton uppercase text-foreground">{translations.title}</h1>
+          <p className="text-body-sm text-muted-foreground">{translations.subtitle}</p>
+        </Stack>
+        <Button onClick={refresh} disabled={refreshing} variant={refreshing ? 'outline' : 'default'}>
+          <HStack spacing="xs" align="center">
+            <BarChart3 className="h-icon-xs w-icon-xs" />
+            <span>{refreshing ? 'Refreshing…' : 'Refresh Data'}</span>
+          </HStack>
         </Button>
-      </div>
+      </HStack>
 
-      {/* Financial Metrics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
-        {/* Total Revenue */}
-        <Card className="p-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-body-sm color-muted">Total Revenue</p>
-              <p className="text-heading-3 text-heading-3 color-success">{formatCurrency(summary?.totalRevenue || 0, summary?.currency)}</p>
-              <p className="text-body-sm color-success flex items-center mt-xs">
-                <TrendingUp className="h-3 w-3 mr-xs" />
-                +12.5% from last month
-              </p>
-            </div>
-            <Banknote className="h-icon-lg w-icon-lg color-success" />
-          </div>
+      <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+        <Card>
+          <CardContent>
+            <HStack justify="between" align="start">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">Total Revenue</span>
+                <span className="text-heading-3 font-semibold text-success">
+                  {formatCurrency(summary?.totalRevenue ?? 0, summary?.currency)}
+                </span>
+                <HStack spacing="xs" align="center" className="text-sm text-success">
+                  <TrendingUp className="h-3 w-3" />
+                  <span>+12.5% from last month</span>
+                </HStack>
+              </Stack>
+              <Banknote className="h-icon-lg w-icon-lg text-success" />
+            </HStack>
+          </CardContent>
         </Card>
 
-        {/* Total Expenses */}
-        <Card className="p-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-body-sm color-muted">Total Expenses</p>
-              <p className="text-heading-3 text-heading-3 color-destructive">{formatCurrency(summary?.totalExpenses || 0, summary?.currency)}</p>
-              <p className="text-body-sm color-destructive flex items-center mt-xs">
-                <TrendingUp className="h-3 w-3 mr-xs" />
-                +8.2% from last month
-              </p>
-            </div>
-            <CreditCard className="h-icon-lg w-icon-lg color-destructive" />
-          </div>
+        <Card>
+          <CardContent>
+            <HStack justify="between" align="start">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">Total Expenses</span>
+                <span className="text-heading-3 font-semibold text-destructive">
+                  {formatCurrency(summary?.totalExpenses ?? 0, summary?.currency)}
+                </span>
+                <HStack spacing="xs" align="center" className="text-sm text-destructive">
+                  <TrendingUp className="h-3 w-3" />
+                  <span>+8.2% from last month</span>
+                </HStack>
+              </Stack>
+              <CreditCard className="h-icon-lg w-icon-lg text-destructive" />
+            </HStack>
+          </CardContent>
         </Card>
 
-        {/* Net Income */}
-        <Card className="p-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-body-sm form-label color-foreground/70">Net Income</p>
-              <p className={`text-heading-3 text-heading-3 ${(summary?.netIncome || 0) >= 0 ? 'color-success' : 'color-destructive'}`}>
-                {formatCurrency(summary?.netIncome || 0, summary?.currency)}
-              </p>
-              <p className="text-body-sm color-muted flex items-center mt-xs">
-                {(summary?.netIncome || 0) >= 0 ? (
-                  <ArrowUp className="h-3 w-3 mr-xs color-success" />
-                ) : (
-                  <ArrowDown className="h-3 w-3 mr-xs color-destructive" />
-                )}
-                Revenue - Expenses
-              </p>
-            </div>
-            <DollarSign className="h-icon-lg w-icon-lg color-accent" />
-          </div>
+        <Card>
+          <CardContent>
+            <HStack justify="between" align="start">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">Net Income</span>
+                <span
+                  className={`text-heading-3 font-semibold ${
+                    (summary?.netIncome ?? 0) >= 0 ? 'text-success' : 'text-destructive'
+                  }`}
+                >
+                  {formatCurrency(summary?.netIncome ?? 0, summary?.currency)}
+                </span>
+                <HStack spacing="xs" align="center" className="text-sm text-muted-foreground">
+                  {(summary?.netIncome ?? 0) >= 0 ? (
+                    <ArrowUp className="h-3 w-3 text-success" />
+                  ) : (
+                    <ArrowDown className="h-3 w-3 text-destructive" />
+                  )}
+                  <span>Revenue - Expenses</span>
+                </HStack>
+              </Stack>
+              <DollarSign className="h-icon-lg w-icon-lg text-accent" />
+            </HStack>
+          </CardContent>
         </Card>
 
-        {/* Budget Utilization */}
-        <Card className="p-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-body-sm color-muted">Budget Utilization</p>
-              <p className="text-heading-3 text-heading-3 color-foreground">
-                {(summary?.budgetUtilization || 0).toFixed(1)}%
-              </p>
-              <p className="text-body-sm color-foreground/60 mt-xs">
-                of {formatCurrency(summary?.totalBudget || 0, summary?.currency)}
-              </p>
-            </div>
-            <PieChart className="h-icon-lg w-icon-lg color-secondary" />
-          </div>
+        <Card>
+          <CardContent>
+            <HStack justify="between" align="start">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">Budget Utilization</span>
+                <span className="text-heading-3 font-semibold text-foreground">
+                  {(summary?.budgetUtilization ?? 0).toFixed(1)}%
+                </span>
+                <span className="text-sm text-muted-foreground">
+                  of {formatCurrency(summary?.totalBudget ?? 0, summary?.currency)}
+                </span>
+              </Stack>
+              <PieChart className="h-icon-lg w-icon-lg text-secondary" />
+            </HStack>
+          </CardContent>
         </Card>
 
-        {/* Accounts Balance */}
-        <Card className="p-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-body-sm form-label color-foreground/70">Accounts Balance</p>
-              <p className="text-heading-3 text-heading-3 color-foreground">
-                {formatCurrency(summary?.accountsBalance || 0, summary?.currency)}
-              </p>
-              <p className="text-body-sm color-foreground/60 mt-xs">Across all accounts</p>
-            </div>
-            <Banknote className="h-icon-lg w-icon-lg color-success" />
-          </div>
+        <Card>
+          <CardContent>
+            <HStack justify="between" align="start">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">Accounts Balance</span>
+                <span className="text-heading-3 font-semibold text-foreground">
+                  {formatCurrency(summary?.accountsBalance ?? 0, summary?.currency)}
+                </span>
+                <span className="text-sm text-muted-foreground">Across all accounts</span>
+              </Stack>
+              <Banknote className="h-icon-lg w-icon-lg text-success" />
+            </HStack>
+          </CardContent>
         </Card>
 
-        {/* Pending Invoices */}
-        <Card className="p-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-body-sm form-label color-foreground/70">Pending Invoices</p>
-              <p className="text-heading-3 text-heading-3 color-accent">{summary?.pendingInvoices || 0}</p>
-              <p className="text-body-sm color-muted mt-xs">Awaiting payment</p>
-            </div>
-            <Clock className="h-icon-sm w-icon-sm color-warning" />
-          </div>
+        <Card>
+          <CardContent>
+            <HStack justify="between" align="start">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">Pending Invoices</span>
+                <span className="text-heading-3 font-semibold text-accent">{summary?.pendingInvoices ?? 0}</span>
+                <span className="text-sm text-muted-foreground">Awaiting payment</span>
+              </Stack>
+              <Clock className="h-icon-lg w-icon-lg text-warning" />
+            </HStack>
+          </CardContent>
         </Card>
 
-        {/* Overdue Invoices */}
-        <Card className="p-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-body-sm form-label color-foreground/70">Overdue Invoices</p>
-              <p className="text-heading-3 text-heading-3 color-destructive">{summary?.overdueInvoices || 0}</p>
-              <p className="text-body-sm color-muted mt-xs">Require attention</p>
-            </div>
-            <AlertTriangle className="h-icon-sm w-icon-sm color-destructive" />
-          </div>
+        <Card>
+          <CardContent>
+            <HStack justify="between" align="start">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">Overdue Invoices</span>
+                <span className="text-heading-3 font-semibold text-destructive">{summary?.overdueInvoices ?? 0}</span>
+                <span className="text-sm text-muted-foreground">Require attention</span>
+              </Stack>
+              <AlertTriangle className="h-icon-lg w-icon-lg text-destructive" />
+            </HStack>
+          </CardContent>
         </Card>
 
-        {/* Cash Flow */}
-        <Card className="p-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-body-sm form-label color-foreground/70">Cash Flow</p>
-              <p className={`text-heading-3 text-heading-3 ${(summary?.cashFlow || 0) >= 0 ? 'color-success' : 'color-destructive'}`}>
-                {formatCurrency(summary?.cashFlow || 0, summary?.currency)}
-              </p>
-              <p className="text-body-sm color-muted">+12% from last month</p>
-            </div>
-            <TrendingUp className="h-icon-lg w-icon-lg color-accent" />
-          </div>
+        <Card>
+          <CardContent>
+            <HStack justify="between" align="start">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">Cash Flow</span>
+                <span
+                  className={`text-heading-3 font-semibold ${
+                    (summary?.cashFlow ?? 0) >= 0 ? 'text-success' : 'text-destructive'
+                  }`}
+                >
+                  {formatCurrency(summary?.cashFlow ?? 0, summary?.currency)}
+                </span>
+                <span className="text-sm text-muted-foreground">+12% from last month</span>
+              </Stack>
+              <TrendingUp className="h-icon-lg w-icon-lg text-accent" />
+            </HStack>
+          </CardContent>
         </Card>
-      </div>
+      </Grid>
 
-      {/* Budget Alerts */}
       {budgetAlerts.length > 0 && (
-        <Card className="p-lg">
-          <div className="flex items-center justify-between mb-md">
-            <h3 className="text-body text-heading-4 color-foreground">Budget Alerts</h3>
-            <Badge variant="secondary">{budgetAlerts.length} alerts</Badge>
-          </div>
-          <div className="stack-sm">
-            {budgetAlerts.map((alert: any) => (
-              <div key={alert.id} className="flex items-center justify-between p-sm bg-warning/10 border border-warning/20 rounded-lg">
-                <div className="flex items-center cluster-sm">
-                  <AlertTriangle className={`h-icon-sm w-icon-sm ${alert.status === 'critical' ? 'color-destructive' : 'color-warning'}`} />
-                  <div>
-                    <h4 className="form-label color-warning">Budget Alert</h4>
-                    <p className="text-body-sm color-foreground/70">
-                      {formatCurrency(alert.spent)} of {formatCurrency(alert.amount)} spent ({alert.utilization.toFixed(1)}%)
-                    </p>
-                  </div>
-                </div>
-                <Badge variant={alert.status === 'critical' ? 'destructive' : 'secondary'}>
-                  {alert.status === 'critical' ? 'Over Budget' : 'Near Limit'}
-                </Badge>
-              </div>
-            ))}
-          </div>
+        <Card>
+          <CardHeader>
+            <HStack justify="between" align="center">
+              <Stack spacing="xs">
+                <CardTitle className="text-lg text-foreground">Budget Alerts</CardTitle>
+                <CardDescription>Stay ahead of approaching limits</CardDescription>
+              </Stack>
+              <Badge variant="secondary">{budgetAlerts.length} alerts</Badge>
+            </HStack>
+          </CardHeader>
+          <CardContent>
+            <Stack spacing="sm">
+              {budgetAlerts.map((alert) => (
+                <HStack
+                  key={alert.id}
+                  spacing="md"
+                  justify="between"
+                  align="center"
+                  className="rounded-lg border border-warning/20 bg-warning/10 p-md"
+                >
+                  <HStack spacing="sm" align="center">
+                    <AlertTriangle
+                      className={`h-icon-sm w-icon-sm ${alert.status === 'critical' ? 'text-destructive' : 'text-warning'}`}
+                    />
+                    <Stack spacing="xs">
+                      <span className="text-sm font-medium text-foreground">{alert.budgetName}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {formatCurrency(alert.spent, summary?.currency)} of {formatCurrency(alert.amount, summary?.currency)} spent
+                        ({alert.utilization.toFixed(1)}%)
+                      </span>
+                    </Stack>
+                  </HStack>
+                  <Badge variant={alert.status === 'critical' ? 'destructive' : 'secondary'}>
+                    {alert.status === 'critical' ? 'Over Budget' : 'Near Limit'}
+                  </Badge>
+                </HStack>
+              ))}
+            </Stack>
+          </CardContent>
         </Card>
       )}
 
-      {/* Recent Transactions */}
-      <Card className="p-lg">
-        <div className="flex items-center justify-between mb-md">
-          <h3 className="text-body text-heading-4 color-foreground">Recent Transactions</h3>
-          <Button>View All</Button>
-        </div>
-        <div className="stack-sm">
+      <Card>
+        <CardHeader>
+          <HStack justify="between" align="center">
+            <Stack spacing="xs">
+              <CardTitle className="text-lg text-foreground">Recent Transactions</CardTitle>
+              <CardDescription>Latest revenue and expense activity</CardDescription>
+            </Stack>
+            <Button variant="outline">View All</Button>
+          </HStack>
+        </CardHeader>
+        <CardContent>
           {recentTransactions.length > 0 ? (
-            recentTransactions.map((transaction: any) => (
-              <div key={transaction.id} className="flex items-center justify-between p-sm border border-border rounded-lg">
-                <div className="flex items-center cluster-sm">
-                  {transaction.kind === 'revenue' ? (
-                    <ArrowUpRight className="h-icon-xs w-icon-xs color-success" />
-                  ) : (
-                    <ArrowDownRight className="h-icon-xs w-icon-xs color-destructive" />
-                  )}
-                  <div>
-                    <p className="form-label color-foreground">{transaction.description}</p>
-                    <span className="text-body-sm color-warning/70">{transaction.accountName} • {formatDate(transaction.occurredAt)}</span>
-                  </div>
-                </div>
-                <span className={`text-body-sm form-label ${
-                  transaction.kind === 'revenue' ? 'color-success' : 'color-destructive'
-                }`}>{transaction.kind === 'revenue' ? '+' : '-'}{formatCurrency(Math.abs(transaction.amount))}</span>
-              </div>
-            ))
+            <Stack spacing="sm">
+              {recentTransactions.map((transaction) => (
+                <HStack
+                  key={transaction.id}
+                  spacing="sm"
+                  justify="between"
+                  align="center"
+                  className="rounded-lg border border-border bg-card/40 p-md"
+                >
+                  <HStack spacing="sm" align="center">
+                    {transaction.kind === 'revenue' ? (
+                      <ArrowUpRight className="h-icon-xs w-icon-xs text-success" />
+                    ) : (
+                      <ArrowDownRight className="h-icon-xs w-icon-xs text-destructive" />
+                    )}
+                    <Stack spacing="xs">
+                      <span className="text-sm font-medium text-foreground">{transaction.description}</span>
+                      <span className="text-xs text-muted-foreground">
+                        {transaction.accountName} • {formatDate(transaction.occurredAt)}
+                      </span>
+                    </Stack>
+                  </HStack>
+                  <span
+                    className={`text-sm font-medium ${
+                      transaction.kind === 'revenue' ? 'text-success' : 'text-destructive'
+                    }`}
+                  >
+                    {transaction.kind === 'revenue' ? '+' : '-'}
+                    {formatCurrency(Math.abs(transaction.amount), summary?.currency)}
+                  </span>
+                </HStack>
+              ))}
+            </Stack>
           ) : (
-            <div className="bg-warning/10 border border-warning/20 rounded-lg p-md">
-              <Calendar className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted/50" />
-              <p>No recent transactions found</p>
-            </div>
+            <Stack
+              spacing="md"
+              align="center"
+              className="rounded-lg border border-dashed border-warning/30 bg-warning/10 p-xl text-center"
+            >
+              <Calendar className="h-icon-2xl w-icon-2xl text-muted-foreground/60" />
+              <Stack spacing="xs">
+                <span className="text-sm font-medium text-foreground">No recent transactions found</span>
+                <span className="text-sm text-muted-foreground">
+                  Keep your books up-to-date to see activity here.
+                </span>
+              </Stack>
+            </Stack>
           )}
-        </div>
+        </CardContent>
       </Card>
-    </div>
-  );
+    </Stack>
+  )
 }

@@ -52,7 +52,7 @@ export class ProcurementApiService {
   /**
    * Generic GET request with error handling
    */
-  async get<T>(endpoint: string, params?: Record<string, any>): Promise<ApiResponse<T>>> {
+  async get<T>(endpoint: string, params?: Record<string, any>): Promise<ApiResponse<T>> {
     try {
       let query = this.supabase
         .from(endpoint)
@@ -90,7 +90,7 @@ export class ProcurementApiService {
   /**
    * Generic POST request for creating records
    */
-  async post<T>(endpoint: string, data: unknown): Promise<ApiResponse<T>>> {
+  async post<T>(endpoint: string, data: unknown): Promise<ApiResponse<T>> {
     try {
       const { data: created, error } = await this.supabase
         .from(endpoint)
@@ -115,7 +115,7 @@ export class ProcurementApiService {
   /**
    * Generic PUT request for updating records
    */
-  async put<T>(endpoint: string, id: string, data: unknown): Promise<ApiResponse<T>>> {
+  async put<T>(endpoint: string, id: string, data: unknown): Promise<ApiResponse<T>> {
     try {
       const { data: updated, error } = await this.supabase
         .from(endpoint)
@@ -171,7 +171,7 @@ export class ProcurementApiService {
     endpoint: string,
     items: unknown[],
     onProgress?: (completed: number, total: number) => void
-  ): Promise<ApiResponse<T[]>>> {
+  ): Promise<ApiResponse<T[]>> {
     const results: T[] = [];
     const errors: string[] = [];
 

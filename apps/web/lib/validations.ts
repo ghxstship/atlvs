@@ -72,7 +72,7 @@ export const auditLogSchema = z.object({
   action: z.string().min(1).max(100),
   resourceType: z.string().min(1).max(50),
   resourceId: uuidSchema.optional(),
-  details: z.record(z.any()).optional(),
+  details: z.record(z.unknown()).optional(),
   occurredAt: isoDateSchema.optional(),
 });
 
@@ -90,7 +90,7 @@ export const updateOperationSchema = z.object({
 // Query parameter validation
 export const queryParamsSchema = z.object({
   search: searchSchema.optional(),
-  filter: z.record(z.any()).optional(),
+  filter: z.record(z.unknown()).optional(),
   sortBy: z.enum(commonSortFields).optional(),
   sortOrder: sortOrderSchema.optional(),
 }).merge(paginationSchema);
@@ -99,21 +99,21 @@ export const queryParamsSchema = z.object({
 export const bulkOperationSchema = z.object({
   operation: z.enum(['create', 'update', 'delete', 'activate', 'deactivate']),
   ids: z.array(uuidSchema).min(1).max(1000),
-  data: z.record(z.any()).optional(),
+  data: z.record(z.unknown()).optional(),
 });
 
 // Export schemas
 export const exportSchema = z.object({
   format: z.enum(['csv', 'json', 'xlsx', 'pdf']).default('csv'),
   fields: z.array(z.string()).optional(),
-  filters: z.record(z.any()).optional(),
+  filters: z.record(z.unknown()).optional(),
   includeHeaders: z.boolean().default(true),
 });
 
 // Import schemas
 export const importSchema = z.object({
   format: z.enum(['csv', 'json', 'xlsx']).default('csv'),
-  data: z.array(z.record(z.any())),
+  data: z.array(z.record(z.unknown())),
   updateExisting: z.boolean().default(false),
   validateOnly: z.boolean().default(false),
 });
@@ -127,13 +127,13 @@ export const apiResponseSchema = <T extends z.ZodType>(dataSchema: T) => z.objec
     total: z.number(),
     pages: z.number(),
   }).optional(),
-  meta: z.record(z.any()).optional(),
+  meta: z.record(z.unknown()).optional(),
 });
 
 export const errorResponseSchema = z.object({
   error: z.string(),
   code: z.string().optional(),
-  details: z.any().optional(),
+  details: z.unknown().optional(),
   field: z.string().optional(),
 });
 
@@ -146,7 +146,7 @@ export function createValidationErrorResponse(errors: z.ZodError['errors']) {
   };
 }
 
-export function createSuccessResponse<T>(data: T, meta?: any) {
+export function createSuccessResponse<T>(data: T, meta?: Record<string, unknown>) {
   return {
     data,
     ...(meta && { meta }),
@@ -240,7 +240,7 @@ export const featureFlagSchema = z.object({
   enabled: z.boolean().default(false),
   organizationId: organizationIdSchema.optional(),
   percentage: z.number().min(0).max(100).optional(),
-  conditions: z.record(z.any()).optional(),
+  conditions: z.record(z.unknown()).optional(),
 });
 
 // Comprehensive validation for common entities
@@ -408,7 +408,7 @@ export const analyticsSchema = z.object({
   description: z.string().max(1000).optional(),
   type: z.enum(['dashboard', 'report', 'export', 'alert']),
   status: z.enum(['active', 'inactive', 'error']).default('active'),
-  config: z.record(z.any()),
+  config: z.record(z.unknown()),
   schedule: z.object({
     frequency: z.enum(['daily', 'weekly', 'monthly', 'quarterly']),
     time: z.string().regex(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/), // HH:MM format
@@ -439,7 +439,7 @@ export const settingsSchema = z.object({
   id: uuidSchema,
   category: z.string().min(1).max(100),
   key: z.string().min(1).max(255),
-  value: z.any(), // Settings can be any type
+  value: z.unknown(), // Settings can be any type
   type: z.enum(['string', 'number', 'boolean', 'json', 'array']).default('string'),
   description: z.string().max(500).optional(),
   isPublic: z.boolean().default(false),
@@ -452,8 +452,8 @@ export const dashboardSchema = z.object({
   name: z.string().min(1).max(255),
   description: z.string().max(1000).optional(),
   type: z.enum(['system', 'custom', 'template']).default('custom'),
-  layout: z.array(z.any()).default([]),
-  settings: z.record(z.any()).default({}),
+  layout: z.array(z.unknown()).default([]),
+  settings: z.record(z.unknown()).default({}),
   isDefault: z.boolean().default(false),
   isPublic: z.boolean().default(false),
   createdBy: userIdSchema,
@@ -481,7 +481,7 @@ export const profileSchema = z.object({
     isCurrent: z.boolean().default(false),
   })).default([]),
   socialLinks: z.record(urlSchema).optional(),
-  preferences: z.record(z.any()).default({}),
+  preferences: z.record(z.unknown()).default({}),
 });
 
 // Pipeline validation

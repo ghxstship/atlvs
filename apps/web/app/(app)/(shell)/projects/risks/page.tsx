@@ -1,89 +1,46 @@
-import { Card } from '@ghxstship/ui';
-import { cookies } from 'next/headers';
-import { createServerClient } from '@ghxstship/auth';
-import { getTranslations } from 'next-intl/server';
-import RisksTableClient from './RisksTableClient';
-import CreateRiskClient from './CreateRiskClient';
-import ProjectsOverviewClient from '../overview/ProjectsOverviewClient';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DashboardLayout } from '@ghxstship/ui/templates';
+import { DashboardWidget } from '@ghxstship/ui/organisms';
 
-
-export const metadata = { title: 'Projects · Risks' };
-
-export default async function ProjectsRisksPage() {
-  const t = await getTranslations('risks');
-  const cookieStore = await cookies();
-  const supabase = createServerClient(cookieStore);
-
-  const { data: { user } } = await supabase.auth.getUser();
-  let orgId: string | null = null;
-  if (user) {
-    const { data: membership } = await supabase
-      .from('memberships')
-      .select('organization_id')
-      .eq('user_id', user.id)
-      .eq('status', 'active')
-      .order('created_at', { ascending: true })
-      .maybeSingle();
-    orgId = membership?.organization_id ?? null;
-  }
-
-  let risks: Array<{ 
-    id: string; 
-    title: string; 
-    category: string; 
-    impact: string; 
-    probability: string; 
-    status: string; 
-    project_id: string | null;
-    project?: { name: string };
-  }> = [];
-  
-  if (orgId) {
-    const { data } = await supabase
-      .from('risks')
-      .select(`
-        id,
-        title,
-        category,
-        impact,
-        probability,
-        status,
-        project_id,
-        projects:project_id(name)
-      `)
-      .eq('organization_id', orgId)
-      .order('created_at', { ascending: false })
-      .limit(200);
-    risks = data?.map(risk => ({
-      ...risk,
-      project: risk.projects ? { name: (risk.projects as any).name } : undefined
-    })) ?? [];
-  }
-
-  const hasData = (risks?.length ?? 0) > 0;
+export default function DashboardPage() {
+  // TODO: Implement dashboard content using DashboardLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <div className="stack-md">
-      <Card title={t('title')}>
-        <div className="mb-sm flex items-center justify-end">
-          {orgId ? <CreateRiskClient orgId={orgId} /> : null}
-        </div>
-        {hasData ? (
-          <RisksTableClient rows={risks} orgId={orgId!} />
-        ) : (
-          <div className="flex items-start justify-between gap-md">
-            <div>
-              <h3 className="text-body text-heading-4">{t('empty.title')}</h3>
-              <p className="text-body-sm opacity-80">{t('empty.description')}</p>
+    <DashboardLayout
+      title="Dashboard"
+      subtitle="Welcome to your workspace"
+      showRefresh={true}
+      showExport={true}
+      showSettings={true}
+      sidebar={
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-medium mb-2">Quick Actions</h3>
+            <div className="space-y-2">
+              {/* TODO: Add quick actions */}
             </div>
-            {orgId ? (
-              <ProjectsOverviewClient orgId={orgId} />
-            ) : null}
           </div>
-        )}
-      </Card>
-    </div>
+        </div>
+      }
+      rightPanel={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-4">Recent Activity</h3>
+            {/* TODO: Add activity feed */}
+          </div>
+        </div>
+      }
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* TODO: Add dashboard widgets */}
+        <div className="bg-muted/50 rounded-lg p-6">
+          <h3 className="font-medium mb-2">Widget Placeholder</h3>
+          <p className="text-muted-foreground">Dashboard content coming soon</p>
+        </div>
+      </div>
+    </DashboardLayout>
   );
 }

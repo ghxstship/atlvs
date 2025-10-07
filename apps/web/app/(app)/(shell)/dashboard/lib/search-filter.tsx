@@ -77,7 +77,7 @@ export interface MultiColumnSortConfig {
 
 // Search Service Class
 export class AdvancedSearchService {
-  private fuseInstances = new Map<string, Fuse<>();;
+  private fuseInstances = new Map<string, Fuse<any>>();
   private searchCache = new Map<string, { results: unknown[]; timestamp: number }>();
   private readonly CACHE_TTL = 300000; // 5 minutes
 

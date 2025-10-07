@@ -1,19 +1,42 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, Button } from '@ghxstship/ui';
 import { CheckCircle, ArrowRight, Sparkles, Users, Building, CreditCard } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
 import { createBrowserClient } from '@supabase/ssr';
 
+type SummaryIcon = typeof CreditCard;
 
-interface FinalConfirmationStepProps {
-  user;
-  data;
+interface SetupSummaryItem {
+  icon: SummaryIcon;
+  title: string;
+  description: string;
 }
 
-export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps) {
+interface PlanData {
+  name?: string;
+  trialDays?: number;
+}
+
+interface OnboardingDataShape {
+  selectedPlan?: string;
+  billingCycle?: 'annual' | 'monthly';
+  planData?: PlanData;
+  setupType?: 'create' | 'join';
+  orgName?: string;
+  userRole?: string;
+  teamInvites?: Array<{ email: string }>;
+}
+
+interface FinalConfirmationStepProps {
+  user: { id: string };
+  data: OnboardingDataShape;
+  onComplete?: () => void;
+}
+
+export function FinalConfirmationStep({ user, data, onComplete }: FinalConfirmationStepProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const supabase = createBrowserClient(
@@ -23,9 +46,8 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
 
   const handleGetStarted = async () => {
     setLoading(true);
-    
+
     try {
-      // Mark onboarding as completed
       const { error } = await supabase
         .from('user_profiles')
         .upsert({
@@ -34,26 +56,26 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
           onboarding_completed_at: new Date().toISOString(),
         });
 
-      if (error) throw error;
-
-      // Redirect to dashboard
-      router.push('/dashboard/overview');
+      if (error) {
+        throw error;
+      }
     } catch (err) {
       console.error('Failed to complete onboarding:', err);
-      // Still redirect to dashboard even if marking completion fails
+    } finally {
+      onComplete?.();
       router.push('/dashboard/overview');
     }
   };
 
-  const getSetupSummary = () => {
-    const summary = [];
-    
+  const getSetupSummary = (): SetupSummaryItem[] => {
+    const summary: SetupSummaryItem[] = [];
+
     if (data.selectedPlan) {
       const plan = data.planData;
       summary.push({
         icon: CreditCard,
-        title: `${plan?.name} Plan Selected`,
-        description: `${data.billingCycle === 'annual' ? 'Annual' : 'Monthly'} billing • ${plan?.trialDays}-day free trial`,
+        title: `${plan?.name ?? 'Unknown'} Plan Selected`,
+        description: `${data.billingCycle === 'annual' ? 'Annual' : 'Monthly'} billing • ${plan?.trialDays ?? 0}-day free trial`,
       });
     }
 
@@ -61,13 +83,13 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
       summary.push({
         icon: Building,
         title: 'Organization Created',
-        description: `${data.orgName} • You are the owner`,
+        description: `${data.orgName ?? 'Your organization'} • You are the owner`,
       });
     } else if (data.setupType === 'join') {
       summary.push({
         icon: Building,
         title: 'Joined Organization',
-        description: `${data.orgName} • Role: ${data.userRole}`,
+        description: `${data.orgName ?? 'Your organization'} • Role: ${data.userRole ?? 'member'}`,
       });
     }
 
@@ -93,7 +115,7 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
             WELCOME TO GHXSTSHIP!
           </h1>
           <p className="text-body color-muted max-w-2xl mx-auto">
-            Your account is ready! You're all set to start creating amazing projects with your team.
+            Your account is ready! You&apos;re all set to start creating amazing projects with your team.
           </p>
         </div>
       </div>
@@ -107,7 +129,7 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
               SETUP COMPLETE
             </h2>
             <p className="color-muted">
-              Here's what we've set up for you
+              Here&apos;s what we&apos;ve set up for you
             </p>
           </div>
 
@@ -134,7 +156,7 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
       <Card>
         <CardContent className="p-lg">
           <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-md`}>
-            WHAT'S NEXT?
+            WHAT&apos;S NEXT?
           </h3>
           <div className="brand-ghostship grid md:grid-cols-2 gap-md">
             <div className="brand-ghostship stack-sm">

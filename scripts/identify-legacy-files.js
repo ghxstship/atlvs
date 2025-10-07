@@ -117,11 +117,11 @@ class LegacyFileIdentifier {
   // Analyze file dependencies
   analyzeFileDependencies(filePath) {
     try {
-      const content = fs.readFileSync(filePath, 'utf8');
+      const _content = fs.readFileSync(filePath, 'utf8');
       
       // Check if file is imported by other files
       const relativePath = path.relative(this.rootPath, filePath);
-      const importPatterns = [
+      const _importPatterns = [
         new RegExp(`from ['"].*${path.basename(filePath, path.extname(filePath))}['"]`, 'g'),
         new RegExp(`import.*['"].*${relativePath}['"]`, 'g')
       ];
@@ -131,7 +131,7 @@ class LegacyFileIdentifier {
         hasImports: false, // Simplified for this example
         isReferenced: false
       };
-    } catch (error) {
+    } catch (_error) {
       return { hasImports: false, isReferenced: false };
     }
   }
@@ -233,8 +233,8 @@ class LegacyFileIdentifier {
           console.log(`✅ Deleted: ${path.relative(this.rootPath, file.path)}`);
           deletedCount++;
         }
-      } catch (error) {
-        console.error(`❌ Failed to delete ${file.path}: ${error.message}`);
+      } catch (_error) {
+        console.error(`❌ Failed to delete ${file.path}`);
       }
     });
 

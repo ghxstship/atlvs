@@ -1,10 +1,10 @@
 'use client';
 
-import { X, Save, Plus, Trash2, User, Building, Calendar, ExternalLink } from "lucide-react";
+import { X, Save, Plus, User, Building, ExternalLink } from "lucide-react";
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-// import { z } from 'zod';
+import { z } from 'zod';
 import {
  Button,
  Input,
@@ -18,12 +18,11 @@ import {
  Badge,
  Card,
 } from '@ghxstship/ui';
-import type { ProfessionalProfile, ProfessionalFormData } from '../types';
+import type { ProfessionalProfile, ProfessionalFormData, EmploymentType, ProfileStatus } from '../types';
 import {
  EMPLOYMENT_TYPE_LABELS,
  PROFILE_STATUS_LABELS,
  COMMON_SKILLS,
- validateProfessionalForm,
 } from '../types';
 
 const formSchema = z.object({
@@ -56,7 +55,7 @@ export default function CreateProfessionalDrawer({
  onClose,
  onSave,
  profile,
- managers> = [],
+ managers = [],
  departments = [],
  loading = false,
 }: CreateProfessionalDrawerProps) {
@@ -67,7 +66,7 @@ export default function CreateProfessionalDrawer({
  const {
  register,
  handleSubmit,
- formState: { errors },
+ formState: { errors: _errors },
  reset,
  watch,
  setValue,
@@ -121,18 +120,15 @@ export default function CreateProfessionalDrawer({
  }, [profile, reset]);
 
  const onSubmit = async (data: FormData) => {
- const formData: ProfessionalFormData = {
+ await onSave({
  ...data,
  skills,
- } as ProfessionalFormData;
-
- await onSave(formData);
+ } as ProfessionalFormData);
  };
 
  const addSkill = (skill: string) => {
- const trimmedSkill = skill.trim();
- if (trimmedSkill && !skills.includes(trimmedSkill)) {
- setSkills([...skills, trimmedSkill]);
+ if (skill && !skills.includes(skill)) {
+ setSkills([...skills, skill]);
  setNewSkill('');
  setShowSkillSuggestions(false);
  }
@@ -151,48 +147,43 @@ export default function CreateProfessionalDrawer({
 
  return (
  <div className="fixed inset-0 z-50 overflow-hidden">
- <div className="absolute inset-0 bg-black/50" onClick={onClose} />
- <div className="absolute right-0 top-0 h-full w-full max-w-2xl bg-background shadow-xl">
- <div className="flex h-full flex-col">
- {/* Header */}
- <div className="flex items-center justify-between border-b p-lg">
- <div>
- <h2 className="text-xl font-semibold">
+ <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={onClose} />
+ 
+ <div className="fixed right-0 top-0 bottom-0 w-full max-w-2xl bg-background shadow-lg overflow-y-auto">
+ <div className="sticky top-0 z-10 bg-background border-b border-border p-md flex items-center justify-between">
+ <div className="flex items-center gap-sm">
+ <User className="h-icon-sm w-icon-sm" />
+ <h2 className="text-lg font-semibold">
  {profile ? 'Edit Professional Profile' : 'Create Professional Profile'}
  </h2>
- <p className="text-sm text-muted-foreground">
- {profile ? 'Update the professional profile information' : 'Add professional information to the profile'}
- </p>
  </div>
  <Button variant="ghost" size="sm" onClick={onClose}>
  <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
- {/* Content */}
- <div className="flex-1 overflow-y-auto p-lg">
- <form onSubmit={handleSubmit(onSubmit)} className="space-y-lg">
+ <form onSubmit={handleSubmit(onSubmit)} className="p-lg space-y-lg">
  {/* Basic Information */}
- <Card className="p-md">
- <div className="flex items-center gap-xs mb-4">
- <User className="h-icon-sm w-icon-sm text-primary" />
- <h3 className="font-medium">Basic Information</h3>
- </div>
- <div className="grid grid-cols-2 gap-md">
+ <Card className="p-lg">
+ <h3 className="text-md font-semibold mb-md flex items-center gap-xs">
+ <User className="h-icon-sm w-icon-sm" />
+ Basic Information
+ </h3>
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <div>
  <Label htmlFor="job_title">Job Title</Label>
  <Input
- 
+ id="job_title"
+ placeholder="e.g., Senior Developer"
  {...register('job_title')}
- placeholder="e.g. Software Engineer"
  />
  </div>
  <div>
  <Label htmlFor="employee_id">Employee ID</Label>
  <Input
- 
+ id="employee_id"
+ placeholder="e.g., EMP-001"
  {...register('employee_id')}
- placeholder="e.g. EMP001"
  />
  </div>
  <div>
@@ -205,14 +196,9 @@ export default function CreateProfessionalDrawer({
  <SelectValue placeholder="Select department" />
  </SelectTrigger>
  <SelectContent>
- {departments.map((dept) => (
- <SelectItem key={dept} value={dept}>
- {dept}
- </SelectItem>
- ))}
  <SelectItem value="Engineering">Engineering</SelectItem>
- <SelectItem value="Design">Design</SelectItem>
  <SelectItem value="Product">Product</SelectItem>
+ <SelectItem value="Design">Design</SelectItem>
  <SelectItem value="Marketing">Marketing</SelectItem>
  <SelectItem value="Sales">Sales</SelectItem>
  <SelectItem value="Operations">Operations</SelectItem>
@@ -225,7 +211,7 @@ export default function CreateProfessionalDrawer({
  <Label htmlFor="employment_type">Employment Type</Label>
  <Select
  value={watch('employment_type')}
- onValueChange={(value) => setValue('employment_type', value as unknown)}
+ onValueChange={(value) => setValue('employment_type', value as EmploymentType)}
  >
  <SelectTrigger>
  <SelectValue />
@@ -242,7 +228,7 @@ export default function CreateProfessionalDrawer({
  <div>
  <Label htmlFor="hire_date">Hire Date</Label>
  <Input
- 
+ id="hire_date"
  type="date"
  {...register('hire_date')}
  />
@@ -251,7 +237,7 @@ export default function CreateProfessionalDrawer({
  <Label htmlFor="status">Status</Label>
  <Select
  value={watch('status')}
- onValueChange={(value) => setValue('status', value as unknown)}
+ onValueChange={(value) => setValue('status', value as ProfileStatus)}
  >
  <SelectTrigger>
  <SelectValue />
@@ -269,11 +255,11 @@ export default function CreateProfessionalDrawer({
  </Card>
 
  {/* Management */}
- <Card className="p-md">
- <div className="flex items-center gap-xs mb-4">
- <Building className="h-icon-sm w-icon-sm text-primary" />
- <h3 className="font-medium">Management</h3>
- </div>
+ <Card className="p-lg">
+ <h3 className="text-md font-semibold mb-md flex items-center gap-xs">
+ <Building className="h-icon-sm w-icon-sm" />
+ Management
+ </h3>
  <div>
  <Label htmlFor="manager_id">Manager</Label>
  <Select
@@ -284,7 +270,6 @@ export default function CreateProfessionalDrawer({
  <SelectValue placeholder="Select manager" />
  </SelectTrigger>
  <SelectContent>
- <SelectItem value="">No Manager</SelectItem>
  {managers.map((manager) => (
  <SelectItem key={manager.id} value={manager.id}>
  {manager.name} ({manager.email})
@@ -295,58 +280,41 @@ export default function CreateProfessionalDrawer({
  </div>
  </Card>
 
- {/* About */}
- <Card className="p-md">
- <h3 className="font-medium mb-4">About</h3>
- <div>
- <Label htmlFor="bio">Bio</Label>
- <Textarea
- 
- {...register('bio')}
- placeholder="Tell us about yourself, your experience, and what you do..."
- rows={4}
- />
- </div>
- </Card>
-
  {/* Skills */}
- <Card className="p-md">
- <h3 className="font-medium mb-4">Skills</h3>
+ <Card className="p-lg">
+ <h3 className="text-md font-semibold mb-md">Skills</h3>
  <div className="space-y-md">
  <div className="relative">
  <div className="flex gap-xs">
  <Input
+ placeholder="Add a skill..."
  value={newSkill}
  onChange={(e) => {
  setNewSkill(e.target.value);
  setShowSkillSuggestions(e.target.value.length > 0);
  }}
- placeholder="Add a skill"
- onKeyPress={(e) => {
+ onKeyDown={(e) => {
  if (e.key === 'Enter') {
  e.preventDefault();
  addSkill(newSkill);
  }
  }}
- onFocus={() => setShowSkillSuggestions(newSkill.length > 0)}
  />
- <Button 
- type="button" 
- variant="outline" 
+ <Button
+ type="button"
+ variant="outline"
  onClick={() => addSkill(newSkill)}
  >
  <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
- 
- {/* Skill Suggestions */}
  {showSkillSuggestions && filteredSkillSuggestions.length > 0 && (
- <div className="absolute top-full left-0 right-0 z-10 mt-1 bg-background border rounded-md shadow-lg max-h-40 overflow-y-auto">
- {filteredSkillSuggestions.slice(0, 8).map((skill) => (
+ <div className="absolute z-10 w-full mt-1 bg-background border border-border rounded-md shadow-lg max-h-60 overflow-auto">
+ {filteredSkillSuggestions.map((skill) => (
  <button
  key={skill}
  type="button"
- className="w-full text-left px-sm py-xs hover:bg-muted text-sm"
+ className="w-full text-left px-3 py-2 hover:bg-muted cursor-pointer"
  onClick={() => addSkill(skill)}
  >
  {skill}
@@ -355,63 +323,72 @@ export default function CreateProfessionalDrawer({
  </div>
  )}
  </div>
- 
  <div className="flex flex-wrap gap-xs">
  {skills.map((skill) => (
- <Badge
- key={skill}
- variant="secondary"
- className="cursor-pointer"
+ <Badge key={skill} variant="secondary" className="flex items-center gap-xs">
+ {skill}
+ <button
+ type="button"
  onClick={() => removeSkill(skill)}
+ className="ml-1 hover:text-destructive"
  >
- {skill} <X className="h-3 w-3 ml-1" />
+ <X className="h-3 w-3" />
+ </button>
  </Badge>
  ))}
  </div>
  </div>
  </Card>
 
- {/* Online Presence */}
- <Card className="p-md">
- <div className="flex items-center gap-xs mb-4">
- <ExternalLink className="h-icon-sm w-icon-sm text-primary" />
- <h3 className="font-medium">Online Presence</h3>
- </div>
- <div className="grid grid-cols-1 gap-md">
+ {/* Bio */}
+ <Card className="p-lg">
+ <h3 className="text-md font-semibold mb-md">Bio</h3>
+ <Textarea
+ placeholder="Tell us about yourself..."
+ rows={4}
+ {...register('bio')}
+ />
+ </Card>
+
+ {/* Links */}
+ <Card className="p-lg">
+ <h3 className="text-md font-semibold mb-md flex items-center gap-xs">
+ <ExternalLink className="h-icon-sm w-icon-sm" />
+ Professional Links
+ </h3>
+ <div className="space-y-md">
  <div>
  <Label htmlFor="linkedin_url">LinkedIn URL</Label>
  <Input
- 
+ id="linkedin_url"
+ type="url"
+ placeholder="https://linkedin.com/in/..."
  {...register('linkedin_url')}
- placeholder="https://linkedin.com/in/username"
  />
  </div>
  <div>
  <Label htmlFor="website_url">Website URL</Label>
  <Input
- 
+ id="website_url"
+ type="url"
+ placeholder="https://..."
  {...register('website_url')}
- placeholder="https://yourwebsite.com"
  />
  </div>
  </div>
  </Card>
- </form>
- </div>
 
- {/* Footer */}
- <div className="border-t p-lg">
- <div className="flex items-center justify-end gap-sm">
- <Button variant="outline" onClick={onClose} disabled={loading}>
+ {/* Actions */}
+ <div className="flex justify-end gap-sm sticky bottom-0 bg-background pt-md border-t border-border">
+ <Button type="button" variant="outline" onClick={onClose}>
  Cancel
  </Button>
- <Button onClick={handleSubmit(onSubmit)} disabled={loading}>
- <Save className="h-icon-xs w-icon-xs mr-2" />
+ <Button type="submit" disabled={loading}>
+ <Save className="mr-2 h-icon-xs w-icon-xs" />
  {loading ? 'Saving...' : profile ? 'Update Profile' : 'Create Profile'}
  </Button>
  </div>
- </div>
- </div>
+ </form>
  </div>
  </div>
  );

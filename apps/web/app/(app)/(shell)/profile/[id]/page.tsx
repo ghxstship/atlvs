@@ -1,213 +1,106 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-function-return-type*/
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
-import { DetailTemplate } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Avatar } from '@ghxstship/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { User, Mail, Phone, MapPin, Calendar, Briefcase } from 'lucide-react';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DetailLayout } from '@ghxstship/ui/templates';
 
-
-export const metadata = {
-  title: 'Profile Details - GHXSTSHIP',
-  description: 'View detailed user profile information and activity.',
-};
-
-interface ProfileDetailPageProps {
-  params: Promise<{ id: string }>;
-}
-
-export default async function ProfileDetailPage({ params }: ProfileDetailPageProps) {
-  const { id } = await params;
-  const supabase = await createClient();
-
-  const { data: { session }, error: authError } = await (supabase.auth.getSession() as any);
-
-  if (authError || !session) {
-    redirect('/auth/signin');
-  }
-
-  // Get user profile
-  const { data: profile, error: profileError } = await supabase
-    .from('users')
-    .select(`
-      *,
-      memberships!inner(
-        organization_id,
-        role,
-        status,
-        organization:organizations(
-          id,
-          name,
-          slug
-        )
-      )
-    `)
-    .eq('auth_id', id)
-    .single();
-
-  if (profileError || !profile) {
-    return (
-      <DetailTemplate
-        breadcrumbs={[
-          { label: 'Dashboard', href: '/dashboard' },
-          { label: 'Profile', href: '/profile' },
-          { label: 'Not Found' }
-        ]}
-        title="Profile Not Found"
-        tabs={[{
-          id: 'error',
-          label: 'Error',
-          content: (
-            <div className="text-center py-xl">
-              <p className="text-muted-foreground">The requested profile could not be found.</p>
-            </div>
-          )
-        }]}
-      />
-    );
-  }
-
-  const membership = (profile as any).memberships?.[0];
-  const organization = membership?.organization;
-
-  const breadcrumbs = [
-    { label: 'Dashboard', href: '/dashboard' },
-    { label: 'Profile', href: '/profile' },
-    { label: `${(profile as any).first_name} ${(profile as any).last_name}` }
-  ];
-
-  const tabs = [
-    {
-      id: 'overview',
-      label: 'Overview',
-      content: (
-        <div className="grid gap-lg md:grid-cols-2">
-          {/* Basic Information */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <User className="h-icon-sm w-icon-sm" />
-                Basic Information
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-md">
-              <div className="flex items-center gap-md">
-                <Avatar className="h-component-md w-component-md">
-                  {(profile as any).first_name?.[0]}{(profile as any).last_name?.[0]}
-                </Avatar>
-                <div>
-                  <h3 className="text-lg font-semibold">
-                    {(profile as any).first_name} {(profile as any).last_name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {(profile as any).title || 'No title set'}
-                  </p>
-                  <Badge variant="secondary" className="mt-1">
-                    {membership?.role || 'Member'}
-                  </Badge>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Contact Information */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <Mail className="h-icon-sm w-icon-sm" />
-                Contact Information
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-sm">
-              <div className="flex items-center gap-xs text-sm">
-                <Mail className="h-icon-xs w-icon-xs text-muted-foreground" />
-                <span>{(profile as any).email}</span>
-              </div>
-              {(profile as any).phone && (
-                <div className="flex items-center gap-xs text-sm">
-                  <Phone className="h-icon-xs w-icon-xs text-muted-foreground" />
-                  <span>{(profile as any).phone}</span>
-                </div>
-              )}
-              {(profile as any).location && (
-                <div className="flex items-center gap-xs text-sm">
-                  <MapPin className="h-icon-xs w-icon-xs text-muted-foreground" />
-                  <span>{(profile as any).location}</span>
-                </div>
-              )}
-            </CardContent>
-          </Card>
-
-          {/* Organization Information */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <Briefcase className="h-icon-sm w-icon-sm" />
-                Organization
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-sm">
-              <div>
-                <p className="font-medium">{organization?.name || 'No organization'}</p>
-                <p className="text-sm text-muted-foreground">
-                  Role: {membership?.role || 'Member'}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Status: {membership?.status || 'Active'}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Account Information */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <Calendar className="h-icon-sm w-icon-sm" />
-                Account Information
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-sm">
-              <div className="flex items-center gap-xs text-sm">
-                <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
-                <span>Joined {(profile as any).created_at ? new Date((profile as any).created_at).toLocaleDateString() : 'Unknown'}</span>
-              </div>
-              <div className="flex items-center gap-xs text-sm">
-                <span>Last updated: {(profile as any).updated_at ? new Date((profile as any).updated_at).toLocaleDateString() : 'Unknown'}</span>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      )
-    },
-    {
-      id: 'activity',
-      label: 'Activity',
-      content: (
-        <Card>
-          <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground text-center py-xl">
-              Activity tracking coming soon...
-            </p>
-          </CardContent>
-        </Card>
-      )
-    }
-  ];
+export default function DetailPage() {
+  // TODO: Implement detail content using DetailLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <DetailTemplate
-      breadcrumbs={breadcrumbs}
-      title={`${(profile as any).first_name} ${(profile as any).last_name}`}
-      subtitle={`${(profile as any).title || 'Team Member'} • ${membership?.role || 'Member'}`}
-      tabs={tabs}
-      backHref="/profile"
-    />
+    <DetailLayout
+      title="Item Details"
+      subtitle="Detailed view of the selected item"
+      breadcrumbs={
+        <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
+          <button className="hover:text-foreground">Home</button>
+          <span>/</span>
+          <button className="hover:text-foreground">Module</button>
+          <span>/</span>
+          <span className="text-foreground">Details</span>
+        </nav>
+      }
+      actions={
+        <div className="flex items-center gap-2">
+          <button className="px-4 py-2 border border-input rounded-md">
+            Edit
+          </button>
+          <button className="px-4 py-2 bg-destructive text-destructive-foreground rounded-md">
+            Delete
+          </button>
+        </div>
+      }
+      avatar={
+        <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground">
+          D
+        </div>
+      }
+      status={
+        <div className="flex items-center gap-2">
+          <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
+            Active
+          </span>
+        </div>
+      }
+      tabs={{
+        items: [
+          { id: 'overview', label: 'Overview' },
+          { id: 'details', label: 'Details' },
+          { id: 'activity', label: 'Activity' },
+        ],
+        activeTab: 'overview',
+        onTabChange: (tabId) => console.log('Switch to tab:', tabId),
+      }}
+      metaSidebar={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-3">Metadata</h3>
+            <div className="space-y-3 text-sm">
+              <div>
+                <span className="text-muted-foreground">Created:</span>
+                <div>Jan 1, 2024</div>
+              </div>
+              <div>
+                <span className="text-muted-foreground">Last Updated:</span>
+                <div>Jan 10, 2024</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📊</span>
+              <span className="text-sm font-medium">Metric 1</span>
+            </div>
+            <div className="text-2xl font-bold">42</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📈</span>
+              <span className="text-sm font-medium">Metric 2</span>
+            </div>
+            <div className="text-2xl font-bold">85%</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">⏱️</span>
+              <span className="text-sm font-medium">Metric 3</span>
+            </div>
+            <div className="text-2xl font-bold">12d</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Content</h3>
+          <div className="prose max-w-none">
+            <p>Detailed content for this item goes here. This is a placeholder that will be replaced with actual content.</p>
+          </div>
+        </div>
+      </div>
+    </DetailLayout>
   );
 }

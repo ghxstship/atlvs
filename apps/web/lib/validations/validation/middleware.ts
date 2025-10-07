@@ -5,13 +5,13 @@ import { createValidationErrorResponse } from './schemas';
 /**
  * Validation middleware for API routes
  */
-export function withValidation<T>(
+export function withValidation<T, C = unknown>(
   schema: z.ZodSchema<T>,
-  handler: (req: NextRequest, validatedData: T, context?: any) => Promise<Response>
+  handler: (req: NextRequest, validatedData: T, context?: C) => Promise<Response>
 ) {
-  return async (req: NextRequest, context?: any) => {
+  return async (req: NextRequest, context?: C) => {
     try {
-      let dataToValidate: any = {};
+      let dataToValidate: unknown = {};
 
       // Extract data based on HTTP method
       if (req.method === 'GET') {
@@ -22,7 +22,7 @@ export function withValidation<T>(
         // For body requests, parse JSON
         try {
           dataToValidate = await req.json();
-        } catch (error) {
+        } catch {
           return NextResponse.json(
             createValidationErrorResponse(
               new z.ZodError([{
@@ -63,7 +63,7 @@ export function withValidation<T>(
  */
 export function withSecureValidation<T>(
   schema: z.ZodSchema<T>,
-  handler: (req: NextRequest, validatedData: T, context?: any) => Promise<Response>
+  handler: (req: NextRequest, validatedData: T, context?: unknown) => Promise<Response>
 ) {
   // Combine with other security middlewares
   return withValidation(schema, handler);
@@ -75,18 +75,20 @@ export function withSecureValidation<T>(
 export function validateQueryParams<T>(
   schema: z.ZodSchema<T>,
   searchParams: URLSearchParams
-): { success: true; data: T } | { success: false; errors: z.ZodError } {
-  const params = Object.fromEntries(searchParams.entries());
+): z.SafeParseReturnType<Record<string, unknown>, T> {
+  const params: Record<string, unknown> = Object.fromEntries(searchParams.entries());
 
   // Convert string values to appropriate types
   Object.keys(params).forEach(key => {
     const value = params[key];
     if (value === 'true') params[key] = true;
     else if (value === 'false') params[key] = false;
-    else if (!isNaN(Number(value)) && value !== '') params[key] = Number(value);
+    else if (typeof value === 'string' && value !== '' && !Number.isNaN(Number(value))) {
+      params[key] = Number(value);
+    }
   });
 
-  return schema.safeParse(params) as any;
+  return schema.safeParse(params);
 }
 
 /**
@@ -95,8 +97,8 @@ export function validateQueryParams<T>(
 export function validatePathParams<T>(
   schema: z.ZodSchema<T>,
   params: Record<string, string>
-): { success: true; data: T } | { success: false; errors: z.ZodError } {
-  return schema.safeParse(params) as any;
+): z.SafeParseReturnType<Record<string, string>, T> {
+  return schema.safeParse(params);
 }
 
 /**
@@ -105,14 +107,14 @@ export function validatePathParams<T>(
 export async function validateRequestBody<T>(
   schema: z.ZodSchema<T>,
   req: NextRequest
-): Promise<{ success: true; data: T } | { success: false; errors: z.ZodError }> {
+): Promise<z.SafeParseReturnType<unknown, T>> {
   try {
     const body = await req.json();
-    return schema.safeParse(body) as any;
-  } catch (error) {
+    return schema.safeParse(body);
+  } catch {
     return {
       success: false,
-      errors: new z.ZodError([{
+      error: new z.ZodError([{
         code: 'custom',
         message: 'Invalid JSON in request body',
         path: [],

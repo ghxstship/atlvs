@@ -1,62 +1,46 @@
-import { cookies } from 'next/headers';
-import { createServerClient } from '@ghxstship/auth';
-import { getTranslations } from 'next-intl/server';
-import dynamicImport from 'next/dynamic';
-import FeatureGate from '../../../../_components/FeatureGate';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DashboardLayout } from '@ghxstship/ui/templates';
+import { DashboardWidget } from '@ghxstship/ui/organisms';
 
-
-// Dynamically import the MarketplaceCreateClient for better bundle splitting
-const MarketplaceCreateClient = dynamicImport(() => import('./MarketplaceCreateClient'), {
-  loading: () => (
-    <div className="flex items-center justify-center p-xl">
-      <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-blue-600"></div>
-      <span className="ml-2 text-gray-600">Loading marketplace creation...</span>
-    </div>
-  ),
-});
-
-export const metadata = {
-  title: 'Create Marketplace Listing',
-  description: 'Create a new marketplace listing to connect with potential partners',
-};
-
-export default async function MarketplaceCreatePage() {
-  const t = await getTranslations('marketplace');
-  const cookieStore = await cookies();
-  const supabase = createServerClient(cookieStore);
-
-  const { data: { user } } = await supabase.auth.getUser();
-  let orgId: string | null = null;
-
-  if (user) {
-    const { data: membership } = await supabase
-      .from('memberships')
-      .select('organization_id')
-      .eq('user_id', user.id)
-      .eq('status', 'active')
-      .order('created_at', { ascending: true })
-      .maybeSingle();
-    orgId = membership?.organization_id ?? null;
-  }
-
-  if (!orgId || !user) {
-    return (
-      <FeatureGate feature="ghxstship">
-        <div className="brand-marketplace text-center py-xsxl">
-          <h2 className="text-heading-3 mb-md">{t('unauthorized')}</h2>
-          <p className="color-muted">{t('loginRequired')}</p>
-        </div>
-      </FeatureGate>
-    );
-  }
+export default function DashboardPage() {
+  // TODO: Implement dashboard content using DashboardLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <FeatureGate feature="ghxstship">
-      <div className="stack-md brand-marketplace" data-brand="marketplace">
-        <MarketplaceCreateClient orgId={orgId} userId={user.id} />
+    <DashboardLayout
+      title="Dashboard"
+      subtitle="Welcome to your workspace"
+      showRefresh={true}
+      showExport={true}
+      showSettings={true}
+      sidebar={
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-medium mb-2">Quick Actions</h3>
+            <div className="space-y-2">
+              {/* TODO: Add quick actions */}
+            </div>
+          </div>
+        </div>
+      }
+      rightPanel={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-4">Recent Activity</h3>
+            {/* TODO: Add activity feed */}
+          </div>
+        </div>
+      }
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* TODO: Add dashboard widgets */}
+        <div className="bg-muted/50 rounded-lg p-6">
+          <h3 className="font-medium mb-2">Widget Placeholder</h3>
+          <p className="text-muted-foreground">Dashboard content coming soon</p>
+        </div>
       </div>
-    </FeatureGate>
+    </DashboardLayout>
   );
 }

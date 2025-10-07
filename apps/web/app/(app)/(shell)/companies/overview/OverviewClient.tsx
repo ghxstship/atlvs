@@ -1,414 +1,556 @@
-'use client';
+"use client"
 
-
-import { useState, useEffect } from 'react';
-import { User } from '@supabase/supabase-js';
-import { createBrowserClient } from '@supabase/ssr';
-import { Card, Button, Badge, Skeleton } from '@ghxstship/ui';
-import { StatusBadge, designTokens } from "../../../../_components/ui"
-import { 
-  Building,
-  Users,
-  FileText,
-  Award,
-  Star,
-  TrendingUp,
+import { useState, useEffect, useCallback, useMemo } from "react"
+import { useRouter } from "next/navigation"
+import type { SupabaseClient } from "@supabase/supabase-js"
+import { User } from "@supabase/supabase-js"
+import { createBrowserClient } from "@ghxstship/auth"
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  Badge,
+  Button,
+} from "@ghxstship/ui"
+import { Skeleton } from "@ghxstship/ui/components/atomic/Skeleton"
+import { Stack, HStack, Grid } from "@ghxstship/ui/components/layouts"
+import {
   AlertTriangle,
-  CheckCircle,
+  Award,
+  Building,
   Clock,
+  Eye,
+  FileText,
   Plus,
-  Eye
-} from 'lucide-react';
+  Star,
+  Users,
+} from "lucide-react"
 
 interface OverviewClientProps {
-  user: User;
-  orgId: string;
+  user: User
+  orgId: string
   translations: {
-    title: string;
-    subtitle: string;
-  };
+    title: string
+    subtitle: string
+    viewDirectory?: string
+    addCompany?: string
+    totalCompaniesLabel?: string
+    activeCompaniesLabel?: string
+    activeContractsLabel?: string
+    totalContractsLabel?: string
+    qualificationsLabel?: string
+    expiringSoonLabel?: string
+    averageRatingLabel?: string
+    reviewsLabel?: string
+    contractsExpiringLabel?: string
+    qualificationsExpiringLabel?: string
+    pendingReviewsLabel?: string
+    recentActivityLabel?: string
+    viewAllActivityLabel?: string
+    topRatedLabel?: string
+    viewAllRatingsLabel?: string
+    quickActionsLabel?: string
+    addQualificationLabel?: string
+    submitRatingLabel?: string
+    addCompanyActionLabel?: string
+    newContractActionLabel?: string
+  }
 }
 
 interface CompanyStats {
-  totalCompanies: number;
-  activeCompanies: number;
-  pendingCompanies: number;
-  blacklistedCompanies: number;
-  totalContracts: number;
-  activeContracts: number;
-  expiringContracts: number;
-  totalQualifications: number;
-  expiringQualifications: number;
-  averageRating: number;
-  totalRatings: number;
+  totalCompanies: number
+  activeCompanies: number
+  pendingCompanies: number
+  blacklistedCompanies: number
+  totalContracts: number
+  activeContracts: number
+  expiringContracts: number
+  totalQualifications: number
+  expiringQualifications: number
+  averageRating: number
+  totalRatings: number
 }
 
 interface RecentActivity {
-  id: string;
-  type: 'company_added' | 'contract_signed' | 'qualification_verified' | 'rating_submitted';
-  companyName: string;
-  description: string;
-  timestamp: string;
-  user: string;
+  id: string
+  type: "company_added" | "contract_signed" | "qualification_verified" | "rating_submitted"
+  companyName: string
+  description: string
+  timestamp: string
+  user: string
 }
 
-export default function OverviewClient({ user, orgId, translations }: OverviewClientProps) {
-  const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState<CompanyStats | null>(null);
-  const [recentActivity, setRecentActivity] = useState<RecentActivity[]>([]);
-  const [topRatedCompanies, setTopRatedCompanies] = useState<any[]>([]);
+interface TopRatedCompany {
+  id: string
+  name: string
+  rating: number
+  reviewCount: number
+}
 
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
+const toNumber = (value: unknown): number => {
+  const parsed = Number(value ?? 0)
+  return Number.isFinite(parsed) ? parsed : 0
+}
+
+const formatTimeAgo = (timestamp: string) => {
+  const now = new Date()
+  const time = new Date(timestamp)
+  const diffInHours = Math.floor((now.getTime() - time.getTime()) / (1000 * 60 * 60))
+
+  if (diffInHours < 1) return "Just now"
+  if (diffInHours < 24) return `${diffInHours}h ago`
+  return `${Math.floor(diffInHours / 24)}d ago`
+}
+
+const renderStars = (rating: number) =>
+  Array.from({ length: 5 }, (_, index) => (
+    <Star
+      key={index}
+      className={`h-icon-xs w-icon-xs ${
+        index < Math.round(rating - 1e-3) ? "text-warning fill-current" : "text-muted-foreground"
+      }`}
+    />
+  ))
+
+const useCompaniesOverview = (supabase: SupabaseClient, orgId: string) => {
+  const [loading, setLoading] = useState(true)
+  const [refreshing, setRefreshing] = useState(false)
+  const [stats, setStats] = useState<CompanyStats | null>(null)
+  const [recentActivity, setRecentActivity] = useState<RecentActivity[]>([])
+  const [topRatedCompanies, setTopRatedCompanies] = useState<TopRatedCompany[]>([])
+  const [error, setError] = useState<string | null>(null)
+
+  const loadOverviewData = useCallback(
+    async (mode: "initial" | "refresh" = "initial") => {
+      if (mode === "initial") {
+        setLoading(true)
+      } else {
+        setRefreshing(true)
+      }
+
+      try {
+        setError(null)
+
+        const [companies, contracts, qualifications, ratings] = await Promise.all([
+          supabase.from("companies").select("status").eq("organization_id", orgId),
+          supabase.from("company_contracts").select("status, end_date").eq("organization_id", orgId),
+          supabase.from("company_qualifications").select("status, expiry_date").eq("organization_id", orgId),
+          supabase.from("company_ratings").select("rating, company_id").eq("organization_id", orgId),
+        ])
+
+        const companyStats: CompanyStats = {
+          totalCompanies: companies.data?.length ?? 0,
+          activeCompanies: companies.data?.filter((company) => company.status === "active").length ?? 0,
+          pendingCompanies: companies.data?.filter((company) => company.status === "pending").length ?? 0,
+          blacklistedCompanies: companies.data?.filter((company) => company.status === "blacklisted").length ?? 0,
+          totalContracts: contracts.data?.length ?? 0,
+          activeContracts: contracts.data?.filter((contract) => contract.status === "active").length ?? 0,
+          expiringContracts:
+            contracts.data?.filter((contract) => {
+              if (!contract.end_date) return false
+              const endDate = new Date(contract.end_date)
+              const threshold = new Date()
+              threshold.setDate(threshold.getDate() + 30)
+              return endDate <= threshold
+            }).length ?? 0,
+          totalQualifications: qualifications.data?.length ?? 0,
+          expiringQualifications:
+            qualifications.data?.filter((qualification) => {
+              if (!qualification.expiry_date) return false
+              const expiryDate = new Date(qualification.expiry_date)
+              const threshold = new Date()
+              threshold.setDate(threshold.getDate() + 30)
+              return expiryDate <= threshold
+            }).length ?? 0,
+          averageRating:
+            ratings.data?.length ? ratings.data.reduce((sum, rating) => sum + toNumber(rating.rating), 0) / ratings.data.length : 0,
+          totalRatings: ratings.data?.length ?? 0,
+        }
+
+        setStats(companyStats)
+
+        setRecentActivity([
+          {
+            id: "1",
+            type: "company_added",
+            companyName: "Stellar Construction Co.",
+            description: "New company added to directory",
+            timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+            user: "John Doe",
+          },
+          {
+            id: "2",
+            type: "contract_signed",
+            companyName: "TechFlow Solutions",
+            description: "Master Service Agreement signed",
+            timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
+            user: "Jane Smith",
+          },
+          {
+            id: "3",
+            type: "qualification_verified",
+            companyName: "Global Logistics Inc.",
+            description: "ISO 9001 certification verified",
+            timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),
+            user: "Mike Johnson",
+          },
+        ])
+
+        setTopRatedCompanies([
+          { id: "1", name: "Stellar Construction Co.", rating: 4.8, reviewCount: 24 },
+          { id: "2", name: "TechFlow Solutions", rating: 4.6, reviewCount: 18 },
+          { id: "3", name: "Global Logistics Inc.", rating: 4.4, reviewCount: 12 },
+        ])
+      } catch (err) {
+        console.error("Error loading companies overview:", err)
+        setError("Failed to load companies overview")
+      } finally {
+        if (mode === "initial") {
+          setLoading(false)
+        } else {
+          setRefreshing(false)
+        }
+      }
+    },
+    [supabase, orgId],
+  )
 
   useEffect(() => {
-    loadOverviewData();
-  }, [orgId]);
+    loadOverviewData("initial")
+  }, [loadOverviewData])
 
-  const loadOverviewData = async () => {
-    try {
-      setLoading(true);
-      
-      // Load companies stats
-      const { data: companies } = await supabase
-        .from('companies')
-        .select('status')
-        .eq('organization_id', orgId);
+  return {
+    loading,
+    refreshing,
+    stats,
+    recentActivity,
+    topRatedCompanies,
+    error,
+    refresh: () => loadOverviewData("refresh"),
+  }
+}
 
-      // Load contracts stats  
-      const { data: contracts } = await supabase
-        .from('company_contracts')
-        .select('status, end_date')
-        .eq('organization_id', orgId);
-
-      // Load qualifications stats
-      const { data: qualifications } = await supabase
-        .from('company_qualifications')
-        .select('status, expiry_date')
-        .eq('organization_id', orgId);
-
-      // Load ratings stats
-      const { data: ratings } = await supabase
-        .from('company_ratings')
-        .select('rating, company_id')
-        .eq('organization_id', orgId);
-
-      // Calculate stats
-      const companyStats: CompanyStats = {
-        totalCompanies: companies?.length || 0,
-        activeCompanies: companies?.filter(c => c.status === 'active').length || 0,
-        pendingCompanies: companies?.filter(c => c.status === 'pending').length || 0,
-        blacklistedCompanies: companies?.filter(c => c.status === 'blacklisted').length || 0,
-        totalContracts: contracts?.length || 0,
-        activeContracts: contracts?.filter(c => c.status === 'active').length || 0,
-        expiringContracts: contracts?.filter(c => {
-          if (!c.end_date) return false;
-          const endDate = new Date(c.end_date);
-          const thirtyDaysFromNow = new Date();
-          thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30);
-          return endDate <= thirtyDaysFromNow;
-        }).length || 0,
-        totalQualifications: qualifications?.length || 0,
-        expiringQualifications: qualifications?.filter(q => {
-          if (!q.expiry_date) return false;
-          const expiryDate = new Date(q.expiry_date);
-          const thirtyDaysFromNow = new Date();
-          thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30);
-          return expiryDate <= thirtyDaysFromNow;
-        }).length || 0,
-        averageRating: ratings?.length ? ratings.reduce((sum, r) => sum + r.rating, 0) / ratings.length : 0,
-        totalRatings: ratings?.length || 0
-      };
-
-      setStats(companyStats);
-
-      // Load recent activity (mock data for now)
-      setRecentActivity([
-        {
-          id: '1',
-          type: 'company_added',
-          companyName: 'Stellar Construction Co.',
-          description: 'New company added to directory',
-          timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
-          user: 'John Doe'
-        },
-        {
-          id: '2',
-          type: 'contract_signed',
-          companyName: 'TechFlow Solutions',
-          description: 'Master Service Agreement signed',
-          timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
-          user: 'Jane Smith'
-        },
-        {
-          id: '3',
-          type: 'qualification_verified',
-          companyName: 'Global Logistics Inc.',
-          description: 'ISO 9001 certification verified',
-          timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),
-          user: 'Mike Johnson'
-        }
-      ]);
-
-      // Load top rated companies (mock data for now)
-      setTopRatedCompanies([
-        { name: 'Stellar Construction Co.', rating: 4.8, reviewCount: 24 },
-        { name: 'TechFlow Solutions', rating: 4.6, reviewCount: 18 },
-        { name: 'Global Logistics Inc.', rating: 4.4, reviewCount: 12 }
-      ]);
-
-    } catch (error) {
-      console.error('Error loading overview data:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const formatTimeAgo = (timestamp: string) => {
-    const now = new Date();
-    const time = new Date(timestamp);
-    const diffInHours = Math.floor((now.getTime() - time.getTime()) / (1000 * 60 * 60));
-    
-    if (diffInHours < 1) return 'Just now';
-    if (diffInHours < 24) return `${diffInHours}h ago`;
-    return `${Math.floor(diffInHours / 24)}d ago`;
-  };
-
-  const getActivityIcon = (type: string) => {
-    switch (type) {
-      case 'company_added':
-        return <Building className="h-icon-xs w-icon-xs color-accent" />;
-      case 'contract_signed':
-        return <FileText className="h-icon-xs w-icon-xs color-success" />;
-      case 'qualification_verified':
-        return <Award className="h-icon-xs w-icon-xs color-secondary" />;
-      case 'rating_submitted':
-        return <Star className="h-icon-xs w-icon-xs color-warning" />;
-      default:
-        return <CheckCircle className="h-icon-xs w-icon-xs color-muted" />;
-    }
-  };
-
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={i}
-        className={`h-icon-xs w-icon-xs ${
-          i < Math.floor(rating) 
-            ? 'color-warning fill-current' 
-            : 'color-muted'
-        }`}
-      />
-    ));
-  };
+export default function OverviewClient({ user: _user, orgId, translations }: OverviewClientProps) {
+  const router = useRouter()
+  const supabase = useMemo(() => createBrowserClient(), []) as unknown as SupabaseClient
+  const { loading, refreshing, stats, recentActivity, topRatedCompanies, error, refresh } = useCompaniesOverview(
+    supabase,
+    orgId,
+  )
 
   if (loading) {
     return (
-      <div className="stack-lg">
-        <div className="flex items-center justify-between">
-          <Skeleton className="h-icon-lg w-container-xs" />
-          <Skeleton className="h-icon-xl w-component-xl" />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <Card key={i} className="p-lg">
-              <Skeleton className="h-icon-xs w-component-xl mb-sm" />
-              <Skeleton className="h-icon-md w-component-lg mb-md" />
-              <Skeleton className="h-icon-xs w-component-lg" />
+      <Stack spacing="lg">
+        <HStack justify="between" align="center">
+          <Skeleton className="h-8 w-48" />
+          <Skeleton className="h-10 w-32" />
+        </HStack>
+        <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Card key={index}>
+              <CardContent className="space-y-sm">
+                <Skeleton className="h-3 w-24" />
+                <Skeleton className="h-8 w-20" />
+                <Skeleton className="h-3 w-16" />
+              </CardContent>
             </Card>
           ))}
-        </div>
-      </div>
-    );
+        </Grid>
+      </Stack>
+    )
+  }
+
+  if (error) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-destructive">{error}</CardTitle>
+          <CardDescription>Something went wrong while loading company insights.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Button onClick={refresh}>Retry</Button>
+        </CardContent>
+      </Card>
+    )
   }
 
   return (
-    <StateManagerProvider>
-      <div className="stack-lg">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
-            <p className="text-body-sm color-foreground/70 mt-xs">{translations.subtitle}</p>
-          </div>
-          <div className="flex items-center cluster-sm">
-            <Button variant="outline" onClick={() => window.location.href = '/companies/directory'}>
-              <Eye className="h-icon-xs w-icon-xs mr-sm" />
-              View Directory
-            </Button>
-            <Button onClick={() => window.location.href = '/companies'}>
-              <Plus className="h-icon-xs w-icon-xs mr-sm" />
-              Add Company
-            </Button>
-          </div>
-        </div>
+    <Stack spacing="lg">
+      <HStack justify="between" align="center">
+        <Stack spacing="xs">
+          <h1 className="text-heading-3 font-anton uppercase text-foreground">{translations.title}</h1>
+          <p className="text-body-sm text-muted-foreground">{translations.subtitle}</p>
+        </Stack>
+        <HStack spacing="sm">
+          <Button variant="outline" onClick={() => router.push("/companies/directory")}>
+            <HStack spacing="xs" align="center">
+              <Eye className="h-icon-xs w-icon-xs" />
+              <span>{translations.viewDirectory ?? "View Directory"}</span>
+            </HStack>
+          </Button>
+          <Button onClick={() => router.push("/companies")}
+            variant={refreshing ? "outline" : "default"}>
+            <HStack spacing="xs" align="center">
+              <Plus className="h-icon-xs w-icon-xs" />
+              <span>{translations.addCompany ?? "Add Company"}</span>
+            </HStack>
+          </Button>
+        </HStack>
+      </HStack>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
-          <Card className="p-md">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-body-sm color-foreground/70">Total Companies</p>
-                <p className="text-heading-3 text-heading-3 color-foreground">{stats?.totalCompanies || 0}</p>
-                <p className="text-body-sm color-success">{stats?.activeCompanies || 0} active</p>
-              </div>
-              <Building className="h-icon-lg w-icon-lg color-accent" />
-            </div>
-          </Card>
-          
-          <Card className="p-md">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-body-sm color-foreground/70">Active Contracts</p>
-                <p className="text-heading-3 text-heading-3 color-success">{stats?.activeContracts || 0}</p>
-                <p className="text-body-sm color-foreground/60">of {stats?.totalContracts || 0} total</p>
-              </div>
-              <FileText className="h-icon-lg w-icon-lg color-success" />
-            </div>
-          </Card>
-          
-          <Card className="p-md">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-body-sm color-foreground/70">Qualifications</p>
-                <p className="text-heading-3 text-heading-3 color-secondary">{stats?.totalQualifications || 0}</p>
-                {(stats?.expiringQualifications || 0) > 0 && (
-                  <p className="text-body-sm color-warning">{stats?.expiringQualifications} expiring soon</p>
-                )}
-              </div>
-              <Award className="h-icon-lg w-icon-lg color-secondary" />
-            </div>
-          </Card>
-          
-          <Card className="p-md">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-body-sm color-foreground/70">Average Rating</p>
-                <p className="text-heading-3 text-heading-3 color-warning">
-                  {stats?.averageRating ? stats.averageRating.toFixed(1) : 'N/A'}
-                </p>
-                <p className="text-body-sm color-foreground/60">{stats?.totalRatings || 0} reviews</p>
-              </div>
-              <Star className="h-icon-lg w-icon-lg color-warning" />
-            </div>
-          </Card>
-        </div>
-
-        {/* Alerts Section */}
-        {((stats?.expiringContracts || 0) > 0 || (stats?.expiringQualifications || 0) > 0 || (stats?.pendingCompanies || 0) > 0) && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
-            {(stats?.expiringContracts || 0) > 0 && (
-              <Card className="p-md border-warning/20 bg-warning/10">
-                <div className="flex items-center cluster-sm">
-                  <AlertTriangle className="h-icon-sm w-icon-sm color-warning" />
-                  <div>
-                    <p className="form-label color-warning">Contracts Expiring</p>
-                    <p className="text-body-sm color-warning/80">{stats?.expiringContracts} contracts expire within 30 days</p>
-                  </div>
-                </div>
-              </Card>
-            )}
-            
-            {(stats?.expiringQualifications || 0) > 0 && (
-              <Card className={`p-md ${designTokens.colors.status.error}`}>
-                <div className="flex items-center cluster-sm">
-                  <Clock className="h-icon-sm w-icon-sm color-destructive" />
-                  <div>
-                    <p className="form-label color-destructive">Qualifications Expiring</p>
-                    <p className="text-body-sm color-destructive/80">{stats?.expiringQualifications} qualifications expire within 30 days</p>
-                  </div>
-                </div>
-              </Card>
-            )}
-            
-            {(stats?.pendingCompanies || 0) > 0 && (
-              <Card className={`p-md ${designTokens.colors.status.info}`}>
-                <div className="flex items-center cluster-sm">
-                  <Users className="h-icon-sm w-icon-sm color-accent" />
-                  <div>
-                    <p className="form-label color-accent">Pending Reviews</p>
-                    <p className="text-body-sm color-accent/80">{stats?.pendingCompanies} companies need review</p>
-                  </div>
-                </div>
-              </Card>
-            )}
-          </div>
-        )}
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
-          {/* Recent Activity */}
-          <Card className="p-lg">
-            <div className="flex items-center justify-between mb-md">
-              <h3 className="text-body text-heading-4 color-foreground">Recent Activity</h3>
-              <Button>View All</Button>
-            </div>
-            <div className="stack-md">
-              {recentActivity.map((activity: any) => (
-                <div key={activity.id} className="flex items-start cluster-sm">
-                  {getActivityIcon(activity.type)}
-                  <div className="flex-1 min-w-0">
-                    <p className="text-body-sm form-label color-foreground">{activity.companyName}</p>
-                    <p className="text-body-sm color-foreground/70">{activity.description}</p>
-                    <p className="text-body-sm color-foreground/50 mt-xs">
-                      {formatTimeAgo(activity.timestamp)} by {activity.user}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card>
-
-          {/* Top Rated Companies */}
-          <Card className="p-lg">
-            <div className="flex items-center justify-between mb-md">
-              <h3 className="text-body text-heading-4 color-foreground">Top Rated Companies</h3>
-              <Button>View All Ratings</Button>
-            </div>
-            <div className="stack-md">
-              {topRatedCompanies.map((company, index) => (
-                <div key={index} className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <p className="text-body-sm form-label color-foreground">{company.name}</p>
-                    <div className="flex items-center cluster-sm mt-xs">
-                      <div className="flex items-center cluster-xs">
-                        {renderStars(company.rating)}
-                      </div>
-                      <span className="text-body-sm color-foreground/70">{company.rating}</span>
-                      <span className="text-body-sm color-foreground/50">({company.reviewCount} reviews)</span>
-                    </div>
-                  </div>
-                  <Badge variant="secondary">#{index + 1}</Badge>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </div>
-
-        {/* Quick Actions */}
-        <Card className="p-lg">
-          <h3 className="text-body text-heading-4 color-foreground mb-md">Quick Actions</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-md">
-            <Button variant="outline" className="h-component-lg flex-col" onClick={() => window.location.href = '/companies'}>
-              <Building className="h-icon-md w-icon-md mb-sm" />
-              <span className="text-body-sm">Add Company</span>
-            </Button>
-            <Button variant="outline" className="h-component-lg flex-col" onClick={() => window.location.href = '/companies/contracts'}>
-              <FileText className="h-icon-md w-icon-md mb-sm" />
-              <span className="text-body-sm">New Contract</span>
-            </Button>
-            <Button variant="outline" className="h-component-lg flex-col" onClick={() => window.location.href = '/companies/qualifications'}>
-              <Award className="h-icon-md w-icon-md mb-sm" />
-              <span className="text-body-sm">Add Qualification</span>
-            </Button>
-            <Button variant="outline" className="h-component-lg flex-col" onClick={() => window.location.href = '/companies/ratings'}>
-              <Star className="h-icon-md w-icon-md mb-sm" />
-              <span className="text-body-sm">Submit Rating</span>
-            </Button>
-          </div>
+      <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+        <Card>
+          <CardContent>
+            <HStack justify="between" align="center">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">
+                  {translations.totalCompaniesLabel ?? "Total Companies"}
+                </span>
+                <span className="text-heading-3 font-semibold text-foreground">{stats?.totalCompanies ?? 0}</span>
+                <span className="text-sm text-success">
+                  {(stats?.activeCompanies ?? 0)} {translations.activeCompaniesLabel ?? "active"}
+                </span>
+              </Stack>
+              <Building className="h-icon-lg w-icon-lg text-accent" />
+            </HStack>
+          </CardContent>
         </Card>
-      </div>
-    </StateManagerProvider>
-  );
+
+        <Card>
+          <CardContent>
+            <HStack justify="between" align="center">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">
+                  {translations.activeContractsLabel ?? "Active Contracts"}
+                </span>
+                <span className="text-heading-3 font-semibold text-success">{stats?.activeContracts ?? 0}</span>
+                <span className="text-sm text-muted-foreground">
+                  {translations.totalContractsLabel ?? "of"} {stats?.totalContracts ?? 0} total
+                </span>
+              </Stack>
+              <FileText className="h-icon-lg w-icon-lg text-success" />
+            </HStack>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent>
+            <HStack justify="between" align="center">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">
+                  {translations.qualificationsLabel ?? "Qualifications"}
+                </span>
+                <span className="text-heading-3 font-semibold text-secondary">
+                  {stats?.totalQualifications ?? 0}
+                </span>
+                {(stats?.expiringQualifications ?? 0) > 0 && (
+                  <span className="text-sm text-warning">
+                    {stats?.expiringQualifications} {translations.expiringSoonLabel ?? "expiring soon"}
+                  </span>
+                )}
+              </Stack>
+              <Award className="h-icon-lg w-icon-lg text-secondary" />
+            </HStack>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent>
+            <HStack justify="between" align="center">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">
+                  {translations.averageRatingLabel ?? "Average Rating"}
+                </span>
+                <span className="text-heading-3 font-semibold text-warning">
+                  {stats?.averageRating ? stats.averageRating.toFixed(1) : "N/A"}
+                </span>
+                <span className="text-sm text-muted-foreground">
+                  {stats?.totalRatings ?? 0} {translations.reviewsLabel ?? "reviews"}
+                </span>
+              </Stack>
+              <Star className="h-icon-lg w-icon-lg text-warning" />
+            </HStack>
+          </CardContent>
+        </Card>
+      </Grid>
+
+      {(stats?.expiringContracts || stats?.expiringQualifications || stats?.pendingCompanies) && (
+        <Grid cols={1} responsive={{ md: 3 }} spacing="md">
+          {(stats?.expiringContracts ?? 0) > 0 && (
+            <Card className="border-warning/20 bg-warning/10">
+              <CardContent>
+                <HStack spacing="sm" align="center">
+                  <AlertTriangle className="h-icon-sm w-icon-sm text-warning" />
+                  <Stack spacing="xs">
+                    <span className="text-sm font-medium text-warning">
+                      {translations.contractsExpiringLabel ?? "Contracts Expiring"}
+                    </span>
+                    <span className="text-sm text-warning/80">
+                      {stats?.expiringContracts} expire within 30 days
+                    </span>
+                  </Stack>
+                </HStack>
+              </CardContent>
+            </Card>
+          )}
+
+          {(stats?.expiringQualifications ?? 0) > 0 && (
+            <Card className="border-destructive/20 bg-destructive/10">
+              <CardContent>
+                <HStack spacing="sm" align="center">
+                  <Clock className="h-icon-sm w-icon-sm text-destructive" />
+                  <Stack spacing="xs">
+                    <span className="text-sm font-medium text-destructive">
+                      {translations.qualificationsExpiringLabel ?? "Qualifications Expiring"}
+                    </span>
+                    <span className="text-sm text-destructive/80">
+                      {stats?.expiringQualifications} expire within 30 days
+                    </span>
+                  </Stack>
+                </HStack>
+              </CardContent>
+            </Card>
+          )}
+
+          {(stats?.pendingCompanies ?? 0) > 0 && (
+            <Card className="border-accent/20 bg-accent/10">
+              <CardContent>
+                <HStack spacing="sm" align="center">
+                  <Users className="h-icon-sm w-icon-sm text-accent" />
+                  <Stack spacing="xs">
+                    <span className="text-sm font-medium text-accent">
+                      {translations.pendingReviewsLabel ?? "Pending Reviews"}
+                    </span>
+                    <span className="text-sm text-accent/80">
+                      {stats?.pendingCompanies} companies need review
+                    </span>
+                  </Stack>
+                </HStack>
+              </CardContent>
+            </Card>
+          )}
+        </Grid>
+      )}
+
+      <Grid cols={1} responsive={{ lg: 2 }} spacing="lg">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg text-foreground">
+              {translations.recentActivityLabel ?? "Recent Activity"}
+            </CardTitle>
+            <CardDescription>Latest company lifecycle updates</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Stack spacing="md">
+              {recentActivity.map((activity) => (
+                <HStack key={activity.id} spacing="sm" align="start">
+                  {activity.type === "company_added" && <Building className="h-icon-xs w-icon-xs text-accent" />}
+                  {activity.type === "contract_signed" && <FileText className="h-icon-xs w-icon-xs text-success" />}
+                  {activity.type === "qualification_verified" && <Award className="h-icon-xs w-icon-xs text-secondary" />}
+                  {activity.type === "rating_submitted" && <Star className="h-icon-xs w-icon-xs text-warning" />}
+                  <Stack spacing="xs" className="flex-1">
+                    <span className="text-sm font-medium text-foreground">{activity.companyName}</span>
+                    <span className="text-sm text-muted-foreground">{activity.description}</span>
+                    <span className="text-xs text-muted-foreground/80">
+                      {formatTimeAgo(activity.timestamp)} • {activity.user}
+                    </span>
+                  </Stack>
+                </HStack>
+              ))}
+            </Stack>
+            <Button variant="outline" className="mt-lg" onClick={() => router.push("/companies/activity")}
+            >
+              {translations.viewAllActivityLabel ?? "View All"}
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg text-foreground">
+              {translations.topRatedLabel ?? "Top Rated Companies"}
+            </CardTitle>
+            <CardDescription>Customer satisfaction snapshots</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Stack spacing="md">
+              {topRatedCompanies.map((company, index) => (
+                <HStack key={company.id} justify="between" align="center">
+                  <Stack spacing="xs">
+                    <span className="text-sm font-medium text-foreground">{company.name}</span>
+                    <HStack spacing="sm" align="center">
+                      <HStack spacing="xs" align="center">
+                        {renderStars(company.rating)}
+                      </HStack>
+                      <span className="text-sm text-muted-foreground">{company.rating.toFixed(1)}</span>
+                      <span className="text-sm text-muted-foreground/70">
+                        ({company.reviewCount} reviews)
+                      </span>
+                    </HStack>
+                  </Stack>
+                  <Badge variant="secondary">#{index + 1}</Badge>
+                </HStack>
+              ))}
+            </Stack>
+            <Button variant="outline" className="mt-lg" onClick={() => router.push("/companies/ratings")}
+            >
+              {translations.viewAllRatingsLabel ?? "View All Ratings"}
+            </Button>
+          </CardContent>
+        </Card>
+      </Grid>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-foreground">
+            {translations.quickActionsLabel ?? "Quick Actions"}
+          </CardTitle>
+          <CardDescription>Stay ahead with frequent company workflows</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Grid cols={2} responsive={{ md: 4 }} spacing="md">
+            <Button variant="outline" className="h-component-lg flex-col" onClick={() => router.push("/companies")}
+            >
+              <Building className="h-icon-md w-icon-md" />
+              <span className="text-sm">
+                {translations.addCompanyActionLabel ?? "Add Company"}
+              </span>
+            </Button>
+            <Button
+              variant="outline"
+              className="h-component-lg flex-col"
+              onClick={() => router.push("/companies/contracts")}
+            >
+              <FileText className="h-icon-md w-icon-md" />
+              <span className="text-sm">
+                {translations.newContractActionLabel ?? "New Contract"}
+              </span>
+            </Button>
+            <Button
+              variant="outline"
+              className="h-component-lg flex-col"
+              onClick={() => router.push("/companies/qualifications")}
+            >
+              <Award className="h-icon-md w-icon-md" />
+              <span className="text-sm">
+                {translations.addQualificationLabel ?? "Add Qualification"}
+              </span>
+            </Button>
+            <Button
+              variant="outline"
+              className="h-component-lg flex-col"
+              onClick={() => router.push("/companies/ratings")}
+            >
+              <Star className="h-icon-md w-icon-md" />
+              <span className="text-sm">
+                {translations.submitRatingLabel ?? "Submit Rating"}
+              </span>
+            </Button>
+          </Grid>
+        </CardContent>
+      </Card>
+    </Stack>
+  )
 }

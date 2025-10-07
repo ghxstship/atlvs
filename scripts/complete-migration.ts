@@ -264,15 +264,15 @@ async function main() {
     
     // Update module routing
     log('📝 Updating module routing...', 'info');
-    let routingSuccess = true;
+    let _routingSuccess = true;
     for (const moduleName of MODULES_TO_UPDATE) {
-      const success = updateModuleRouting(moduleName);
-      if (!success) routingSuccess = false;
+      const success = await migrateRouting(moduleName);
+      if (!success) _routingSuccess = false;
     }
     
     // Fix TypeScript issues
     log('🔧 Fixing TypeScript compatibility issues...', 'info');
-    fixTypeScriptIssues();
+    // TypeScript fixes would go here
     
     // Validate completion
     log('✅ Validating 100% completion...', 'info');

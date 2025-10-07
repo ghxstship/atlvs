@@ -66,7 +66,7 @@ interface ActivationsClientProps {
 }
 
 // View configurations
-const VIEW_TYPES> = [
+const VIEW_TYPES = [
  { id: "grid", label: "Grid", icon: Grid3x3 },
  { id: "kanban", label: "Kanban", icon: LayoutGrid },
  { id: "calendar", label: "Calendar", icon: Calendar },

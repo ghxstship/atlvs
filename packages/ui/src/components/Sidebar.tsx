@@ -60,22 +60,38 @@ const convertNavSections = (
 
 export function Sidebar({
   title,
+  subtitle = 'Command Center',
   navSections,
-  LinkComponent,
   onNavigate,
   onSearchChange,
   onToggleExpand,
   onTogglePin,
   initialPinnedIds,
+  userId,
+  productSwitcher,
+  topActions,
+  insights,
+  footerContent,
+  userSummary,
+  variant = 'default',
+  showPersonalization = true,
 }: {
   title: string;
+  subtitle?: string;
   navSections: { label: string; items: { label: string; href: string }[] }[];
-  LinkComponent?: React.ComponentType<{ href: string; className?: string; children?: React.ReactNode }>;
   onNavigate?: (href: string) => void;
   onSearchChange?: (query: string, resultsCount: number) => void;
   onToggleExpand?: (itemId: string, expanded: boolean) => void;
   onTogglePin?: (itemId: string, pinned: boolean) => void;
   initialPinnedIds?: string[];
+  userId?: string;
+  productSwitcher?: React.ReactNode;
+  topActions?: React.ReactNode;
+  insights?: React.ReactNode;
+  footerContent?: React.ReactNode;
+  userSummary?: React.ReactNode;
+  variant?: 'default' | 'floating' | 'overlay';
+  showPersonalization?: boolean;
 }) {
   const navigationData = convertNavSections(navSections);
   
@@ -91,18 +107,27 @@ export function Sidebar({
 
   return (
     <AnimationOptimizer>
-      <SidebarProvider userId="current-user">
+      <SidebarProvider userId={userId ?? 'current-user'}>
         <SidebarLandmarks>
           <div className="flex flex-col h-full" role="navigation" aria-label="Primary">
             {/* Main Sidebar Navigation */}
             <SidebarNavigation
-              variant="default"
+              title={title}
+              subtitle={subtitle}
+              variant={variant}
+              productSwitcher={productSwitcher}
+              topActions={topActions}
               onNavigate={handleNavigate}
               items={navigationData}
               onSearchChange={onSearchChange}
               onToggleExpand={onToggleExpand}
               onTogglePin={onTogglePin}
               initialPinnedIds={initialPinnedIds}
+              insights={insights ?? (showPersonalization && userId ? (
+                <SidebarPersonalization userId={userId} navigationData={navigationData} />
+              ) : undefined)}
+              footerContent={footerContent}
+              userSummary={userSummary}
             />
           </div>
         </SidebarLandmarks>

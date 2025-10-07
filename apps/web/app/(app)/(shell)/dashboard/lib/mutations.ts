@@ -114,7 +114,7 @@ export class DashboardMutations {
   static async deleteDashboard(
     id: string,
     options: MutationOptions = {}
-  ): Promise<MutationResult<{ deleted: boolean }> {
+  ): Promise<MutationResult<{ deleted: boolean }>> {
     const startTime = Date.now();
     let originalData: Dashboard | undefined;
 
@@ -181,7 +181,7 @@ export class DashboardMutations {
   static async setDefaultDashboard(
     id: string,
     options: MutationOptions = {}
-  ): Promise<MutationResult<{ updated: boolean }> {
+  ): Promise<MutationResult<{ updated: boolean }>> {
     const startTime = Date.now();
 
     try {
@@ -290,7 +290,7 @@ export class WidgetMutations {
   static async deleteWidget(
     id: string,
     options: MutationOptions = {}
-  ): Promise<MutationResult<{ deleted: boolean }> {
+  ): Promise<MutationResult<{ deleted: boolean }>> {
     const startTime = Date.now();
     let originalData: DashboardWidget | undefined;
 
@@ -321,7 +321,7 @@ export class WidgetMutations {
   static async bulkUpdateWidgets(
     updates: Array<{ id: string; updates: Partial<DashboardWidget> }>,
     options: MutationOptions = {}
-  ): Promise<MutationResult<{ updated: number; failed: number }> {
+  ): Promise<MutationResult<{ updated: number; failed: number }>> {
     const startTime = Date.now();
 
     try {
@@ -424,7 +424,7 @@ export class FilterMutations {
   static async deleteFilter(
     id: string,
     options: MutationOptions = {}
-  ): Promise<MutationResult<{ deleted: boolean }> {
+  ): Promise<MutationResult<{ deleted: boolean }>> {
     const startTime = Date.now();
 
     try {
@@ -448,7 +448,7 @@ export class FilterMutations {
   static async bulkDeleteFilters(
     filterIds: string[],
     options: MutationOptions = {}
-  ): Promise<MutationResult<{ deleted: number }> {
+  ): Promise<MutationResult<{ deleted: number }>> {
     const startTime = Date.now();
 
     try {
@@ -478,7 +478,7 @@ export class ExportMutations {
     dashboardId: string,
     exportConfig: DashboardExport,
     options: MutationOptions = {}
-  ): Promise<MutationResult<{ url: string; expires: number }> {
+  ): Promise<MutationResult<{ url: string; expires: number }>> {
     const startTime = Date.now();
 
     try {
@@ -506,7 +506,7 @@ export class ExportMutations {
     widgetId: string,
     format: 'csv' | 'excel' | 'json',
     options: MutationOptions = {}
-  ): Promise<MutationResult<{ url: string; expires: number }> {
+  ): Promise<MutationResult<{ url: string; expires: number }>> {
     const startTime = Date.now();
 
     try {

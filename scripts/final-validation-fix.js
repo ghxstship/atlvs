@@ -200,10 +200,7 @@ if (require.main === module) {
   }
 
   const validator = new FinalValidator(rootPath);
-  const success = validator.run();
+  const success = await validator.run();
   
   console.log('\n🎉 Final validation completed!');
   console.log('Ready for build validation...');
-}
-
-module.exports = FinalValidator;

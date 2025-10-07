@@ -401,7 +401,7 @@ class AdvancedAlertingService {
     return typeof value === 'number' ? value : null;
   }
 
-  private async getCurrentPerformanceMetrics(): Promise<Record<string, number>>> {
+  private async getCurrentPerformanceMetrics(): Promise<Record<string, number>> {
     // This would integrate with actual monitoring systems
     // Mock data for demonstration
     return {
@@ -528,7 +528,7 @@ class AdvancedAlertingService {
     };
   }
 
-  async getAlertAnalytics(): Promise<any> => {
+  async getAlertAnalytics(): Promise<any> {
     const history = this.getAlertHistory(168); // Last 7 days
 
     return {

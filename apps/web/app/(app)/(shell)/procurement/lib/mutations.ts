@@ -121,7 +121,7 @@ export class ProcurementMutationsService {
     total_amount: number;
     currency?: string;
     delivery_date?: Date;
-  }): Promise<MutationResult<>> {
+  }): Promise<MutationResult<unknown>> {
     return this.withTransaction(async (context) => {
       // Validate vendor exists and belongs to organization
       const { data: vendor, error: vendorError } = await context.supabase
@@ -179,7 +179,7 @@ export class ProcurementMutationsService {
       delivery_date: Date;
       status: string;
     }>
-  ): Promise<MutationResult<>> {
+  ): Promise<MutationResult<unknown>> {
     return this.withTransaction(async (context) => {
       // Get current order for audit trail
       const { data: currentOrder, error: fetchError } = await context.supabase
@@ -285,7 +285,7 @@ export class ProcurementMutationsService {
     contact_phone?: string;
     address?: string;
     status?: string;
-  }): Promise<MutationResult<>> {
+  }): Promise<MutationResult<unknown>> {
     return this.withTransaction(async (context) => {
       // Check for duplicate email
       const { data: existingVendor } = await context.supabase

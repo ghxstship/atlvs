@@ -14,7 +14,7 @@ let testDashboardId: string;
 let authToken: string;
 
 describe('Dashboard API Integration Tests', () => {
-  let supabase: any;
+  let supabase: ReturnType<typeof createClient>;
 
   beforeAll(async () => {
     // Initialize Supabase client for test data setup

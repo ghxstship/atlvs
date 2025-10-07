@@ -1,53 +1,46 @@
-import { redirect } from 'next/navigation';
-import { createServerClient } from '@ghxstship/auth';
-import { cookies } from 'next/headers';
-import { Card } from '@ghxstship/ui';
-import CatalogClient from './CatalogClient';
-import CreateCatalogItemClient from './CreateCatalogItemClient';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DashboardLayout } from '@ghxstship/ui/templates';
+import { DashboardWidget } from '@ghxstship/ui/organisms';
 
-
-export const metadata = {
-  title: 'Catalog - Procurement',
-};
-
-export default async function ProcurementCatalogPage() {
-  const cookieStore = await cookies();
-  const sb = createServerClient(cookieStore);
-
-  // Check authentication
-  const { data: { user } } = await sb.auth.getUser();
-  if (!user) {
-    redirect('/auth/login');
-  }
-
-  // Get user's organization membership
-  const { data: membership } = await sb
-    .from('organization_members')
-    .select('organization_id, role')
-    .eq('user_id', user.id)
-    .single();
-
-  if (!membership?.organization_id) {
-    redirect('/onboarding');
-  }
+export default function DashboardPage() {
+  // TODO: Implement dashboard content using DashboardLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <div className="stack-lg">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-heading-3 text-heading-3">Catalog</h1>
-          <p className="color-foreground/70">
-            Browse and manage your complete procurement catalog
-          </p>
+    <DashboardLayout
+      title="Dashboard"
+      subtitle="Welcome to your workspace"
+      showRefresh={true}
+      showExport={true}
+      showSettings={true}
+      sidebar={
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-medium mb-2">Quick Actions</h3>
+            <div className="space-y-2">
+              {/* TODO: Add quick actions */}
+            </div>
+          </div>
         </div>
-        <CreateCatalogItemClient orgId={membership.organization_id} />
+      }
+      rightPanel={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-4">Recent Activity</h3>
+            {/* TODO: Add activity feed */}
+          </div>
+        </div>
+      }
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* TODO: Add dashboard widgets */}
+        <div className="bg-muted/50 rounded-lg p-6">
+          <h3 className="font-medium mb-2">Widget Placeholder</h3>
+          <p className="text-muted-foreground">Dashboard content coming soon</p>
+        </div>
       </div>
-
-      <Card>
-        <CatalogClient orgId={membership.organization_id} />
-      </Card>
-    </div>
+    </DashboardLayout>
   );
 }

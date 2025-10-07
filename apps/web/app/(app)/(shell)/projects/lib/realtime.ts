@@ -77,7 +77,7 @@ export class ProjectRealtime {
           table: 'projects',
           filter: `organization_id=eq.${options.orgId}`,
         },
-        (payload: RealtimePostgresChangesPayload<any> => {
+        (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
             type: payload.eventType as ChangeType,
             table: 'projects',
@@ -133,7 +133,7 @@ export class ProjectRealtime {
           table,
           filter: `project_id=eq.${projectId}`,
         },
-        (payload: RealtimePostgresChangesPayload<any> => {
+        (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
             type: payload.eventType as ChangeType,
             table,
@@ -196,7 +196,7 @@ export class TaskRealtime {
           table: 'project_tasks',
           filter,
         },
-        (payload: RealtimePostgresChangesPayload<any> => {
+        (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
             type: payload.eventType as ChangeType,
             table: 'project_tasks',
@@ -257,7 +257,7 @@ export class FileRealtime {
           table: 'project_files',
           filter,
         },
-        (payload: RealtimePostgresChangesPayload<any> => {
+        (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
             type: payload.eventType as ChangeType,
             table: 'project_files',
@@ -318,7 +318,7 @@ export class RiskRealtime {
           table: 'project_risks',
           filter,
         },
-        (payload: RealtimePostgresChangesPayload<any> => {
+        (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
             type: payload.eventType as ChangeType,
             table: 'project_risks',
@@ -379,7 +379,7 @@ export class InspectionRealtime {
           table: 'project_inspections',
           filter,
         },
-        (payload: RealtimePostgresChangesPayload<any> => {
+        (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
             type: payload.eventType as ChangeType,
             table: 'project_inspections',
@@ -440,7 +440,7 @@ export class ActivationRealtime {
           table: 'project_activations',
           filter,
         },
-        (payload: RealtimePostgresChangesPayload<any> => {
+        (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
             type: payload.eventType as ChangeType,
             table: 'project_activations',
@@ -496,7 +496,7 @@ export class LocationRealtime {
           table: 'project_locations',
           filter: `organization_id=eq.${options.orgId}`,
         },
-        (payload: RealtimePostgresChangesPayload<any> => {
+        (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
             type: payload.eventType as ChangeType,
             table: 'project_locations',
@@ -557,7 +557,7 @@ export class MilestoneRealtime {
           table: 'project_milestones',
           filter,
         },
-        (payload: RealtimePostgresChangesPayload<any> => {
+        (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
             type: payload.eventType as ChangeType,
             table: 'project_milestones',

@@ -1,62 +1,46 @@
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
-import FeatureGate from '../../../../_components/FeatureGate';
-import { cookies } from 'next/headers';
-import { createServerClient } from '@ghxstship/auth';
-import { getTranslations } from 'next-intl/server';
-import OverviewClient from './OverviewClient';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DashboardLayout } from '@ghxstship/ui/templates';
+import { DashboardWidget } from '@ghxstship/ui/organisms';
 
+export default function DashboardPage() {
+  // TODO: Implement dashboard content using DashboardLayout
+  // This is a placeholder - actual implementation needed
 
-export const metadata = { title: 'Marketplace Overview' };
-
-export default async function MarketplaceOverviewPage() {
- const t = await getTranslations('marketplace');
- const cookieStore = await cookies();
- const supabase = createServerClient(cookieStore);
-
- const { data: { user } } = await supabase.auth.getUser();
- let orgId: string | null = null;
- let userRole: 'vendor' | 'client' | 'both' = 'client';
- 
- if (user) {
- const { data: membership } = await supabase
- .from('memberships')
- .select('organization_id')
- .eq('user_id', user.id)
- .eq('status', 'active')
- .order('created_at', { ascending: true })
- .maybeSingle();
- orgId = membership?.organization_id ?? null;
- 
- // Check if user has vendor profile
- const { data: vendorProfile } = await supabase
- .from('opendeck_vendor_profiles')
- .select('id')
- .eq('user_id', user.id)
- .maybeSingle();
- 
- if (vendorProfile) {
- userRole = 'both';
- }
- }
-
- return (
- <FeatureGate feature="marketplace">
- <div className="stack-md brand-marketplace" data-brand="marketplace">
- {orgId && user ? (
- <OverviewClient 
- orgId={orgId} 
- userId={user.id}
- userRole={userRole}
- />
- ) : (
- <div className="brand-marketplace text-center py-xsxl">
- <h2 className="text-heading-3 mb-md">{t('title')}</h2>
- <p className="color-muted">{t('unauthorized')}</p>
- </div>
- )}
- </div>
- </FeatureGate>
- );
+  return (
+    <DashboardLayout
+      title="Dashboard"
+      subtitle="Welcome to your workspace"
+      showRefresh={true}
+      showExport={true}
+      showSettings={true}
+      sidebar={
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-medium mb-2">Quick Actions</h3>
+            <div className="space-y-2">
+              {/* TODO: Add quick actions */}
+            </div>
+          </div>
+        </div>
+      }
+      rightPanel={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-4">Recent Activity</h3>
+            {/* TODO: Add activity feed */}
+          </div>
+        </div>
+      }
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* TODO: Add dashboard widgets */}
+        <div className="bg-muted/50 rounded-lg p-6">
+          <h3 className="font-medium mb-2">Widget Placeholder</h3>
+          <p className="text-muted-foreground">Dashboard content coming soon</p>
+        </div>
+      </div>
+    </DashboardLayout>
+  );
 }

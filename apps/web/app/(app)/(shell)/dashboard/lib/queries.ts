@@ -4,8 +4,6 @@
  * Provides optimized queries with caching, pagination, and performance monitoring
  */
 
-import { dashboardApi } from './api';
-import { z } from 'zod';
 import type {
   Dashboard,
   DashboardWidget,
@@ -13,6 +11,8 @@ import type {
   WidgetData,
   DashboardListItem
 } from '../types';
+
+import { dashboardApi } from './api';
 
 // Query Types
 export interface QueryOptions {
@@ -71,7 +71,7 @@ export class DashboardQueries {
         cacheTtl: options.cacheTtl
       });
 
-      const queryTime = Date.now() - startTime;
+      const _queryTime = Date.now() - startTime;
 
       if (!response.data) return null;
 
@@ -223,7 +223,7 @@ export class AnalyticsQueries {
     modules: string[],
     dateRange?: { start: string; end: string },
     options: QueryOptions = {}
-  ): Promise<Record<string, unknown>>> {
+  ): Promise<Record<string, unknown>> {
     try {
       const params: Record<string, string> = {
         modules: modules.join(',')
@@ -234,7 +234,7 @@ export class AnalyticsQueries {
         params.end_date = dateRange.end;
       }
 
-      const response = await dashboardApi.get<Record<string, unknown>('/analytics/data', params, {
+      const response = await dashboardApi.get<Record<string, unknown>>('/analytics/data', params, {
         cache: options.cache !== false,
         cacheTtl: options.cacheTtl || 300000 // 5 minutes
       });
@@ -247,13 +247,12 @@ export class AnalyticsQueries {
   }
 
   // Get module-specific metrics
-  static async getModuleMetrics(module: string, options: QueryOptions = {}): Promise<unknown[]> {
+  static async getModuleMetrics(modules: string[], options: QueryOptions = {}): Promise<DashboardMetrics[]> {
     try {
-      const response = await dashboardApi.get<unknown[]>(`/analytics/modules/${module}/metrics`, undefined, {
+      const response = await dashboardApi.get<DashboardMetrics[]>(`/analytics/modules/${modules.join(',')}/metrics`, undefined, {
         cache: options.cache !== false,
         cacheTtl: options.cacheTtl
       });
-
       return response.data || [];
     } catch (error) {
       console.error('Error fetching module metrics:', error);
@@ -262,9 +261,9 @@ export class AnalyticsQueries {
   }
 
   // Get real-time data for widgets
-  static async getRealtimeData(widgetIds: string[]): Promise<Record<string, WidgetData>>> {
+  static async getRealtimeData(widgetIds: string[]): Promise<Record<string, WidgetData>> {
     try {
-      const response = await dashboardApi.post<Record<string, WidgetData>('/analytics/realtime', {
+      const response = await dashboardApi.post<Record<string, WidgetData>>('/analytics/realtime', {
         widget_ids: widgetIds
       }, {
         cache: false // Real-time data should never be cached

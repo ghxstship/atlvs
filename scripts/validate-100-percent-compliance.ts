@@ -5,8 +5,6 @@
  */
 
 import * as fs from 'fs';
-import * as path from 'path';
-import { execSync } from 'child_process';
 
 interface ValidationResult {
   category: string;
@@ -191,7 +189,6 @@ validateCheck(
 console.log('\n' + '='.repeat(60));
 console.log('📊 VALIDATION RESULTS');
 console.log('='.repeat(60) + '\n');
-
 const categories = [...new Set(results.map(r => r.category))];
 
 for (const category of categories) {

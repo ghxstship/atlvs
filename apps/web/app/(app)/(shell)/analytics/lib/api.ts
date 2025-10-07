@@ -150,7 +150,7 @@ export class DashboardAPI {
       isTemplate?: boolean;
       isPublic?: boolean;
     } = {}
-  ): Promise<PaginatedResponse<Dashboard>>> {
+  ): Promise<PaginatedResponse<Dashboard>> {
     const track = performanceTracker.start('getDashboards');
 
     try {
@@ -385,7 +385,7 @@ export class ReportAPI {
       search?: string;
       isActive?: boolean;
     } = {}
-  ): Promise<PaginatedResponse<Report>>> {
+  ): Promise<PaginatedResponse<Report>> {
     const track = performanceTracker.start('getReports');
 
     try {
@@ -616,7 +616,7 @@ export class ExportAPI {
       search?: string;
       status?: string;
     } = {}
-  ): Promise<PaginatedResponse<ExportJob>>> {
+  ): Promise<PaginatedResponse<ExportJob>> {
     const track = performanceTracker.start('getExports');
 
     try {

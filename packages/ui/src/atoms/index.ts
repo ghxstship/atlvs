@@ -15,3 +15,5 @@ export * from './Heading';
 export * from './Switch';
 export * from './Progress';
 export * from './Loader';
+export * from './Select';
+export * from './Skeleton';

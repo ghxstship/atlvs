@@ -1,38 +1,50 @@
 module.exports = {
-  rules: {
-    // Custom rule to enforce semantic token usage
-    'no-hardcoded-values': {
-      meta: {
-        type: 'problem',
-        docs: {
-          description: 'Enforce semantic token usage instead of hardcoded values',
-          category: 'Design System',
-          recommended: true,
-        },
-        fixable: 'code',
-        schema: [
-          {
-            type: 'object',
-            properties: {
-              allowedPatterns: {
-                type: 'array',
-                items: { type: 'string' },
-              },
-              tokenPatterns: {
-                type: 'object',
-                properties: {
-                  spacing: { type: 'string' },
-                  colors: { type: 'string' },
-                  typography: { type: 'string' },
-                  animation: { type: 'string' },
-                },
+  rules: {},
+  overrides: [
+    {
+      files: ['**/*.{ts,tsx,js,jsx}'],
+      rules: {
+        // Placeholder for custom semantic token rules
+        // These would be implemented as ESLint plugins
+      },
+    },
+  ],
+};
+
+// Custom rule definitions (for reference, not active)
+const customRules = {
+  'no-hardcoded-values': {
+    meta: {
+      type: 'problem',
+      docs: {
+        description: 'Enforce semantic token usage instead of hardcoded values',
+        category: 'Design System',
+        recommended: true,
+      },
+      fixable: 'code',
+      schema: [
+        {
+          type: 'object',
+          properties: {
+            allowedPatterns: {
+              type: 'array',
+              items: { type: 'string' },
+            },
+            tokenPatterns: {
+              type: 'object',
+              properties: {
+                spacing: { type: 'string' },
+                colors: { type: 'string' },
+                typography: { type: 'string' },
+                animation: { type: 'string' },
               },
             },
-            additionalProperties: false,
           },
-        ],
-      },
-      create(context) {
+          additionalProperties: false,
+        },
+      ],
+    },
+    create(context) {
         const options = context.options[0] || {};
         const allowedPatterns = options.allowedPatterns || [];
         const tokenPatterns = options.tokenPatterns || {

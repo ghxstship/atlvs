@@ -58,7 +58,7 @@ export const getDynamicSizeStyle = (
   const style: Record<string, string> = {};
   if (width !== undefined) style['--dynamic-width'] = `${width}${unit}`;
   if (height !== undefined) style['--dynamic-height'] = `${height}${unit}`;
-  return style as CSSProperties);
+  return style as CSSProperties;
 };
 
 /**

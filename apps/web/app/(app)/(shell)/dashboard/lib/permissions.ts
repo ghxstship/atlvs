@@ -145,7 +145,7 @@ export class PermissionService {
   async checkPermissions(
     permissions: Permission[],
     context: PermissionContext
-  ): Promise<Record<Permission, boolean>>> {
+  ): Promise<Record<Permission, boolean>> {
     try {
       const userPermissions = await this.getUserPermissions(context);
       return permissions.reduce((acc, perm) => {

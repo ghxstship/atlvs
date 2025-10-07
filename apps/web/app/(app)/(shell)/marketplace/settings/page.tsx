@@ -1,44 +1,71 @@
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
-import FeatureGate from '../../../../_components/FeatureGate';
-import { cookies } from 'next/headers';
-import { createServerClient } from '@ghxstship/auth';
-import SettingsClient from './SettingsClient';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React, { useState } from 'react';
+import { SettingsLayout } from '@ghxstship/ui/templates';
 
+export default function SettingsPage() {
+  const [activeSection, setActiveSection] = useState('general');
 
-export const metadata = { title: 'Marketplace Settings' };
+  const sections = [
+    { id: 'general', label: 'General', icon: 'Settings' },
+    { id: 'account', label: 'Account', icon: 'User' },
+    { id: 'billing', label: 'Billing', icon: 'CreditCard' },
+    { id: 'notifications', label: 'Notifications', icon: 'Bell' },
+    { id: 'security', label: 'Security', icon: 'Shield' },
+  ];
 
-export default async function SettingsPage() {
- const cookieStore = await cookies();
- const supabase = createServerClient(cookieStore);
+  return (
+    <SettingsLayout
+      title="Settings"
+      subtitle="Manage your account and application preferences"
+      sections={sections}
+      activeSection={activeSection}
+      onSectionChange={setActiveSection}
+      save={{
+        hasChanges: false,
+        onSave: async () => {
+          console.log('Saving settings...');
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          console.log('Settings saved!');
+        },
+        onDiscard: () => console.log('Discard changes'),
+        saving: false,
+      }}
+    >
+      {activeSection === 'general' && (
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-lg font-medium mb-4">General Settings</h3>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Display Name</label>
+                <input
+                  type="text"
+                  className="w-full px-3 py-2 border border-input rounded-md"
+                  placeholder="Enter your display name"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Timezone</label>
+                <select className="w-full px-3 py-2 border border-input rounded-md">
+                  <option>UTC-8 (Pacific)</option>
+                  <option>UTC-5 (Eastern)</option>
+                  <option>UTC+0 (GMT)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
- const { data: { user } } = await supabase.auth.getUser();
- let orgId: string | null = null;
- 
- if (user) {
- const { data: membership } = await supabase
- .from('memberships')
- .select('organization_id')
- .eq('user_id', user.id)
- .eq('status', 'active')
- .order('created_at', { ascending: true })
- .maybeSingle();
- orgId = membership?.organization_id ?? null;
- }
-
- return (
- <FeatureGate feature="marketplace">
- <div className="stack-md brand-marketplace" data-brand="marketplace">
- {orgId && user ? (
- <SettingsClient orgId={orgId} userId={user.id} />
- ) : (
- <div className="brand-marketplace text-center py-xsxl">
- <h2 className="text-heading-3 mb-md">Marketplace Settings</h2>
- <p className="color-muted">Please sign in to access marketplace settings</p>
- </div>
- )}
- </div>
- </FeatureGate>
- );
+      {/* TODO: Add other settings sections */}
+      {activeSection !== 'general' && (
+        <div className="flex items-center justify-center h-64">
+          <p className="text-muted-foreground">
+            {activeSection.charAt(0).toUpperCase() + activeSection.slice(1)} settings coming soon
+          </p>
+        </div>
+      )}
+    </SettingsLayout>
+  );
 }

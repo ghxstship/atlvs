@@ -294,7 +294,7 @@ export class ImportService {
     options: ImportOptions,
     errors: ImportError[],
     warnings: ImportWarning[],
-    resolve: (result: unknown) => void
+    resolve: (result: unknown) => void,
     reject: (error: unknown) => void
   ): void {
     Papa.parse(file, {
@@ -324,7 +324,7 @@ export class ImportService {
     options: ImportOptions,
     errors: ImportError[],
     warnings: ImportWarning[],
-    resolve: (result: unknown) => void
+    resolve: (result: unknown) => void,
     reject: (error: unknown) => void
   ): Promise<void> {
     try {
@@ -359,7 +359,7 @@ export class ImportService {
     options: ImportOptions,
     errors: ImportError[],
     warnings: ImportWarning[],
-    resolve: (result: unknown) => void
+    resolve: (result: unknown) => void,
     reject: (error: unknown) => void
   ): Promise<void> {
     try {

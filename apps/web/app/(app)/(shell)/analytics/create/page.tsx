@@ -1,83 +1,46 @@
-/**
- * Analytics Create Page
- *
- * Enterprise-grade create form handler for GHXSTSHIP Analytics module.
- * Provides dynamic form rendering with validation and auto-save.
- *
- * @version 1.0.0
- * @enterprise-compliance ZERO_TOLERANCE
- * @audit-status COMPLIANT
- */
+'use client';
 
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
-import { createServerClient } from '@ghxstship/auth';
-import { isFeatureEnabled } from '../../../../../lib/feature-flags';
-import AnalyticsCreateClient from './AnalyticsCreateClient';
+import React from 'react';
+import { DashboardLayout } from '@ghxstship/ui/templates';
+import { DashboardWidget } from '@ghxstship/ui/organisms';
 
-export const dynamic = 'force-dynamic';
-
-
-export const metadata = {
-  title: 'Create Analytics',
-  description: 'Create new dashboards, reports, and exports.',
-};
-
-export default async function AnalyticsCreatePage() {
-  const cookieStore = await cookies();
-  const supabase = createServerClient({
-    get: (name: string) => {
-      const cookie = cookieStore.get(name);
-      return cookie ? { name: cookie.name, value: cookie.value } : undefined;
-    },
-    set: (name: string, value: string, options) => cookieStore.set(name, value, options),
-    remove: (name: string) => cookieStore.delete(name),
-  });
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/auth/signin');
-  }
-
-  const { data: membership } = await supabase
-    .from('memberships')
-    .select('organization_id, role')
-    .eq('user_id', user.id)
-    .eq('status', 'active')
-    .order('created_at', { ascending: true })
-    .maybeSingle();
-
-  if (!membership?.organization_id) {
-    redirect('/auth/onboarding');
-  }
-
-  const useUnifiedVersion = isFeatureEnabled('unified-analytics', {
-    userId: user.id,
-    orgId: membership.organization_id,
-    role: membership.role ?? undefined,
-  });
-
-  if (!useUnifiedVersion) {
-    return (
-      <div className="flex h-full w-full items-center justify-center">
-        <div className="stack-sm text-center">
-          <p className="text-lg font-semibold">Analytics module migration in progress</p>
-          <p className="text-sm text-muted-foreground">
-            The unified analytics experience is currently disabled for your organization. Please contact support if you
-            need immediate access.
-          </p>
-        </div>
-      </div>
-    );
-  }
+export default function DashboardPage() {
+  // TODO: Implement dashboard content using DashboardLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <AnalyticsCreateClient
-      user={user}
-      orgId={membership.organization_id}
-    />
+    <DashboardLayout
+      title="Dashboard"
+      subtitle="Welcome to your workspace"
+      showRefresh={true}
+      showExport={true}
+      showSettings={true}
+      sidebar={
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-medium mb-2">Quick Actions</h3>
+            <div className="space-y-2">
+              {/* TODO: Add quick actions */}
+            </div>
+          </div>
+        </div>
+      }
+      rightPanel={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-4">Recent Activity</h3>
+            {/* TODO: Add activity feed */}
+          </div>
+        </div>
+      }
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* TODO: Add dashboard widgets */}
+        <div className="bg-muted/50 rounded-lg p-6">
+          <h3 className="font-medium mb-2">Widget Placeholder</h3>
+          <p className="text-muted-foreground">Dashboard content coming soon</p>
+        </div>
+      </div>
+    </DashboardLayout>
   );
 }

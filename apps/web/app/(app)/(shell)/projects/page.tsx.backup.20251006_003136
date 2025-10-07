@@ -1,0 +1,55 @@
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
+import { getTranslations } from 'next-intl/server'
+
+import { createServerClient } from '@ghxstship/auth'
+import { Card, CardHeader, CardTitle, CardContent } from '@ghxstship/ui'
+import { Stack } from '@ghxstship/ui/components/layouts'
+
+import ProjectsClient from './ProjectsClient'
+
+export const dynamic = 'force-dynamic'
+
+export const metadata = { title: 'Projects' }
+
+export default async function ProjectsPage() {
+  const t = await getTranslations('projects')
+  const cookieStore = await cookies()
+  const supabase = createServerClient(cookieStore)
+
+  const {
+    data: { user },
+    error: authError,
+  } = await supabase.auth.getUser()
+
+  if (authError || !user) {
+    redirect('/auth/login')
+  }
+
+  const { data: membership } = await supabase
+    .from('memberships')
+    .select('organization_id')
+    .eq('user_id', user.id)
+    .eq('status', 'active')
+    .order('created_at', { ascending: true })
+    .maybeSingle()
+
+  const orgId = membership?.organization_id
+
+  if (!orgId) {
+    redirect('/onboarding')
+  }
+
+  return (
+    <Stack spacing="lg">
+      <Card>
+        <CardHeader className="gap-sm">
+          <CardTitle className="text-heading-3 font-anton uppercase">{t('title')}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ProjectsClient orgId={orgId} userId={user.id} userEmail={user.email || ''} />
+        </CardContent>
+      </Card>
+    </Stack>
+  )
+}

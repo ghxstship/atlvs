@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const semanticTokenRules = require('../../.eslintrc.semantic-tokens.js');
 
 module.exports = {

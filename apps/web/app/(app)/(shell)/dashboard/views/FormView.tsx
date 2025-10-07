@@ -120,7 +120,7 @@ export interface FormViewProps {
   onSubmit: (data: Record<string, unknown>) => Promise<void>;
   onCancel?: () => void;
   onSave?: (data: Record<string, unknown>) => Promise<void>;
-  onValidate?: (data: Record<string, unknown>) => Promise<Record<string, string>;
+  onValidate?: (data: Record<string, unknown>) => Promise<Record<string, string>>;
 
   // Advanced Features
   readOnly?: boolean;

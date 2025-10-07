@@ -64,7 +64,7 @@ interface RisksClientProps {
  users?: Array<{ id: string; email: string; full_name?: string }>;
 }
 
-const VIEW_TYPES> = [
+const VIEW_TYPES = [
  { id: "grid", label: "Grid", icon: Grid3x3 },
  { id: "matrix", label: "Matrix", icon: LayoutGrid },
  { id: "heatmap", label: "Heatmap", icon: BarChart3 },
@@ -245,11 +245,11 @@ export default function RisksClient({
  ? aStr.localeCompare(bStr)
  : bStr.localeCompare(aStr);
  });
- }, [filteredAndTypedRisks, sortField, sortDirection]);
+}, [filteredAndTypedRisks, sortField, sortDirection]);
 
- // Group risks for matrix view
- const riskMatrix = useMemo(() => {
- const matrix: Record<string, Record<string, Risk[]> = {};
+// Group risks for matrix view
+const riskMatrix = useMemo(() => {
+ const matrix: Record<string, Record<string, Risk[]>> = {};
  const probabilities = ["very_high", "high", "medium", "low", "very_low"];
  const impacts = ["very_low", "low", "medium", "high", "very_high"];
 

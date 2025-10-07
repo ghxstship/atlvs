@@ -1,462 +1,226 @@
-'use client';
+'use client'
 
-import { LayoutDashboard, TrendingUp, Users, Briefcase, DollarSign, Star, Activity, Plus, Search, Filter, Download, Eye, MessageSquare, Calendar, ArrowUpRight, ArrowDownRight } from "lucide-react";
-import { useState, useEffect } from 'react';
-import { 
- Card, 
- Badge, 
- Button,
- DataGrid,
- ViewSwitcher,
- DataActions,
- DataViewProvider,
- StateManagerProvider,
- Drawer,
- type DataRecord
-} from '@ghxstship/ui';
-import { createBrowserClient } from '@ghxstship/auth';
-import type { MarketplaceStats } from '../types';
+import { useMemo } from 'react'
+import { useRouter } from 'next/navigation'
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  Button,
+  Badge,
+} from '@ghxstship/ui'
+import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
+import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
+import {
+  LayoutDashboard,
+  Users,
+  Briefcase,
+  MessageSquare,
+  DollarSign,
+  Plus,
+  ArrowUpRight,
+  ArrowDownRight,
+  Activity,
+} from 'lucide-react'
 
-interface OverviewClientProps {
- orgId: string;
- userId: string;
- userRole: 'vendor' | 'client' | 'both';
+import { useMarketplaceOverview } from '../hooks/useMarketplaceOverview'
+
+const quickActions = [
+  { id: 'create-listing', icon: Plus, label: 'Create Listing', href: '/marketplace/listings/create' },
+  { id: 'post-project', icon: Briefcase, label: 'Post Project', href: '/marketplace/projects/create' },
+  { id: 'browse-vendors', icon: Users, label: 'Browse Vendors', href: '/marketplace/vendors' },
+  { id: 'view-reviews', icon: MessageSquare, label: 'View Reviews', href: '/marketplace/reviews' },
+]
+
+const metricIconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
+  totalListings: Briefcase,
+  activeVendors: Users,
+  activeProjects: LayoutDashboard,
+  responses: MessageSquare,
 }
 
-interface DashboardMetric {
- id: string;
- title: string;
- value: string | number;
- change: string;
- trend: 'up' | 'down' | 'neutral';
- icon: React.ComponentType<{ className?: string }>;
- color: 'primary' | 'success' | 'warning' | 'destructive';
+const trendToneMap: Record<'up' | 'down' | 'neutral', { badge: 'success' | 'destructive' | 'secondary'; iconClass: string }> = {
+  up: { badge: 'success', iconClass: 'text-success' },
+  down: { badge: 'destructive', iconClass: 'text-destructive' },
+  neutral: { badge: 'secondary', iconClass: 'text-muted-foreground' },
 }
 
-interface RecentActivity extends DataRecord {
- id: string;
- type: 'listing_created' | 'proposal_submitted' | 'contract_signed' | 'payment_received';
- title: string;
- description: string;
- timestamp: string;
- user: string;
- status: 'active' | 'pending' | 'completed';
+const activityIconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
+  listing_created: Briefcase,
+  proposal_submitted: MessageSquare,
+  contract_signed: LayoutDashboard,
+  payment_received: DollarSign,
 }
 
-const OVERVIEW_FIELD_CONFIGS = [
- {
- key: 'type',
- label: 'Type',
- type: 'select' as const,
- options: [
- { label: 'Listing Created', value: 'listing_created' },
- { label: 'Proposal Submitted', value: 'proposal_submitted' },
- { label: 'Contract Signed', value: 'contract_signed' },
- { label: 'Payment Received', value: 'payment_received' }
- ],
- sortable: true,
- filterable: true,
- visible: true,
- width: 140
- },
- {
- key: 'title',
- label: 'Activity',
- type: 'text' as const,
- sortable: true,
- filterable: true,
- searchable: true,
- visible: true,
- width: 200
- },
- {
- key: 'description',
- label: 'Description',
- type: 'text' as const,
- sortable: false,
- filterable: false,
- searchable: true,
- visible: true,
- width: 300
- },
- {
- key: 'user',
- label: 'User',
- type: 'text' as const,
- sortable: true,
- filterable: true,
- searchable: true,
- visible: true,
- width: 150
- },
- {
- key: 'status',
- label: 'Status',
- type: 'select' as const,
- options: [
- { label: 'Active', value: 'active' },
- { label: 'Pending', value: 'pending' },
- { label: 'Completed', value: 'completed' }
- ],
- sortable: true,
- filterable: true,
- visible: true,
- width: 120
- },
- {
- key: 'timestamp',
- label: 'Time',
- type: 'datetime' as const,
- sortable: true,
- filterable: true,
- visible: true,
- width: 160
- }
-];
+const activityStatusTone: Record<string, { variant: 'outline' | 'secondary'; textClass: string }> = {
+  active: { variant: 'outline', textClass: 'text-success' },
+  pending: { variant: 'outline', textClass: 'text-warning' },
+  completed: { variant: 'outline', textClass: 'text-muted-foreground' },
+}
 
-export default function OverviewClient({ orgId, userId, userRole }: OverviewClientProps) {
- const [stats, setStats] = useState<MarketplaceStats | null>(null);
- const [recentActivity, setRecentActivity] = useState<RecentActivity[]>([]);
- const [loading, setLoading] = useState(true);
- const [drawerOpen, setDrawerOpen] = useState(false);
- const [selectedView, setSelectedView] = useState<'grid' | 'list' | 'kanban' | 'calendar'>('grid');
+export default function OverviewClient({ orgId }: { orgId: string }) {
+  const router = useRouter()
+  const { metrics, activity, loading, refreshing, error, refresh } = useMarketplaceOverview({ orgId })
 
- const supabase = createBrowserClient();
+  const metricCards = useMemo(
+    () =>
+      metrics.map((metric) => {
+        const Icon = metricIconMap[metric.id] ?? Activity
+        const TrendIcon = metric.trend === 'up' ? ArrowUpRight : metric.trend === 'down' ? ArrowDownRight : Activity
+        const tone = trendToneMap[metric.trend] ?? trendToneMap.neutral
+        return { ...metric, Icon, TrendIcon, tone }
+      }),
+    [metrics],
+  )
 
- useEffect(() => {
- loadDashboardData();
- }, [orgId]);
+  if (loading) {
+    return (
+      <Stack spacing="lg">
+        <HStack justify="between" align="center">
+          <Skeleton className="h-8 w-48" />
+          <Skeleton className="h-10 w-28" />
+        </HStack>
+        <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Card key={index}>
+              <CardContent className="space-y-sm">
+                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-8 w-20" />
+                <Skeleton className="h-3 w-16" />
+              </CardContent>
+            </Card>
+          ))}
+        </Grid>
+      </Stack>
+    )
+  }
 
- const loadDashboardData = async () => {
- try {
- setLoading(true);
- 
- // Load marketplace statistics
- const { data: listings } = await supabase
- .from('marketplace_listings')
- .select('*')
- .eq('organization_id', orgId);
+  if (error) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-destructive">{error}</CardTitle>
+          <CardDescription>We couldn’t load marketplace insights. Try refreshing.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Button onClick={refresh}>Retry</Button>
+        </CardContent>
+      </Card>
+    )
+  }
 
- const { data: projects } = await supabase
- .from('opendeck_projects')
- .select('*')
- .eq('organization_id', orgId);
+  return (
+    <Stack spacing="lg">
+      <HStack justify="between" align="center">
+        <Stack spacing="xs">
+          <h1 className="text-heading-3 font-anton uppercase text-foreground">Marketplace Overview</h1>
+          <p className="text-body-sm text-muted-foreground">
+            Monitor listings, vendor engagement, and marketplace performance in one view.
+          </p>
+        </Stack>
+        <Button variant={refreshing ? 'outline' : 'default'} disabled={refreshing} onClick={refresh}>
+          {refreshing ? 'Refreshing…' : 'Refresh'}
+        </Button>
+      </HStack>
 
- const { data: vendors } = await supabase
- .from('opendeck_vendor_profiles')
- .select('*')
- .eq('organization_id', orgId);
+      <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+        {metricCards.map((metric) => (
+          <Card key={metric.id}>
+            <CardContent>
+              <HStack justify="between" align="center">
+                <metric.Icon className={`h-icon-sm w-icon-sm ${metric.tone.iconClass}`} />
+                <Badge variant={metric.tone.badge} className="flex items-center gap-xs text-xs px-sm">
+                  <metric.TrendIcon className="h-3 w-3" />
+                  {metric.change > 0 ? `+${metric.change}%` : `${metric.change}%`}
+                </Badge>
+              </HStack>
+              <Stack spacing="xs" className="mt-md">
+                <span className="text-heading-3 font-semibold text-foreground">{metric.value}</span>
+                <span className="text-sm text-muted-foreground">{metric.label}</span>
+              </Stack>
+            </CardContent>
+          </Card>
+        ))}
+      </Grid>
 
- const { data: proposals } = await supabase
- .from('opendeck_proposals')
- .select('*');
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-foreground">Quick Actions</CardTitle>
+          <CardDescription>Jump into common marketplace workflows.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+            {quickActions.map((action) => (
+              <Button
+                key={action.id}
+                variant="outline"
+                className="justify-start"
+                onClick={() => router.push(action.href)}
+              >
+                <HStack spacing="sm" align="center">
+                  <action.icon className="h-icon-xs w-icon-xs" />
+                  <span className="text-sm font-medium text-foreground">{action.label}</span>
+                </HStack>
+              </Button>
+            ))}
+          </Grid>
+        </CardContent>
+      </Card>
 
- // Calculate stats
- const marketplaceStats: MarketplaceStats = {
- totalListings: listings?.length || 0,
- featuredListings: listings?.filter(l => l.featured)?.length || 0,
- totalResponses: proposals?.length || 0,
- averageResponseRate: 0,
- activeOffers: listings?.filter(l => l.type === 'offer' && l.status === 'active')?.length || 0,
- activeRequests: listings?.filter(l => l.type === 'request' && l.status === 'active')?.length || 0,
- activeExchanges: listings?.filter(l => l.type === 'exchange' && l.status === 'active')?.length || 0,
- totalVendors: vendors?.length || 0,
- totalProjects: projects?.length || 0,
- lastUpdated: new Date().toISOString()
- };
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-foreground">Recent Activity</CardTitle>
+          <CardDescription>Latest movement across listings, proposals, contracts, and payments.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Stack spacing="sm">
+            {activity.length === 0 ? (
+              <Stack spacing="sm" align="center" className="py-xl text-muted-foreground">
+                <Activity className="h-icon-2xl w-icon-2xl" />
+                <span className="text-sm">No recent marketplace activity</span>
+              </Stack>
+            ) : (
+              activity.map((item) => {
+                const Icon = activityIconMap[item.type] ?? Activity
+                const tone = activityStatusTone[item.status] ?? { variant: 'outline', textClass: 'text-muted-foreground' }
 
- setStats(marketplaceStats);
-
- // Load recent activity (mock data for now)
- const mockActivity: RecentActivity[] = [
- {
- id: '1',
- type: 'listing_created',
- title: 'New Equipment Listing',
- description: 'LED Wall Panel System posted by TechCorp',
- timestamp: new Date(Date.now() - 1000 * 60 * 30).toISOString(),
- user: 'TechCorp',
- status: 'active'
- },
- {
- id: '2',
- type: 'proposal_submitted',
- title: 'Proposal Submitted',
- description: 'Sound Engineer proposal for Festival 2024',
- timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
- user: 'AudioPro',
- status: 'pending'
- },
- {
- id: '3',
- type: 'contract_signed',
- title: 'Contract Executed',
- description: 'Lighting Design contract for Concert Series',
- timestamp: new Date(Date.now() - 1000 * 60 * 60 * 6).toISOString(),
- user: 'LightMaster',
- status: 'completed'
- }
- ];
-
- setRecentActivity(mockActivity);
- } catch (error) {
- console.error('Error loading dashboard data:', error);
- } finally {
- setLoading(false);
- }
- };
-
- const getDashboardMetrics = (): DashboardMetric[] => {
- if (!stats) return [];
-
- return [
- {
- id: 'total-listings',
- title: 'Total Listings',
- value: stats.totalListings,
- change: '+12%',
- trend: 'up',
- icon: Briefcase,
- color: 'primary'
- },
- {
- id: 'active-vendors',
- title: 'Active Vendors',
- value: stats.totalVendors,
- change: '+8%',
- trend: 'up',
- icon: Users,
- color: 'success'
- },
- {
- id: 'total-projects',
- title: 'Active Projects',
- value: stats.totalProjects,
- change: '+15%',
- trend: 'up',
- icon: LayoutDashboard,
- color: 'warning'
- },
- {
- id: 'total-responses',
- title: 'Total Responses',
- value: stats.totalResponses,
- change: '-3%',
- trend: 'down',
- icon: MessageSquare,
- color: 'destructive'
- }
- ];
- };
-
- const handleExport = async (format: 'csv' | 'json' | 'excel') => {
- // Implementation for exporting overview data
- };
-
- const handleBulkAction = async (action: string, selectedIds: string[]) => {
- // Implementation for bulk actions on activity items
- };
-
- if (loading) {
- return (
- <div className="stack-lg">
- <div className="flex items-center justify-between">
- <div>
- <h1 className="text-heading-2">Marketplace Overview</h1>
- <p className="color-muted">Digital marketplace dashboard and analytics</p>
- </div>
- </div>
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
- {[...Array(4)].map((_, i) => (
- <Card key={i} className="p-md animate-pulse">
- <div className="h-icon-xs bg-muted rounded mb-sm"></div>
- <div className="h-icon-lg bg-muted rounded mb-xs"></div>
- <div className="h-3 bg-muted rounded w-1/2"></div>
- </Card>
- ))}
- </div>
- </div>
- );
- }
-
- const metrics = getDashboardMetrics();
-
- return (
- <div className="stack-lg">
- {/* Header */}
- <div className="flex items-center justify-between">
- <div>
- <h1 className="text-heading-2">Marketplace Overview</h1>
- <p className="color-muted">
- Digital marketplace for live and experiential entertainment
- </p>
- </div>
- <div className="flex items-center gap-sm">
- <Button
- variant="outline"
- size="sm"
- onClick={() => loadDashboardData()}
- >
- <Activity className="h-icon-xs w-icon-xs mr-xs" />
- Refresh
- </Button>
- </div>
- </div>
-
- {/* Metrics Cards */}
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
- {metrics.map((metric) => {
- const Icon = metric.icon;
- const TrendIcon = metric.trend === 'up' ? ArrowUpRight : 
- metric.trend === 'down' ? ArrowDownRight : Activity;
- 
- return (
- <Card key={metric.id} className="p-md">
- <div className="flex items-center justify-between mb-sm">
- <Icon className={`h-icon-sm w-icon-sm color-${metric.color}`} />
- <Badge 
- variant={metric.trend === 'up' ? 'success' : 
- metric.trend === 'down' ? 'destructive' : 'secondary'}
- size="sm"
- >
- <TrendIcon className="h-3 w-3 mr-xs" />
- {metric.change}
- </Badge>
- </div>
- <div className="stack-xs">
- <h3 className="text-heading-4 font-bold">{metric.value}</h3>
- <p className="text-body-sm color-muted">{metric.title}</p>
- </div>
- </Card>
- );
- })}
- </div>
-
- {/* Quick Actions */}
- <Card className="p-md">
- <h3 className="text-heading-4 mb-md">Quick Actions</h3>
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-sm">
- <Button variant="outline" className="justify-start">
- <Plus className="h-icon-xs w-icon-xs mr-sm" />
- Create Listing
- </Button>
- <Button variant="outline" className="justify-start">
- <Briefcase className="h-icon-xs w-icon-xs mr-sm" />
- Post Project
- </Button>
- <Button variant="outline" className="justify-start">
- <Users className="h-icon-xs w-icon-xs mr-sm" />
- Browse Vendors
- </Button>
- <Button variant="outline" className="justify-start">
- <Star className="h-icon-xs w-icon-xs mr-sm" />
- View Reviews
- </Button>
- </div>
- </Card>
-
- {/* Recent Activity */}
- <Card className="p-md">
- <div className="flex items-center justify-between mb-md">
- <h3 className="text-heading-4">Recent Activity</h3>
- <ViewSwitcher
- currentView={selectedView}
- onViewChange={setSelectedView}
- availableViews={['grid', 'list']}
- />
- </div>
-
- <StateManagerProvider>
- <DataViewProvider
- data={recentActivity}
- fields={OVERVIEW_FIELD_CONFIGS}
- onExport={handleExport}
- onBulkAction={handleBulkAction}
- >
- <div className="stack-sm">
- <DataActions
- onExport={handleExport}
- showBulkActions={true}
- searchConfig={{
- placeholder: "Search activity...",
- }}
- filterConfig={{
- fields: OVERVIEW_FIELD_CONFIGS,
- }}
- />
- 
- <DataGrid
- viewType={selectedView}
- emptyMessage="No recent activity found"
- className="min-h-content-md"
- />
- </div>
- </DataViewProvider>
- </StateManagerProvider>
- </Card>
-
- {/* Marketplace Insights */}
- {stats && (
- <div className="grid grid-cols-1 lg:grid-cols-2 gap-md">
- <Card className="p-md">
- <h3 className="text-heading-4 mb-md">Listing Distribution</h3>
- <div className="stack-sm">
- <div className="flex items-center justify-between">
- <span className="text-body-sm">Offers</span>
- <Badge variant="primary">{stats.activeOffers}</Badge>
- </div>
- <div className="flex items-center justify-between">
- <span className="text-body-sm">Requests</span>
- <Badge variant="secondary">{stats.activeRequests}</Badge>
- </div>
- <div className="flex items-center justify-between">
- <span className="text-body-sm">Exchanges</span>
- <Badge variant="outline">{stats.activeExchanges}</Badge>
- </div>
- <div className="flex items-center justify-between">
- <span className="text-body-sm">Featured</span>
- <Badge variant="success">{stats.featuredListings}</Badge>
- </div>
- </div>
- </Card>
-
- <Card className="p-md">
- <h3 className="text-heading-4 mb-md">Performance Metrics</h3>
- <div className="stack-sm">
- <div className="flex items-center justify-between">
- <span className="text-body-sm">Response Rate</span>
- <span className="font-medium">{stats.averageResponseRate}%</span>
- </div>
- <div className="flex items-center justify-between">
- <span className="text-body-sm">Active Vendors</span>
- <span className="font-medium">{stats.totalVendors}</span>
- </div>
- <div className="flex items-center justify-between">
- <span className="text-body-sm">Total Projects</span>
- <span className="font-medium">{stats.totalProjects}</span>
- </div>
- <div className="flex items-center justify-between">
- <span className="text-body-sm">Last Updated</span>
- <span className="text-body-sm color-muted">
- {new Date(stats.lastUpdated).toLocaleTimeString()}
- </span>
- </div>
- </div>
- </Card>
- </div>
- )}
-
- {/* Universal Drawer for Actions */}
- <Drawer
- isOpen={drawerOpen}
- onClose={() => setDrawerOpen(false)}
- title="Marketplace Action"
- size="lg"
- >
- <div className="p-md">
- <p>Marketplace action content will go here...</p>
- </div>
- </Drawer>
- </div>
- );
+                return (
+                  <HStack
+                    key={item.id}
+                    spacing="sm"
+                    justify="between"
+                    align="center"
+                    className="rounded-lg border border-border bg-card/60 p-md"
+                  >
+                    <HStack spacing="sm" align="center">
+                      <div className="p-sm rounded-lg bg-muted/20">
+                        <Icon className="h-icon-xs w-icon-xs" />
+                      </div>
+                      <Stack spacing="xs">
+                        <span className="text-sm font-medium text-foreground">{item.title}</span>
+                        <span className="text-xs text-muted-foreground">{item.description}</span>
+                      </Stack>
+                    </HStack>
+                    <HStack spacing="md" align="center">
+                      <Stack spacing="xs" align="end">
+                        <span className="text-xs text-muted-foreground">{item.user}</span>
+                        <span className="text-xs text-muted-foreground/80">
+                          {new Date(item.timestamp).toLocaleString()}
+                        </span>
+                      </Stack>
+                      <Badge variant={tone.variant} className={`capitalize ${tone.textClass}`}>
+                        {item.status}
+                      </Badge>
+                    </HStack>
+                  </HStack>
+                )
+              })
+            )}
+          </Stack>
+        </CardContent>
+      </Card>
+    </Stack>
+  )
 }

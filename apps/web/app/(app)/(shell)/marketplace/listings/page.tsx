@@ -1,44 +1,46 @@
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
-import FeatureGate from '../../../../_components/FeatureGate';
-import { cookies } from 'next/headers';
-import { createServerClient } from '@ghxstship/auth';
-import ListingsClient from './ListingsClient';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DashboardLayout } from '@ghxstship/ui/templates';
+import { DashboardWidget } from '@ghxstship/ui/organisms';
 
+export default function DashboardPage() {
+  // TODO: Implement dashboard content using DashboardLayout
+  // This is a placeholder - actual implementation needed
 
-export const metadata = { title: 'Marketplace Listings' };
-
-export default async function ListingsPage() {
- const cookieStore = await cookies();
- const supabase = createServerClient(cookieStore);
-
- const { data: { user } } = await supabase.auth.getUser();
- let orgId: string | null = null;
- 
- if (user) {
- const { data: membership } = await supabase
- .from('memberships')
- .select('organization_id')
- .eq('user_id', user.id)
- .eq('status', 'active')
- .order('created_at', { ascending: true })
- .maybeSingle();
- orgId = membership?.organization_id ?? null;
- }
-
- return (
- <FeatureGate feature="marketplace">
- <div className="stack-md brand-marketplace" data-brand="marketplace">
- {orgId && user ? (
- <ListingsClient orgId={orgId} userId={user.id} />
- ) : (
- <div className="brand-marketplace text-center py-xsxl">
- <h2 className="text-heading-3 mb-md">Marketplace Listings</h2>
- <p className="color-muted">Please sign in to access marketplace listings</p>
- </div>
- )}
- </div>
- </FeatureGate>
- );
+  return (
+    <DashboardLayout
+      title="Dashboard"
+      subtitle="Welcome to your workspace"
+      showRefresh={true}
+      showExport={true}
+      showSettings={true}
+      sidebar={
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-medium mb-2">Quick Actions</h3>
+            <div className="space-y-2">
+              {/* TODO: Add quick actions */}
+            </div>
+          </div>
+        </div>
+      }
+      rightPanel={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-4">Recent Activity</h3>
+            {/* TODO: Add activity feed */}
+          </div>
+        </div>
+      }
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* TODO: Add dashboard widgets */}
+        <div className="bg-muted/50 rounded-lg p-6">
+          <h3 className="font-medium mb-2">Widget Placeholder</h3>
+          <p className="text-muted-foreground">Dashboard content coming soon</p>
+        </div>
+      </div>
+    </DashboardLayout>
+  );
 }

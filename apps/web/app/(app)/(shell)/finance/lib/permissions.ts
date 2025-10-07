@@ -282,7 +282,7 @@ export class FinancePermissions {
    const resources: FinanceResource[] = ['budgets', 'expenses', 'revenue', 'transactions', 'accounts', 'invoices', 'forecasts', 'analytics'];
    const actions = ['read', 'create', 'update', 'delete', 'approve', 'export', 'import'];
 
-   const matrix: Record<FinanceResource, Record<string, boolean> = {} as any;
+   const matrix: Record<FinanceResource, Record<string, boolean>> = {} as any;
 
    for (const resource of resources) {
      matrix[resource] = {};

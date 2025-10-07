@@ -7,7 +7,7 @@ export interface RealtimeSubscription {
  id: string;
  table: string;
  filter?: string;
- callback: (payload: RealtimePostgresChangesPayload<Record<string, unknown> => void;
+ callback: (payload: RealtimePostgresChangesPayload<Record<string, unknown>>) => void;
 }
 
 export interface PresenceState {
@@ -31,7 +31,7 @@ export class FinanceRealtime {
  subscribeToTable(
    subscriptionId: string,
    table: string,
-   callback: (payload: RealtimePostgresChangesPayload<Record<string, unknown> => void
+   callback: (payload: RealtimePostgresChangesPayload<Record<string, unknown>>) => void,
    filter?: string
  ): void {
    // Unsubscribe if already exists
@@ -105,7 +105,7 @@ export class FinanceRealtime {
    channelName: string,
    userId: string,
    userEmail: string,
-   onJoin?: (key: string, currentPresence: PresenceState, newPresence: PresenceUser) => void
+   onJoin?: (key: string, currentPresence: PresenceState, newPresence: PresenceUser) => void,
    onLeave?: (key: string, currentPresence: PresenceState, leftPresence: PresenceUser) => void
  ): void {
    // Leave existing presence if any
@@ -169,10 +169,10 @@ export class FinanceRealtime {
  subscribeToDashboard(
    orgId: string,
    callbacks: {
-     onBudgetUpdate?: (payload: RealtimePostgresChangesPayload<Record<string, unknown> => void;
-     onExpenseUpdate?: (payload: RealtimePostgresChangesPayload<Record<string, unknown> => void;
-     onRevenueUpdate?: (payload: RealtimePostgresChangesPayload<Record<string, unknown> => void;
-     onTransactionUpdate?: (payload: RealtimePostgresChangesPayload<Record<string, unknown> => void;
+     onBudgetUpdate?: (payload: RealtimePostgresChangesPayload<Record<string, unknown>>) => void;
+     onExpenseUpdate?: (payload: RealtimePostgresChangesPayload<Record<string, unknown>>) => void;
+     onRevenueUpdate?: (payload: RealtimePostgresChangesPayload<Record<string, unknown>>) => void;
+     onTransactionUpdate?: (payload: RealtimePostgresChangesPayload<Record<string, unknown>>) => void;
    }
  ): void {
    const subscriptions: RealtimeSubscription[] = [];
@@ -224,7 +224,7 @@ export class FinanceRealtime {
    recordId: string,
    userId: string,
    callbacks: {
-     onUpdate?: (payload: RealtimePostgresChangesPayload<Record<string, unknown> => void;
+     onUpdate?: (payload: RealtimePostgresChangesPayload<Record<string, unknown>>) => void;
      onPresenceUpdate?: (presence: PresenceState) => void;
    }
  ): void {

@@ -50,7 +50,7 @@ interface ResourceFormData {
  isFeatured: boolean;
 }
 
-type ResourceFormErrors = Partial<Record<keyof ResourceFormData | 'file' | 'submit', string>;
+type ResourceFormErrors = Partial<Record<keyof ResourceFormData | 'file' | 'submit', string>>;
 
 const resourceTypeOptions = [
  { value: 'policy', label: 'Policy', icon: FileText },

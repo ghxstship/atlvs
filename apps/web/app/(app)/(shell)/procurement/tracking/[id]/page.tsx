@@ -1,220 +1,106 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-function-return-type*/
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
-import { DetailTemplate } from '@ghxstship/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Truck, MapPin, Package } from 'lucide-react';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DetailLayout } from '@ghxstship/ui/templates';
 
-
-export const metadata = {
-  title: 'Tracking Details - GHXSTSHIP',
-  description: 'View detailed shipment tracking information.',
-};
-
-interface TrackingDetailPageProps {
-  params: Promise<{ id: string }>;
-}
-
-export default async function TrackingDetailPage({ params }: TrackingDetailPageProps) {
-  const { id } = await params;
-  const supabase = await createClient();
-
-  const { data: { session }, error: authError } = await (supabase.auth.getSession() as any);
-
-  if (authError || !session) {
-    redirect('/auth/signin');
-  }
-
-  // Get user profile and organization membership
-  const { data: profile } = await supabase
-    .from('users')
-    .select(`
-      *,
-      memberships!inner(
-        organization_id,
-        role,
-        status,
-        organization:organizations(
-          id,
-          name,
-          slug
-        )
-      )
-    `)
-    .eq('auth_id', (session as any).user.id)
-    .single();
-
-  if (!profile || !(profile as any).memberships?.[0]) {
-    redirect('/auth/onboarding');
-  }
-
-  const orgId = (profile as any).memberships[0].organization_id;
-
-  // Get tracking record
-  const { data: tracking, error: trackingError } = await supabase
-    .from('procurement_tracking')
-    .select(`
-      *,
-      order:procurement_orders(
-        id,
-        order_number,
-        vendor:procurement_vendors(name)
-      )
-    `)
-    .eq('id', id)
-    .eq('organization_id', orgId)
-    .single();
-
-  if (trackingError || !tracking) {
-    return (
-      <DetailTemplate
-        breadcrumbs={[
-          { label: 'Dashboard', href: '/dashboard' },
-          { label: 'Procurement', href: '/procurement' },
-          { label: 'Tracking', href: '/procurement/tracking' },
-          { label: 'Not Found' }
-        ]}
-        title="Tracking Record Not Found"
-        tabs={[{
-          id: 'error',
-          label: 'Error',
-          content: (
-            <div className="text-center py-xl">
-              <p className="text-muted-foreground">The requested tracking record could not be found.</p>
-            </div>
-          )
-        }]}
-      />
-    );
-  }
-
-  const breadcrumbs = [
-    { label: 'Dashboard', href: '/dashboard' },
-    { label: 'Procurement', href: '/procurement' },
-    { label: 'Tracking', href: '/procurement/tracking' },
-    { label: `Tracking ${(tracking as any).tracking_number || (tracking as any).id}` }
-  ];
-
-  const tabs = [
-    {
-      id: 'overview',
-      label: 'Overview',
-      content: (
-        <div className="grid gap-lg md:grid-cols-2">
-          {/* Tracking Information */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <Truck className="h-icon-sm w-icon-sm" />
-                Tracking Details
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-md">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Tracking Number</span>
-                <span className="text-sm font-mono">
-                  {(tracking as any).tracking_number || (tracking as any).id}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Carrier</span>
-                <span className="text-sm font-medium">
-                  {(tracking as any).carrier || 'Unknown'}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Status</span>
-                <span className="text-sm text-muted-foreground">
-                  {(tracking as any).status || 'Unknown'}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Estimated Delivery</span>
-                <span className="text-sm text-muted-foreground">
-                  {(tracking as any).estimated_delivery ? new Date((tracking as any).estimated_delivery).toLocaleDateString() : 'TBD'}
-                </span>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Associated Order */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <Package className="h-icon-sm w-icon-sm" />
-                Associated Order
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-sm">
-              <div>
-                <p className="font-medium">
-                  Order {(tracking as any).order?.order_number || (tracking as any).order?.id}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Vendor: {(tracking as any).order?.vendor?.name || 'Unknown'}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Shipping Address */}
-          <Card className="md:col-span-2">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <MapPin className="h-icon-sm w-icon-sm" />
-                Shipping Information
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-md md:grid-cols-2">
-                <div>
-                  <h4 className="font-medium mb-2">From</h4>
-                  <p className="text-sm text-muted-foreground">
-                    {(tracking as any).ship_from_address || 'Address not available'}
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-medium mb-2">To</h4>
-                  <p className="text-sm text-muted-foreground">
-                    {(tracking as any).ship_to_address || 'Address not available'}
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      )
-    },
-    {
-      id: 'updates',
-      label: 'Tracking Updates',
-      content: (
-        <Card>
-          <CardHeader>
-            <CardTitle>Shipping Updates</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground text-center py-xl">
-              Tracking updates will be displayed here when available.
-            </p>
-          </CardContent>
-        </Card>
-      )
-    }
-  ];
+export default function DetailPage() {
+  // TODO: Implement detail content using DetailLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <DetailTemplate
-      breadcrumbs={breadcrumbs}
-      title={`Tracking ${(tracking as any).tracking_number || (tracking as any).id}`}
-      subtitle={`Carrier: ${(tracking as any).carrier || 'Unknown'} • Status: ${(tracking as any).status || 'Unknown'}`}
-      tabs={tabs}
-      backHref="/procurement/tracking"
-    />
+    <DetailLayout
+      title="Item Details"
+      subtitle="Detailed view of the selected item"
+      breadcrumbs={
+        <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
+          <button className="hover:text-foreground">Home</button>
+          <span>/</span>
+          <button className="hover:text-foreground">Module</button>
+          <span>/</span>
+          <span className="text-foreground">Details</span>
+        </nav>
+      }
+      actions={
+        <div className="flex items-center gap-2">
+          <button className="px-4 py-2 border border-input rounded-md">
+            Edit
+          </button>
+          <button className="px-4 py-2 bg-destructive text-destructive-foreground rounded-md">
+            Delete
+          </button>
+        </div>
+      }
+      avatar={
+        <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground">
+          D
+        </div>
+      }
+      status={
+        <div className="flex items-center gap-2">
+          <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
+            Active
+          </span>
+        </div>
+      }
+      tabs={{
+        items: [
+          { id: 'overview', label: 'Overview' },
+          { id: 'details', label: 'Details' },
+          { id: 'activity', label: 'Activity' },
+        ],
+        activeTab: 'overview',
+        onTabChange: (tabId) => console.log('Switch to tab:', tabId),
+      }}
+      metaSidebar={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-3">Metadata</h3>
+            <div className="space-y-3 text-sm">
+              <div>
+                <span className="text-muted-foreground">Created:</span>
+                <div>Jan 1, 2024</div>
+              </div>
+              <div>
+                <span className="text-muted-foreground">Last Updated:</span>
+                <div>Jan 10, 2024</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📊</span>
+              <span className="text-sm font-medium">Metric 1</span>
+            </div>
+            <div className="text-2xl font-bold">42</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📈</span>
+              <span className="text-sm font-medium">Metric 2</span>
+            </div>
+            <div className="text-2xl font-bold">85%</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">⏱️</span>
+              <span className="text-sm font-medium">Metric 3</span>
+            </div>
+            <div className="text-2xl font-bold">12d</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Content</h3>
+          <div className="prose max-w-none">
+            <p>Detailed content for this item goes here. This is a placeholder that will be replaced with actual content.</p>
+          </div>
+        </div>
+      </div>
+    </DetailLayout>
   );
 }

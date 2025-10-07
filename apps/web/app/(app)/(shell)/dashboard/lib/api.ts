@@ -136,7 +136,7 @@ export class DashboardApiClient {
   private interceptors = {
     request: [] as Array<(req: ApiRequest) => ApiRequest | Promise<ApiRequest>>,
     response: [] as Array<(res: ApiResponse) => ApiResponse | Promise<ApiResponse>>,
-    error: [] as Array<(error: IApiError) => IApiError | Promise<IApiError>>>
+    error: [] as Array<(error: IApiError) => IApiError | Promise<IApiError>>,
   };
 
   constructor() {
@@ -157,7 +157,7 @@ export class DashboardApiClient {
   }
 
   // Core Request Method
-  async request<T = unknown>(config: ApiRequest): Promise<ApiResponse<T>>> {
+  async request<T = unknown>(config: ApiRequest): Promise<ApiResponse<T>> {
     // Rate limiting check
     if (!this.rateLimiter.isAllowed('global')) {
       throw new ApiError('Rate limit exceeded', 429, 'RATE_LIMIT_EXCEEDED');
@@ -217,7 +217,7 @@ export class DashboardApiClient {
     endpoint: string,
     params?: Record<string, string>,
     config?: Partial<ApiRequest>
-  ): Promise<ApiResponse<T>>> {
+  ): Promise<ApiResponse<T>> {
     return this.request<T>({
       endpoint,
       method: 'GET',
@@ -230,7 +230,7 @@ export class DashboardApiClient {
     endpoint: string,
     data?: unknown,
     config?: Partial<ApiRequest>
-  ): Promise<ApiResponse<T>>> {
+  ): Promise<ApiResponse<T>> {
     return this.request<T>({
       endpoint,
       method: 'POST',
@@ -243,7 +243,7 @@ export class DashboardApiClient {
     endpoint: string,
     data?: unknown,
     config?: Partial<ApiRequest>
-  ): Promise<ApiResponse<T>>> {
+  ): Promise<ApiResponse<T>> {
     return this.request<T>({
       endpoint,
       method: 'PUT',
@@ -256,7 +256,7 @@ export class DashboardApiClient {
     endpoint: string,
     data?: unknown,
     config?: Partial<ApiRequest>
-  ): Promise<ApiResponse<T>>> {
+  ): Promise<ApiResponse<T>> {
     return this.request<T>({
       endpoint,
       method: 'PATCH',
@@ -268,7 +268,7 @@ export class DashboardApiClient {
   async delete<T = unknown>(
     endpoint: string,
     config?: Partial<ApiRequest>
-  ): Promise<ApiResponse<T>>> {
+  ): Promise<ApiResponse<T>> {
     return this.request<T>({
       endpoint,
       method: 'DELETE',
@@ -317,7 +317,7 @@ export class DashboardApiClient {
     });
   }
 
-  private async executeRequest<T>(config: ApiRequest): Promise<ApiResponse<T>>> {
+  private async executeRequest<T>(config: ApiRequest): Promise<ApiResponse<T>> {
     const { data, error } = await this.supabase
       .from(config.endpoint as keyof Database['public']['Tables'])
       .select('*');

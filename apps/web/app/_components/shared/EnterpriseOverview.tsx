@@ -257,7 +257,7 @@ export default function EnterpriseOverview({
  const percentage = statusTotal > 0 ? (item.count / statusTotal) * 100 : 0;
  const StatusIcon = item.icon;
  return (
- <div
+ <div key={item.label} className="flex items-center justify-between">
  <div className="flex items-center gap-xs">
  {StatusIcon && <StatusIcon className="h-icon-xs w-icon-xs text-primary" />}
  <span className="text-sm font-medium">{item.label}</span>
@@ -269,6 +269,7 @@ export default function EnterpriseOverview({
  )}
  <Progress value={percentage} className="h-2" />
  </div>
+ </div>
  );
 })}
 </div>
@@ -276,7 +277,6 @@ export default function EnterpriseOverview({
  <div className="flex items-center justify-between">
  <span className="text-sm text-muted-foreground">Total</span>
  <span className="font-semibold">{statusTotal}</span>
- </div>
  </div>
  )}
  </Card>

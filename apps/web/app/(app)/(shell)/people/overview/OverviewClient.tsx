@@ -1,264 +1,345 @@
-'use client';
+'use client'
 
-
-import { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
-import { Card, Badge, Button } from '@ghxstship/ui';
-import { CompletionBar } from "../../../../_components/ui"
-import { createBrowserClient } from '@ghxstship/auth';
-import { Users, Shield, Award, Star, Network, List, TrendingUp, Calendar } from 'lucide-react';
+import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useRouter } from 'next/navigation'
+import type { SupabaseClient } from '@supabase/supabase-js'
+import { createBrowserClient } from '@ghxstship/auth'
+import { useTranslations } from 'next-intl'
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  Badge,
+  Button,
+} from '@ghxstship/ui'
+import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
+import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
+import { CompletionBar } from '../../../../_components/ui'
+import {
+  Users,
+  Shield,
+  Award,
+  Star,
+  Network,
+  List,
+  Calendar,
+} from 'lucide-react'
 
 interface OverviewStats {
-  totalPeople: number;
-  activePeople: number;
-  totalRoles: number;
-  totalCompetencies: number;
-  totalEndorsements: number;
-  totalShortlists: number;
-  recentActivity: any[];
+  totalPeople: number
+  activePeople: number
+  totalRoles: number
+  totalCompetencies: number
+  totalEndorsements: number
+  totalShortlists: number
 }
 
 interface OverviewClientProps {
-  orgId: string;
+  orgId: string
+}
+
+interface QuickAction {
+  id: string
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  label: string
+  href: string
+}
+
+const usePeopleOverview = (supabase: SupabaseClient, orgId: string) => {
+  const [loading, setLoading] = useState(true)
+  const [refreshing, setRefreshing] = useState(false)
+  const [stats, setStats] = useState<OverviewStats | null>(null)
+  const [error, setError] = useState<string | null>(null)
+
+  const loadStats = useCallback(
+    async (mode: 'initial' | 'refresh' = 'initial') => {
+      if (mode === 'initial') {
+        setLoading(true)
+      } else {
+        setRefreshing(true)
+      }
+
+      try {
+        setError(null)
+
+        const [people, roles, competencies, endorsements, shortlists] = await Promise.all([
+          supabase.from('people').select('status').eq('organization_id', orgId),
+          supabase
+            .from('people_roles')
+            .select('*', { count: 'exact', head: true })
+            .eq('organization_id', orgId),
+          supabase
+            .from('people_competencies')
+            .select('*', { count: 'exact', head: true })
+            .eq('organization_id', orgId),
+          supabase.from('people_endorsements').select('*', { count: 'exact', head: true }).eq('organization_id', orgId),
+          supabase
+            .from('people_shortlists')
+            .select('*', { count: 'exact', head: true })
+            .eq('organization_id', orgId),
+        ])
+
+        const totalPeople = people.data?.length ?? 0
+        const activePeople = people.data?.filter((person) => person.status === 'active').length ?? 0
+
+        setStats({
+          totalPeople,
+          activePeople,
+          totalRoles: roles.count ?? 0,
+          totalCompetencies: competencies.count ?? 0,
+          totalEndorsements: endorsements.count ?? 0,
+          totalShortlists: shortlists.count ?? 0,
+        })
+      } catch (err) {
+        console.error('Error loading people overview:', err)
+        setError('Failed to load people overview')
+      } finally {
+        if (mode === 'initial') {
+          setLoading(false)
+        } else {
+          setRefreshing(false)
+        }
+      }
+    },
+    [supabase, orgId],
+  )
+
+  useEffect(() => {
+    loadStats('initial')
+  }, [loadStats])
+
+  return {
+    loading,
+    refreshing,
+    stats,
+    error,
+    refresh: () => loadStats('refresh'),
+  }
 }
 
 export default function OverviewClient({ orgId }: OverviewClientProps) {
-  const t = useTranslations('people.overview');
-  const [stats, setStats] = useState<OverviewStats>({
-    totalPeople: 0,
-    activePeople: 0,
-    totalRoles: 0,
-    totalCompetencies: 0,
-    totalEndorsements: 0,
-    totalShortlists: 0,
-    recentActivity: []
-  });
-  const [loading, setLoading] = useState(true);
+  const t = useTranslations('people.overview')
+  const router = useRouter()
+  const supabase = useMemo(() => createBrowserClient(), []) as unknown as SupabaseClient
+  const { loading, refreshing, stats, error, refresh } = usePeopleOverview(supabase, orgId)
 
-  const supabase = createBrowserClient();
-
-  useEffect(() => {
-    loadStats();
-  }, [orgId]);
-
-  const loadStats = async () => {
-    try {
-      setLoading(true);
-
-      // Load people stats
-      const { data: people, error: peopleError } = await supabase
-        .from('people')
-        .select('status')
-        .eq('organization_id', orgId);
-
-      if (peopleError) throw peopleError;
-
-      // Load roles count
-      const { count: rolesCount, error: rolesError } = await supabase
-        .from('people_roles')
-        .select('*', { count: 'exact', head: true })
-        .eq('organization_id', orgId);
-
-      if (rolesError) throw rolesError;
-
-      // Load competencies count
-      const { count: competenciesCount, error: competenciesError } = await supabase
-        .from('people_competencies')
-        .select('*', { count: 'exact', head: true })
-        .eq('organization_id', orgId);
-
-      if (competenciesError) throw competenciesError;
-
-      // Load endorsements count
-      const { count: endorsementsCount, error: endorsementsError } = await supabase
-        .from('people_endorsements')
-        .select('*', { count: 'exact', head: true });
-
-      if (endorsementsError) throw endorsementsError;
-
-      // Load shortlists count
-      const { count: shortlistsCount, error: shortlistsError } = await supabase
-        .from('people_shortlists')
-        .select('*', { count: 'exact', head: true })
-        .eq('organization_id', orgId);
-
-      if (shortlistsError) throw shortlistsError;
-
-      const totalPeople = people?.length || 0;
-      const activePeople = people?.filter((p: any) => p.status === 'active').length || 0;
-
-      setStats({
-        totalPeople,
-        activePeople,
-        totalRoles: rolesCount || 0,
-        totalCompetencies: competenciesCount || 0,
-        totalEndorsements: endorsementsCount || 0,
-        totalShortlists: shortlistsCount || 0,
-        recentActivity: []
-      });
-    } catch (error) {
-      console.error('Error loading stats:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const quickActions: QuickAction[] = [
+    { id: 'directory', icon: Users, label: t('viewDirectory'), href: '/people/directory' },
+    { id: 'roles', icon: Shield, label: t('manageRoles'), href: '/people/roles' },
+    { id: 'competencies', icon: Award, label: t('viewCompetencies'), href: '/people/competencies' },
+    { id: 'shortlists', icon: List, label: t('viewShortlists'), href: '/people/shortlists' },
+    { id: 'endorsements', icon: Star, label: t('viewEndorsements'), href: '/people/endorsements' },
+    { id: 'network', icon: Network, label: t('viewNetwork'), href: '/people/network' },
+  ]
 
   if (loading) {
     return (
-      <div className="stack-md">
-        <Card title={t('title')}>
-          <div className="flex items-center justify-center py-xl">
-            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
-          </div>
-        </Card>
-      </div>
-    );
+      <Stack spacing="lg">
+        <HStack justify="between" align="center">
+          <Skeleton className="h-8 w-44" />
+          <Skeleton className="h-10 w-32" />
+        </HStack>
+        <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Card key={index}>
+              <CardContent className="space-y-sm">
+                <Skeleton className="h-3 w-24" />
+                <Skeleton className="h-8 w-16" />
+                <Skeleton className="h-3 w-20" />
+              </CardContent>
+            </Card>
+          ))}
+        </Grid>
+      </Stack>
+    )
   }
 
-  const quickActions = [
-    { icon: Users, label: t('viewDirectory'), href: '/people/directory', color: 'bg-accent' },
-    { icon: Shield, label: t('manageRoles'), href: '/people/roles', color: 'bg-secondary' },
-    { icon: Award, label: t('viewCompetencies'), href: '/people/competencies', color: 'bg-success' },
-    { icon: List, label: t('viewShortlists'), href: '/people/shortlists', color: 'bg-warning' },
-    { icon: Star, label: t('viewEndorsements'), href: '/people/endorsements', color: 'bg-accent' },
-    { icon: Network, label: t('viewNetwork'), href: '/people/network', color: 'bg-secondary' }
-  ];
+  if (error || !stats) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-destructive">{error ?? t('loadError')}</CardTitle>
+          <CardDescription>{t('loadErrorDescription')}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Button onClick={refresh}>Retry</Button>
+        </CardContent>
+      </Card>
+    )
+  }
 
   return (
-    <div className="stack-lg">
-      {/* Overview Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+    <Stack spacing="lg">
+      <HStack justify="between" align="center">
+        <Stack spacing="xs">
+          <h1 className="text-heading-3 font-anton uppercase text-foreground">{t('title')}</h1>
+          <p className="text-body-sm text-muted-foreground">{t('subtitle')}</p>
+        </Stack>
+        <Button variant={refreshing ? 'outline' : 'default'} disabled={refreshing} onClick={refresh}>
+          {refreshing ? t('refreshing') : t('refresh')}
+        </Button>
+      </HStack>
+
+      <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
         <Card>
-          <div className="flex items-center justify-between p-md">
-            <div>
-              <p className="text-body-sm form-label color-muted">{t('totalPeople')}</p>
-              <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalPeople}</p>
-              <p className="text-body-sm color-success">
-                {stats.activePeople} {t('active')}
-              </p>
-            </div>
-            <Users className="h-icon-lg w-icon-lg color-accent" />
-          </div>
+          <CardContent>
+            <HStack justify="between" align="center">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">{t('totalPeople')}</span>
+                <span className="text-heading-3 font-semibold text-foreground">{stats.totalPeople}</span>
+                <span className="text-sm text-success">{stats.activePeople} {t('active')}</span>
+              </Stack>
+              <Users className="h-icon-lg w-icon-lg text-accent" />
+            </HStack>
+          </CardContent>
         </Card>
 
         <Card>
-          <div className="flex items-center justify-between p-md">
-            <div>
-              <p className="text-body-sm form-label color-muted">{t('totalRoles')}</p>
-              <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalRoles}</p>
-            </div>
-            <Shield className="h-icon-lg w-icon-lg color-secondary" />
-          </div>
+          <CardContent>
+            <HStack justify="between" align="center">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">{t('totalRoles')}</span>
+                <span className="text-heading-3 font-semibold text-foreground">{stats.totalRoles}</span>
+              </Stack>
+              <Shield className="h-icon-lg w-icon-lg text-secondary" />
+            </HStack>
+          </CardContent>
         </Card>
 
         <Card>
-          <div className="flex items-center justify-between p-md">
-            <div>
-              <p className="text-body-sm form-label color-muted">{t('totalCompetencies')}</p>
-              <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalCompetencies}</p>
-            </div>
-            <Award className="h-icon-lg w-icon-lg color-success" />
-          </div>
+          <CardContent>
+            <HStack justify="between" align="center">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">{t('totalCompetencies')}</span>
+                <span className="text-heading-3 font-semibold text-foreground">{stats.totalCompetencies}</span>
+              </Stack>
+              <Award className="h-icon-lg w-icon-lg text-success" />
+            </HStack>
+          </CardContent>
         </Card>
 
         <Card>
-          <div className="flex items-center justify-between p-md">
-            <div>
-              <p className="text-body-sm form-label color-muted">{t('totalEndorsements')}</p>
-              <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalEndorsements}</p>
-            </div>
-            <Star className="h-icon-lg w-icon-lg color-warning" />
-          </div>
+          <CardContent>
+            <HStack justify="between" align="center">
+              <Stack spacing="xs">
+                <span className="text-sm text-muted-foreground">{t('totalEndorsements')}</span>
+                <span className="text-heading-3 font-semibold text-foreground">{stats.totalEndorsements}</span>
+              </Stack>
+              <Star className="h-icon-lg w-icon-lg text-warning" />
+            </HStack>
+          </CardContent>
         </Card>
-      </div>
+      </Grid>
 
-      {/* Quick Actions */}
-      <Card title={t('quickActions')}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md p-md">
-          {quickActions.map((action, index) => (
-            <a
-              key={index}
-              href={action.href}
-              className="flex items-center cluster-sm p-md border rounded-lg hover:shadow-elevated transition-shadow cursor-pointer"
-            >
-              <div className={`p-sm rounded-lg ${action.color}`}>
-                <action.icon className="h-icon-sm w-icon-sm text-background" />
-              </div>
-              <span className="text-body-sm form-label color-foreground">{action.label}</span>
-            </a>
-          ))}
-        </div>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-foreground">{t('quickActions')}</CardTitle>
+          <CardDescription>{t('quickActionsHelp')}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Grid cols={1} responsive={{ md: 2, lg: 3 }} spacing="md">
+            {quickActions.map((action) => (
+              <Button
+                key={action.id}
+                variant="outline"
+                className="justify-start h-component-lg"
+                onClick={() => router.push(action.href)}
+              >
+                <HStack spacing="sm" align="center">
+                  <action.icon className="h-icon-sm w-icon-sm" />
+                  <span className="text-sm font-medium text-foreground">{action.label}</span>
+                </HStack>
+              </Button>
+            ))}
+          </Grid>
+        </CardContent>
       </Card>
 
-      {/* People Analytics */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
-        <Card title={t('peopleByStatus')}>
-          <div className="p-md stack-sm">
-            <div className="flex items-center justify-between">
-              <span className="text-body-sm color-muted">{t('active')}</span>
-              <div className="flex items-center cluster-sm">
-                <CompletionBar
-                  completed={stats.activePeople}
-                  total={stats.totalPeople}
-                  className="w-component-lg"
-                />
-                <span className="text-body-sm form-label">{stats.activePeople}</span>
-              </div>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-body-sm color-muted">{t('inactive')}</span>
-              <div className="flex items-center cluster-sm">
-                <CompletionBar
-                  completed={stats.totalPeople - stats.activePeople}
-                  total={stats.totalPeople}
-                  className="w-component-lg"
-                />
-                <span className="text-body-sm form-label">{stats.totalPeople - stats.activePeople}</span>
-              </div>
-            </div>
-          </div>
+      <Grid cols={1} responsive={{ lg: 2 }} spacing="lg">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg text-foreground">{t('peopleByStatus')}</CardTitle>
+            <CardDescription>{t('peopleByStatusSummary')}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Stack spacing="md">
+              <HStack justify="between" align="center">
+                <span className="text-sm text-muted-foreground">{t('active')}</span>
+                <HStack spacing="sm" align="center">
+                  <CompletionBar completed={stats.activePeople} total={stats.totalPeople} className="w-40" />
+                  <span className="text-sm font-medium text-foreground">{stats.activePeople}</span>
+                </HStack>
+              </HStack>
+              <HStack justify="between" align="center">
+                <span className="text-sm text-muted-foreground">{t('inactive')}</span>
+                <HStack spacing="sm" align="center">
+                  <CompletionBar
+                    completed={stats.totalPeople - stats.activePeople}
+                    total={stats.totalPeople}
+                    className="w-40"
+                  />
+                  <span className="text-sm font-medium text-foreground">
+                    {stats.totalPeople - stats.activePeople}
+                  </span>
+                </HStack>
+              </HStack>
+            </Stack>
+          </CardContent>
         </Card>
 
-        <Card title={t('moduleStatus')}>
-          <div className="p-md stack-sm">
-            <div className="flex items-center justify-between">
-              <span className="text-body-sm color-muted">{t('directory')}</span>
-              <Badge className="bg-success/10 color-success">{t('active')}</Badge>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-body-sm color-muted">{t('roles')}</span>
-              <Badge className="bg-success/10 color-success">{t('active')}</Badge>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-body-sm color-muted">{t('competencies')}</span>
-              <Badge className="bg-success/10 color-success">{t('active')}</Badge>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-body-sm color-muted">{t('endorsements')}</span>
-              <Badge className="bg-warning/10 color-warning">{t('beta')}</Badge>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-body-sm color-muted">{t('shortlists')}</span>
-              <Badge className="bg-warning/10 color-warning">{t('beta')}</Badge>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-body-sm color-muted">{t('network')}</span>
-              <Badge className="bg-warning/10 color-warning">{t('beta')}</Badge>
-            </div>
-          </div>
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg text-foreground">{t('moduleStatus')}</CardTitle>
+            <CardDescription>{t('moduleStatusSummary')}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Stack spacing="sm">
+              <HStack justify="between" align="center">
+                <span className="text-sm text-muted-foreground">{t('directory')}</span>
+                <Badge className="bg-success/10 text-success">{t('active')}</Badge>
+              </HStack>
+              <HStack justify="between" align="center">
+                <span className="text-sm text-muted-foreground">{t('roles')}</span>
+                <Badge className="bg-success/10 text-success">{t('active')}</Badge>
+              </HStack>
+              <HStack justify="between" align="center">
+                <span className="text-sm text-muted-foreground">{t('competencies')}</span>
+                <Badge className="bg-success/10 text-success">{t('active')}</Badge>
+              </HStack>
+              <HStack justify="between" align="center">
+                <span className="text-sm text-muted-foreground">{t('endorsements')}</span>
+                <Badge className="bg-warning/10 text-warning">{t('beta')}</Badge>
+              </HStack>
+              <HStack justify="between" align="center">
+                <span className="text-sm text-muted-foreground">{t('shortlists')}</span>
+                <Badge className="bg-warning/10 text-warning">{t('beta')}</Badge>
+              </HStack>
+              <HStack justify="between" align="center">
+                <span className="text-sm text-muted-foreground">{t('network')}</span>
+                <Badge className="bg-warning/10 text-warning">{t('beta')}</Badge>
+              </HStack>
+            </Stack>
+          </CardContent>
         </Card>
-      </div>
+      </Grid>
 
-      {/* Recent Activity */}
-      <Card title={t('recentActivity')}>
-        <div className="p-md">
-          <div className="text-center py-xl">
-            <Calendar className="h-icon-2xl w-icon-2xl color-muted/50 mx-auto mb-md" />
-            <p className="color-muted">{t('noRecentActivity')}</p>
-            <p className="text-body-sm color-muted/70 mt-sm">{t('activityWillAppearHere')}</p>
-          </div>
-        </div>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-foreground">{t('recentActivity')}</CardTitle>
+          <CardDescription>{t('recentActivitySummary')}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Stack spacing="md" align="center" className="text-center py-xl">
+            <Calendar className="h-icon-2xl w-icon-2xl text-muted-foreground/50" />
+            <Stack spacing="xs">
+              <span className="text-sm text-muted-foreground">{t('noRecentActivity')}</span>
+              <span className="text-sm text-muted-foreground/80">{t('activityWillAppearHere')}</span>
+            </Stack>
+          </Stack>
+        </CardContent>
       </Card>
-    </div>
-  );
+    </Stack>
+  )
 }

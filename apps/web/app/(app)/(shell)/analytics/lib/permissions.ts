@@ -452,7 +452,7 @@ export async function checkBulkPermissions(
   action: PermissionAction,
   resourceType: ResourceType,
   resourceIds: string[]
-): Promise<Record<string, PermissionResult>>> {
+): Promise<Record<string, PermissionResult>> {
   const results: Record<string, PermissionResult> = {} as any;
 
   // Get resource details for all IDs
@@ -564,7 +564,7 @@ export async function getEffectivePermissions(
   organization: OrganizationContext,
   resourceType: ResourceType,
   resourceId?: string
-): Promise<Record<PermissionAction, boolean>>> {
+): Promise<Record<PermissionAction, boolean>> {
   const actions: PermissionAction[] = ['view', 'create', 'edit', 'delete', 'share'];
 
   const permissions: Record<PermissionAction, boolean> = {} as any as any;

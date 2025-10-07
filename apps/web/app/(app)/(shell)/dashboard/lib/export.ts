@@ -274,7 +274,7 @@ export class ExportService {
     nextRun: string;
     lastRun?: string;
     isActive: boolean;
-  }> {
+  }>> {
     try {
       const response = await dashboardApi.get('/export/schedules');
       return response.data || [];

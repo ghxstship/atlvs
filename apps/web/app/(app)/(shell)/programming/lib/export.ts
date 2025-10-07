@@ -208,7 +208,7 @@ export class ProgrammingExportService {
   }
 
   // Filter and sort helpers
-  private applyFilters<T extends Record<string, any>(data: T[], filters: SearchFilters): T[] {
+  private applyFilters<T extends Record<string, any>>(data: T[], filters: SearchFilters): T[] {
     return data.filter(item => {
       // Search filter
       if (filters.search) {
@@ -241,7 +241,7 @@ export class ProgrammingExportService {
     });
   }
 
-  private sortData<T extends Record<string, any>(data: T[], sort: SortOptions): T[] {
+  private sortData<T extends Record<string, any>>(data: T[], sort: SortOptions): T[] {
     return [...data].sort((a, b) => {
       const aVal = a[sort.field];
       const bVal = b[sort.field];
@@ -255,7 +255,7 @@ export class ProgrammingExportService {
   }
 
   // Export format implementations
-  private exportToCSV<T extends Record<string, any>(data: T[], fields: string[], filename: string): string {
+  private exportToCSV<T extends Record<string, any>>(data: T[], fields: string[], filename: string): string {
     if (data.length === 0) return '';
 
     // Create CSV header
@@ -276,7 +276,7 @@ export class ProgrammingExportService {
     return [headers, ...rows].join('\n');
   }
 
-  private exportToJSON<T extends Record<string, any>(data: T[], fields: string[]): string {
+  private exportToJSON<T extends Record<string, any>>(data: T[], fields: string[]): string {
     const filteredData = data.map(item => {
       const filtered: Record<string, any> = {};
       fields.forEach(field => {
@@ -288,7 +288,7 @@ export class ProgrammingExportService {
     return JSON.stringify(filteredData, null, 2);
   }
 
-  private exportToExcel<T extends Record<string, any>(data: T[], fields: string[], sheetName: string): string {
+  private exportToExcel<T extends Record<string, any>>(data: T[], fields: string[], sheetName: string): string {
     // For Excel export, we'll return CSV format with Excel headers
     // In a real implementation, you'd use a library like xlsx
     const csv = this.exportToCSV(data, fields, sheetName);
@@ -297,7 +297,7 @@ export class ProgrammingExportService {
     return '\uFEFF' + csv;
   }
 
-  private exportToPDF<T extends Record<string, any>(data: T[], fields: string[], title: string): string {
+  private exportToPDF<T extends Record<string, any>>(data: T[], fields: string[], title: string): string {
     // For PDF export, return a structured text representation
     // In a real implementation, you'd use a PDF generation library
     let output = `${title}\n${'='.repeat(title.length)}\n\n`;

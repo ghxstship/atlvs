@@ -59,7 +59,7 @@ export interface CreateNetworkConnectionData {
 
 export interface UpdateNetworkConnectionData extends Partial<CreateNetworkConnectionData> {}
 
-export const RELATIONSHIP_TYPES> = [
+export const RELATIONSHIP_TYPES = [
   { id: 'colleague', name: 'Colleague', color: 'bg-blue-500' },
   { id: 'mentor', name: 'Mentor', color: 'bg-green-500' },
   { id: 'mentee', name: 'Mentee', color: 'bg-yellow-500' },

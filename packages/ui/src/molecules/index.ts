@@ -19,3 +19,7 @@ export * from './ExportButton';
 export * from './EnhancedForm';
 // Note: SearchFilter is exported from components/SearchFilter.tsx, not molecules
 // To avoid naming conflict, import directly from components if needed
+export * from './SearchBar';
+export * from './FilterBuilder';
+export * from './UserSelector';
+export * from './BulkActions';

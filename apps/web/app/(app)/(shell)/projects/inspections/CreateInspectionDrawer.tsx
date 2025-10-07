@@ -223,7 +223,7 @@ export default function CreateInspectionDrawer({
 
  // Generate checklist items based on template
  const generateChecklistItems = (template: string) => {
- const templates: Record<string, Array<{ category: string; item: string }> = {
+ const templates: Record<string, Array<{ category: string; item: string }>> = {
  safety: [
  { category: "PPE", item: "Hard hats worn by all personnel" },
  { category: "PPE", item: "Safety glasses in use" },

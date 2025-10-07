@@ -202,7 +202,7 @@ export class FilesPermissionsService {
   /**
    * Get organization settings for permissions
    */
-  async getOrgSettings(orgId: string): Promise<any> => {
+  async getOrgSettings(orgId: string): Promise<any> {
     try {
       const { data, error } = await this.supabase
         .from('organization_settings')

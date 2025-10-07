@@ -1,58 +1,46 @@
-import { createServerClient } from '@ghxstship/auth';
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
-import { BidsClient } from './BidsClient';
-import CreateBidClient from './CreateBidClient';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DashboardLayout } from '@ghxstship/ui/templates';
+import { DashboardWidget } from '@ghxstship/ui/organisms';
 
-
-export const metadata = { title: 'Jobs · Bids' };
-
-export default async function JobsBidsPage() {
-  const cookieStore = await cookies();
-  const supabase = createServerClient(cookieStore);
-  
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/auth/login');
-  }
-
-  // Get user's organization
-  const { data: profile } = await supabase
-    .from('user_profiles')
-    .select('organization_id')
-    .eq('user_id', user.id)
-    .single();
-
-  if (!profile?.organization_id) {
-    redirect('/onboarding');
-  }
-
-  const t = await getTranslations('jobs');
+export default function DashboardPage() {
+  // TODO: Implement dashboard content using DashboardLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <div className="stack-lg">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-heading-3 text-heading-4 color-foreground">{t('bids.title')}</h1>
-          <p className="color-muted">{t('bids.subtitle')}</p>
+    <DashboardLayout
+      title="Dashboard"
+      subtitle="Welcome to your workspace"
+      showRefresh={true}
+      showExport={true}
+      showSettings={true}
+      sidebar={
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-medium mb-2">Quick Actions</h3>
+            <div className="space-y-2">
+              {/* TODO: Add quick actions */}
+            </div>
+          </div>
         </div>
-        <CreateBidClient orgId={profile.organization_id} />
+      }
+      rightPanel={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-4">Recent Activity</h3>
+            {/* TODO: Add activity feed */}
+          </div>
+        </div>
+      }
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* TODO: Add dashboard widgets */}
+        <div className="bg-muted/50 rounded-lg p-6">
+          <h3 className="font-medium mb-2">Widget Placeholder</h3>
+          <p className="text-muted-foreground">Dashboard content coming soon</p>
+        </div>
       </div>
-      
-      <BidsClient
-        user={user}
-        orgId={profile.organization_id}
-        translations={{
-          title: t('bids.title'),
-          subtitle: t('bids.subtitle'),
-        }}
-      />
-    </div>
+    </DashboardLayout>
   );
 }

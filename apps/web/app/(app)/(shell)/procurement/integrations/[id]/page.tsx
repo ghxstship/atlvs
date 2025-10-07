@@ -1,126 +1,106 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-function-return-type*/
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
-import { DetailTemplate } from '@ghxstship/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Zap, Settings, Webhook } from 'lucide-react';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DetailLayout } from '@ghxstship/ui/templates';
 
-
-export const metadata = {
-  title: 'Integration Details - GHXSTSHIP',
-  description: 'View detailed procurement system integrations.',
-};
-
-interface IntegrationDetailPageProps {
-  params: Promise<{ id: string }>;
-}
-
-export default async function IntegrationDetailPage({ params }: IntegrationDetailPageProps) {
-  const { id } = await params;
-  const supabase = await createClient();
-
-  const { data: { session }, error: authError } = await (supabase.auth.getSession() as any);
-
-  if (authError || !session) {
-    redirect('/auth/signin');
-  }
-
-  // Get user profile and organization membership
-  const { data: profile } = await supabase
-    .from('users')
-    .select(`
-      *,
-      memberships!inner(
-        organization_id,
-        role,
-        status,
-        organization:organizations(
-          id,
-          name,
-          slug
-        )
-      )
-    `)
-    .eq('auth_id', (session as any).user.id)
-    .single();
-
-  if (!profile || !(profile as any).memberships?.[0]) {
-    redirect('/auth/onboarding');
-  }
-
-  const breadcrumbs = [
-    { label: 'Dashboard', href: '/dashboard' },
-    { label: 'Procurement', href: '/procurement' },
-    { label: 'Integrations', href: '/procurement/integrations' },
-    { label: `Integration ${id}` }
-  ];
-
-  const tabs = [
-    {
-      id: 'overview',
-      label: 'Overview',
-      content: (
-        <div className="grid gap-lg md:grid-cols-2">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <Zap className="h-icon-sm w-icon-sm" />
-                System Integration
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground text-center py-xl">
-                External system integrations and API connections.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <Settings className="h-icon-sm w-icon-sm" />
-                Configuration
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground text-center py-xl">
-                Integration settings, authentication, and connection details.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      )
-    },
-    {
-      id: 'webhooks',
-      label: 'Webhooks',
-      content: (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-xs">
-              <Webhook className="h-icon-sm w-icon-sm" />
-              Webhook Configuration
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground text-center py-xl">
-              Webhook endpoints, event subscriptions, and delivery logs.
-            </p>
-          </CardContent>
-        </Card>
-      )
-    }
-  ];
+export default function DetailPage() {
+  // TODO: Implement detail content using DetailLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <DetailTemplate
-      breadcrumbs={breadcrumbs}
-      title={`Procurement Integration ${id}`}
-      subtitle="External system integrations and API connections"
-      tabs={tabs}
-      backHref="/procurement/integrations"
-    />
+    <DetailLayout
+      title="Item Details"
+      subtitle="Detailed view of the selected item"
+      breadcrumbs={
+        <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
+          <button className="hover:text-foreground">Home</button>
+          <span>/</span>
+          <button className="hover:text-foreground">Module</button>
+          <span>/</span>
+          <span className="text-foreground">Details</span>
+        </nav>
+      }
+      actions={
+        <div className="flex items-center gap-2">
+          <button className="px-4 py-2 border border-input rounded-md">
+            Edit
+          </button>
+          <button className="px-4 py-2 bg-destructive text-destructive-foreground rounded-md">
+            Delete
+          </button>
+        </div>
+      }
+      avatar={
+        <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground">
+          D
+        </div>
+      }
+      status={
+        <div className="flex items-center gap-2">
+          <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
+            Active
+          </span>
+        </div>
+      }
+      tabs={{
+        items: [
+          { id: 'overview', label: 'Overview' },
+          { id: 'details', label: 'Details' },
+          { id: 'activity', label: 'Activity' },
+        ],
+        activeTab: 'overview',
+        onTabChange: (tabId) => console.log('Switch to tab:', tabId),
+      }}
+      metaSidebar={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-3">Metadata</h3>
+            <div className="space-y-3 text-sm">
+              <div>
+                <span className="text-muted-foreground">Created:</span>
+                <div>Jan 1, 2024</div>
+              </div>
+              <div>
+                <span className="text-muted-foreground">Last Updated:</span>
+                <div>Jan 10, 2024</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📊</span>
+              <span className="text-sm font-medium">Metric 1</span>
+            </div>
+            <div className="text-2xl font-bold">42</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📈</span>
+              <span className="text-sm font-medium">Metric 2</span>
+            </div>
+            <div className="text-2xl font-bold">85%</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">⏱️</span>
+              <span className="text-sm font-medium">Metric 3</span>
+            </div>
+            <div className="text-2xl font-bold">12d</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Content</h3>
+          <div className="prose max-w-none">
+            <p>Detailed content for this item goes here. This is a placeholder that will be replaced with actual content.</p>
+          </div>
+        </div>
+      </div>
+    </DetailLayout>
   );
 }

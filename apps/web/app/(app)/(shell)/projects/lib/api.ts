@@ -25,7 +25,7 @@ export class ProjectsApiClient {
   // Generic request handler with error handling
   private async handleRequest<T>(
     operation: () => Promise<{ data: T | null; error: unknown }>
-  ): Promise<ApiResponse<T>>> {
+  ): Promise<ApiResponse<T>> {
     try {
       const { data, error } = await operation();
 
@@ -128,7 +128,7 @@ export class ProjectsApiClient {
   /**
    * Get a single project by ID
    */
-  async getProject(projectId: string): Promise<ApiResponse<unknown>>> {
+  async getProject(projectId: string): Promise<ApiResponse<unknown>> {
     return this.handleRequest(async () => {
       const { data, error } = await this.supabase
         .from('projects')
@@ -148,7 +148,7 @@ export class ProjectsApiClient {
   /**
    * Create a new project
    */
-  async createProject(orgId: string, projectData: unknown): Promise<ApiResponse<unknown>>> {
+  async createProject(orgId: string, projectData: unknown): Promise<ApiResponse<unknown>> {
     return this.handleRequest(async () => {
       const now = new Date().toISOString();
       const projectPayload = {
@@ -176,7 +176,7 @@ export class ProjectsApiClient {
   /**
    * Update an existing project
    */
-  async updateProject(projectId: string, updates: unknown): Promise<ApiResponse<unknown>>> {
+  async updateProject(projectId: string, updates: unknown): Promise<ApiResponse<unknown>> {
     return this.handleRequest(async () => {
       const { data, error } = await this.supabase
         .from('projects')
@@ -200,7 +200,7 @@ export class ProjectsApiClient {
   /**
    * Delete a project
    */
-  async deleteProject(projectId: string): Promise<ApiResponse<void>>> {
+  async deleteProject(projectId: string): Promise<ApiResponse<void>> {
     return this.handleRequest(async () => {
       const { error } = await this.supabase
         .from('projects')
@@ -290,7 +290,7 @@ export class ProjectsApiClient {
   /**
    * Create a new task
    */
-  async createTask(orgId: string, taskData: unknown): Promise<ApiResponse<unknown>>> {
+  async createTask(orgId: string, taskData: unknown): Promise<ApiResponse<unknown>> {
     return this.handleRequest(async () => {
       // Get next position
       const { data: existingTasks } = await this.supabase
@@ -330,7 +330,7 @@ export class ProjectsApiClient {
   /**
    * Update task positions (for drag and drop)
    */
-  async updateTaskPositions(updates: Array<{ id: string; position: number }>): Promise<ApiResponse<void>>> {
+  async updateTaskPositions(updates: Array<{ id: string; position: number }>): Promise<ApiResponse<void>> {
     return this.handleRequest(async () => {
       const updatePromises = updates.map(({ id, position }) =>
         this.supabase
@@ -358,7 +358,7 @@ export class ProjectsApiClient {
   /**
    * Upload a file
    */
-  async uploadFile(orgId: string, fileData: unknown): Promise<ApiResponse<unknown>>> {
+  async uploadFile(orgId: string, fileData: unknown): Promise<ApiResponse<unknown>> {
     return this.handleRequest(async () => {
       const now = new Date().toISOString();
       const filePayload = {

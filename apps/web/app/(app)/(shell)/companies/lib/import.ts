@@ -151,7 +151,7 @@ export class CompaniesImportService {
   /**
    * Parse import file
    */
-  private async parseImportFile(file: File, format: ImportFormat): Promise<Record<string, any>[]>> {
+  private async parseImportFile(file: File, format: ImportFormat): Promise<Record<string, any>[]> {
     const content = await file.text();
 
     switch (format) {

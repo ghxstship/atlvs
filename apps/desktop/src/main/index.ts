@@ -3,7 +3,14 @@ import { autoUpdater } from 'electron-updater'
 import * as path from 'path'
 import Store from 'electron-store'
 
-const store = new Store()
+interface WindowState {
+  x: number
+  y: number
+  width: number
+  height: number
+}
+
+const store = new Store<{ windowState?: WindowState }>()
 let mainWindow: BrowserWindow | null = null
 let tray: Tray | null = null
 
@@ -39,7 +46,7 @@ function createWindow() {
   })
 
   // Restore window state
-  const windowState = store.get('windowState') as any
+  const windowState = store.get('windowState')
   if (windowState) {
     mainWindow.setBounds(windowState)
   }
@@ -112,7 +119,7 @@ ipcMain.handle('get-store-value', (_, key: string) => {
   return store.get(key)
 })
 
-ipcMain.handle('set-store-value', (_, key: string, value: any) => {
+ipcMain.handle('set-store-value', (_, key: string, value: unknown) => {
   store.set(key, value)
 })
 

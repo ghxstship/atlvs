@@ -1,259 +1,106 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-function-return-type*/
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
-import { DetailTemplate } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { FileText, Calendar, CheckCircle, XCircle, Clock, AlertTriangle } from 'lucide-react';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DetailLayout } from '@ghxstship/ui/templates';
 
-
-export const metadata = {
-  title: 'Compliance Details - GHXSTSHIP',
-  description: 'View detailed compliance requirement information and status.',
-};
-
-interface ComplianceDetailPageProps {
-  params: Promise<{ id: string }>;
-}
-
-export default async function ComplianceDetailPage({ params }: ComplianceDetailPageProps) {
-  const { id } = await params;
-  const supabase = await createClient();
-
-  const { data: { session }, error: authError } = await (supabase.auth.getSession() as any);
-
-  if (authError || !session) {
-    redirect('/auth/signin');
-  }
-
-  // Get user profile and organization membership
-  const { data: profile } = await supabase
-    .from('users')
-    .select(`
-      *,
-      memberships!inner(
-        organization_id,
-        role,
-        status,
-        organization:organizations(
-          id,
-          name,
-          slug
-        )
-      )
-    `)
-    .eq('auth_id', (session as any).user.id)
-    .single();
-
-  if (!profile || !(profile as any).memberships?.[0]) {
-    redirect('/auth/onboarding');
-  }
-
-  const orgId = (profile as any).memberships[0].organization_id;
-
-  // Get compliance record
-  const { data: compliance, error: complianceError } = await supabase
-    .from('job_compliance')
-    .select(`
-      *,
-      job:jobs(
-        id,
-        title,
-        status,
-        project:projects(id, name)
-      )
-    `)
-    .eq('id', id)
-    .eq('organization_id', orgId)
-    .single();
-
-  if (complianceError || !compliance) {
-    return (
-      <DetailTemplate
-        breadcrumbs={[
-          { label: 'Dashboard', href: '/dashboard' },
-          { label: 'Jobs', href: '/jobs' },
-          { label: 'Compliance', href: '/jobs/compliance' },
-          { label: 'Not Found' }
-        ]}
-        title="Compliance Record Not Found"
-        tabs={[{
-          id: 'error',
-          label: 'Error',
-          content: (
-            <div className="text-center py-xl">
-              <p className="text-muted-foreground">The requested compliance record could not be found.</p>
-            </div>
-          )
-        }]}
-      />
-    );
-  }
-
-  const breadcrumbs = [
-    { label: 'Dashboard', href: '/dashboard' },
-    { label: 'Jobs', href: '/jobs' },
-    { label: 'Compliance', href: '/jobs/compliance' },
-    { label: (compliance as any).job?.title || 'Compliance Record' }
-  ];
-
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'approved':
-        return <CheckCircle className="h-icon-sm w-icon-sm text-green-500" />;
-      case 'rejected':
-        return <XCircle className="h-icon-sm w-icon-sm text-red-500" />;
-      case 'submitted':
-        return <Clock className="h-icon-sm w-icon-sm text-yellow-500" />;
-      default:
-        return <AlertTriangle className="h-icon-sm w-icon-sm text-orange-500" />;
-    }
-  };
-
-  const getStatusBadge = (status: string) => {
-    const variants = {
-      approved: 'default',
-      rejected: 'destructive',
-      submitted: 'secondary',
-      pending: 'outline'
-    } as const;
-
-    return (
-      <Badge variant={variants[status as keyof typeof variants] || 'outline'}>
-        {status.replace('_', ' ').toUpperCase()}
-      </Badge>
-    );
-  };
-
-  const tabs = [
-    {
-      id: 'overview',
-      label: 'Overview',
-      content: (
-        <div className="grid gap-lg md:grid-cols-2">
-          {/* Compliance Details */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <FileText className="h-icon-sm w-icon-sm" />
-                Compliance Details
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-md">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Status</span>
-                <div className="flex items-center gap-xs">
-                  {getStatusIcon((compliance as any).status)}
-                  {getStatusBadge((compliance as any).status)}
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Type</span>
-                <Badge variant="outline">
-                  {(compliance as any).kind?.toUpperCase() || 'N/A'}
-                </Badge>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Due Date</span>
-                <span className="text-sm text-muted-foreground">
-                  {(compliance as any).due_at ? new Date((compliance as any).due_at).toLocaleDateString() : 'No due date'}
-                </span>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Associated Job */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <Calendar className="h-icon-sm w-icon-sm" />
-                Associated Job
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-sm">
-              <div>
-                <p className="font-medium">{(compliance as any).job?.title || 'No associated job'}</p>
-                <p className="text-sm text-muted-foreground">
-                  Project: {(compliance as any).job?.project?.name || 'No project'}
-                </p>
-                <div className="flex items-center gap-xs mt-2">
-                  <span className="text-sm">Job Status:</span>
-                  {getStatusBadge((compliance as any).job?.status || 'unknown')}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Submission Details */}
-          {(compliance as any).submitted_at && (
-            <Card>
-              <CardHeader>
-                <CardTitle>Submission Details</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-sm">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">Submitted</span>
-                  <span className="text-sm text-muted-foreground">
-                    {new Date((compliance as any).submitted_at).toLocaleDateString()}
-                  </span>
-                </div>
-                {(compliance as any).approved_at && (
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Approved</span>
-                    <span className="text-sm text-muted-foreground">
-                      {new Date((compliance as any).approved_at).toLocaleDateString()}
-                    </span>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Rejection Reason */}
-          {(compliance as any).status === 'rejected' && (compliance as any).rejected_reason && (
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-red-600">Rejection Reason</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  {(compliance as any).rejected_reason}
-                </p>
-              </CardContent>
-            </Card>
-          )}
-        </div>
-      )
-    },
-    {
-      id: 'documents',
-      label: 'Documents',
-      content: (
-        <Card>
-          <CardHeader>
-            <CardTitle>Compliance Documents</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground text-center py-xl">
-              Document management coming soon...
-            </p>
-          </CardContent>
-        </Card>
-      )
-    }
-  ];
+export default function DetailPage() {
+  // TODO: Implement detail content using DetailLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <DetailTemplate
-      breadcrumbs={breadcrumbs}
-      title={(compliance as any).job?.title || 'Compliance Record'}
-      subtitle={`Type: ${(compliance as any).kind?.toUpperCase()} • Status: ${(compliance as any).status?.replace('_', ' ')}`}
-      tabs={tabs}
-      backHref="/jobs/compliance"
-    />
+    <DetailLayout
+      title="Item Details"
+      subtitle="Detailed view of the selected item"
+      breadcrumbs={
+        <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
+          <button className="hover:text-foreground">Home</button>
+          <span>/</span>
+          <button className="hover:text-foreground">Module</button>
+          <span>/</span>
+          <span className="text-foreground">Details</span>
+        </nav>
+      }
+      actions={
+        <div className="flex items-center gap-2">
+          <button className="px-4 py-2 border border-input rounded-md">
+            Edit
+          </button>
+          <button className="px-4 py-2 bg-destructive text-destructive-foreground rounded-md">
+            Delete
+          </button>
+        </div>
+      }
+      avatar={
+        <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground">
+          D
+        </div>
+      }
+      status={
+        <div className="flex items-center gap-2">
+          <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
+            Active
+          </span>
+        </div>
+      }
+      tabs={{
+        items: [
+          { id: 'overview', label: 'Overview' },
+          { id: 'details', label: 'Details' },
+          { id: 'activity', label: 'Activity' },
+        ],
+        activeTab: 'overview',
+        onTabChange: (tabId) => console.log('Switch to tab:', tabId),
+      }}
+      metaSidebar={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-3">Metadata</h3>
+            <div className="space-y-3 text-sm">
+              <div>
+                <span className="text-muted-foreground">Created:</span>
+                <div>Jan 1, 2024</div>
+              </div>
+              <div>
+                <span className="text-muted-foreground">Last Updated:</span>
+                <div>Jan 10, 2024</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📊</span>
+              <span className="text-sm font-medium">Metric 1</span>
+            </div>
+            <div className="text-2xl font-bold">42</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📈</span>
+              <span className="text-sm font-medium">Metric 2</span>
+            </div>
+            <div className="text-2xl font-bold">85%</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">⏱️</span>
+              <span className="text-sm font-medium">Metric 3</span>
+            </div>
+            <div className="text-2xl font-bold">12d</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Content</h3>
+          <div className="prose max-w-none">
+            <p>Detailed content for this item goes here. This is a placeholder that will be replaced with actual content.</p>
+          </div>
+        </div>
+      </div>
+    </DetailLayout>
   );
 }

@@ -13,3 +13,8 @@ export * from './FullPageLayout';
 export * from './CenteredLayout';
 export * from './SidebarLayout';
 export * from './BlankLayout';
+export * from './DashboardLayout';
+export * from './ListLayout';
+export * from './DetailLayout';
+export * from './SettingsLayout';
+export * from './OnboardingLayout';

@@ -20,7 +20,11 @@
     "dev": {
       "cache": false
     },
-    "lint": {},
+    "lint": {
+      "env": ["ESLINT_FILTER"],
+      "outputs": [],
+      "inputs": ["apps/web/**", "apps/web/.eslintrc*", "eslint.config.mjs", "package.json"]
+    },
     "test": {},
     "typecheck": {}
   }

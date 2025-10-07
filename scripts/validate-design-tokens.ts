@@ -140,15 +140,11 @@ function log(message: string, color: keyof typeof colors = 'reset') {
 function analyzeFile(filePath: string): FileReport {
   const content = fs.readFileSync(filePath, 'utf-8');
   const lines = content.split('\n');
-  const violations: Violation[] = [];
-
   lines.forEach((line, lineIndex) => {
     // Check each pattern
-    Object.entries(PATTERNS).forEach(([_key, pattern]) => {
+    Object.entries(PATTERNS).forEach(([token, pattern]) => {
       let match;
-      const regex = new RegExp(pattern.regex);
-
-      while ((match = regex.exec(line)) !== null) {
+      const regex = new RegExp(`\\b${token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'g');    while ((match = regex.exec(line)) !== null) {
         violations.push({
           type: pattern.type,
           severity: pattern.severity,

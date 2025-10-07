@@ -1,103 +1,46 @@
-import { Card } from '@ghxstship/ui';
-import { cookies } from 'next/headers';
-import { createServerClient } from '@ghxstship/auth';
-import { getTranslations } from 'next-intl/server';
-import ActivationsTableClient from './ActivationsTableClient';
-import CreateActivationClient from './CreateActivationClient';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DashboardLayout } from '@ghxstship/ui/templates';
+import { DashboardWidget } from '@ghxstship/ui/organisms';
 
-
-export const metadata = { title: 'Projects · Activations' };
-
-export default async function ProjectsActivationsPage() {
-  const t = await getTranslations('activations');
-  const cookieStore = await cookies();
-  const supabase = createServerClient(cookieStore);
-
-  const { data: { user } } = await supabase.auth.getUser();
-  let orgId: string | null = null;
-  if (user) {
-    const { data: membership } = await supabase
-      .from('memberships')
-      .select('organization_id')
-      .eq('user_id', user.id)
-      .eq('status', 'active')
-      .order('created_at', { ascending: true })
-      .maybeSingle();
-    orgId = membership?.organization_id ?? null;
-  }
-
-  let activations: Array<{
-    id: string;
-    name: string;
-    status: string;
-    activation_date: string | null;
-    completion_date: string | null;
-    project: { id: string; name: string } | null;
-    budget: number | null;
-    created_at: string;
-  }> = [];
-
-  let projects: Array<{ id: string; name: string }> = [];
-
-  if (orgId) {
-    // Load activations with project details
-    const { data: activationsData } = await supabase
-      .from('activations')
-      .select(`
-        id,
-        name,
-        status,
-        activation_date,
-        completion_date,
-        budget,
-        created_at,
-        project:projects(id, name)
-      `)
-      .eq('organization_id', orgId)
-      .order('created_at', { ascending: false })
-      .limit(100);
-
-    activations = (activationsData || []).map(activation => ({
-      ...activation,
-      project: activation.project ? {
-        id: (activation.project as any).id,
-        name: (activation.project as any).name
-      } : null
-    }));
-
-    // Load active projects for the create form
-    const { data: projectsData } = await supabase
-      .from('projects')
-      .select('id, name')
-      .eq('organization_id', orgId)
-      .in('status', ['planning', 'active'])
-      .order('name');
-    projects = projectsData || [];
-  }
+export default function DashboardPage() {
+  // TODO: Implement dashboard content using DashboardLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <div className="stack-md">
-      <Card>
-        <div className="flex items-center justify-between gap-md mb-lg">
+    <DashboardLayout
+      title="Dashboard"
+      subtitle="Welcome to your workspace"
+      showRefresh={true}
+      showExport={true}
+      showSettings={true}
+      sidebar={
+        <div className="space-y-4">
           <div>
-            <h1 className="text-heading-3">Activations</h1>
-            <p className="text-body-sm color-muted">
-              Manage project activations, launches, and go-live processes
-            </p>
+            <h3 className="font-medium mb-2">Quick Actions</h3>
+            <div className="space-y-2">
+              {/* TODO: Add quick actions */}
+            </div>
           </div>
-          {orgId ? <CreateActivationClient orgId={orgId} projects={projects} /> : null}
         </div>
-        
-        {orgId ? (
-          <ActivationsTableClient orgId={orgId} rows={activations} projects={projects} />
-        ) : (
-          <div className="text-center py-xl color-muted">
-            Please join an organization to manage activations.
+      }
+      rightPanel={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-4">Recent Activity</h3>
+            {/* TODO: Add activity feed */}
           </div>
-        )}
-      </Card>
-    </div>
+        </div>
+      }
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* TODO: Add dashboard widgets */}
+        <div className="bg-muted/50 rounded-lg p-6">
+          <h3 className="font-medium mb-2">Widget Placeholder</h3>
+          <p className="text-muted-foreground">Dashboard content coming soon</p>
+        </div>
+      </div>
+    </DashboardLayout>
   );
 }

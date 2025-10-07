@@ -15,6 +15,7 @@ export * from './molecules';
 
 // Organisms - Complex components
 export * from './organisms';
+export { Sidebar } from './components/Sidebar';
 
 // Templates - Page layouts
 export * from './templates';

@@ -77,7 +77,7 @@ interface LocationsClientProps {
 }
 
 // View configurations
-const VIEW_TYPES> = [
+const VIEW_TYPES = [
  { id: "grid", label: "Grid", icon: Grid3x3 },
  { id: "map", label: "Map", icon: Map },
  { id: "list", label: "List", icon: List },

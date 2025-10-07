@@ -34,7 +34,7 @@ export class ProgrammingApiService {
     filters: SearchFilters = {},
     sort: SortOptions = { field: 'start_date', direction: 'desc' },
     pagination: { page: number; limit: number } = { page: 1, limit: 20 }
-  ): Promise<PaginatedResponse<ProgrammingEvent>>> {
+  ): Promise<PaginatedResponse<ProgrammingEvent>> {
     const offset = (pagination.page - 1) * pagination.limit;
 
     let query = this.supabase
@@ -187,7 +187,7 @@ export class ProgrammingApiService {
   // Similar methods for other entities (Performances, CallSheets, etc.)
   // Implementation would follow the same pattern as Events API
 
-  async getPerformances(organizationId: string, filters: SearchFilters = {}, sort: SortOptions = { field: 'date', direction: 'desc' }, pagination: { page: number; limit: number } = { page: 1, limit: 20 }): Promise<PaginatedResponse<Performance>>> {
+  async getPerformances(organizationId: string, filters: SearchFilters = {}, sort: SortOptions = { field: 'date', direction: 'desc' }, pagination: { page: number; limit: number } = { page: 1, limit: 20 }): Promise<PaginatedResponse<Performance>> {
     const offset = (pagination.page - 1) * pagination.limit;
 
     let query = this.supabase

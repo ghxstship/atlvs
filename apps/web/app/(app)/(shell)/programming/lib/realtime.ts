@@ -9,7 +9,7 @@ export class ProgrammingRealtimeService {
   private supabase = createClient();
   private subscriptions: Map<string, any> = new Map();
   private presenceChannels: Map<string, any> = new Map();
-  private eventCallbacks: Map<string, Set<(event: RealtimeEvent) => void> = new Map();
+  private eventCallbacks: Map<string, Set<(event: RealtimeEvent) => void>> = new Map();
 
   /**
    * Initialize real-time subscriptions for programming entities

@@ -45,7 +45,7 @@ export async function getTenantContext(): Promise<TenantContext | null> {
     }
 
     // Get user's role in the organization
-    const { data: membership, error: membershipError } = await supabase
+    const { data: membership } = await supabase
       .from('organization_members')
       .select('role')
       .eq('organization_id', organizationId)

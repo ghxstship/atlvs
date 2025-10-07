@@ -1,258 +1,106 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-function-return-type*/
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
-import { DetailTemplate } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { ShoppingCart, Truck, DollarSign, Calendar, User, Package } from 'lucide-react';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DetailLayout } from '@ghxstship/ui/templates';
 
-
-export const metadata = {
-  title: 'Order Details - GHXSTSHIP',
-  description: 'View detailed procurement order information and status.',
-};
-
-interface OrderDetailPageProps {
-  params: Promise<{ id: string }>;
-}
-
-export default async function OrderDetailPage({ params }: OrderDetailPageProps) {
-  const { id } = await params;
-  const supabase = await createClient();
-
-  const { data: { session }, error: authError } = await (supabase.auth.getSession() as any);
-
-  if (authError || !session) {
-    redirect('/auth/signin');
-  }
-
-  // Get user profile and organization membership
-  const { data: profile } = await supabase
-    .from('users')
-    .select(`
-      *,
-      memberships!inner(
-        organization_id,
-        role,
-        status,
-        organization:organizations(
-          id,
-          name,
-          slug
-        )
-      )
-    `)
-    .eq('auth_id', (session as any).user.id)
-    .single();
-
-  if (!profile || !(profile as any).memberships?.[0]) {
-    redirect('/auth/onboarding');
-  }
-
-  const orgId = (profile as any).memberships[0].organization_id;
-
-  // Get order record
-  const { data: order, error: orderError } = await supabase
-    .from('procurement_orders')
-    .select(`
-      *,
-      vendor:procurement_vendors(name, contact_email),
-      items:procurement_order_items(
-        id,
-        quantity,
-        unit_price,
-        total_price,
-        catalog_item:procurement_catalog(name, description, category)
-      )
-    `)
-    .eq('id', id)
-    .eq('organization_id', orgId)
-    .single();
-
-  if (orderError || !order) {
-    return (
-      <DetailTemplate
-        breadcrumbs={[
-          { label: 'Dashboard', href: '/dashboard' },
-          { label: 'Procurement', href: '/procurement' },
-          { label: 'Orders', href: '/procurement/orders' },
-          { label: 'Not Found' }
-        ]}
-        title="Order Not Found"
-        tabs={[{
-          id: 'error',
-          label: 'Error',
-          content: (
-            <div className="text-center py-xl">
-              <p className="text-muted-foreground">The requested order could not be found.</p>
-            </div>
-          )
-        }]}
-      />
-    );
-  }
-
-  const breadcrumbs = [
-    { label: 'Dashboard', href: '/dashboard' },
-    { label: 'Procurement', href: '/procurement' },
-    { label: 'Orders', href: '/procurement/orders' },
-    { label: `Order ${(order as any).order_number || (order as any).id}` }
-  ];
-
-  const getStatusBadge = (status: string) => {
-    const variants = {
-      draft: 'secondary',
-      submitted: 'default',
-      approved: 'default',
-      ordered: 'default',
-      received: 'default',
-      cancelled: 'destructive',
-      rejected: 'destructive'
-    } as const;
-
-    return (
-      <Badge variant={variants[status as keyof typeof variants] || 'outline'}>
-        {status.toUpperCase()}
-      </Badge>
-    );
-  };
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    }).format(amount);
-  };
-
-  const tabs = [
-    {
-      id: 'overview',
-      label: 'Overview',
-      content: (
-        <div className="grid gap-lg md:grid-cols-2">
-          {/* Order Information */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <ShoppingCart className="h-icon-sm w-icon-sm" />
-                Order Information
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-md">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Order Number</span>
-                <span className="text-sm font-mono">
-                  {(order as any).order_number || (order as any).id}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Status</span>
-                {getStatusBadge((order as any).status)}
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Total Amount</span>
-                <span className="text-sm font-semibold">
-                  {formatCurrency((order as any).total_amount || 0)}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Order Date</span>
-                <span className="text-sm text-muted-foreground">
-                  {(order as any).order_date ? new Date((order as any).order_date).toLocaleDateString() : 'N/A'}
-                </span>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Vendor Information */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <Truck className="h-icon-sm w-icon-sm" />
-                Vendor Information
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-sm">
-              <div>
-                <p className="font-medium">{(order as any).vendor?.name || 'No vendor assigned'}</p>
-                {(order as any).vendor?.contact_email && (
-                  <p className="text-sm text-muted-foreground">
-                    {(order as any).vendor.contact_email}
-                  </p>
-                )}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Order Items */}
-          <Card className="md:col-span-2">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <Package className="h-icon-sm w-icon-sm" />
-                Order Items
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {(order as any).items && (order as any).items.length > 0 ? (
-                <div className="space-y-sm">
-                  {(order as any).items.map((item: unknown) => (
-                    <div key={item.id} className="flex items-center justify-between p-sm border rounded">
-                      <div className="flex-1">
-                        <p className="font-medium">{item.catalog_item?.name || 'Unknown Item'}</p>
-                        <p className="text-sm text-muted-foreground">
-                          {item.catalog_item?.description || 'No description'}
-                        </p>
-                        <div className="flex items-center gap-md mt-1">
-                          <span className="text-xs">Qty: {item.quantity}</span>
-                          <span className="text-xs">Unit: {formatCurrency(item.unit_price)}</span>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-semibold">{formatCurrency(item.total_price)}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-muted-foreground text-center py-md">
-                  No items in this order
-                </p>
-              )}
-            </CardContent>
-          </Card>
-        </div>
-      )
-    },
-    {
-      id: 'tracking',
-      label: 'Tracking',
-      content: (
-        <Card>
-          <CardHeader>
-            <CardTitle>Shipping & Tracking</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground text-center py-xl">
-              Tracking information coming soon...
-            </p>
-          </CardContent>
-        </Card>
-      )
-    }
-  ];
+export default function DetailPage() {
+  // TODO: Implement detail content using DetailLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <DetailTemplate
-      breadcrumbs={breadcrumbs}
-      title={`Order ${(order as any).order_number || (order as any).id}`}
-      subtitle={`Status: ${(order as any).status} • Total: ${formatCurrency((order as any).total_amount || 0)}`}
-      tabs={tabs}
-      backHref="/procurement/orders"
-    />
+    <DetailLayout
+      title="Item Details"
+      subtitle="Detailed view of the selected item"
+      breadcrumbs={
+        <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
+          <button className="hover:text-foreground">Home</button>
+          <span>/</span>
+          <button className="hover:text-foreground">Module</button>
+          <span>/</span>
+          <span className="text-foreground">Details</span>
+        </nav>
+      }
+      actions={
+        <div className="flex items-center gap-2">
+          <button className="px-4 py-2 border border-input rounded-md">
+            Edit
+          </button>
+          <button className="px-4 py-2 bg-destructive text-destructive-foreground rounded-md">
+            Delete
+          </button>
+        </div>
+      }
+      avatar={
+        <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground">
+          D
+        </div>
+      }
+      status={
+        <div className="flex items-center gap-2">
+          <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
+            Active
+          </span>
+        </div>
+      }
+      tabs={{
+        items: [
+          { id: 'overview', label: 'Overview' },
+          { id: 'details', label: 'Details' },
+          { id: 'activity', label: 'Activity' },
+        ],
+        activeTab: 'overview',
+        onTabChange: (tabId) => console.log('Switch to tab:', tabId),
+      }}
+      metaSidebar={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-3">Metadata</h3>
+            <div className="space-y-3 text-sm">
+              <div>
+                <span className="text-muted-foreground">Created:</span>
+                <div>Jan 1, 2024</div>
+              </div>
+              <div>
+                <span className="text-muted-foreground">Last Updated:</span>
+                <div>Jan 10, 2024</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📊</span>
+              <span className="text-sm font-medium">Metric 1</span>
+            </div>
+            <div className="text-2xl font-bold">42</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📈</span>
+              <span className="text-sm font-medium">Metric 2</span>
+            </div>
+            <div className="text-2xl font-bold">85%</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">⏱️</span>
+              <span className="text-sm font-medium">Metric 3</span>
+            </div>
+            <div className="text-2xl font-bold">12d</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Content</h3>
+          <div className="prose max-w-none">
+            <p>Detailed content for this item goes here. This is a placeholder that will be replaced with actual content.</p>
+          </div>
+        </div>
+      </div>
+    </DetailLayout>
   );
 }

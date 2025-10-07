@@ -1,11 +1,12 @@
 'use client';
 
-import { Save, Phone, MapPin, AlertTriangle, User, Globe, Clock, Shield, CheckCircle } from "lucide-react";
+import { Save, Phone, MapPin, AlertTriangle, Globe, Shield, CheckCircle } from "lucide-react";
 import { useState, type ChangeEvent } from 'react';
 import { 
  Card, 
  Button,
- UnifiedInput,
+ Input,
+ Label,
  Textarea,
  Select,
  SelectContent,
@@ -41,7 +42,7 @@ export default function ContactFormView({
  onVerify,
  fieldVisibility = {},
 }: ContactFormViewProps) {
- const [expandedSections, setExpandedSections] = useState<Record<string, boolean>({
+ const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({
  'Phone Information': true,
  'Primary Address': true,
  'Billing Address': false,
@@ -50,7 +51,7 @@ export default function ContactFormView({
  });
 
  const toggleSection = (section: string) => {
- setExpandedSections(prev => ({
+ setExpandedSections((prev: { [key: string]: boolean }) => ({
  ...prev,
  [section]: !prev[section],
  }));
@@ -77,14 +78,14 @@ export default function ContactFormView({
  switch (config.type) {
  case 'tel':
  return (
- <UnifiedInput
- key={config.key}
- label={config.label}
+ <div key={config.key}>
+ <Label>{config.label}</Label>
+ <Input
+ type="tel"
  value={value as string}
  onChange={(e: ChangeEvent<HTMLInputElement>) => 
  onFieldChange(config.key as keyof ContactFormData, e.target.value)
  }
- error={error}
  placeholder={config.placeholder}
  required={config.required}
  onBlur={(e: ChangeEvent<HTMLInputElement>) => {
@@ -92,14 +93,14 @@ export default function ContactFormView({
  onFieldChange(config.key as keyof ContactFormData, formatted);
  }}
  />
+ {error && <span className="text-xs text-red-500 mt-1">{error}</span>}
+ </div>
  );
 
  case 'textarea':
  return (
  <div key={config.key} className="col-span-2">
- <label className="text-sm font-medium mb-1 block">
- {config.label}
- </label>
+ <Label>{config.label}</Label>
  <Textarea
  value={value as string}
  onChange={(e: ChangeEvent<HTMLTextAreaElement>) => 
@@ -127,18 +128,19 @@ export default function ContactFormView({
 
  default:
  return (
- <UnifiedInput
- key={config.key}
- label={config.label}
+ <div key={config.key}>
+ <Label>{config.label}</Label>
+ <Input
  type={config.type}
  value={value as string}
  onChange={(e: ChangeEvent<HTMLInputElement>) => 
  onFieldChange(config.key as keyof ContactFormData, e.target.value)
  }
- error={error}
  placeholder={config.placeholder}
  required={config.required}
  />
+ {error && <span className="text-xs text-red-500 mt-1">{error}</span>}
+ </div>
  );
  }
  };
@@ -162,7 +164,7 @@ export default function ContactFormView({
  if (!acc[section]) acc[section] = [];
  acc[section].push(field);
  return acc;
- }, {} as Record<string, FieldConfig[]);
+ }, {} as Record<string, FieldConfig[]>);
 
  return (
  <form onSubmit={(e) => { e.preventDefault(); onSave(); }} className="space-y-lg">
@@ -171,12 +173,12 @@ export default function ContactFormView({
  <Card className="p-md">
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-sm">
- {contact.verification_status === 'verified' ? (
+ {contact?.verification_status === 'verified' ? (
  <>
  <CheckCircle className="h-icon-sm w-icon-sm text-green-500" />
  <div>
  <span className="font-medium">Contact Verified</span>
- {contact.last_verified && (
+ {contact?.last_verified && (
  <span className="text-sm text-muted-foreground ml-2">
  Last verified: {new Date(contact.last_verified).toLocaleDateString()}
  </span>
@@ -190,7 +192,7 @@ export default function ContactFormView({
  </>
  )}
  </div>
- {onVerify && contact.verification_status !== 'verified' && (
+ {onVerify && contact?.verification_status !== 'verified' && (
  <Button variant="outline" size="sm" onClick={onVerify}>
  <Shield className="mr-2 h-icon-xs w-icon-xs" />
  Verify Contact
@@ -241,9 +243,7 @@ export default function ContactFormView({
  if (field.key === 'country') {
  return (
  <div key={field.key}>
- <label className="text-sm font-medium mb-1 block">
- {field.label}
- </label>
+ <Label>{field.label}</Label>
  <Select
  value={formData.country || ''}
  onValueChange={(value) => onFieldChange('country', value)}
@@ -293,46 +293,56 @@ export default function ContactFormView({
  </div>
  {!formData.billing_same_as_primary && (
  <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
- <UnifiedInput
- 
+ <div>
+ <Label>Address Line 1</Label>
+ <Input
  value={formData.billing_address_line1 || ''}
  onChange={(e: ChangeEvent<HTMLInputElement>) => 
  onFieldChange('billing_address_line1', e.target.value)
  }
  placeholder="123 Main Street"
  />
- <UnifiedInput
- 
+ </div>
+ <div>
+ <Label>Address Line 2</Label>
+ <Input
  value={formData.billing_address_line2 || ''}
  onChange={(e: ChangeEvent<HTMLInputElement>) => 
  onFieldChange('billing_address_line2', e.target.value)
  }
  placeholder="Apt 4B"
  />
- <UnifiedInput
- 
+ </div>
+ <div>
+ <Label>City</Label>
+ <Input
  value={formData.billing_city || ''}
  onChange={(e: ChangeEvent<HTMLInputElement>) => 
  onFieldChange('billing_city', e.target.value)
  }
  placeholder="San Francisco"
  />
- <UnifiedInput
- 
+ </div>
+ <div>
+ <Label>State/Province</Label>
+ <Input
  value={formData.billing_state_province || ''}
  onChange={(e: ChangeEvent<HTMLInputElement>) => 
  onFieldChange('billing_state_province', e.target.value)
  }
  placeholder="California"
  />
- <UnifiedInput
- 
+ </div>
+ <div>
+ <Label>Postal Code</Label>
+ <Input
  value={formData.billing_postal_code || ''}
  onChange={(e: ChangeEvent<HTMLInputElement>) => 
  onFieldChange('billing_postal_code', e.target.value)
  }
  placeholder="94102"
  />
+ </div>
  <Select
  value={formData.billing_country || ''}
  onValueChange={(value) => onFieldChange('billing_country', value)}
@@ -392,7 +402,7 @@ export default function ContactFormView({
  {expandedSections['Additional Information'] && (
  <div className="p-md pt-0 space-y-md">
  <div>
- <label className="text-sm font-medium mb-1 block">Timezone</label>
+ <Label>Timezone</Label>
  <Select
  value={formData.timezone || ''}
  onValueChange={(value) => onFieldChange('timezone', value)}
@@ -411,7 +421,7 @@ export default function ContactFormView({
  </div>
  
  <div>
- <label className="text-sm font-medium mb-1 block">Preferred Contact Method</label>
+ <Label>Preferred Contact Method</Label>
  <Select
  value={formData.preferred_contact_method || 'email'}
  onValueChange={(value) => onFieldChange('preferred_contact_method', value)}
@@ -437,7 +447,7 @@ export default function ContactFormView({
  </div>
 
  <div>
- <label className="text-sm font-medium mb-1 block">Contact Notes</label>
+ <Label>Contact Notes</Label>
  <Textarea
  value={formData.contact_notes || ''}
  onChange={(e: ChangeEvent<HTMLTextAreaElement>) => 

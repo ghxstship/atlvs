@@ -491,4 +491,5 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
         </AlertDescription>
       </Alert>
     </div>
+  );
 }

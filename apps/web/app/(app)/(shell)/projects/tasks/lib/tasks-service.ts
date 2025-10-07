@@ -97,7 +97,7 @@ export class TasksService {
   }
 
   // Get a single task by ID
-  async getTask(id: string, orgId: string): Promise<ApiResponse<Task>>> {
+  async getTask(id: string, orgId: string): Promise<ApiResponse<Task>> {
     try {
       const { data, error } = await this.supabase
         .from('project_tasks')
@@ -128,7 +128,7 @@ export class TasksService {
     taskData: CreateTaskData,
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<Task>>> {
+  ): Promise<ApiResponse<Task>> {
     try {
       // Get next position for the task
       const { data: lastTask } = await this.supabase
@@ -183,7 +183,7 @@ export class TasksService {
     taskData: UpdateTaskData,
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<Task>>> {
+  ): Promise<ApiResponse<Task>> {
     try {
       const { id, ...updateData } = taskData;
 
@@ -233,7 +233,7 @@ export class TasksService {
     id: string,
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<boolean>>> {
+  ): Promise<ApiResponse<boolean>> {
     try {
       // Get task info for audit log
       const { data: task } = await this.supabase
@@ -270,7 +270,7 @@ export class TasksService {
     dragResult: TaskDragResult,
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<boolean>>> {
+  ): Promise<ApiResponse<boolean>> {
     try {
       const { taskId, sourceStatus, destinationStatus, destinationIndex } = dragResult;
 
@@ -313,7 +313,7 @@ export class TasksService {
   }
 
   // Get task statistics
-  async getTaskStats(orgId: string, projectId?: string): Promise<ApiResponse<TaskStats>>> {
+  async getTaskStats(orgId: string, projectId?: string): Promise<ApiResponse<TaskStats>> {
     try {
       let query = this.supabase
         .from('project_tasks')
@@ -391,7 +391,7 @@ export class TasksService {
     status: Task['status'],
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<Task[]>>> {
+  ): Promise<ApiResponse<Task[]>> {
     try {
       const updates: unknown = {
         status,
@@ -440,7 +440,7 @@ export class TasksService {
     assigneeId: string,
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<Task[]>>> {
+  ): Promise<ApiResponse<Task[]>> {
     try {
       const { data, error } = await this.supabase
         .from('project_tasks')

@@ -148,7 +148,7 @@ export default function EmergencyFormView({
  onVerify,
 }: EmergencyFormViewProps) {
  const sections = useMemo(() => {
- return CONTACT_FIELD_CONFIG.reduce<Record<string, FieldConfig[]((acc, field) => {
+ return CONTACT_FIELD_CONFIG.reduce<Record<string, FieldConfig[]>((acc, field) => {
  const section = field.section ?? 'Other';
  if (!acc[section]) acc[section] = [];
  acc[section].push(field);

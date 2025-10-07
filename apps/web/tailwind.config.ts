@@ -5,7 +5,7 @@ import type { Config } from 'tailwindcss';
 import preset from '@ghxstship/config/tailwind-preset.js';
 
 export default {
-  presets: [preset as any],
+  presets: [preset as Config],
   darkMode: ['class'],
   content: [
     '../../packages/ui/src/**/*.{js,ts,jsx,tsx}',    './app/**/*.{ts,tsx}',
@@ -68,30 +68,6 @@ export default {
         'content-medium': '300px',
         'content-large': '600px',
         'content-xlarge': '800px',
-      },
-      height: {
-        // Icon sizes
-        'icon-xs': '16px',
-        'icon-sm': '20px',
-        'icon-md': '24px',
-        'icon-lg': '32px',
-        'icon-xl': '40px',
-        'icon-2xl': '48px',
-        // Component sizes
-        'component-xs': '32px',
-        'component-sm': '48px',
-        'component-md': '64px',
-        'component-lg': '96px',
-        'component-xl': '128px',
-        'component-2xl': '192px',
-        'component-3xl': '256px',
-        // Container sizes
-        'container-xs': '192px',
-        'container-sm': '256px',
-        'container-md': '320px',
-        'container-lg': '384px',
-        'container-xl': '512px',
-        'container-2xl': '640px',
         // Common arbitrary values converted
         'toolbar': '60px',
         'header-sm': '80px',

@@ -7,7 +7,6 @@ export * from './EnhancedForm';
 export * from './Modal';
 export * from './Tabs';
 export * from './Toggle';
-export * from './Sidebar';
 
 // Template Components
 export * from './templates';

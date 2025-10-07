@@ -1,42 +1,63 @@
-import { cookies } from 'next/headers';
-import { createServerClient } from '@ghxstship/auth';
-import { getTranslations } from 'next-intl/server';
-import { redirect } from 'next/navigation';
-import AssetsClient from './AssetsClient';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { ListLayout } from '@ghxstship/ui/templates';
+import { BoardView } from '@ghxstship/ui/organisms';
 
-
-export const metadata = { title: 'Assets' };
-
-export default async function AssetsPage() {
-  const t = await getTranslations('assets');
-  const cookieStore = await cookies();
-  const supabase = createServerClient(cookieStore);
-
-  const { data: { user } } = await supabase.auth.getUser();
-  
-  if (!user) {
-    redirect('/auth/login');
-  }
-
-  const { data: membership } = await supabase
-    .from('memberships')
-    .select('organization_id')
-    .eq('user_id', user.id)
-    .eq('status', 'active')
-    .order('created_at', { ascending: true })
-    .maybeSingle();
-
-  const orgId = membership?.organization_id;
-
-  if (!orgId) {
-    redirect('/onboarding');
-  }
+export default function uassetsPage() {
+  // TODO: Implement uassets content using ListLayout + BoardView
+  // This is a placeholder - actual implementation needed
 
   return (
-    <div className="stack-md">
-      <AssetsClient orgId={orgId} />
-    </div>
+    <ListLayout
+      title="uassets"
+      subtitle="Manage and track all your uassets"
+      actions={
+        <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md">
+          New uassets
+        </button>
+      }
+      search={{
+        value: '',
+        onChange: (value) => console.log('Search:', value),
+        placeholder: 'Search uassets...',
+      }}
+      filters={{
+        activeCount: 0,
+        onClear: () => console.log('Clear filters'),
+      }}
+      sidebar={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-3">Filters</h3>
+            <div className="space-y-2">
+              {/* TODO: Add uassets filters */}
+              <label className="flex items-center gap-2 text-sm">
+                <input type="checkbox" className="rounded" />
+                Active
+              </label>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <BoardView
+        columns={[
+          {
+            id: 'todo',
+            title: 'To Do',
+            status: 'todo',
+            color: '#6b7280',
+            tasks: [
+              // TODO: Add sample tasks
+            ]
+          }
+        ]}
+        onTaskClick={(task) => console.log('Task clicked:', task)}
+        onTaskEdit={(task) => console.log('Edit task:', task)}
+        onTaskDelete={(task) => console.log('Delete task:', task)}
+        onTaskCreate={(columnId) => console.log('Create task in:', columnId)}
+      />
+    </ListLayout>
   );
 }

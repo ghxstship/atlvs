@@ -5,8 +5,8 @@
  * Tests TLS settings, security headers, and HTTPS enforcement
  */
 
-const https = require('https');
 const { URL } = require('url');
+const https = require('https');
 
 const TEST_URL = process.env.TEST_URL || 'https://localhost:3000';
 const VERBOSE = process.argv.includes('--verbose');
@@ -15,7 +15,7 @@ function log(level, message, data = null) {
   const timestamp = new Date().toISOString();
   const prefix = level === 'error' ? '❌' : level === 'warn' ? '⚠️' : '✅';
 
-  console.log(`${prefix} ${message}`);
+  console.log(`${prefix} ${timestamp} ${message}`);
   if (VERBOSE && data) {
     console.log(JSON.stringify(data, null, 2));
   }

@@ -5,7 +5,9 @@
  * Scans codebase for hardcoded values that should use design tokens
  */
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const fs = require('fs');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const path = require('path');
 
 // Recursive function to get all files matching patterns
@@ -35,12 +37,12 @@ function getAllFiles(dirPath, pattern, excludeDirs = []) {
               files.push(fullPath);
             }
           }
-        } catch (statErr) {
+        } catch (_statErr) {
           // Skip files we can't stat
           continue;
         }
       }
-    } catch (readErr) {
+    } catch (_readErr) {
       // Skip directories we can't read
       return;
     }
@@ -216,12 +218,12 @@ function main() {
     }
   };
 
-  // Count total tokens available
-  usageMetrics.totalTokens +=
-    Object.keys(DESIGN_TOKENS.colors).length +
-    Object.keys(DESIGN_TOKENS.spacing).length +
-    Object.keys(DESIGN_TOKENS.shadows).length +
-    Object.keys(DESIGN_TOKENS.borderRadius).length;
+  // Count total tokens available (would need actual DESIGN_TOKENS import)
+  // usageMetrics.totalTokens +=
+  //   Object.keys(DESIGN_TOKENS.colors).length +
+  //   Object.keys(DESIGN_TOKENS.spacing).length +
+  //   Object.keys(DESIGN_TOKENS.shadows).length +
+  //   Object.keys(DESIGN_TOKENS.borderRadius).length;
 
   // Categorize violations and track usage
   allViolations.forEach(v => {

@@ -1,14 +1,28 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Sidebar } from '@ghxstship/ui';
 import { useTelemetry, trackSearchQuery } from "../../../lib/telemetry";
+import { ProductToggle } from "./ProductToggle";
 
 export type NavSection = { label: string; items: { label: string; href: string }[] };
 
-export function SidebarClient({ navSections }: { navSections: NavSection[] }) {
+export function SidebarClient({
+  navSections,
+  userId,
+  entitlements,
+  organizationName,
+  productSwitcher,
+  subtitleOverride,
+}: {
+  navSections: NavSection[];
+  userId?: string;
+  entitlements?: { feature_atlvs: boolean; feature_opendeck: boolean };
+  organizationName?: string | null;
+  productSwitcher?: React.ReactNode;
+  subtitleOverride?: string;
+}) {
   const router = useRouter();
   const { trackFeatureUsage } = useTelemetry();
   const [initialPins, setInitialPins] = React.useState<string[] | undefined>(undefined);
@@ -29,7 +43,7 @@ export function SidebarClient({ navSections }: { navSections: NavSection[] }) {
 
   const handleNavigate = React.useCallback((href: string) => {
     trackFeatureUsage("Navigation", "navigate", { source: "sidebar", href });
-    router.push(href as any);
+    router.push(href);
   }, [router, trackFeatureUsage]);
 
   const handleSearchChange = React.useCallback((query: string, resultsCount: number) => {
@@ -54,19 +68,30 @@ export function SidebarClient({ navSections }: { navSections: NavSection[] }) {
         body: JSON.stringify(body),
       });
       setInitialPins(body.pins);
-    } catch {}
+    } catch (error) {
+      console.error('Failed to persist pinned items', error);
+    }
   }, [initialPins, trackFeatureUsage]);
 
   return (
     <Sidebar
       title="ATLVS"
-      LinkComponent={Link as any}
+      subtitle={subtitleOverride ?? organizationName ?? 'Command Center'}
       navSections={navSections}
       onNavigate={handleNavigate}
       onSearchChange={handleSearchChange}
       onToggleExpand={handleToggleExpand}
       onTogglePin={handleTogglePin}
       initialPinnedIds={initialPins}
+      userId={userId}
+      productSwitcher={productSwitcher ?? (
+        entitlements ? (
+          <ProductToggle
+            atlvsEnabled={entitlements.feature_atlvs}
+            opendeckEnabled={entitlements.feature_opendeck}
+          />
+        ) : null
+      )}
     />
   );
 }

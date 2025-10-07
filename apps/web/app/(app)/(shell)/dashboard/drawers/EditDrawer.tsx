@@ -91,7 +91,7 @@ export interface EditDrawerProps {
   onSave: (data: Record<string, unknown>) => Promise<void>;
   onCancel?: () => void;
   onPreview?: (data: Record<string, unknown>) => void;
-  onValidate?: (data: Record<string, unknown>) => Promise<Record<string, string>;
+  onValidate?: (data: Record<string, unknown>) => Promise<Record<string, string>>;
 
   // Advanced Features
   autoSave?: boolean;

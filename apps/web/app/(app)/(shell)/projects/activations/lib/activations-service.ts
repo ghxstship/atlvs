@@ -87,7 +87,7 @@ export class ActivationsService {
   }
 
   // Get a single activation by ID
-  async getActivation(id: string, orgId: string): Promise<ApiResponse<Activation>>> {
+  async getActivation(id: string, orgId: string): Promise<ApiResponse<Activation>> {
     try {
       const { data, error } = await this.supabase
         .from('project_activations')
@@ -114,7 +114,7 @@ export class ActivationsService {
     activationData: CreateActivationData,
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<Activation>>> {
+  ): Promise<ApiResponse<Activation>> {
     try {
       const { data, error } = await this.supabase
         .from('project_activations')
@@ -152,7 +152,7 @@ export class ActivationsService {
     activationData: UpdateActivationData,
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<Activation>>> {
+  ): Promise<ApiResponse<Activation>> {
     try {
       const { id, ...updateData } = activationData;
 
@@ -201,7 +201,7 @@ export class ActivationsService {
     id: string,
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<boolean>>> {
+  ): Promise<ApiResponse<boolean>> {
     try {
       // Get activation name for audit log
       const { data: activation } = await this.supabase
@@ -233,7 +233,7 @@ export class ActivationsService {
   }
 
   // Get activation statistics
-  async getActivationStats(orgId: string): Promise<ApiResponse<ActivationStats>>> {
+  async getActivationStats(orgId: string): Promise<ApiResponse<ActivationStats>> {
     try {
       const { data, error } = await this.supabase
         .from('project_activations')
@@ -302,7 +302,7 @@ export class ActivationsService {
     id: string,
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<Activation>>> {
+  ): Promise<ApiResponse<Activation>> {
     try {
       const { data: original, error: fetchError } = await this.supabase
         .from('project_activations')
@@ -355,7 +355,7 @@ export class ActivationsService {
     status: Activation['status'],
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<Activation[]>>> {
+  ): Promise<ApiResponse<Activation[]>> {
     try {
       const updates: unknown = {
         status,

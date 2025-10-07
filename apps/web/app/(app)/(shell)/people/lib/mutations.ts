@@ -242,7 +242,7 @@ export class PeopleMutationHandler {
   }
 
   // Bulk Operations
-  async bulkUpdatePeople(ids: string[], updates: Partial<z.infer<typeof UpdatePersonSchema>) {
+  async bulkUpdatePeople(ids: string[], updates: Partial<z.infer<typeof UpdatePersonSchema>>) {
     // Validate bulk updates
     const validatedUpdates = UpdatePersonSchema.partial().parse(updates);
 
@@ -315,7 +315,7 @@ export class PeopleMutationHandler {
     return data;
   }
 
-  async updateRole(id: string, updates: Partial<z.infer<typeof CreateRoleSchema>) {
+  async updateRole(id: string, updates: Partial<z.infer<typeof CreateRoleSchema>>) {
     const validatedUpdates = CreateRoleSchema.partial().parse(updates);
 
     const { data: { user } } = await this.supabase.auth.getUser();

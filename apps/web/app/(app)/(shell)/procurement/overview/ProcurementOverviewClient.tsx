@@ -1,341 +1,322 @@
-'use client';
+'use client'
 
-
-import { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
-import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Badge, Button } from '@ghxstship/ui';
-import { StatusBadge, designTokens } from "../../../../_components/ui"
-import { 
-  ShoppingCart, 
-  Package, 
-  Wrench, 
-  Building, 
-  Tag, 
-  TrendingUp, 
-  AlertTriangle,
+import { useMemo } from 'react'
+import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  Button,
+  Badge,
+} from '@ghxstship/ui'
+import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
+import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
+import {
+  ShoppingCart,
+  Package,
+  Wrench,
+  Building,
+  Tag,
   CheckCircle,
   Clock,
   DollarSign,
-  ArrowRight
-} from 'lucide-react';
-import Link from 'next/link';
+  ArrowRight,
+} from 'lucide-react'
 
-interface ProcurementStats {
-  totalOrders: number;
-  pendingOrders: number;
-  completedOrders: number;
-  totalProducts: number;
-  totalServices: number;
-  totalVendors: number;
-  totalCategories: number;
-  totalSpent: number;
-  currency: string;
-}
+import { useProcurementOverview } from '../hooks/useProcurementOverview'
 
-interface RecentOrder {
-  id: string;
-  order_number: string;
-  vendor_name: string;
-  total_amount: number;
-  currency: string;
-  status: string;
-  created_at: string;
-}
+const quickActions = [
+  { id: 'order', icon: ShoppingCart, label: 'Create Order', href: '/procurement/orders' },
+  { id: 'product', icon: Package, label: 'Add Product', href: '/procurement/products' },
+  { id: 'service', icon: Wrench, label: 'Add Service', href: '/procurement/services' },
+  { id: 'vendor', icon: Building, label: 'Add Vendor', href: '/procurement/vendors' },
+]
 
 export default function ProcurementOverviewClient({ orgId }: { orgId: string }) {
-  const t = useTranslations('procurement');
-  const sb = createBrowserClient();
-  const [stats, setStats] = useState<ProcurementStats | null>(null);
-  const [recentOrders, setRecentOrders] = useState<RecentOrder[]>([]);
-  const [loading, setLoading] = useState(true);
+  const t = useTranslations('procurement.overview')
+  const router = useRouter()
+  const { stats, recentOrders, loading, refreshing, error, refresh } = useProcurementOverview({ orgId })
 
-  useEffect(() => {
-    loadOverviewData();
-  }, [orgId]);
+  const formatCurrency = (amount: number, currency: string = 'USD') =>
+    new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(amount)
 
-  const loadOverviewData = async () => {
-    try {
-      setLoading(true);
-      
-      // Load stats from multiple endpoints
-      const [ordersRes, productsRes, servicesRes, vendorsRes, categoriesRes] = await Promise.all([
-        fetch('/api/v1/procurement/purchase-orders', { headers: { 'x-organization-id': orgId } }),
-        fetch('/api/v1/procurement/products', { headers: { 'x-organization-id': orgId } }),
-        fetch('/api/v1/procurement/services', { headers: { 'x-organization-id': orgId } }),
-        fetch('/api/v1/procurement/vendors', { headers: { 'x-organization-id': orgId } }),
-        fetch('/api/v1/procurement/categories', { headers: { 'x-organization-id': orgId } }),
-      ]);
+  const metricCards = useMemo(
+    () => [
+      {
+        id: 'totalOrders',
+        label: 'Total Orders',
+        value: stats?.totalOrders ?? 0,
+        icon: ShoppingCart,
+        tone: 'accent',
+      },
+      {
+        id: 'pendingOrders',
+        label: 'Pending Orders',
+        value: stats?.pendingOrders ?? 0,
+        icon: Clock,
+        tone: 'warning',
+      },
+      {
+        id: 'completedOrders',
+        label: 'Completed Orders',
+        value: stats?.completedOrders ?? 0,
+        icon: CheckCircle,
+        tone: 'success',
+      },
+      {
+        id: 'totalSpent',
+        label: 'Total Spent',
+        value: stats ? formatCurrency(stats.totalSpent, stats.currency) : '$0.00',
+        icon: DollarSign,
+        tone: 'secondary',
+      },
+    ],
+    [stats],
+  )
 
-      const [orders, products, services, vendors, categories] = await Promise.all([
-        ordersRes.ok ? ordersRes.json() : { data: [] },
-        productsRes.ok ? productsRes.json() : { data: [] },
-        servicesRes.ok ? servicesRes.json() : { data: [] },
-        vendorsRes.ok ? vendorsRes.json() : { data: [] },
-        categoriesRes.ok ? categoriesRes.json() : { data: [] },
-      ]);
-
-      const ordersData = orders.data || [];
-      const pendingOrders = ordersData.filter((o: any) => ['draft', 'pending', 'approved'].includes(o.status));
-      const completedOrders = ordersData.filter((o: any) => ['delivered'].includes(o.status));
-      const totalSpent = ordersData.reduce((sum: number, order) => sum + (order.total_amount || 0), 0);
-
-      setStats({
-        totalOrders: ordersData.length,
-        pendingOrders: pendingOrders.length,
-        completedOrders: completedOrders.length,
-        totalProducts: (products.data || []).length,
-        totalServices: (services.data || []).length,
-        totalVendors: (vendors.data || []).length,
-        totalCategories: (categories.data || []).length,
-        totalSpent,
-        currency: 'USD', // Default currency
-      });
-
-      // Set recent orders (last 5)
-      setRecentOrders(ordersData.slice(0, 5));
-
-    } catch (error) {
-      console.error('Error loading overview data:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Using design tokens for status colors
-
-  const formatCurrency = (amount: number, currency: string = 'USD') => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency,
-    }).format(amount);
-  };
+  const catalogCards = useMemo(
+    () => [
+      {
+        id: 'products',
+        label: 'Products',
+        helper: 'Active products',
+        value: stats?.totalProducts ?? 0,
+        href: '/procurement/products',
+        icon: Package,
+        tone: 'accent',
+      },
+      {
+        id: 'services',
+        label: 'Services',
+        helper: 'Available services',
+        value: stats?.totalServices ?? 0,
+        href: '/procurement/services',
+        icon: Wrench,
+        tone: 'success',
+      },
+      {
+        id: 'vendors',
+        label: 'Vendors',
+        helper: 'Trusted vendors',
+        value: stats?.totalVendors ?? 0,
+        href: '/procurement/vendors',
+        icon: Building,
+        tone: 'warning',
+      },
+      {
+        id: 'categories',
+        label: 'Categories',
+        helper: 'Catalog categories',
+        value: stats?.totalCategories ?? 0,
+        href: '/procurement/categories',
+        icon: Tag,
+        tone: 'secondary',
+      },
+    ],
+    [stats],
+  )
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-xsxl">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-md"></div>
-          <p className="color-foreground/70">Loading overview...</p>
-        </div>
-      </div>
-    );
+      <Stack spacing="lg">
+        <HStack justify="between" align="center">
+          <Skeleton className="h-8 w-48" />
+          <Skeleton className="h-10 w-28" />
+        </HStack>
+        <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Card key={index}>
+              <CardContent className="space-y-sm">
+                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-8 w-20" />
+                <Skeleton className="h-3 w-16" />
+              </CardContent>
+            </Card>
+          ))}
+        </Grid>
+      </Stack>
+    )
+  }
+
+  if (error) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-destructive">{error}</CardTitle>
+          <CardDescription>{t('loadErrorDescription')}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Button onClick={refresh}>{t('retry')}</Button>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  const toneStyles: Record<string, { bg: string; text: string }> = {
+    accent: { bg: 'bg-accent/10', text: 'text-accent' },
+    warning: { bg: 'bg-warning/10', text: 'text-warning' },
+    success: { bg: 'bg-success/10', text: 'text-success' },
+    secondary: { bg: 'bg-secondary/10', text: 'text-secondary' },
+  }
+
+  const statusToneMap: Record<string, { bg: string; text: string }> = {
+    draft: { bg: 'bg-muted/20', text: 'text-muted-foreground' },
+    pending: { bg: 'bg-warning/10', text: 'text-warning' },
+    approved: { bg: 'bg-success/10', text: 'text-success' },
+    delivered: { bg: 'bg-success/10', text: 'text-success' },
+    completed: { bg: 'bg-success/10', text: 'text-success' },
+    cancelled: { bg: 'bg-destructive/10', text: 'text-destructive' },
+  }
+
+  const renderStatusBadge = (status: string) => {
+    const normalized = status?.toLowerCase() ?? 'unknown'
+    const tone = statusToneMap[normalized] ?? { bg: 'bg-muted/20', text: 'text-muted-foreground' }
+    return (
+      <Badge variant="outline" className={`capitalize ${tone.bg} ${tone.text}`}>
+        {normalized.replace(/_/g, ' ')}
+      </Badge>
+    )
   }
 
   return (
-    <div className="stack-lg">
-      {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
-        <Card className="p-lg">
-          <div className="flex items-center gap-md">
-            <div className="p-sm bg-accent/10 rounded-lg">
-              <ShoppingCart className="h-icon-md w-icon-md color-accent" />
-            </div>
-            <div>
-              <p className="text-body-sm color-foreground/70">Total Orders</p>
-              <p className="text-heading-3 text-heading-3">{stats?.totalOrders || 0}</p>
-            </div>
-          </div>
-        </Card>
+    <Stack spacing="lg">
+      <HStack justify="between" align="center">
+        <Stack spacing="xs">
+          <h1 className="text-heading-3 font-anton uppercase text-foreground">Procurement Overview</h1>
+          <p className="text-body-sm text-muted-foreground">
+            Unified view of your procurement pipeline, vendors, and catalog health.
+          </p>
+        </Stack>
+        <Button variant={refreshing ? 'outline' : 'default'} disabled={refreshing} onClick={refresh}>
+          {refreshing ? 'Refreshing…' : 'Refresh'}
+        </Button>
+      </HStack>
 
-        <Card className="p-lg">
-          <div className="flex items-center gap-md">
-            <div className="p-sm bg-warning/10 rounded-lg">
-              <Clock className="h-icon-md w-icon-md color-warning" />
-            </div>
-            <div>
-              <p className="text-body-sm color-foreground/70">Pending Orders</p>
-              <p className="text-heading-3 text-heading-3">{stats?.pendingOrders || 0}</p>
-            </div>
-          </div>
-        </Card>
+      <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+        {metricCards.map((metric) => {
+          const tone = toneStyles[metric.tone] ?? toneStyles.accent
+          return (
+            <Card key={metric.id}>
+              <CardContent>
+                <HStack spacing="md" align="center">
+                  <div className={`p-sm rounded-lg ${tone.bg}`}>
+                    <metric.icon className={`h-icon-md w-icon-md ${tone.text}`} />
+                  </div>
+                  <Stack spacing="xs">
+                    <span className="text-sm text-muted-foreground">{metric.label}</span>
+                    <span className="text-heading-3 font-semibold text-foreground">{metric.value}</span>
+                  </Stack>
+                </HStack>
+              </CardContent>
+            </Card>
+          )
+        })}
+      </Grid>
 
-        <Card className="p-lg">
-          <div className="flex items-center gap-md">
-            <div className="p-sm bg-success/10 rounded-lg">
-              <CheckCircle className="h-icon-md w-icon-md color-success" />
-            </div>
-            <div>
-              <p className="text-body-sm color-foreground/70">Completed Orders</p>
-              <p className="text-heading-3 text-heading-3">{stats?.completedOrders || 0}</p>
-            </div>
-          </div>
-        </Card>
-
-        <Card className="p-lg">
-          <div className="flex items-center gap-md">
-            <div className="p-sm bg-secondary/10 rounded-lg">
-              <DollarSign className="h-icon-md w-icon-md color-secondary" />
-            </div>
-            <div>
-              <p className="text-body-sm color-foreground/70">Total Spent</p>
-              <p className="text-heading-3 text-heading-3">
-                {formatCurrency(stats?.totalSpent || 0, stats?.currency)}
-              </p>
-            </div>
-          </div>
-        </Card>
-      </div>
-
-      {/* Catalog Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
-        <Card className="p-lg">
-          <div className="flex items-center justify-between mb-md">
-            <div className="flex items-center gap-sm">
-              <Package className="h-icon-sm w-icon-sm color-accent" />
-              <span className="form-label">Products</span>
-            </div>
-            <Link href="/procurement/products">
-              <Button>
-                <ArrowRight className="h-icon-xs w-icon-xs" />
-              </Button>
-            </Link>
-          </div>
-          <p className="text-heading-3 text-heading-3">{stats?.totalProducts || 0}</p>
-          <p className="text-body-sm color-foreground/70">Active products</p>
-        </Card>
-
-        <Card className="p-lg">
-          <div className="flex items-center justify-between mb-md">
-            <div className="flex items-center gap-sm">
-              <Wrench className="h-icon-sm w-icon-sm color-success" />
-              <span className="form-label">Services</span>
-            </div>
-            <Link href="/procurement/services">
-              <Button>
-                <ArrowRight className="h-icon-xs w-icon-xs" />
-              </Button>
-            </Link>
-          </div>
-          <p className="text-heading-3 text-heading-3">{stats?.totalServices || 0}</p>
-          <p className="text-body-sm color-foreground/70">Available services</p>
-        </Card>
-
-        <Card className="p-lg">
-          <div className="flex items-center justify-between mb-md">
-            <div className="flex items-center gap-sm">
-              <Building className="h-icon-sm w-icon-sm color-warning" />
-              <span className="form-label">Vendors</span>
-            </div>
-            <Link href="/procurement/vendors">
-              <Button>
-                <ArrowRight className="h-icon-xs w-icon-xs" />
-              </Button>
-            </Link>
-          </div>
-          <p className="text-heading-3 text-heading-3">{stats?.totalVendors || 0}</p>
-          <p className="text-body-sm color-foreground/70">Active vendors</p>
-        </Card>
-
-        <Card className="p-lg">
-          <div className="flex items-center justify-between mb-md">
-            <div className="flex items-center gap-sm">
-              <Tag className="h-icon-sm w-icon-sm color-secondary" />
-              <span className="form-label">Categories</span>
-            </div>
-            <Link href="/procurement/categories">
-              <Button>
-                <ArrowRight className="h-icon-xs w-icon-xs" />
-              </Button>
-            </Link>
-          </div>
-          <p className="text-heading-3 text-heading-3">{stats?.totalCategories || 0}</p>
-          <p className="text-body-sm color-foreground/70">Organization categories</p>
-        </Card>
-      </div>
-
-      {/* Recent Orders */}
       <Card>
-        <div className="p-lg border-b">
-          <div className="flex items-center justify-between">
-            <h3 className="text-body text-heading-4">Recent Orders</h3>
-            <Link href="/procurement/orders">
-              <Button>
-                View All
-                <ArrowRight className="h-icon-xs w-icon-xs ml-sm" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-        
-        <div className="p-lg">
+        <CardHeader>
+          <CardTitle className="text-lg text-foreground">Catalog Overview</CardTitle>
+          <CardDescription>Snapshot of products, services, vendors, and categories.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+            {catalogCards.map((item) => {
+              const tone = toneStyles[item.tone] ?? toneStyles.accent
+              return (
+                <Card key={item.id} className="border-border">
+                  <CardContent>
+                    <HStack justify="between" align="center" className="mb-md">
+                      <HStack spacing="sm" align="center">
+                        <item.icon className={`h-icon-sm w-icon-sm ${tone.text}`} />
+                        <span className="text-sm font-medium text-foreground">{item.label}</span>
+                      </HStack>
+                      <Button variant="ghost" size="sm" onClick={() => router.push(item.href)}>
+                        <ArrowRight className="h-icon-xs w-icon-xs" />
+                      </Button>
+                    </HStack>
+                    <Stack spacing="xs">
+                      <span className="text-heading-3 font-semibold text-foreground">{item.value}</span>
+                      <span className="text-sm text-muted-foreground">{item.helper}</span>
+                    </Stack>
+                  </CardContent>
+                </Card>
+              )
+            })}
+          </Grid>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-foreground">{t('recentOrders.title')}</CardTitle>
+          <CardDescription>{t('recentOrders.subtitle')}</CardDescription>
+        </CardHeader>
+        <CardContent>
           {recentOrders.length === 0 ? (
-            <div className="text-center py-xl">
-              <ShoppingCart className="h-icon-2xl w-icon-2xl color-foreground/30 mx-auto mb-md" />
-              <p className="color-foreground/70">No recent orders</p>
-              <Link href="/procurement/orders">
-                <Button className="mt-md">
-                  Create First Order
-                </Button>
-              </Link>
-            </div>
+            <Stack spacing="sm" align="center" className="py-xl text-center">
+              <ShoppingCart className="h-icon-2xl w-icon-2xl text-muted-foreground/40" />
+              <span className="text-sm text-muted-foreground">{t('recentOrders.empty')}</span>
+              <Button onClick={() => router.push('/procurement/orders')} className="mt-sm">
+                {t('recentOrders.cta')}
+              </Button>
+            </Stack>
           ) : (
-            <div className="stack-md">
-              {recentOrders.map((order: any) => (
-                <div key={order.id} className="flex items-center justify-between p-md border border-border rounded-lg">
-                  <div className="flex items-center gap-md">
-                    <div>
-                      <p className="form-label">{order.order_number}</p>
-                      <p className="text-body-sm color-foreground/70">{order.vendor_name}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-md">
-                    <div className="text-right">
-                      <p className="form-label">
-                        {formatCurrency(order.total_amount, order.currency)}
-                      </p>
-                      <p className="text-body-sm color-foreground/70">
+            <Stack spacing="sm">
+              {recentOrders.map((order) => (
+                <HStack
+                  key={order.id}
+                  justify="between"
+                  align="center"
+                  className="rounded-lg border border-border bg-card/60 p-md"
+                >
+                  <Stack spacing="xs">
+                    <span className="text-sm font-medium text-foreground">{order.order_number}</span>
+                    <span className="text-sm text-muted-foreground">{order.vendor_name}</span>
+                  </Stack>
+                  <HStack spacing="md" align="center">
+                    <Stack spacing="xs" align="end">
+                      <span className="text-sm font-medium text-foreground">
+                        {formatCurrency(order.total_amount, order.currency ?? 'USD')}
+                      </span>
+                      <span className="text-xs text-muted-foreground">
                         {new Date(order.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                    <StatusBadge status={order.status} />
-                  </div>
-                </div>
+                      </span>
+                    </Stack>
+                    {renderStatusBadge(order.status)}
+                  </HStack>
+                </HStack>
               ))}
-            </div>
+            </Stack>
           )}
-        </div>
+        </CardContent>
       </Card>
 
-      {/* Quick Actions */}
       <Card>
-        <div className="p-lg border-b">
-          <h3 className="text-body text-heading-4">Quick Actions</h3>
-        </div>
-        
-        <div className="p-lg">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
-            <Link href="/procurement/orders">
-              <Button variant="outline" className="w-full justify-start">
-                <ShoppingCart className="h-icon-xs w-icon-xs mr-sm" />
-                Create Order
+        <CardHeader>
+          <CardTitle className="text-lg text-foreground">{t('quickActions.title')}</CardTitle>
+          <CardDescription>{t('quickActions.subtitle')}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+            {quickActions.map((action) => (
+              <Button
+                key={action.id}
+                variant="outline"
+                className="justify-start"
+                onClick={() => router.push(action.href)}
+              >
+                <HStack spacing="sm" align="center">
+                  <action.icon className="h-icon-xs w-icon-xs" />
+                  <span className="text-sm font-medium text-foreground">{action.label}</span>
+                </HStack>
               </Button>
-            </Link>
-            
-            <Link href="/procurement/products">
-              <Button variant="outline" className="w-full justify-start">
-                <Package className="h-icon-xs w-icon-xs mr-sm" />
-                Add Product
-              </Button>
-            </Link>
-            
-            <Link href="/procurement/services">
-              <Button variant="outline" className="w-full justify-start">
-                <Wrench className="h-icon-xs w-icon-xs mr-sm" />
-                Add Service
-              </Button>
-            </Link>
-            
-            <Link href="/procurement/vendors">
-              <Button variant="outline" className="w-full justify-start">
-                <Building className="h-icon-xs w-icon-xs mr-sm" />
-                Add Vendor
-              </Button>
-            </Link>
-          </div>
-        </div>
+            ))}
+          </Grid>
+        </CardContent>
       </Card>
-    </div>
-  );
+    </Stack>
+  )
 }

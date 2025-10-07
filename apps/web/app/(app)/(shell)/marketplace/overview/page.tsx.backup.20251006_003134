@@ -1,0 +1,60 @@
+import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import FeatureGate from '../../../../_components/FeatureGate';
+import { createServerClient } from '@ghxstship/auth';
+import { getTranslations } from 'next-intl/server';
+import OverviewClient from './OverviewClient';
+
+export const dynamic = 'force-dynamic';
+
+
+export const metadata = { title: 'Marketplace Overview' };
+
+export default async function MarketplaceOverviewPage() {
+ const t = await getTranslations('marketplace');
+ const supabase = await createClient();
+
+ const { data: { user } } = await supabase.auth.getUser();
+ let orgId: string | null = null;
+ let userRole: 'vendor' | 'client' | 'both' = 'client';
+ 
+ if (user) {
+ const { data: membership } = await supabase
+ .from('memberships')
+ .select('organization_id')
+ .eq('user_id', user.id)
+ .eq('status', 'active')
+ .order('created_at', { ascending: true })
+ .maybeSingle();
+ orgId = membership?.organization_id ?? null;
+ 
+ // Check if user has vendor profile
+ const { data: vendorProfile } = await supabase
+ .from('opendeck_vendor_profiles')
+ .select('id')
+ .eq('user_id', user.id)
+ .maybeSingle();
+ 
+ if (vendorProfile) {
+ userRole = 'both';
+ }
+ }
+
+ return (
+ <FeatureGate feature="marketplace">
+ <div className="stack-md brand-marketplace" data-brand="marketplace">
+ {orgId && user ? (
+ <OverviewClient 
+ orgId={orgId} 
+ userId={user.id}
+ userRole={userRole}
+ />
+ ) : (
+ <div className="brand-marketplace text-center py-xsxl">
+ <h2 className="text-heading-3 mb-md">{t('title')}</h2>
+ <p className="color-muted">{t('unauthorized')}</p>
+ </div>
+ )}
+ </div>
+ </FeatureGate>
+ );
+}

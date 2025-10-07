@@ -1,301 +1,106 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-function-return-type*/
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
-import { DetailTemplate } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { FileText, Calendar, DollarSign, Building, CheckCircle, Clock } from 'lucide-react';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DetailLayout } from '@ghxstship/ui/templates';
 
-
-export const metadata = {
-  title: 'Contract Details - GHXSTSHIP',
-  description: 'View detailed contract information and lifecycle management.',
-};
-
-interface ContractDetailPageProps {
-  params: Promise<{ id: string }>;
-}
-
-export default async function ContractDetailPage({ params }: ContractDetailPageProps) {
-  const { id } = await params;
-  const supabase = await createClient();
-
-  const { data: { session }, error: authError } = await (supabase.auth.getSession() as any);
-
-  if (authError || !session) {
-    redirect('/auth/signin');
-  }
-
-  // Get user profile and organization membership
-  const { data: profile } = await supabase
-    .from('users')
-    .select(`
-      *,
-      memberships!inner(
-        organization_id,
-        role,
-        status,
-        organization:organizations(
-          id,
-          name,
-          slug
-        )
-      )
-    `)
-    .eq('auth_id', (session as any).user.id)
-    .single();
-
-  if (!profile || !(profile as any).memberships?.[0]) {
-    redirect('/auth/onboarding');
-  }
-
-  const orgId = (profile as any).memberships[0].organization_id;
-
-  // Get contract record
-  const { data: contract, error: contractError } = await supabase
-    .from('job_contracts')
-    .select(`
-      *,
-      job:jobs(
-        id,
-        title,
-        status,
-        project:projects(id, name)
-      ),
-      company:companies(
-        id,
-        name,
-        contact_email
-      )
-    `)
-    .eq('id', id)
-    .eq('organization_id', orgId)
-    .single();
-
-  if (contractError || !contract) {
-    return (
-      <DetailTemplate
-        breadcrumbs={[
-          { label: 'Dashboard', href: '/dashboard' },
-          { label: 'Jobs', href: '/jobs' },
-          { label: 'Contracts', href: '/jobs/contracts' },
-          { label: 'Not Found' }
-        ]}
-        title="Contract Not Found"
-        tabs={[{
-          id: 'error',
-          label: 'Error',
-          content: (
-            <div className="text-center py-xl">
-              <p className="text-muted-foreground">The requested contract could not be found.</p>
-            </div>
-          )
-        }]}
-      />
-    );
-  }
-
-  const breadcrumbs = [
-    { label: 'Dashboard', href: '/dashboard' },
-    { label: 'Jobs', href: '/jobs' },
-    { label: 'Contracts', href: '/jobs/contracts' },
-    { label: (contract as any).job?.title || 'Contract Details' }
-  ];
-
-  const getStatusBadge = (status: string) => {
-    const variants = {
-      draft: 'secondary',
-      sent: 'outline',
-      signed: 'default',
-      active: 'default',
-      completed: 'secondary',
-      terminated: 'destructive',
-      expired: 'destructive'
-    } as const;
-
-    return (
-      <Badge variant={variants[status as keyof typeof variants] || 'outline'}>
-        {status.toUpperCase()}
-      </Badge>
-    );
-  };
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    }).format(amount);
-  };
-
-  const tabs = [
-    {
-      id: 'overview',
-      label: 'Overview',
-      content: (
-        <div className="grid gap-lg md:grid-cols-2">
-          {/* Contract Information */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <FileText className="h-icon-sm w-icon-sm" />
-                Contract Details
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-md">
-              <div>
-                <h3 className="text-lg font-semibold">{(contract as any).title || 'Contract'}</h3>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {(contract as any).description || 'No description provided'}
-                </p>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Status</span>
-                {getStatusBadge((contract as any).status)}
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Contract Type</span>
-                <Badge variant="outline">
-                  {(contract as any).contract_type?.toUpperCase() || 'GENERAL'}
-                </Badge>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Value</span>
-                <span className="text-sm font-semibold">
-                  {formatCurrency((contract as any).contract_value || 0)}
-                </span>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Dates */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <Calendar className="h-icon-sm w-icon-sm" />
-                Contract Timeline
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-md">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Start Date</span>
-                <span className="text-sm text-muted-foreground">
-                  {(contract as any).start_date ? new Date((contract as any).start_date).toLocaleDateString() : 'TBD'}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">End Date</span>
-                <span className="text-sm text-muted-foreground">
-                  {(contract as any).end_date ? new Date((contract as any).end_date).toLocaleDateString() : 'TBD'}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Signed Date</span>
-                <span className="text-sm text-muted-foreground">
-                  {(contract as any).signed_date ? new Date((contract as any).signed_date).toLocaleDateString() : 'Not signed'}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Auto Renewal</span>
-                <Badge variant={(contract as any).auto_renewal ? 'default' : 'secondary'}>
-                  {(contract as any).auto_renewal ? 'Enabled' : 'Disabled'}
-                </Badge>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Associated Entities */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-xs">
-                <Building className="h-icon-sm w-icon-sm" />
-                Associated Entities
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-sm">
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Job</p>
-                <p className="font-medium">{(contract as any).job?.title || 'No associated job'}</p>
-                <p className="text-sm text-muted-foreground">
-                  Project: {(contract as any).job?.project?.name || 'No project'}
-                </p>
-              </div>
-
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Company</p>
-                <p className="font-medium">{(contract as any).company?.name || 'No associated company'}</p>
-                {(contract as any).company?.contact_email && (
-                  <p className="text-sm text-muted-foreground">
-                    {(contract as any).company.contact_email}
-                  </p>
-                )}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Terms & Conditions */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Terms & Conditions</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-sm">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Payment Terms</span>
-                <span className="text-sm text-muted-foreground">
-                  {(contract as any).payment_terms || 'Standard terms'}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Delivery Terms</span>
-                <span className="text-sm text-muted-foreground">
-                  {(contract as any).delivery_terms || 'Standard delivery'}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Termination Clause</span>
-                <span className="text-sm text-muted-foreground">
-                  {(contract as any).termination_clause ? 'Included' : 'Not specified'}
-                </span>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      )
-    },
-    {
-      id: 'documents',
-      label: 'Documents',
-      content: (
-        <Card>
-          <CardHeader>
-            <CardTitle>Contract Documents</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground text-center py-xl">
-              Contract documents and attachments will be available here.
-            </p>
-          </CardContent>
-        </Card>
-      )
-    }
-  ];
+export default function DetailPage() {
+  // TODO: Implement detail content using DetailLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <DetailTemplate
-      breadcrumbs={breadcrumbs}
-      title={(contract as any).title || 'Contract Details'}
-      subtitle={`Status: ${(contract as any).status} • Value: ${formatCurrency((contract as any).contract_value || 0)}`}
-      tabs={tabs}
-      backHref="/jobs/contracts"
-    />
+    <DetailLayout
+      title="Item Details"
+      subtitle="Detailed view of the selected item"
+      breadcrumbs={
+        <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
+          <button className="hover:text-foreground">Home</button>
+          <span>/</span>
+          <button className="hover:text-foreground">Module</button>
+          <span>/</span>
+          <span className="text-foreground">Details</span>
+        </nav>
+      }
+      actions={
+        <div className="flex items-center gap-2">
+          <button className="px-4 py-2 border border-input rounded-md">
+            Edit
+          </button>
+          <button className="px-4 py-2 bg-destructive text-destructive-foreground rounded-md">
+            Delete
+          </button>
+        </div>
+      }
+      avatar={
+        <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground">
+          D
+        </div>
+      }
+      status={
+        <div className="flex items-center gap-2">
+          <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
+            Active
+          </span>
+        </div>
+      }
+      tabs={{
+        items: [
+          { id: 'overview', label: 'Overview' },
+          { id: 'details', label: 'Details' },
+          { id: 'activity', label: 'Activity' },
+        ],
+        activeTab: 'overview',
+        onTabChange: (tabId) => console.log('Switch to tab:', tabId),
+      }}
+      metaSidebar={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-3">Metadata</h3>
+            <div className="space-y-3 text-sm">
+              <div>
+                <span className="text-muted-foreground">Created:</span>
+                <div>Jan 1, 2024</div>
+              </div>
+              <div>
+                <span className="text-muted-foreground">Last Updated:</span>
+                <div>Jan 10, 2024</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📊</span>
+              <span className="text-sm font-medium">Metric 1</span>
+            </div>
+            <div className="text-2xl font-bold">42</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📈</span>
+              <span className="text-sm font-medium">Metric 2</span>
+            </div>
+            <div className="text-2xl font-bold">85%</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">⏱️</span>
+              <span className="text-sm font-medium">Metric 3</span>
+            </div>
+            <div className="text-2xl font-bold">12d</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Content</h3>
+          <div className="prose max-w-none">
+            <p>Detailed content for this item goes here. This is a placeholder that will be replaced with actual content.</p>
+          </div>
+        </div>
+      </div>
+    </DetailLayout>
   );
 }

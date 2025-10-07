@@ -104,7 +104,7 @@ export class ProjectsService {
   }
 
   // Get a single project by ID
-  async getProject(id: string, orgId: string): Promise<ApiResponse<Project>>> {
+  async getProject(id: string, orgId: string): Promise<ApiResponse<Project>> {
     try {
       const { data, error } = await this.supabase
         .from('projects')
@@ -128,7 +128,7 @@ export class ProjectsService {
     projectData: CreateProjectData,
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<Project>>> {
+  ): Promise<ApiResponse<Project>> {
     try {
       const { data, error } = await this.supabase
         .from('projects')
@@ -164,7 +164,7 @@ export class ProjectsService {
     projectData: UpdateProjectData,
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<Project>>> {
+  ): Promise<ApiResponse<Project>> {
     try {
       const { id, ...updateData } = projectData;
 
@@ -199,7 +199,7 @@ export class ProjectsService {
     id: string,
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<boolean>>> {
+  ): Promise<ApiResponse<boolean>> {
     try {
       // Get project name for audit log
       const { data: project } = await this.supabase
@@ -297,7 +297,7 @@ export class ProjectsService {
     updateData: Partial<Project>,
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<Project[]>>> {
+  ): Promise<ApiResponse<Project[]>> {
     try {
       const { data, error } = await this.supabase
         .from('projects')
@@ -330,7 +330,7 @@ export class ProjectsService {
     projectIds: string[],
     orgId: string,
     userId: string
-  ): Promise<ApiResponse<boolean>>> {
+  ): Promise<ApiResponse<boolean>> {
     try {
       const { error } = await this.supabase
         .from('projects')
@@ -359,7 +359,7 @@ export class ProjectsService {
     orgId: string,
     format: 'csv' | 'json',
     filters?: FilterConfig[]
-  ): Promise<ApiResponse<string | object[]>>> {
+  ): Promise<ApiResponse<string | object[]>> {
     try {
       let query = this.supabase
         .from('projects')

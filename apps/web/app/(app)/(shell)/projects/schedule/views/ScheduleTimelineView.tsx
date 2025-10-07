@@ -137,16 +137,16 @@ export default function ScheduleTimelineView({
  return <span className="text-warning text-xs">Due today</span>;
  } else if (days <= 7) {
  return <span className="text-warning text-xs">{days} days left</span>;
- } else {
  return <span className="text-muted-foreground text-xs">{days} days left</span>;
  }
  };
 
  // Render timeline item
- const renderTimelineItem = (item: ScheduleItem, isLast: boolean) => {
+  const renderTimelineItem = (item: ScheduleItem, isLast: boolean) => {
  const date = item.due_date || item.end_date || item.start_date;
  const hasDateRange = item.start_date && item.end_date;
 
+ return (
  <div key={item.id} className="flex gap-md">
  {/* Timeline line and dot */}
  <div className="flex flex-col items-center">
@@ -222,7 +222,6 @@ export default function ScheduleTimelineView({
  </div>
  )}
  </Card>
- </div>
  </div>
  );
  };

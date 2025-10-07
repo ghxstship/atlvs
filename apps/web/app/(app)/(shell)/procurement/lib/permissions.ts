@@ -254,7 +254,7 @@ export class ProcurementPermissionsService {
     query: unknown,
     resourceType: string,
     userId: string
-  ): Promise< {
+  ): Promise<unknown> {
     const role = await this.initializeUserRole();
     const userLevel = ROLE_PERMISSIONS[role]?.[resourceType] || PermissionLevel.NONE;
 

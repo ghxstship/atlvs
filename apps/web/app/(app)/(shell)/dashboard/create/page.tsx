@@ -1,106 +1,46 @@
-/**
- * Dashboard Create Page
- * Enterprise-grade dashboard creation form
- * Provides schema-driven form with validation, auto-save, and templates
- */
+'use client';
 
-import { Suspense } from 'react';
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
-import { Metadata } from 'next';
-import { Loader2 } from 'lucide-react';
-import CreateDashboardDrawer from '../drawers/CreateDashboardDrawer';
+import React from 'react';
+import { DashboardLayout } from '@ghxstship/ui/templates';
+import { DashboardWidget } from '@ghxstship/ui/organisms';
 
-export const dynamic = 'force-dynamic';
+export default function DashboardPage() {
+  // TODO: Implement dashboard content using DashboardLayout
+  // This is a placeholder - actual implementation needed
 
-
-// Metadata
-export const metadata: Metadata = {
-  title: 'Create Dashboard - GHXSTSHIP',
-  description: 'Create a new enterprise dashboard with customizable widgets and layouts.',
-};
-
-// Loading component
-function CreateDashboardLoading() {
   return (
-    <div className="flex items-center justify-center min-h-content-lg">
-      <div className="flex items-center gap-sm">
-        <Loader2 className="h-icon-md w-icon-md animate-spin" />
-        <span>Loading dashboard creation form...</span>
+    <DashboardLayout
+      title="Dashboard"
+      subtitle="Welcome to your workspace"
+      showRefresh={true}
+      showExport={true}
+      showSettings={true}
+      sidebar={
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-medium mb-2">Quick Actions</h3>
+            <div className="space-y-2">
+              {/* TODO: Add quick actions */}
+            </div>
+          </div>
+        </div>
+      }
+      rightPanel={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-4">Recent Activity</h3>
+            {/* TODO: Add activity feed */}
+          </div>
+        </div>
+      }
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* TODO: Add dashboard widgets */}
+        <div className="bg-muted/50 rounded-lg p-6">
+          <h3 className="font-medium mb-2">Widget Placeholder</h3>
+          <p className="text-muted-foreground">Dashboard content coming soon</p>
+        </div>
       </div>
-    </div>
-  );
-}
-
-// Page component
-export default async function CreateDashboardPage() {
-  // Server-side authentication and authorization
-  const supabase = await createClient();
-
-  const { data: { session }, error: authError } = await supabase.auth.getSession();
-
-  if (authError || !session) {
-    redirect('/auth/signin');
-  }
-
-  // Get user profile and organization membership
-  const { data: profile } = await supabase
-    .from('users')
-    .select(`
-      *,
-      memberships!inner(
-        organization_id,
-        role,
-        status,
-        organization:organizations(
-          id,
-          name,
-          slug
-        )
-      )
-    `)
-    .eq('auth_id', session.user.id)
-    .single();
-
-  if (!profile || !profile.memberships?.[0]) {
-    redirect('/auth/onboarding');
-  }
-
-  const orgId = profile.memberships[0].organization_id;
-  const userRole = profile.memberships[0].role;
-
-  // Check permissions
-  const allowedRoles = ['owner', 'admin', 'editor'];
-  if (!allowedRoles.includes(userRole)) {
-    redirect('/dashboard');
-  }
-
-  // Get dashboard templates
-  const { data: templates } = await supabase
-    .from('dashboard_templates')
-    .select('*')
-    .eq('is_public', true)
-    .order('usage_count', { ascending: false })
-    .limit(10);
-
-  // Get available widget types
-  const { data: widgetTypes } = await supabase
-    .from('widget_types')
-    .select('*')
-    .eq('is_active', true)
-    .order('name');
-
-  return (
-    <Suspense fallback={<CreateDashboardLoading />}>
-      <CreateDashboardDrawer
-        isOpen={true}
-        onClose={() => window.history.back()}
-        orgId={orgId}
-        userId={session.user.id}
-        userRole={userRole}
-        templates={templates || []}
-        availableWidgetTypes={widgetTypes || []}
-      />
-    </Suspense>
+    </DashboardLayout>
   );
 }

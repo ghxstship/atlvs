@@ -184,7 +184,7 @@ class FinalValidator {
       execSync('pnpm run typecheck', { stdio: 'pipe' });
       qualityScore += 25;
       console.log('   ✅ TypeScript compilation successful');
-    } catch (error) {
+    } catch (_error) {
       this.results.codeQuality.issues.push('TypeScript errors found');
     }
     
@@ -259,7 +259,7 @@ class FinalValidator {
           try {
             const content = fs.readFileSync(fullPath, 'utf8');
             callback(fullPath, content);
-          } catch (error) {
+          } catch (_error) {
             // Skip files that can't be read
           }
         }

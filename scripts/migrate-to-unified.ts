@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { execSync } from 'child_process';
+import { execSync as _execSync } from 'child_process';
 
 interface ModuleInfo {
   name: string;
@@ -116,15 +116,14 @@ function updateRouting(modules: ModuleInfo[]) {
       const pageFile = path.join(module.path, 'page.tsx');
       
       if (fs.existsSync(pageFile)) {
-        let content = fs.readFileSync(pageFile, 'utf8');
-        
+        const content = fs.readFileSync(pageFile, 'utf8');
         // Replace import statement
         const oldImport = `import ${capitalizeFirst(module.name)}Client from './${capitalizeFirst(module.name)}Client';`;
         const newImport = `import ${capitalizeFirst(module.name)}Client from './${capitalizeFirst(module.name)}Client.unified';`;
         
         if (content.includes(oldImport)) {
-          content = content.replace(oldImport, newImport);
-          fs.writeFileSync(pageFile, content);
+          const updatedModule = content.replace(oldImport, newImport);
+          fs.writeFileSync(pageFile, updatedModule);
           log(`Updated routing for ${module.name}`, 'success');
         } else {
           log(`No routing update needed for ${module.name}`, 'info');

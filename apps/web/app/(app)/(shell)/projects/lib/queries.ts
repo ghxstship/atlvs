@@ -90,7 +90,7 @@ export class ProjectQueries {
   async getProjects(
     orgId: string,
     options: ProjectQueryOptions = {}
-  ): Promise<PaginatedResponse<Project>>> {
+  ): Promise<PaginatedResponse<Project>> {
     try {
       let query = this.supabase
         .from('projects')
@@ -252,7 +252,7 @@ export class TaskQueries {
   async getTasks(
     orgId: string,
     options: TaskQueryOptions = {}
-  ): Promise<PaginatedResponse<ProjectTask>>> {
+  ): Promise<PaginatedResponse<ProjectTask>> {
     try {
       let query = this.supabase
         .from('project_tasks')
@@ -385,7 +385,7 @@ export class FileQueries {
   async getFiles(
     orgId: string,
     options: FileQueryOptions = {}
-  ): Promise<PaginatedResponse<ProjectFile>>> {
+  ): Promise<PaginatedResponse<ProjectFile>> {
     try {
       let query = this.supabase
         .from('project_files')
@@ -430,7 +430,7 @@ export class RiskQueries {
   async getRisks(
     orgId: string,
     options: RiskQueryOptions = {}
-  ): Promise<PaginatedResponse<ProjectRisk>>> {
+  ): Promise<PaginatedResponse<ProjectRisk>> {
     try {
       let query = this.supabase
         .from('project_risks')
@@ -475,7 +475,7 @@ export class InspectionQueries {
   async getInspections(
     orgId: string,
     options: InspectionQueryOptions = {}
-  ): Promise<PaginatedResponse<ProjectInspection>>> {
+  ): Promise<PaginatedResponse<ProjectInspection>> {
     try {
       let query = this.supabase
         .from('project_inspections')
@@ -520,7 +520,7 @@ export class ActivationQueries {
   async getActivations(
     orgId: string,
     options: ActivationQueryOptions = {}
-  ): Promise<PaginatedResponse<ProjectActivation>>> {
+  ): Promise<PaginatedResponse<ProjectActivation>> {
     try {
       let query = this.supabase
         .from('project_activations')
@@ -564,7 +564,7 @@ export class LocationQueries {
   async getLocations(
     orgId: string,
     options: LocationQueryOptions = {}
-  ): Promise<PaginatedResponse<ProjectLocation>>> {
+  ): Promise<PaginatedResponse<ProjectLocation>> {
     try {
       let query = this.supabase
         .from('project_locations')
@@ -601,7 +601,7 @@ export class MilestoneQueries {
   async getMilestones(
     orgId: string,
     options: MilestoneQueryOptions = {}
-  ): Promise<PaginatedResponse<ProjectMilestone>>> {
+  ): Promise<PaginatedResponse<ProjectMilestone>> {
     try {
       let query = this.supabase
         .from('project_milestones')

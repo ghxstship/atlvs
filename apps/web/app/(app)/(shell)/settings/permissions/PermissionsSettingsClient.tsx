@@ -63,8 +63,8 @@ function exportPermissionState(state: PermissionState): Record<string, string[]>
  }, {});
 }
 
-function mergeResourceMatrix(roles: RoleRecord[]): Record<string, Set<string> {
- const matrix: Record<string, Set<string> = {};
+function mergeResourceMatrix(roles: RoleRecord[]): Record<string, Set<string>> {
+ const matrix: Record<string, Set<string>> = {};
  roles.forEach((role) => {
  Object.entries(role.permissions || {}).forEach(([resource, actions]) => {
  if (!matrix[resource]) {

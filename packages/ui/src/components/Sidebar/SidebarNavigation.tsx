@@ -1,14 +1,13 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
+import React, { useState, useEffect, useRef, ReactNode } from 'react';
+import { cva } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 import { 
   ChevronRight, 
   ChevronDown, 
   Search, 
   Pin, 
-  Star,
   Menu,
   X,
   Home,
@@ -211,6 +210,13 @@ interface SidebarNavigationProps {
   onToggleExpand?: (itemId: string, expanded: boolean) => void;
   onTogglePin?: (itemId: string, pinned: boolean) => void;
   initialPinnedIds?: string[];
+  title?: string;
+  subtitle?: string;
+  productSwitcher?: ReactNode;
+  topActions?: ReactNode;
+  insights?: ReactNode;
+  footerContent?: ReactNode;
+  userSummary?: ReactNode;
 }
 
 export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
@@ -223,6 +229,13 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
   onToggleExpand,
   onTogglePin,
   initialPinnedIds,
+  title = 'ATLVS',
+  subtitle,
+  productSwitcher,
+  topActions,
+  insights,
+  footerContent,
+  userSummary,
 }) => {
   const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -472,7 +485,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
               >
                 <span className="truncate">{child.label}</span>
                 {child.badge && (
-                  <span className="ml-auto text-xs bg-secondary text-secondary-foreground px-xs.5 py-0.5 rounded">
+                  <span className="ml-auto text-xs bg-secondary text-secondary-foreground px-xs py-0.5 rounded">
                     {child.badge}
                   </span>
                 )}
@@ -565,21 +578,52 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
       variant 
     }), className)}>
       {/* Header */}
-      <div className="flex items-center justify-between p-md border-b border-border">
-        {!isCollapsed && (
-          <h2 className="text-lg font-bold text-foreground" style={{ fontFamily: 'var(--font-anton), ANTON, sans-serif' }}>
-            ATLVS
-          </h2>
+      <div className="flex items-center justify-between gap-sm p-md border-b border-border">
+        {!isCollapsed ? (
+          <div className="flex flex-col">
+            <h2
+              className="text-lg font-bold text-foreground tracking-tight"
+              style={{ fontFamily: 'var(--font-anton), ANTON, sans-serif' }}
+            >
+              {title}
+            </h2>
+            {subtitle && (
+              <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                {subtitle}
+              </span>
+            )}
+          </div>
+        ) : (
+          <span className="text-base font-semibold text-foreground" aria-hidden>
+            {title.charAt(0)}
+          </span>
         )}
-        
-        <button
-          className="p-xs.5 rounded-lg hover:bg-muted motion-safe:transition-colors motion-safe:duration-200"
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-        >
-          <Menu className="h-icon-sm w-icon-sm" />
-        </button>
+
+        <div className="flex items-center gap-xs">
+          {!isCollapsed && topActions ? (
+            <div className="hidden md:flex items-center gap-xs">{topActions}</div>
+          ) : null}
+          <button
+            className="px-xs py-0.5 rounded-lg hover:bg-muted motion-safe:transition-colors motion-safe:duration-200"
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          >
+            <Menu className="h-icon-sm w-icon-sm" />
+          </button>
+        </div>
       </div>
+
+      {!isCollapsed && productSwitcher && (
+        <div className="px-md pt-sm">
+          {productSwitcher}
+        </div>
+      )}
+
+      {!isCollapsed && userSummary && (
+        <div className="px-md pt-sm">
+          {userSummary}
+        </div>
+      )}
 
       {/* Search */}
       {!isCollapsed && (
@@ -589,7 +633,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
             <input
               ref={searchInputRef}
               type="text"
-              placeholder="Search navigation..."
+              placeholder="Search navigation or press ⌘K"
               value={searchQuery}
               onChange={(e: any) => setSearchQuery(e.target.value)}
               className="w-full pl-2xl pr-md py-sm bg-background border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary motion-safe:transition-all motion-safe:duration-200"
@@ -601,6 +645,12 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
               }}
             />
           </div>
+        </div>
+      )}
+
+      {!isCollapsed && insights && (
+        <div className="px-md pb-sm">
+          {insights}
         </div>
       )}
 
@@ -623,6 +673,12 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
           {filteredNavigation.map(item => renderNavItem(item))}
         </div>
       </nav>
+
+      {!isCollapsed && footerContent && (
+        <div className="border-t border-border px-md py-sm">
+          {footerContent}
+        </div>
+      )}
 
       {/* Footer */}
       <div className="border-t border-border p-sm">

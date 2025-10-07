@@ -47,7 +47,7 @@ export class FilesRealtimeService {
    */
   subscribeToFileChanges(
     orgId: string,
-    callback: (payload: RealtimePostgresChangesPayload<DigitalAsset>) => void
+    callback: (payload: RealtimePostgresChangesPayload<DigitalAsset>) => void,
     options: {
       event?: 'INSERT' | 'UPDATE' | 'DELETE' | '*';
       filter?: string;
@@ -79,7 +79,7 @@ export class FilesRealtimeService {
    */
   subscribeToFolderChanges(
     orgId: string,
-    callback: (payload: RealtimePostgresChangesPayload<Record<string, unknown>) => void
+    callback: (payload: RealtimePostgresChangesPayload<Record<string, unknown>>) => void,
     options: {
       event?: 'INSERT' | 'UPDATE' | 'DELETE' | '*';
       folderId?: string;
@@ -113,7 +113,7 @@ export class FilesRealtimeService {
    */
   subscribeToAccessLogs(
     orgId: string,
-    callback: (payload: RealtimePostgresChangesPayload<Record<string, unknown>) => void
+    callback: (payload: RealtimePostgresChangesPayload<Record<string, unknown>>) => void,
     fileId?: string
   ): string {
     const channelId = `access_logs_${orgId}_${Date.now()}`;

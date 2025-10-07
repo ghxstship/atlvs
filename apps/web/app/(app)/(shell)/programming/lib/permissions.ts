@@ -275,7 +275,7 @@ export class ProgrammingPermissionsService {
   /**
    * Get all permissions for a user in an organization
    */
-  async getUserPermissions(userId: string, organizationId: string): Promise<Record<string, string[]>>> {
+  async getUserPermissions(userId: string, organizationId: string): Promise<Record<string, string[]>> {
     const userRole = await this.getUserRole(userId, organizationId);
 
     if (!userRole) {
@@ -316,7 +316,7 @@ export class ProgrammingPermissionsService {
     }
 
     // Define field permissions based on entity and role
-    const fieldPermissions: Record<string, Record<string, { read: boolean; write: boolean }> = {
+    const fieldPermissions: Record<string, Record<string, { read: boolean; write: boolean }>> = {
       events: {
         title: { read: true, write: ['contributor', 'manager', 'admin', 'owner'].includes(role) },
         description: { read: true, write: ['contributor', 'manager', 'admin', 'owner'].includes(role) },

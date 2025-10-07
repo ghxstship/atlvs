@@ -61,7 +61,7 @@ export class CompaniesPermissionsService {
   /**
    * Check field-level permissions for a specific company
    */
-  async getFieldPermissions(userId: string, orgId: string, companyId: string): Promise<Record<string, boolean>>> {
+  async getFieldPermissions(userId: string, orgId: string, companyId: string): Promise<Record<string, boolean>> {
     const permissions = await this.getUserPermissions(userId, orgId);
 
     // Additional checks for specific company
@@ -126,7 +126,7 @@ export class CompaniesPermissionsService {
   /**
    * Get organization-wide permissions for user
    */
-  async getOrganizationPermissions(userId: string, orgId: string): Promise<Record<string, PermissionLevel>>> {
+  async getOrganizationPermissions(userId: string, orgId: string): Promise<Record<string, PermissionLevel>> {
     const permissions = await this.getUserPermissions(userId, orgId);
 
     return {

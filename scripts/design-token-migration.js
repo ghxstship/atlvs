@@ -7,7 +7,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execSync: _execSync } = require('child_process');
 
 // Color mapping from hardcoded hex values to design tokens
 const COLOR_MAPPINGS = {
@@ -28,18 +28,14 @@ const COLOR_MAPPINGS = {
   '#f9fafb': 'hsl(var(--card))',
 };
 
-// Spacing mapping from Tailwind classes to design tokens
 const SPACING_MAPPINGS = {
   // Padding
   'p-0': 'p-0',
   'p-xs': 'p-xs',
   'p-sm': 'p-sm',
-  'p-sm': 'p-sm',
-  'p-md': 'p-md',
-  'p-lg': 'p-md',
+  'p-md': 'p-4',
   'p-lg': 'p-lg',
-  'p-xl': 'p-xl',
-  'p-2xl': 'p-xl',
+  'p-xl': 'p-8',
   'p-2xl': 'p-2xl',
   'p-3xl': 'p-3xl',
   'p-4xl': 'p-3xl',
@@ -48,35 +44,26 @@ const SPACING_MAPPINGS = {
   // Padding X
   'px-xs': 'px-xs',
   'px-sm': 'px-sm',
-  'px-sm': 'px-sm',
   'px-md': 'px-md',
-  'px-lg': 'px-md',
   'px-lg': 'px-lg',
   'px-xl': 'px-xl',
-  'px-2xl': 'px-xl',
   'px-2xl': 'px-2xl',
   
   // Padding Y
   'py-xs': 'py-xs',
   'py-sm': 'py-sm',
-  'py-sm': 'py-sm',
   'py-md': 'py-md',
-  'py-lg': 'py-md',
   'py-lg': 'py-lg',
   'py-xl': 'py-xl',
-  'py-2xl': 'py-xl',
   'py-2xl': 'py-2xl',
   
   // Margin
   'm-0': 'm-0',
   'm-xs': 'm-xs',
   'm-sm': 'm-sm',
-  'm-sm': 'm-sm',
   'm-md': 'm-md',
-  'm-lg': 'm-md',
   'm-lg': 'm-lg',
   'm-xl': 'm-xl',
-  'm-2xl': 'm-xl',
   'm-2xl': 'm-2xl',
   'm-3xl': 'm-3xl',
   'm-4xl': 'm-3xl',
@@ -85,9 +72,7 @@ const SPACING_MAPPINGS = {
   // Margin X
   'mx-xs': 'mx-xs',
   'mx-sm': 'mx-sm',
-  'mx-sm': 'mx-sm',
   'mx-md': 'mx-md',
-  'mx-lg': 'mx-md',
   'mx-lg': 'mx-lg',
   'mx-xl': 'mx-xl',
   'mx-auto': 'mx-auto',
@@ -95,33 +80,26 @@ const SPACING_MAPPINGS = {
   // Margin Y
   'my-xs': 'my-xs',
   'my-sm': 'my-sm',
-  'my-sm': 'my-sm',
   'my-md': 'my-md',
-  'my-lg': 'my-md',
   'my-lg': 'my-lg',
   'my-xl': 'my-xl',
   
   // Gap
   'gap-xs': 'gap-xs',
   'gap-sm': 'gap-sm',
-  'gap-sm': 'gap-sm',
   'gap-md': 'gap-md',
-  'gap-lg': 'gap-md',
   'gap-lg': 'gap-lg',
   'gap-xl': 'gap-xl',
-  'gap-2xl': 'gap-xl',
   'gap-2xl': 'gap-2xl',
   
   // Space
   'space-x-xs': 'cluster-xs',
-  'space-x-sm': 'cluster-sm',
   'space-x-sm': 'cluster-sm',
   'space-x-md': 'cluster',
   'space-x-lg': 'cluster-lg',
   'space-x-xl': 'cluster-xl',
   
   'space-y-xs': 'stack-xs',
-  'space-y-sm': 'stack-sm',
   'space-y-sm': 'stack-sm',
   'space-y-md': 'stack-md',
   'space-y-lg': 'stack-lg',

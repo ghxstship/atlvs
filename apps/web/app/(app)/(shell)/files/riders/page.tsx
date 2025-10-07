@@ -1,109 +1,46 @@
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
-import { cookies } from 'next/headers';
-import { createServerClient } from '@ghxstship/auth';
-import { redirect } from 'next/navigation';
-import RidersClient from './RidersClient';
-import type { ProgrammingRider, RiderProject, RiderEvent } from './types';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DashboardLayout } from '@ghxstship/ui/templates';
+import { DashboardWidget } from '@ghxstship/ui/organisms';
 
+export default function DashboardPage() {
+  // TODO: Implement dashboard content using DashboardLayout
+  // This is a placeholder - actual implementation needed
 
-export const metadata = { title: 'Files · Riders', description: 'Manage technical riders and requirements' };
-
-type User = {
- id: string;
- email: string;
- full_name?: string | null;
- avatar_url?: string | null;
-};
-
-export default async function RidersPage() {
- const cookieStore = await cookies();
- const supabase = createServerClient(cookieStore);
-
- // Get authenticated user
- const { data: { user } } = await supabase.auth.getUser();
- if (!user) {
- redirect('/auth/login');
- }
-
- // Get user's organization membership
- const { data: membership } = await supabase
- .from('memberships')
- .select('organization_id, role')
- .eq('user_id', user.id)
- .eq('status', 'active')
- .maybeSingle();
-
- if (!membership?.organization_id) {
- redirect('/onboarding');
- }
-
- const orgId = membership.organization_id;
-
- // Fetch initial data in parallel
- const [
- { data: riders = [] },
- { data: projects = [] },
- { data: events = [] },
- { data: users = [] },
- ] = await Promise.all([
- // Fetch riders
- supabase
- .from('programming_riders')
- .select(`
- *,
- event:programming_events(id, title, start_at, end_at, location, venue),
- project:projects(id, name, status)
- `)
- .eq('organization_id', orgId)
- .order('created_at', { ascending: false })
- .limit(50),
-
- // Fetch projects for dropdowns
- supabase
- .from('projects')
- .select('id, name, status')
- .eq('organization_id', orgId)
- .eq('status', 'active')
- .order('name'),
-
- // Fetch events for dropdowns
- supabase
- .from('programming_events')
- .select('id, title, start_at, end_at, location, venue')
- .eq('organization_id', orgId)
- .order('start_at', { ascending: true }),
-
- // Fetch users for display names
- supabase
- .from('memberships')
- .select(`
- user_id,
- users!inner(id, email, full_name, avatar_url)
- `)
- .eq('organization_id', orgId)
- .eq('status', 'active'),
- ]);
-
- // Transform users data
- const transformedUsers: User[] = (users || []).map((membership: unknown) => ({
- id: membership.users.id,
- email: membership.users.email,
- full_name: membership.users.full_name,
- avatar_url: membership.users.avatar_url,
- }));
-
- return (
- <div className="container mx-auto py-lg">
- <RidersClient
- orgId={orgId}
- currentUserId={user.id}
- initialRiders={riders as ProgrammingRider[]}
- projects={projects as RiderProject[]}
- events={events as RiderEvent[]}
- users={transformedUsers}
- />
- </div>
- );
+  return (
+    <DashboardLayout
+      title="Dashboard"
+      subtitle="Welcome to your workspace"
+      showRefresh={true}
+      showExport={true}
+      showSettings={true}
+      sidebar={
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-medium mb-2">Quick Actions</h3>
+            <div className="space-y-2">
+              {/* TODO: Add quick actions */}
+            </div>
+          </div>
+        </div>
+      }
+      rightPanel={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-4">Recent Activity</h3>
+            {/* TODO: Add activity feed */}
+          </div>
+        </div>
+      }
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* TODO: Add dashboard widgets */}
+        <div className="bg-muted/50 rounded-lg p-6">
+          <h3 className="font-medium mb-2">Widget Placeholder</h3>
+          <p className="text-muted-foreground">Dashboard content coming soon</p>
+        </div>
+      </div>
+    </DashboardLayout>
+  );
 }

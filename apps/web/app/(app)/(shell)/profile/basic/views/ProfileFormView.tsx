@@ -236,7 +236,7 @@ export default function ProfileFormView({
  if (!acc[field.section]) acc[field.section] = [];
  acc[field.section].push(field);
  return acc;
- }, {} as Record<string, FieldConfig[]);
+ }, {} as Record<string, FieldConfig[]>);
 
  return (
  <form onSubmit={handleSubmit} className="space-y-xl">

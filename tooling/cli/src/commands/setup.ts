@@ -45,55 +45,30 @@ export async function setupCommand(options: SetupOptions) {
     // Step 8: Verify setup
     await verifySetup()
 
-    const duration = Math.round((Date.now() - startTime) / 1000 / 60)
     console.log(chalk.green.bold(`\n✅ Setup complete in ${duration} minutes!\n`))
     console.log(chalk.blue('Next steps:'))
     console.log(chalk.gray('  1. Run: ghxstship dev'))
     console.log(chalk.gray('  2. Open: http://localhost:3000'))
     console.log(chalk.gray('  3. Read: docs/GETTING_STARTED.md\n'))
-  } catch (error) {
-    console.error(chalk.red.bold('\n❌ Setup failed:'), error)
+  } catch (_error) {
+    console.error('Failed to create .env file:', _error);
     process.exit(1)
   }
 }
 
 async function checkPrerequisites() {
-  const spinner = ora('Checking prerequisites...').start()
-
-  const checks = [
-    { name: 'Node.js', command: 'node --version', required: '>=20.0.0' },
-    { name: 'pnpm', command: 'pnpm --version', required: '>=8.0.0' },
-    { name: 'Git', command: 'git --version', required: '>=2.0.0' },
-  ]
-
-  for (const check of checks) {
-    try {
-      const { stdout } = await execa('sh', ['-c', check.command])
-      spinner.text = `${check.name}: ${stdout}`
-    } catch {
-      spinner.fail(`${check.name} not found. Please install ${check.name} ${check.required}`)
-      process.exit(1)
-    }
-  }
-
-  spinner.succeed('Prerequisites checked')
-}
-
-async function installDependencies() {
   const spinner = ora('Installing dependencies...').start()
 
   try {
     await execa('pnpm', ['install'], { stdio: 'pipe' })
     spinner.succeed('Dependencies installed')
-  } catch (error) {
-    spinner.fail('Failed to install dependencies')
+  } catch (_error) {
+    console.error('Failed to install dependencies:', _error);
     throw error
   }
 }
 
 async function setupEnvironment() {
-  const spinner = ora('Setting up environment variables...').start()
-
   const envExample = path.join(process.cwd(), '.env.example')
   const envLocal = path.join(process.cwd(), 'apps/web/.env.local')
 

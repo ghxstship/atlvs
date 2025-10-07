@@ -113,7 +113,7 @@ export class MediaService {
   }
 
   // Get a single media asset by ID
-  async getMediaAsset(id: string, orgId: string): Promise<ApiResponse<MediaAsset>>> {
+  async getMediaAsset(id: string, orgId: string): Promise<ApiResponse<MediaAsset>> {
     try {
       const { data, error } = await this.supabase
         .from('files')
@@ -139,7 +139,7 @@ export class MediaService {
   }
 
   // Create a new media asset
-  async createMediaAsset(orgId: string, data: CreateMediaAssetData): Promise<ApiResponse<MediaAsset>>> {
+  async createMediaAsset(orgId: string, data: CreateMediaAssetData): Promise<ApiResponse<MediaAsset>> {
     try {
       const { data: asset, error } = await this.supabase
         .from('files')
@@ -164,7 +164,7 @@ export class MediaService {
   }
 
   // Update a media asset
-  async updateMediaAsset(orgId: string, data: UpdateMediaAssetData): Promise<ApiResponse<MediaAsset>>> {
+  async updateMediaAsset(orgId: string, data: UpdateMediaAssetData): Promise<ApiResponse<MediaAsset>> {
     try {
       const { id, ...updateData } = data;
       
@@ -190,7 +190,7 @@ export class MediaService {
   }
 
   // Delete a media asset
-  async deleteMediaAsset(id: string, orgId: string): Promise<ApiResponse<void>>> {
+  async deleteMediaAsset(id: string, orgId: string): Promise<ApiResponse<void>> {
     try {
       const { error } = await this.supabase
         .from('files')
@@ -209,7 +209,7 @@ export class MediaService {
   }
 
   // Get media statistics
-  async getMediaStats(orgId: string): Promise<ApiResponse<MediaStats>>> {
+  async getMediaStats(orgId: string): Promise<ApiResponse<MediaStats>> {
     try {
       const { data, error } = await this.supabase
         .from('files')
@@ -257,7 +257,7 @@ export class MediaService {
   }
 
   // Increment view count
-  async incrementViewCount(id: string, orgId: string): Promise<ApiResponse<void>>> {
+  async incrementViewCount(id: string, orgId: string): Promise<ApiResponse<void>> {
     try {
       const { error } = await this.supabase.rpc('increment_view_count', {
         asset_id: id,
@@ -275,7 +275,7 @@ export class MediaService {
   }
 
   // Increment download count
-  async incrementDownloadCount(id: string, orgId: string): Promise<ApiResponse<void>>> {
+  async incrementDownloadCount(id: string, orgId: string): Promise<ApiResponse<void>> {
     try {
       const { error } = await this.supabase.rpc('increment_download_count', {
         asset_id: id,

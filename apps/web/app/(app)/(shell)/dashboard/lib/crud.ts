@@ -252,7 +252,7 @@ export class CrudService {
     resource: string,
     id: string,
     options: CrudOptions = {}
-  ): Promise<CrudResult<{ deleted: boolean }> {
+  ): Promise<CrudResult<{ deleted: boolean }>> {
     try {
       await this.executeOperation('delete', resource, { id }, options);
 
@@ -272,9 +272,9 @@ export class CrudService {
   async bulkOperation(
     operation: CrudOperation,
     resource: string,
-    items: Array<Record<string, unknown>,
+    items: Array<Record<string, unknown>>,
     options: CrudOptions = {}
-  ): Promise<CrudResult<Array<{ id: string; success: boolean; error?: string }> {
+  ): Promise<CrudResult<Array<{ id: string; success: boolean; error?: string }>>> {
     const results: Array<{ id: string; success: boolean; error?: string }> = [];
 
     // Process items with concurrency control
@@ -338,7 +338,7 @@ export class CrudService {
     localData: Record<string, unknown>,
     remoteData: Record<string, unknown>,
     strategy: 'overwrite' | 'merge' | 'skip' | 'manual' = 'merge'
-  ): Promise<Record<string, unknown>>> {
+  ): Promise<Record<string, unknown>> {
     switch (strategy) {
       case 'overwrite':
         return remoteData;
@@ -360,7 +360,7 @@ export class CrudService {
     resource: string,
     field: string,
     metadata?: Record<string, unknown>
-  ): Promise<CrudResult<{ url: string; fileId: string }> {
+  ): Promise<CrudResult<{ url: string; fileId: string }>> {
     try {
       const formData = new FormData();
       formData.append('file', file);
@@ -395,7 +395,7 @@ export class CrudService {
     resource: string,
     field: string,
     onProgress?: (completed: number, total: number) => void
-  ): Promise<CrudResult<Array<{ file: File; result: CrudResult<{ url: string; fileId: string }> }> {
+  ): Promise<CrudResult<Array<{ file: File; result: CrudResult<{ url: string; fileId: string }> }>>> {
     const results: Array<{ file: File; result: CrudResult<{ url: string; fileId: string }> }> = [];
 
     for (let i = 0; i < files.length; i++) {

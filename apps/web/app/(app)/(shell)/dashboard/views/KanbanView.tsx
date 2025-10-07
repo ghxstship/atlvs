@@ -193,7 +193,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
 
   // Group data by columns and swimlanes
   const groupedData = useMemo(() => {
-    const result: Record<string, Record<string, Record<string, unknown>[]> = {};
+    const result: Record<string, Record<string, Record<string, unknown>[]>> = {};
 
     filteredData.forEach(row => {
       columns.forEach(column => {

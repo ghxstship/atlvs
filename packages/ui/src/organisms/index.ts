@@ -27,3 +27,6 @@ export * from './AnimationOptimizer';
 export * from './SidebarLandmarks';
 export * from './Dialog';
 export * from './Form';
+export * from './TaskCard';
+export * from './BoardView';
+export * from './DashboardWidget';

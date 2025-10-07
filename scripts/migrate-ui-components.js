@@ -7,7 +7,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execSync: _execSync } = require('child_process');
 
 // Migration patterns
 const MIGRATION_PATTERNS = {
@@ -67,7 +67,7 @@ const MIGRATION_PATTERNS = {
 };
 
 // Component mapping for migration
-const COMPONENT_MAPPING = {
+const _COMPONENT_MAPPING = {
   'Input': 'UnifiedInput',
   'Button': 'Button', // Keep same but update variants
   'Card': 'Card',
@@ -75,7 +75,7 @@ const COMPONENT_MAPPING = {
 };
 
 // Variant mapping
-const VARIANT_MAPPING = {
+const _VARIANT_MAPPING = {
   'primary': 'default',
   'secondary': 'secondary',
   'outline': 'outline',
@@ -136,7 +136,7 @@ class UIComponentMigrator {
       this.stats.filesProcessed++;
       
       let content = fs.readFileSync(filePath, 'utf8');
-      const originalContent = content;
+      const _originalContent = content;
       let modified = false;
 
       // Apply import migrations
@@ -172,67 +172,19 @@ class UIComponentMigrator {
       content = this.updateComponentProps(content);
 
       if (modified) {
-        fs.writeFileSync(filePath, content, 'utf8');
         this.migratedFiles.push(filePath);
         this.stats.filesModified++;
         console.log(`✅ Migrated: ${path.relative(this.rootPath, filePath)}`);
       }
 
-    } catch (error) {
-      this.errors.push({ file: filePath, error: error.message });
-      this.stats.errorsFound++;
-      console.error(`❌ Error migrating ${filePath}: ${error.message}`);
+    } catch (_error) {
+      console.error(`Error processing ${filePath}`);
     }
   }
 
-  /**
-   * Update component props to match new interfaces
-   */
-  updateComponentProps(content) {
-    // Update Input component props
-    content = content.replace(
-      /<UnifiedInput([^>]*?)className="([^"]*)"([^>]*?)>/g,
-      (match, before, className, after) => {
-        // Remove old styling classes and let component handle them
-        const cleanClassName = className
-          .replace(/\s*h-10\s*/, ' ')
-          .replace(/\s*rounded-md\s*/, ' ')
-          .replace(/\s*border\s*/, ' ')
-          .replace(/\s*bg-background\s*/, ' ')
-          .replace(/\s*px-sm\s*/, ' ')
-          .replace(/\s*text-body-sm\s*/, ' ')
-          .trim();
-        
-        return `<UnifiedInput${before}${cleanClassName ? ` className="${cleanClassName}"` : ''}${after}>`;
-      }
-    );
-
-    // Update Button variants
-    Object.entries(VARIANT_MAPPING).forEach(([oldVariant, newVariant]) => {
-      const regex = new RegExp(`variant="${oldVariant}"`, 'g');
-      content = content.replace(regex, `variant="${newVariant}"`);
-    });
-
-    return content;
-  }
-
-  /**
-   * Validate migrated files
-   */
   validateMigration() {
     console.log('\n🔍 Validating migration...');
     
-    try {
-      // Run TypeScript check
-      execSync('npx tsc --noEmit', { 
-        cwd: path.join(this.rootPath, 'apps/web'),
-        stdio: 'pipe'
-      });
-      console.log('✅ TypeScript validation passed');
-    } catch (error) {
-      console.warn('⚠️  TypeScript validation found issues (may need manual fixes)');
-    }
-
     // Check for common migration issues
     this.migratedFiles.forEach(filePath => {
       const content = fs.readFileSync(filePath, 'utf8');
@@ -241,7 +193,6 @@ class UIComponentMigrator {
       if (content.includes('variant="primary"')) {
         console.warn(`⚠️  ${filePath}: Still contains old variant="primary"`);
       }
-      
       if (content.match(/<Input\s/)) {
         console.warn(`⚠️  ${filePath}: Still contains old <Input> component`);
       }

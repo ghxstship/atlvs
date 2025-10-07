@@ -1,4 +1,12 @@
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
+import Link from 'next/link';
+import { AppShell as AppShellTemplate } from '@ghxstship/ui/components/templates';
+import { VStack } from '@ghxstship/ui/components/layouts';
+import { Button } from '@ghxstship/ui/components/atomic/Button';
+import { Avatar } from '@ghxstship/ui/atoms/Avatar/Avatar';
+import { ThemeToggle } from '@ghxstship/ui/molecules/ThemeToggle/ThemeToggle';
+import { Command as CommandIcon, Settings2 } from 'lucide-react';
+
 import { requireAuth } from '../lib/sessionContext';
 import { routeRegistry, toNavSections, filterByEntitlements, filterByRole } from '../../../lib/navigation/routeRegistry';
 import { SidebarClient } from '../nav/SidebarClient';
@@ -18,7 +26,7 @@ interface AppShellProps {
  */
 export default async function AppShell({ children }: AppShellProps) {
   // Get authenticated session context with entitlements and role
-  const { user, orgId, role, entitlements, projectsAssignedCount } = await requireAuth();
+  const { role, entitlements, projectsAssignedCount, user, orgId } = await requireAuth();
 
   // Build navigation from centralized route registry with entitlements + RBAC role filtering
   const filteredRoutes = filterByEntitlements(
@@ -32,14 +40,14 @@ export default async function AppShell({ children }: AppShellProps) {
   // constrain Projects children to Overview only (hide deep pages that require assignments)
   const limitedRoles = new Set(['team_member', 'viewer', 'client', 'vendor', 'partner']);
   if (projectsAssignedCount === 0 && limitedRoles.has((role || 'viewer').toLowerCase())) {
-    roleFilteredRoutes = roleFilteredRoutes.map((r: any) => {
+    roleFilteredRoutes = roleFilteredRoutes.map((r) => {
       if (r.id !== 'projects' || !r.children) return r;
-      const overview = r.children.find((c: any) => c.id === 'projects-overview');
+      const overview = r.children.find((c) => c.id === 'projects-overview');
       return { ...r, children: overview ? [overview] : [] };
     });
   }
 
-  const navSections: Array<{ label: string; items: Array<{ label: string; href: string }> }> = toNavSections(roleFilteredRoutes);
+  const navSections = toNavSections(roleFilteredRoutes);
 
   // Add product-specific navigation sections
   if (entitlements.feature_opendeck) {
@@ -49,27 +57,87 @@ export default async function AppShell({ children }: AppShellProps) {
     navSections.push({ label: 'Company', items: [{ label: 'GHXSTSHIP', href: '/ghxstship' }] });
   }
 
-  return (
-    <div className="flex min-h-dvh brand-atlvs">
-      <SidebarClient navSections={navSections} />
-      <main id="main-content" className="flex-1" tabIndex={-1}>
-        <div className="sticky top-0 z-40 border-b bg-background backdrop-blur supports-[backdrop-filter]:bg-background/95">
-          <div className="container mx-auto px-md py-sm flex items-center justify-between gap-md">
-            <div className="flex items-center gap-sm">
-              <BreadcrumbsNav />
-              <ProductToggle 
-                atlvsEnabled={entitlements.feature_atlvs} 
-                opendeckEnabled={entitlements.feature_opendeck} 
-              />
-            </div>
-            <NotificationsBell />
-          </div>
-        </div>
-        <div className="container mx-auto p-md">
-          <CommandPalette navSections={navSections} />
-          {children}
-        </div>
-      </main>
+  const headerContent = (
+    <div className="flex items-center justify-between gap-md px-md py-3">
+      <div className="flex items-center gap-md">
+        <BreadcrumbsNav />
+        <ProductToggle
+          atlvsEnabled={entitlements.feature_atlvs}
+          opendeckEnabled={entitlements.feature_opendeck}
+        />
+      </div>
+      <div className="flex items-center gap-sm">
+        <ThemeToggle variant="simple" />
+        <Button
+          type="button"
+          variant="ghost"
+          size="sm"
+          className="hidden md:inline-flex items-center gap-xs"
+          onClick={() => {
+            if (typeof window !== 'undefined') {
+              window.dispatchEvent(new CustomEvent('command-palette:toggle'));
+            }
+          }}
+        >
+          <CommandIcon className="h-icon-xs w-icon-xs" />
+          <span>Search</span>
+          <kbd className="ml-xs text-2xs rounded border px-1 py-0.5">⌘K</kbd>
+        </Button>
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon"
+          className="md:hidden"
+          aria-label="Open command palette"
+          onClick={() => {
+            if (typeof window !== 'undefined') {
+              window.dispatchEvent(new CustomEvent('command-palette:toggle'));
+            }
+          }}
+        >
+          <CommandIcon className="h-icon-xs w-icon-xs" />
+        </Button>
+        <NotificationsBell />
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon"
+          aria-label="Quick settings"
+        >
+          <Settings2 className="h-icon-xs w-icon-xs" />
+        </Button>
+        <Suspense fallback={<div className="h-icon-sm w-icon-sm rounded-full bg-muted animate-pulse" />}>
+          <Link
+            href="/profile/overview"
+            className="inline-flex items-center gap-xs rounded-full border border-border/60 bg-card px-xs py-0.5 text-sm hover:border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <Avatar size="sm" fallback={(role || 'User').charAt(0).toUpperCase()} />
+            <span className="hidden lg:inline text-sm font-medium text-foreground/80">
+              {role ?? 'Member'}
+            </span>
+          </Link>
+        </Suspense>
+      </div>
     </div>
+  );
+
+  return (
+    <AppShellTemplate
+      className="brand-atlvs"
+      sidebar={(
+        <SidebarClient
+          navSections={navSections}
+          userId={user?.id}
+          entitlements={entitlements}
+          organizationName={orgId}
+        />
+      )}
+      header={headerContent}
+    >
+      <VStack spacing="lg" fullHeight>
+        <CommandPalette navSections={navSections} />
+        {children}
+      </VStack>
+    </AppShellTemplate>
   );
 }

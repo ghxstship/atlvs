@@ -1,47 +1,46 @@
-import { Card } from '@ghxstship/ui';
-import { cookies } from 'next/headers';
-import { createServerClient } from '@ghxstship/auth';
-import { getTranslations } from 'next-intl/server';
-import CompetenciesClient from './CompetenciesClient';
-import CreateCompetencyClient from './CreateCompetencyClient';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { DashboardLayout } from '@ghxstship/ui/templates';
+import { DashboardWidget } from '@ghxstship/ui/organisms';
 
-
-export const metadata = { title: 'People · Competencies' };
-
-export default async function PeopleCompetenciesPage() {
-  const t = await getTranslations('people.competencies');
-  const cookieStore = await cookies();
-  const supabase = createServerClient(cookieStore);
-
-  const { data: { user } } = await supabase.auth.getUser();
-  let orgId: string | null = null;
-  if (user) {
-    const { data: membership } = await supabase
-      .from('memberships')
-      .select('organization_id')
-      .eq('user_id', user.id)
-      .eq('status', 'active')
-      .order('created_at', { ascending: true })
-      .maybeSingle();
-    orgId = membership?.organization_id ?? null;
-  }
-
-  if (!orgId) {
-    return <div>Access denied</div>;
-  }
+export default function DashboardPage() {
+  // TODO: Implement dashboard content using DashboardLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <div className="stack-md">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Competencies</h1>
-          <p className="text-body-sm color-muted">Define and track team competencies and skill levels</p>
+    <DashboardLayout
+      title="Dashboard"
+      subtitle="Welcome to your workspace"
+      showRefresh={true}
+      showExport={true}
+      showSettings={true}
+      sidebar={
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-medium mb-2">Quick Actions</h3>
+            <div className="space-y-2">
+              {/* TODO: Add quick actions */}
+            </div>
+          </div>
         </div>
-        <CreateCompetencyClient orgId={orgId} />
+      }
+      rightPanel={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-4">Recent Activity</h3>
+            {/* TODO: Add activity feed */}
+          </div>
+        </div>
+      }
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* TODO: Add dashboard widgets */}
+        <div className="bg-muted/50 rounded-lg p-6">
+          <h3 className="font-medium mb-2">Widget Placeholder</h3>
+          <p className="text-muted-foreground">Dashboard content coming soon</p>
+        </div>
       </div>
-      <CompetenciesClient orgId={orgId} />
-    </div>
+    </DashboardLayout>
   );
 }

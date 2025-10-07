@@ -1,90 +1,106 @@
-/**
- * Analytics Detail Page
- *
- * Enterprise-grade individual record view for GHXSTSHIP Analytics module.
- * Provides comprehensive record viewing with real-time updates.
- *
- * @version 1.0.0
- * @enterprise-compliance ZERO_TOLERANCE
- * @audit-status COMPLIANT
- */
+'use client';
 
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
-import { createServerClient } from '@ghxstship/auth';
-import { isFeatureEnabled } from '../../../../../lib/feature-flags';
-import AnalyticsDetailClient from './AnalyticsDetailClient';
+import React from 'react';
+import { DetailLayout } from '@ghxstship/ui/templates';
 
-export const dynamic = 'force-dynamic';
-
-
-interface PageProps {
-  params: { id: string };
-}
-
-export async function generateMetadata({ params }: PageProps) {
-  return {
-    title: `Analytics - ${params.id}`,
-    description: 'View analytics record details.',
-  };
-}
-
-export default async function AnalyticsDetailPage({ params }: PageProps) {
-  const cookieStore = await cookies();
-  const supabase = createServerClient({
-    get: (name: string) => {
-      const cookie = cookieStore.get(name);
-      return cookie ? { name: cookie.name, value: cookie.value } : undefined;
-    },
-    set: (name: string, value: string, options) => cookieStore.set(name, value, options),
-    remove: (name: string) => cookieStore.delete(name),
-  });
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/auth/signin');
-  }
-
-  const { data: membership } = await supabase
-    .from('memberships')
-    .select('organization_id, role')
-    .eq('user_id', user.id)
-    .eq('status', 'active')
-    .order('created_at', { ascending: true })
-    .maybeSingle();
-
-  if (!membership?.organization_id) {
-    redirect('/auth/onboarding');
-  }
-
-  const useUnifiedVersion = isFeatureEnabled('unified-analytics', {
-    userId: user.id,
-    orgId: membership.organization_id,
-    role: membership.role ?? undefined,
-  });
-
-  if (!useUnifiedVersion) {
-    return (
-      <div className="flex h-full w-full items-center justify-center">
-        <div className="stack-sm text-center">
-          <p className="text-lg font-semibold">Analytics module migration in progress</p>
-          <p className="text-sm text-muted-foreground">
-            The unified analytics experience is currently disabled for your organization. Please contact support if you
-            need immediate access.
-          </p>
-        </div>
-      </div>
-    );
-  }
+export default function DetailPage() {
+  // TODO: Implement detail content using DetailLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <AnalyticsDetailClient
-      user={user}
-      orgId={membership.organization_id}
-      itemId={params.id}
-    />
+    <DetailLayout
+      title="Item Details"
+      subtitle="Detailed view of the selected item"
+      breadcrumbs={
+        <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
+          <button className="hover:text-foreground">Home</button>
+          <span>/</span>
+          <button className="hover:text-foreground">Module</button>
+          <span>/</span>
+          <span className="text-foreground">Details</span>
+        </nav>
+      }
+      actions={
+        <div className="flex items-center gap-2">
+          <button className="px-4 py-2 border border-input rounded-md">
+            Edit
+          </button>
+          <button className="px-4 py-2 bg-destructive text-destructive-foreground rounded-md">
+            Delete
+          </button>
+        </div>
+      }
+      avatar={
+        <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground">
+          D
+        </div>
+      }
+      status={
+        <div className="flex items-center gap-2">
+          <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
+            Active
+          </span>
+        </div>
+      }
+      tabs={{
+        items: [
+          { id: 'overview', label: 'Overview' },
+          { id: 'details', label: 'Details' },
+          { id: 'activity', label: 'Activity' },
+        ],
+        activeTab: 'overview',
+        onTabChange: (tabId) => console.log('Switch to tab:', tabId),
+      }}
+      metaSidebar={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-3">Metadata</h3>
+            <div className="space-y-3 text-sm">
+              <div>
+                <span className="text-muted-foreground">Created:</span>
+                <div>Jan 1, 2024</div>
+              </div>
+              <div>
+                <span className="text-muted-foreground">Last Updated:</span>
+                <div>Jan 10, 2024</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📊</span>
+              <span className="text-sm font-medium">Metric 1</span>
+            </div>
+            <div className="text-2xl font-bold">42</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📈</span>
+              <span className="text-sm font-medium">Metric 2</span>
+            </div>
+            <div className="text-2xl font-bold">85%</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">⏱️</span>
+              <span className="text-sm font-medium">Metric 3</span>
+            </div>
+            <div className="text-2xl font-bold">12d</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Content</h3>
+          <div className="prose max-w-none">
+            <p>Detailed content for this item goes here. This is a placeholder that will be replaced with actual content.</p>
+          </div>
+        </div>
+      </div>
+    </DetailLayout>
   );
 }

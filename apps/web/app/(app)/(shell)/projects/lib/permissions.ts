@@ -421,7 +421,7 @@ export async function checkPermission(
 
       default:
         // For other resources, use role-based permissions
-        const rolePermissions: Record<PermissionLevel, Record<string, boolean> = {
+        const rolePermissions: Record<PermissionLevel, Record<string, boolean>> = {
           owner: { create: true, read: true, update: true, delete: true },
           admin: { create: true, read: true, update: true, delete: true },
           manager: { create: true, read: true, update: true, delete: false },

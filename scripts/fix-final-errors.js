@@ -62,7 +62,7 @@ class FinalErrorFixer {
       this.stats.filesProcessed++;
       
       let content = fs.readFileSync(filePath, 'utf8');
-      const originalContent = content;
+      const _originalContent = content;
       let fixesApplied = 0;
 
       // Apply all critical fixes

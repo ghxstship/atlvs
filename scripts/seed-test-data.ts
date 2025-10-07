@@ -18,138 +18,31 @@ async function seedTestData() {
 
   try {
     // Clean existing test data
-    await cleanTestData();
-
     // Seed organizations
     const orgs = await seedOrganizations();
 
     // Seed users and memberships
-    const users = await seedUsersAndMemberships(orgs);
+    const users = await createUsers(supabase);
 
     // Seed modules data
-    await seedProjects(orgs);
+    await createProjects(supabase, orgs);
     await seedFinanceData(orgs);
     await seedPeopleData(orgs);
-    await seedCompaniesData(orgs);
-    await seedProcurementData(orgs);
-    await seedJobsData(orgs);
-    await seedSettingsData(orgs);
 
-    console.log('✅ Test data seeding completed successfully!');
+    console.log('✅ Test data seeding completed successfully');
   } catch (error) {
-    console.error('❌ Test data seeding failed:', error);
-    process.exit(1);
+    console.error('❌ Error seeding test data:', error);
+    throw error;
   }
 }
 
-async function cleanTestData() {
-  console.log('🧹 Cleaning existing test data...');
-
-  // Delete in reverse dependency order
-  await supabase.from('job_bids').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('job_compliance').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('opportunities').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('jobs').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('procurement_tracking').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('procurement_approvals').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('procurement_requests').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('procurement_orders').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('procurement_vendors').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('company_ratings').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('company_qualifications').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('company_contracts').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('company_contacts').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('companies').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('people').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('expenses').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('budgets').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('projects').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('memberships').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('users').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-  await supabase.from('organizations').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-}
-
-async function seedOrganizations() {
-  console.log('🏢 Seeding organizations...');
-
-  const organizations = [
-    {
-      id: 'test-org-1',
-      name: 'Test Organization 1',
-      slug: 'test-org-1',
-      description: 'Primary test organization',
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    },
-    {
-      id: 'test-org-2',
-      name: 'Test Organization 2',
-      slug: 'test-org-2',
-      description: 'Secondary test organization',
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    },
-  ];
-
-  const { data, error } = await supabase
-    .from('organizations')
-    .insert(organizations)
-    .select();
-
-  if (error) throw error;
-  return data;
-}
-
-async function seedUsersAndMemberships(orgs: any[]) {
-  console.log('👥 Seeding users and memberships...');
-
-  // Create test users
-  const users = [];
-  for (let i = 1; i <= 10; i++) {
-    const { data: user } = await supabase.auth.admin.createUser({
-      email: `test-user-${i}@example.com`,
-      password: 'testpassword123',
-      email_confirm: true,
-      user_metadata: {
-        name: faker.person.fullName(),
-        avatar_url: faker.image.avatar(),
-      },
-    });
-    users.push(user.user);
-  }
-
-  // Create memberships
-  const memberships = [];
-  users.forEach((user, index) => {
-    const org = orgs[index % orgs.length];
-    const roles = ['owner', 'admin', 'manager', 'member', 'viewer'];
-    const role = roles[index % roles.length];
-
-    memberships.push({
-      user_id: user!.id,
-      organization_id: org.id,
-      role,
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    });
-  });
-
-  const { error } = await supabase
-    .from('memberships')
-    .insert(memberships);
-
-  if (error) throw error;
-  return users;
-}
-
-async function seedProjects(orgs: any[]) {
-  console.log('📁 Seeding projects...');
-
+async function createProjects(supabase: SupabaseClient, orgs: Organization[]): Promise<Project[]> {
   const projects = [];
   const statuses = ['active', 'completed', 'on-hold', 'cancelled'];
 
   for (let i = 1; i <= 20; i++) {
     projects.push({
+      id: `project_${i}`,
       name: faker.company.name() + ' Project',
       description: faker.lorem.paragraph(),
       status: statuses[i % statuses.length],

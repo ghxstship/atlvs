@@ -404,7 +404,7 @@ export class AnalyticsDataQueries {
     metrics: AnalyticsMetric[],
     organizationId: string,
     filters?: Record<string, any>
-  ): Promise<Record<string, number>>> {
+  ): Promise<Record<string, number>> {
     const { data, error } = await supabase.rpc('get_analytics_aggregates', {
       metrics_config: metrics,
       organization_id: organizationId,
@@ -449,7 +449,7 @@ export class CrossModuleQueries {
   /**
    * Get organization-wide metrics across all modules
    */
-  static async getOrganizationMetrics(organizationId: string): Promise<Record<string, any>>> {
+  static async getOrganizationMetrics(organizationId: string): Promise<Record<string, any>> {
     // This would aggregate metrics from projects, people, finance, etc.
     // For now, return structure
     return {

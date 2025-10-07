@@ -90,7 +90,7 @@ export interface DashboardLayout {
   type: 'grid' | 'masonry' | 'flex' | 'tabs' | 'accordion' | 'sidebar' | 'fullscreen';
   columns: number;
   gap: string;
-  responsive: Record<string, Partial<DashboardLayout>;
+  responsive: Record<string, Partial<DashboardLayout>>;
 }
 
 /**

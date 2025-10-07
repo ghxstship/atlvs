@@ -1,188 +1,282 @@
-'use client';
+'use client'
 
+import { useMemo } from 'react'
+import { useRouter } from 'next/navigation'
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  Button,
+  Badge,
+} from '@ghxstship/ui'
+import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
+import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
+import {
+  FileText,
+  Download,
+  Upload,
+  Users,
+  Star,
+  FolderOpen,
+  Plus,
+  Search,
+  Filter,
+  BarChart,
+  Clock,
+  Activity,
+} from 'lucide-react'
 
-import React from 'react';
-import { Card } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { 
-  FileText, Download, Upload, Users, 
-  TrendingUp, Clock, Star, FolderOpen,
-  Plus, Search, Filter, BarChart
-} from 'lucide-react';
+import { useResourcesOverview } from '../hooks/useResourcesOverview'
 
-export default function ResourcesOverviewClient() {
-  const stats = [
-    { label: 'Total Resources', value: '1,234', icon: FileText, trend: '+12%' },
-    { label: 'Downloads', value: '45.6K', icon: Download, trend: '+23%' },
-    { label: 'Active Users', value: '892', icon: Users, trend: '+8%' },
-    { label: 'Avg. Rating', value: '4.8', icon: Star, trend: '+0.2' },
-  ];
+const metricIconComponents: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
+  FileText,
+  Download,
+  Users,
+  Star,
+}
 
-  const recentResources = [
-    { id: 1, title: 'Q4 Sales Report', type: 'Document', downloads: 234, rating: 4.9, updated: '2 hours ago' },
-    { id: 2, title: 'Product Training Video', type: 'Video', downloads: 567, rating: 4.7, updated: '5 hours ago' },
-    { id: 3, title: 'API Documentation', type: 'Guide', downloads: 892, rating: 4.8, updated: '1 day ago' },
-    { id: 4, title: 'Brand Guidelines', type: 'Template', downloads: 345, rating: 4.6, updated: '2 days ago' },
-  ];
+const trendToneMap: Record<'up' | 'down' | 'neutral', { badge: 'success' | 'destructive' | 'secondary'; text: string }> = {
+  up: { badge: 'success', text: 'text-success' },
+  down: { badge: 'destructive', text: 'text-destructive' },
+  neutral: { badge: 'secondary', text: 'text-muted-foreground' },
+}
 
-  const categories = [
-    { name: 'Documents', count: 456, color: 'bg-accent' },
-    { name: 'Videos', count: 234, color: 'bg-secondary' },
-    { name: 'Templates', count: 189, color: 'bg-success' },
-    { name: 'Guides', count: 145, color: 'bg-warning' },
-    { name: 'Training', count: 98, color: 'bg-destructive' },
-    { name: 'Other', count: 112, color: 'bg-secondary-foreground' },
-  ];
+const categoryToneMap: Record<'accent' | 'success' | 'warning' | 'destructive' | 'muted', string> = {
+  accent: 'bg-accent',
+  success: 'bg-success',
+  warning: 'bg-warning',
+  destructive: 'bg-destructive',
+  muted: 'bg-muted-foreground/40',
+}
+
+export default function ResourcesOverviewClient({ orgId }: { orgId: string }) {
+  const router = useRouter()
+  const { metrics, recentResources, categories, activities, loading, refreshing, error, refresh } =
+    useResourcesOverview({ orgId })
+
+  const metricCards = useMemo(
+    () =>
+      metrics.map((metric) => {
+        const Icon = metricIconComponents[metric.icon] ?? FileText
+        const trend = trendToneMap[metric.trend] ?? trendToneMap.neutral
+        return { ...metric, Icon, trend }
+      }),
+    [metrics],
+  )
+
+  if (loading) {
+    return (
+      <Stack spacing="lg">
+        <HStack justify="between" align="center">
+          <Skeleton className="h-8 w-48" />
+          <Skeleton className="h-10 w-32" />
+        </HStack>
+        <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Card key={index}>
+              <CardContent className="space-y-sm">
+                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-8 w-16" />
+                <Skeleton className="h-3 w-12" />
+              </CardContent>
+            </Card>
+          ))}
+        </Grid>
+      </Stack>
+    )
+  }
+
+  if (error) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-destructive">{error}</CardTitle>
+          <CardDescription>We couldn’t load the resources overview. Try refreshing.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Button onClick={refresh}>Retry</Button>
+        </CardContent>
+      </Card>
+    )
+  }
 
   return (
-    <div className="stack-lg">
-      {/* Header */}
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-heading-2 text-heading-3 color-foreground">Resources Overview</h1>
-          <p className="color-muted mt-xs">Manage and track your organization's resources</p>
-        </div>
-        <div className="flex gap-sm">
-          <Button variant="outline">
-            <Upload className="w-icon-xs h-icon-xs mr-sm" />
+    <Stack spacing="lg">
+      <HStack justify="between" align="center">
+        <Stack spacing="xs">
+          <h1 className="text-heading-3 font-anton uppercase text-foreground">Resources Overview</h1>
+          <p className="text-body-sm text-muted-foreground">
+            Manage knowledge assets, monitor engagement, and keep your library healthy.
+          </p>
+        </Stack>
+        <HStack spacing="sm">
+          <Button variant="outline" onClick={() => router.push('/resources/upload')}>
+            <Upload className="h-icon-xs w-icon-xs mr-xs" />
             Upload Resource
           </Button>
-          <Button>
-            <Plus className="w-icon-xs h-icon-xs mr-sm" />
+          <Button onClick={() => router.push('/resources/create')}>
+            <Plus className="h-icon-xs w-icon-xs mr-xs" />
             Create New
           </Button>
-        </div>
-      </div>
+          <Button variant={refreshing ? 'outline' : 'ghost'} disabled={refreshing} onClick={refresh}>
+            {refreshing ? 'Refreshing…' : 'Refresh'}
+          </Button>
+        </HStack>
+      </HStack>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
-        {stats.map((stat, index) => (
-          <Card key={index} className="p-lg">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-body-sm color-muted">{stat.label}</p>
-                <p className="text-heading-3 color-foreground mt-xs">{stat.value}</p>
-                <p className="text-body-sm color-success mt-sm">{stat.trend}</p>
-              </div>
-              <div className="p-sm bg-secondary/50 rounded-lg">
-                <stat.icon className="w-icon-md h-icon-md color-muted" />
-              </div>
-            </div>
+      <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+        {metricCards.map((metric) => (
+          <Card key={metric.id}>
+            <CardContent>
+              <HStack justify="between" align="center">
+                <metric.Icon className={`h-icon-sm w-icon-sm ${metric.trend.text}`} />
+                <Badge variant={metric.trend.badge} className="flex items-center gap-xs text-xs px-sm">
+                  {metric.change > 0 ? `+${metric.change}` : metric.change}%
+                </Badge>
+              </HStack>
+              <Stack spacing="xs" className="mt-md">
+                <span className="text-heading-3 font-semibold text-foreground">{metric.value}</span>
+                <span className="text-sm text-muted-foreground">{metric.label}</span>
+              </Stack>
+            </CardContent>
           </Card>
         ))}
-      </div>
+      </Grid>
 
-      {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-lg">
-        {/* Recent Resources */}
-        <div className="lg:col-span-2">
-          <Card className="p-lg">
-            <div className="flex justify-between items-center mb-md">
-              <h2 className="text-body text-heading-4 color-foreground">Recent Resources</h2>
-              <Button>View All</Button>
-            </div>
-            <div className="stack-md">
-              {recentResources.map((resource: any) => (
-                <div key={resource.id} className="flex items-center justify-between p-md border rounded-lg hover:bg-secondary/50">
-                  <div className="flex items-center gap-md">
-                    <div className="p-sm bg-secondary/50 rounded">
-                      <FileText className="w-icon-sm h-icon-sm color-muted" />
-                    </div>
-                    <div>
-                      <h3 className="form-label color-foreground">{resource.title}</h3>
-                      <div className="flex items-center gap-md mt-xs">
-                        <Badge variant="outline">{resource.type}</Badge>
-                        <span className="text-body-sm color-muted">{resource.downloads} downloads</span>
-                        <div className="flex items-center gap-xs">
-                          <Star className="w-3 h-3 color-warning fill-current" />
-                          <span className="text-body-sm color-muted">{resource.rating}</span>
-                        </div>
+      <Grid cols={1} responsive={{ lg: 3 }} spacing="lg">
+        <Card className="lg:col-span-2">
+          <CardHeader>
+            <CardTitle className="text-lg text-foreground">Recent Resources</CardTitle>
+            <CardDescription>What your teams are consuming and contributing this week.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Stack spacing="sm">
+              {recentResources.length === 0 ? (
+                <Stack spacing="sm" align="center" className="py-xl text-muted-foreground">
+                  <FileText className="h-icon-xl w-icon-xl" />
+                  <span className="text-sm">No resources yet. Upload your first asset to get started.</span>
+                </Stack>
+              ) : (
+                recentResources.map((resource) => (
+                  <HStack
+                    key={resource.id}
+                    spacing="md"
+                    justify="between"
+                    align="center"
+                    className="rounded-lg border border-border bg-card/60 p-md"
+                  >
+                    <HStack spacing="md" align="center">
+                      <div className="p-sm rounded-lg bg-muted/20">
+                        <FileText className="h-icon-sm w-icon-sm text-muted-foreground" />
                       </div>
-                    </div>
-                  </div>
-                  <div className="text-body-sm color-muted">
-                    {resource.updated}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </div>
+                      <Stack spacing="xs">
+                        <span className="text-sm font-semibold text-foreground">{resource.title}</span>
+                        <HStack spacing="sm" align="center">
+                          <Badge variant="outline" className="capitalize">
+                            {resource.type}
+                          </Badge>
+                          <span className="text-xs text-muted-foreground">{resource.downloads} downloads</span>
+                          <HStack spacing="xs" align="center">
+                            <Star className="h-icon-3xs w-icon-3xs text-warning" />
+                            <span className="text-xs text-muted-foreground">{resource.rating.toFixed(1)}</span>
+                          </HStack>
+                        </HStack>
+                      </Stack>
+                    </HStack>
+                    <span className="text-xs text-muted-foreground">
+                      {new Date(resource.updatedAt).toLocaleString()}
+                    </span>
+                  </HStack>
+                ))
+              )}
+            </Stack>
+          </CardContent>
+        </Card>
 
-        {/* Categories */}
-        <div>
-          <Card className="p-lg">
-            <h2 className="text-body text-heading-4 color-foreground mb-md">Categories</h2>
-            <div className="stack-sm">
-              {categories.map((category, index) => (
-                <div key={index} className="flex items-center justify-between">
-                  <div className="flex items-center gap-sm">
-                    <div className={`w-3 h-3 rounded-full ${category.color}`} />
-                    <span className="text-body-sm color-foreground">{category.name}</span>
-                  </div>
-                  <span className="text-body-sm form-label color-foreground">{category.count}</span>
-                </div>
-              ))}
-            </div>
-            <Button variant="outline" className="w-full mt-md">
-              <FolderOpen className="w-icon-xs h-icon-xs mr-sm" />
-              Manage Categories
-            </Button>
+        <Stack spacing="lg">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg text-foreground">Categories</CardTitle>
+              <CardDescription>Breakdown of your resource library by type.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Stack spacing="sm">
+                {categories.map((category) => (
+                  <HStack key={category.id} justify="between" align="center">
+                    <HStack spacing="sm" align="center">
+                      <span className={`h-2 w-2 rounded-full ${categoryToneMap[category.tone]}`} />
+                      <span className="text-sm text-foreground">{category.name}</span>
+                    </HStack>
+                    <span className="text-sm text-muted-foreground">{category.count}</span>
+                  </HStack>
+                ))}
+              </Stack>
+              <Button variant="outline" className="mt-lg w-full" onClick={() => router.push('/resources/categories')}>
+                <FolderOpen className="h-icon-xs w-icon-xs mr-xs" />
+                Manage Categories
+              </Button>
+            </CardContent>
           </Card>
 
-          {/* Quick Actions */}
-          <Card className="p-lg mt-md">
-            <h2 className="text-body text-heading-4 color-foreground mb-md">Quick Actions</h2>
-            <div className="stack-sm">
-              <Button variant="outline" className="w-full justify-start">
-                <Search className="w-icon-xs h-icon-xs mr-sm" />
-                Search Resources
-              </Button>
-              <Button variant="outline" className="w-full justify-start">
-                <Filter className="w-icon-xs h-icon-xs mr-sm" />
-                Advanced Filters
-              </Button>
-              <Button variant="outline" className="w-full justify-start">
-                <BarChart className="w-icon-xs h-icon-xs mr-sm" />
-                View Analytics
-              </Button>
-              <Button variant="outline" className="w-full justify-start">
-                <Clock className="w-icon-xs h-icon-xs mr-sm" />
-                Recent Activity
-              </Button>
-            </div>
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg text-foreground">Quick Actions</CardTitle>
+              <CardDescription>Surface relevant tools to curate and analyse the library.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Stack spacing="sm">
+                <Button variant="outline" className="justify-start" onClick={() => router.push('/resources/search')}>
+                  <Search className="h-icon-xs w-icon-xs mr-xs" />
+                  Search Resources
+                </Button>
+                <Button variant="outline" className="justify-start" onClick={() => router.push('/resources/filters')}>
+                  <Filter className="h-icon-xs w-icon-xs mr-xs" />
+                  Advanced Filters
+                </Button>
+                <Button variant="outline" className="justify-start" onClick={() => router.push('/resources/analytics')}>
+                  <BarChart className="h-icon-xs w-icon-xs mr-xs" />
+                  View Analytics
+                </Button>
+                <Button variant="outline" className="justify-start" onClick={() => router.push('/resources/activity')}>
+                  <Clock className="h-icon-xs w-icon-xs mr-xs" />
+                  Recent Activity
+                </Button>
+              </Stack>
+            </CardContent>
           </Card>
-        </div>
-      </div>
+        </Stack>
+      </Grid>
 
-      {/* Activity Timeline */}
-      <Card className="p-lg">
-        <h2 className="text-body text-heading-4 color-foreground mb-md">Recent Activity</h2>
-        <div className="stack-md">
-          <div className="flex gap-md">
-            <div className="w-2 h-2 bg-accent rounded-full mt-sm" />
-            <div className="flex-1">
-              <p className="text-body-sm color-foreground">New training video uploaded by Sarah Chen</p>
-              <p className="text-body-sm color-muted">10 minutes ago</p>
-            </div>
-          </div>
-          <div className="flex gap-md">
-            <div className="w-2 h-2 bg-success rounded-full mt-sm" />
-            <div className="flex-1">
-              <p className="text-body-sm color-foreground">API documentation updated to v2.0</p>
-              <p className="text-body-sm color-muted">1 hour ago</p>
-            </div>
-          </div>
-          <div className="flex gap-md">
-            <div className="w-2 h-2 bg-secondary rounded-full mt-sm" />
-            <div className="flex-1">
-              <p className="text-body-sm color-foreground">Q4 reports downloaded 50 times</p>
-              <p className="text-body-sm color-muted">3 hours ago</p>
-            </div>
-          </div>
-        </div>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-foreground">Activity Timeline</CardTitle>
+          <CardDescription>Highlights from knowledge operations across your teams.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Stack spacing="md">
+            {activities.length === 0 ? (
+              <Stack spacing="sm" align="center" className="py-xl text-muted-foreground">
+                <Activity className="h-icon-xl w-icon-xl" />
+                <span className="text-sm">No recent activity logged.</span>
+              </Stack>
+            ) : (
+              activities.map((item) => (
+                <HStack key={item.id} spacing="sm" align="start">
+                  <span className={`mt-1 h-2 w-2 rounded-full ${categoryToneMap[item.tone === 'info' ? 'muted' : item.tone]}`} />
+                  <Stack spacing="xs">
+                    <span className="text-sm text-foreground">{item.description}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {new Date(item.timestamp).toLocaleString()}
+                    </span>
+                  </Stack>
+                </HStack>
+              ))
+            )}
+          </Stack>
+        </CardContent>
       </Card>
-    </div>
-  );
+    </Stack>
+  )
 }

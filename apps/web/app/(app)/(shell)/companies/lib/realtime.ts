@@ -252,7 +252,7 @@ export class CompaniesRealtimeService {
   /**
    * Get current presence state
    */
-  getPresenceState(orgId: string): Promise<Record<string, PresenceState[]>>> {
+  getPresenceState(orgId: string): Promise<Record<string, PresenceState[]>> {
     const channel = this.presenceChannels.get(`presence:${orgId}`);
     if (!channel) {
       return Promise.resolve({});

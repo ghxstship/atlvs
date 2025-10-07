@@ -280,7 +280,7 @@ export class JobsRealtimeService {
   private async filterAssignmentByOrganization(
     payload: RealtimePostgresChangesPayload<JobAssignment>,
     organizationId: string
-  ): Promise<RealtimePostgresChangesPayload<JobAssignment> | null>> {
+  ): Promise<RealtimePostgresChangesPayload<JobAssignment> | null> {
     if (!payload.new?.job_id && !payload.old?.job_id) return null;
 
     const jobId = payload.new?.job_id || payload.old?.job_id;
@@ -296,7 +296,7 @@ export class JobsRealtimeService {
   private async filterBidByOrganization(
     payload: RealtimePostgresChangesPayload<Bid>,
     organizationId: string
-  ): Promise<RealtimePostgresChangesPayload<Bid> | null>> {
+  ): Promise<RealtimePostgresChangesPayload<Bid> | null> {
     if (!payload.new?.opportunity_id && !payload.old?.opportunity_id) return null;
 
     const opportunityId = payload.new?.opportunity_id || payload.old?.opportunity_id;
@@ -312,7 +312,7 @@ export class JobsRealtimeService {
   private async filterContractByOrganization(
     payload: RealtimePostgresChangesPayload<JobContract>,
     organizationId: string
-  ): Promise<RealtimePostgresChangesPayload<JobContract> | null>> {
+  ): Promise<RealtimePostgresChangesPayload<JobContract> | null> {
     if (!payload.new?.job_id && !payload.old?.job_id) return null;
 
     const jobId = payload.new?.job_id || payload.old?.job_id;
@@ -328,7 +328,7 @@ export class JobsRealtimeService {
   private async filterComplianceByOrganization(
     payload: RealtimePostgresChangesPayload<JobCompliance>,
     organizationId: string
-  ): Promise<RealtimePostgresChangesPayload<JobCompliance> | null>> {
+  ): Promise<RealtimePostgresChangesPayload<JobCompliance> | null> {
     if (!payload.new?.job_id && !payload.old?.job_id) return null;
 
     const jobId = payload.new?.job_id || payload.old?.job_id;

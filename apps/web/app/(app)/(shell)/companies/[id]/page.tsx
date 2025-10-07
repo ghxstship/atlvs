@@ -1,114 +1,106 @@
-/**
- * Companies Detail Page
- * Individual company record view with full information
- */
+'use client';
 
-import { createClient } from '@/lib/supabase/server';
-import { notFound } from 'next/navigation';
-import CompanyDetailClient from './CompanyDetailClient';
+import React from 'react';
+import { DetailLayout } from '@ghxstship/ui/templates';
 
-export const dynamic = 'force-dynamic';
-
-
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
-
-export async function generateMetadata({ params }: PageProps) {
-  const supabase = await createClient();
-
-  try {
-    const { data: company } = await supabase
-      .from('companies')
-      .select('name, description')
-      .eq('id', params.id)
-      .single();
-
-    if (!company) {
-      return {
-        title: 'Company Not Found',
-      };
-    }
-
-    return {
-      title: `${company.name} - Company Details`,
-      description: company.description || `View details for ${company.name}`,
-    };
-  } catch (error) {
-    return {
-      title: 'Company Details',
-    };
-  }
-}
-
-export default async function CompanyDetailPage({ params }: PageProps) {
-  const supabase = await createClient();
-
-  const {
-    data: { session },
-    error: authError,
-  } = await supabase.auth.getSession();
-
-  if (authError || !session) {
-    return null; // Will redirect on client
-  }
-
-  // Get user profile and organization membership
-  const { data: profile } = await supabase
-    .from('users')
-    .select(`
-      *,
-      memberships!inner(
-        organization_id,
-        role,
-        status,
-        organization:organizations(
-          id,
-          name,
-          slug
-        )
-      )
-    `)
-    .eq('auth_id', session.user.id)
-    .single();
-
-  if (!profile || !profile.memberships?.[0]) {
-    return null; // Will redirect on client
-  }
-
-  const orgId = profile.memberships[0].organization_id;
-
-  // Get company data
-  const { data: company, error } = await supabase
-    .from('companies')
-    .select(`
-      *,
-      contacts:company_contacts(*),
-      contracts:company_contracts(*),
-      qualifications:company_qualifications(*),
-      ratings:company_ratings(*)
-    `)
-    .eq('id', params.id)
-    .eq('organization_id', orgId)
-    .single();
-
-  if (error || !company) {
-    notFound();
-  }
+export default function DetailPage() {
+  // TODO: Implement detail content using DetailLayout
+  // This is a placeholder - actual implementation needed
 
   return (
-    <CompanyDetailClient
-      company={company}
-      user={session.user}
-      orgId={orgId}
-      translations={{
-        title: 'Company Details',
-        subtitle: `View and manage ${company.name}`,
-        edit: 'Edit Company',
-        back: 'Back to Companies',
+    <DetailLayout
+      title="Item Details"
+      subtitle="Detailed view of the selected item"
+      breadcrumbs={
+        <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
+          <button className="hover:text-foreground">Home</button>
+          <span>/</span>
+          <button className="hover:text-foreground">Module</button>
+          <span>/</span>
+          <span className="text-foreground">Details</span>
+        </nav>
+      }
+      actions={
+        <div className="flex items-center gap-2">
+          <button className="px-4 py-2 border border-input rounded-md">
+            Edit
+          </button>
+          <button className="px-4 py-2 bg-destructive text-destructive-foreground rounded-md">
+            Delete
+          </button>
+        </div>
+      }
+      avatar={
+        <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground">
+          D
+        </div>
+      }
+      status={
+        <div className="flex items-center gap-2">
+          <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
+            Active
+          </span>
+        </div>
+      }
+      tabs={{
+        items: [
+          { id: 'overview', label: 'Overview' },
+          { id: 'details', label: 'Details' },
+          { id: 'activity', label: 'Activity' },
+        ],
+        activeTab: 'overview',
+        onTabChange: (tabId) => console.log('Switch to tab:', tabId),
       }}
-    />
+      metaSidebar={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-3">Metadata</h3>
+            <div className="space-y-3 text-sm">
+              <div>
+                <span className="text-muted-foreground">Created:</span>
+                <div>Jan 1, 2024</div>
+              </div>
+              <div>
+                <span className="text-muted-foreground">Last Updated:</span>
+                <div>Jan 10, 2024</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📊</span>
+              <span className="text-sm font-medium">Metric 1</span>
+            </div>
+            <div className="text-2xl font-bold">42</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">📈</span>
+              <span className="text-sm font-medium">Metric 2</span>
+            </div>
+            <div className="text-2xl font-bold">85%</div>
+          </div>
+          <div className="p-4 border rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-muted-foreground">⏱️</span>
+              <span className="text-sm font-medium">Metric 3</span>
+            </div>
+            <div className="text-2xl font-bold">12d</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Content</h3>
+          <div className="prose max-w-none">
+            <p>Detailed content for this item goes here. This is a placeholder that will be replaced with actual content.</p>
+          </div>
+        </div>
+      </div>
+    </DetailLayout>
   );
 }

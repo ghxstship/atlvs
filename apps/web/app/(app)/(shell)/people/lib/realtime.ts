@@ -18,7 +18,7 @@ export interface RealtimeSubscriptionOptions {
   table: string;
   event?: RealtimeEvent | '*';
   filter?: string;
-  onEvent: (payload: RealtimePostgresChangesPayload<Record<string, unknown> => void;
+  onEvent: (payload: RealtimePostgresChangesPayload<Record<string, unknown>>) => void;
   onError?: (error: Error) => void;
 }
 
@@ -415,11 +415,13 @@ export class PeopleRealtimeService {
     });
   }
 
-  private async recalculateAnalytics(): Promise<any> => {
+  private async recalculateAnalytics(): Promise<any> {
     // Calculate real-time analytics based on current data
+    return {};
+  }
+}
 
 // Factory function for realtime service
 export function createPeopleRealtimeService(orgId: string, userId: string) {
   return new PeopleRealtimeService(orgId, userId);
-}
 }

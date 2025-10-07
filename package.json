@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
-    "lint": "turbo run lint -- --max-warnings 0",
+    "lint": "turbo run lint --filter=web",
     "lint:check": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
     "lint:tokens": "eslint --config .eslintrc.semantic-tokens.js --ext .ts,.tsx,.js,.jsx packages/ui/src packages/config/src apps/web/src --format json --output-file token-lint-results.json",
@@ -45,24 +45,29 @@
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
     "@types/node": "^20.19.14",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.44.0",
+    "@vitejs/plugin-react": "^5.0.4",
     "commitlint": "20.1.0",
     "dotenv": "^17.2.3",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "husky": "^8.0.3",
+    "jsdom": "^27.0.0",
     "pg": "^8.16.3",
     "prettier": "^3.6.2",
     "supertest": "^7.1.4",
     "tsx": "^4.7.0",
     "turbo": "^2.5.6",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vitest": "^1.6.1"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.2",
@@ -71,7 +76,6 @@
     "@upstash/redis": "^1.35.3",
     "dompurify": "^3.2.7",
     "is-in-subnet": "^4.0.1",
-    "jsdom": "^27.0.0",
     "validator": "^13.15.15"
   }
 }

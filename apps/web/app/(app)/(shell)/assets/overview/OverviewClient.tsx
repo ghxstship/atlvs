@@ -1,239 +1,318 @@
-'use client';
+'use client'
 
-
-import React, { useState, useEffect } from 'react';
-import { User } from '@supabase/supabase-js';
-import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge } from '@ghxstship/ui';
-import { animationPresets } from "../../../../_components/ui"
-import { 
+import { useMemo } from 'react'
+import { useRouter } from 'next/navigation'
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  Button,
+  Badge,
+} from '@ghxstship/ui'
+import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
+import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
+import {
   Package,
-  TrendingUp,
+  DollarSign,
   UserCheck,
   Wrench,
-  MapPin,
-  FileText,
-  Plus,
   Activity,
-  DollarSign,
-  AlertTriangle
-} from 'lucide-react';
+  MapPin,
+  AlertTriangle,
+  Plus,
+} from 'lucide-react'
 
-interface OverviewClientProps {
-  user: User;
-  orgId: string;
+import { useAssetsOverview } from '../hooks/useAssetsOverview'
+
+const quickActions = [
+  { id: 'add', icon: Package, label: 'Add Asset', href: '/assets/inventory/create' },
+  { id: 'advance', icon: DollarSign, label: 'Create Advance', href: '/assets/advancing/create' },
+  { id: 'assignment', icon: UserCheck, label: 'New Assignment', href: '/assets/assignments/create' },
+  { id: 'maintenance', icon: Wrench, label: 'Schedule Maintenance', href: '/assets/maintenance/create' },
+]
+
+const activityIconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
+  asset: Package,
+  asset_assignment: UserCheck,
+  asset_maintenance: Wrench,
+  asset_tracking: MapPin,
 }
 
-interface AssetStats {
-  totalAssets: number;
-  availableAssets: number;
-  inUseAssets: number;
-  maintenanceAssets: number;
-  totalValue: number;
-  activeAssignments: number;
-  pendingMaintenance: number;
-  recentActivity: any[];
+const statusToneMap: Record<string, { bg: string; text: string }> = {
+  available: { bg: 'bg-success/10', text: 'text-success' },
+  in_use: { bg: 'bg-info/10', text: 'text-info' },
+  under_maintenance: { bg: 'bg-warning/10', text: 'text-warning' },
+  maintenance: { bg: 'bg-warning/10', text: 'text-warning' },
+  damaged: { bg: 'bg-destructive/10', text: 'text-destructive' },
+  missing: { bg: 'bg-muted/20', text: 'text-muted-foreground' },
 }
 
-export default function OverviewClient({ user, orgId }: OverviewClientProps) {
-  const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState<AssetStats>({
-    totalAssets: 0,
-    availableAssets: 0,
-    inUseAssets: 0,
-    maintenanceAssets: 0,
-    totalValue: 0,
-    activeAssignments: 0,
-    pendingMaintenance: 0,
-    recentActivity: []
-  });
+export default function OverviewClient({ orgId }: { orgId: string }) {
+  const router = useRouter()
+  const { stats, activity, loading, refreshing, error, refresh } = useAssetsOverview({ orgId })
 
-  const supabase = createBrowserClient();
+  const formatCurrency = (amount: number) =>
+    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount)
 
-  useEffect(() => {
-    loadAssetStats();
-  }, [orgId]);
+  const metricCards = useMemo(
+    () => [
+      {
+        id: 'totalAssets',
+        label: 'Total Assets',
+        value: stats?.totalAssets ?? 0,
+        icon: Package,
+        tone: 'accent',
+      },
+      {
+        id: 'totalValue',
+        label: 'Total Value',
+        value: stats ? formatCurrency(stats.totalValue) : '$0.00',
+        icon: DollarSign,
+        tone: 'success',
+      },
+      {
+        id: 'activeAssignments',
+        label: 'Active Assignments',
+        value: stats?.activeAssignments ?? 0,
+        icon: UserCheck,
+        tone: 'accent',
+      },
+      {
+        id: 'pendingMaintenance',
+        label: 'Pending Maintenance',
+        value: stats?.pendingMaintenance ?? 0,
+        icon: Wrench,
+        tone: 'warning',
+      },
+    ],
+    [stats],
+  )
 
-  const loadAssetStats = async () => {
-    try {
-      setLoading(true);
-
-      // Get asset counts by status
-      const { data: assets } = await supabase
-        .from('assets')
-        .select('status, current_value')
-        .eq('organization_id', orgId);
-
-      // Get assignment counts
-      const { data: assignments } = await supabase
-        .from('asset_assignments')
-        .select('status')
-        .eq('organization_id', orgId)
-        .eq('status', 'active');
-
-      // Get maintenance counts
-      const { data: maintenance } = await supabase
-        .from('asset_maintenance')
-        .select('status')
-        .eq('organization_id', orgId)
-        .in('status', ['scheduled', 'in_progress']);
-
-      // Get recent activity
-      const { data: activity } = await supabase
-        .from('activity_logs')
-        .select('*')
-        .eq('organization_id', orgId)
-        .in('entity_type', ['asset', 'asset_assignment', 'asset_maintenance', 'asset_tracking'])
-        .order('occurred_at', { ascending: false })
-        .limit(10);
-
-      const totalAssets = assets?.length || 0;
-      const availableAssets = assets?.filter(a => a.status === 'available').length || 0;
-      const inUseAssets = assets?.filter(a => a.status === 'in_use').length || 0;
-      const maintenanceAssets = assets?.filter(a => a.status === 'under_maintenance').length || 0;
-      const totalValue = assets?.reduce((sum, asset) => sum + (asset.current_value || 0), 0) || 0;
-
-      setStats({
-        totalAssets,
-        availableAssets,
-        inUseAssets,
-        maintenanceAssets,
-        totalValue,
-        activeAssignments: assignments?.length || 0,
-        pendingMaintenance: maintenance?.length || 0,
-        recentActivity: activity || []
-      });
-    } catch (error) {
-      console.error('Error loading asset stats:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    }).format(amount);
-  };
-
-  const getActivityIcon = (entityType: string) => {
-    switch (entityType) {
-      case 'asset': return <Package className="h-icon-xs w-icon-xs" />;
-      case 'asset_assignment': return <UserCheck className="h-icon-xs w-icon-xs" />;
-      case 'asset_maintenance': return <Wrench className="h-icon-xs w-icon-xs" />;
-      case 'asset_tracking': return <MapPin className="h-icon-xs w-icon-xs" />;
-      default: return <Activity className="h-icon-xs w-icon-xs" />;
-    }
-  };
-
-  const getStatusVariant = (status: string): 'success' | 'warning' | 'destructive' | 'info' | 'secondary' => {
-    switch (status) {
-      case 'available':
-        return 'success';
-      case 'in_use':
-        return 'info';
-      case 'maintenance':
-        return 'warning';
-      case 'damaged':
-        return 'destructive';
-      default:
-        return 'secondary';
-    }
-  };
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'available': return 'hsl(var(--success))';
-      case 'in_use': return 'hsl(var(--primary))';
-      case 'under_maintenance': return 'hsl(var(--warning))';
-      case 'damaged': return 'hsl(var(--destructive))';
-      case 'missing': return 'hsl(var(--muted-foreground))';
-      default: return 'hsl(var(--muted-foreground))';
-    }
-  };
+  const statusBreakdown = useMemo(
+    () => [
+      {
+        id: 'available',
+        label: 'Available',
+        count: stats?.availableAssets ?? 0,
+        total: stats?.totalAssets ?? 0,
+        tone: statusToneMap.available,
+      },
+      {
+        id: 'in_use',
+        label: 'In Use',
+        count: stats?.inUseAssets ?? 0,
+        total: stats?.totalAssets ?? 0,
+        tone: statusToneMap.in_use,
+      },
+      {
+        id: 'maintenance',
+        label: 'Under Maintenance',
+        count: stats?.maintenanceAssets ?? 0,
+        total: stats?.totalAssets ?? 0,
+        tone: statusToneMap.under_maintenance,
+      },
+    ],
+    [stats],
+  )
 
   if (loading) {
     return (
-      <div className="p-lg stack-lg">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
-          {[...Array(4)].map((_, i) => (
-            <Card key={i} className="p-lg animate-pulse">
-              <div className="h-icon-xs bg-secondary rounded w-3/4 mb-sm"></div>
-              <div className="h-icon-lg bg-secondary rounded w-1/2"></div>
+      <Stack spacing="lg">
+        <HStack justify="between" align="center">
+          <Skeleton className="h-8 w-48" />
+          <Skeleton className="h-10 w-28" />
+        </HStack>
+        <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Card key={index}>
+              <CardContent className="space-y-sm">
+                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-8 w-20" />
+                <Skeleton className="h-3 w-16" />
+              </CardContent>
             </Card>
           ))}
-        </div>
-      </div>
-    );
+        </Grid>
+      </Stack>
+    )
+  }
+
+  if (error) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-destructive">{error}</CardTitle>
+          <CardDescription>We couldn’t load asset insights. Try again in a moment.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Button onClick={refresh}>Retry</Button>
+        </CardContent>
+      </Card>
+    )
   }
 
   return (
-    <div className="p-lg stack-lg">
-      {/* Header */}
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-heading-3 text-heading-3 color-foreground">Assets Overview</h1>
-          <p className="color-muted">Monitor and manage your organization's assets</p>
-        </div>
-        <div className="flex gap-sm">
-          <Button>
-            <Plus className="h-icon-xs w-icon-xs mr-sm" />
-            Add Asset
-          </Button>
-        </div>
-      </div>
+    <Stack spacing="lg">
+      <HStack justify="between" align="center">
+        <Stack spacing="xs">
+          <h1 className="text-heading-3 font-anton uppercase text-foreground">Assets Overview</h1>
+          <p className="text-body-sm text-muted-foreground">
+            Monitor inventory health, assignment coverage, and maintenance demand.
+          </p>
+        </Stack>
+        <Button variant={refreshing ? 'outline' : 'default'} disabled={refreshing} onClick={refresh}>
+          {refreshing ? 'Refreshing…' : 'Refresh'}
+        </Button>
+      </HStack>
 
-      {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
-        <Card className="p-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-body-sm form-label color-muted">Total Assets</p>
-              <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalAssets}</p>
-            </div>
-            <div className="p-sm bg-accent/10 rounded-lg">
-              <Package className="h-icon-md w-icon-md color-accent" />
-            </div>
-          </div>
+      <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
+        {metricCards.map((metric) => {
+          const tone = statusToneMap[metric.tone as keyof typeof statusToneMap] ?? {
+            bg: 'bg-muted/20',
+            text: 'text-muted-foreground',
+          }
+          return (
+            <Card key={metric.id}>
+              <CardContent>
+                <HStack spacing="md" align="center">
+                  <div className={`${tone.bg} p-sm rounded-lg`}>
+                    <metric.icon className={`h-icon-md w-icon-md ${tone.text}`} />
+                  </div>
+                  <Stack spacing="xs">
+                    <span className="text-sm text-muted-foreground">{metric.label}</span>
+                    <span className="text-heading-3 font-semibold text-foreground">{metric.value}</span>
+                  </Stack>
+                </HStack>
+              </CardContent>
+            </Card>
+          )
+        })}
+      </Grid>
+
+      <Grid cols={1} responsive={{ lg: 2 }} spacing="lg">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg text-foreground">Asset Status Breakdown</CardTitle>
+            <CardDescription>Distribution of assets across availability and maintenance states.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Stack spacing="sm">
+              {statusBreakdown.map((status) => {
+                const percentage = status.total > 0 ? Math.round((status.count / status.total) * 100) : 0
+                const tone = status.tone
+                return (
+                  <HStack key={status.id} justify="between" align="center">
+                    <HStack spacing="sm" align="center">
+                      <span className={`h-2 w-2 rounded-full ${tone.bg}`} />
+                      <span className="text-sm font-medium text-foreground">{status.label}</span>
+                    </HStack>
+                    <HStack spacing="sm" align="center">
+                      <span className="text-sm text-muted-foreground">{status.count}</span>
+                      <Badge variant="outline" className={`${tone.bg} ${tone.text}`}>
+                        {percentage}%
+                      </Badge>
+                    </HStack>
+                  </HStack>
+                )
+              })}
+            </Stack>
+          </CardContent>
         </Card>
 
-        <Card className="p-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-body-sm form-label color-muted">Total Value</p>
-              <p className="text-heading-3 text-heading-3 color-foreground">{formatCurrency(stats.totalValue)}</p>
-            </div>
-            <div className="p-sm bg-success/10 rounded-lg">
-              <DollarSign className="h-icon-md w-icon-md color-success" />
-            </div>
-          </div>
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg text-foreground">Quick Actions</CardTitle>
+            <CardDescription>Accelerate common asset workflows.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Grid cols={2} spacing="sm">
+              {quickActions.map((action) => (
+                <Button
+                  key={action.id}
+                  variant="outline"
+                  className="h-auto flex flex-col items-center gap-sm p-md"
+                  onClick={() => router.push(action.href)}
+                >
+                  <action.icon className="h-icon-md w-icon-md" />
+                  <span className="text-sm font-medium text-foreground">{action.label}</span>
+                </Button>
+              ))}
+            </Grid>
+          </CardContent>
         </Card>
+      </Grid>
 
-        <Card className="p-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-body-sm form-label color-muted">Active Assignments</p>
-              <p className="text-heading-3 text-heading-3 color-foreground">{stats.activeAssignments}</p>
-            </div>
-            <div className="p-sm bg-accent/10 rounded-lg">
-              <UserCheck className="h-icon-md w-icon-md color-accent" />
-            </div>
-          </div>
-        </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg text-foreground">Recent Activity</CardTitle>
+          <CardDescription>Latest updates across inventory, assignments, and maintenance.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          {activity.length === 0 ? (
+            <Stack spacing="sm" align="center" className="py-xl text-center">
+              <Activity className="h-icon-2xl w-icon-2xl text-muted-foreground/40" />
+              <span className="text-sm text-muted-foreground">No recent asset activity yet</span>
+            </Stack>
+          ) : (
+            <Stack spacing="sm">
+              {activity.map((entry) => {
+                const Icon = activityIconMap[entry.entity_type] ?? Activity
+                const tone = statusToneMap[entry.metadata?.status as string]?.text ?? 'text-muted-foreground'
+                return (
+                  <HStack
+                    key={entry.id}
+                    spacing="sm"
+                    justify="between"
+                    align="center"
+                    className="rounded-lg border border-border bg-card/60 p-md"
+                  >
+                    <HStack spacing="sm" align="center">
+                      <div className="p-sm rounded-lg bg-muted/20">
+                        <Icon className="h-icon-xs w-icon-xs" />
+                      </div>
+                      <Stack spacing="xs">
+                        <span className="text-sm font-medium text-foreground">
+                          {entry.action.replace('_', ' ')} {entry.entity_type.replace('_', ' ')}
+                        </span>
+                        <span className="text-xs text-muted-foreground">
+                          {new Date(entry.occurred_at).toLocaleString()}
+                        </span>
+                      </Stack>
+                    </HStack>
+                    {entry.metadata?.status && (
+                      <Badge variant="outline" className={`capitalize ${tone}`}>
+                        {String(entry.metadata.status).replace(/_/g, ' ')}
+                      </Badge>
+                    )}
+                  </HStack>
+                )
+              })}
+            </Stack>
+          )}
+        </CardContent>
+      </Card>
 
-        <Card className="p-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-body-sm form-label color-muted">Pending Maintenance</p>
-              <p className="text-heading-3 text-heading-3 color-foreground">{stats.pendingMaintenance}</p>
-            </div>
-            <div className="p-sm bg-warning/10 rounded-lg">
-              <Wrench className="h-icon-md w-icon-md color-warning" />
-            </div>
-          </div>
+      {stats?.pendingMaintenance && stats.pendingMaintenance > 0 && (
+        <Card className="border-warning/30 bg-warning/10">
+          <CardContent>
+            <HStack spacing="sm" align="center">
+              <AlertTriangle className="h-icon-md w-icon-md text-warning" />
+              <Stack spacing="xs">
+                <span className="text-sm font-semibold text-warning">Maintenance Attention Needed</span>
+                <span className="text-sm text-warning/80">
+                  {stats.pendingMaintenance} asset
+                  {stats.pendingMaintenance === 1 ? ' requires' : 's require'} servicing in the next 30 days.
+                </span>
+              </Stack>
+              <Button variant="outline" className="ml-auto" onClick={() => router.push('/assets/maintenance')}>
+                View Maintenance
+              </Button>
+            </HStack>
+          </CardContent>
         </Card>
-      </div>
+      )}
 
       {/* Asset Status Breakdown */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
@@ -365,6 +444,6 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
           </div>
         </Card>
       )}
-    </div>
+    </Stack>
   );
 }

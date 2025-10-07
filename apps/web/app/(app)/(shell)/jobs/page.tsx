@@ -1,41 +1,63 @@
-import { Card } from '@ghxstship/ui';
-import { cookies } from 'next/headers';
-import { createServerClient } from '@ghxstship/auth';
-import { getTranslations } from 'next-intl/server';
-import JobsClient from './JobsClient';
+'use client';
 
-export const dynamic = 'force-dynamic';
+import React from 'react';
+import { ListLayout } from '@ghxstship/ui/templates';
+import { BoardView } from '@ghxstship/ui/organisms';
 
-
-export const metadata = { title: 'Jobs' };
-
-export default async function JobsPage() {
-  const t = await getTranslations('jobs');
-  const cookieStore = await cookies();
-  const supabase = createServerClient(cookieStore);
-
-  const { data: { user } } = await supabase.auth.getUser();
-  let orgId: string | null = null;
-  if (user) {
-    const { data: membership } = await supabase
-      .from('memberships')
-      .select('organization_id')
-      .eq('user_id', user.id)
-      .eq('status', 'active')
-      .order('created_at', { ascending: true })
-      .maybeSingle();
-    orgId = membership?.organization_id ?? null;
-  }
+export default function ujobsPage() {
+  // TODO: Implement ujobs content using ListLayout + BoardView
+  // This is a placeholder - actual implementation needed
 
   return (
-    <div className="stack-md">
-      <Card title={t('title')}>
-        <div className="flex items-center justify-between gap-md mb-lg">
-          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">{t('title')}</h1>
+    <ListLayout
+      title="ujobs"
+      subtitle="Manage and track all your ujobs"
+      actions={
+        <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md">
+          New ujobs
+        </button>
+      }
+      search={{
+        value: '',
+        onChange: (value) => console.log('Search:', value),
+        placeholder: 'Search ujobs...',
+      }}
+      filters={{
+        activeCount: 0,
+        onClear: () => console.log('Clear filters'),
+      }}
+      sidebar={
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-3">Filters</h3>
+            <div className="space-y-2">
+              {/* TODO: Add ujobs filters */}
+              <label className="flex items-center gap-2 text-sm">
+                <input type="checkbox" className="rounded" />
+                Active
+              </label>
+            </div>
+          </div>
         </div>
-        
-        {orgId ? <JobsClient orgId={orgId} /> : null}
-      </Card>
-    </div>
+      }
+    >
+      <BoardView
+        columns={[
+          {
+            id: 'todo',
+            title: 'To Do',
+            status: 'todo',
+            color: '#6b7280',
+            tasks: [
+              // TODO: Add sample tasks
+            ]
+          }
+        ]}
+        onTaskClick={(task) => console.log('Task clicked:', task)}
+        onTaskEdit={(task) => console.log('Edit task:', task)}
+        onTaskDelete={(task) => console.log('Delete task:', task)}
+        onTaskCreate={(columnId) => console.log('Create task in:', columnId)}
+      />
+    </ListLayout>
   );
 }
