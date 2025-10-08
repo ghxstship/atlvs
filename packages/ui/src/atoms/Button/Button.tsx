@@ -68,41 +68,41 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     
     const variantClasses = {
       primary: `
-        bg-[var(--color-primary)]
-        text-[var(--color-primary-foreground)]
+        bg-primary
+        text-primary-foreground
         hover:opacity-90
-        focus:ring-[var(--color-primary)]
+        focus:ring-primary
       `,
       secondary: `
-        bg-[var(--color-secondary)]
-        text-[var(--color-secondary-foreground)]
+        bg-secondary
+        text-secondary-foreground
         hover:opacity-90
         focus:ring-[var(--color-secondary)]
       `,
       ghost: `
         bg-transparent
-        text-[var(--color-foreground)]
-        hover:bg-[var(--color-muted)]
-        focus:ring-[var(--color-primary)]
+        text-foreground
+        hover:bg-muted
+        focus:ring-primary
       `,
       destructive: `
-        bg-[var(--color-error)]
-        text-[var(--color-error-foreground)]
+        bg-destructive
+        text-destructive-foreground
         hover:opacity-90
         focus:ring-[var(--color-error)]
       `,
       outline: `
         bg-transparent
-        border border-[var(--color-border)]
-        text-[var(--color-foreground)]
-        hover:bg-[var(--color-muted)]
-        focus:ring-[var(--color-primary)]
+        border border-border
+        text-foreground
+        hover:bg-muted
+        focus:ring-primary
       `,
       link: `
         bg-transparent
-        text-[var(--color-primary)]
+        text-primary
         hover:underline
-        focus:ring-[var(--color-primary)]
+        focus:ring-primary
         p-0
       `,
     };

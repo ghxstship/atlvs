@@ -89,7 +89,7 @@ export function DashboardView({
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-primary)]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -98,8 +98,8 @@ export function DashboardView({
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <p className="text-[var(--color-error)] font-medium">Error loading data</p>
-          <p className="text-[var(--color-foreground-secondary)] text-sm mt-1">{error}</p>
+          <p className="text-destructive font-medium">Error loading data</p>
+          <p className="text-muted-foreground text-sm mt-1">{error}</p>
         </div>
       </div>
     );
@@ -117,9 +117,9 @@ export function DashboardView({
               className={`
                 ${sizeClasses[widget.size]}
                 p-4 rounded-lg
-                border border-[var(--color-border)]
-                bg-[var(--color-surface)]
-                hover:border-[var(--color-primary)]
+                border border-border
+                bg-card
+                hover:border-primary
                 transition-colors
                 ${onWidgetClick ? 'cursor-pointer' : ''}
               `}
@@ -128,16 +128,16 @@ export function DashboardView({
               {/* Header */}
               <div className="flex items-start justify-between mb-3">
                 <div>
-                  <h3 className="font-medium text-sm text-[var(--color-foreground-secondary)]">
+                  <h3 className="font-medium text-sm text-muted-foreground">
                     {widget.title}
                   </h3>
                   {widget.config.subtitle && (
-                    <p className="text-xs text-[var(--color-foreground-muted)] mt-1">
+                    <p className="text-xs text-muted-foreground mt-1">
                       {widget.config.subtitle}
                     </p>
                   )}
                 </div>
-                <button className="p-1 rounded hover:bg-[var(--color-muted)] transition-colors">
+                <button className="p-1 rounded hover:bg-muted transition-colors">
                   <MoreVertical className="w-4 h-4" />
                 </button>
               </div>
@@ -151,15 +151,15 @@ export function DashboardView({
                   
                   {/* Trend indicator (mock) */}
                   <div className="flex items-center gap-1 text-sm">
-                    <TrendingUp className="w-4 h-4 text-[var(--color-success)]" />
-                    <span className="text-[var(--color-success)]">12%</span>
-                    <span className="text-[var(--color-foreground-secondary)]">vs last period</span>
+                    <TrendingUp className="w-4 h-4 text-success" />
+                    <span className="text-success">12%</span>
+                    <span className="text-muted-foreground">vs last period</span>
                   </div>
                 </div>
               )}
               
               {widget.type === 'chart' && (
-                <div className="h-32 flex items-center justify-center text-[var(--color-foreground-muted)]">
+                <div className="h-32 flex items-center justify-center text-muted-foreground">
                   Chart: {widget.config.chartType}
                 </div>
               )}
@@ -169,7 +169,7 @@ export function DashboardView({
                   {data.slice(0, widget.config.limit || 5).map(record => (
                     <div
                       key={record.id}
-                      className="text-sm truncate text-[var(--color-foreground-secondary)]"
+                      className="text-sm truncate text-muted-foreground"
                     >
                       • {record[widget.config.field || 'name'] || 'Item'}
                     </div>
@@ -178,7 +178,7 @@ export function DashboardView({
               )}
               
               {widget.type === 'table' && (
-                <div className="text-sm text-[var(--color-foreground-muted)]">
+                <div className="text-sm text-muted-foreground">
                   Table view
                 </div>
               )}

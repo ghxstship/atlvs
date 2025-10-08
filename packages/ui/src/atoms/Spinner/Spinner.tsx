@@ -46,8 +46,8 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
     };
     
     const variantClasses = {
-      default: 'border-[var(--color-border)] border-t-[var(--color-foreground)]',
-      primary: 'border-[var(--color-primary)]/20 border-t-[var(--color-primary)]',
+      default: 'border-border border-t-[var(--color-foreground)]',
+      primary: 'border-primary/20 border-t-[var(--color-primary)]',
       white: 'border-white/20 border-t-white',
     };
     

@@ -136,14 +136,14 @@ export function DataTable<T>({
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-primary)]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
   
   if (data.length === 0) {
     return (
-      <div className="flex items-center justify-center h-64 text-[var(--color-foreground-secondary)]">
+      <div className="flex items-center justify-center h-64 text-muted-foreground">
         {emptyMessage}
       </div>
     );
@@ -152,9 +152,9 @@ export function DataTable<T>({
   const allSelected = data.length > 0 && selectedKeys.length === data.length;
   
   return (
-    <div className="w-full overflow-auto border border-[var(--color-border)] rounded-lg">
+    <div className="w-full overflow-auto border border-border rounded-lg">
       <table className="w-full">
-        <thead className="bg-[var(--color-muted)] border-b border-[var(--color-border)]">
+        <thead className="bg-muted border-b border-border">
           <tr>
             {selectable && (
               <th className="w-12 px-4 py-3">
@@ -175,7 +175,7 @@ export function DataTable<T>({
                 {column.sortable ? (
                   <button
                     onClick={() => handleSort(column.key)}
-                    className="flex items-center gap-1 hover:text-[var(--color-primary)] transition-colors"
+                    className="flex items-center gap-1 hover:text-primary transition-colors"
                   >
                     {column.header}
                     {sortConfig?.key === column.key && (
@@ -203,9 +203,9 @@ export function DataTable<T>({
                 key={key}
                 onClick={() => onRowClick?.(row)}
                 className={`
-                  border-b border-[var(--color-border)] last:border-0
-                  hover:bg-[var(--color-muted)]
-                  ${isSelected ? 'bg-[var(--color-primary)]/10' : ''}
+                  border-b border-border last:border-0
+                  hover:bg-muted
+                  ${isSelected ? 'bg-primary/10' : ''}
                   ${onRowClick ? 'cursor-pointer' : ''}
                   transition-colors
                 `}

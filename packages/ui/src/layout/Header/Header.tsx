@@ -101,8 +101,8 @@ export function Header({
       className={`
         flex items-center justify-between
         h-16 px-4 
-        border-b border-[var(--color-border)]
-        bg-[var(--color-background)]
+        border-b border-border
+        bg-background
         sticky top-0 z-50
         ${className}
       `}
@@ -120,7 +120,7 @@ export function Header({
             className="
               lg:hidden
               p-2 rounded-md
-              hover:bg-[var(--color-muted)]
+              hover:bg-muted
               transition-colors
             "
             aria-label="Toggle sidebar"
@@ -143,7 +143,7 @@ export function Header({
             className="flex-1 max-w-md hidden md:block"
           >
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-foreground-muted)]" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <input
                 type="search"
                 placeholder={searchPlaceholder}
@@ -152,11 +152,11 @@ export function Header({
                 className="
                   w-full h-9 pl-10 pr-4
                   rounded-md
-                  border border-[var(--color-border)]
-                  bg-[var(--color-background)]
+                  border border-border
+                  bg-background
                   text-sm
-                  placeholder:text-[var(--color-foreground-muted)]
-                  focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent
+                  placeholder:text-muted-foreground
+                  focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
                   transition-shadow
                 "
               />
@@ -178,7 +178,7 @@ export function Header({
             disabled={action.disabled}
             className="
               relative p-2 rounded-md
-              hover:bg-[var(--color-muted)]
+              hover:bg-muted
               disabled:opacity-50 disabled:cursor-not-allowed
               transition-colors
             "
@@ -191,8 +191,8 @@ export function Header({
                 absolute -top-1 -right-1
                 min-w-[18px] h-[18px] px-1
                 rounded-full
-                bg-[var(--color-error)]
-                text-[var(--color-error-foreground)]
+                bg-destructive
+                text-destructive-foreground
                 text-xs font-medium
                 flex items-center justify-center
               ">
@@ -209,7 +209,7 @@ export function Header({
               onClick={() => setShowNotificationsPanel(!showNotificationsPanel)}
               className="
                 relative p-2 rounded-md
-                hover:bg-[var(--color-muted)]
+                hover:bg-muted
                 transition-colors
               "
               aria-label="Notifications"
@@ -220,7 +220,7 @@ export function Header({
                 <span className="
                   absolute top-1 right-1
                   w-2 h-2 rounded-full
-                  bg-[var(--color-error)]
+                  bg-destructive
                 " />
               )}
             </button>
@@ -230,15 +230,15 @@ export function Header({
               <div className="
                 absolute right-0 top-full mt-2
                 w-80 max-h-96 overflow-auto
-                rounded-lg border border-[var(--color-border)]
-                bg-[var(--color-surface)]
+                rounded-lg border border-border
+                bg-card
                 shadow-lg
               ">
-                <div className="p-3 border-b border-[var(--color-border)]">
+                <div className="p-3 border-b border-border">
                   <h3 className="font-semibold">Notifications</h3>
                 </div>
                 {notifications.length === 0 ? (
-                  <div className="p-8 text-center text-[var(--color-foreground-muted)]">
+                  <div className="p-8 text-center text-muted-foreground">
                     No notifications
                   </div>
                 ) : (
@@ -247,14 +247,14 @@ export function Header({
                       <div
                         key={notification.id}
                         className={`
-                          p-3 border-b border-[var(--color-border)] last:border-0
-                          hover:bg-[var(--color-muted)]
+                          p-3 border-b border-border last:border-0
+                          hover:bg-muted
                           cursor-pointer
-                          ${!notification.read ? 'bg-[var(--color-info-background)]' : ''}
+                          ${!notification.read ? 'bg-info/10' : ''}
                         `}
                       >
                         <div className="font-medium text-sm">{notification.title}</div>
-                        <div className="text-sm text-[var(--color-foreground-secondary)] mt-1">
+                        <div className="text-sm text-muted-foreground mt-1">
                           {notification.message}
                         </div>
                       </div>
@@ -273,7 +273,7 @@ export function Header({
               onClick={() => setShowUserMenuPanel(!showUserMenuPanel)}
               className="
                 flex items-center gap-2 p-2 rounded-md
-                hover:bg-[var(--color-muted)]
+                hover:bg-muted
                 transition-colors
               "
               aria-label="User menu"
@@ -288,8 +288,8 @@ export function Header({
               ) : (
                 <div className="
                   w-7 h-7 rounded-full
-                  bg-[var(--color-primary)]
-                  text-[var(--color-primary-foreground)]
+                  bg-primary
+                  text-primary-foreground
                   flex items-center justify-center
                   text-sm font-medium
                 ">
@@ -303,13 +303,13 @@ export function Header({
               <div className="
                 absolute right-0 top-full mt-2
                 w-64
-                rounded-lg border border-[var(--color-border)]
-                bg-[var(--color-surface)]
+                rounded-lg border border-border
+                bg-card
                 shadow-lg
               ">
-                <div className="p-3 border-b border-[var(--color-border)]">
+                <div className="p-3 border-b border-border">
                   <div className="font-medium">{user.name}</div>
-                  <div className="text-sm text-[var(--color-foreground-secondary)]">
+                  <div className="text-sm text-muted-foreground">
                     {user.email}
                   </div>
                 </div>
@@ -317,7 +317,7 @@ export function Header({
                   <button className="
                     w-full px-3 py-2 text-left text-sm
                     rounded-md
-                    hover:bg-[var(--color-muted)]
+                    hover:bg-muted
                     transition-colors
                   ">
                     Profile
@@ -325,7 +325,7 @@ export function Header({
                   <button className="
                     w-full px-3 py-2 text-left text-sm
                     rounded-md
-                    hover:bg-[var(--color-muted)]
+                    hover:bg-muted
                     transition-colors
                   ">
                     Settings
@@ -333,9 +333,9 @@ export function Header({
                   <button className="
                     w-full px-3 py-2 text-left text-sm
                     rounded-md
-                    hover:bg-[var(--color-muted)]
+                    hover:bg-muted
                     transition-colors
-                    text-[var(--color-error)]
+                    text-destructive
                   ">
                     Sign out
                   </button>

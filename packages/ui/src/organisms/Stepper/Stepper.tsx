@@ -65,10 +65,10 @@ export const Stepper: React.FC<StepperProps> = ({
                     w-10 h-10 rounded-full flex items-center justify-center
                     font-semibold transition-all
                     ${completed
-                      ? 'bg-[var(--color-success)] text-white'
+                      ? 'bg-success text-white'
                       : current
-                        ? 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)]'
-                        : 'bg-[var(--color-muted)] text-[var(--color-foreground-secondary)]'
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-muted text-muted-foreground'
                     }
                     ${onStepClick ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}
                   `}
@@ -76,21 +76,21 @@ export const Stepper: React.FC<StepperProps> = ({
                   {completed ? <Check className="w-5 h-5" /> : index + 1}
                 </button>
                 {index < steps.length - 1 && (
-                  <div className="w-px h-12 bg-[var(--color-border)] my-2" />
+                  <div className="w-px h-12 bg-border my-2" />
                 )}
               </div>
               
               <div className="flex-1 pb-8">
-                <div className={`font-medium ${current ? 'text-[var(--color-primary)]' : ''}`}>
+                <div className={`font-medium ${current ? 'text-primary' : ''}`}>
                   {step.label}
                   {step.optional && (
-                    <span className="text-xs text-[var(--color-foreground-secondary)] ml-2">
+                    <span className="text-xs text-muted-foreground ml-2">
                       (Optional)
                     </span>
                   )}
                 </div>
                 {step.description && (
-                  <div className="text-sm text-[var(--color-foreground-secondary)] mt-1">
+                  <div className="text-sm text-muted-foreground mt-1">
                     {step.description}
                   </div>
                 )}
@@ -118,23 +118,23 @@ export const Stepper: React.FC<StepperProps> = ({
                   w-10 h-10 rounded-full flex items-center justify-center
                   font-semibold transition-all
                   ${completed
-                    ? 'bg-[var(--color-success)] text-white'
+                    ? 'bg-success text-white'
                     : current
-                      ? 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)]'
-                      : 'bg-[var(--color-muted)] text-[var(--color-foreground-secondary)]'
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-muted text-muted-foreground'
                   }
                   ${onStepClick ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}
                 `}
               >
                 {completed ? <Check className="w-5 h-5" /> : index + 1}
               </button>
-              <div className={`mt-2 text-sm text-center ${current ? 'font-medium text-[var(--color-primary)]' : 'text-[var(--color-foreground-secondary)]'}`}>
+              <div className={`mt-2 text-sm text-center ${current ? 'font-medium text-primary' : 'text-muted-foreground'}`}>
                 {step.label}
               </div>
             </div>
             
             {index < steps.length - 1 && (
-              <div className={`flex-1 h-px mx-4 ${completed ? 'bg-[var(--color-success)]' : 'bg-[var(--color-border)]'}`} />
+              <div className={`flex-1 h-px mx-4 ${completed ? 'bg-success' : 'bg-border'}`} />
             )}
           </React.Fragment>
         );

@@ -61,12 +61,12 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
           {Icon && (
-            <div className="p-2 rounded-lg bg-[var(--color-primary)]/10">
-              <Icon className="w-5 h-5 text-[var(--color-primary)]" />
+            <div className="p-2 rounded-lg bg-primary/10">
+              <Icon className="w-5 h-5 text-primary" />
             </div>
           )}
           <div>
-            <h3 className="text-sm font-medium text-[var(--color-foreground-secondary)]">
+            <h3 className="text-sm font-medium text-muted-foreground">
               {title}
             </h3>
           </div>
@@ -75,9 +75,9 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
         {onMenuClick && (
           <button
             onClick={onMenuClick}
-            className="p-1 rounded hover:bg-[var(--color-muted)] transition-colors"
+            className="p-1 rounded hover:bg-muted transition-colors"
           >
-            <MoreVertical className="w-4 h-4 text-[var(--color-foreground-secondary)]" />
+            <MoreVertical className="w-4 h-4 text-muted-foreground" />
           </button>
         )}
       </div>
@@ -85,14 +85,14 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
       {/* Content */}
       {loading ? (
         <div className="animate-pulse">
-          <div className="h-8 bg-[var(--color-muted)] rounded w-24 mb-2" />
-          <div className="h-4 bg-[var(--color-muted)] rounded w-32" />
+          <div className="h-8 bg-muted rounded w-24 mb-2" />
+          <div className="h-4 bg-muted rounded w-32" />
         </div>
       ) : (
         <>
           {value !== undefined && (
             <div className="mb-2">
-              <div className="text-3xl font-bold text-[var(--color-foreground)]">
+              <div className="text-3xl font-bold text-foreground">
                 {value}
               </div>
             </div>
@@ -104,8 +104,8 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
                 <span
                   className={
                     trend.value >= 0
-                      ? 'text-[var(--color-success)]'
-                      : 'text-[var(--color-error)]'
+                      ? 'text-success'
+                      : 'text-destructive'
                   }
                 >
                   {trend.value >= 0 ? '+' : ''}
@@ -113,12 +113,12 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
                 </span>
               )}
               {description && (
-                <span className="text-[var(--color-foreground-secondary)]">
+                <span className="text-muted-foreground">
                   {description}
                 </span>
               )}
               {trend?.label && (
-                <span className="text-[var(--color-foreground-muted)]">
+                <span className="text-muted-foreground">
                   {trend.label}
                 </span>
               )}

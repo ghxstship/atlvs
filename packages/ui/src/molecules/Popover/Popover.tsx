@@ -105,8 +105,8 @@ export const Popover: React.FC<PopoverProps> = ({
             ${positionClasses[position]}
             ${alignClasses[align]}
             min-w-[200px]
-            rounded-lg border border-[var(--color-border)]
-            bg-[var(--color-surface)]
+            rounded-lg border border-border
+            bg-card
             shadow-lg
             p-4
             animate-in fade-in-0 zoom-in-95

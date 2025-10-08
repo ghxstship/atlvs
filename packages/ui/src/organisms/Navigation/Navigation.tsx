@@ -74,8 +74,8 @@ export const Navigation: React.FC<NavigationProps> = ({
             text-sm font-medium
             transition-colors
             ${item.active
-              ? 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)]'
-              : 'text-[var(--color-foreground-secondary)] hover:bg-[var(--color-muted)] hover:text-[var(--color-foreground)]'
+              ? 'bg-primary text-primary-foreground'
+              : 'text-muted-foreground hover:bg-muted hover:text-foreground'
             }
           `}
           style={{ paddingLeft: `${level * 1 + 0.75}rem` }}
@@ -83,7 +83,7 @@ export const Navigation: React.FC<NavigationProps> = ({
           {item.icon && <item.icon className="w-4 h-4" />}
           <span className="flex-1 text-left">{item.label}</span>
           {item.badge && (
-            <span className="px-2 py-0.5 rounded-full bg-[var(--color-primary)] text-[var(--color-primary-foreground)] text-xs">
+            <span className="px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-xs">
               {item.badge}
             </span>
           )}

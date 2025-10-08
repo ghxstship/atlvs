@@ -57,13 +57,13 @@ export function Footer({
   const getSyncStatusIcon = () => {
     switch (syncStatus) {
       case 'synced':
-        return <CheckCircle2 className="w-4 h-4 text-[var(--color-success)]" />;
+        return <CheckCircle2 className="w-4 h-4 text-success" />;
       case 'syncing':
-        return <Clock className="w-4 h-4 text-[var(--color-info)] animate-spin" />;
+        return <Clock className="w-4 h-4 text-info animate-spin" />;
       case 'error':
-        return <AlertCircle className="w-4 h-4 text-[var(--color-error)]" />;
+        return <AlertCircle className="w-4 h-4 text-destructive" />;
       case 'offline':
-        return <WifiOff className="w-4 h-4 text-[var(--color-foreground-muted)]" />;
+        return <WifiOff className="w-4 h-4 text-muted-foreground" />;
       default:
         return <Wifi className="w-4 h-4" />;
     }
@@ -91,9 +91,9 @@ export function Footer({
       className={`
         flex items-center justify-between
         h-8 px-4
-        border-t border-[var(--color-border)]
-        bg-[var(--color-background)]
-        text-xs text-[var(--color-foreground-secondary)]
+        border-t border-border
+        bg-background
+        text-xs text-muted-foreground
         ${className}
       `}
     >
@@ -118,7 +118,7 @@ export function Footer({
       {/* Right section */}
       <div className="flex items-center gap-4">
         {version && (
-          <span className="text-[var(--color-foreground-muted)]">
+          <span className="text-muted-foreground">
             {version}
           </span>
         )}

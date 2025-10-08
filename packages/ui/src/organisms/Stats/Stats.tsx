@@ -54,15 +54,15 @@ export const Stats: React.FC<StatsProps> = ({
             key={stat.id}
             className="
               p-6 rounded-lg
-              bg-[var(--color-surface)]
-              border border-[var(--color-border)]
-              hover:border-[var(--color-primary)]
+              bg-card
+              border border-border
+              hover:border-primary
               transition-colors
             "
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <div className="text-sm text-[var(--color-foreground-secondary)]">
+                <div className="text-sm text-muted-foreground">
                   {stat.label}
                 </div>
                 <div className="text-3xl font-bold mt-2">
@@ -73,22 +73,22 @@ export const Stats: React.FC<StatsProps> = ({
                   <div className="flex items-center gap-1 mt-2">
                     {isPositive && (
                       <>
-                        <TrendingUp className="w-4 h-4 text-[var(--color-success)]" />
-                        <span className="text-sm text-[var(--color-success)]">
+                        <TrendingUp className="w-4 h-4 text-success" />
+                        <span className="text-sm text-success">
                           +{stat.change}%
                         </span>
                       </>
                     )}
                     {isNegative && (
                       <>
-                        <TrendingDown className="w-4 h-4 text-[var(--color-error)]" />
-                        <span className="text-sm text-[var(--color-error)]">
+                        <TrendingDown className="w-4 h-4 text-destructive" />
+                        <span className="text-sm text-destructive">
                           {stat.change}%
                         </span>
                       </>
                     )}
                     {stat.changeLabel && (
-                      <span className="text-xs text-[var(--color-foreground-muted)]">
+                      <span className="text-xs text-muted-foreground">
                         {stat.changeLabel}
                       </span>
                     )}
@@ -97,7 +97,7 @@ export const Stats: React.FC<StatsProps> = ({
               </div>
               
               {stat.icon && (
-                <stat.icon className="w-8 h-8 text-[var(--color-primary)]" />
+                <stat.icon className="w-8 h-8 text-primary" />
               )}
             </div>
           </div>

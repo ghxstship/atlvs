@@ -171,8 +171,8 @@ export function Drawer({
           ${side === 'left' ? 'mr-auto' : 'ml-auto'}
           ${sizeClasses[size]}
           h-full
-          bg-[var(--color-background)]
-          border-${side === 'left' ? 'r' : 'l'} border-[var(--color-border)]
+          bg-background
+          border-${side === 'left' ? 'r' : 'l'} border-border
           shadow-2xl
           flex flex-col
           transform transition-transform duration-300 ease-out
@@ -181,7 +181,7 @@ export function Drawer({
         `}
       >
         {/* Header */}
-        <div className="flex-shrink-0 border-b border-[var(--color-border)]">
+        <div className="flex-shrink-0 border-b border-border">
           {/* Title bar */}
           <div className="flex items-center justify-between h-16 px-6">
             <h2 className="text-lg font-semibold">{title}</h2>
@@ -191,7 +191,7 @@ export function Drawer({
                 onClick={onClose}
                 className="
                   p-2 rounded-md
-                  hover:bg-[var(--color-muted)]
+                  hover:bg-muted
                   transition-colors
                 "
                 aria-label="Close drawer"
@@ -203,7 +203,7 @@ export function Drawer({
           
           {/* Tabs */}
           {tabs && tabs.length > 0 && (
-            <div className="flex border-t border-[var(--color-border)]">
+            <div className="flex border-t border-border">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
@@ -214,8 +214,8 @@ export function Drawer({
                     text-sm font-medium
                     border-b-2 transition-colors
                     ${activeTab === tab.id
-                      ? 'border-[var(--color-primary)] text-[var(--color-primary)]'
-                      : 'border-transparent text-[var(--color-foreground-secondary)] hover:text-[var(--color-foreground)] hover:border-[var(--color-border)]'
+                      ? 'border-primary text-primary'
+                      : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
                     }
                     ${tab.disabled ? 'opacity-50 cursor-not-allowed' : ''}
                   `}
@@ -235,7 +235,7 @@ export function Drawer({
         
         {/* Footer */}
         {footer && (
-          <div className="flex-shrink-0 border-t border-[var(--color-border)] p-6">
+          <div className="flex-shrink-0 border-t border-border p-6">
             {footer}
           </div>
         )}

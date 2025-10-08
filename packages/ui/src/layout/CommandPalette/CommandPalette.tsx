@@ -177,8 +177,8 @@ export function CommandPalette({
       <div
         className={`
           relative w-full max-w-2xl
-          bg-[var(--color-surface)]
-          border border-[var(--color-border)]
+          bg-card
+          border border-border
           rounded-xl shadow-2xl
           overflow-hidden
           ${className}
@@ -188,8 +188,8 @@ export function CommandPalette({
         aria-label="Command palette"
       >
         {/* Search input */}
-        <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--color-border)]">
-          <Search className="w-5 h-5 text-[var(--color-foreground-muted)]" />
+        <div className="flex items-center gap-3 px-4 py-3 border-b border-border">
+          <Search className="w-5 h-5 text-muted-foreground" />
           <input
             ref={inputRef}
             type="text"
@@ -199,16 +199,16 @@ export function CommandPalette({
             className="
               flex-1 bg-transparent
               text-base
-              placeholder:text-[var(--color-foreground-muted)]
+              placeholder:text-muted-foreground
               focus:outline-none
             "
           />
           <kbd className="
             px-2 py-1
             rounded
-            bg-[var(--color-muted)]
+            bg-muted
             text-xs font-medium
-            text-[var(--color-foreground-secondary)]
+            text-muted-foreground
           ">
             ESC
           </kbd>
@@ -219,7 +219,7 @@ export function CommandPalette({
           {/* Recent items */}
           {!search && recentItems.length > 0 && (
             <div className="p-2">
-              <div className="px-3 py-2 text-xs font-semibold text-[var(--color-foreground-muted)] uppercase tracking-wider">
+              <div className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                 Recent
               </div>
               {recentItems.slice(0, 5).map((item, index) => (
@@ -240,7 +240,7 @@ export function CommandPalette({
           {Object.entries(groupedItems).map(([category, categoryItems]) => (
             <div key={category} className="p-2">
               {showCategories && category && (
-                <div className="px-3 py-2 text-xs font-semibold text-[var(--color-foreground-muted)] uppercase tracking-wider">
+                <div className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                   {category}
                 </div>
               )}
@@ -263,7 +263,7 @@ export function CommandPalette({
           
           {/* No results */}
           {filteredItems.length === 0 && (
-            <div className="p-8 text-center text-[var(--color-foreground-muted)]">
+            <div className="p-8 text-center text-muted-foreground">
               No results found for "{search}"
             </div>
           )}
@@ -292,8 +292,8 @@ function CommandItemComponent({ item, selected, onClick }: CommandItemComponentP
         text-left
         transition-colors
         ${selected
-          ? 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)]'
-          : 'hover:bg-[var(--color-muted)]'
+          ? 'bg-primary text-primary-foreground'
+          : 'hover:bg-muted'
         }
       `}
     >
@@ -309,8 +309,8 @@ function CommandItemComponent({ item, selected, onClick }: CommandItemComponentP
           <div className={`
             text-sm truncate
             ${selected
-              ? 'text-[var(--color-primary-foreground)]/80'
-              : 'text-[var(--color-foreground-secondary)]'
+              ? 'text-primary-foreground/80'
+              : 'text-muted-foreground'
             }
           `}>
             {item.description}
@@ -328,8 +328,8 @@ function CommandItemComponent({ item, selected, onClick }: CommandItemComponentP
                 px-2 py-1 rounded
                 text-xs font-medium
                 ${selected
-                  ? 'bg-[var(--color-primary-foreground)]/20 text-[var(--color-primary-foreground)]'
-                  : 'bg-[var(--color-muted)] text-[var(--color-foreground-secondary)]'
+                  ? 'bg-[var(--color-primary-foreground)]/20 text-primary-foreground'
+                  : 'bg-muted text-muted-foreground'
                 }
               `}
             >

@@ -71,10 +71,10 @@ export const BoardView: React.FC<BoardViewProps> = ({
                 className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: column.color }}
               />
-              <h3 className="font-semibold text-[var(--color-foreground)]">
+              <h3 className="font-semibold text-foreground">
                 {column.title}
               </h3>
-              <span className="text-sm text-[var(--color-foreground-secondary)]">
+              <span className="text-sm text-muted-foreground">
                 {column.tasks.length}
               </span>
             </div>
@@ -92,7 +92,7 @@ export const BoardView: React.FC<BoardViewProps> = ({
           {/* Tasks */}
           <div className="space-y-3">
             {column.tasks.length === 0 ? (
-              <div className="text-center py-8 text-[var(--color-foreground-secondary)] text-sm">
+              <div className="text-center py-8 text-muted-foreground text-sm">
                 No tasks
               </div>
             ) : (
@@ -103,7 +103,7 @@ export const BoardView: React.FC<BoardViewProps> = ({
                   onClick={() => onTaskClick?.(task)}
                 >
                   <div className="flex items-start justify-between mb-2">
-                    <h4 className="font-medium text-[var(--color-foreground)]">
+                    <h4 className="font-medium text-foreground">
                       {task.title}
                     </h4>
                     <button
@@ -111,21 +111,21 @@ export const BoardView: React.FC<BoardViewProps> = ({
                         e.stopPropagation();
                         onTaskEdit?.(task);
                       }}
-                      className="p-1 rounded hover:bg-[var(--color-muted)] transition-colors"
+                      className="p-1 rounded hover:bg-muted transition-colors"
                     >
-                      <MoreVertical className="w-4 h-4 text-[var(--color-foreground-secondary)]" />
+                      <MoreVertical className="w-4 h-4 text-muted-foreground" />
                     </button>
                   </div>
                   
                   {task.description && (
-                    <p className="text-sm text-[var(--color-foreground-secondary)] mb-3">
+                    <p className="text-sm text-muted-foreground mb-3">
                       {task.description}
                     </p>
                   )}
                   
                   <div className="flex items-center justify-between text-xs">
                     {task.assignee && (
-                      <span className="text-[var(--color-foreground-secondary)]">
+                      <span className="text-muted-foreground">
                         {task.assignee}
                       </span>
                     )}
@@ -133,10 +133,10 @@ export const BoardView: React.FC<BoardViewProps> = ({
                       <span
                         className={`px-2 py-1 rounded ${
                           task.priority === 'high'
-                            ? 'bg-[var(--color-error)]/10 text-[var(--color-error)]'
+                            ? 'bg-destructive/10 text-destructive'
                             : task.priority === 'medium'
-                            ? 'bg-[var(--color-warning)]/10 text-[var(--color-warning)]'
-                            : 'bg-[var(--color-muted)] text-[var(--color-foreground-secondary)]'
+                            ? 'bg-warning/10 text-warning'
+                            : 'bg-muted text-muted-foreground'
                         }`}
                       >
                         {task.priority}

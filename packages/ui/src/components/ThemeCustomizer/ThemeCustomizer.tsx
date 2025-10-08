@@ -33,6 +33,7 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
   className,
 }) => {
   const { theme, setTheme } = useTheme();
+  // eslint-disable-next-line no-hardcoded-colors -- Default values for theme customizer color picker
   const [customColors, setCustomColors] = useState({
     primary: '#000000',
     secondary: '#64748b',

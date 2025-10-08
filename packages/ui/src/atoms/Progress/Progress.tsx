@@ -58,10 +58,10 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
     };
     
     const variantClasses = {
-      primary: 'bg-[var(--color-primary)]',
-      success: 'bg-[var(--color-success)]',
-      warning: 'bg-[var(--color-warning)]',
-      error: 'bg-[var(--color-error)]',
+      primary: 'bg-primary',
+      success: 'bg-success',
+      warning: 'bg-warning',
+      error: 'bg-destructive',
     };
     
     return (
@@ -75,7 +75,7 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
           className={`
             w-full
             ${sizeClasses[size]}
-            bg-[var(--color-muted)]
+            bg-muted
             rounded-full
             overflow-hidden
           `}

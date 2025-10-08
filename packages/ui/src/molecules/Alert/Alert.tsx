@@ -65,10 +65,10 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
     };
     
     const variantClasses = {
-      info: 'bg-[var(--color-info-background)] border-[var(--color-info)] text-[var(--color-info-foreground)]',
-      success: 'bg-[var(--color-success-background)] border-[var(--color-success)] text-[var(--color-success-foreground)]',
-      warning: 'bg-[var(--color-warning-background)] border-[var(--color-warning)] text-[var(--color-warning-foreground)]',
-      error: 'bg-[var(--color-error-background)] border-[var(--color-error)] text-[var(--color-error-foreground)]',
+      info: 'bg-info/10 border-[var(--color-info)] text-info-foreground',
+      success: 'bg-[var(--color-success-background)] border-[var(--color-success)] text-success-foreground',
+      warning: 'bg-[var(--color-warning-background)] border-[var(--color-warning)] text-warning-foreground',
+      error: 'bg-destructive/10 border-destructive text-destructive-foreground',
     };
     
     const Icon = icons[variant];

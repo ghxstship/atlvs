@@ -99,8 +99,8 @@ export function Sidebar({
       className={`
         flex flex-col
         h-screen
-        border-r border-[var(--color-border)]
-        bg-[var(--color-background)]
+        border-r border-border
+        bg-background
         transition-all duration-300 ease-in-out
         ${isCollapsed ? 'w-16' : 'w-64'}
         ${className}
@@ -111,14 +111,14 @@ export function Sidebar({
         <div className={`
           flex items-center
           h-16 px-4
-          border-b border-[var(--color-border)]
+          border-b border-border
           ${isCollapsed ? 'justify-center' : 'justify-between'}
         `}>
           {!isCollapsed && header}
           {isCollapsed && collapsible && (
             <button
               onClick={handleToggleCollapse}
-              className="p-2 rounded-md hover:bg-[var(--color-muted)] transition-colors"
+              className="p-2 rounded-md hover:bg-muted transition-colors"
               aria-label="Expand sidebar"
             >
               <PanelLeft className="w-5 h-5" />
@@ -133,7 +133,7 @@ export function Sidebar({
           <div key={section.id} className="mb-6 last:mb-0">
             {/* Section label */}
             {!isCollapsed && section.label && (
-              <div className="px-3 py-2 text-xs font-semibold text-[var(--color-foreground-muted)] uppercase tracking-wider">
+              <div className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                 {section.label}
               </div>
             )}
@@ -158,7 +158,7 @@ export function Sidebar({
       {/* Footer */}
       {footer && (
         <div className={`
-          border-t border-[var(--color-border)]
+          border-t border-border
           p-2
           ${isCollapsed ? 'flex justify-center' : ''}
         `}>
@@ -168,14 +168,14 @@ export function Sidebar({
       
       {/* Collapse toggle */}
       {!isCollapsed && collapsible && (
-        <div className="border-t border-[var(--color-border)] p-2">
+        <div className="border-t border-border p-2">
           <button
             onClick={handleToggleCollapse}
             className="
               w-full flex items-center gap-2 px-3 py-2
               rounded-md
-              hover:bg-[var(--color-muted)]
-              text-sm text-[var(--color-foreground-secondary)]
+              hover:bg-muted
+              text-sm text-muted-foreground
               transition-colors
             "
           >
@@ -230,8 +230,8 @@ function NavigationItemComponent({
       {!isCollapsed && item.badge && (
         <span className="
           px-2 py-0.5 rounded-full
-          bg-[var(--color-primary)]
-          text-[var(--color-primary-foreground)]
+          bg-primary
+          text-primary-foreground
           text-xs font-medium
         ">
           {item.badge}
@@ -258,8 +258,8 @@ function NavigationItemComponent({
     transition-colors
     ${isCollapsed ? 'justify-center' : ''}
     ${isActive || isChildActive
-      ? 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)]'
-      : 'text-[var(--color-foreground-secondary)] hover:bg-[var(--color-muted)] hover:text-[var(--color-foreground)]'
+      ? 'bg-primary text-primary-foreground'
+      : 'text-muted-foreground hover:bg-muted hover:text-foreground'
     }
     ${item.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
     ${level > 0 && !isCollapsed ? `ml-${level * 4}` : ''}

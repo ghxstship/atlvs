@@ -84,7 +84,7 @@ export function MapView({
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-primary)]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -93,8 +93,8 @@ export function MapView({
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <p className="text-[var(--color-error)] font-medium">Error loading map</p>
-          <p className="text-[var(--color-foreground-secondary)] text-sm mt-1">{error}</p>
+          <p className="text-destructive font-medium">Error loading map</p>
+          <p className="text-muted-foreground text-sm mt-1">{error}</p>
         </div>
       </div>
     );
@@ -108,9 +108,9 @@ export function MapView({
           onClick={() => setMapZoom(prev => Math.min(prev + 1, 20))}
           className="
             p-2 rounded
-            bg-[var(--color-surface)]
-            border border-[var(--color-border)]
-            hover:bg-[var(--color-muted)]
+            bg-card
+            border border-border
+            hover:bg-muted
             shadow-sm
             transition-colors
           "
@@ -122,9 +122,9 @@ export function MapView({
           onClick={() => setMapZoom(prev => Math.max(prev - 1, 1))}
           className="
             p-2 rounded
-            bg-[var(--color-surface)]
-            border border-[var(--color-border)]
-            hover:bg-[var(--color-muted)]
+            bg-card
+            border border-border
+            hover:bg-muted
             shadow-sm
             transition-colors
           "
@@ -135,9 +135,9 @@ export function MapView({
         <button
           className="
             p-2 rounded
-            bg-[var(--color-surface)]
-            border border-[var(--color-border)]
-            hover:bg-[var(--color-muted)]
+            bg-card
+            border border-border
+            hover:bg-muted
             shadow-sm
             transition-colors
           "
@@ -148,10 +148,10 @@ export function MapView({
       </div>
       
       {/* Map container */}
-      <div className="flex-1 relative bg-[var(--color-muted)]">
+      <div className="flex-1 relative bg-muted">
         {/* Placeholder map background */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-[var(--color-foreground-muted)]">
+          <div className="text-center text-muted-foreground">
             <MapPin className="w-16 h-16 mx-auto mb-2" />
             <p className="text-sm">Map visualization</p>
             <p className="text-xs mt-1">
@@ -162,7 +162,7 @@ export function MapView({
                 Center: {bounds.centerLat.toFixed(4)}, {bounds.centerLng.toFixed(4)}
               </p>
             )}
-            <p className="text-xs mt-4 text-[var(--color-foreground-muted)]/60">
+            <p className="text-xs mt-4 text-muted-foreground/60">
               Integrate Mapbox or Google Maps for production
             </p>
           </div>
@@ -185,24 +185,24 @@ export function MapView({
                   onClick={() => handleMarkerClick(record)}
                   className={`
                     p-3 rounded-lg
-                    bg-[var(--color-surface)]
-                    border ${selectedMarker === record.id ? 'border-[var(--color-primary)]' : 'border-[var(--color-border)]'}
-                    hover:border-[var(--color-primary)]
+                    bg-card
+                    border ${selectedMarker === record.id ? 'border-primary' : 'border-border'}
+                    hover:border-primary
                     cursor-pointer
                     shadow-sm
                     transition-all
                   `}
                 >
                   <div className="flex items-start gap-2">
-                    <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-[var(--color-primary)]" />
+                    <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-sm truncate">{title}</p>
                       {description && (
-                        <p className="text-xs text-[var(--color-foreground-secondary)] truncate mt-1">
+                        <p className="text-xs text-muted-foreground truncate mt-1">
                           {description}
                         </p>
                       )}
-                      <p className="text-xs text-[var(--color-foreground-muted)] mt-1">
+                      <p className="text-xs text-muted-foreground mt-1">
                         {lat.toFixed(4)}, {lng.toFixed(4)}
                       </p>
                     </div>
@@ -211,7 +211,7 @@ export function MapView({
               );
             })}
             {data.length > 5 && (
-              <div className="text-center text-sm text-[var(--color-foreground-secondary)]">
+              <div className="text-center text-sm text-muted-foreground">
                 +{data.length - 5} more markers
               </div>
             )}

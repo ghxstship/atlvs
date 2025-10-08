@@ -128,7 +128,7 @@ export function GridView({
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-primary)]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -138,8 +138,8 @@ export function GridView({
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <p className="text-[var(--color-error)] font-medium">Error loading data</p>
-          <p className="text-[var(--color-foreground-secondary)] text-sm mt-1">{error}</p>
+          <p className="text-destructive font-medium">Error loading data</p>
+          <p className="text-muted-foreground text-sm mt-1">{error}</p>
         </div>
       </div>
     );
@@ -149,15 +149,15 @@ export function GridView({
   if (data.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-64">
-        <p className="text-[var(--color-foreground-secondary)] font-medium">No records found</p>
+        <p className="text-muted-foreground font-medium">No records found</p>
         {onCreate && (
           <button
             onClick={onCreate}
             className="
               mt-4 flex items-center gap-2 px-4 py-2
               rounded-md
-              bg-[var(--color-primary)]
-              text-[var(--color-primary-foreground)]
+              bg-primary
+              text-primary-foreground
               hover:opacity-90
               transition-opacity
             "
@@ -178,8 +178,8 @@ export function GridView({
           {/* Header */}
           <thead
             className={`
-              bg-[var(--color-muted)]
-              border-b border-[var(--color-border)]
+              bg-muted
+              border-b border-border
               ${stickyHeader ? 'sticky top-0 z-10' : ''}
             `}
           >
@@ -217,7 +217,7 @@ export function GridView({
                       className={`
                         flex items-center gap-2
                         font-medium text-sm
-                        ${field.sortable ? 'hover:text-[var(--color-foreground)] cursor-pointer' : ''}
+                        ${field.sortable ? 'hover:text-foreground cursor-pointer' : ''}
                       `}
                       disabled={!field.sortable}
                     >
@@ -226,10 +226,10 @@ export function GridView({
                       {field.sortable && (
                         <span className="flex flex-col">
                           <ChevronUp
-                            className={`w-3 h-3 -mb-1 ${sortDir === 'asc' ? 'text-[var(--color-primary)]' : 'text-[var(--color-foreground-muted)]'}`}
+                            className={`w-3 h-3 -mb-1 ${sortDir === 'asc' ? 'text-primary' : 'text-muted-foreground'}`}
                           />
                           <ChevronDown
-                            className={`w-3 h-3 ${sortDir === 'desc' ? 'text-[var(--color-primary)]' : 'text-[var(--color-foreground-muted)]'}`}
+                            className={`w-3 h-3 ${sortDir === 'desc' ? 'text-primary' : 'text-muted-foreground'}`}
                           />
                         </span>
                       )}
@@ -251,10 +251,10 @@ export function GridView({
               <tr
                 key={record.id}
                 className={`
-                  border-b border-[var(--color-border)] last:border-0
-                  ${hoverHighlight ? 'hover:bg-[var(--color-muted)]' : ''}
-                  ${striped && rowIndex % 2 === 1 ? 'bg-[var(--color-muted)]/50' : ''}
-                  ${state.selectedIds.includes(record.id) ? 'bg-[var(--color-primary)]/10' : ''}
+                  border-b border-border last:border-0
+                  ${hoverHighlight ? 'hover:bg-muted' : ''}
+                  ${striped && rowIndex % 2 === 1 ? 'bg-muted/50' : ''}
+                  ${state.selectedIds.includes(record.id) ? 'bg-primary/10' : ''}
                   transition-colors
                   cursor-pointer
                 `}
@@ -306,10 +306,10 @@ export function GridView({
                           autoFocus
                           className="
                             w-full px-2 py-1
-                            border border-[var(--color-primary)]
+                            border border-primary
                             rounded
-                            bg-[var(--color-background)]
-                            focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]
+                            bg-background
+                            focus:outline-none focus:ring-2 focus:ring-primary
                           "
                           onClick={(e) => e.stopPropagation()}
                         />
@@ -328,7 +328,7 @@ export function GridView({
                     <button
                       className="
                         p-1 rounded
-                        hover:bg-[var(--color-muted)]
+                        hover:bg-muted
                         transition-colors
                       "
                     >
@@ -347,9 +347,9 @@ export function GridView({
         <div className="
           flex items-center justify-between
           px-4 py-3
-          border-t border-[var(--color-border)]
+          border-t border-border
         ">
-          <div className="text-sm text-[var(--color-foreground-secondary)]">
+          <div className="text-sm text-muted-foreground">
             Showing {((state.pagination.page - 1) * state.pagination.pageSize) + 1} to{' '}
             {Math.min(state.pagination.page * state.pagination.pageSize, state.pagination.total)} of{' '}
             {state.pagination.total} records
@@ -359,9 +359,9 @@ export function GridView({
               disabled={state.pagination.page === 1}
               className="
                 px-3 py-1 rounded
-                border border-[var(--color-border)]
+                border border-border
                 disabled:opacity-50 disabled:cursor-not-allowed
-                hover:bg-[var(--color-muted)]
+                hover:bg-muted
                 transition-colors
               "
             >
@@ -371,9 +371,9 @@ export function GridView({
               disabled={state.pagination.page * state.pagination.pageSize >= state.pagination.total}
               className="
                 px-3 py-1 rounded
-                border border-[var(--color-border)]
+                border border-border
                 disabled:opacity-50 disabled:cursor-not-allowed
-                hover:bg-[var(--color-muted)]
+                hover:bg-muted
                 transition-colors
               "
             >

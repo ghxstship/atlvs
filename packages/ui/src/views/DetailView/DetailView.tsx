@@ -60,7 +60,7 @@ export function DetailView({
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-primary)]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -69,8 +69,8 @@ export function DetailView({
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <p className="text-[var(--color-error)] font-medium">Error loading record</p>
-          <p className="text-[var(--color-foreground-secondary)] text-sm mt-1">{error}</p>
+          <p className="text-destructive font-medium">Error loading record</p>
+          <p className="text-muted-foreground text-sm mt-1">{error}</p>
         </div>
       </div>
     );
@@ -79,12 +79,12 @@ export function DetailView({
   return (
     <div className={`flex flex-col h-full ${className}`}>
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-[var(--color-border)]">
+      <div className="flex items-center justify-between p-4 border-b border-border">
         <div className="flex items-center gap-3">
           {onBack && (
             <button
               onClick={onBack}
-              className="p-2 rounded hover:bg-[var(--color-muted)] transition-colors"
+              className="p-2 rounded hover:bg-muted transition-colors"
               aria-label="Go back"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -100,8 +100,8 @@ export function DetailView({
               className="
                 flex items-center gap-2 px-3 py-2
                 rounded-md
-                border border-[var(--color-border)]
-                hover:bg-[var(--color-muted)]
+                border border-border
+                hover:bg-muted
                 transition-colors
               "
             >
@@ -115,8 +115,8 @@ export function DetailView({
               className="
                 flex items-center gap-2 px-3 py-2
                 rounded-md
-                bg-[var(--color-primary)]
-                text-[var(--color-primary-foreground)]
+                bg-primary
+                text-primary-foreground
                 hover:opacity-90
                 transition-opacity
               "
@@ -131,10 +131,10 @@ export function DetailView({
               className="
                 flex items-center gap-2 px-3 py-2
                 rounded-md
-                border border-[var(--color-error)]
-                text-[var(--color-error)]
-                hover:bg-[var(--color-error)]
-                hover:text-[var(--color-error-foreground)]
+                border border-destructive
+                text-destructive
+                hover:bg-destructive
+                hover:text-destructive-foreground
                 transition-colors
               "
             >
@@ -155,16 +155,16 @@ export function DetailView({
               
               return (
                 <div key={field.key} className="space-y-2">
-                  <label className="block text-sm font-medium text-[var(--color-foreground-secondary)]">
+                  <label className="block text-sm font-medium text-muted-foreground">
                     {field.icon && <field.icon className="inline w-4 h-4 mr-1" />}
                     {field.label}
-                    {field.required && <span className="text-[var(--color-error)] ml-1">*</span>}
+                    {field.required && <span className="text-destructive ml-1">*</span>}
                   </label>
                   
                   <div className="
                     px-3 py-2 rounded-md
-                    border border-[var(--color-border)]
-                    bg-[var(--color-muted)]/30
+                    border border-border
+                    bg-muted/30
                   ">
                     {field.format ? (
                       <div>{field.format(value, record)}</div>
@@ -183,7 +183,7 @@ export function DetailView({
                             key={v}
                             className="
                               px-2 py-1 rounded
-                              bg-[var(--color-primary)]/10
+                              bg-primary/10
                               text-sm
                             "
                           >
@@ -196,14 +196,14 @@ export function DetailView({
                         href={value}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[var(--color-primary)] hover:underline"
+                        className="text-primary hover:underline"
                       >
                         {value}
                       </a>
                     ) : field.type === 'email' && value ? (
                       <a
                         href={`mailto:${value}`}
-                        className="text-[var(--color-primary)] hover:underline"
+                        className="text-primary hover:underline"
                       >
                         {value}
                       </a>
@@ -221,7 +221,7 @@ export function DetailView({
                   </div>
                   
                   {field.helpText && (
-                    <p className="text-xs text-[var(--color-foreground-muted)]">
+                    <p className="text-xs text-muted-foreground">
                       {field.helpText}
                     </p>
                   )}
@@ -231,22 +231,22 @@ export function DetailView({
           </div>
           
           {/* Metadata */}
-          <div className="pt-6 border-t border-[var(--color-border)]">
+          <div className="pt-6 border-t border-border">
             <h3 className="font-medium mb-3">Metadata</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
               <div>
-                <span className="text-[var(--color-foreground-secondary)]">ID:</span>
+                <span className="text-muted-foreground">ID:</span>
                 <span className="ml-2 font-mono">{record.id}</span>
               </div>
               {record.createdAt && (
                 <div>
-                  <span className="text-[var(--color-foreground-secondary)]">Created:</span>
+                  <span className="text-muted-foreground">Created:</span>
                   <span className="ml-2">{new Date(record.createdAt).toLocaleString()}</span>
                 </div>
               )}
               {record.updatedAt && (
                 <div>
-                  <span className="text-[var(--color-foreground-secondary)]">Updated:</span>
+                  <span className="text-muted-foreground">Updated:</span>
                   <span className="ml-2">{new Date(record.updatedAt).toLocaleString()}</span>
                 </div>
               )}

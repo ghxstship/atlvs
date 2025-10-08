@@ -56,7 +56,7 @@ export function Breadcrumb({
   maxItems,
   className = '',
 }: BreadcrumbProps) {
-  const defaultSeparator = <ChevronRight className="w-4 h-4 text-[var(--color-foreground-muted)]" />;
+  const defaultSeparator = <ChevronRight className="w-4 h-4 text-muted-foreground" />;
   const sep = separator || defaultSeparator;
   
   // Handle collapsed items
@@ -83,8 +83,8 @@ export function Breadcrumb({
               href={homeHref}
               className="
                 flex items-center gap-1
-                text-[var(--color-foreground-secondary)]
-                hover:text-[var(--color-foreground)]
+                text-muted-foreground
+                hover:text-foreground
                 transition-colors
               "
               aria-label="Home"
@@ -108,8 +108,8 @@ export function Breadcrumb({
                   href={item.href}
                   className="
                     flex items-center gap-1
-                    text-[var(--color-foreground-secondary)]
-                    hover:text-[var(--color-foreground)]
+                    text-muted-foreground
+                    hover:text-foreground
                     transition-colors
                   "
                 >
@@ -121,8 +121,8 @@ export function Breadcrumb({
                   className={`
                     flex items-center gap-1
                     ${isLast
-                      ? 'text-[var(--color-foreground)] font-medium'
-                      : 'text-[var(--color-foreground-muted)]'
+                      ? 'text-foreground font-medium'
+                      : 'text-muted-foreground'
                     }
                   `}
                   aria-current={isLast ? 'page' : undefined}

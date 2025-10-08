@@ -107,7 +107,7 @@ export function CalendarView({
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-primary)]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -116,8 +116,8 @@ export function CalendarView({
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <p className="text-[var(--color-error)] font-medium">Error loading data</p>
-          <p className="text-[var(--color-foreground-secondary)] text-sm mt-1">{error}</p>
+          <p className="text-destructive font-medium">Error loading data</p>
+          <p className="text-muted-foreground text-sm mt-1">{error}</p>
         </div>
       </div>
     );
@@ -126,7 +126,7 @@ export function CalendarView({
   return (
     <div className={`flex flex-col h-full ${className}`}>
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-[var(--color-border)]">
+      <div className="flex items-center justify-between p-4 border-b border-border">
         <div className="flex items-center gap-4">
           <h2 className="text-lg font-semibold">
             {currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
@@ -135,8 +135,8 @@ export function CalendarView({
             onClick={handleToday}
             className="
               px-3 py-1 rounded
-              border border-[var(--color-border)]
-              hover:bg-[var(--color-muted)]
+              border border-border
+              hover:bg-muted
               text-sm
               transition-colors
             "
@@ -148,14 +148,14 @@ export function CalendarView({
         <div className="flex items-center gap-2">
           <button
             onClick={handlePrevious}
-            className="p-2 rounded hover:bg-[var(--color-muted)] transition-colors"
+            className="p-2 rounded hover:bg-muted transition-colors"
             aria-label="Previous month"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={handleNext}
-            className="p-2 rounded hover:bg-[var(--color-muted)] transition-colors"
+            className="p-2 rounded hover:bg-muted transition-colors"
             aria-label="Next month"
           >
             <ChevronRight className="w-5 h-5" />
@@ -166,13 +166,13 @@ export function CalendarView({
       {/* Calendar grid */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Day headers */}
-        <div className="grid grid-cols-7 border-b border-[var(--color-border)]">
+        <div className="grid grid-cols-7 border-b border-border">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
             <div
               key={day}
               className="
                 p-2 text-center text-sm font-medium
-                text-[var(--color-foreground-secondary)]
+                text-muted-foreground
               "
             >
               {day}
@@ -195,9 +195,9 @@ export function CalendarView({
                 key={index}
                 className={`
                   min-h-[100px] p-2
-                  border-b border-r border-[var(--color-border)]
-                  ${!isCurrentMonth ? 'bg-[var(--color-muted)]/30' : ''}
-                  ${isToday ? 'bg-[var(--color-primary)]/5' : ''}
+                  border-b border-r border-border
+                  ${!isCurrentMonth ? 'bg-muted/30' : ''}
+                  ${isToday ? 'bg-primary/5' : ''}
                 `}
               >
                 <div
@@ -206,10 +206,10 @@ export function CalendarView({
                     w-6 h-6 mb-1 rounded-full
                     text-sm
                     ${isToday
-                      ? 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)] font-medium'
+                      ? 'bg-primary text-primary-foreground font-medium'
                       : isCurrentMonth
-                      ? 'text-[var(--color-foreground)]'
-                      : 'text-[var(--color-foreground-muted)]'
+                      ? 'text-foreground'
+                      : 'text-muted-foreground'
                     }
                   `}
                 >
@@ -224,8 +224,8 @@ export function CalendarView({
                       onClick={() => onRecordClick?.(event)}
                       className="
                         px-2 py-1 rounded
-                        bg-[var(--color-primary)]/10
-                        hover:bg-[var(--color-primary)]/20
+                        bg-primary/10
+                        hover:bg-primary/20
                         text-xs truncate
                         cursor-pointer
                         transition-colors
@@ -235,7 +235,7 @@ export function CalendarView({
                     </div>
                   ))}
                   {events.length > 3 && (
-                    <div className="px-2 text-xs text-[var(--color-foreground-secondary)]">
+                    <div className="px-2 text-xs text-muted-foreground">
                       +{events.length - 3} more
                     </div>
                   )}

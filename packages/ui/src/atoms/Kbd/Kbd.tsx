@@ -47,9 +47,9 @@ export const Kbd = React.forwardRef<HTMLElement, KbdProps>(
           inline-flex items-center justify-center
           font-mono font-medium
           rounded
-          border border-[var(--color-border)]
-          bg-[var(--color-muted)]
-          text-[var(--color-foreground)]
+          border border-border
+          bg-muted
+          text-foreground
           shadow-sm
           ${sizeClasses[size]}
           ${className}

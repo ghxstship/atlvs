@@ -64,7 +64,7 @@ export function CardView({
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-primary)]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -73,8 +73,8 @@ export function CardView({
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <p className="text-[var(--color-error)] font-medium">Error loading data</p>
-          <p className="text-[var(--color-foreground-secondary)] text-sm mt-1">{error}</p>
+          <p className="text-destructive font-medium">Error loading data</p>
+          <p className="text-muted-foreground text-sm mt-1">{error}</p>
         </div>
       </div>
     );
@@ -83,15 +83,15 @@ export function CardView({
   if (data.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-64">
-        <p className="text-[var(--color-foreground-secondary)] font-medium">No records found</p>
+        <p className="text-muted-foreground font-medium">No records found</p>
         {onCreate && (
           <button
             onClick={onCreate}
             className="
               mt-4 flex items-center gap-2 px-4 py-2
               rounded-md
-              bg-[var(--color-primary)]
-              text-[var(--color-primary-foreground)]
+              bg-primary
+              text-primary-foreground
               hover:opacity-90
               transition-opacity
             "
@@ -113,11 +113,11 @@ export function CardView({
             className={`
               group relative
               rounded-lg overflow-hidden
-              border border-[var(--color-border)]
-              hover:border-[var(--color-primary)]
-              bg-[var(--color-surface)]
+              border border-border
+              hover:border-primary
+              bg-card
               transition-all
-              ${state.selectedIds.includes(record.id) ? 'ring-2 ring-[var(--color-primary)]' : ''}
+              ${state.selectedIds.includes(record.id) ? 'ring-2 ring-primary' : ''}
             `}
           >
             {cardRenderer ? (
@@ -129,7 +129,7 @@ export function CardView({
                 {/* Image */}
                 {imageField && record[imageField] && (
                   <div
-                    className="aspect-video bg-[var(--color-muted)] cursor-pointer"
+                    className="aspect-video bg-muted cursor-pointer"
                     onClick={() => onRecordClick?.(record)}
                   >
                     <img
@@ -162,7 +162,7 @@ export function CardView({
                   
                   {/* Title */}
                   <h3
-                    className="font-medium mb-2 cursor-pointer hover:text-[var(--color-primary)] transition-colors"
+                    className="font-medium mb-2 cursor-pointer hover:text-primary transition-colors"
                     onClick={() => onRecordClick?.(record)}
                   >
                     {record[titleField]}
@@ -170,7 +170,7 @@ export function CardView({
                   
                   {/* Description */}
                   {descriptionField && record[descriptionField] && (
-                    <p className="text-sm text-[var(--color-foreground-secondary)] line-clamp-2">
+                    <p className="text-sm text-muted-foreground line-clamp-2">
                       {record[descriptionField]}
                     </p>
                   )}
@@ -182,9 +182,9 @@ export function CardView({
                     <button
                       className="
                         p-2 rounded
-                        bg-[var(--color-surface)]
-                        border border-[var(--color-border)]
-                        hover:bg-[var(--color-muted)]
+                        bg-card
+                        border border-border
+                        hover:bg-muted
                         shadow-sm
                         transition-colors
                       "

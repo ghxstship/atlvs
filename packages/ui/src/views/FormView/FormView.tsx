@@ -184,7 +184,7 @@ export function FormView({
                 >
                   {field.icon && <field.icon className="inline w-4 h-4 mr-1" />}
                   {field.label}
-                  {field.required && <span className="text-[var(--color-error)] ml-1">*</span>}
+                  {field.required && <span className="text-destructive ml-1">*</span>}
                 </label>
                 
                 {/* Input based on type */}
@@ -199,9 +199,9 @@ export function FormView({
                     rows={field.validation?.minLength ? Math.ceil(field.validation.minLength / 50) : 4}
                     className={`
                       w-full px-3 py-2 rounded-md
-                      border ${error ? 'border-[var(--color-error)]' : 'border-[var(--color-border)]'}
-                      bg-[var(--color-background)]
-                      focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]
+                      border ${error ? 'border-destructive' : 'border-border'}
+                      bg-background
+                      focus:outline-none focus:ring-2 focus:ring-primary
                       disabled:opacity-50 disabled:cursor-not-allowed
                       transition-shadow
                     `}
@@ -215,7 +215,7 @@ export function FormView({
                       disabled={disabled}
                       className="rounded"
                     />
-                    <span className="text-sm text-[var(--color-foreground-secondary)]">
+                    <span className="text-sm text-muted-foreground">
                       {field.placeholder || 'Enable'}
                     </span>
                   </label>
@@ -228,9 +228,9 @@ export function FormView({
                     disabled={disabled}
                     className={`
                       w-full px-3 py-2 rounded-md
-                      border ${error ? 'border-[var(--color-error)]' : 'border-[var(--color-border)]'}
-                      bg-[var(--color-background)]
-                      focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]
+                      border ${error ? 'border-destructive' : 'border-border'}
+                      bg-background
+                      focus:outline-none focus:ring-2 focus:ring-primary
                       disabled:opacity-50 disabled:cursor-not-allowed
                       transition-shadow
                     `}
@@ -256,9 +256,9 @@ export function FormView({
                     step={field.validation?.min != null ? 1 : 'any'}
                     className={`
                       w-full px-3 py-2 rounded-md
-                      border ${error ? 'border-[var(--color-error)]' : 'border-[var(--color-border)]'}
-                      bg-[var(--color-background)]
-                      focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]
+                      border ${error ? 'border-destructive' : 'border-border'}
+                      bg-background
+                      focus:outline-none focus:ring-2 focus:ring-primary
                       disabled:opacity-50 disabled:cursor-not-allowed
                       transition-shadow
                     `}
@@ -274,9 +274,9 @@ export function FormView({
                     disabled={disabled}
                     className={`
                       w-full px-3 py-2 rounded-md
-                      border ${error ? 'border-[var(--color-error)]' : 'border-[var(--color-border)]'}
-                      bg-[var(--color-background)]
-                      focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]
+                      border ${error ? 'border-destructive' : 'border-border'}
+                      bg-background
+                      focus:outline-none focus:ring-2 focus:ring-primary
                       disabled:opacity-50 disabled:cursor-not-allowed
                       transition-shadow
                     `}
@@ -285,12 +285,12 @@ export function FormView({
                 
                 {/* Help text or error */}
                 {error ? (
-                  <div className="flex items-center gap-1 text-sm text-[var(--color-error)]">
+                  <div className="flex items-center gap-1 text-sm text-destructive">
                     <AlertCircle className="w-4 h-4" />
                     {error}
                   </div>
                 ) : field.helpText ? (
-                  <p className="text-sm text-[var(--color-foreground-muted)]">
+                  <p className="text-sm text-muted-foreground">
                     {field.helpText}
                   </p>
                 ) : null}
@@ -304,7 +304,7 @@ export function FormView({
       <div className="
         flex items-center justify-end gap-2
         px-6 py-4
-        border-t border-[var(--color-border)]
+        border-t border-border
       ">
         {onCancel && (
           <button
@@ -314,8 +314,8 @@ export function FormView({
             className="
               flex items-center gap-2 px-4 py-2
               rounded-md
-              border border-[var(--color-border)]
-              hover:bg-[var(--color-muted)]
+              border border-border
+              hover:bg-muted
               disabled:opacity-50 disabled:cursor-not-allowed
               transition-colors
             "
@@ -330,8 +330,8 @@ export function FormView({
           className="
             flex items-center gap-2 px-4 py-2
             rounded-md
-            bg-[var(--color-primary)]
-            text-[var(--color-primary-foreground)]
+            bg-primary
+            text-primary-foreground
             hover:opacity-90
             disabled:opacity-50 disabled:cursor-not-allowed
             transition-opacity

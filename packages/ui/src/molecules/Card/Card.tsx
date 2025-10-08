@@ -52,9 +52,9 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     ref
   ) => {
     const variantClasses = {
-      default: 'bg-[var(--color-surface)] border border-[var(--color-border)]',
-      bordered: 'bg-[var(--color-surface)] border-2 border-[var(--color-border)]',
-      elevated: 'bg-[var(--color-surface)] border border-[var(--color-border)] shadow-md',
+      default: 'bg-card border border-border',
+      bordered: 'bg-card border-2 border-border',
+      elevated: 'bg-card border border-border shadow-md',
     };
     
     const paddingClasses = {
@@ -72,7 +72,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
           transition-all duration-200
           ${variantClasses[variant]}
           ${paddingClasses[padding]}
-          ${hoverable ? 'hover:shadow-lg hover:border-[var(--color-primary)] cursor-pointer' : ''}
+          ${hoverable ? 'hover:shadow-lg hover:border-primary cursor-pointer' : ''}
           ${className}
         `}
         {...props}

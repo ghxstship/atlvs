@@ -49,14 +49,14 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         ref={ref}
         className={`
           block font-medium
-          text-[var(--color-foreground)]
+          text-foreground
           ${sizeClasses[size]}
           ${className}
         `}
         {...props}
       >
         {children}
-        {required && <span className="text-[var(--color-error)] ml-1">*</span>}
+        {required && <span className="text-destructive ml-1">*</span>}
       </label>
     );
   }

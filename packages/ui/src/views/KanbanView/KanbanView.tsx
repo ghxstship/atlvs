@@ -109,7 +109,7 @@ export function KanbanView({
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-primary)]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -118,8 +118,8 @@ export function KanbanView({
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <p className="text-[var(--color-error)] font-medium">Error loading data</p>
-          <p className="text-[var(--color-foreground-secondary)] text-sm mt-1">{error}</p>
+          <p className="text-destructive font-medium">Error loading data</p>
+          <p className="text-muted-foreground text-sm mt-1">{error}</p>
         </div>
       </div>
     );
@@ -148,7 +148,7 @@ export function KanbanView({
                 <h3 className="font-semibold">{column.title}</h3>
                 <span className="
                   px-2 py-0.5 rounded-full
-                  bg-[var(--color-muted)]
+                  bg-muted
                   text-xs font-medium
                 ">
                   {cards.length}
@@ -156,15 +156,15 @@ export function KanbanView({
                 {column.wipLimit && cards.length > column.wipLimit && (
                   <span className="
                     px-2 py-0.5 rounded-full
-                    bg-[var(--color-error)]
-                    text-[var(--color-error-foreground)]
+                    bg-destructive
+                    text-destructive-foreground
                     text-xs font-medium
                   ">
                     WIP!
                   </span>
                 )}
               </div>
-              <button className="p-1 rounded hover:bg-[var(--color-muted)] transition-colors">
+              <button className="p-1 rounded hover:bg-muted transition-colors">
                 <MoreVertical className="w-4 h-4" />
               </button>
             </div>
@@ -174,8 +174,8 @@ export function KanbanView({
               className={`
                 flex-1 flex flex-col gap-2
                 p-2 rounded-lg
-                bg-[var(--color-muted)]/30
-                ${isOver ? 'ring-2 ring-[var(--color-primary)]' : ''}
+                bg-muted/30
+                ${isOver ? 'ring-2 ring-primary' : ''}
                 transition-all
               `}
               onDragOver={(e) => handleDragOver(e, column.id)}
@@ -190,9 +190,9 @@ export function KanbanView({
                   onClick={() => onRecordClick?.(record)}
                   className={`
                     p-3 rounded-lg
-                    bg-[var(--color-surface)]
-                    border border-[var(--color-border)]
-                    hover:border-[var(--color-primary)]
+                    bg-card
+                    border border-border
+                    hover:border-primary
                     cursor-pointer
                     transition-all
                     ${draggedCard === record.id ? 'opacity-50' : ''}
@@ -203,13 +203,13 @@ export function KanbanView({
                   ) : (
                     <>
                       {draggable && (
-                        <div className="flex items-center gap-2 mb-2 text-[var(--color-foreground-muted)]">
+                        <div className="flex items-center gap-2 mb-2 text-muted-foreground">
                           <GripVertical className="w-4 h-4" />
                         </div>
                       )}
                       <h4 className="font-medium mb-1">{record[titleField]}</h4>
                       {descriptionField && record[descriptionField] && (
-                        <p className="text-sm text-[var(--color-foreground-secondary)] line-clamp-2">
+                        <p className="text-sm text-muted-foreground line-clamp-2">
                           {record[descriptionField]}
                         </p>
                       )}
@@ -225,10 +225,10 @@ export function KanbanView({
                   className="
                     flex items-center justify-center gap-2
                     p-3 rounded-lg
-                    border-2 border-dashed border-[var(--color-border)]
-                    hover:border-[var(--color-primary)]
-                    hover:bg-[var(--color-muted)]
-                    text-[var(--color-foreground-secondary)]
+                    border-2 border-dashed border-border
+                    hover:border-primary
+                    hover:bg-muted
+                    text-muted-foreground
                     transition-colors
                   "
                 >

@@ -69,15 +69,15 @@ export const Accordion: React.FC<AccordionProps> = ({
   };
   
   const variantClasses = {
-    default: 'border-t border-[var(--color-border)] last:border-b',
-    bordered: 'border border-[var(--color-border)] rounded-lg overflow-hidden',
+    default: 'border-t border-border last:border-b',
+    bordered: 'border border-border rounded-lg overflow-hidden',
     separated: 'space-y-2',
   };
   
   const itemClasses = {
-    default: 'border-b border-[var(--color-border)] last:border-b-0',
-    bordered: 'border-b border-[var(--color-border)] last:border-b-0',
-    separated: 'border border-[var(--color-border)] rounded-lg overflow-hidden',
+    default: 'border-b border-border last:border-b-0',
+    bordered: 'border-b border-border last:border-b-0',
+    separated: 'border border-border rounded-lg overflow-hidden',
   };
   
   return (
@@ -94,7 +94,7 @@ export const Accordion: React.FC<AccordionProps> = ({
                 w-full flex items-center justify-between
                 px-4 py-3
                 text-left font-medium
-                hover:bg-[var(--color-muted)]
+                hover:bg-muted
                 disabled:opacity-50 disabled:cursor-not-allowed
                 transition-colors
               "
@@ -111,7 +111,7 @@ export const Accordion: React.FC<AccordionProps> = ({
             </button>
             
             {isOpen && (
-              <div className="px-4 py-3 text-sm text-[var(--color-foreground-secondary)]">
+              <div className="px-4 py-3 text-sm text-muted-foreground">
                 {item.content}
               </div>
             )}

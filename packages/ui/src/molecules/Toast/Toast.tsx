@@ -70,10 +70,10 @@ export const Toast: React.FC<ToastProps> = ({
   };
   
   const variantClasses = {
-    info: 'bg-[var(--color-info)] text-[var(--color-info-foreground)]',
-    success: 'bg-[var(--color-success)] text-[var(--color-success-foreground)]',
-    warning: 'bg-[var(--color-warning)] text-[var(--color-warning-foreground)]',
-    error: 'bg-[var(--color-error)] text-[var(--color-error-foreground)]',
+    info: 'bg-info text-info-foreground',
+    success: 'bg-success text-success-foreground',
+    warning: 'bg-warning text-warning-foreground',
+    error: 'bg-destructive text-destructive-foreground',
   };
   
   const Icon = icons[variant];

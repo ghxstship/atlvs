@@ -101,8 +101,8 @@ export const Pagination: React.FC<PaginationProps> = ({
           disabled={currentPage === 1}
           className="
             p-2 rounded
-            border border-[var(--color-border)]
-            hover:bg-[var(--color-muted)]
+            border border-border
+            hover:bg-muted
             disabled:opacity-50 disabled:cursor-not-allowed
             transition-colors
           "
@@ -118,8 +118,8 @@ export const Pagination: React.FC<PaginationProps> = ({
         disabled={currentPage === 1}
         className="
           p-2 rounded
-          border border-[var(--color-border)]
-          hover:bg-[var(--color-muted)]
+          border border-border
+          hover:bg-muted
           disabled:opacity-50 disabled:cursor-not-allowed
           transition-colors
         "
@@ -134,7 +134,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           return (
             <span
               key={`dots-${index}`}
-              className="px-3 py-2 text-sm text-[var(--color-foreground-muted)]"
+              className="px-3 py-2 text-sm text-muted-foreground"
             >
               ...
             </span>
@@ -150,11 +150,11 @@ export const Pagination: React.FC<PaginationProps> = ({
             className={`
               px-3 py-2 rounded
               text-sm font-medium
-              border border-[var(--color-border)]
+              border border-border
               transition-colors
               ${isActive
-                ? 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)] border-[var(--color-primary)]'
-                : 'hover:bg-[var(--color-muted)]'
+                ? 'bg-primary text-primary-foreground border-primary'
+                : 'hover:bg-muted'
               }
             `}
           >
@@ -169,8 +169,8 @@ export const Pagination: React.FC<PaginationProps> = ({
         disabled={currentPage === totalPages}
         className="
           p-2 rounded
-          border border-[var(--color-border)]
-          hover:bg-[var(--color-muted)]
+          border border-border
+          hover:bg-muted
           disabled:opacity-50 disabled:cursor-not-allowed
           transition-colors
         "
@@ -186,8 +186,8 @@ export const Pagination: React.FC<PaginationProps> = ({
           disabled={currentPage === totalPages}
           className="
             p-2 rounded
-            border border-[var(--color-border)]
-            hover:bg-[var(--color-muted)]
+            border border-border
+            hover:bg-muted
             disabled:opacity-50 disabled:cursor-not-allowed
             transition-colors
           "

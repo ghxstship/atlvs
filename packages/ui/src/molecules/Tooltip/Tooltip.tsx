@@ -94,8 +94,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
             ${positionClasses[position]}
             px-2 py-1
             rounded
-            bg-[var(--color-foreground)]
-            text-[var(--color-background)]
+            bg-foreground
+            text-background
             text-xs
             whitespace-nowrap
             pointer-events-none

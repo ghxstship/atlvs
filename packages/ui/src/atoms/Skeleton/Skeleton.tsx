@@ -56,7 +56,7 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
       <div
         ref={ref}
         className={`
-          bg-[var(--color-muted)]
+          bg-muted
           ${shapeClasses[shape]}
           ${noAnimation ? '' : 'animate-pulse'}
           ${className}

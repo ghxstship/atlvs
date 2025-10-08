@@ -125,7 +125,7 @@ export function GanttView({
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-primary)]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -134,8 +134,8 @@ export function GanttView({
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <p className="text-[var(--color-error)] font-medium">Error loading data</p>
-          <p className="text-[var(--color-foreground-secondary)] text-sm mt-1">{error}</p>
+          <p className="text-destructive font-medium">Error loading data</p>
+          <p className="text-muted-foreground text-sm mt-1">{error}</p>
         </div>
       </div>
     );
@@ -144,9 +144,9 @@ export function GanttView({
   return (
     <div className={`flex flex-col h-full ${className}`}>
       {/* Header */}
-      <div className="flex border-b border-[var(--color-border)]">
+      <div className="flex border-b border-border">
         {/* Task names column */}
-        <div className="w-64 flex-shrink-0 p-4 font-semibold border-r border-[var(--color-border)]">
+        <div className="w-64 flex-shrink-0 p-4 font-semibold border-r border-border">
           Tasks
         </div>
         
@@ -156,7 +156,7 @@ export function GanttView({
             {months.map((month, index) => (
               <div
                 key={index}
-                className="px-4 py-4 border-r border-[var(--color-border)] text-sm font-medium text-center"
+                className="px-4 py-4 border-r border-border text-sm font-medium text-center"
                 style={{ width: `${(month.days / totalDays) * 100}%` }}
               >
                 {month.label}
@@ -170,14 +170,14 @@ export function GanttView({
       <div className="flex-1 overflow-auto">
         <div className="flex">
           {/* Task names */}
-          <div className="w-64 flex-shrink-0 border-r border-[var(--color-border)]">
+          <div className="w-64 flex-shrink-0 border-r border-border">
             {data.map(record => (
               <div
                 key={record.id}
                 className="
                   px-4 h-12 flex items-center
-                  border-b border-[var(--color-border)]
-                  hover:bg-[var(--color-muted)]
+                  border-b border-border
+                  hover:bg-muted
                   cursor-pointer
                   transition-colors
                 "
@@ -185,7 +185,7 @@ export function GanttView({
               >
                 <div className="flex items-center gap-2 truncate">
                   {milestoneField && record[milestoneField] && (
-                    <Diamond className="w-4 h-4 text-[var(--color-primary)] flex-shrink-0" />
+                    <Diamond className="w-4 h-4 text-primary flex-shrink-0" />
                   )}
                   <span className="truncate">{record[titleField]}</span>
                 </div>
@@ -202,7 +202,7 @@ export function GanttView({
                 const offset = ((today.getTime() - minDate.getTime()) / (1000 * 60 * 60 * 24) / totalDays) * 100;
                 return (
                   <div
-                    className="absolute top-0 bottom-0 w-px bg-[var(--color-error)] z-10"
+                    className="absolute top-0 bottom-0 w-px bg-destructive z-10"
                     style={{ left: `${offset}%` }}
                   />
                 );
@@ -219,7 +219,7 @@ export function GanttView({
               return (
                 <div
                   key={record.id}
-                  className="h-12 border-b border-[var(--color-border)] flex items-center px-2"
+                  className="h-12 border-b border-border flex items-center px-2"
                 >
                   <div
                     className="relative h-6 rounded cursor-pointer group"
@@ -229,23 +229,23 @@ export function GanttView({
                     {isMilestone ? (
                       <div className="
                         w-6 h-6 rotate-45
-                        bg-[var(--color-primary)]
+                        bg-primary
                         border-2 border-[var(--color-primary-foreground)]
                       " />
                     ) : (
                       <>
                         <div className="
                           absolute inset-0 rounded
-                          bg-[var(--color-primary)]/20
-                          border border-[var(--color-primary)]
-                          group-hover:bg-[var(--color-primary)]/30
+                          bg-primary/20
+                          border border-primary
+                          group-hover:bg-primary/30
                           transition-colors
                         " />
                         {progress > 0 && (
                           <div
                             className="
                               absolute inset-0 rounded
-                              bg-[var(--color-primary)]
+                              bg-primary
                               transition-all
                             "
                             style={{ width: `${progress}%` }}

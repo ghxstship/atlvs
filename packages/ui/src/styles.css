@@ -2,7 +2,7 @@
  * GHXSTSHIP UI Styles Entry Point
  * 
  * This file serves as the main CSS entry point for the @ghxstship/ui package.
- * It imports the unified design system and applies Tailwind directives.
+ * It imports the unified design system which includes Tailwind directives.
  * 
  * DO NOT add duplicate utilities here - all design tokens and utilities
  * are defined in ./styles/unified-design-system.css
@@ -10,8 +10,3 @@
 
 /* Import unified design system - Single source of truth */
 @import './styles/unified-design-system.css';
-
-/* Tailwind CSS directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

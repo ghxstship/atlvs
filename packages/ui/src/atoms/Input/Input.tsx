@@ -70,22 +70,22 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       w-full
       rounded-md
       border
-      bg-[var(--color-background)]
+      bg-background
       transition-all duration-200
       focus:outline-none focus:ring-2 focus:ring-offset-0
       disabled:opacity-50 disabled:cursor-not-allowed
-      placeholder:text-[var(--color-foreground-muted)]
+      placeholder:text-muted-foreground
     `;
     
     const variantClasses = {
       default: `
-        border-[var(--color-border)]
-        focus:border-[var(--color-primary)]
-        focus:ring-[var(--color-primary)]
+        border-border
+        focus:border-primary
+        focus:ring-primary
       `,
       error: `
-        border-[var(--color-error)]
-        focus:border-[var(--color-error)]
+        border-destructive
+        focus:border-destructive
         focus:ring-[var(--color-error)]
       `,
       success: `
@@ -119,7 +119,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label className="block text-sm font-medium mb-1.5">
             {label}
-            {showRequired && <span className="text-[var(--color-error)] ml-1">*</span>}
+            {showRequired && <span className="text-destructive ml-1">*</span>}
           </label>
         )}
         
@@ -127,7 +127,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <div className="relative">
           {/* Left icon */}
           {Icon && (
-            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-foreground-muted)]">
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
               <Icon className={iconSizeClasses[inputSize]} />
             </div>
           )}
@@ -148,7 +148,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           
           {/* Right icon */}
           {IconRight && (
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-foreground-muted)]">
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
               <IconRight className={iconSizeClasses[inputSize]} />
             </div>
           )}
@@ -159,7 +159,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <p
             className={`
               mt-1.5 text-sm
-              ${error ? 'text-[var(--color-error)]' : 'text-[var(--color-foreground-secondary)]'}
+              ${error ? 'text-destructive' : 'text-muted-foreground'}
             `}
           >
             {error || helperText}

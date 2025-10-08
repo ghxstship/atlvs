@@ -76,13 +76,13 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
               cursor-pointer
               ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
               ${checked
-                ? 'border-[var(--color-primary)] bg-[var(--color-background)]'
-                : 'border-[var(--color-border)] peer-focus:border-[var(--color-primary)] peer-focus:ring-2 peer-focus:ring-[var(--color-primary)] peer-focus:ring-offset-2'
+                ? 'border-primary bg-background'
+                : 'border-border peer-focus:border-primary peer-focus:ring-2 peer-focus:ring-primary peer-focus:ring-offset-2'
               }
             `}
           >
             {checked && (
-              <div className={`${dotSizeClasses[size]} rounded-full bg-[var(--color-primary)]`} />
+              <div className={`${dotSizeClasses[size]} rounded-full bg-primary`} />
             )}
           </div>
         </div>
@@ -95,7 +95,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
               </label>
             )}
             {helperText && (
-              <p className="text-sm text-[var(--color-foreground-secondary)] mt-0.5">
+              <p className="text-sm text-muted-foreground mt-0.5">
                 {helperText}
               </p>
             )}

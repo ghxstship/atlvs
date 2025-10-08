@@ -67,7 +67,7 @@ export const TreeView: React.FC<TreeViewProps> = ({
         <div
           className={`
             flex items-center gap-2 px-2 py-1.5 rounded
-            ${isSelected ? 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)]' : 'hover:bg-[var(--color-muted)]'}
+            ${isSelected ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'}
             ${node.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
             transition-colors
           `}
@@ -80,7 +80,7 @@ export const TreeView: React.FC<TreeViewProps> = ({
                 e.stopPropagation();
                 toggleExpanded(node.id);
               }}
-              className="p-0.5 hover:bg-[var(--color-muted)] rounded"
+              className="p-0.5 hover:bg-muted rounded"
             >
               {isExpanded ? (
                 <ChevronDown className="w-4 h-4" />

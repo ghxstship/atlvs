@@ -52,12 +52,12 @@ export const DetailLayout: React.FC<DetailLayoutProps> = ({
   children,
 }) => {
   return (
-    <div className="min-h-screen bg-[var(--color-background)]">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
+      <div className="border-b border-border bg-card">
         <div className="container mx-auto px-6 py-4">
           {subtitle && (
-            <div className="text-sm text-[var(--color-foreground-secondary)] mb-2">
+            <div className="text-sm text-muted-foreground mb-2">
               {subtitle}
             </div>
           )}
@@ -72,7 +72,7 @@ export const DetailLayout: React.FC<DetailLayoutProps> = ({
                   onClick={onBack}
                 />
               )}
-              <h1 className="text-2xl font-bold text-[var(--color-foreground)]">{title}</h1>
+              <h1 className="text-2xl font-bold text-foreground">{title}</h1>
             </div>
             
             <div className="flex items-center gap-2">

@@ -81,14 +81,14 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
               cursor-pointer
               ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
               ${error
-                ? 'border-[var(--color-error)]'
-                : 'border-[var(--color-border)] peer-focus:border-[var(--color-primary)] peer-focus:ring-2 peer-focus:ring-[var(--color-primary)] peer-focus:ring-offset-2'
+                ? 'border-destructive'
+                : 'border-border peer-focus:border-primary peer-focus:ring-2 peer-focus:ring-primary peer-focus:ring-offset-2'
               }
-              ${checked ? 'bg-[var(--color-primary)] border-[var(--color-primary)]' : 'bg-[var(--color-background)]'}
+              ${checked ? 'bg-primary border-primary' : 'bg-background'}
             `}
           >
             {checked && (
-              <Check className={`${iconSizeClasses[size]} text-[var(--color-primary-foreground)]`} />
+              <Check className={`${iconSizeClasses[size]} text-primary-foreground`} />
             )}
           </div>
         </div>
@@ -101,7 +101,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
               </label>
             )}
             {(helperText || error) && (
-              <p className={`text-sm mt-0.5 ${error ? 'text-[var(--color-error)]' : 'text-[var(--color-foreground-secondary)]'}`}>
+              <p className={`text-sm mt-0.5 ${error ? 'text-destructive' : 'text-muted-foreground'}`}>
                 {error || helperText}
               </p>
             )}

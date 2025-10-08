@@ -48,7 +48,7 @@ export const Timeline: React.FC<TimelineProps> = ({
               className={`
                 w-10 h-10 rounded-full
                 flex items-center justify-center
-                ${item.color ? '' : 'bg-[var(--color-primary)]'}
+                ${item.color ? '' : 'bg-primary'}
                 text-white
               `}
               style={item.color ? { backgroundColor: item.color } : undefined}
@@ -57,17 +57,17 @@ export const Timeline: React.FC<TimelineProps> = ({
             </div>
             
             {index < sortedItems.length - 1 && (
-              <div className="h-px flex-1 bg-[var(--color-border)] my-2" />
+              <div className="h-px flex-1 bg-border my-2" />
             )}
             
             <div className="text-center mt-2">
               <div className="font-medium text-sm">{item.title}</div>
               {item.description && (
-                <div className="text-xs text-[var(--color-foreground-secondary)] mt-1">
+                <div className="text-xs text-muted-foreground mt-1">
                   {item.description}
                 </div>
               )}
-              <div className="text-xs text-[var(--color-foreground-muted)] mt-1">
+              <div className="text-xs text-muted-foreground mt-1">
                 {item.timestamp.toLocaleDateString()}
               </div>
             </div>
@@ -86,7 +86,7 @@ export const Timeline: React.FC<TimelineProps> = ({
               className={`
                 w-10 h-10 rounded-full flex-shrink-0
                 flex items-center justify-center
-                ${item.color ? '' : 'bg-[var(--color-primary)]'}
+                ${item.color ? '' : 'bg-primary'}
                 text-white
               `}
               style={item.color ? { backgroundColor: item.color } : undefined}
@@ -95,18 +95,18 @@ export const Timeline: React.FC<TimelineProps> = ({
             </div>
             
             {index < sortedItems.length - 1 && (
-              <div className="w-px flex-1 bg-[var(--color-border)] mt-2" />
+              <div className="w-px flex-1 bg-border mt-2" />
             )}
           </div>
           
           <div className="flex-1 pb-8">
             <div className="font-medium">{item.title}</div>
             {item.description && (
-              <div className="text-sm text-[var(--color-foreground-secondary)] mt-1">
+              <div className="text-sm text-muted-foreground mt-1">
                 {item.description}
               </div>
             )}
-            <div className="text-sm text-[var(--color-foreground-muted)] mt-2">
+            <div className="text-sm text-muted-foreground mt-2">
               {item.timestamp.toLocaleString()}
             </div>
           </div>

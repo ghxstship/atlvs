@@ -59,14 +59,14 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
     const baseClasses = `
       inline-flex items-center gap-1
       transition-colors duration-200
-      focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2
+      focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
       rounded-sm
     `;
     
     const variantClasses = {
-      default: 'text-[var(--color-foreground)] hover:text-[var(--color-primary)]',
-      primary: 'text-[var(--color-primary)] hover:opacity-80',
-      muted: 'text-[var(--color-foreground-secondary)] hover:text-[var(--color-foreground)]',
+      default: 'text-foreground hover:text-primary',
+      primary: 'text-primary hover:opacity-80',
+      muted: 'text-muted-foreground hover:text-foreground',
     };
     
     const underlineClasses = {

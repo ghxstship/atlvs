@@ -71,12 +71,12 @@ export const Tabs: React.FC<TabsProps> = ({
   
   const variantClasses = {
     default: {
-      list: 'border-b border-[var(--color-border)]',
+      list: 'border-b border-border',
       tab: (isActive: boolean) => `
         px-4 py-2 border-b-2 transition-colors
         ${isActive
-          ? 'border-[var(--color-primary)] text-[var(--color-primary)]'
-          : 'border-transparent hover:border-[var(--color-border)] text-[var(--color-foreground-secondary)]'
+          ? 'border-primary text-primary'
+          : 'border-transparent hover:border-border text-muted-foreground'
         }
       `,
     },
@@ -85,8 +85,8 @@ export const Tabs: React.FC<TabsProps> = ({
       tab: (isActive: boolean) => `
         px-4 py-2 rounded-md transition-colors
         ${isActive
-          ? 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)]'
-          : 'hover:bg-[var(--color-muted)] text-[var(--color-foreground-secondary)]'
+          ? 'bg-primary text-primary-foreground'
+          : 'hover:bg-muted text-muted-foreground'
         }
       `,
     },
@@ -95,8 +95,8 @@ export const Tabs: React.FC<TabsProps> = ({
       tab: (isActive: boolean) => `
         pb-2 border-b-2 transition-colors
         ${isActive
-          ? 'border-[var(--color-primary)] text-[var(--color-foreground)]'
-          : 'border-transparent hover:border-[var(--color-border)] text-[var(--color-foreground-secondary)]'
+          ? 'border-primary text-foreground'
+          : 'border-transparent hover:border-border text-muted-foreground'
         }
       `,
     },

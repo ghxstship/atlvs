@@ -55,8 +55,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   return (
     <div className="relative group">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-2 bg-[var(--color-muted)] border-b border-[var(--color-border)] rounded-t-lg">
-        <div className="text-sm text-[var(--color-foreground-secondary)] font-mono">
+      <div className="flex items-center justify-between px-4 py-2 bg-muted border-b border-border rounded-t-lg">
+        <div className="text-sm text-muted-foreground font-mono">
           {language}
         </div>
         {allowCopy && (
@@ -64,8 +64,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             onClick={handleCopy}
             className="
               flex items-center gap-1 px-2 py-1 rounded
-              text-sm text-[var(--color-foreground-secondary)]
-              hover:bg-[var(--color-background)] hover:text-[var(--color-foreground)]
+              text-sm text-muted-foreground
+              hover:bg-background hover:text-foreground
               transition-colors
             "
           >
@@ -86,7 +86,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
       
       {/* Code */}
       <div
-        className="overflow-auto bg-[var(--color-surface)] border border-[var(--color-border)] border-t-0 rounded-b-lg"
+        className="overflow-auto bg-card border border-border border-t-0 rounded-b-lg"
         style={{ maxHeight }}
       >
         <pre className="p-4">
@@ -96,7 +96,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
                 <tbody>
                   {lines.map((line, index) => (
                     <tr key={index}>
-                      <td className="pr-4 text-right text-[var(--color-foreground-muted)] select-none w-12">
+                      <td className="pr-4 text-right text-muted-foreground select-none w-12">
                         {index + 1}
                       </td>
                       <td className="whitespace-pre">{line || ' '}</td>

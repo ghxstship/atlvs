@@ -91,7 +91,7 @@ export function AssetView({
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-primary)]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -100,8 +100,8 @@ export function AssetView({
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <p className="text-[var(--color-error)] font-medium">Error loading assets</p>
-          <p className="text-[var(--color-foreground-secondary)] text-sm mt-1">{error}</p>
+          <p className="text-destructive font-medium">Error loading assets</p>
+          <p className="text-muted-foreground text-sm mt-1">{error}</p>
         </div>
       </div>
     );
@@ -115,8 +115,8 @@ export function AssetView({
           className={`
             m-4 p-8
             border-2 border-dashed rounded-lg
-            ${dragActive ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/5' : 'border-[var(--color-border)]'}
-            hover:border-[var(--color-primary)]
+            ${dragActive ? 'border-primary bg-primary/5' : 'border-border'}
+            hover:border-primary
             transition-colors
           `}
           onDragOver={(e) => {
@@ -127,10 +127,10 @@ export function AssetView({
           onDrop={handleDrop}
         >
           <div className="flex flex-col items-center gap-3">
-            <Upload className="w-8 h-8 text-[var(--color-foreground-muted)]" />
+            <Upload className="w-8 h-8 text-muted-foreground" />
             <div className="text-center">
               <p className="font-medium">Drop files here or click to upload</p>
-              <p className="text-sm text-[var(--color-foreground-secondary)] mt-1">
+              <p className="text-sm text-muted-foreground mt-1">
                 Supports images, videos, and documents
               </p>
             </div>
@@ -145,8 +145,8 @@ export function AssetView({
               htmlFor="file-upload"
               className="
                 px-4 py-2 rounded-md
-                bg-[var(--color-primary)]
-                text-[var(--color-primary-foreground)]
+                bg-primary
+                text-primary-foreground
                 hover:opacity-90
                 cursor-pointer
                 transition-opacity
@@ -162,7 +162,7 @@ export function AssetView({
       <div className="flex-1 overflow-auto p-4">
         {data.length === 0 ? (
           <div className="flex items-center justify-center h-full">
-            <p className="text-[var(--color-foreground-secondary)]">No assets yet</p>
+            <p className="text-muted-foreground">No assets yet</p>
           </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
@@ -179,11 +179,11 @@ export function AssetView({
                   className={`
                     group relative
                     rounded-lg overflow-hidden
-                    border border-[var(--color-border)]
-                    hover:border-[var(--color-primary)]
-                    bg-[var(--color-surface)]
+                    border border-border
+                    hover:border-primary
+                    bg-card
                     transition-all
-                    ${state.selectedIds.includes(record.id) ? 'ring-2 ring-[var(--color-primary)]' : ''}
+                    ${state.selectedIds.includes(record.id) ? 'ring-2 ring-primary' : ''}
                   `}
                 >
                   {/* Checkbox */}
@@ -206,7 +206,7 @@ export function AssetView({
                   
                   {/* Preview */}
                   <div
-                    className="aspect-square bg-[var(--color-muted)] flex items-center justify-center cursor-pointer"
+                    className="aspect-square bg-muted flex items-center justify-center cursor-pointer"
                     onClick={() => setPreviewAsset(record)}
                   >
                     {isImage ? (
@@ -216,7 +216,7 @@ export function AssetView({
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <FileIcon className="w-12 h-12 text-[var(--color-foreground-muted)]" />
+                      <FileIcon className="w-12 h-12 text-muted-foreground" />
                     )}
                   </div>
                   
@@ -226,7 +226,7 @@ export function AssetView({
                       {record.name || 'Untitled'}
                     </p>
                     {fileSize > 0 && (
-                      <p className="text-xs text-[var(--color-foreground-secondary)]">
+                      <p className="text-xs text-muted-foreground">
                         {formatFileSize(fileSize)}
                       </p>
                     )}
@@ -242,9 +242,9 @@ export function AssetView({
                         }}
                         className="
                           p-2 rounded
-                          bg-[var(--color-surface)]
-                          border border-[var(--color-border)]
-                          hover:bg-[var(--color-muted)]
+                          bg-card
+                          border border-border
+                          hover:bg-muted
                           shadow-sm
                           transition-colors
                         "
@@ -261,11 +261,11 @@ export function AssetView({
                         }}
                         className="
                           p-2 rounded
-                          bg-[var(--color-surface)]
-                          border border-[var(--color-error)]
-                          text-[var(--color-error)]
-                          hover:bg-[var(--color-error)]
-                          hover:text-[var(--color-error-foreground)]
+                          bg-card
+                          border border-destructive
+                          text-destructive
+                          hover:bg-destructive
+                          hover:text-destructive-foreground
                           shadow-sm
                           transition-colors
                         "

@@ -56,15 +56,15 @@ export const ListLayout: React.FC<ListLayoutProps> = ({
   children,
 }) => {
   return (
-    <div className="min-h-screen bg-[var(--color-background)]">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
+      <div className="border-b border-border bg-card">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-2xl font-bold text-[var(--color-foreground)]">{title}</h1>
+              <h1 className="text-2xl font-bold text-foreground">{title}</h1>
               {subtitle && (
-                <p className="text-sm text-[var(--color-foreground-secondary)] mt-1">{subtitle}</p>
+                <p className="text-sm text-muted-foreground mt-1">{subtitle}</p>
               )}
             </div>
             

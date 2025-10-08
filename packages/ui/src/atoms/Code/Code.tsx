@@ -47,8 +47,8 @@ export const Code = React.forwardRef<HTMLElement, CodeProps>(
           inline-flex items-center
           font-mono
           rounded
-          bg-[var(--color-muted)]
-          text-[var(--color-foreground)]
+          bg-muted
+          text-foreground
           ${sizeClasses[size]}
           ${className}
         `}

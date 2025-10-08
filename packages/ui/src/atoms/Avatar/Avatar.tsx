@@ -54,8 +54,8 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
     const baseClasses = `
       inline-flex items-center justify-center
       overflow-hidden
-      bg-[var(--color-muted)]
-      text-[var(--color-foreground)]
+      bg-muted
+      text-foreground
       font-medium
       flex-shrink-0
     `;
@@ -98,7 +98,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
           <span>{fallback}</span>
         ) : (
           <svg
-            className="w-1/2 h-1/2 text-[var(--color-foreground-muted)]"
+            className="w-1/2 h-1/2 text-muted-foreground"
             fill="currentColor"
             viewBox="0 0 20 20"
           >

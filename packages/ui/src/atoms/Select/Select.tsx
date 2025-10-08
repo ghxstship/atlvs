@@ -71,7 +71,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       appearance-none
       rounded-md
       border
-      bg-[var(--color-background)]
+      bg-background
       transition-all duration-200
       focus:outline-none focus:ring-2 focus:ring-offset-0
       disabled:opacity-50 disabled:cursor-not-allowed
@@ -85,8 +85,8 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     };
     
     const variantClasses = error
-      ? 'border-[var(--color-error)] focus:border-[var(--color-error)] focus:ring-[var(--color-error)]'
-      : 'border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-[var(--color-primary)]';
+      ? 'border-destructive focus:border-destructive focus:ring-[var(--color-error)]'
+      : 'border-border focus:border-primary focus:ring-primary';
     
     return (
       <div className="w-full">
@@ -124,13 +124,13 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             ))}
           </select>
           
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[var(--color-foreground-muted)]">
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground">
             <ChevronDown className="w-4 h-4" />
           </div>
         </div>
         
         {(error || helperText) && (
-          <p className={`mt-1.5 text-sm ${error ? 'text-[var(--color-error)]' : 'text-[var(--color-foreground-secondary)]'}`}>
+          <p className={`mt-1.5 text-sm ${error ? 'text-destructive' : 'text-muted-foreground'}`}>
             {error || helperText}
           </p>
         )}

@@ -126,7 +126,7 @@ export function WorkloadView({
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-primary)]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
     );
   }
@@ -135,8 +135,8 @@ export function WorkloadView({
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <p className="text-[var(--color-error)] font-medium">Error loading workload</p>
-          <p className="text-[var(--color-foreground-secondary)] text-sm mt-1">{error}</p>
+          <p className="text-destructive font-medium">Error loading workload</p>
+          <p className="text-muted-foreground text-sm mt-1">{error}</p>
         </div>
       </div>
     );
@@ -145,9 +145,9 @@ export function WorkloadView({
   return (
     <div className={`flex flex-col h-full ${className}`}>
       {/* Header */}
-      <div className="flex border-b border-[var(--color-border)]">
+      <div className="flex border-b border-border">
         {/* Resources column */}
-        <div className="w-64 flex-shrink-0 p-4 font-semibold border-r border-[var(--color-border)]">
+        <div className="w-64 flex-shrink-0 p-4 font-semibold border-r border-border">
           <div className="flex items-center gap-2">
             <Users className="w-4 h-4" />
             Resources
@@ -164,7 +164,7 @@ export function WorkloadView({
               return (
                 <div
                   key={i}
-                  className="flex-1 px-2 py-4 border-r border-[var(--color-border)] text-center"
+                  className="flex-1 px-2 py-4 border-r border-border text-center"
                   style={{ minWidth: '100px' }}
                 >
                   <div className="text-xs font-medium">
@@ -181,7 +181,7 @@ export function WorkloadView({
       <div className="flex-1 overflow-auto">
         <div className="flex">
           {/* Resources */}
-          <div className="w-64 flex-shrink-0 border-r border-[var(--color-border)]">
+          <div className="w-64 flex-shrink-0 border-r border-border">
             {resources.map(resource => {
               const utilization = getUtilization(resource.id);
               const overAllocated = utilization > 100;
@@ -189,24 +189,24 @@ export function WorkloadView({
               return (
                 <div
                   key={resource.id}
-                  className="h-20 px-4 py-3 border-b border-[var(--color-border)]"
+                  className="h-20 px-4 py-3 border-b border-border"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="font-medium truncate">{resource.name}</span>
                     <span
                       className={`
                         text-xs font-medium
-                        ${overAllocated ? 'text-[var(--color-error)]' : 'text-[var(--color-foreground-secondary)]'}
+                        ${overAllocated ? 'text-destructive' : 'text-muted-foreground'}
                       `}
                     >
                       {utilization.toFixed(0)}%
                     </span>
                   </div>
-                  <div className="h-2 rounded-full bg-[var(--color-muted)] overflow-hidden">
+                  <div className="h-2 rounded-full bg-muted overflow-hidden">
                     <div
                       className={`
                         h-full rounded-full transition-all
-                        ${overAllocated ? 'bg-[var(--color-error)]' : 'bg-[var(--color-primary)]'}
+                        ${overAllocated ? 'bg-destructive' : 'bg-primary'}
                       `}
                       style={{ width: `${Math.min(utilization, 100)}%` }}
                     />
@@ -224,14 +224,14 @@ export function WorkloadView({
               return (
                 <div
                   key={resource.id}
-                  className="h-20 border-b border-[var(--color-border)] relative"
+                  className="h-20 border-b border-border relative"
                 >
                   {/* Week grid */}
                   <div className="absolute inset-0 flex">
                     {Array.from({ length: weeks }, (_, i) => (
                       <div
                         key={i}
-                        className="flex-1 border-r border-[var(--color-border)]"
+                        className="flex-1 border-r border-border"
                         style={{ minWidth: '100px' }}
                       />
                     ))}
@@ -248,9 +248,9 @@ export function WorkloadView({
                           key={assignment.id}
                           className="
                             absolute h-8 px-2 rounded
-                            bg-[var(--color-primary)]
-                            text-[var(--color-primary-foreground)]
-                            border border-[var(--color-primary)]
+                            bg-primary
+                            text-primary-foreground
+                            border border-primary
                             hover:opacity-90
                             cursor-pointer
                             transition-opacity

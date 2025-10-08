@@ -90,7 +90,7 @@ export function AppShell({
   };
   
   return (
-    <div className="flex h-screen overflow-hidden bg-[var(--color-background)]">
+    <div className="flex h-screen overflow-hidden bg-background">
       {/* Sidebar */}
       {showSidebar && sidebar && (
         <>

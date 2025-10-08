@@ -101,8 +101,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
           className={`
             absolute ${alignClasses[align]} top-full mt-2
             min-w-[12rem]
-            rounded-lg border border-[var(--color-border)]
-            bg-[var(--color-surface)]
+            rounded-lg border border-border
+            bg-card
             shadow-lg
             py-1
             z-50
@@ -113,7 +113,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
               return (
                 <div
                   key={item.id}
-                  className="h-px bg-[var(--color-border)] my-1"
+                  className="h-px bg-border my-1"
                 />
               );
             }
@@ -133,7 +133,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 className="
                   w-full flex items-center gap-2 px-3 py-2
                   text-sm text-left
-                  hover:bg-[var(--color-muted)]
+                  hover:bg-muted
                   disabled:opacity-50 disabled:cursor-not-allowed
                   transition-colors
                 "

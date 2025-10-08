@@ -50,13 +50,13 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     `;
     
     const variantClasses = {
-      default: 'bg-[var(--color-muted)] text-[var(--color-foreground)]',
-      primary: 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)]',
-      secondary: 'bg-[var(--color-secondary)] text-[var(--color-secondary-foreground)]',
-      success: 'bg-[var(--color-success)] text-[var(--color-success-foreground)]',
-      warning: 'bg-[var(--color-warning)] text-[var(--color-warning-foreground)]',
-      error: 'bg-[var(--color-error)] text-[var(--color-error-foreground)]',
-      info: 'bg-[var(--color-info)] text-[var(--color-info-foreground)]',
+      default: 'bg-muted text-foreground',
+      primary: 'bg-primary text-primary-foreground',
+      secondary: 'bg-secondary text-secondary-foreground',
+      success: 'bg-success text-success-foreground',
+      warning: 'bg-warning text-warning-foreground',
+      error: 'bg-destructive text-destructive-foreground',
+      info: 'bg-info text-info-foreground',
     };
     
     const sizeClasses = {

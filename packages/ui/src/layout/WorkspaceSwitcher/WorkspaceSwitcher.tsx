@@ -120,7 +120,7 @@ export function WorkspaceSwitcher({
         className="
           flex items-center gap-2 w-full px-3 py-2
           rounded-md
-          hover:bg-[var(--color-muted)]
+          hover:bg-muted
           transition-colors
         "
         aria-expanded={open}
@@ -136,8 +136,8 @@ export function WorkspaceSwitcher({
         ) : (
           <div className="
             w-6 h-6 rounded
-            bg-[var(--color-primary)]
-            text-[var(--color-primary-foreground)]
+            bg-primary
+            text-primary-foreground
             flex items-center justify-center
             text-xs font-medium
           ">
@@ -151,14 +151,14 @@ export function WorkspaceSwitcher({
             {currentWorkspace.name}
           </div>
           {currentWorkspace.plan && (
-            <div className="text-xs text-[var(--color-foreground-secondary)] truncate">
+            <div className="text-xs text-muted-foreground truncate">
               {currentWorkspace.plan}
             </div>
           )}
         </div>
         
         {/* Icon */}
-        <ChevronsUpDown className="w-4 h-4 text-[var(--color-foreground-muted)] flex-shrink-0" />
+        <ChevronsUpDown className="w-4 h-4 text-muted-foreground flex-shrink-0" />
       </button>
       
       {/* Dropdown */}
@@ -168,8 +168,8 @@ export function WorkspaceSwitcher({
           className="
             absolute top-full left-0 mt-1
             w-full min-w-[16rem]
-            rounded-lg border border-[var(--color-border)]
-            bg-[var(--color-surface)]
+            rounded-lg border border-border
+            bg-card
             shadow-lg
             py-1
             z-50
@@ -186,7 +186,7 @@ export function WorkspaceSwitcher({
                   onClick={() => handleWorkspaceSelect(workspace)}
                   className="
                     w-full flex items-center gap-3 px-3 py-2
-                    hover:bg-[var(--color-muted)]
+                    hover:bg-muted
                     transition-colors
                   "
                 >
@@ -200,8 +200,8 @@ export function WorkspaceSwitcher({
                   ) : (
                     <div className="
                       w-6 h-6 rounded
-                      bg-[var(--color-primary)]
-                      text-[var(--color-primary-foreground)]
+                      bg-primary
+                      text-primary-foreground
                       flex items-center justify-center
                       text-xs font-medium
                     ">
@@ -215,7 +215,7 @@ export function WorkspaceSwitcher({
                       {workspace.name}
                     </div>
                     {workspace.role && (
-                      <div className="text-xs text-[var(--color-foreground-secondary)] truncate">
+                      <div className="text-xs text-muted-foreground truncate">
                         {workspace.role}
                       </div>
                     )}
@@ -223,7 +223,7 @@ export function WorkspaceSwitcher({
                   
                   {/* Check icon */}
                   {isCurrent && (
-                    <Check className="w-4 h-4 text-[var(--color-primary)] flex-shrink-0" />
+                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
                   )}
                   
                   {/* Settings icon */}
@@ -236,7 +236,7 @@ export function WorkspaceSwitcher({
                       }}
                       className="
                         p-1 rounded
-                        hover:bg-[var(--color-muted)]
+                        hover:bg-muted
                         transition-colors
                       "
                       aria-label="Workspace settings"
@@ -252,7 +252,7 @@ export function WorkspaceSwitcher({
           {/* Create workspace */}
           {showCreate && onCreateWorkspace && (
             <>
-              <div className="h-px bg-[var(--color-border)] my-1" />
+              <div className="h-px bg-border my-1" />
               <button
                 onClick={() => {
                   onCreateWorkspace();
@@ -260,13 +260,13 @@ export function WorkspaceSwitcher({
                 }}
                 className="
                   w-full flex items-center gap-3 px-3 py-2
-                  hover:bg-[var(--color-muted)]
+                  hover:bg-muted
                   transition-colors
                 "
               >
                 <div className="
                   w-6 h-6 rounded
-                  bg-[var(--color-muted)]
+                  bg-muted
                   flex items-center justify-center
                 ">
                   <Plus className="w-4 h-4" />

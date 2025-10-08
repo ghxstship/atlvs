@@ -73,8 +73,8 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
               ${switchSizeClasses[size]}
               rounded-full
               transition-colors duration-200
-              ${checked ? 'bg-[var(--color-primary)]' : 'bg-[var(--color-muted)]'}
-              peer-focus:ring-2 peer-focus:ring-[var(--color-primary)] peer-focus:ring-offset-2
+              ${checked ? 'bg-primary' : 'bg-muted'}
+              peer-focus:ring-2 peer-focus:ring-primary peer-focus:ring-offset-2
             `}
           >
             <div

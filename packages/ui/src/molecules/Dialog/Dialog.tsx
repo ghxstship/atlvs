@@ -113,15 +113,15 @@ export const Dialog: React.FC<DialogProps> = ({
         aria-describedby={description ? 'dialog-description' : undefined}
         className={`
           relative w-full ${sizeClasses[size]}
-          bg-[var(--color-surface)]
-          border border-[var(--color-border)]
+          bg-card
+          border border-border
           rounded-lg shadow-xl
           max-h-[90vh] overflow-auto
         `}
       >
         {/* Header */}
         {(title || description) && (
-          <div className="p-6 border-b border-[var(--color-border)]">
+          <div className="p-6 border-b border-border">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 {title && (
@@ -130,7 +130,7 @@ export const Dialog: React.FC<DialogProps> = ({
                   </h2>
                 )}
                 {description && (
-                  <p id="dialog-description" className="text-sm text-[var(--color-foreground-secondary)] mt-1">
+                  <p id="dialog-description" className="text-sm text-muted-foreground mt-1">
                     {description}
                   </p>
                 )}
@@ -139,7 +139,7 @@ export const Dialog: React.FC<DialogProps> = ({
                 onClick={onClose}
                 className="
                   ml-4 p-2 rounded
-                  hover:bg-[var(--color-muted)]
+                  hover:bg-muted
                   transition-colors
                   flex-shrink-0
                 "

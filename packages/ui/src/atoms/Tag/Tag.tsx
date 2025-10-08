@@ -55,11 +55,11 @@ export const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
     `;
     
     const variantClasses = {
-      default: 'bg-[var(--color-muted)] text-[var(--color-foreground)]',
-      primary: 'bg-[var(--color-primary)]/10 text-[var(--color-primary)]',
-      success: 'bg-[var(--color-success)]/10 text-[var(--color-success)]',
-      warning: 'bg-[var(--color-warning)]/10 text-[var(--color-warning)]',
-      error: 'bg-[var(--color-error)]/10 text-[var(--color-error)]',
+      default: 'bg-muted text-foreground',
+      primary: 'bg-primary/10 text-primary',
+      success: 'bg-success/10 text-success',
+      warning: 'bg-warning/10 text-warning',
+      error: 'bg-destructive/10 text-destructive',
     };
     
     const sizeClasses = {

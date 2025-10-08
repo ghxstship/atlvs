@@ -23,9 +23,9 @@ export const LoadingPage: React.FC<LoadingPageProps> = ({
   message = 'Loading...',
 }) => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-[var(--color-background)]">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-background">
       <Spinner size="xl" variant="primary" />
-      <p className="mt-4 text-[var(--color-foreground-secondary)]">
+      <p className="mt-4 text-muted-foreground">
         {message}
       </p>
     </div>
