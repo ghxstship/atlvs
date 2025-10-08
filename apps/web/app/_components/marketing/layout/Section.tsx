@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode } from 'react';
 import { anton } from '../../lib/typography';
 import { cn } from '../../lib/utils';

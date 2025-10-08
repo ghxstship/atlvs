@@ -95,6 +95,8 @@ export { cn } from './lib/utils';
 
 export { StateManagerProvider } from './providers/StateManagerProvider';
 export { AdaptiveThemeProvider } from './providers/AdaptiveThemeProvider';
+export { GHXSTSHIPProvider } from './providers/GHXSTSHIPProvider';
+export type { GHXSTSHIPProviderProps } from './providers/GHXSTSHIPProvider';
 
 // ========================================
 // COMPONENT ALIASES (Backward Compatibility)

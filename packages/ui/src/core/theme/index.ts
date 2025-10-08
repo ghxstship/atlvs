@@ -47,7 +47,7 @@ export {
   enableThemeTransitions,
   disableThemeTransitions,
   prefersHighContrast,
-  prefersReducedMotion,
+  // prefersReducedMotion exported from tokens/motion.tokens to avoid conflict
   getOptimalTheme,
   isValidThemeMode,
   generateThemeMetaTags,

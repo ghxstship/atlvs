@@ -1,7 +1,7 @@
 'use client';
 
 
-import { Card, CardBody, CardContent } from '@ghxstship/ui';
+import { Card, CardContent } from '@ghxstship/ui';
 import { LucideIcon } from 'lucide-react';
 // import { typography } from '../../../../(marketing)/lib/typography';
 import { cn } from '../lib/utils';
