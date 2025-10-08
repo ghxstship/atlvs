@@ -90,16 +90,6 @@
 
 /* Utility Classes */
 @layer utilities {
-  /* Semantic Spacing Stack Utilities */
-  .stack-xs { @apply space-y-xs; }
-  .stack-sm { @apply space-y-sm; }
-  .stack-md { @apply space-y-md; }
-  .stack-lg { @apply space-y-lg; }
-  .stack-xl { @apply space-y-xl; }
-  .stack-2xl { @apply space-y-2xl; }
-  .stack-3xl { @apply space-y-3xl; }
-  .stack-4xl { @apply space-y-4xl; }
-  
   /* Text Balance */
   .text-balance {
     text-wrap: balance;

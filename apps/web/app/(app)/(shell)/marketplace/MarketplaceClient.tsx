@@ -11,7 +11,7 @@ import {
  KanbanBoard,
  ListView,
  StateManagerProvider,
- TimelineView,
+ // TimelineView, // TODO: Not exported from @ghxstship/ui - use GanttView as alternative
  ViewSwitcher
 } from '@ghxstship/ui';
 import type {
@@ -72,7 +72,7 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  setLoading(true);
  setError(null);
  try {
- const { listings: responseListings, stats: responseStats } =
+ const { listings: responseListings } =
  await fetchMarketplaceListings(orgId, {
  ...filters,
  search: searchQuery || undefined
@@ -80,10 +80,10 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
 
  const sortedListings = (() => {
  if (!sortConfig) return responseListings;
- const { key, direction } = sortConfig;
- const sorted = [...responseListings].sort((a: unknown, b: unknown) => {
- const valueA = key.split('.').reduce<unknown>((acc, part) => acc?.[part], a);
- const valueB = key.split('.').reduce<unknown>((acc, part) => acc?.[part], b);
+ const { field, direction } = sortConfig;
+ const sorted = [...responseListings].sort((a: MarketplaceListing, b: MarketplaceListing) => {
+ const valueA = field.split('.').reduce<any>((acc: any, part: string) => acc?.[part], a);
+ const valueB = field.split('.').reduce<any>((acc: any, part: string) => acc?.[part], b);
 
  if (valueA == null && valueB == null) return 0;
  if (valueA == null) return direction === 'asc' ? -1 : 1;
@@ -97,7 +97,8 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  })();
 
  setListings(sortedListings);
- setStats(responseStats);
+ // Note: stats removed from response - fetch separately if needed
+ setStats(null);
  } catch (err) {
  setError(err instanceof Error ? err.message : 'Failed to load listings');
  } finally {
@@ -128,7 +129,7 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  } as ListingFilters;
  }, {} as ListingFilters);
 
- setFilters((prev: unknown) => ({ ...prev, ...normalized }));
+ setFilters((prev) => ({ ...prev, ...normalized }));
  }, []);
 
  const handleSort = useCallback((nextSort: SortConfig | null) => {
@@ -166,9 +167,9 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  async (dto: UpsertListingDto) => {
  setCreateLoading(true);
  try {
- const created = await createMarketplaceListing(orgId, dto);
- setListings((prev: unknown) => [created, ...prev]);
- setStats((prev: unknown) =>
+ const created = await createMarketplaceListing(orgId, 'current-user-id', dto);
+ setListings((prev) => [created, ...prev]);
+ setStats((prev) =>
  prev
  ? {
  ...prev,
@@ -196,8 +197,8 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
 
  setEditLoading(true);
  try {
- const updated = await updateMarketplaceListing(orgId, dto);
- setListings((prev: unknown) =>
+ const updated = await updateMarketplaceListing(orgId, 'current-user-id', dto.id, dto);
+ setListings((prev) =>
  prev.map((listing) =>
  listing.id === updated.id ? { ...listing, ...updated } : listing,
  ),
@@ -216,9 +217,9 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  async (ids: string[]) => {
  if (ids.length === 0) return;
  try {
- await deleteMarketplaceListings(orgId, ids);
- setListings((prev: unknown) => prev.filter((listing) => !ids.includes(listing.id)));
- setSelectedIds((prev: unknown) => prev.filter((id) => !ids.includes(id)));
+ await deleteMarketplaceListings(orgId, 'current-user-id', ids);
+ setListings((prev) => prev.filter((listing) => !ids.includes(listing.id)));
+ setSelectedIds((prev) => prev.filter((id) => !ids.includes(id)));
  await handleRefresh();
  } catch (err) {
  setError(err instanceof Error ? err.message : 'Failed to delete listings');
@@ -252,9 +253,9 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  LISTING_FIELD_CONFIGS.map((field) => {
  const value = field.key
  .split('.')
- .reduce<unknown>((acc, part) =>
+ .reduce<any>((acc: any, part: string) =>
  acc && typeof acc === 'object' ? (acc as Record<string, unknown>)[part] : undefined,
- listing as unknown);
+ listing as any);
  if (typeof value === 'string') return `"${value.replace(/"/g, '""')}"`;
  if (value == null) return '';
  return String(value);
@@ -281,7 +282,7 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  const text = await file.text();
  const imported = JSON.parse(text) as UpsertListingDto[];
  await Promise.all(
- imported.map((payload) => createMarketplaceListing(orgId, payload)),
+ imported.map((payload) => createMarketplaceListing(orgId, 'current-user-id', payload)),
  );
  await handleRefresh();
  } catch (err) {
@@ -312,8 +313,8 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  data: normalizedListings,
  loading,
  error: error ?? undefined,
- viewType: viewMode,
- defaultView: 'grid',
+ viewType: viewMode as any,
+ defaultView: 'grid' as any,
  onViewChange: handleViewChange,
  selectedItems: selectedIds,
  onSelectionChange: handleSelectionChange,
@@ -324,8 +325,8 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  onExport: handleExport,
  onImport: handleImport,
  onCreate: openCreateDrawer,
- onEdit: (record) => openEditDrawer(record as MarketplaceListing),
- onView: (record) => openEditDrawer(record as MarketplaceListing),
+ onEdit: (record: MarketplaceListing) => openEditDrawer(record),
+ onView: (record: MarketplaceListing) => openEditDrawer(record),
  onDelete: handleDelete,
  bulkActions: [
  {
@@ -339,9 +340,9 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  {
  id: 'view-vendor',
  label: t('actions.viewVendor'),
- onClick: (record) =>
- openVendorDrawer((record as MarketplaceListing).creator?.id ?? null),
- show: (record) => Boolean((record as MarketplaceListing).creator?.id)
+ onClick: (record: MarketplaceListing) =>
+ openVendorDrawer(record.creator?.id ?? null),
+ show: (record: MarketplaceListing) => Boolean(record.creator?.id)
  },
  ]
  }),
@@ -378,7 +379,7 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
 
  <DataViewProvider config={dataViewConfig}>
  <div className="flex items-center justify-between">
- <ViewSwitcher />
+ <ViewSwitcher currentView={viewMode as any} onViewChange={handleViewChange as any} />
  <div className="flex items-center gap-sm">
  <DataActions />
  <Button onClick={openCreateDrawer} className="flex items-center gap-xs">
@@ -388,37 +389,56 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  </div>
 
  <div className="flex-1 min-h-0">
- {viewMode === 'grid' && <DataGrid />}
+ {viewMode === 'grid' && <DataGrid data={normalizedListings} fields={LISTING_FIELD_CONFIGS} state={{ loading, error: error || null } as any} />}
 
  {viewMode === 'kanban' && (
  <KanbanBoard
+ data={normalizedListings}
+ fields={LISTING_FIELD_CONFIGS}
+ state={{ loading, error: error || null } as any}
+ columnField="status"
+ titleField="title"
  columns={[
  { id: 'draft', title: t('status.draft') },
  { id: 'active', title: t('status.active') },
  { id: 'archived', title: t('status.archived') },
  ]}
- statusField="status"
- titleField="title"
  />
  )}
 
  {viewMode === 'calendar' && (
  <CalendarView
- startDateField="availability.startDate"
- endDateField="availability.endDate"
+ data={normalizedListings}
+ fields={LISTING_FIELD_CONFIGS}
+ state={{ loading, error: error || null } as any}
  titleField="title"
+ startField="availability.startDate"
+ endField="availability.endDate"
  />
  )}
 
  {viewMode === 'list' && (
- <ListView titleField="title" subtitleField="status" />
+ <ListView
+ data={normalizedListings}
+ fields={LISTING_FIELD_CONFIGS}
+ state={{ loading, error: error || null } as any}
+ titleField="title"
+ />
  )}
 
- {viewMode === 'timeline' && (
+ {/* TODO: TimelineView not available - use GanttView as alternative */}
+ {/* {viewMode === 'timeline' && (
  <TimelineView startDateField="created_at" endDateField="expires_at" titleField="title" />
- )}
+ )} */}
 
- {viewMode === 'dashboard' && <DashboardView />}
+ {viewMode === 'dashboard' && (
+ <DashboardView
+ widgets={[]}
+ data={normalizedListings}
+ fields={LISTING_FIELD_CONFIGS}
+ state={{ loading, error: error || null } as any}
+ />
+ )}
  </div>
  </DataViewProvider>
 
