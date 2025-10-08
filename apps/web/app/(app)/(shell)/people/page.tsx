@@ -20,11 +20,11 @@ export default function upeoplePage() {
       search={{
         value: '',
         onChange: (value) => console.log('Search:', value),
-        placeholder: 'Search upeople...',
+        placeholder: 'Search upeople...'
       }}
       filters={{
         activeCount: 0,
-        onClear: () => console.log('Clear filters'),
+        onClear: () => console.log('Clear filters')
       }}
       sidebar={
         <div className="space-y-6">

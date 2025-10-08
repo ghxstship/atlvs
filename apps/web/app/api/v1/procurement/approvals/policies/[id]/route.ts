@@ -14,11 +14,11 @@ const policyUpdateSchema = z.object({
         id: z.string().uuid().optional(),
         step: z.number().int().min(1),
         approver_id: z.string().uuid(),
-        metadata: z.record(z.unknown()).optional(),
+        metadata: z.record(z.unknown()).optional()
       })
     )
     .optional(),
-  is_active: z.boolean().optional(),
+  is_active: z.boolean().optional()
 });
 
 const POLICY_COLUMNS =
@@ -28,7 +28,7 @@ async function resolveRequestContext(request: NextRequest) {
   const supabase = await createClient();
   const {
     data: { user },
-    error,
+    error
   } = await supabase.auth.getUser();
 
   if (error || !user) {
@@ -102,7 +102,7 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
     return NextResponse.json({
       policy,
       history: history ?? [],
-      templates: templates ?? [],
+      templates: templates ?? []
     });
   } catch (error) {
     console.error('Error in GET /api/v1/procurement/approvals/policies/[id]:', error);
@@ -140,7 +140,7 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
       .from('procurement_approval_policies')
       .update({
         ...payload,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq('organization_id', organizationId)
       .eq('id', params.id)

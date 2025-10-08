@@ -36,7 +36,7 @@ const updateEventSchema = z.object({
   tags: z.array(z.string().max(32)).optional(),
   resources: z.array(z.object({ name: z.string(), quantity: z.number().int().min(1) })).optional(),
   staffing: z.array(z.object({ role: z.string(), user_id: z.string().uuid().optional(), notes: z.string().optional() })).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 }).refine((data) => {
   if (data.start_at && data.end_at) {
     return new Date(data.start_at) <= new Date(data.end_at);
@@ -52,7 +52,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -171,7 +171,7 @@ export async function PATCH(
       metadata: updates.metadata ?? existing.metadata,
       timezone: updates.timezone ?? existing.timezone,
       is_all_day: updates.is_all_day ?? existing.is_all_day,
-      updated_by: user!.id,
+      updated_by: user!.id
     };
 
     // Use optimistic locking for the update
@@ -204,8 +204,8 @@ export async function PATCH(
       resource_id: params.id,
       action: 'update',
       details: {
-        updated_fields: Object.keys(updates),
-      },
+        updated_fields: Object.keys(updates)
+      }
     });
 
     return NextResponse.json(event);
@@ -271,8 +271,8 @@ export async function DELETE(
       action: 'delete',
       details: {
         title: existing.title,
-        event_type: existing.event_type,
-      },
+        event_type: existing.event_type
+      }
     });
 
     return NextResponse.json({ success: true });

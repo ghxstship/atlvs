@@ -49,7 +49,7 @@ export default function DetailPage() {
           { id: 'activity', label: 'Activity' },
         ],
         activeTab: 'overview',
-        onTabChange: (tabId) => console.log('Switch to tab:', tabId),
+        onTabChange: (tabId) => console.log('Switch to tab:', tabId)
       }}
       metaSidebar={
         <div className="space-y-6">

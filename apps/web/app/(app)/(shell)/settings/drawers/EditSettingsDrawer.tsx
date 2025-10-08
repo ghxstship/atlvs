@@ -28,7 +28,7 @@ import {
  TabsList,
  TabsTrigger,
  Alert,
- AlertDescription,
+ AlertDescription
 } from '@ghxstship/ui';
 import type { SettingsDrawerProps, SettingsFormData, SettingCategory, SettingType } from '../types';
 import { settingsService } from '../lib/settings-service';
@@ -50,7 +50,7 @@ const settingsFormSchema = z.object({
  value: z.string().min(1, 'Value is required'),
  description: z.string().optional(),
  is_public: z.boolean().default(false),
- is_editable: z.boolean().default(true),
+ is_editable: z.boolean().default(true)
 });
 
 const CATEGORY_OPTIONS = [
@@ -79,7 +79,7 @@ export default function EditSettingsDrawer({
  isOpen,
  onClose,
  onSave,
- onDelete,
+ onDelete
 }: SettingsDrawerProps) {
  const { toast } = useToastContext();
  const [saving, setSaving] = useState(false);
@@ -95,8 +95,8 @@ export default function EditSettingsDrawer({
  value: '',
  description: '',
  is_public: false,
- is_editable: true,
- },
+ is_editable: true
+ }
  });
 
  const watchedType = form.watch('type');
@@ -112,7 +112,7 @@ export default function EditSettingsDrawer({
  value: setting.value,
  description: setting.description || '',
  is_public: setting.is_public === 'true',
- is_editable: setting.is_editable === 'true',
+ is_editable: setting.is_editable === 'true'
  });
  }
  }, [setting, isOpen, form]);

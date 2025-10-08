@@ -25,7 +25,7 @@ export default function EditProgrammingRiderDrawer({
  currentUserId,
  projects,
  events,
- onSuccess,
+ onSuccess
 }: EditProgrammingRiderDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -38,8 +38,8 @@ export default function EditProgrammingRiderDrawer({
  required: true,
  options: events.map(event => ({
  label: `${event.title} - ${new Date(event.start_at).toLocaleDateString()}`,
- value: event.id,
- })),
+ value: event.id
+ }))
  },
  {
  key: 'project_id',
@@ -49,9 +49,9 @@ export default function EditProgrammingRiderDrawer({
  { label: 'No Project', value: '' },
  ...projects.map(project => ({
  label: project.name,
- value: project.id,
+ value: project.id
  })),
- ],
+ ]
  },
  {
  key: 'kind',
@@ -69,27 +69,27 @@ export default function EditProgrammingRiderDrawer({
  { label: '🎬 Production', value: 'production' },
  { label: '🎤 Artist', value: 'artist' },
  { label: '👥 Crew', value: 'crew' },
- ],
+ ]
  },
  {
  key: 'title',
  label: 'Rider Title',
  type: 'text',
  required: true,
- placeholder: 'Enter rider title',
+ placeholder: 'Enter rider title'
  },
  {
  key: 'description',
  label: 'Description',
  type: 'textarea',
- placeholder: 'Brief description of the rider',
+ placeholder: 'Brief description of the rider'
  },
  {
  key: 'requirements',
  label: 'Requirements',
  type: 'textarea',
  required: true,
- placeholder: 'Detailed requirements and specifications',
+ placeholder: 'Detailed requirements and specifications'
  },
  {
  key: 'priority',
@@ -101,7 +101,7 @@ export default function EditProgrammingRiderDrawer({
  { label: 'High', value: 'high' },
  { label: 'Critical', value: 'critical' },
  { label: 'Urgent', value: 'urgent' },
- ],
+ ]
  },
  {
  key: 'status',
@@ -115,19 +115,19 @@ export default function EditProgrammingRiderDrawer({
  { label: 'Rejected', value: 'rejected' },
  { label: 'Fulfilled', value: 'fulfilled' },
  { label: 'Cancelled', value: 'cancelled' },
- ],
+ ]
  },
  {
  key: 'notes',
  label: 'Notes',
  type: 'textarea',
- placeholder: 'Additional notes or comments',
+ placeholder: 'Additional notes or comments'
  },
  {
  key: 'tags',
  label: 'Tags',
  type: 'text',
- placeholder: 'Enter tags separated by commas',
+ placeholder: 'Enter tags separated by commas'
  },
  // Fulfillment fields (only show for certain statuses)
  ...(rider.status === 'approved' || rider.status === 'fulfilled' ? [
@@ -135,7 +135,7 @@ export default function EditProgrammingRiderDrawer({
  key: 'fulfillment_notes',
  label: 'Fulfillment Notes',
  type: 'textarea' as const,
- placeholder: 'Notes about fulfillment',
+ placeholder: 'Notes about fulfillment'
  },
  ] : []),
  // Review fields (only show for certain statuses)
@@ -144,7 +144,7 @@ export default function EditProgrammingRiderDrawer({
  key: 'review_notes',
  label: 'Review Notes',
  type: 'textarea' as const,
- placeholder: 'Notes from review process',
+ placeholder: 'Notes from review process'
  },
  ] : []),
  ];
@@ -163,7 +163,7 @@ export default function EditProgrammingRiderDrawer({
  notes: rider.notes || '',
  tags: rider.tags?.join(', ') || '',
  fulfillment_notes: rider.fulfillment_notes || '',
- review_notes: rider.review_notes || '',
+ review_notes: rider.review_notes || ''
  };
 
  const handleSubmit = async (data: Record<string, unknown>) => {
@@ -185,7 +185,7 @@ export default function EditProgrammingRiderDrawer({
  priority: data.priority as RiderPriority,
  status: data.status as RiderStatus,
  notes: data.notes || null,
- tags,
+ tags
  };
 
  // Add fulfillment data if status is fulfilled
@@ -215,7 +215,7 @@ export default function EditProgrammingRiderDrawer({
  const response = await fetch(`/api/v1/programming/riders/${rider.id}`, {
  method: 'PATCH',
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify(payload),
+ body: JSON.stringify(payload)
  });
 
  if (!response.ok) {

@@ -1,7 +1,7 @@
 "use client";
 
 import { X, Calendar, DollarSign, MapPin, Tag } from "lucide-react";
-import { useState } from "react";
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -17,7 +17,7 @@ import {
  Select,
  Label,
  Badge,
- toast,
+ toast
 } from "@ghxstship/ui";
 import { format } from "date-fns";
 import { projectsService } from "../lib/projects-service";
@@ -34,7 +34,7 @@ const createProjectSchema = z.object({
  ends_at: z.string().optional(),
  location: z.string().optional(),
  tags: z.array(z.string()).optional(),
- notes: z.string().optional(),
+ notes: z.string().optional()
 });
 
 interface CreateProjectDrawerProps {
@@ -50,7 +50,7 @@ export default function CreateProjectDrawer({
  onOpenChange,
  orgId,
  userId,
- onSuccess,
+ onSuccess
 }: CreateProjectDrawerProps) {
  const [loading, setLoading] = useState(false);
  const [tagInput, setTagInput] = useState("");
@@ -63,8 +63,8 @@ export default function CreateProjectDrawer({
  status: "planning",
  priority: "medium",
  currency: "USD",
- tags: [],
- },
+ tags: []
+ }
  });
 
  const { register, handleSubmit, formState: { errors }, watch, setValue, reset } = form;

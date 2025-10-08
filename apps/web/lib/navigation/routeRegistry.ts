@@ -163,7 +163,7 @@ export function toNavSections(routes: RouteNode[]): NavSection[] {
   return routes.map((node) => {
     const items = (node.children ?? []).map((child) => ({
       label: child.label,
-      href: child.path || '#',
+      href: child.path || '#'
     }));
 
     // If an Overview child exists, ensure it is first in the list
@@ -171,7 +171,7 @@ export function toNavSections(routes: RouteNode[]): NavSection[] {
 
     return {
       label: node.label,
-      items,
+      items
     };
   });
 }

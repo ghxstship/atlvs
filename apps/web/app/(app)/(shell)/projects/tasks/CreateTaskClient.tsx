@@ -19,7 +19,7 @@ const schema = z.object({
   assigned_to: z.string().nullable().optional(),
   project_id: z.string().nullable().optional(),
   tags: z.array(z.string()).default([]),
-  estimated_hours: z.number().min(0).max(1000).nullable().optional(),
+  estimated_hours: z.number().min(0).max(1000).nullable().optional()
 });
 
 type Values = z.infer<typeof schema>;
@@ -50,7 +50,7 @@ export default function CreateTaskClient({ orgId }: { orgId: string }) {
   const form = useForm<Values>({
     resolver: zodResolver(schema),
     defaultValues: { title: '', status: 'pending', due_at: null },
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   async function onSubmit(values: Values) {
@@ -64,7 +64,7 @@ export default function CreateTaskClient({ orgId }: { orgId: string }) {
           title: values.title,
           status: values.status,
           due_at: values.due_at || null,
-          is_demo: false,
+          is_demo: false
         })
         .select('id')
         .maybeSingle();

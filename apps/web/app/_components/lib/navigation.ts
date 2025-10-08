@@ -14,7 +14,7 @@ export const navigation: NavigationItem[] = [
       { label: 'Compare', href: '/products/compare' },
       { label: 'Pricing', href: '/pricing' },
       { label: 'Coming Soon', href: '/products/coming-soon' },
-    ],
+    ]
   },
   {
     label: 'Solutions',
@@ -31,7 +31,7 @@ export const navigation: NavigationItem[] = [
       { label: 'Sporting Events & Tournaments', href: '/solutions/sporting-events-tournaments' },
       { label: 'Themed & Theatrical Entertainment', href: '/solutions/themed-theatrical-entertainment' },
       { label: 'Trade Shows & Conferences', href: '/solutions/trade-shows-conferences' },
-    ],
+    ]
   },
   {
     label: 'Resources',
@@ -42,7 +42,7 @@ export const navigation: NavigationItem[] = [
       { label: 'Documentation', href: '/resources/documentation' },
       { label: 'Guides', href: '/resources/guides' },
       { label: 'Whitepapers', href: '/resources/whitepapers' },
-    ],
+    ]
   },
   {
     label: 'Community',
@@ -55,7 +55,7 @@ export const navigation: NavigationItem[] = [
       { label: 'Impact', href: '/community/impact' },
       { label: 'Opportunities', href: '/community/opportunities' },
       { label: 'Partners', href: '/community/partners' },
-    ],
+    ]
   },
   {
     label: 'Company',
@@ -65,6 +65,6 @@ export const navigation: NavigationItem[] = [
       { label: 'Team', href: '/company/team' },
       { label: 'Press', href: '/company/press' },
       { label: 'Careers', href: '/company/careers' },
-    ],
+    ]
   },
 ];

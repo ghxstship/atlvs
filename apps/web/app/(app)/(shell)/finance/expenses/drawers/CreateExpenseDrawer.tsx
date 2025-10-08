@@ -1,24 +1,11 @@
 'use client';
 
-import { Receipt, Upload, X, Plus } from "lucide-react";
+import { Badge, Button, Card, Drawer, Input, Label, Plus, Receipt, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea, Upload, X } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 // import { z } from 'zod';
-import {
- Drawer,
- Button,
- UnifiedInput,
- Select,
- SelectContent,
- SelectItem,
- SelectTrigger,
- SelectValue,
- Textarea,
- Label,
- Badge,
- Card
-} from '@ghxstship/ui';
+import { Badge, Button, Card, Drawer, Input, Label, Select } from '@ghxstship/ui';
 import { ExpensesService } from '../lib/expenses-service';
 import type { ExpenseDrawerProps, CreateExpenseData } from '../types';
 
@@ -33,7 +20,7 @@ const createExpenseSchema = z.object({
  project_id: z.string().optional(),
  vendor: z.string().optional(),
  tags: z.array(z.string()).optional(),
- notes: z.string().optional(),
+ notes: z.string().optional()
 });
 
 type CreateExpenseFormData = z.infer<typeof createExpenseSchema>;
@@ -92,10 +79,10 @@ export default function CreateExpenseDrawer({
  project_id: expense.project_id || '',
  vendor: expense.vendor || '',
  tags: expense.tags || [],
- notes: expense.notes || '',
+ notes: expense.notes || ''
  } : {
  currency: 'USD',
- tags: [],
+ tags: []
  }
  });
 
@@ -108,7 +95,7 @@ export default function CreateExpenseDrawer({
  const expenseData: CreateExpenseData = {
  ...data,
  amount: Number(data.amount),
- tags: watchedTags,
+ tags: watchedTags
  };
 
  let result;
@@ -163,7 +150,7 @@ export default function CreateExpenseDrawer({
  <div className="stack-md">
  <div>
  <Label htmlFor="title">Expense Title *</Label>
- <UnifiedInput
+ <Input
  
  {...register('title')}
  placeholder="Enter expense title"
@@ -173,7 +160,7 @@ export default function CreateExpenseDrawer({
 
  <div>
  <Label htmlFor="description">Description</Label>
- <Textarea
+ <textarea
  
  {...register('description')}
  placeholder="Enter expense description"
@@ -185,7 +172,7 @@ export default function CreateExpenseDrawer({
  <div className="grid grid-cols-2 gap-md">
  <div>
  <Label htmlFor="amount">Amount *</Label>
- <UnifiedInput
+ <Input
  
  type="number"
  step="0.01"
@@ -248,7 +235,7 @@ export default function CreateExpenseDrawer({
  <div className="stack-md">
  <div>
  <Label htmlFor="vendor">Vendor/Supplier</Label>
- <UnifiedInput
+ <Input
  
  {...register('vendor')}
  placeholder="Enter vendor name"
@@ -258,7 +245,7 @@ export default function CreateExpenseDrawer({
 
  <div>
  <Label htmlFor="due_date">Due Date</Label>
- <UnifiedInput
+ <Input
  
  type="date"
  {...register('due_date')}
@@ -268,7 +255,7 @@ export default function CreateExpenseDrawer({
 
  <div>
  <Label htmlFor="receipt_url">Receipt URL</Label>
- <UnifiedInput
+ <Input
  
  type="url"
  {...register('receipt_url')}
@@ -279,7 +266,7 @@ export default function CreateExpenseDrawer({
 
  <div>
  <Label htmlFor="project_id">Project ID</Label>
- <UnifiedInput
+ <Input
  
  {...register('project_id')}
  placeholder="Enter project ID (optional)"
@@ -292,14 +279,14 @@ export default function CreateExpenseDrawer({
  <Label>Tags</Label>
  {mode !== 'view' && (
  <div className="flex gap-sm mb-sm">
- <UnifiedInput
+ <Input
  value={tagInput}
  onChange={(e) => setTagInput(e.target.value)}
  onKeyPress={handleKeyPress}
  placeholder="Add a tag"
  className="flex-1"
  />
- <Button type="button" onClick={addTag} variant="outline" size="sm">
+ <Button type="button" onClick={addTag} variant="secondary" size="sm">
  <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
@@ -325,7 +312,7 @@ export default function CreateExpenseDrawer({
 
  <div>
  <Label htmlFor="notes">Notes</Label>
- <Textarea
+ <textarea
  
  {...register('notes')}
  placeholder="Additional notes or comments"
@@ -339,7 +326,7 @@ export default function CreateExpenseDrawer({
  {/* Actions */}
  {mode !== 'view' && (
  <div className="flex justify-end gap-sm pt-md border-t">
- <Button type="button" variant="outline" onClick={onCancel}>
+ <Button type="button" variant="secondary" onClick={onCancel}>
  Cancel
  </Button>
  <Button type="submit" disabled={loading}>

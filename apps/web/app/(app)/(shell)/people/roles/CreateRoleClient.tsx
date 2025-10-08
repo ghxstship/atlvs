@@ -1,4 +1,5 @@
 'use client';
+import { Button, Drawer, Input } from '@ghxstship/ui';
 
 
 import { useState } from 'react';
@@ -18,7 +19,7 @@ const roleSchema = z.object({
   responsibilities: z.string().optional(),
   requirements: z.string().optional(),
   salaryRange: z.string().optional(),
-  isActive: z.boolean().default(true),
+  isActive: z.boolean().default(true)
 });
 
 type RoleFormData = z.infer<typeof roleSchema>;
@@ -45,7 +46,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
     mode: 'onChange',
     defaultValues: {
       level: 'mid',
-      isActive: true,
+      isActive: true
     }
   });
 
@@ -61,9 +62,9 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
@@ -79,7 +80,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
         name: data.name,
         department: data.department,
         level: data.level,
-        organization_id: orgId,
+        organization_id: orgId
       });
 
       // Log activity
@@ -92,8 +93,8 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
         details: {
           name: data.name,
           department: data.department,
-          level: data.level,
-        },
+          level: data.level
+        }
       });
 
       // Reset form and close drawer
@@ -105,7 +106,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
       console.error('Error creating role:', error);
       posthog?.capture('people_role_creation_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -175,7 +176,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
               <label className="block text-body-sm form-label mb-sm">
                 Role Name *
               </label>
-              <UnifiedInput                 {...register('name')}
+              <Input                 {...register('name')}
                 placeholder="e.g., Production Manager, Lighting Designer"
                 error={errors.name?.message}
               />
@@ -186,7 +187,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
                 <label className="block text-body-sm form-label mb-sm">
                   Department
                 </label>
-                <UnifiedInput                   {...register('department')}
+                <Input                   {...register('department')}
                   placeholder="e.g., Production, Technical, Creative"
                 />
               </div>
@@ -215,7 +216,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
               <label className="block text-body-sm form-label mb-sm">
                 Description
               </label>
-              <Textarea
+              <textarea
                 {...register('description')}
                 placeholder="Brief overview of the role"
                 rows={3}
@@ -226,7 +227,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
               <label className="block text-body-sm form-label mb-sm">
                 Key Responsibilities
               </label>
-              <Textarea
+              <textarea
                 {...register('responsibilities')}
                 placeholder="Main duties and responsibilities for this role"
                 rows={4}
@@ -237,7 +238,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
               <label className="block text-body-sm form-label mb-sm">
                 Requirements
               </label>
-              <Textarea
+              <textarea
                 {...register('requirements')}
                 placeholder="Skills, experience, and qualifications required"
                 rows={3}
@@ -248,7 +249,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
               <label className="block text-body-sm form-label mb-sm">
                 Salary Range
               </label>
-              <UnifiedInput                 {...register('salaryRange')}
+              <Input                 {...register('salaryRange')}
                 placeholder="e.g., $50,000 - $70,000 annually"
               />
             </div>

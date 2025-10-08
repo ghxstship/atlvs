@@ -28,7 +28,7 @@ const CreateRoleSchema = z.object({
     benefits: z.array(z.string()).optional()
   }).optional(),
   isActive: z.boolean().default(true),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional()
 });
 
 const UpdateRoleSchema = CreateRoleSchema.partial();
@@ -39,7 +39,7 @@ const AssignRoleSchema = z.object({
   startDate: z.string(),
   endDate: z.string().optional(),
   isPrimary: z.boolean().default(false),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 async function getAuthenticatedUser() {

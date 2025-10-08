@@ -1,11 +1,11 @@
 "use client";
 
 import { Edit, Eye, Trash2, MapPin, Calendar, Users, DollarSign, Clock } from "lucide-react";
-import { useMemo } from "react";
+import { useMemo } from 'react';
 import {
  Badge,
  Button,
- Card,
+ Card
 } from "@ghxstship/ui";
 import type { ProgrammingItinerary, ItinerarySort } from "../types";
 import { STATUS_BADGE, TYPE_BADGE, TRANSPORTATION_TYPE_LABEL } from "../types";
@@ -47,7 +47,7 @@ export default function ProgrammingItinerariesTimelineView({
  onDelete,
  sortConfig,
  onSort,
- users,
+ users
 }: ProgrammingItinerariesTimelineViewProps) {
  
  const timelineGroups = useMemo(() => {
@@ -66,7 +66,7 @@ export default function ProgrammingItinerariesTimelineView({
  date,
  itineraries: items.sort((a, b) => 
  new Date(a.start_date).getTime() - new Date(b.start_date).getTime()
- ),
+ )
  }))
  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
  }, [itineraries]);
@@ -77,14 +77,14 @@ export default function ProgrammingItinerariesTimelineView({
  weekday: "long",
  year: "numeric",
  month: "long",
- day: "numeric",
+ day: "numeric"
  });
  };
 
  const formatTime = (dateString: string) => {
  return new Date(dateString).toLocaleTimeString("en-US", {
  hour: "2-digit",
- minute: "2-digit",
+ minute: "2-digit"
  });
  };
 
@@ -92,7 +92,7 @@ export default function ProgrammingItinerariesTimelineView({
  if (!amount || !currency) return null;
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

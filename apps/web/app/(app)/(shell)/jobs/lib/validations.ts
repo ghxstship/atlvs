@@ -28,7 +28,7 @@ export const CreateJobSchema = z.object({
   skills_required: z.array(z.string()).optional(),
   experience_level: z.enum(['entry', 'mid', 'senior', 'expert']).optional(),
   assigned_to: z.string().uuid().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional()
 });
 
 export const UpdateJobSchema = z.object({
@@ -52,7 +52,7 @@ export const UpdateJobSchema = z.object({
   skills_required: z.array(z.string()).optional(),
   experience_level: z.enum(['entry', 'mid', 'senior', 'expert']).optional(),
   assigned_to: z.string().uuid().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional()
 });
 
 // ============================================================================
@@ -64,7 +64,7 @@ export const CreateAssignmentSchema = z.object({
   assignee_user_id: z.string().uuid('Valid assignee ID is required'),
   role: z.string().max(100, 'Role must be less than 100 characters').optional(),
   status: z.enum(['pending', 'accepted', 'declined', 'in-progress', 'completed']).default('pending'),
-  notes: z.string().max(1000, 'Notes must be less than 1000 characters').optional(),
+  notes: z.string().max(1000, 'Notes must be less than 1000 characters').optional()
 });
 
 export const UpdateAssignmentSchema = z.object({
@@ -72,7 +72,7 @@ export const UpdateAssignmentSchema = z.object({
   assignee_user_id: z.string().uuid('Valid assignee ID is required').optional(),
   role: z.string().max(100, 'Role must be less than 100 characters').optional(),
   status: z.enum(['pending', 'accepted', 'declined', 'in-progress', 'completed']).optional(),
-  notes: z.string().max(1000, 'Notes must be less than 1000 characters').optional(),
+  notes: z.string().max(1000, 'Notes must be less than 1000 characters').optional()
 });
 
 // ============================================================================
@@ -89,7 +89,7 @@ export const CreateOpportunitySchema = z.object({
   stage: z.string().optional(),
   probability: z.number().min(0).max(100, 'Probability must be between 0 and 100').optional(),
   opens_at: z.string().datetime().optional(),
-  closes_at: z.string().datetime().optional(),
+  closes_at: z.string().datetime().optional()
 });
 
 export const UpdateOpportunitySchema = z.object({
@@ -102,7 +102,7 @@ export const UpdateOpportunitySchema = z.object({
   stage: z.string().optional(),
   probability: z.number().min(0).max(100, 'Probability must be between 0 and 100').optional(),
   opens_at: z.string().datetime().optional(),
-  closes_at: z.string().datetime().optional(),
+  closes_at: z.string().datetime().optional()
 });
 
 // ============================================================================
@@ -115,7 +115,7 @@ export const CreateBidSchema = z.object({
   amount: z.number().positive('Bid amount must be positive'),
   currency: z.string().default('USD'),
   proposed_timeline: z.string().max(500, 'Timeline must be less than 500 characters').optional(),
-  cover_letter: z.string().max(2000, 'Cover letter must be less than 2000 characters').optional(),
+  cover_letter: z.string().max(2000, 'Cover letter must be less than 2000 characters').optional()
 });
 
 export const UpdateBidSchema = z.object({
@@ -123,7 +123,7 @@ export const UpdateBidSchema = z.object({
   currency: z.string().optional(),
   status: z.enum(['submitted', 'under-review', 'accepted', 'rejected', 'withdrawn']).optional(),
   proposed_timeline: z.string().max(500, 'Timeline must be less than 500 characters').optional(),
-  cover_letter: z.string().max(2000, 'Cover letter must be less than 2000 characters').optional(),
+  cover_letter: z.string().max(2000, 'Cover letter must be less than 2000 characters').optional()
 });
 
 // ============================================================================
@@ -142,7 +142,7 @@ export const CreateContractSchema = z.object({
   currency: z.string().default('USD'),
   payment_terms: z.string().max(1000, 'Payment terms must be less than 1000 characters').optional(),
   deliverables: z.array(z.string()).optional(),
-  terms_and_conditions: z.string().max(5000, 'Terms must be less than 5000 characters').optional(),
+  terms_and_conditions: z.string().max(5000, 'Terms must be less than 5000 characters').optional()
 });
 
 export const UpdateContractSchema = z.object({
@@ -155,7 +155,7 @@ export const UpdateContractSchema = z.object({
   currency: z.string().optional(),
   payment_terms: z.string().max(1000, 'Payment terms must be less than 1000 characters').optional(),
   deliverables: z.array(z.string()).optional(),
-  terms_and_conditions: z.string().max(5000, 'Terms must be less than 5000 characters').optional(),
+  terms_and_conditions: z.string().max(5000, 'Terms must be less than 5000 characters').optional()
 });
 
 // ============================================================================
@@ -173,7 +173,7 @@ export const CreateComplianceSchema = z.object({
   assigned_to: z.string().uuid().optional(),
   reviewer: z.string().uuid().optional(),
   evidence_url: z.string().url('Valid URL is required').optional(),
-  notes: z.string().max(1000, 'Notes must be less than 1000 characters').optional(),
+  notes: z.string().max(1000, 'Notes must be less than 1000 characters').optional()
 });
 
 export const UpdateComplianceSchema = z.object({
@@ -186,7 +186,7 @@ export const UpdateComplianceSchema = z.object({
   assigned_to: z.string().uuid().optional(),
   reviewer: z.string().uuid().optional(),
   evidence_url: z.string().url('Valid URL is required').optional(),
-  notes: z.string().max(1000, 'Notes must be less than 1000 characters').optional(),
+  notes: z.string().max(1000, 'Notes must be less than 1000 characters').optional()
 });
 
 // ============================================================================
@@ -203,7 +203,7 @@ export const CreateRfpSchema = z.object({
   submission_deadline: z.string().datetime().optional(),
   evaluation_criteria: z.string().max(2000, 'Criteria must be less than 2000 characters').optional(),
   requirements: z.string().max(5000, 'Requirements must be less than 5000 characters').optional(),
-  contact_email: z.string().email('Valid email is required').optional(),
+  contact_email: z.string().email('Valid email is required').optional()
 });
 
 export const UpdateRfpSchema = z.object({
@@ -216,7 +216,7 @@ export const UpdateRfpSchema = z.object({
   submission_deadline: z.string().datetime().optional(),
   evaluation_criteria: z.string().max(2000, 'Criteria must be less than 2000 characters').optional(),
   requirements: z.string().max(5000, 'Requirements must be less than 5000 characters').optional(),
-  contact_email: z.string().email('Valid email is required').optional(),
+  contact_email: z.string().email('Valid email is required').optional()
 });
 
 // ============================================================================
@@ -229,7 +229,7 @@ export const JobsFiltersSchema = z.object({
   created_by: z.string().uuid().optional(),
   due_before: z.string().datetime().optional(),
   due_after: z.string().datetime().optional(),
-  search: z.string().optional(),
+  search: z.string().optional()
 });
 
 export const AssignmentsFiltersSchema = z.object({
@@ -238,7 +238,7 @@ export const AssignmentsFiltersSchema = z.object({
   status: z.string().optional(),
   assigned_after: z.string().datetime().optional(),
   assigned_before: z.string().datetime().optional(),
-  search: z.string().optional(),
+  search: z.string().optional()
 });
 
 export const OpportunitiesFiltersSchema = z.object({
@@ -249,7 +249,7 @@ export const OpportunitiesFiltersSchema = z.object({
   budget_max: z.number().positive().optional(),
   closes_after: z.string().datetime().optional(),
   closes_before: z.string().datetime().optional(),
-  search: z.string().optional(),
+  search: z.string().optional()
 });
 
 export const BidsFiltersSchema = z.object({
@@ -260,7 +260,7 @@ export const BidsFiltersSchema = z.object({
   amount_max: z.number().positive().optional(),
   submitted_after: z.string().datetime().optional(),
   submitted_before: z.string().datetime().optional(),
-  search: z.string().optional(),
+  search: z.string().optional()
 });
 
 export const ContractsFiltersSchema = z.object({
@@ -274,7 +274,7 @@ export const ContractsFiltersSchema = z.object({
   start_before: z.string().datetime().optional(),
   end_after: z.string().datetime().optional(),
   end_before: z.string().datetime().optional(),
-  search: z.string().optional(),
+  search: z.string().optional()
 });
 
 export const ComplianceFiltersSchema = z.object({
@@ -286,7 +286,7 @@ export const ComplianceFiltersSchema = z.object({
   reviewer: z.string().uuid().optional(),
   due_after: z.string().datetime().optional(),
   due_before: z.string().datetime().optional(),
-  search: z.string().optional(),
+  search: z.string().optional()
 });
 
 export const RfpsFiltersSchema = z.object({
@@ -296,7 +296,7 @@ export const RfpsFiltersSchema = z.object({
   budget_max: z.number().positive().optional(),
   deadline_after: z.string().datetime().optional(),
   deadline_before: z.string().datetime().optional(),
-  search: z.string().optional(),
+  search: z.string().optional()
 });
 
 // ============================================================================

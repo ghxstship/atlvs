@@ -32,7 +32,7 @@ export const spacing = {
     medium: 'mb-lg',
     large: 'mb-xl',
     xlarge: 'mb-2xl',
-    xxlarge: 'mb-3xl',
+    xxlarge: 'mb-3xl'
   },
   
   marginTop: {
@@ -40,8 +40,8 @@ export const spacing = {
     medium: 'mt-lg',
     large: 'mt-xl',
     xlarge: 'mt-2xl',
-    xxlarge: 'mt-3xl',
-  },
+    xxlarge: 'mt-3xl'
+  }
 } as const;
 
 // Layout composition helpers
@@ -66,5 +66,5 @@ export const layouts = {
   // Content layouts
   textCenter: 'text-center',
   maxWidthContent: 'max-w-3xl mx-auto',
-  maxWidthWide: 'max-w-7xl mx-auto',
+  maxWidthWide: 'max-w-7xl mx-auto'
 } as const;

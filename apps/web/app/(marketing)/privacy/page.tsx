@@ -1,61 +1,53 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Card, CardContent } from '@ghxstship/ui';
-import {
-  Database,
-  FileCheck,
-  Globe,
-  Lock,
-  Mail,
-  Shield,
-  Users,
-} from 'lucide-react';
+import { Database, FileCheck, Globe, Lock, Mail, Shield, Users } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
-  MarketingSectionHeader,
+  MarketingSectionHeader
 } from '../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | GHXSTSHIP',
-  description: 'Learn how GHXSTSHIP collects, uses, and protects your information across ATLVS and OPENDECK.',
+  description: 'Learn how GHXSTSHIP collects, uses, and protects your information across ATLVS and OPENDECK.'
 };
 
 const principles = [
   {
     title: 'Transparency',
     description: 'Clear documentation shows what data we collect, why, and how it supports your experience.',
-    icon: Globe,
+    icon: Globe
   },
   {
     title: 'Security',
     description: 'Data is encrypted in transit and at rest with enterprise-grade controls.',
-    icon: Shield,
+    icon: Shield
   },
   {
     title: 'Control',
     description: 'You can access, export, or delete your data at any time through your account or by contacting us.',
-    icon: Users,
+    icon: Users
   },
 ];
 
 const datapoints = [
   {
     title: 'Account & Profile Information',
-    description: 'Name, email, team role, and authentication credentials required to provision access.',
+    description: 'Name, email, team role, and authentication credentials required to provision access.'
   },
   {
     title: 'Usage Analytics',
-    description: 'Product interactions and device information to optimize workflows and reliability.',
+    description: 'Product interactions and device information to optimize workflows and reliability.'
   },
   {
     title: 'Transactional Data',
-    description: 'Billing records, contracts, and invoices stored for compliance and support.',
+    description: 'Billing records, contracts, and invoices stored for compliance and support.'
   },
   {
     title: 'Support Communications',
-    description: 'Conversations with our teams to improve service quality and troubleshoot issues.',
+    description: 'Conversations with our teams to improve service quality and troubleshoot issues.'
   },
 ];
 
@@ -63,22 +55,22 @@ const securityMeasures = [
   {
     title: 'Encryption Everywhere',
     description: 'TLS 1.2+ for data in transit and AES-256 for data at rest across GHXSTSHIP systems.',
-    icon: Lock,
+    icon: Lock
   },
   {
     title: 'Access Controls',
     description: 'Role-based permissions, SSO, and MFA secure your organization’s environment.',
-    icon: Users,
+    icon: Users
   },
   {
     title: 'Compliance Audits',
     description: 'SOC 2 Type II and GDPR compliance with annual third-party reviews.',
-    icon: FileCheck,
+    icon: FileCheck
   },
   {
     title: 'Incident Response',
     description: '24/7 monitoring, logging, and breach notification protocols aligned with global standards.',
-    icon: Database,
+    icon: Database
   },
 ];
 
@@ -92,7 +84,7 @@ const rights = [
 const lastUpdated = new Date('2024-12-15').toLocaleDateString(undefined, {
   year: 'numeric',
   month: 'long',
-  day: 'numeric',
+  day: 'numeric'
 });
 
 export default function PrivacyPolicyPage() {

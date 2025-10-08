@@ -1,7 +1,7 @@
 "use client";
 
 import { TrendingUp, TrendingDown, Minus, ArrowRight, MoreVertical, Download, RefreshCw, Settings, Eye, Calendar, Clock, AlertTriangle, CheckCircle, XCircle, Info, type LucideIcon } from "lucide-react";
-import { ReactNode, useMemo } from "react";
+import { ReactNode, useMemo } from 'react';
 import { Card, Badge, Button, Progress } from "@ghxstship/ui";
 import { useRouter } from "next/navigation";
 import { format, parseISO, formatDistanceToNow } from "date-fns";
@@ -105,13 +105,14 @@ export default function EnterpriseOverview({
  onExport,
  onSettings,
  loading = false,
- emptyState,
+ emptyState
 }: EnterpriseOverviewProps) {
  const router = useRouter();
 
  // Calculate total for status breakdown
  const statusTotal = useMemo(() => {
  return statusBreakdown.reduce((sum, item) => sum + item.count, 0);
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [statusBreakdown]);
 
  // Get trend icon

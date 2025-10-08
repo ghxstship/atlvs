@@ -1,11 +1,9 @@
 'use client';
 
-import { useState } from 'react'
-import { Button } from '@ghxstship/ui'
-import { Card } from '@ghxstship/ui'
-import { Badge } from '@ghxstship/ui'
-import { Users, Crown, Shield, Settings, Edit, Eye, Loader2, CheckCircle, XCircle, AlertCircle } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
+import { useState } from 'react';
+import { Badge, Button, Card } from '@ghxstship/ui';
+import { AlertCircle, CheckCircle, Crown, Edit, Eye, Loader2, Settings, Shield, Users, XCircle } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
 
 interface DemoUser {
   id: string

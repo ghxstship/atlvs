@@ -4,12 +4,12 @@ import { z } from 'zod';
 
 // Validation schemas
 const CreateTOTPSchema = z.object({
-  name: z.string().min(1).max(100),
+  name: z.string().min(1).max(100)
 });
 
 const VerifyTOTPSchema = z.object({
   factorId: z.string().uuid(),
-  code: z.string().length(6).regex(/^\d{6}$/),
+  code: z.string().length(6).regex(/^\d{6}$/)
 });
 
 const CreateWebAuthnSchema = z.object({
@@ -19,10 +19,10 @@ const CreateWebAuthnSchema = z.object({
     rawId: z.string(),
     response: z.object({
       clientDataJSON: z.string(),
-      attestationObject: z.string(),
+      attestationObject: z.string()
     }),
-    type: z.literal('public-key'),
-  }),
+    type: z.literal('public-key')
+  })
 });
 
 // POST /api/auth/mfa/totp/setup - Generate TOTP setup
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
         return cookie ? { name: cookie.name, value: cookie.value } : undefined;
       },
       set: () => {},
-      remove: () => {},
+      remove: () => {}
     });
 
     const { data: { user } } = await supabase.auth.getUser();
@@ -58,9 +58,9 @@ export async function POST(request: NextRequest) {
         challenge_data: {
           type: 'totp',
           secret: secretData,
-          challenge_id: challengeId,
+          challenge_id: challengeId
         },
-        expires_at: expiresAt.toISOString(),
+        expires_at: expiresAt.toISOString()
       });
 
     if (challengeError) throw challengeError;
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
       challengeId,
       secret: secretData,
       qrUrl,
-      expiresAt: expiresAt.toISOString(),
+      expiresAt: expiresAt.toISOString()
     });
 
   } catch (error) {
@@ -106,7 +106,7 @@ export async function PUT(request: NextRequest) {
         return cookie ? { name: cookie.name, value: cookie.value } : undefined;
       },
       set: () => {},
-      remove: () => {},
+      remove: () => {}
     });
 
     const { data: { user } } = await supabase.auth.getUser();
@@ -170,7 +170,7 @@ export async function PUT(request: NextRequest) {
         p_factor_type: 'totp',
         p_name: challengeData.name || 'TOTP Authenticator',
         p_secret: challengeData.secret,
-        p_backup_codes: backupCodes,
+        p_backup_codes: backupCodes
       }
     );
 
@@ -186,7 +186,7 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({
       factorId: newFactorId,
       backupCodes, // Only shown once for security
-      message: 'TOTP factor created successfully',
+      message: 'TOTP factor created successfully'
     });
 
   } catch (error) {

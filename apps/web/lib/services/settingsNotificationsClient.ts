@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const BaseResponseSchema = z
   .object({
-    error: z.string().optional(),
+    error: z.string().optional()
   })
   .passthrough();
 
@@ -28,9 +28,9 @@ async function jsonFetch(url: string, init?: RequestInit) {
     ...init,
     headers: {
       'Content-Type': 'application/json',
-      ...(init?.headers ?? {}),
+      ...(init?.headers ?? {})
     },
-    credentials: 'include',
+    credentials: 'include'
   });
 }
 
@@ -57,7 +57,7 @@ export const NotificationPreferenceSchema = z.object({
   type: NotificationTypeSchema,
   enabled: z.boolean(),
   frequency: NotificationFrequencySchema.optional(),
-  categories: z.array(NotificationCategorySchema).optional(),
+  categories: z.array(NotificationCategorySchema).optional()
 });
 export type NotificationPreference = z.infer<typeof NotificationPreferenceSchema>;
 
@@ -65,7 +65,7 @@ export const QuietHoursSchema = z.object({
   enabled: z.boolean(),
   startTime: z.string(),
   endTime: z.string(),
-  timezone: z.string(),
+  timezone: z.string()
 });
 export type QuietHoursSettings = z.infer<typeof QuietHoursSchema>;
 
@@ -73,13 +73,13 @@ export const NotificationGlobalSettingsSchema = z.object({
   quietHours: QuietHoursSchema.optional(),
   digestEnabled: z.boolean().optional(),
   digestFrequency: z.enum(['daily', 'weekly', 'monthly']).optional(),
-  digestTime: z.string().optional(),
+  digestTime: z.string().optional()
 });
 export type NotificationGlobalSettings = z.infer<typeof NotificationGlobalSettingsSchema>;
 
 export const NotificationSettingsResponseSchema = z.object({
   preferences: z.array(NotificationPreferenceSchema),
-  globalSettings: NotificationGlobalSettingsSchema,
+  globalSettings: NotificationGlobalSettingsSchema
 });
 export type NotificationSettingsResponse = z.infer<typeof NotificationSettingsResponseSchema>;
 
@@ -92,7 +92,7 @@ export interface UpdateNotificationSettingsInput {
 const UpdateNotificationSettingsInputSchema = z.object({
   userId: z.string().optional(),
   preferences: z.array(NotificationPreferenceSchema).optional(),
-  globalSettings: NotificationGlobalSettingsSchema.partial().optional(),
+  globalSettings: NotificationGlobalSettingsSchema.partial().optional()
 });
 
 export interface TestNotificationInput {
@@ -102,7 +102,7 @@ export interface TestNotificationInput {
 
 const TestNotificationInputSchema = z.object({
   type: NotificationTypeSchema,
-  message: z.string().optional(),
+  message: z.string().optional()
 });
 
 export async function fetchNotificationSettings(userId?: string): Promise<NotificationSettingsResponse> {
@@ -115,7 +115,7 @@ export async function updateNotificationSettings(input: UpdateNotificationSettin
   const payload = UpdateNotificationSettingsInputSchema.parse(input);
   const response = await jsonFetch('/api/v1/settings/notifications', {
     method: 'PUT',
-    body: JSON.stringify(payload),
+    body: JSON.stringify(payload)
   });
   return handleResponse(response);
 }
@@ -124,7 +124,7 @@ export async function sendTestNotification(input: TestNotificationInput): Promis
   const payload = TestNotificationInputSchema.parse(input);
   const response = await jsonFetch('/api/v1/settings/notifications', {
     method: 'POST',
-    body: JSON.stringify({ action: 'test_notification', ...payload }),
+    body: JSON.stringify({ action: 'test_notification', ...payload })
   });
   return handleResponse(response);
 }
@@ -132,7 +132,7 @@ export async function sendTestNotification(input: TestNotificationInput): Promis
 export async function markAllNotificationsRead(): Promise<{ success: true; message: string; }> {
   const response = await jsonFetch('/api/v1/settings/notifications', {
     method: 'POST',
-    body: JSON.stringify({ action: 'mark_all_read' }),
+    body: JSON.stringify({ action: 'mark_all_read' })
   });
   return handleResponse(response);
 }
@@ -140,7 +140,7 @@ export async function markAllNotificationsRead(): Promise<{ success: true; messa
 export async function resetNotificationPreferences(userId?: string): Promise<{ success: true; message: string; }> {
   const response = await jsonFetch('/api/v1/settings/notifications', {
     method: 'DELETE',
-    body: JSON.stringify({ action: 'reset_preferences', userId }),
+    body: JSON.stringify({ action: 'reset_preferences', userId })
   });
   return handleResponse(response);
 }
@@ -148,7 +148,7 @@ export async function resetNotificationPreferences(userId?: string): Promise<{ s
 export async function deleteNotification(notificationId: string): Promise<{ success: true; message: string; }> {
   const response = await jsonFetch('/api/v1/settings/notifications', {
     method: 'DELETE',
-    body: JSON.stringify({ action: 'delete_notification', notificationId }),
+    body: JSON.stringify({ action: 'delete_notification', notificationId })
   });
   return handleResponse(response);
 }

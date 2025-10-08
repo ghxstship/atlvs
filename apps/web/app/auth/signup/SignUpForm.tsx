@@ -30,9 +30,9 @@ export function SignUpForm() {
         options: {
           emailRedirectTo: redirectTo,
           data: {
-            full_name: fullName,
-          },
-        },
+            full_name: fullName
+          }
+        }
       });
       if (error) throw error;
       

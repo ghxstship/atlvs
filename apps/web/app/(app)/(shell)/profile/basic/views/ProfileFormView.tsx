@@ -14,7 +14,7 @@ import {
  Card, 
  Avatar, 
  Badge,
- Skeleton,
+ Skeleton
 } from '@ghxstship/ui';
 import type { UserProfile, FieldConfig } from '../types';
 import { PROFILE_FIELD_CONFIG } from '../types';
@@ -36,7 +36,7 @@ export default function ProfileFormView({
  onSave,
  onFieldVisibilityChange,
  visibleFields = new Set(PROFILE_FIELD_CONFIG.map(f => f.key)),
- editableFields = new Set(PROFILE_FIELD_CONFIG.map(f => f.key)),
+ editableFields = new Set(PROFILE_FIELD_CONFIG.map(f => f.key))
 }: ProfileFormViewProps) {
  const [formData, setFormData] = useState<Partial<UserProfile>(profile || {});
  const [newTag, setNewTag] = useState('');

@@ -4,6 +4,7 @@
  */
 
 'use client';
+import { DataGrid } from '@ghxstship/ui';
 
 import React from 'react';
 import { DataGrid } from '@ghxstship/ui/components/DataViews/DataGrid';
@@ -27,7 +28,7 @@ export const TableView: React.FC<TableViewProps> = ({
   sortable = true,
   filterable = true,
   paginated = true,
-  compact = false,
+  compact = false
 }) => {
   const {
     data,
@@ -38,7 +39,7 @@ export const TableView: React.FC<TableViewProps> = ({
     handleEdit,
     handleView,
     handleDelete,
-    config,
+    config
   } = useATLVS();
 
   const handleItemAction = (action: string, item: unknown) => {

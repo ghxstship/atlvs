@@ -78,7 +78,7 @@ const listVariants = cva(
         card: 'bg-card border border-border rounded-lg shadow-surface',
       },
       spacing: {
-        none: '[&>*]:py-0',
+        none: '[&>*]:py-none',
         sm: '[&>*]:py-sm',
         md: '[&>*]:py-sm',
         lg: '[&>*]:py-md',
@@ -171,7 +171,7 @@ const modalContentVariants = cva(
         full: 'max-w-[95vw] max-h-[95vh]',
       },
       padding: {
-        none: 'p-0',
+        none: 'p-none',
         sm: 'p-md',
         md: 'p-lg',
         lg: 'p-xl',
@@ -220,12 +220,12 @@ const drawerContentVariants = cva(
       {
         side: ['left', 'right'],
         size: 'sm',
-        class: 'w-container-md',
+        class: 'w-80',
       },
       {
         side: ['left', 'right'],
         size: 'md',
-        class: 'w-container-lg',
+        class: 'w-96',
       },
       {
         side: ['left', 'right'],
@@ -240,12 +240,12 @@ const drawerContentVariants = cva(
       {
         side: ['top', 'bottom'],
         size: 'sm',
-        class: 'h-container-md',
+        class: 'h-80',
       },
       {
         side: ['top', 'bottom'],
         size: 'md',
-        class: 'h-container-lg',
+        class: 'h-96',
       },
       {
         side: ['top', 'bottom'],
@@ -419,7 +419,7 @@ const formFieldVariants = cva(
     variants: {
       variant: {
         default: '',
-        inline: 'flex items-center gap-md space-y-0',
+        inline: 'flex items-center gap-md space-y-none',
       },
     },
     defaultVariants: {

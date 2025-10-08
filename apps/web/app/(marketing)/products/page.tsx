@@ -1,24 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  BarChart3,
-  Briefcase,
-  Calendar,
-  CheckCircle,
-  Globe,
-  Shield,
-  ShoppingBag,
-  Users,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight, BarChart3, Briefcase, Calendar, CheckCircle, Globe, Shield, ShoppingBag, Users, Zap } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -29,8 +18,8 @@ export const metadata: Metadata = {
     title: 'Products - ATLVS & OPENDECK | GHXSTSHIP',
     description:
       'Discover ATLVS production management and OPENDECK marketplace — the complete enterprise platform for creative professionals.',
-    url: 'https://ghxstship.com/products',
-  },
+    url: 'https://ghxstship.com/products'
+  }
 };
 
 const suiteStats = [
@@ -53,22 +42,22 @@ const products = [
       {
         icon: Calendar,
         label: 'Orchestrate Every Timeline',
-        description: 'Drag-and-drop schedules, dependency tracking, and scenario planning across multi-location shoots.',
+        description: 'Drag-and-drop schedules, dependency tracking, and scenario planning across multi-location shoots.'
       },
       {
         icon: Users,
         label: 'Crew Collaboration',
-        description: 'Real-time messaging, file sharing, and call sheets that update across devices instantly.',
+        description: 'Real-time messaging, file sharing, and call sheets that update across devices instantly.'
       },
       {
         icon: BarChart3,
         label: 'Predictive Analytics',
-        description: 'AI assistants highlight risk, forecast burn, and surface opportunities before they derail delivery.',
+        description: 'AI assistants highlight risk, forecast burn, and surface opportunities before they derail delivery.'
       },
       {
         icon: Shield,
         label: 'Enterprise Security',
-        description: 'SOC 2 Type II controls, granular permissions, SSO, and full audit trails for compliance teams.',
+        description: 'SOC 2 Type II controls, granular permissions, SSO, and full audit trails for compliance teams.'
       },
     ],
     benefits: [
@@ -84,7 +73,7 @@ const products = [
       { label: 'Satisfaction', value: '98%' },
     ],
     href: '/products/atlvs',
-    cta: 'Explore ATLVS',
+    cta: 'Explore ATLVS'
   },
   {
     id: 'opendeck',
@@ -98,22 +87,22 @@ const products = [
       {
         icon: ShoppingBag,
         label: 'Verified Talent Marketplace',
-        description: 'Curated roster of crew, vendors, and specialists with ratings, reels, and availability in real time.',
+        description: 'Curated roster of crew, vendors, and specialists with ratings, reels, and availability in real time.'
       },
       {
         icon: Briefcase,
         label: 'Resource Library',
-        description: 'Templates, assets, and contracts ready to deploy across campaigns and productions.',
+        description: 'Templates, assets, and contracts ready to deploy across campaigns and productions.'
       },
       {
         icon: Globe,
         label: 'Global Coverage',
-        description: 'Source teams across 50+ countries with localized compliance and payments support.',
+        description: 'Source teams across 50+ countries with localized compliance and payments support.'
       },
       {
         icon: Zap,
         label: 'Instant Matching',
-        description: 'AI recommendations pair opportunities with best-fit talent, speeding hiring cycles by 90%.',
+        description: 'AI recommendations pair opportunities with best-fit talent, speeding hiring cycles by 90%.'
       },
     ],
     benefits: [
@@ -129,7 +118,7 @@ const products = [
       { label: 'Success Rate', value: '94%' },
     ],
     href: '/products/opendeck',
-    cta: 'Explore OPENDECK',
+    cta: 'Explore OPENDECK'
   },
 ];
 
@@ -137,17 +126,17 @@ const suiteHighlights = [
   {
     title: 'Unified Intelligence',
     description: 'Analytics and reporting across ATLVS and OPENDECK surface cross-platform KPIs in one command center.',
-    icon: BarChart3,
+    icon: BarChart3
   },
   {
     title: 'Enterprise Rollout',
     description: 'Implementation playbooks, training, and success programs ensure every region launches with confidence.',
-    icon: Globe,
+    icon: Globe
   },
   {
     title: 'E2E Automation',
     description: 'Trigger hiring workflows from production milestones, sync budgets, and automate notifications in one ecosystem.',
-    icon: Zap,
+    icon: Zap
   },
 ];
 

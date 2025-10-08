@@ -1,7 +1,7 @@
 'use client';
 
 
-import { Card, CardContent  } from '@ghxstship/ui';
+import { Card, CardBody, CardContent } from '@ghxstship/ui';
 import { LucideIcon } from 'lucide-react';
 // import { typography } from '../../../../(marketing)/lib/typography';
 import { cn } from '../lib/utils';
@@ -28,7 +28,7 @@ export function FeatureCard({
   const variants = {
     default: '',
     hover: 'group hover:shadow-floating transition-all duration-300 hover:-translate-y-1',
-    compact: '',
+    compact: ''
   };
 
   return (
@@ -135,7 +135,8 @@ export function TestimonialCard({
         
         <div className="flex items-center gap-xl">
           {avatar && (
-            <img
+            // eslint-disable-next-line @next/next/no-img-element
+            <img 
               src={avatar}
               alt={author}
               className="w-icon-2xl h-icon-2xl rounded-full object-cover"

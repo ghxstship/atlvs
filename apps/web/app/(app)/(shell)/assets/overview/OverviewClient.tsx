@@ -1,30 +1,22 @@
 'use client'
 
-import { useMemo } from 'react'
-import { useRouter } from 'next/navigation'
+import { useMemo } from 'react';
+import { useRouter } from 'next/navigation';
+import { Activity, AlertTriangle, Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, DollarSign, Grid, MapPin, Package, Plus, TrendingUp, UserCheck, Wrench } from 'lucide-react';
 import {
+  Badge,
+  Button,
   Card,
+  CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
-  Button,
-  Badge,
-} from '@ghxstship/ui'
-import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
-import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
-import {
-  Package,
-  DollarSign,
-  UserCheck,
-  Wrench,
-  Activity,
-  MapPin,
-  AlertTriangle,
-  Plus,
-} from 'lucide-react'
+  Skeleton
+} from '@ghxstship/ui';
+import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton';
+import { Grid, HStack, Stack } from '@ghxstship/ui/components/layouts';
 
-import { useAssetsOverview } from '../hooks/useAssetsOverview'
+import { useAssetsOverview } from '../hooks/useAssetsOverview';
 
 const quickActions = [
   { id: 'add', icon: Package, label: 'Add Asset', href: '/assets/inventory/create' },
@@ -37,7 +29,7 @@ const activityIconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGE
   asset: Package,
   asset_assignment: UserCheck,
   asset_maintenance: Wrench,
-  asset_tracking: MapPin,
+  asset_tracking: MapPin
 }
 
 const statusToneMap: Record<string, { bg: string; text: string }> = {
@@ -46,7 +38,7 @@ const statusToneMap: Record<string, { bg: string; text: string }> = {
   under_maintenance: { bg: 'bg-warning/10', text: 'text-warning' },
   maintenance: { bg: 'bg-warning/10', text: 'text-warning' },
   damaged: { bg: 'bg-destructive/10', text: 'text-destructive' },
-  missing: { bg: 'bg-muted/20', text: 'text-muted-foreground' },
+  missing: { bg: 'bg-muted/20', text: 'text-muted-foreground' }
 }
 
 export default function OverviewClient({ orgId }: { orgId: string }) {
@@ -63,28 +55,28 @@ export default function OverviewClient({ orgId }: { orgId: string }) {
         label: 'Total Assets',
         value: stats?.totalAssets ?? 0,
         icon: Package,
-        tone: 'accent',
+        tone: 'accent'
       },
       {
         id: 'totalValue',
         label: 'Total Value',
         value: stats ? formatCurrency(stats.totalValue) : '$0.00',
         icon: DollarSign,
-        tone: 'success',
+        tone: 'success'
       },
       {
         id: 'activeAssignments',
         label: 'Active Assignments',
         value: stats?.activeAssignments ?? 0,
         icon: UserCheck,
-        tone: 'accent',
+        tone: 'accent'
       },
       {
         id: 'pendingMaintenance',
         label: 'Pending Maintenance',
         value: stats?.pendingMaintenance ?? 0,
         icon: Wrench,
-        tone: 'warning',
+        tone: 'warning'
       },
     ],
     [stats],
@@ -97,21 +89,21 @@ export default function OverviewClient({ orgId }: { orgId: string }) {
         label: 'Available',
         count: stats?.availableAssets ?? 0,
         total: stats?.totalAssets ?? 0,
-        tone: statusToneMap.available,
+        tone: statusToneMap.available
       },
       {
         id: 'in_use',
         label: 'In Use',
         count: stats?.inUseAssets ?? 0,
         total: stats?.totalAssets ?? 0,
-        tone: statusToneMap.in_use,
+        tone: statusToneMap.in_use
       },
       {
         id: 'maintenance',
         label: 'Under Maintenance',
         count: stats?.maintenanceAssets ?? 0,
         total: stats?.totalAssets ?? 0,
-        tone: statusToneMap.under_maintenance,
+        tone: statusToneMap.under_maintenance
       },
     ],
     [stats],
@@ -171,7 +163,7 @@ export default function OverviewClient({ orgId }: { orgId: string }) {
         {metricCards.map((metric) => {
           const tone = statusToneMap[metric.tone as keyof typeof statusToneMap] ?? {
             bg: 'bg-muted/20',
-            text: 'text-muted-foreground',
+            text: 'text-muted-foreground'
           }
           return (
             <Card key={metric.id}>
@@ -210,7 +202,7 @@ export default function OverviewClient({ orgId }: { orgId: string }) {
                     </HStack>
                     <HStack spacing="sm" align="center">
                       <span className="text-sm text-muted-foreground">{status.count}</span>
-                      <Badge variant="outline" className={`${tone.bg} ${tone.text}`}>
+                      <Badge variant="secondary" className={`${tone.bg} ${tone.text}`}>
                         {percentage}%
                       </Badge>
                     </HStack>
@@ -231,7 +223,7 @@ export default function OverviewClient({ orgId }: { orgId: string }) {
               {quickActions.map((action) => (
                 <Button
                   key={action.id}
-                  variant="outline"
+                  variant="secondary"
                   className="h-auto flex flex-col items-center gap-sm p-md"
                   onClick={() => router.push(action.href)}
                 >
@@ -282,7 +274,7 @@ export default function OverviewClient({ orgId }: { orgId: string }) {
                       </Stack>
                     </HStack>
                     {entry.metadata?.status && (
-                      <Badge variant="outline" className={`capitalize ${tone}`}>
+                      <Badge variant="secondary" className={`capitalize ${tone}`}>
                         {String(entry.metadata.status).replace(/_/g, ' ')}
                       </Badge>
                     )}
@@ -306,7 +298,7 @@ export default function OverviewClient({ orgId }: { orgId: string }) {
                   {stats.pendingMaintenance === 1 ? ' requires' : 's require'} servicing in the next 30 days.
                 </span>
               </Stack>
-              <Button variant="outline" className="ml-auto" onClick={() => router.push('/assets/maintenance')}>
+              <Button variant="secondary" className="ml-auto" onClick={() => router.push('/assets/maintenance')}>
                 View Maintenance
               </Button>
             </HStack>
@@ -363,19 +355,19 @@ export default function OverviewClient({ orgId }: { orgId: string }) {
         <Card className="p-lg">
           <h3 className="text-body text-heading-4 mb-md">Quick Actions</h3>
           <div className="grid grid-cols-2 gap-sm">
-            <Button variant="outline" className="h-auto p-md flex flex-col items-center gap-sm">
+            <Button variant="secondary" className="h-auto p-md flex flex-col items-center gap-sm">
               <Package className="h-icon-md w-icon-md" />
               <span className="text-body-sm">Add Asset</span>
             </Button>
-            <Button variant="outline" className="h-auto p-md flex flex-col items-center gap-sm">
+            <Button variant="secondary" className="h-auto p-md flex flex-col items-center gap-sm">
               <TrendingUp className="h-icon-md w-icon-md" />
               <span className="text-body-sm">Create Advance</span>
             </Button>
-            <Button variant="outline" className="h-auto p-md flex flex-col items-center gap-sm">
+            <Button variant="secondary" className="h-auto p-md flex flex-col items-center gap-sm">
               <UserCheck className="h-icon-md w-icon-md" />
               <span className="text-body-sm">New Assignment</span>
             </Button>
-            <Button variant="outline" className="h-auto p-md flex flex-col items-center gap-sm">
+            <Button variant="secondary" className="h-auto p-md flex flex-col items-center gap-sm">
               <Wrench className="h-icon-md w-icon-md" />
               <span className="text-body-sm">Schedule Maintenance</span>
             </Button>

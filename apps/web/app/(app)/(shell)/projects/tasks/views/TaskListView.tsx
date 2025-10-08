@@ -1,8 +1,8 @@
 "use client";
 
-import { MoreVertical, Clock, Users, Calendar, Tag, AlertCircle, CheckCircle, Eye, Edit, Copy, Trash2, ArrowUpDown, ChevronUp, ChevronDown, Briefcase, ListTodo } from "lucide-react";
+import { MoreVertical, Clock, Users, Calendar, Tag, AlertCircle, CheckCircle, Eye, Edit, Copy, Trash2, ArrowUpDown, ChevronUp, ChevronDown, Briefcase, ListTodo } from 'lucide-react';
 import Image from "next/image";
-import { useState, useMemo } from "react";
+import { useState, useMemo } from 'react';
 import { Badge, Button, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ghxstship/ui";
 import { format, parseISO, differenceInDays } from "date-fns";
 
@@ -56,7 +56,7 @@ export default function TaskListView({
  onViewTask,
  onEditTask,
  onDuplicateTask,
- onDeleteTask,
+ onDeleteTask
 }: TaskListViewProps) {
  const [sortField, setSortField] = useState<SortField>("priority");
  const [sortDirection, setSortDirection] = useState<SortDirection>("asc");

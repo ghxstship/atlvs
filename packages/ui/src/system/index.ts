@@ -142,11 +142,11 @@ export const GHXSTSHIP_DESIGN_SYSTEM = {
       mono: 'Share Tech Mono',
     },
     
-    // Brand colors using design tokens
+    // Brand colors
     brand: {
-      primary: 'hsl(var(--color-primary))',
-      secondary: 'hsl(var(--color-muted))',
-      accent: 'hsl(var(--color-accent))',
+      primary: 'var(--primary)',
+      secondary: 'var(--primary)',
+      accent: 'var(--warning)',
     },
     
     // Animation preferences
@@ -390,7 +390,7 @@ export const devTools = {
   // Debug component props
   debugProps: (componentName: string, props: any) => {
     if (process.env.NODE_ENV === 'development') {
-      console.group(`🔍 ${componentName} Props`);
+      console.group(`[DEBUG] ${componentName} Props`);
       console.table(props);
       console.groupEnd();
     }
@@ -424,7 +424,7 @@ export const devTools = {
     renderFn();
     const endTime = performance.now();
     
-    console.log(`⚡ ${componentName} rendered in ${(endTime - startTime).toFixed(2)}ms`);
+    console.log(`[PERF] ${componentName} rendered in ${(endTime - startTime).toFixed(2)}ms`);
   },
 };
 

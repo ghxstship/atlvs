@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { DemoUserSwitcher } from '../_components/DemoUserSwitcher';
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
@@ -26,18 +27,18 @@ export default async function DemoPage() {
               Currently signed in. You can now navigate to the application.
             </p>
             <div className="flex gap-md justify-center">
-              <a 
+              <Link 
                 href="/dashboard" 
                 className="inline-flex items-center px-md py-sm bg-accent color-accent-foreground rounded-md hover:bg-accent/90 transition-colors"
               >
                 Go to Dashboard
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/projects" 
                 className="inline-flex items-center px-md py-sm border border-border rounded-md hover:bg-secondary transition-colors"
               >
                 View Projects
-              </a>
+              </Link>
             </div>
           </div>
         )}

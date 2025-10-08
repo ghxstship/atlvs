@@ -3,7 +3,7 @@
 import { Badge, Button, Checkbox } from "@ghxstship/ui";
 import type { ProgrammingEvent } from "../types";
 import { STATUS_BADGE, EVENT_TYPE_LABEL } from "../ProgrammingEventsClient";
-import { Calendar, Check, Edit, Eye, Trash2, Users } from 'lucide-react';
+import { Calendar, Check, Edit, Eye, Trash2, Users, MapPin, Clock, Pencil } from 'lucide-react';
 
 type ProgrammingEventsListViewProps = {
  events: ProgrammingEvent[];
@@ -20,7 +20,7 @@ export default function ProgrammingEventsListView({
  onSelect,
  onView,
  onEdit,
- onDelete,
+ onDelete
 }: ProgrammingEventsListViewProps) {
  const toggleAll = () => {
  if (selected.size === events.length) {

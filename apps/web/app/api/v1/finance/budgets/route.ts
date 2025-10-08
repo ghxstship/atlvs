@@ -17,7 +17,7 @@ const CreateBudgetSchema = z.object({
   startDate: z.string(),
   endDate: z.string().optional(),
   category: z.string().optional(),
-  status: z.enum(['draft', 'active', 'completed', 'cancelled']).default('draft'),
+  status: z.enum(['draft', 'active', 'completed', 'cancelled']).default('draft')
 });
 
 const UpdateBudgetSchema = CreateBudgetSchema.partial();

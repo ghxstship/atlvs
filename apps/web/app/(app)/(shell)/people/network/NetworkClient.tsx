@@ -1,9 +1,9 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
+import { Card, Button, Input, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Search, Users, Network, MessageCircle, Calendar, ArrowRight } from 'lucide-react';
 
@@ -58,8 +58,10 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadNetworkData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, selectedRelationshipType, selectedStrength]);
 
   const loadNetworkData = async () => {
@@ -218,7 +220,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
             <div className="flex-1">
               <div className="relative">
                 <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
-                <UnifiedInput                   placeholder={t('searchPlaceholder')}
+                <Input                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"

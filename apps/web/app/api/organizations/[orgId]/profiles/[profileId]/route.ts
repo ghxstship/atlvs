@@ -27,7 +27,7 @@ const updateProfileSchema = z.object({
   bio: z.string().optional(),
   linkedin_url: z.string().url().optional(),
   website_url: z.string().url().optional(),
-  status: z.enum(['active', 'inactive', 'pending', 'suspended']).optional(),
+  status: z.enum(['active', 'inactive', 'pending', 'suspended']).optional()
 });
 
 export async function GET(

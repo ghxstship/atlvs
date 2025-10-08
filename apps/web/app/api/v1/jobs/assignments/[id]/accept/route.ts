@@ -9,7 +9,7 @@ export const runtime = 'nodejs';
 const AcceptAssignmentSchema = z.object({
   acceptanceNotes: z.string().optional(),
   agreedToTerms: z.boolean(),
-  availableStartDate: z.string().optional(),
+  availableStartDate: z.string().optional()
 });
 
 async function getAuthenticatedUser() {

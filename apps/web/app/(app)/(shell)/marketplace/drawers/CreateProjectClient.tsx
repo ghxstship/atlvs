@@ -106,7 +106,7 @@ export default function CreateProjectClient({ mode, project, onSuccess, onCancel
  const response = await fetch(url, {
  method,
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify(body),
+ body: JSON.stringify(body)
  });
 
  if (response.ok) {

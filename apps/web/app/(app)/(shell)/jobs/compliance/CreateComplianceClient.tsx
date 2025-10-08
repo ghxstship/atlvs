@@ -6,7 +6,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Plus, Loader2, AlertCircle } from 'lucide-react';
+import { Plus, Loader2, AlertCircle } from 'lucide-react';import { Button, UnifiedInput, Select, Textarea, Drawer } from '@ghxstship/ui';
+import { Button, Select, Textarea, Drawer } from '@ghxstship/ui';
+
 import { usePostHog } from 'posthog-js/react';
 
 const createComplianceSchema = z.object({
@@ -24,7 +26,7 @@ const createComplianceSchema = z.object({
   requirements: z.string().optional(),
   findings: z.string().optional(),
   remediation: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 type CreateComplianceFormData = z.infer<typeof createComplianceSchema>;
@@ -45,7 +47,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
     register,
     handleSubmit,
     reset,
-    formState: { errors, isValid },
+    formState: { errors, isValid }
   } = useForm<CreateComplianceFormData>({
     resolver: zodResolver(createComplianceSchema),
     mode: 'onChange',
@@ -53,8 +55,8 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
       kind: 'safety',
       status: 'pending',
       priority: 'medium',
-      certificationRequired: false,
-    },
+      certificationRequired: false
+    }
   });
 
   const onSubmit = async (data: CreateComplianceFormData) => {
@@ -65,19 +67,19 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
       posthog?.capture('jobs_compliance_create_attempt', {
         organization_id: orgId,
         compliance_kind: data.kind,
-        priority: data.priority,
+        priority: data.priority
       });
 
       const response = await fetch('/api/v1/jobs/compliance', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
         body: JSON.stringify({
           ...data,
-          organization_id: orgId,
-        }),
+          organization_id: orgId
+        })
       });
 
       if (!response.ok) {
@@ -90,7 +92,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
       posthog?.capture('jobs_compliance_create_success', {
         organization_id: orgId,
         compliance_id: result.id,
-        compliance_kind: data.kind,
+        compliance_kind: data.kind
       });
 
       // Log activity
@@ -103,8 +105,8 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
           title: data.title,
           kind: data.kind,
           priority: data.priority,
-          certification_required: data.certificationRequired,
-        },
+          certification_required: data.certificationRequired
+        }
       });
 
       reset();
@@ -116,7 +118,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
       
       posthog?.capture('jobs_compliance_create_error', {
         organization_id: orgId,
-        error: errorMessage,
+        error: errorMessage
       });
     } finally {
       setIsSubmitting(false);

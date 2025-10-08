@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button } from '@ghxstship/ui';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, Badge, Button } from '@ghxstship/ui';
 import { Settings, Shield, Database, Users, Bell, Globe, Key, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Enterprise Settings | Enterprise Dashboard',
-  description: 'Enterprise configuration, integrations, and feature management',
+  description: 'Enterprise configuration, integrations, and feature management'
 };
 
 export default function SettingsPage() {
@@ -48,7 +48,7 @@ export default function SettingsPage() {
               </div>
               <Badge variant="default">Strict</Badge>
             </div>
-            <Button variant="outline" size="sm" className="w-full">
+            <Button variant="secondary" size="sm" className="w-full">
               Configure Security Settings
             </Button>
           </CardContent>
@@ -84,7 +84,7 @@ export default function SettingsPage() {
               </div>
               <Badge variant="secondary">90 days</Badge>
             </div>
-            <Button variant="outline" size="sm" className="w-full">
+            <Button variant="secondary" size="sm" className="w-full">
               Configure Database Settings
             </Button>
           </CardContent>
@@ -118,9 +118,9 @@ export default function SettingsPage() {
                 <p className="font-medium">Guest Access</p>
                 <p className="text-sm text-muted-foreground">Allow external user access</p>
               </div>
-              <Badge variant="destructive">Disabled</Badge>
+              <Badge variant="error">Disabled</Badge>
             </div>
-            <Button variant="outline" size="sm" className="w-full">
+            <Button variant="secondary" size="sm" className="w-full">
               Manage User Settings
             </Button>
           </CardContent>
@@ -156,7 +156,7 @@ export default function SettingsPage() {
               </div>
               <Badge variant="secondary">3 Active</Badge>
             </div>
-            <Button variant="outline" size="sm" className="w-full">
+            <Button variant="secondary" size="sm" className="w-full">
               Configure Notifications
             </Button>
           </CardContent>

@@ -1,36 +1,23 @@
 'use client';
 
 
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { SupabaseClient } from '@supabase/supabase-js'
-import { User } from '@supabase/supabase-js'
-import { createBrowserClient } from '@ghxstship/auth'
+import { User } from '@supabase/supabase-js';
+import { createBrowserClient } from '@ghxstship/auth';
+import { AlertTriangle, ArrowDown, ArrowDownRight, ArrowUp, ArrowUpRight, Badge, Banknote, BarChart3, Button, Calendar, Card, CardContent, CardDescription, CardHeader, CardTitle, Clock, CreditCard, DollarSign, Grid, PieChart, TrendingUp } from 'lucide-react';
 import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
   Badge,
   Button,
-} from '@ghxstship/ui'
-import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
-import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
-import {
-  DollarSign,
-  TrendingUp,
-  Banknote,
-  CreditCard,
-  BarChart3,
-  AlertTriangle,
-  Clock,
-  Calendar,
-  ArrowUp,
-  ArrowDown,
-  ArrowUpRight,
-  ArrowDownRight,
-  PieChart,
-} from 'lucide-react'
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  Skeleton
+} from '@ghxstship/ui';
+import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton';
+import { Grid, HStack, Stack } from '@ghxstship/ui/components/layouts';
 
 interface FinanceOverviewClientProps {
   user: User;
@@ -80,7 +67,7 @@ const toNumber = (value: unknown): number => {
 const formatCurrency = (amount: number, currency = 'USD') =>
   new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency,
+    currency
   }).format(amount)
 
 const formatDate = (dateString: string) =>
@@ -173,7 +160,7 @@ const useFinanceOverview = (supabase: SupabaseClient, orgId: string) => {
           overdueInvoices,
           cashFlow: totalRevenue - totalExpenses,
           accountsBalance,
-          currency: primaryCurrency ?? 'USD',
+          currency: primaryCurrency ?? 'USD'
         }
 
         setSummary(financialSummary)
@@ -190,7 +177,7 @@ const useFinanceOverview = (supabase: SupabaseClient, orgId: string) => {
               spent,
               amount,
               utilization,
-              status: utilization >= 90 ? 'critical' : 'warning',
+              status: utilization >= 90 ? 'critical' : 'warning'
             })
           }
 
@@ -211,7 +198,7 @@ const useFinanceOverview = (supabase: SupabaseClient, orgId: string) => {
             amount: toNumber(tx.amount),
             kind,
             occurredAt: tx.occurred_at as string,
-            accountName: financeAccount?.name ?? 'Unknown Account',
+            accountName: financeAccount?.name ?? 'Unknown Account'
           }
         })
 
@@ -229,8 +216,10 @@ const useFinanceOverview = (supabase: SupabaseClient, orgId: string) => {
     [supabase, orgId],
   )
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadFinanceOverview('initial')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadFinanceOverview])
 
   return {
@@ -239,7 +228,7 @@ const useFinanceOverview = (supabase: SupabaseClient, orgId: string) => {
     summary,
     recentTransactions,
     budgetAlerts,
-    refresh: () => loadFinanceOverview('refresh'),
+    refresh: () => loadFinanceOverview('refresh')
   }
 }
 
@@ -471,7 +460,7 @@ export default function FinanceOverviewClient({ user: _user, orgId, translations
               <CardTitle className="text-lg text-foreground">Recent Transactions</CardTitle>
               <CardDescription>Latest revenue and expense activity</CardDescription>
             </Stack>
-            <Button variant="outline">View All</Button>
+            <Button variant="secondary">View All</Button>
           </HStack>
         </CardHeader>
         <CardContent>

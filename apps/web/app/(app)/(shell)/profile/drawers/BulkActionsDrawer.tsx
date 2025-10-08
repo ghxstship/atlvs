@@ -16,7 +16,7 @@ import {
  Checkbox,
  useToast,
  Alert,
- AlertDescription,
+ AlertDescription
 } from '@ghxstship/ui';
 
 import type { UserProfile, BulkActionConfig } from '../types';
@@ -27,42 +27,42 @@ const BULK_ACTIONS: BulkActionConfig[] = [
  label: 'Activate Profiles',
  description: 'Set selected profiles to active status',
  confirmationRequired: false,
- variant: 'default',
+ variant: 'default'
  },
  {
  action: 'deactivate',
  label: 'Deactivate Profiles',
  description: 'Set selected profiles to inactive status',
  confirmationRequired: true,
- variant: 'warning',
+ variant: 'warning'
  },
  {
  action: 'suspend',
  label: 'Suspend Profiles',
  description: 'Suspend selected profiles temporarily',
  confirmationRequired: true,
- variant: 'warning',
+ variant: 'warning'
  },
  {
  action: 'delete',
  label: 'Delete Profiles',
  description: 'Permanently delete selected profiles and all associated data',
  confirmationRequired: true,
- variant: 'destructive',
+ variant: 'destructive'
  },
  {
  action: 'export',
  label: 'Export Profiles',
  description: 'Export selected profiles to CSV or JSON format',
  confirmationRequired: false,
- variant: 'default',
+ variant: 'default'
  },
  {
  action: 'send_notification',
  label: 'Send Notification',
  description: 'Send email notification to selected profiles',
  confirmationRequired: false,
- variant: 'default',
+ variant: 'default'
  },
 ];
 
@@ -92,7 +92,7 @@ export default function BulkActionsDrawer({
  toast({
  title: 'Error',
  description: 'Please select an action to perform',
- variant: 'destructive',
+ variant: 'destructive'
  });
  return;
  }
@@ -101,7 +101,7 @@ export default function BulkActionsDrawer({
  toast({
  title: 'Confirmation Required',
  description: 'Please confirm that you want to perform this action',
- variant: 'destructive',
+ variant: 'destructive'
  });
  return;
  }
@@ -111,14 +111,14 @@ export default function BulkActionsDrawer({
  await onExecute(selectedAction, profileIds);
  toast({
  title: 'Success',
- description: `${selectedActionConfig.label} completed successfully`,
+ description: `${selectedActionConfig.label} completed successfully`
  });
  onClose();
  } catch (error) {
  toast({
  title: 'Error',
  description: `Failed to ${selectedActionConfig.label.toLowerCase()}`,
- variant: 'destructive',
+ variant: 'destructive'
  });
  } finally {
  setLoading(false);

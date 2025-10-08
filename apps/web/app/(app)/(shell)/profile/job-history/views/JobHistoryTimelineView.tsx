@@ -7,7 +7,7 @@ import {
  Badge,
  Button,
  Avatar,
- AvatarFallback,
+ AvatarFallback
 } from '@ghxstship/ui';
 import type { JobHistoryEntry, EmploymentType, CompanySize } from '../types';
 
@@ -29,7 +29,7 @@ const getEmploymentTypeColor = (type: EmploymentType) => {
  freelance: 'pink',
  internship: 'cyan',
  temporary: 'orange',
- consultant: 'yellow',
+ consultant: 'yellow'
  };
  return colorMap[type] || 'gray';
 };
@@ -37,7 +37,7 @@ const getEmploymentTypeColor = (type: EmploymentType) => {
 const formatDate = (dateString: string) => {
  return new Date(dateString).toLocaleDateString('en-US', {
  month: 'long',
- year: 'numeric',
+ year: 'numeric'
  });
 };
 
@@ -87,7 +87,7 @@ export default function JobHistoryTimelineView({
  onEdit,
  onDelete,
  onView,
- loading = false,
+ loading = false
 }: JobHistoryTimelineViewProps) {
  const timelineEntries = useMemo(() => {
  // Sort entries by start date (most recent first)

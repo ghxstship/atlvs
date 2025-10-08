@@ -10,7 +10,7 @@ const categorySchema = z.object({
   parent_category_id: z.string().optional(),
   color: z.string().optional(),
   status: z.enum(['active', 'inactive']).default('active'),
-  sort_order: z.number().min(0).optional(),
+  sort_order: z.number().min(0).optional()
 });
 
 export async function GET(request: NextRequest) {
@@ -102,7 +102,7 @@ export async function POST(request: NextRequest) {
       .insert({
         ...validatedData,
         organization_id: orgId,
-        created_by: user.id,
+        created_by: user.id
       })
       .select()
       .single();

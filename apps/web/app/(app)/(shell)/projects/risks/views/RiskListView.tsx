@@ -37,7 +37,7 @@ export default function RiskListView({
  onDuplicate,
  getRiskLevelBadgeVariant,
  getStatusBadgeVariant,
- getCategoryBadgeVariant,
+ getCategoryBadgeVariant
 }: RiskListViewProps) {
  const visibleFields = fieldVisibility.filter((f) => f.visible);
 

@@ -21,7 +21,7 @@ export default function CompanyDetailClient({
   company,
   user,
   orgId,
-  translations,
+  translations
 }: CompanyDetailClientProps) {
   const router = useRouter();
 

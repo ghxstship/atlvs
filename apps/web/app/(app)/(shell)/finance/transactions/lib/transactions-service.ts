@@ -92,7 +92,7 @@ export class TransactionsService implements TransactionWorkflowActions {
           created_by: userId,
           status: 'pending',
           currency: transactionData.currency || 'USD',
-          reconciled: false,
+          reconciled: false
         })
         .select()
         .single();
@@ -344,7 +344,7 @@ export class TransactionsService implements TransactionWorkflowActions {
   formatCurrency(amount: number, currency = 'USD'): string {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: currency
     }).format(amount);
   }
 
@@ -352,7 +352,7 @@ export class TransactionsService implements TransactionWorkflowActions {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
-      day: 'numeric',
+      day: 'numeric'
     });
   }
 

@@ -18,7 +18,7 @@ const CreateForecastSchema = z.object({
   assumptions: z.string().optional(),
   projectId: z.string().uuid().optional(),
   departmentId: z.string().uuid().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 const UpdateForecastSchema = CreateForecastSchema.partial();

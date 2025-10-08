@@ -23,12 +23,12 @@ const iconMap = {
  Plane,
  Shirt,
  Star,
- ThumbsUp,
+ ThumbsUp
 };
 
 export default function ActivityTimelineView({
  activities,
- loading,
+ loading
 }: ActivityTimelineViewProps) {
  const groupedActivities = useMemo(() => {
  const groups: Record<string, ActivityRecord[]> = {};
@@ -45,7 +45,7 @@ export default function ActivityTimelineView({
  .sort(([a], [b]) => new Date(b).getTime() - new Date(a).getTime())
  .map(([date, items]) => ({
  date,
- items: items.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()),
+ items: items.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
  }));
  }, [activities]);
 
@@ -95,7 +95,7 @@ export default function ActivityTimelineView({
  weekday: 'long',
  year: 'numeric',
  month: 'long',
- day: 'numeric',
+ day: 'numeric'
  })}
  </h3>
  <Badge variant="secondary" className="ml-auto">
@@ -139,7 +139,7 @@ export default function ActivityTimelineView({
  <div className="text-xs text-muted-foreground">
  {new Date(activity.created_at).toLocaleTimeString('en-US', {
  hour: '2-digit',
- minute: '2-digit',
+ minute: '2-digit'
  })}
  </div>
  </div>

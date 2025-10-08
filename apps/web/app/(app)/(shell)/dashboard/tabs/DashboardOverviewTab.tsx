@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
-import { LayoutDashboard, BarChart3, TrendingUp, Users, Calendar, RefreshCw } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Skeleton } from '@ghxstship/ui';
+import React, { useState, useCallback, useState, useEffect, useMemo } from 'react';
+import { BarChart3, Calendar, LayoutDashboard, RefreshCw, TrendingUp, Users } from 'lucide-react';
+import { Badge, Button, Card, CardBody, CardContent, CardHeader, CardTitle, Skeleton } from '@ghxstship/ui';
 import { dashboardQueries } from '../lib/queries';
 import type { OverviewMetric, DashboardQuickInsight, DashboardWidget } from '../types';
 
@@ -39,8 +36,10 @@ export default function DashboardOverviewTab({
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   // Load overview data
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadOverviewData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadOverviewData = async (showRefresh = false) => {
@@ -276,7 +275,7 @@ export default function DashboardOverviewTab({
               </div>
               <div className="flex items-center justify-between mt-2 text-xs text-muted-foreground">
                 <span>Updated {new Date(widget.updated_at).toLocaleDateString()}</span>
-                <Badge variant="outline" className="text-xs">
+                <Badge variant="secondary" className="text-xs">
                   v1.0
                 </Badge>
               </div>
@@ -301,7 +300,7 @@ export default function DashboardOverviewTab({
         <Button
           onClick={handleRefresh}
           disabled={isRefreshing}
-          variant="outline"
+          variant="secondary"
         >
           <RefreshCw className={`h-icon-xs w-icon-xs mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
           Refresh

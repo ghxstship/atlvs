@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
       value,
       timestamp,
       userAgent: request.headers.get('user-agent'),
-      referer: request.headers.get('referer'),
+      referer: request.headers.get('referer')
     });
 
     // TODO: Implement actual tracking logic

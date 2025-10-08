@@ -226,7 +226,7 @@ export const MODULE_CONFIG = {
   lineups: { label: 'Lineups', icon: '🎵', color: 'bg-pink-100 text-pink-800' },
   call_sheets: { label: 'Call Sheets', icon: '📋', color: 'bg-indigo-100 text-indigo-800' },
   itineraries: { label: 'Itineraries', icon: '🗺️', color: 'bg-teal-100 text-teal-800' },
-  calendar: { label: 'Calendar', icon: '📆', color: 'bg-orange-100 text-orange-800' },
+  calendar: { label: 'Calendar', icon: '📆', color: 'bg-orange-100 text-orange-800' }
 } as const;
 
 export const ACTIVITY_CONFIG = {
@@ -235,7 +235,7 @@ export const ACTIVITY_CONFIG = {
   deleted: { label: 'Deleted', variant: 'destructive' as const, icon: '🗑️' },
   approved: { label: 'Approved', variant: 'success' as const, icon: '✅' },
   cancelled: { label: 'Cancelled', variant: 'destructive' as const, icon: '❌' },
-  completed: { label: 'Completed', variant: 'success' as const, icon: '🎉' },
+  completed: { label: 'Completed', variant: 'success' as const, icon: '🎉' }
 } as const;
 
 export const STATUS_CONFIG = {
@@ -246,14 +246,14 @@ export const STATUS_CONFIG = {
   cancelled: { label: 'Cancelled', variant: 'destructive' as const },
   draft: { label: 'Draft', variant: 'secondary' as const },
   published: { label: 'Published', variant: 'success' as const },
-  archived: { label: 'Archived', variant: 'secondary' as const },
+  archived: { label: 'Archived', variant: 'secondary' as const }
 } as const;
 
 export const VIEW_CONFIG = {
   dashboard: { label: 'Dashboard', icon: 'LayoutDashboard' },
   analytics: { label: 'Analytics', icon: 'BarChart3' },
   timeline: { label: 'Timeline', icon: 'Clock' },
-  grid: { label: 'Grid', icon: 'Grid3X3' },
+  grid: { label: 'Grid', icon: 'Grid3X3' }
 } as const;
 
 // Quick action configurations
@@ -264,7 +264,7 @@ export const QUICK_ACTIONS = [
     description: 'Schedule a new performance, activation, or workshop',
     icon: 'CalendarPlus',
     href: '/programming/events',
-    color: 'bg-blue-50 hover:bg-blue-100',
+    color: 'bg-blue-50 hover:bg-blue-100'
   },
   {
     id: 'manage_spaces',
@@ -272,7 +272,7 @@ export const QUICK_ACTIONS = [
     description: 'Configure rooms, green rooms, and meeting spaces',
     icon: 'Building',
     href: '/programming/spaces',
-    color: 'bg-purple-50 hover:bg-purple-100',
+    color: 'bg-purple-50 hover:bg-purple-100'
   },
   {
     id: 'create_workshop',
@@ -280,7 +280,7 @@ export const QUICK_ACTIONS = [
     description: 'Schedule educational sessions and training programs',
     icon: 'GraduationCap',
     href: '/programming/workshops',
-    color: 'bg-green-50 hover:bg-green-100',
+    color: 'bg-green-50 hover:bg-green-100'
   },
   {
     id: 'build_lineup',
@@ -288,7 +288,7 @@ export const QUICK_ACTIONS = [
     description: 'Organize performer schedules and stage assignments',
     icon: 'Users',
     href: '/programming/lineups',
-    color: 'bg-pink-50 hover:bg-pink-100',
+    color: 'bg-pink-50 hover:bg-pink-100'
   },
   {
     id: 'create_call_sheet',
@@ -296,7 +296,7 @@ export const QUICK_ACTIONS = [
     description: 'Generate daily production schedules',
     icon: 'FileText',
     href: '/programming/call-sheets',
-    color: 'bg-indigo-50 hover:bg-indigo-100',
+    color: 'bg-indigo-50 hover:bg-indigo-100'
   },
   {
     id: 'manage_riders',
@@ -304,7 +304,7 @@ export const QUICK_ACTIONS = [
     description: 'Handle technical and hospitality requirements',
     icon: 'ClipboardList',
     href: '/programming/riders',
-    color: 'bg-yellow-50 hover:bg-yellow-100',
+    color: 'bg-yellow-50 hover:bg-yellow-100'
   },
 ] as const;
 
@@ -338,7 +338,7 @@ export function createEmptyProgrammingOverviewData(): ProgrammingOverviewData {
       averageEventDuration: 0,
       spaceUtilizationRate: 0,
       workshopCompletionRate: 0,
-      riderApprovalRate: 0,
+      riderApprovalRate: 0
     },
     recentActivity: [],
     upcomingEvents: [],
@@ -351,7 +351,7 @@ export function createEmptyProgrammingOverviewData(): ProgrammingOverviewData {
       workshops: { total: 0, active: 0, completion_rate: 0, average_rating: 0 },
       spaces: { total: 0, utilization_rate: 0, availability_rate: 0, booking_rate: 0 },
       performances: { total: 0, scheduled: 0, completion_rate: 0, average_duration: 0 },
-      riders: { total: 0, approval_rate: 0, average_processing_time: 0, fulfillment_rate: 0 },
+      riders: { total: 0, approval_rate: 0, average_processing_time: 0, fulfillment_rate: 0 }
     },
     analytics: {
       eventTrends: [],
@@ -364,13 +364,13 @@ export function createEmptyProgrammingOverviewData(): ProgrammingOverviewData {
       revenueAnalytics: {
         total_revenue: 0,
         revenue_by_module: [],
-        revenue_trends: [],
+        revenue_trends: []
       },
       participantAnalytics: {
         total_participants: 0,
         participants_by_module: [],
-        engagement_metrics: [],
-      },
-    },
+        engagement_metrics: []
+      }
+    }
   };
 }

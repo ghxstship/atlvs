@@ -2,13 +2,9 @@
 
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Card, Button, Badge, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
-import { 
-  Briefcase, DollarSign, Users, TrendingUp, Package, Clock, Star, 
-  MessageSquare, FileText, Award, Target, Calendar, BarChart3,
-  Building, Zap, Shield, Globe, ArrowUpRight, ArrowDownRight
-} from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Award, BarChart3, Briefcase, Building, Calendar, Clock, DollarSign, FileText, Globe, MessageSquare, Package, Shield, Star, Target, TrendingUp, Users, Zap } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
 
@@ -55,8 +51,10 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
   const [upcomingMilestones, setUpcomingMilestones] = useState<any[]>([]);
   const [notifications, setNotifications] = useState<any[]>([]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadDashboardData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, userId, activeView]);
 
   async function loadDashboardData() {
@@ -246,19 +244,19 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
         <Card className="p-lg">
           <h3 className="text-body text-heading-4 mb-md">Quick Actions</h3>
           <div className="brand-opendeck stack-sm">
-            <Button variant="outline" className="w-full justify-start">
+            <Button variant="secondary" className="w-full justify-start">
               <Package className="h-icon-xs w-icon-xs mr-sm" />
               Create New Service
             </Button>
-            <Button variant="outline" className="w-full justify-start">
+            <Button variant="secondary" className="w-full justify-start">
               <FileText className="h-icon-xs w-icon-xs mr-sm" />
               Browse Projects
             </Button>
-            <Button variant="outline" className="w-full justify-start">
+            <Button variant="secondary" className="w-full justify-start">
               <MessageSquare className="h-icon-xs w-icon-xs mr-sm" />
               View Messages
             </Button>
-            <Button variant="outline" className="w-full justify-start">
+            <Button variant="secondary" className="w-full justify-start">
               <Users className="h-icon-xs w-icon-xs mr-sm" />
               Update Portfolio
             </Button>
@@ -377,19 +375,19 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
         <Card className="p-lg">
           <h3 className="text-body text-heading-4 mb-md">Quick Actions</h3>
           <div className="brand-opendeck stack-sm">
-            <Button variant="outline" className="w-full justify-start">
+            <Button variant="secondary" className="w-full justify-start">
               <FileText className="h-icon-xs w-icon-xs mr-sm" />
               Post New Project
             </Button>
-            <Button variant="outline" className="w-full justify-start">
+            <Button variant="secondary" className="w-full justify-start">
               <Users className="h-icon-xs w-icon-xs mr-sm" />
               Browse Vendors
             </Button>
-            <Button variant="outline" className="w-full justify-start">
+            <Button variant="secondary" className="w-full justify-start">
               <Package className="h-icon-xs w-icon-xs mr-sm" />
               View Services
             </Button>
-            <Button variant="outline" className="w-full justify-start">
+            <Button variant="secondary" className="w-full justify-start">
               <MessageSquare className="h-icon-xs w-icon-xs mr-sm" />
               Messages
             </Button>
@@ -421,7 +419,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
               <div key={i} className="p-sm border rounded-lg">
                 <div className="brand-opendeck flex items-center justify-between mb-sm">
                   <p className="form-label">Stage Design Services</p>
-                  <Badge variant="outline">New</Badge>
+                  <Badge variant="secondary">New</Badge>
                 </div>
                 <p className="text-body-sm color-muted">$5,000 - 7 days delivery</p>
                 <div className="brand-opendeck flex items-center mt-sm">

@@ -28,7 +28,7 @@ export default function TimelineView({
   loading = false,
   emptyMessage = "No timeline events",
   className = "",
-  groupBy = 'month',
+  groupBy = 'month'
 }: TimelineViewProps) {
   // Sort data by date
   const sortedData = React.useMemo(() => {

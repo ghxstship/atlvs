@@ -274,7 +274,7 @@ export const performanceGoalSchema = zod.object({
   priority: goalPrioritySchema,
   category: goalCategorySchema,
   metrics: zod.array(zod.string()),
-  notes: zod.string().optional(),
+  notes: zod.string().optional()
 });
 
 export const performanceFilterSchema = zod.object({
@@ -288,7 +288,7 @@ export const performanceFilterSchema = zod.object({
   date_from: zod.string().optional(),
   date_to: zod.string().optional(),
   has_goals: zod.boolean().optional(),
-  promotion_recommended: zod.boolean().optional(),
+  promotion_recommended: zod.boolean().optional()
 });
 
 export const performanceUpsertSchema = zod.object({
@@ -316,7 +316,7 @@ export const performanceUpsertSchema = zod.object({
   salary_adjustment: zod.string().optional().nullable(),
   promotion_recommended: zod.boolean(),
   visibility: reviewVisibilitySchema,
-  tags: zod.array(zod.string()),
+  tags: zod.array(zod.string())
 });
 
 // ============================================================================
@@ -327,14 +327,14 @@ export const REVIEW_TYPE_LABELS: Record<ReviewType, string> = {
   annual: 'Annual Review',
   quarterly: 'Quarterly Review',
   'project-based': 'Project-Based Review',
-  probationary: 'Probationary Review',
+  probationary: 'Probationary Review'
 };
 
 export const REVIEW_STATUS_LABELS: Record<ReviewStatus, string> = {
   draft: 'Draft',
   submitted: 'Submitted',
   approved: 'Approved',
-  archived: 'Archived',
+  archived: 'Archived'
 };
 
 export const GOAL_STATUS_LABELS: Record<GoalStatus, string> = {
@@ -342,14 +342,14 @@ export const GOAL_STATUS_LABELS: Record<GoalStatus, string> = {
   in_progress: 'In Progress',
   completed: 'Completed',
   on_hold: 'On Hold',
-  cancelled: 'Cancelled',
+  cancelled: 'Cancelled'
 };
 
 export const GOAL_PRIORITY_LABELS: Record<GoalPriority, string> = {
   low: 'Low',
   medium: 'Medium',
   high: 'High',
-  critical: 'Critical',
+  critical: 'Critical'
 };
 
 export const GOAL_CATEGORY_LABELS: Record<GoalCategory, string> = {
@@ -358,33 +358,33 @@ export const GOAL_CATEGORY_LABELS: Record<GoalCategory, string> = {
   leadership: 'Leadership',
   technical: 'Technical',
   behavioral: 'Behavioral',
-  strategic: 'Strategic',
+  strategic: 'Strategic'
 };
 
 export const VISIBILITY_LABELS: Record<ReviewVisibility, string> = {
   private: 'Private',
   manager: 'Manager Only',
   hr: 'HR Access',
-  organization: 'Organization',
+  organization: 'Organization'
 };
 
 export const VIEW_CONFIG: Record<PerformanceViewType, { label: string; description: string }> = {
   list: {
     label: 'List',
-    description: 'Detailed list view with expandable cards',
+    description: 'Detailed list view with expandable cards'
   },
   grid: {
     label: 'Grid',
-    description: 'Card-based grid layout',
+    description: 'Card-based grid layout'
   },
   table: {
     label: 'Table',
-    description: 'Sortable data table',
+    description: 'Sortable data table'
   },
   analytics: {
     label: 'Analytics',
-    description: 'Performance insights and trends',
-  },
+    description: 'Performance insights and trends'
+  }
 };
 
 export const QUICK_FILTERS = [
@@ -400,7 +400,7 @@ export const RATING_LABELS = {
   2: 'Below Expectations',
   3: 'Meets Expectations',
   4: 'Exceeds Expectations',
-  5: 'Outstanding',
+  5: 'Outstanding'
 };
 
 // ============================================================================
@@ -432,7 +432,7 @@ export function createEmptyFormData(): PerformanceFormData {
     salary_adjustment: '',
     promotion_recommended: false,
     visibility: 'manager',
-    tags: [],
+    tags: []
   };
 }
 
@@ -447,7 +447,7 @@ export function createEmptyGoal(): PerformanceGoal {
     priority: 'medium',
     category: 'performance',
     metrics: [],
-    notes: '',
+    notes: ''
   };
 }
 
@@ -464,10 +464,10 @@ export function createEmptyStats(): PerformanceStats {
       total: 0,
       completed: 0,
       inProgress: 0,
-      notStarted: 0,
+      notStarted: 0
     },
     topStrengths: [],
-    developmentAreas: [],
+    developmentAreas: []
   };
 }
 
@@ -482,8 +482,8 @@ export function createEmptyAnalytics(): PerformanceAnalytics {
       organizationAverage: 0,
       industryAverage: 0,
       userRating: 0,
-      percentile: 0,
-    },
+      percentile: 0
+    }
   };
 }
 
@@ -519,7 +519,7 @@ export function formatDate(date: string): string {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
+    day: 'numeric'
   });
 }
 
@@ -527,7 +527,7 @@ export function formatDateShort(date: string): string {
   return new Date(date).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
-    year: 'numeric',
+    year: 'numeric'
   });
 }
 

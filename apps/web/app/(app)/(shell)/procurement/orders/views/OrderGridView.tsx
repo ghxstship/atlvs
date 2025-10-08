@@ -1,9 +1,9 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { Activity, AlertCircle, Award, Calendar, CheckCircle, Clock, Edit, Eye, FileText, MoreHorizontal, Package, Play, Plus, Search, Settings, Trash2, TrendingUp, Truck, User } from 'lucide-react';
 import { useState } from 'react';
 import { Card, Badge, Button, Checkbox } from '@ghxstship/ui';
 import type { ProcurementOrder } from '../types';
-import { formatCurrency, formatDate, getStatusColor, getPriorityColor, getPaymentStatusColor } from '../types';
+import { formatCurrency, formatDate, getPaymentStatusColor } from '../types';
 
 interface OrderGridViewProps {
  orders: ProcurementOrder[];
@@ -24,7 +24,7 @@ export default function OrderGridView({
  onOrderClick,
  onEditOrder,
  onDeleteOrder,
- onViewOrder,
+ onViewOrder
 }: OrderGridViewProps) {
  const [hoveredOrder, setHoveredOrder] = useState<string | null>(null);
 
@@ -171,7 +171,7 @@ export default function OrderGridView({
  {/* Overdue indicator */}
  {overdue && (
  <div className="absolute top-sm right-sm z-10">
- <Badge variant="destructive" className="text-xs">
+ <Badge variant="error" className="text-xs">
  Overdue
  </Badge>
  </div>
@@ -207,7 +207,7 @@ export default function OrderGridView({
  {onDeleteOrder && (
  <Button
  size="sm"
- variant="destructive"
+ variant="error"
  onClick={(e) => {
  e.stopPropagation();
  onDeleteOrder(order);

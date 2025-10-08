@@ -1,6 +1,6 @@
 "use client";
 
-import { Edit, Trash2, Calendar, Clock, MapPin, DollarSign, Users, Music, Settings, FileText, Tag, ExternalLink, Ticket, Target } from "lucide-react";
+import { Calendar, Clock, DollarSign, Edit, ExternalLink, ExternalTicket, FileText, MapPin, Music, Settings, Tag, Target, Ticket, Trash2, Users } from 'lucide-react';
 import {
  Button,
  Badge,
@@ -9,7 +9,7 @@ import {
  DrawerHeader,
  DrawerTitle,
  DrawerFooter,
- Separator,
+ Separator
 } from "@ghxstship/ui";
 import type { ProgrammingPerformance, PerformanceProject, PerformanceEvent } from "../types";
 import { STATUS_BADGE, PERFORMANCE_TYPE_BADGE } from "../types";
@@ -40,7 +40,7 @@ export default function ViewProgrammingPerformanceDrawer({
  onDelete,
  users,
  projects,
- events,
+ events
 }: ViewProgrammingPerformanceDrawerProps) {
 
  const formatDateTime = (dateString: string) => {
@@ -54,7 +54,7 @@ export default function ViewProgrammingPerformanceDrawer({
  const formatTime = (dateString: string) => {
  return new Date(dateString).toLocaleTimeString("en-US", {
  hour: "2-digit",
- minute: "2-digit",
+ minute: "2-digit"
  });
  };
 
@@ -62,7 +62,7 @@ export default function ViewProgrammingPerformanceDrawer({
  if (!amount || !currency) return null;
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

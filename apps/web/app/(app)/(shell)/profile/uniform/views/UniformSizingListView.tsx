@@ -32,7 +32,7 @@ export default function UniformSizingListView({
  selectedIds,
  onSelectionChange,
  onEdit,
- onView,
+ onView
 }: UniformSizingListViewProps) {
  const [expandedIds, setExpandedIds] = useState<string[]>([]);
 

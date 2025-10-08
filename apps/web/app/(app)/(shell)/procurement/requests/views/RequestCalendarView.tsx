@@ -1,12 +1,8 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, Calendar, Eye, CheckCircle, XCircle, Clock, AlertTriangle } from "lucide-react";
-import { useState, useMemo } from 'react';
-import { 
- Card, 
- Badge, 
- Button
-} from '@ghxstship/ui';
+import { AlertTriangle, Badge, Button, Calendar, Card, CheckCircle, ChevronLeft, ChevronRight, Clock, Eye, XCircle } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { Badge, Button, Card } from '@ghxstship/ui';
 import type { ProcurementRequest } from '../types';
 
 interface RequestCalendarViewProps {
@@ -153,21 +149,21 @@ export default function RequestCalendarView({
  </h2>
  <div className="flex gap-sm">
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => navigateMonth('prev')}
  >
  <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => setCurrentDate(new Date())}
  >
  Today
  </Button>
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => navigateMonth('next')}
  >

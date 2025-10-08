@@ -8,7 +8,7 @@ import {
  TabsList,
  TabsTrigger,
  TabsContent,
- Progress,
+ Progress
 } from "@ghxstship/ui";
 import { AppDrawer } from "@ghxstship/ui";
 import { format, parseISO, formatDistanceToNow } from "date-fns";
@@ -34,7 +34,7 @@ export default function ViewInspectionDrawer({
  getTypeIcon,
  getStatusBadgeVariant,
  getTypeBadgeVariant,
- getScoreColor,
+ getScoreColor
 }: ViewInspectionDrawerProps) {
  const TypeIcon = getTypeIcon(inspection.type);
 
@@ -181,7 +181,7 @@ export default function ViewInspectionDrawer({
  </div>
  )}
  </div>
- ),
+ )
  },
  {
  key: "schedule",
@@ -265,7 +265,7 @@ export default function ViewInspectionDrawer({
  </div>
  )}
  </div>
- ),
+ )
  },
  {
  key: "findings",
@@ -297,7 +297,7 @@ export default function ViewInspectionDrawer({
  </div>
  )}
  </div>
- ),
+ )
  },
  {
  key: "checklist",
@@ -370,7 +370,7 @@ export default function ViewInspectionDrawer({
  </div>
  )}
  </div>
- ),
+ )
  },
  {
  key: "activity",
@@ -380,7 +380,7 @@ export default function ViewInspectionDrawer({
  <MessageSquare className="mx-auto h-icon-2xl w-icon-2xl mb-sm opacity-50" />
  <p>Activity tracking coming soon</p>
  </div>
- ),
+ )
  },
  ];
 
@@ -396,7 +396,7 @@ export default function ViewInspectionDrawer({
  key: "edit",
  label: "Edit",
  icon: <Edit className="h-icon-xs w-icon-xs" />,
- onClick: onEdit,
+ onClick: onEdit
  },
  {
  key: "download",
@@ -404,7 +404,7 @@ export default function ViewInspectionDrawer({
  icon: <Download className="h-icon-xs w-icon-xs" />,
  onClick: () => {
  // Generate and download inspection report
- },
+ }
  },
  ]}
  />

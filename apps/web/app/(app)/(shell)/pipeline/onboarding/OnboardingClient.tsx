@@ -1,7 +1,8 @@
 'use client';
+import { Badge, Button, Card, Input } from '@ghxstship/ui';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Plus, CheckCircle, Clock, AlertCircle, User, FileText, Shield, Briefcase } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -123,8 +124,10 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
     expectedCompletionDate: ''
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadData = async () => {
@@ -259,7 +262,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
       case 'on_hold':
         return <Badge variant="secondary" className="flex items-center gap-xs"><AlertCircle className="w-3 h-3" />On Hold</Badge>;
       default:
-        return <Badge variant="outline" className="flex items-center gap-xs"><Clock className="w-3 h-3" />Pending</Badge>;
+        return <Badge variant="secondary" className="flex items-center gap-xs"><Clock className="w-3 h-3" />Pending</Badge>;
     }
   };
 
@@ -330,7 +333,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
               <div className="grid grid-cols-2 gap-md">
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Start Date</label>
-                  <UnifiedInput                     type="date"
+                  <Input                     type="date"
                     value={formData.startDate}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
                     required
@@ -338,7 +341,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Expected Completion</label>
-                  <UnifiedInput                     type="date"
+                  <Input                     type="date"
                     value={formData.expectedCompletionDate}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, expectedCompletionDate: e.target.value }))}
                   />
@@ -346,7 +349,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
               </div>
               <div className="flex gap-sm">
                 <Button type="submit">Create Workflow</Button>
-                <Button type="button" variant="outline" onClick={() => setShowForm(false)}>
+                <Button type="button" variant="secondary" onClick={() => setShowForm(false)}>
                   Cancel
                 </Button>
               </div>

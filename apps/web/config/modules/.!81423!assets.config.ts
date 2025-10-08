@@ -48,7 +48,7 @@ const AssetSchema = z.object({
   image_urls: z.array(z.string().url()).optional(),
   specifications: z.record(z.any()).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const LocationSchema = z.object({
@@ -60,14 +60,14 @@ const LocationSchema = z.object({
   address: z.string().optional(),
   coordinates: z.object({
     latitude: z.number(),
-    longitude: z.number(),
+    longitude: z.number()
   }).optional(),
   capacity: z.number().int().positive().optional(),
   manager_id: z.string().uuid().optional(),
   description: z.string().optional(),
   is_active: z.boolean().default(true),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const MaintenanceSchema = z.object({
@@ -88,13 +88,13 @@ const MaintenanceSchema = z.object({
   parts_used: z.array(z.object({
     part_name: z.string(),
     quantity: z.number().int().positive(),
-    cost: z.number().positive().optional(),
+    cost: z.number().positive().optional()
   })).optional(),
   notes: z.string().optional(),
   attachments: z.array(z.string().url()).optional(),
   next_maintenance_date: z.date().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const AssignmentSchema = z.object({
@@ -113,7 +113,7 @@ const AssignmentSchema = z.object({
   condition_at_return: z.enum(['excellent', 'good', 'fair', 'poor']).optional(),
   notes: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const AuditSchema = z.object({
@@ -132,7 +132,7 @@ const AuditSchema = z.object({
   completion_percentage: z.number().min(0).max(100).optional(),
   notes: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export const assetsModuleConfig: ModuleConfig = {

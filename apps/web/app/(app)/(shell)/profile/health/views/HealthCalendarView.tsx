@@ -9,7 +9,7 @@ import {
  formatDateShort,
  getDaysUntilExpiry,
  getExpiryUrgency,
- getRecordTypeIcon,
+ getRecordTypeIcon
 } from '../types';
 
 interface HealthCalendarViewProps {
@@ -21,7 +21,7 @@ interface HealthCalendarViewProps {
 export default function HealthCalendarView({
  records,
  loading,
- onEdit,
+ onEdit
 }: HealthCalendarViewProps) {
  const [currentDate, setCurrentDate] = useState(new Date());
 

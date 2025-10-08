@@ -18,7 +18,24 @@ import {
   Trash2,
   BarChart3,
   Star
-} from 'lucide-react';
+} from 'lucide-react';import {
+  Card,
+  Button,
+  UnifiedInput,
+  Select,
+  Textarea,
+  Badge,
+  Drawer
+} from '@ghxstship/ui';
+import {
+  Card,
+  Button,
+  Select,
+  Textarea,
+  Badge,
+  Drawer
+} from '@ghxstship/ui';
+
 
 const performanceReviewSchema = z.object({
   review_period: z.string().min(1, 'Review period is required'),

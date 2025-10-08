@@ -14,12 +14,12 @@ import type {
   OrderExportConfig,
   OrderImportConfig,
   OrderImportResult,
-  OrderWorkflow,
+  OrderWorkflow
 } from '../types';
 import {
   orderSchema,
   orderItemSchema,
-  orderFiltersSchema,
+  orderFiltersSchema
 } from '../types';
 
 export class OrderService {
@@ -141,7 +141,7 @@ export class OrderService {
       return {
         orders: data || [],
         total,
-        hasMore,
+        hasMore
       };
     } catch (error) {
       console.error('Error fetching orders:', error);
@@ -216,7 +216,7 @@ export class OrderService {
         tracking_number: validatedData.tracking_number,
         carrier: validatedData.carrier,
         tags: validatedData.tags,
-        created_by: userId,
+        created_by: userId
       };
 
       const { data, error } = await this.supabase
@@ -237,7 +237,7 @@ export class OrderService {
       await this.logActivity(data.id, userId, 'created', 'Order created', {
         order_number: orderNumber,
         vendor_name: validatedData.vendor_name,
-        total_amount: validatedData.total_amount,
+        total_amount: validatedData.total_amount
       });
 
       return data;
@@ -258,7 +258,7 @@ export class OrderService {
       const validatedData = orderSchema.partial().parse(updates);
       
       const payload: unknown = {
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       // Map validated fields
@@ -286,7 +286,7 @@ export class OrderService {
 
       // Log activity
       await this.logActivity(orderId, userId, 'updated', 'Order updated', {
-        updates: Object.keys(payload),
+        updates: Object.keys(payload)
       });
 
       return data;
@@ -350,7 +350,7 @@ export class OrderService {
         .insert({
           order_id: orderId,
           ...validatedData,
-          total_price: totalPrice,
+          total_price: totalPrice
         })
         .select()
         .single();
@@ -394,7 +394,7 @@ export class OrderService {
         .from('procurement_order_items')
         .update({
           ...validatedData,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', itemId)
         .select()
@@ -513,7 +513,7 @@ export class OrderService {
         action: action.type,
         orderCount: action.orderIds.length,
         success,
-        failed,
+        failed
       });
 
       return { success, failed, errors };
@@ -537,7 +537,7 @@ export class OrderService {
         {
           status: 'approved',
           approved_by: userId,
-          approved_at: new Date().toISOString(),
+          approved_at: new Date().toISOString()
         },
         userId
       );
@@ -550,7 +550,7 @@ export class OrderService {
           approver_id: userId,
           status: 'approved',
           comments,
-          approved_at: new Date().toISOString(),
+          approved_at: new Date().toISOString()
         });
 
       await this.logActivity(orderId, userId, 'approved', 'Order approved', { comments });
@@ -574,7 +574,7 @@ export class OrderService {
         orderId,
         {
           status: 'rejected',
-          rejection_reason: reason,
+          rejection_reason: reason
         },
         userId
       );
@@ -586,7 +586,7 @@ export class OrderService {
           order_id: orderId,
           approver_id: userId,
           status: 'rejected',
-          comments: reason,
+          comments: reason
         });
 
       await this.logActivity(orderId, userId, 'rejected', 'Order rejected', { reason });
@@ -631,7 +631,7 @@ export class OrderService {
         topVendors: [],
         ordersByStatus: [],
         ordersByPriority: [],
-        monthlyTrends: [],
+        monthlyTrends: []
       };
 
       if (stats.totalOrders > 0) {
@@ -645,7 +645,7 @@ export class OrderService {
           const existing = vendorMap.get(order.vendor_name) || { count: 0, value: 0 };
           vendorMap.set(order.vendor_name, {
             count: existing.count + 1,
-            value: existing.value + (order.total_amount || 0),
+            value: existing.value + (order.total_amount || 0)
           });
         }
       });
@@ -713,7 +713,7 @@ export class OrderService {
           user_id: userId,
           action,
           description,
-          metadata,
+          metadata
         });
     } catch (error) {
       console.error('Error logging activity:', error);

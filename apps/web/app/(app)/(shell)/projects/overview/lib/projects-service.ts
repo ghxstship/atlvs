@@ -95,7 +95,7 @@ export class ProjectsService {
           total: count || 0,
           page,
           per_page: perPage,
-          total_pages: Math.ceil((count || 0) / perPage),
+          total_pages: Math.ceil((count || 0) / perPage)
         }
       };
     } catch (error) {
@@ -137,7 +137,7 @@ export class ProjectsService {
           organization_id: orgId,
           created_by: userId,
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .select()
         .single();
@@ -150,7 +150,7 @@ export class ProjectsService {
       await this.logActivity(orgId, userId, 'projects.create', 'project', data.id, {
         name: data.name,
         status: data.status,
-        priority: data.priority,
+        priority: data.priority
       });
 
       return { data };
@@ -172,7 +172,7 @@ export class ProjectsService {
         .from('projects')
         .update({
           ...updateData,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', id)
         .eq('organization_id', orgId)
@@ -185,7 +185,7 @@ export class ProjectsService {
 
       // Log audit trail
       await this.logActivity(orgId, userId, 'projects.update', 'project', id, {
-        updated_fields: Object.keys(updateData),
+        updated_fields: Object.keys(updateData)
       });
 
       return { data };
@@ -221,7 +221,7 @@ export class ProjectsService {
 
       // Log audit trail
       await this.logActivity(orgId, userId, 'projects.delete', 'project', id, {
-        name: project?.name || 'Unknown',
+        name: project?.name || 'Unknown'
       });
 
       return { data: true };
@@ -262,7 +262,7 @@ export class ProjectsService {
         planning: 0,
         on_hold: 0,
         cancelled: 0,
-        totalBudget: 0,
+        totalBudget: 0
       });
 
       return { data: stats };
@@ -284,7 +284,7 @@ export class ProjectsService {
           event: '*',
           schema: 'public',
           table: 'projects',
-          filter: `organization_id=eq.${orgId}`,
+          filter: `organization_id=eq.${orgId}`
         },
         callback
       )
@@ -303,7 +303,7 @@ export class ProjectsService {
         .from('projects')
         .update({
           ...updateData,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .in('id', projectIds)
         .eq('organization_id', orgId)
@@ -317,7 +317,7 @@ export class ProjectsService {
       await this.logActivity(orgId, userId, 'projects.bulk_update', 'project', null, {
         project_ids: projectIds,
         updated_fields: Object.keys(updateData),
-        count: projectIds.length,
+        count: projectIds.length
       });
 
       return { data: data || [] };
@@ -345,7 +345,7 @@ export class ProjectsService {
       // Log audit trail for bulk operation
       await this.logActivity(orgId, userId, 'projects.bulk_delete', 'project', null, {
         project_ids: projectIds,
-        count: projectIds.length,
+        count: projectIds.length
       });
 
       return { data: true };
@@ -419,7 +419,7 @@ export class ProjectsService {
         resource_type: resourceType,
         resource_id: resourceId,
         details,
-        occurred_at: new Date().toISOString(),
+        occurred_at: new Date().toISOString()
       });
     } catch (error) {
       console.warn('Failed to log activity:', error);

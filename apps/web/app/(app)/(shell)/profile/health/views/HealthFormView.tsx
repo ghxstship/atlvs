@@ -14,7 +14,7 @@ import {
  SelectValue,
  Textarea,
  Badge,
- Switch,
+ Switch
 } from '@ghxstship/ui';
 import type { HealthRecord, HealthRecordFormData } from '../types';
 import {
@@ -24,7 +24,7 @@ import {
  PRIVACY_LABELS,
  COMMON_TAGS,
  formatDate,
- getRecordTypeIcon,
+ getRecordTypeIcon
 } from '../types';
 
 interface HealthFormViewProps {
@@ -44,7 +44,7 @@ export default function HealthFormView({
  loading,
  saving,
  onFieldChange,
- onSave,
+ onSave
 }: HealthFormViewProps) {
  const [tagInput, setTagInput] = useState('');
 

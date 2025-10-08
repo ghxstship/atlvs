@@ -17,7 +17,24 @@ import {
   Calendar,
   Trash2,
   Activity
-} from 'lucide-react';
+} from 'lucide-react';import {
+  Card,
+  Button,
+  UnifiedInput,
+  Select,
+  Textarea,
+  Badge,
+  Drawer
+} from '@ghxstship/ui';
+import {
+  Card,
+  Button,
+  Select,
+  Textarea,
+  Badge,
+  Drawer
+} from '@ghxstship/ui';
+
 
 const healthRecordSchema = z.object({
   record_type: z.enum(['medical', 'vaccination', 'allergy', 'medication', 'condition', 'emergency']),

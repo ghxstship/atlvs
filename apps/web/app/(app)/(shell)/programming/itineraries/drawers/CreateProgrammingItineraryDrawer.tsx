@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar, Clock, MapPin, Plus, Save, X, DollarSign, Users } from "lucide-react";
-import { useState } from "react";
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -13,7 +13,7 @@ import {
  Label,
  Select,
  Textarea,
- Badge,
+ Badge
 } from "@ghxstship/ui";
 import type { ItineraryProject, ItineraryEvent } from "../types";
 import { TYPE_BADGE, TRANSPORTATION_TYPE_LABEL, CURRENCY_OPTIONS } from "../types";
@@ -56,7 +56,7 @@ const createItinerarySchema = z.object({
  cost: z.number().optional()
  })).optional(),
  tags: z.array(z.string()).optional(),
- metadata: z.record(z.any()).optional(),
+ metadata: z.record(z.any()).optional()
 });
 
 type CreateItineraryFormData = z.infer<typeof createItinerarySchema>;
@@ -78,7 +78,7 @@ export default function CreateProgrammingItineraryDrawer({
  currentUserId,
  projects,
  events,
- onSuccess,
+ onSuccess
 }: CreateProgrammingItineraryDrawerProps) {
  const handleClose = () => onOpenChange(false);
  const [loading, setLoading] = useState(false);
@@ -93,7 +93,7 @@ export default function CreateProgrammingItineraryDrawer({
  watch,
  setValue,
  reset,
- formState: { errors },
+ formState: { errors }
  } = useForm<CreateItineraryFormData>({
  resolver: zodResolver(createItinerarySchema),
  defaultValues: {
@@ -102,8 +102,8 @@ export default function CreateProgrammingItineraryDrawer({
  tags: [],
  destinations: [],
  accommodations: [],
- transportation: [],
- },
+ transportation: []
+ }
  });
 
  const watchedTags = watch("tags");
@@ -119,7 +119,7 @@ export default function CreateProgrammingItineraryDrawer({
  const response = await fetch("/api/v1/programming/itineraries", {
  method: "POST",
  headers: { "Content-Type": "application/json" },
- body: JSON.stringify(data),
+ body: JSON.stringify(data)
  });
 
  if (!response.ok) {

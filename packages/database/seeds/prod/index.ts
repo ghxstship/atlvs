@@ -4,12 +4,16 @@
  * CAUTION: Only essential data for production initialization
  */
 
-// // import { PrismaClient } from '@prisma/client';
-import type { PrismaClient } from '@prisma/client';
-const PrismaClient: any = null;
-const PrismaClient = null;
+export {}; // Make this file a module
 
-const prisma = new PrismaClient();
+// Production seeds are disabled - no Prisma client instantiation
+// Uncomment when production seed logic is needed:
+// import { PrismaClient } from '@prisma/client';
+// const prisma = new PrismaClient();
+
+const prisma: any = {
+  $disconnect: async () => {},
+};
 
 async function main() {
   console.log('🚀 Seeding production database...');

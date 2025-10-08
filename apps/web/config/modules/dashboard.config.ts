@@ -8,7 +8,7 @@ const DashboardSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   description: z.string().nullable().optional(),
   created_at: z.string().optional(),
-  updated_at: z.string().optional(),
+  updated_at: z.string().optional()
 });
 
 export const dashboardModuleConfig: ModuleConfig = {
@@ -33,17 +33,17 @@ export const dashboardModuleConfig: ModuleConfig = {
           label: 'Name',
           type: 'text',
           required: true,
-          placeholder: 'Dashboard name',
+          placeholder: 'Dashboard name'
         },
         {
           key: 'description',
           label: 'Description',
           type: 'textarea',
           rows: 3,
-          placeholder: 'Add a description',
+          placeholder: 'Add a description'
         },
-      ],
-    },
+      ]
+    }
   },
 
   tabs: [
@@ -52,11 +52,11 @@ export const dashboardModuleConfig: ModuleConfig = {
       label: 'Dashboards',
       icon: LayoutDashboard,
       entity: 'dashboards',
-      views: ['grid', 'list'],
+      views: ['grid', 'list']
     },
   ],
 
-  defaultTab: 'dashboards',
+  defaultTab: 'dashboards'
 };
 
 export default dashboardModuleConfig;

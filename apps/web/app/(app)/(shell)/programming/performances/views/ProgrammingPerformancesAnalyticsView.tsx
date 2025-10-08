@@ -1,10 +1,10 @@
 "use client";
 
 import { TrendingUp, TrendingDown, Calendar, DollarSign, Users, MapPin, Music, Clock, Target, Activity } from "lucide-react";
-import { useMemo } from "react";
+import { useMemo } from 'react';
 import {
  Badge,
- Card,
+ Card
 } from "@ghxstship/ui";
 import type { ProgrammingPerformance, PerformanceAnalytics, PerformanceProject, PerformanceEvent } from "../types";
 import { STATUS_BADGE, PERFORMANCE_TYPE_BADGE } from "../types";
@@ -37,7 +37,7 @@ export default function ProgrammingPerformancesAnalyticsView({
  loading,
  users,
  projects,
- events,
+ events
 }: ProgrammingPerformancesAnalyticsViewProps) {
 
  const analytics = useMemo((): PerformanceAnalytics => {
@@ -123,7 +123,7 @@ export default function ProgrammingPerformancesAnalyticsView({
  
  monthlyMap.set(monthKey, {
  count: existing.count + 1,
- revenue: existing.revenue + revenue,
+ revenue: existing.revenue + revenue
  });
  });
 
@@ -143,7 +143,7 @@ export default function ProgrammingPerformancesAnalyticsView({
  topVenues,
  performancesByType,
  performancesByStatus,
- monthlyTrends,
+ monthlyTrends
  };
  }, [performances]);
 
@@ -152,7 +152,7 @@ export default function ProgrammingPerformancesAnalyticsView({
  style: "currency",
  currency: "USD",
  minimumFractionDigits: 0,
- maximumFractionDigits: 0,
+ maximumFractionDigits: 0
  }).format(amount);
  };
 
@@ -160,7 +160,7 @@ export default function ProgrammingPerformancesAnalyticsView({
  const [year, month] = monthString.split('-');
  return new Date(parseInt(year), parseInt(month) - 1).toLocaleDateString("en-US", {
  month: "short",
- year: "numeric",
+ year: "numeric"
  });
  };
 

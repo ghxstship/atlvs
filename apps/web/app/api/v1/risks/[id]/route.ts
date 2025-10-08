@@ -16,7 +16,7 @@ const updateRiskSchema = z.object({
   contingency_plan: z.string().nullable().optional(),
   identified_date: z.string().optional(),
   review_date: z.string().nullable().optional(),
-  closed_date: z.string().nullable().optional(),
+  closed_date: z.string().nullable().optional()
 });
 
 // GET /api/v1/risks/[id] - Get a single risk
@@ -172,7 +172,7 @@ export async function PATCH(
         low: 2,
         medium: 3,
         high: 4,
-        very_high: 5,
+        very_high: 5
       };
       const probability = data.probability || existingRisk.probability;
       const impact = data.impact || existingRisk.impact;
@@ -189,7 +189,7 @@ export async function PATCH(
     const updateData: Record<string, unknown> = {
       ...data,
       updated_by: user.id,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
     
     if (riskScore !== undefined) {
@@ -227,8 +227,8 @@ export async function PATCH(
       resource_id: params.id,
       action: "update",
       details: {
-        changes: Object.keys(data),
-      },
+        changes: Object.keys(data)
+      }
     });
 
     return NextResponse.json(updatedRisk);
@@ -329,8 +329,8 @@ export async function DELETE(
       resource_id: params.id,
       action: "delete",
       details: {
-        title: existingRisk.title,
-      },
+        title: existingRisk.title
+      }
     });
 
     return NextResponse.json(

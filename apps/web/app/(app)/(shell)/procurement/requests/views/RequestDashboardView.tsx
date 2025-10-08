@@ -1,12 +1,8 @@
 'use client';
 
-import { CheckCircle, XCircle, Clock, AlertTriangle, TrendingUp, DollarSign, FileText, Calendar, BarChart3, Eye } from "lucide-react";
+import { AlertTriangle, Badge, BarChart3, Button, Calendar, Card, CheckCircle, Clock, DollarSign, Eye, FileText, TrendingUp, XCircle } from 'lucide-react';
 import { useMemo } from 'react';
-import { 
- Card, 
- Badge, 
- Button
-} from '@ghxstship/ui';
+import { Badge, Button, Card } from '@ghxstship/ui';
 import type { ProcurementRequest } from '../types';
 
 interface RequestDashboardViewProps {

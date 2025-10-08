@@ -6,8 +6,6 @@
  * All components, styles, and themes derive from these tokens.
  */
 
-import { createComponentTokens as createEnhancedComponentTokens } from './enhanced-component-tokens';
-
 // ==========================================
 // CORE DESIGN TOKENS
 // ==========================================
@@ -17,8 +15,8 @@ export const DESIGN_TOKENS = {
   colors: {
     // Base Colors (HSL format for better manipulation)
     base: {
-      white: 'hsl(0 0% 100%)',
-      black: 'hsl(0 0% 0%)',
+      white: 'hsl(var(--color-background))',
+      black: 'hsl(var(--color-foreground))',
       transparent: 'transparent',
     },
 
@@ -68,32 +66,32 @@ export const DESIGN_TOKENS = {
     // Semantic Colors
     semantic: {
       success: {
-        50: 'hsl(142 76% 95%)',
-        100: 'hsl(142 76% 85%)',
-        500: 'hsl(142 76% 36%)',
-        600: 'hsl(142 76% 32%)',
-        900: 'hsl(142 76% 20%)',
+        50: 'hsl(var(--color-success))',
+        100: 'hsl(var(--color-success))',
+        500: 'hsl(var(--color-success))',
+        600: 'hsl(var(--color-success))',
+        900: 'hsl(var(--color-success))',
       },
       warning: {
-        50: 'hsl(38 92% 95%)',
-        100: 'hsl(38 92% 85%)',
-        500: 'hsl(38 92% 50%)',
-        600: 'hsl(38 92% 45%)',
-        900: 'hsl(38 92% 30%)',
+        50: 'hsl(var(--color-warning))',
+        100: 'hsl(var(--color-warning))',
+        500: 'hsl(var(--color-warning))',
+        600: 'hsl(var(--color-warning))',
+        900: 'hsl(var(--color-warning))',
       },
       error: {
-        50: 'hsl(0 84% 95%)',
-        100: 'hsl(0 84% 85%)',
-        500: 'hsl(0 84% 60%)',
-        600: 'hsl(0 84% 55%)',
-        900: 'hsl(0 84% 40%)',
+        50: 'hsl(var(--color-destructive))',
+        100: 'hsl(var(--color-destructive))',
+        500: 'hsl(var(--color-destructive))',
+        600: 'hsl(var(--color-destructive))',
+        900: 'hsl(var(--color-destructive))',
       },
       info: {
-        50: 'hsl(199 89% 95%)',
-        100: 'hsl(199 89% 85%)',
-        500: 'hsl(199 89% 48%)',
-        600: 'hsl(199 89% 43%)',
-        900: 'hsl(199 89% 30%)',
+        50: 'hsl(var(--color-info))',
+        100: 'hsl(var(--color-info))',
+        500: 'hsl(var(--color-info))',
+        600: 'hsl(var(--color-info))',
+        900: 'hsl(var(--color-info))',
       },
     },
   },
@@ -155,28 +153,28 @@ export const DESIGN_TOKENS = {
     },
   },
 
-  // Spacing System (8px base grid)
+  // Spacing System (var(--spacing-2) base grid)
   spacing: {
     0: '0',
     px: '1px',
     0.5: '0.125rem', // 2px
-    1: '0.25rem',    // 4px
+    1: '0.25rem',    // var(--spacing-1)
     1.5: '0.375rem', // 6px
-    2: '0.5rem',     // 8px
+    2: '0.5rem',     // var(--spacing-2)
     2.5: '0.625rem', // 10px
-    3: '0.75rem',    // 12px
+    3: '0.75rem',    // var(--spacing-3)
     3.5: '0.875rem', // 14px
-    4: '1rem',       // 16px
-    5: '1.25rem',    // 20px
-    6: '1.5rem',     // 24px
+    4: '1rem',       // var(--spacing-4)
+    5: '1.25rem',    // var(--spacing-5)
+    6: '1.5rem',     // var(--spacing-6)
     7: '1.75rem',    // 28px
-    8: '2rem',       // 32px
+    8: '2rem',       // var(--spacing-8)
     9: '2.25rem',    // 36px
-    10: '2.5rem',    // 40px
+    10: '2.5rem',    // var(--spacing-10)
     11: '2.75rem',   // 44px
-    12: '3rem',      // 48px
+    12: '3rem',      // var(--spacing-12)
     14: '3.5rem',    // 56px
-    16: '4rem',      // 64px
+    16: '4rem',      // var(--spacing-16)
     20: '5rem',      // 80px
     24: '6rem',      // 96px
     28: '7rem',      // 112px
@@ -207,34 +205,24 @@ export const DESIGN_TOKENS = {
     full: '9999px',
   },
 
-  // Border Width
-  borderWidth: {
-    none: '0',
-    hairline: '1px',
-    thin: '0.5px',
-    sm: '1px',
-    md: '2px',
-    lg: '3px',
-  },
-
   // Shadows (Pop Art + Traditional)
   shadows: {
     // Traditional shadows
-    sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-    base: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-    md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-    lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-    xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-    '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
-    inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+    sm: '0 1px 2px 0 hsl(var(--color-foreground) / 0.05)',
+    base: '0 1px 3px 0 hsl(var(--color-foreground) / 0.1), 0 1px 2px -1px hsl(var(--color-foreground) / 0.1)',
+    md: '0 var(--spacing-1) 6px -1px hsl(var(--color-foreground) / 0.1), 0 2px var(--spacing-1) -2px hsl(var(--color-foreground) / 0.1)',
+    lg: '0 10px 15px -3px hsl(var(--color-foreground) / 0.1), 0 var(--spacing-1) 6px -4px hsl(var(--color-foreground) / 0.1)',
+    xl: '0 var(--spacing-5) 25px -5px hsl(var(--color-foreground) / 0.1), 0 var(--spacing-2) 10px -6px hsl(var(--color-foreground) / 0.1)',
+    '2xl': '0 25px 50px -12px hsl(var(--color-foreground) / 0.25)',
+    inner: 'inset 0 2px var(--spacing-1) 0 hsl(var(--color-foreground) / 0.05)',
 
     // Pop art shadows (brand-aware)
     pop: {
-      sm: '2px 2px 0 hsl(0 0% 0%), 4px 4px 0 var(--color-accent)',
-      base: '3px 3px 0 hsl(0 0% 0%), 6px 6px 0 var(--color-accent)',
-      md: '4px 4px 0 hsl(0 0% 0%), 8px 8px 0 var(--color-accent)',
-      lg: '6px 6px 0 hsl(0 0% 0%), 12px 12px 0 var(--color-accent)',
-      xl: '8px 8px 0 hsl(0 0% 0%), 16px 16px 0 var(--color-accent)',
+      sm: '2px 2px 0 hsl(var(--color-foreground)), var(--spacing-1) var(--spacing-1) 0 var(--color-accent)',
+      base: '3px 3px 0 hsl(var(--color-foreground)), 6px 6px 0 var(--color-accent)',
+      md: 'var(--spacing-1) var(--spacing-1) 0 hsl(var(--color-foreground)), var(--spacing-2) var(--spacing-2) 0 var(--color-accent)',
+      lg: '6px 6px 0 hsl(var(--color-foreground)), var(--spacing-3) var(--spacing-3) 0 var(--color-accent)',
+      xl: 'var(--spacing-2) var(--spacing-2) 0 hsl(var(--color-foreground)), var(--spacing-4) var(--spacing-4) 0 var(--color-accent)',
     },
 
     // Glow effects (brand-aware)
@@ -242,47 +230,8 @@ export const DESIGN_TOKENS = {
       sm: '0 0 5px hsl(var(--color-accent) / 0.5)',
       base: '0 0 10px hsl(var(--color-accent) / 0.5)',
       md: '0 0 15px hsl(var(--color-accent) / 0.5)',
-      lg: '0 0 20px hsl(var(--color-accent) / 0.5)',
+      lg: '0 0 var(--spacing-5) hsl(var(--color-accent) / 0.5)',
       xl: '0 0 25px hsl(var(--color-accent) / 0.5)',
-    },
-
-    // Semantic shadow mappings (component-aware)
-    semantic: {
-      // Elevation levels (0-5 scale)
-      elevation: {
-        0: 'none',
-        1: '0 1px 2px 0 rgb(0 0 0 / 0.05)', // Subtle border
-        2: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)', // Card default
-        3: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)', // Card hover
-        4: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)', // Modal/Dropdown
-        5: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)', // Tooltip/Popover
-      },
-      // Component-specific shadows
-      component: {
-        button: {
-          default: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-          hover: '0 2px 4px 0 rgb(0 0 0 / 0.1)',
-          active: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-          focus: '0 0 0 2px hsl(var(--color-ring) / 0.2)',
-        },
-        input: {
-          default: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-          focus: '0 0 0 2px hsl(var(--color-ring) / 0.2)',
-          error: '0 0 0 2px hsl(var(--color-destructive) / 0.2)',
-        },
-        card: {
-          default: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-          hover: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-          active: '0 2px 4px 0 rgb(0 0 0 / 0.1)',
-        },
-        modal: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-        dropdown: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-        tooltip: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-        navigation: {
-          sidebar: '2px 0 4px 0 rgb(0 0 0 / 0.1)',
-          topbar: '0 2px 4px 0 rgb(0 0 0 / 0.1)',
-        },
-      },
     },
   },
 
@@ -338,11 +287,11 @@ export const DESIGN_TOKENS = {
   // Component Sizes
   sizes: {
     xs: '1.75rem',  // 28px
-    sm: '2rem',     // 32px
-    md: '2.5rem',   // 40px
-    lg: '3rem',     // 48px
+    sm: '2rem',     // var(--spacing-8)
+    md: '2.5rem',   // var(--spacing-10)
+    lg: '3rem',     // var(--spacing-12)
     xl: '3.5rem',   // 56px
-    '2xl': '4rem',  // 64px
+    '2xl': '4rem',  // var(--spacing-16)
   },
 } as const;
 
@@ -411,32 +360,9 @@ export const SEMANTIC_TOKENS = {
 } as const;
 
 // ==========================================
-// COMPONENT TOKEN MAPPINGS
-// ==========================================
-
-type SemanticPalette = typeof SEMANTIC_TOKENS['light'];
-
-
-export const COMPONENT_TOKENS = {
-  light: createEnhancedComponentTokens(SEMANTIC_TOKENS.light),
-  dark: createEnhancedComponentTokens(SEMANTIC_TOKENS.dark),
-  'light-high-contrast': createEnhancedComponentTokens({
-    ...SEMANTIC_TOKENS.light,
-    border: 'hsl(215 20% 35%)',
-    mutedForeground: 'hsl(215 16% 35%)',
-    foreground: 'hsl(222 47% 5%)',
-    background: 'hsl(0 0% 100%)',
-  }),
-  'dark-high-contrast': createEnhancedComponentTokens({
-    ...SEMANTIC_TOKENS.dark,
-    border: 'hsl(215 20% 65%)',
-    mutedForeground: 'hsl(215 16% 65%)',
-    foreground: 'hsl(210 40% 100%)',
-    background: 'hsl(229 84% 2%)',
-  }),
-} as const;
 // UTILITY FUNCTIONS
 // ==========================================
+
 /**
  * Get a design token value by path
  */
@@ -457,11 +383,9 @@ export function getToken(path: string): string {
 
 /**
  * Generate CSS custom properties from design tokens
- * @deprecated Use the generate-css-tokens.ts script instead
  */
 export function generateCSSVariables(theme: 'light' | 'dark' = 'light'): string {
   const semanticTokens = SEMANTIC_TOKENS[theme];
-  const componentTokens = COMPONENT_TOKENS[theme];
   
   let css = ':root {\n';
   
@@ -470,70 +394,23 @@ export function generateCSSVariables(theme: 'light' | 'dark' = 'light'): string 
     const cssVar = key.replace(/([A-Z])/g, '-$1').toLowerCase();
     css += `  --color-${cssVar}: ${value};\n`;
   });
-
+  
   // Add spacing variables
   Object.entries(DESIGN_TOKENS.spacing).forEach(([key, value]) => {
     css += `  --spacing-${key}: ${value};\n`;
   });
-
+  
   // Add typography variables
   Object.entries(DESIGN_TOKENS.typography.fontSize).forEach(([key, value]) => {
     css += `  --font-size-${key}: ${value};\n`;
   });
-
-  // Add border radius variables
-  Object.entries(DESIGN_TOKENS.borderRadius).forEach(([key, value]) => {
-    css += `  --radius-${key}: ${value};\n`;
-  });
-
-  // Add border width variables
-  Object.entries(DESIGN_TOKENS.borderWidth).forEach(([key, value]) => {
-    css += `  --border-width-${key}: ${value};\n`;
-  });
-
-  // Add shadow variables - Fixed line endings
-  if (DESIGN_TOKENS.shadows.semantic) {
-    // Elevation shadows
-    Object.entries(DESIGN_TOKENS.shadows.semantic.elevation).forEach(([level, shadow]) => {
-      css += `  --shadow-elevation-${level}: ${shadow};\n`;
-    });
-    // Component-specific shadows
-    Object.entries(DESIGN_TOKENS.shadows.semantic.component).forEach(([component, shadows]) => {
-      if (typeof shadows === "string") {
-        css += `  --shadow-component-${component}: ${shadows};\n`;
-      } else if (typeof shadows === "object") {
-        Object.entries(shadows).forEach(([state, shadow]) => {
-          if (typeof shadow === 'string') {
-            css += `  --shadow-component-${component}-${state}: ${shadow};\n`;
-          } else if (typeof shadow === 'object') {
-            Object.entries(shadow).forEach(([subState, subShadow]) => {
-              css += `  --shadow-component-${component}-${state}-${subState}: ${subShadow};\n`;
-            });
-          }
-        });
-      }
-    });
-  }
   
+  // Add shadow variables
   Object.entries(DESIGN_TOKENS.shadows).forEach(([key, value]) => {
     if (typeof value === 'string') {
       css += `  --shadow-${key}: ${value};\n`;
     }
   });
-
-  // Add component variables
-  function processComponentTokens(obj: any, prefix: string = 'component') {
-    Object.entries(obj).forEach(([key, value]) => {
-      const cssVar = `${prefix}-${key}`.replace(/([A-Z])/g, '-$1').toLowerCase();
-      if (typeof value === 'string') {
-        css += `  --${cssVar}: ${value};\n`;
-      } else if (typeof value === 'object' && value !== null) {
-        processComponentTokens(value, cssVar);
-      }
-    });
-  }
-  
-  processComponentTokens(componentTokens);
   
   css += '}\n';
   return css;
@@ -547,5 +424,3 @@ export type SemanticTokens = typeof SEMANTIC_TOKENS;
 export type ColorTokens = DesignTokens['colors'];
 export type SpacingTokens = DesignTokens['spacing'];
 export type TypographyTokens = DesignTokens['typography'];
-export type BorderWidthTokens = DesignTokens['borderWidth'];
-export type ComponentTokens = typeof COMPONENT_TOKENS;

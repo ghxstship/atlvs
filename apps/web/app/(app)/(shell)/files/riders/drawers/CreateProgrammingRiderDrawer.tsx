@@ -23,7 +23,7 @@ export default function CreateProgrammingRiderDrawer({
  currentUserId,
  projects,
  events,
- onSuccess,
+ onSuccess
 }: CreateProgrammingRiderDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -36,8 +36,8 @@ export default function CreateProgrammingRiderDrawer({
  required: true,
  options: events.map(event => ({
  label: `${event.title} - ${new Date(event.start_at).toLocaleDateString()}`,
- value: event.id,
- })),
+ value: event.id
+ }))
  },
  {
  key: 'project_id',
@@ -47,9 +47,9 @@ export default function CreateProgrammingRiderDrawer({
  { label: 'No Project', value: '' },
  ...projects.map(project => ({
  label: project.name,
- value: project.id,
+ value: project.id
  })),
- ],
+ ]
  },
  {
  key: 'kind',
@@ -67,27 +67,27 @@ export default function CreateProgrammingRiderDrawer({
  { label: '🎬 Production', value: 'production' },
  { label: '🎤 Artist', value: 'artist' },
  { label: '👥 Crew', value: 'crew' },
- ],
+ ]
  },
  {
  key: 'title',
  label: 'Rider Title',
  type: 'text',
  required: true,
- placeholder: 'Enter rider title',
+ placeholder: 'Enter rider title'
  },
  {
  key: 'description',
  label: 'Description',
  type: 'textarea',
- placeholder: 'Brief description of the rider',
+ placeholder: 'Brief description of the rider'
  },
  {
  key: 'requirements',
  label: 'Requirements',
  type: 'textarea',
  required: true,
- placeholder: 'Detailed requirements and specifications',
+ placeholder: 'Detailed requirements and specifications'
  },
  {
  key: 'priority',
@@ -99,7 +99,7 @@ export default function CreateProgrammingRiderDrawer({
  { label: 'High', value: 'high' },
  { label: 'Critical', value: 'critical' },
  { label: 'Urgent', value: 'urgent' },
- ],
+ ]
  },
  {
  key: 'status',
@@ -110,19 +110,19 @@ export default function CreateProgrammingRiderDrawer({
  { label: 'Pending Review', value: 'pending_review' },
  { label: 'Under Review', value: 'under_review' },
  { label: 'Approved', value: 'approved' },
- ],
+ ]
  },
  {
  key: 'notes',
  label: 'Notes',
  type: 'textarea',
- placeholder: 'Additional notes or comments',
+ placeholder: 'Additional notes or comments'
  },
  {
  key: 'tags',
  label: 'Tags',
  type: 'text',
- placeholder: 'Enter tags separated by commas',
+ placeholder: 'Enter tags separated by commas'
  },
  ];
 
@@ -153,13 +153,13 @@ export default function CreateProgrammingRiderDrawer({
  transportation: {},
  accommodation: {},
  attachments: [],
- metadata: {},
+ metadata: {}
  };
 
  const response = await fetch('/api/v1/programming/riders', {
  method: 'POST',
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify(payload),
+ body: JSON.stringify(payload)
  });
 
  if (!response.ok) {

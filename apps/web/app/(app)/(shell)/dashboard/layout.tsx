@@ -11,7 +11,7 @@ export const revalidate = 0;
 export default function DashboardLayout({
   children,
   analytics,
-  notifications,
+  notifications
 }: {
   children: ReactNode;
   analytics: ReactNode;

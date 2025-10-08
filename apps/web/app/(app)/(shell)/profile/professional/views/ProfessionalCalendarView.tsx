@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, User, Briefcase, Edit, Eye } from "lucide-react";
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, User, Briefcase, Edit, Eye, CalendarIcon } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { 
  Card, 
@@ -27,7 +27,7 @@ export default function ProfessionalCalendarView({
  onView,
  onEdit,
  onDelete,
- loading,
+ loading
 }: ProfessionalCalendarViewProps) {
  const [currentDate, setCurrentDate] = useState(new Date());
  const [selectedDate, setSelectedDate] = useState<Date | null>(null);

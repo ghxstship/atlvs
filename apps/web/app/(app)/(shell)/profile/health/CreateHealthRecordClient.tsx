@@ -20,7 +20,7 @@ const schema = z.object({
   severity: z.enum(['low', 'medium', 'high']).optional(),
   status: z.enum(['active', 'inactive', 'resolved']).default('active'),
   document_url: z.string().url().optional().or(z.literal('')),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 type Values = z.infer<typeof schema>;
@@ -44,9 +44,9 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
       severity: undefined,
       status: 'active',
       document_url: '',
-      notes: '',
+      notes: ''
     },
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   async function onSubmit(values: Values) {
@@ -68,7 +68,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
         status: values.status,
         document_url: values.document_url || null,
         notes: values.notes || null,
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString()
       };
 
       // Log activity

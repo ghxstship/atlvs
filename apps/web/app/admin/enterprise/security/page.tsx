@@ -3,7 +3,7 @@ import SecurityDashboard from '../../../_components/enterprise/security-dashboar
 
 export const metadata: Metadata = {
   title: 'Security Dashboard | Enterprise Dashboard',
-  description: 'Security events, threat detection, and compliance monitoring',
+  description: 'Security events, threat detection, and compliance monitoring'
 };
 
 export default function SecurityPage() {

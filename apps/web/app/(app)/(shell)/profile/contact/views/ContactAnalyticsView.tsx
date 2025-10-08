@@ -15,7 +15,7 @@ export default function ContactAnalyticsView({
  stats,
  analytics,
  loading,
- analyticsLoading,
+ analyticsLoading
 }: ContactAnalyticsViewProps) {
  if (loading || analyticsLoading) {
  return (

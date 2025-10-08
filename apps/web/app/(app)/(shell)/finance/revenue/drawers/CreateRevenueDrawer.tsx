@@ -4,23 +4,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import {
-  Drawer,
-  Button,
-  Input,
-  Select,
-  Textarea,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage,
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent
-} from '@ghxstship/ui';
-import { DollarSign, Calendar, User, Building } from 'lucide-react';
+import { Building, Button, Calendar, Card, CardContent, CardHeader, CardTitle, DollarSign, Drawer, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, Textarea, User } from 'lucide-react';
+import { Button, Card, CardContent, CardHeader, CardTitle, Drawer, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select } from '@ghxstship/ui';
 
 const createRevenueSchema = z.object({
   source: z.string().min(1, 'Revenue source is required'),
@@ -31,7 +16,7 @@ const createRevenueSchema = z.object({
   client_id: z.string().optional(),
   project_id: z.string().optional(),
   invoice_number: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 type CreateRevenueForm = z.infer<typeof createRevenueSchema>;
@@ -61,7 +46,7 @@ export default function CreateRevenueDrawer({
     defaultValues: {
       status: 'projected',
       category: 'sales',
-      recognition_date: new Date().toISOString().split('T')[0],
+      recognition_date: new Date().toISOString().split('T')[0]
     }
   });
 
@@ -232,7 +217,7 @@ export default function CreateRevenueDrawer({
             <FormField>
               <FormItem>
                 <FormControl>
-                  <Textarea
+                  <textarea
                     {...register('notes')}
                     placeholder="Any additional notes or details..."
                     rows={3}

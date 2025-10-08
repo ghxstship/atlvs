@@ -84,13 +84,17 @@ export function useOnlineStatus() {
     }
 
     if (platform === 'mobile') {
-      // Use NetInfo for React Native
+      // Use NetInfo for React Native (optional dependency)
+      // @ts-ignore - NetInfo is an optional peer dependency for React Native builds
       import('@react-native-community/netinfo').then(({ default: NetInfo }) => {
-        const unsubscribe = NetInfo.addEventListener(state => {
+        const unsubscribe = NetInfo.addEventListener((state: any) => {
           setIsOnline(state.isConnected ?? false)
         })
 
         return () => unsubscribe()
+      }).catch(() => {
+        // NetInfo not available, default to online
+        setIsOnline(true)
       })
     }
   }, [])

@@ -6,11 +6,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createClient } from '@/lib/supabase/client';
-import { Card } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Drawer } from '@ghxstship/ui';
-import { Plus, X, BarChart3, PieChart, LineChart, Activity } from 'lucide-react';
+import { Badge, Button, Card, Drawer } from '@ghxstship/ui';
+import { Activity, BarChart3, LineChart, PieChart, Plus, X } from 'lucide-react';
 
 const DashboardSchema = z.object({
   name: z.string().min(1, 'Dashboard name is required'),
@@ -208,7 +205,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
                 <h3 className="text-body-sm form-label">Dashboard Widgets</h3>
                 <Button
                   type="button"
-                  variant="outline"
+                  variant="secondary"
                  
                   onClick={() => setShowWidgetForm(true)}
                 >
@@ -233,9 +230,9 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
                           <div className="flex items-center cluster-sm mt-xs">
                             <Badge variant="secondary">{widget.type}</Badge>
                             {widget.chartType && (
-                              <Badge variant="outline">{widget.chartType}</Badge>
+                              <Badge variant="secondary">{widget.chartType}</Badge>
                             )}
-                            <Badge variant="outline">{widget.size}</Badge>
+                            <Badge variant="secondary">{widget.size}</Badge>
                           </div>
                         </div>
                         <Button
@@ -255,7 +252,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
           </div>
 
           <div className="p-lg border-t bg-secondary/30 flex justify-end cluster-sm">
-            <Button type="button" variant="outline" onClick={onCancel || (() => {})}>
+            <Button type="button" variant="secondary" onClick={onCancel || (() => {})}>
               Cancel
             </Button>
             <Button type="submit" disabled={isSubmitting}>
@@ -389,7 +386,7 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
         </div>
 
         <div className="flex justify-end cluster-sm mt-lg">
-          <Button variant="outline" onClick={onCancel}>
+          <Button variant="secondary" onClick={onCancel}>
             Cancel
           </Button>
           <Button onClick={handleSave}>

@@ -14,7 +14,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 const schema = z.object({
   name: z.string().min(2, 'Name is required'),
   status: z.string().min(2).default('planning'),
-  starts_at: z.string().nullable().optional(),
+  starts_at: z.string().nullable().optional()
 });
 
 type Values = z.infer<typeof schema>;
@@ -30,7 +30,7 @@ export default function CreateProjectClient({ orgId }: { orgId: string }) {
   const form = useForm<Values>({
     resolver: zodResolver(schema),
     defaultValues: { name: '', status: 'planning', starts_at: null },
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   async function onSubmit(values: Values) {
@@ -44,7 +44,7 @@ export default function CreateProjectClient({ orgId }: { orgId: string }) {
           name: values.name,
           status: values.status,
           starts_at: values.starts_at || null,
-          is_demo: false,
+          is_demo: false
         })
         .select('id')
         .maybeSingle();

@@ -11,7 +11,7 @@ function sanitizeFilename(name: string) {
  .normalize('NFKD')
  .replace(/[\u0300-\u036f]/g, '')
  .replace(/[^a-zA-Z0-9._-]/g, '_')
- .replace(/_{2,}/g, '_')
+ .replace(/_{2}/g, '_')
  .slice(0, 120);
 }
 
@@ -65,7 +65,7 @@ export default function FilesUploadClient({ orgId }: { orgId: string }) {
  name: clean,
  path,
  mime_type: file.type,
- size: file.size,
+ size: file.size
  })
  .select('id')
  .maybeSingle();
@@ -80,7 +80,7 @@ export default function FilesUploadClient({ orgId }: { orgId: string }) {
  file_id: inserted?.id,
  path,
  mime: file.type,
- size: file.size,
+ size: file.size
  });
  }
 
@@ -88,7 +88,7 @@ export default function FilesUploadClient({ orgId }: { orgId: string }) {
  organization_id: orgId,
  title: t('upload.cta'),
  body: `${clean} uploaded successfully`,
- href: '/projects/files',
+ href: '/projects/files'
  });
 
  if (inputRef.current) {

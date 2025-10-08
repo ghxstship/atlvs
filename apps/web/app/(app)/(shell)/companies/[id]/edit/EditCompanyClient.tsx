@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Card, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea, UnifiedInput } from '@ghxstship/ui';
+import { Button, Card, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea, Input } from '@ghxstship/ui';
 
 interface EditCompanyClientProps {
   company: any; // TODO: Add proper type from companies types
@@ -52,7 +52,7 @@ export default function EditCompanyClient({
   user,
   orgId,
   userRole,
-  translations,
+  translations
 }: EditCompanyClientProps) {
   const router = useRouter();
   const supabase = createBrowserClient();
@@ -66,7 +66,7 @@ export default function EditCompanyClient({
     phone: company.phone || '',
     address: company.address || '',
     city: company.city || '',
-    status: company.status || 'active',
+    status: company.status || 'active'
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -75,11 +75,13 @@ export default function EditCompanyClient({
   const handleInputChange = useCallback((field: keyof CompanyFormData) =>
     (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setFormData(prev => ({ ...prev, [field]: e.target.value }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
   const handleSelectChange = useCallback((field: keyof CompanyFormData) =>
     (value: string) => {
       setFormData(prev => ({ ...prev, [field]: value }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
   const handleSubmit = async (e: FormEvent) => {
@@ -100,7 +102,7 @@ export default function EditCompanyClient({
           address: formData.address,
           city: formData.city,
           status: formData.status,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', company.id)
         .eq('organization_id', orgId);
@@ -165,7 +167,7 @@ export default function EditCompanyClient({
 
               <div>
                 <label className="block text-sm font-medium mb-2">Company Name *</label>
-                <UnifiedInput
+                <Input
                   value={formData.name}
                   onChange={handleInputChange('name')}
                   placeholder="Enter company name"
@@ -222,7 +224,7 @@ export default function EditCompanyClient({
 
               <div>
                 <label className="block text-sm font-medium mb-2">Website</label>
-                <UnifiedInput
+                <Input
                   type="url"
                   value={formData.website}
                   onChange={handleInputChange('website')}
@@ -232,7 +234,7 @@ export default function EditCompanyClient({
 
               <div>
                 <label className="block text-sm font-medium mb-2">Email</label>
-                <UnifiedInput
+                <Input
                   type="email"
                   value={formData.email}
                   onChange={handleInputChange('email')}
@@ -242,7 +244,7 @@ export default function EditCompanyClient({
 
               <div>
                 <label className="block text-sm font-medium mb-2">Phone</label>
-                <UnifiedInput
+                <Input
                   type="tel"
                   value={formData.phone}
                   onChange={handleInputChange('phone')}
@@ -252,7 +254,7 @@ export default function EditCompanyClient({
 
               <div>
                 <label className="block text-sm font-medium mb-2">Address</label>
-                <UnifiedInput
+                <Input
                   value={formData.address}
                   onChange={handleInputChange('address')}
                   placeholder="123 Main St"
@@ -261,7 +263,7 @@ export default function EditCompanyClient({
 
               <div>
                 <label className="block text-sm font-medium mb-2">City</label>
-                <UnifiedInput
+                <Input
                   value={formData.city}
                   onChange={handleInputChange('city')}
                   placeholder="City, State"

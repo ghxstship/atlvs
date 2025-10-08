@@ -19,7 +19,7 @@ import {
  SelectTrigger,
  SelectValue,
  Skeleton,
- useToastContext,
+ useToastContext
 } from '@ghxstship/ui';
 import type { AccountGridViewProps, AccountRecord, AccountRecordType, AccountStatus } from '../types';
 
@@ -29,7 +29,7 @@ export default function AccountGridView({
  onEdit,
  onDelete,
  onSelect,
- selectedIds,
+ selectedIds
 }: AccountGridViewProps) {
  const { toast } = useToastContext();
  const [searchQuery, setSearchQuery] = useState('');
@@ -105,7 +105,7 @@ export default function AccountGridView({
  session: Globe,
  api_key: Key,
  security: Shield,
- preference: User,
+ preference: User
  };
  
  return icons[type] || User;
@@ -117,7 +117,7 @@ export default function AccountGridView({
  session: 'secondary',
  api_key: 'outline',
  security: 'destructive',
- preference: 'default',
+ preference: 'default'
  } as const;
  
  return variants[type] || 'default';
@@ -128,7 +128,7 @@ export default function AccountGridView({
  active: 'default',
  inactive: 'secondary',
  expired: 'destructive',
- revoked: 'destructive',
+ revoked: 'destructive'
  } as const;
  
  return variants[status] || 'secondary';

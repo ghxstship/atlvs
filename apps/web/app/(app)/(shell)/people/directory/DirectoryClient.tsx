@@ -1,9 +1,9 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Card, Button, UnifiedInput, Badge, Avatar } from '@ghxstship/ui';
+import { Card, Button, Input, Badge, Avatar } from '@ghxstship/ui';
 import { createClient } from '@ghxstship/auth';
 import { Search, Filter, UserPlus, Mail, Phone, MapPin } from 'lucide-react';
 
@@ -34,8 +34,10 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
 
   const supabase = createClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadPeople();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, selectedDepartment, selectedStatus]);
 
   const loadPeople = async () => {
@@ -109,7 +111,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
           <div className="flex flex-col sm:flex-row gap-md">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted h-icon-xs w-icon-xs" />
-              <UnifiedInput                 placeholder={t('searchPlaceholder')}
+              <Input                 placeholder={t('searchPlaceholder')}
                 value={searchQuery}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                 className="pl-2xl"

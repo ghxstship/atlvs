@@ -151,7 +151,7 @@ export const endorsementFilterSchema = zod.object({
   is_public: zod.enum(['public', 'private', 'all']).optional(),
   is_featured: zod.enum(['featured', 'not_featured', 'all']).optional(),
   date_from: zod.string().optional(),
-  date_to: zod.string().optional(),
+  date_to: zod.string().optional()
 });
 
 export const endorsementUpsertSchema = zod.object({
@@ -166,7 +166,7 @@ export const endorsementUpsertSchema = zod.object({
   rating: zod.number().min(1).max(5),
   date_received: zod.string(),
   is_public: zod.boolean(),
-  is_featured: zod.boolean(),
+  is_featured: zod.boolean()
 });
 
 // ============================================================================
@@ -181,36 +181,36 @@ export const RELATIONSHIP_LABELS: Record<EndorsementRelationship, string> = {
   mentor: 'Mentor',
   mentee: 'Mentee',
   partner: 'Partner',
-  other: 'Other',
+  other: 'Other'
 };
 
 export const VERIFICATION_STATUS_LABELS: Record<EndorsementVerificationStatus, string> = {
   pending: 'Pending',
   verified: 'Verified',
-  rejected: 'Rejected',
+  rejected: 'Rejected'
 };
 
 export const VIEW_CONFIG: Record<EndorsementViewType, { label: string; description: string }> = {
   form: {
     label: 'Form',
-    description: 'Add or edit endorsements',
+    description: 'Add or edit endorsements'
   },
   card: {
     label: 'Cards',
-    description: 'Visual card layout',
+    description: 'Visual card layout'
   },
   list: {
     label: 'List',
-    description: 'Detailed list view',
+    description: 'Detailed list view'
   },
   grid: {
     label: 'Grid',
-    description: 'Compact grid layout',
+    description: 'Compact grid layout'
   },
   analytics: {
     label: 'Analytics',
-    description: 'Insights and metrics',
-  },
+    description: 'Insights and metrics'
+  }
 };
 
 export const QUICK_FILTERS = [
@@ -256,7 +256,7 @@ export function createEmptyFormData(): EndorsementFormData {
     rating: 5,
     date_received: new Date().toISOString().split('T')[0],
     is_public: true,
-    is_featured: false,
+    is_featured: false
   };
 }
 
@@ -269,7 +269,7 @@ export function createEmptyStats(): EndorsementStats {
     featuredCount: 0,
     byRelationship: [],
     byRating: [],
-    topSkills: [],
+    topSkills: []
   };
 }
 
@@ -280,7 +280,7 @@ export function createEmptyAnalytics(): EndorsementAnalytics {
     skillCloud: [],
     verificationRate: 0,
     publicRate: 0,
-    recentEndorsements: [],
+    recentEndorsements: []
   };
 }
 
@@ -320,7 +320,7 @@ export function formatDate(date: string): string {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
+    day: 'numeric'
   });
 }
 
@@ -342,7 +342,7 @@ export function getRelationshipColor(relationship: EndorsementRelationship): str
     mentor: 'indigo',
     mentee: 'pink',
     partner: 'orange',
-    other: 'gray',
+    other: 'gray'
   };
   return colors[relationship] || 'gray';
 }

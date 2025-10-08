@@ -5,7 +5,7 @@ import { createServerClient } from '@ghxstship/auth';
 import {
   analyticsFilterSchema,
   fetchProfileOverviewAnalytics,
-  fetchRecentActivity,
+  fetchRecentActivity
 } from '@/app/(app)/(shell)/profile/overview/lib/profileOverviewService';
 
 export const dynamic = 'force-dynamic';
@@ -18,7 +18,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -45,7 +45,7 @@ function hasPermission(role: string, action: 'read' | 'write' | 'admin'): boolea
     owner: ['read', 'write', 'admin'],
     admin: ['read', 'write', 'admin'],
     manager: ['read', 'write'],
-    member: ['read'],
+    member: ['read']
   };
 
   return permissions[role as keyof typeof permissions]?.includes(action) ?? false;

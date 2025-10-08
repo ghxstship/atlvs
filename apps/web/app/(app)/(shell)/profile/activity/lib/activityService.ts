@@ -4,7 +4,7 @@ import type {
   ActivityFilters,
   ActivityStats,
   ActivityAnalytics,
-  ActivityType,
+  ActivityType
 } from '../types';
 import { createEmptyActivityStats, createEmptyActivityAnalytics } from '../types';
 
@@ -29,12 +29,12 @@ export const activityFilterSchema = zod.object({
   performed_by: zod.string().uuid().optional(),
   search: zod.string().optional(),
   limit: zod.number().min(1).max(100).default(50),
-  offset: zod.number().min(0).default(0),
+  offset: zod.number().min(0).default(0)
 });
 
 export const analyticsFilterSchema = zod.object({
   period: zod.enum(['7d', '30d', '90d', '1y']).default('30d'),
-  granularity: zod.enum(['hour', 'day', 'week', 'month']).default('day'),
+  granularity: zod.enum(['hour', 'day', 'week', 'month']).default('day')
 });
 
 type SupabaseClient = ReturnType<typeof import('@ghxstship/auth').createServerClient>;
@@ -45,7 +45,7 @@ export function getPeriodDates(period: string) {
     '7d': 7,
     '30d': 30,
     '90d': 90,
-    '1y': 365,
+    '1y': 365
   };
 
   const days = periodMap[period] ?? 30;
@@ -107,13 +107,13 @@ export async function fetchUserActivityData(
 
     return {
       activities,
-      total: count || 0,
+      total: count || 0
     };
   } catch (error) {
     console.error('Error fetching user activity data:', error);
     return {
       activities: [],
-      total: 0,
+      total: 0
     };
   }
 }
@@ -176,7 +176,7 @@ export async function fetchActivityStats(
       .map(([type, count]) => ({
         type: type as ActivityType,
         count,
-        percentage: totalActivities > 0 ? (count / totalActivities) * 100 : 0,
+        percentage: totalActivities > 0 ? (count / totalActivities) * 100 : 0
       }))
       .sort((a, b) => b.count - a.count)
       .slice(0, 5);
@@ -200,7 +200,7 @@ export async function fetchActivityStats(
 
     const activityTrends = Object.entries(dailyCounts).map(([date, count]) => ({
       date,
-      count,
+      count
     }));
 
     // Get user engagement metrics
@@ -229,8 +229,8 @@ export async function fetchActivityStats(
         profileUpdates,
         certificationsAdded,
         reviewsCompleted,
-        lastActivity,
-      },
+        lastActivity
+      }
     };
   } catch (error) {
     console.error('Error fetching activity stats:', error);
@@ -279,7 +279,7 @@ export async function fetchActivityAnalytics(
     const typeDistribution = Object.entries(typeCounts).map(([type, count]) => ({
       type: type as ActivityType,
       count,
-      percentage: totalCount > 0 ? (count / totalCount) * 100 : 0,
+      percentage: totalCount > 0 ? (count / totalCount) * 100 : 0
     }));
 
     // Get time patterns (hour of day)
@@ -291,14 +291,14 @@ export async function fetchActivityAnalytics(
 
     const hourlyPatterns = Array.from({ length: 24 }, (_, hour) => ({
       hour,
-      count: timePatterns[hour] || 0,
+      count: timePatterns[hour] || 0
     }));
 
     return {
       dailyActivity: Object.values(dailyActivity),
       typeDistribution,
       userActivity: [], // Single user context, so empty
-      timePatterns: hourlyPatterns,
+      timePatterns: hourlyPatterns
     };
   } catch (error) {
     console.error('Error fetching activity analytics:', error);
@@ -324,7 +324,7 @@ export async function createActivityRecord(
         activity_type: activityType,
         activity_description: description,
         metadata: metadata || {},
-        performed_by: performedBy,
+        performed_by: performedBy
       })
       .select(`
         *,

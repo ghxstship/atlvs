@@ -1,7 +1,7 @@
 "use client";
 
 import { FileCheck, Plus, RefreshCcw } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import {
  Badge,
@@ -15,7 +15,7 @@ import {
  StateManagerProvider,
  ViewSwitcher,
  Drawer,
- type DataRecord,
+ type DataRecord
 } from "@ghxstship/ui";
 import type { DataViewConfig, FieldConfig, FilterConfig, SortConfig } from "@ghxstship/ui/src/components/DataViews/types";
 
@@ -53,14 +53,14 @@ export default function ProgrammingRidersClient({ orgId, userId, userEmail }: Pr
  label: "Title",
  type: "text",
  sortable: true,
- filterable: true,
+ filterable: true
  },
  {
  key: "description",
  label: "Description",
  type: "text",
  sortable: false,
- filterable: true,
+ filterable: true
  },
  {
  key: "type",
@@ -75,14 +75,14 @@ export default function ProgrammingRidersClient({ orgId, userId, userEmail }: Pr
  { value: "catering", label: "Catering" },
  { value: "transportation", label: "Transportation" },
  { value: "other", label: "Other" },
- ],
+ ]
  },
  {
  key: "contact_person",
  label: "Contact Person",
  type: "text",
  sortable: true,
- filterable: true,
+ filterable: true
  },
  {
  key: "status",
@@ -96,14 +96,14 @@ export default function ProgrammingRidersClient({ orgId, userId, userEmail }: Pr
  { value: "approved", label: "Approved" },
  { value: "rejected", label: "Rejected" },
  { value: "fulfilled", label: "Fulfilled" },
- ],
+ ]
  },
  {
  key: "created_at",
  label: "Created",
  type: "date",
  sortable: true,
- filterable: false,
+ filterable: false
  },
  ];
 
@@ -141,7 +141,7 @@ export default function ProgrammingRidersClient({ orgId, userId, userEmail }: Pr
  event: '*',
  schema: 'public',
  table: 'riders',
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  () => loadData(),
  )
@@ -169,7 +169,7 @@ export default function ProgrammingRidersClient({ orgId, userId, userEmail }: Pr
  onExport: (records: DataRecord[], format: string) => {
  },
  onImport: (records: DataRecord[]) => {
- },
+ }
  };
 
  return (

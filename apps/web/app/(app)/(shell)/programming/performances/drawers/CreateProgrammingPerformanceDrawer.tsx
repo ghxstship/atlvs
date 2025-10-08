@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import AppDrawer from "@ghxstship/ui";
 import type { DrawerFieldConfig } from "@ghxstship/ui";
@@ -31,7 +31,7 @@ export default function CreateProgrammingPerformanceDrawer({
  currentUserId,
  projects,
  events,
- onSuccess,
+ onSuccess
 }: CreateProgrammingPerformanceDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -44,27 +44,27 @@ export default function CreateProgrammingPerformanceDrawer({
  required: true,
  options: events.map(event => ({
  label: `${event.title} - ${new Date(event.start_at).toLocaleDateString()}`,
- value: event.id,
- })),
+ value: event.id
+ }))
  },
  {
  key: "name",
  label: "Performance Name",
  type: "text",
  required: true,
- placeholder: "Enter performance name",
+ placeholder: "Enter performance name"
  },
  {
  key: "starts_at",
  label: "Start Time",
  type: "date",
- required: true,
+ required: true
  },
  {
  key: "venue",
  label: "Venue",
  type: "text",
- placeholder: "Enter venue name",
+ placeholder: "Enter venue name"
  },
  ];
 
@@ -76,13 +76,13 @@ export default function CreateProgrammingPerformanceDrawer({
  ...data,
  organization_id: orgId,
  created_by: currentUserId,
- updated_by: currentUserId,
+ updated_by: currentUserId
  };
 
  const response = await fetch("/api/v1/programming/performances", {
  method: "POST",
  headers: { "Content-Type": "application/json" },
- body: JSON.stringify(payload),
+ body: JSON.stringify(payload)
  });
 
  if (!response.ok) {

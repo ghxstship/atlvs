@@ -22,8 +22,8 @@ function sendToAnalytics(metric: AnalyticsMetric) {
       method: 'POST',
       keepalive: true,
       headers: {
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     }).catch(console.error);
   }
 

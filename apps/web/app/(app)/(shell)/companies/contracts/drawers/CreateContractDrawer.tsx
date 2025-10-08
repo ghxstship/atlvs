@@ -1,23 +1,10 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { Activity, Award, Button, Calendar, Clock, FileText, Input, Label, Play, Plus, Search, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Settings, Switch, Textarea, Trash2, TrendingUp, User, useToastContext } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 // import { z } from 'zod';
-import {
- Button,
- Input,
- Label,
- Select,
- SelectContent,
- SelectItem,
- SelectTrigger,
- SelectValue,
- Textarea,
- Switch,
- useToastContext,
-} from '@ghxstship/ui';
-import { Drawer } from '@ghxstship/ui';
+import { Button, Drawer, Input, Label, Select, Switch } from '@ghxstship/ui';
 
 const contractSchema = z.object({
  company_id: z.string().min(1, 'Company is required'),
@@ -32,7 +19,7 @@ const contractSchema = z.object({
  auto_renew: z.boolean().default(false),
  renewal_notice_days: z.number().min(1).max(365).optional(),
  document_url: z.string().url().optional().or(z.literal('')),
- notes: z.string().optional(),
+ notes: z.string().optional()
 });
 
 type ContractFormData = z.infer<typeof contractSchema>;
@@ -48,7 +35,7 @@ export default function CreateContractDrawer({
  isOpen,
  onClose,
  onSubmit,
- companies,
+ companies
 }: CreateContractDrawerProps) {
  const { showToast } = useToastContext();
  const [isSubmitting, setIsSubmitting] = useState(false);
@@ -59,13 +46,13 @@ export default function CreateContractDrawer({
  formState: { errors },
  reset,
  watch,
- setValue,
+ setValue
  } = useForm<ContractFormData>({
  resolver: zodResolver(contractSchema),
  defaultValues: {
  currency: 'USD',
- auto_renew: false,
- },
+ auto_renew: false
+ }
  });
 
  const watchAutoRenew = watch('auto_renew');
@@ -79,14 +66,14 @@ export default function CreateContractDrawer({
  showToast({
  title: 'Success',
  description: 'Contract created successfully',
- variant: 'default',
+ variant: 'default'
  });
  } catch (error) {
  console.error('Error creating contract:', error);
  showToast({
  title: 'Error',
  description: error instanceof Error ? error.message : 'Failed to create contract',
- variant: 'destructive',
+ variant: 'destructive'
  });
  } finally {
  setIsSubmitting(false);
@@ -143,7 +130,7 @@ export default function CreateContractDrawer({
  {/* Description */}
  <div className="space-y-sm">
  <Label htmlFor="description">Description</Label>
- <Textarea
+ <textarea
  
  {...register('description')}
  placeholder="Enter contract description"
@@ -280,7 +267,7 @@ export default function CreateContractDrawer({
  {/* Notes */}
  <div className="space-y-sm">
  <Label htmlFor="notes">Notes</Label>
- <Textarea
+ <textarea
  
  {...register('notes')}
  placeholder="Additional notes about this contract"

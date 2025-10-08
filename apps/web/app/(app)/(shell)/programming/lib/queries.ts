@@ -13,7 +13,7 @@ import type {
   Space,
   Workshop,
   SearchFilters,
-  SortOptions,
+  SortOptions
 } from '../types';
 
 export class ProgrammingQueriesService {
@@ -308,14 +308,14 @@ export class ProgrammingQueriesService {
   // Analytics and Reporting Queries
   async getEventStatistics(organizationId: string, dateRange?: { from: Date; to: Date }) {
     let query = this.supabase.rpc('get_programming_event_stats', {
-      p_organization_id: organizationId,
+      p_organization_id: organizationId
     });
 
     if (dateRange) {
       query = this.supabase.rpc('get_programming_event_stats', {
         p_organization_id: organizationId,
         p_date_from: dateRange.from.toISOString(),
-        p_date_to: dateRange.to.toISOString(),
+        p_date_to: dateRange.to.toISOString()
       });
     }
 
@@ -326,14 +326,14 @@ export class ProgrammingQueriesService {
 
   async getPerformanceStatistics(organizationId: string, dateRange?: { from: Date; to: Date }) {
     let query = this.supabase.rpc('get_programming_performance_stats', {
-      p_organization_id: organizationId,
+      p_organization_id: organizationId
     });
 
     if (dateRange) {
       query = this.supabase.rpc('get_programming_performance_stats', {
         p_organization_id: organizationId,
         p_date_from: dateRange.from.toISOString(),
-        p_date_to: dateRange.to.toISOString(),
+        p_date_to: dateRange.to.toISOString()
       });
     }
 
@@ -363,7 +363,7 @@ export class ProgrammingQueriesService {
     const { data, error } = await this.supabase.rpc('get_venue_utilization', {
       p_organization_id: organizationId,
       p_date_from: dateRange.from.toISOString(),
-      p_date_to: dateRange.to.toISOString(),
+      p_date_to: dateRange.to.toISOString()
     });
 
     if (error) throw error;

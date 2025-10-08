@@ -1,24 +1,11 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { Card } from '@ghxstship/ui';
-import { MoreHorizontal, RefreshCw } from 'lucide-react';
+import { ArcElement, BarElement, CategoryScale, Chart as ChartJS, ChartOptions, Legend, LineElement, LinearScale, MoreHorizontal, PointElement, RefreshCw, Title, Tooltip, Pie } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend,
-  ChartOptions,
-} from 'chart.js';
-import { Line, Bar, Pie, Doughnut } from 'react-chartjs-2';
+import { Bar, Doughnut, Line, Pie } from 'react-chartjs-2';
 
 ChartJS.register(
   CategoryScale,
@@ -145,6 +132,7 @@ export default function ChartWidget({
     return () => {
       subscription.unsubscribe();
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, config, organizationId, supabase]);
 
   const processChartData = (rawData: any[]) => {
@@ -185,7 +173,7 @@ export default function ChartWidget({
           backgroundColor: colors.slice(0, labels.length),
           borderColor: colors.slice(0, labels.length),
           borderWidth: 2,
-          fill: false,
+          fill: false
         }]
       };
     } else {
@@ -201,7 +189,7 @@ export default function ChartWidget({
           backgroundColor: colors[0] + '80',
           borderColor: colors[0],
           borderWidth: 2,
-          fill: config.chartType === 'line' ? false : true,
+          fill: config.chartType === 'line' ? false : true
         }]
       };
     }
@@ -214,12 +202,12 @@ export default function ChartWidget({
       plugins: {
         legend: {
           display: config.showLegend !== false,
-          position: 'top' as const,
+          position: 'top' as const
         },
         title: {
-          display: false,
-        },
-      },
+          display: false
+        }
+      }
     };
 
     if (config.chartType === 'line' || config.chartType === 'bar') {
@@ -229,16 +217,16 @@ export default function ChartWidget({
           x: {
             display: true,
             grid: {
-              display: config.showGrid !== false,
-            },
+              display: config.showGrid !== false
+            }
           },
           y: {
             display: true,
             grid: {
-              display: config.showGrid !== false,
-            },
-          },
-        },
+              display: config.showGrid !== false
+            }
+          }
+        }
       };
     }
 

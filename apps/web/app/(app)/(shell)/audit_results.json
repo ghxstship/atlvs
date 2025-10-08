@@ -1,0 +1,783 @@
+[
+  {
+    "name": "analytics",
+    "exists": true,
+    "main_client": "AnalyticsClient.tsx",
+    "views": [
+      "CalendarView.tsx",
+      "CardView.tsx",
+      "ChartView.tsx",
+      "FormView.tsx",
+      "GalleryView.tsx",
+      "KanbanView.tsx",
+      "ListView.tsx",
+      "TableView.tsx",
+      "TimelineView.tsx",
+      "ViewSwitcher.tsx"
+    ],
+    "views_count": 10,
+    "expected_views_coverage": 10,
+    "drawers": [
+      "BulkDrawer.tsx",
+      "CreateDrawer.tsx",
+      "DetailDrawer.tsx",
+      "EditDrawer.tsx",
+      "ExportDrawer.tsx",
+      "HistoryDrawer.tsx",
+      "ImportDrawer.tsx"
+    ],
+    "drawers_count": 7,
+    "expected_drawers_coverage": 7,
+    "service_files": [
+      "analytics-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 3,
+    "has_supabase": false,
+    "submodules": [
+      "dashboards",
+      "drawers",
+      "exports",
+      "overview",
+      "reports",
+      "views"
+    ],
+    "submodules_count": 6,
+    "status": "GOOD"
+  },
+  {
+    "name": "assets",
+    "exists": true,
+    "main_client": "AssetsClient.tsx",
+    "views": [
+      "AssetsChartView.tsx",
+      "AssetsTimelineView.tsx",
+      "CalendarView.tsx",
+      "CardView.tsx",
+      "KanbanView.tsx",
+      "ListView.tsx",
+      "TableView.tsx",
+      "ViewSwitcher.tsx"
+    ],
+    "views_count": 8,
+    "expected_views_coverage": 6,
+    "drawers": [
+      "CreateDrawer.tsx",
+      "DetailDrawer.tsx"
+    ],
+    "drawers_count": 2,
+    "expected_drawers_coverage": 2,
+    "service_files": [
+      "assets-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 11,
+    "has_supabase": true,
+    "submodules": [
+      "advancing",
+      "assignments",
+      "drawers",
+      "inventory",
+      "maintenance",
+      "overview",
+      "reports",
+      "tracking",
+      "views"
+    ],
+    "submodules_count": 9,
+    "status": "GOOD"
+  },
+  {
+    "name": "companies",
+    "exists": true,
+    "main_client": "CompaniesClient.tsx",
+    "views": [
+      "CardView.tsx",
+      "CompaniesCalendarView.tsx",
+      "CompaniesChartView.tsx",
+      "CompaniesKanbanView.tsx",
+      "CompaniesTimelineView.tsx",
+      "ListView.tsx",
+      "TableView.tsx"
+    ],
+    "views_count": 7,
+    "expected_views_coverage": 3,
+    "drawers": [
+      "CreateDrawer.tsx",
+      "DetailDrawer.tsx"
+    ],
+    "drawers_count": 2,
+    "expected_drawers_coverage": 2,
+    "service_files": [
+      "companies-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 6,
+    "has_supabase": false,
+    "submodules": [
+      "contracts",
+      "directory",
+      "drawers",
+      "overview",
+      "qualifications",
+      "ratings",
+      "views"
+    ],
+    "submodules_count": 7,
+    "status": "GOOD"
+  },
+  {
+    "name": "dashboard",
+    "exists": true,
+    "main_client": "DashboardClient.tsx",
+    "views": [
+      "CalendarView.tsx",
+      "CardView.tsx",
+      "ChartView.tsx",
+      "DashboardGridView.tsx",
+      "FormView.tsx",
+      "GalleryView.tsx",
+      "GanttView.tsx",
+      "KanbanView.tsx",
+      "ListView.tsx",
+      "TableView.tsx",
+      "TimelineView.tsx",
+      "ViewSwitcher.tsx"
+    ],
+    "views_count": 12,
+    "expected_views_coverage": 11,
+    "drawers": [
+      "BulkDrawer.tsx",
+      "CreateDashboardDrawer.tsx",
+      "DetailDrawer.tsx",
+      "EditDashboardDrawer.tsx",
+      "EditDrawer.tsx",
+      "ExportDrawer.tsx",
+      "HistoryDrawer.tsx",
+      "ImportDrawer.tsx"
+    ],
+    "drawers_count": 8,
+    "expected_drawers_coverage": 6,
+    "service_files": [
+      "dashboard-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 4,
+    "has_supabase": false,
+    "submodules": [
+      "@analytics",
+      "@notifications",
+      "drawers",
+      "overview",
+      "tabs",
+      "views",
+      "widgets"
+    ],
+    "submodules_count": 7,
+    "status": "GOOD"
+  },
+  {
+    "name": "files",
+    "exists": true,
+    "main_client": "FilesClient.tsx",
+    "views": [
+      "CalendarView.tsx",
+      "CardView.tsx",
+      "ChartView.tsx",
+      "FileFolderView.tsx",
+      "FileGalleryView.tsx",
+      "FileGridView.tsx",
+      "FileListView.tsx",
+      "FormView.tsx",
+      "GalleryView.tsx",
+      "GanttView.tsx",
+      "KanbanView.tsx",
+      "ResourceGridView.tsx",
+      "ResourceListView.tsx",
+      "TableView.tsx",
+      "TimelineView.tsx"
+    ],
+    "views_count": 15,
+    "expected_views_coverage": 9,
+    "drawers": [
+      "CreateAssetClient.tsx",
+      "CreateResourceClient.tsx",
+      "EditDrawer.tsx",
+      "EditFileDrawer.tsx",
+      "ExportDrawer.tsx",
+      "HistoryDrawer.tsx",
+      "ImportDrawer.tsx",
+      "UploadFileDrawer.tsx",
+      "ViewFileDrawer.tsx"
+    ],
+    "drawers_count": 9,
+    "expected_drawers_coverage": 4,
+    "service_files": [
+      "files-service.ts",
+      "resources-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 5,
+    "has_supabase": false,
+    "submodules": [
+      "call-sheets",
+      "contracts",
+      "drawers",
+      "featured",
+      "media",
+      "overview",
+      "policies",
+      "procedures",
+      "riders",
+      "templates",
+      "views"
+    ],
+    "submodules_count": 11,
+    "status": "GOOD"
+  },
+  {
+    "name": "finance",
+    "exists": true,
+    "main_client": "FinanceClient.tsx",
+    "views": [
+      "CalendarView.tsx",
+      "ChartView.tsx",
+      "FormView.tsx",
+      "GalleryView.tsx",
+      "GridView.tsx",
+      "KanbanView.tsx",
+      "ListView.tsx",
+      "TimelineView.tsx"
+    ],
+    "views_count": 8,
+    "expected_views_coverage": 8,
+    "drawers": [
+      "CreateDrawer.tsx",
+      "EditDrawer.tsx",
+      "ViewDrawer.tsx"
+    ],
+    "drawers_count": 3,
+    "expected_drawers_coverage": 3,
+    "service_files": [
+      "finance-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 7,
+    "has_supabase": true,
+    "submodules": [
+      "accounts",
+      "budgets",
+      "drawers",
+      "expenses",
+      "forecasts",
+      "invoices",
+      "overview",
+      "revenue",
+      "transactions",
+      "views"
+    ],
+    "submodules_count": 10,
+    "status": "GOOD"
+  },
+  {
+    "name": "jobs",
+    "exists": true,
+    "main_client": "JobsClient.tsx",
+    "views": [
+      "CalendarView.tsx",
+      "ChartView.tsx",
+      "FormView.tsx",
+      "GalleryView.tsx",
+      "GridView.tsx",
+      "KanbanView.tsx",
+      "ListView.tsx",
+      "TimelineView.tsx"
+    ],
+    "views_count": 8,
+    "expected_views_coverage": 8,
+    "drawers": [
+      "CreateDrawer.tsx",
+      "EditDrawer.tsx",
+      "ViewDrawer.tsx"
+    ],
+    "drawers_count": 3,
+    "expected_drawers_coverage": 3,
+    "service_files": [
+      "jobs-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 11,
+    "has_supabase": false,
+    "submodules": [
+      "assignments",
+      "bids",
+      "compliance",
+      "contracts",
+      "drawers",
+      "opportunities",
+      "overview",
+      "rfps",
+      "views"
+    ],
+    "submodules_count": 9,
+    "status": "GOOD"
+  },
+  {
+    "name": "marketplace",
+    "exists": true,
+    "main_client": "MarketplaceClient.tsx",
+    "views": [
+      "CalendarView.tsx",
+      "CardView.tsx",
+      "ChartView.tsx",
+      "FormView.tsx",
+      "GalleryView.tsx",
+      "GanttView.tsx",
+      "KanbanView.tsx",
+      "ListView.tsx",
+      "MarketplaceDashboard.tsx",
+      "TableView.tsx",
+      "TimelineView.tsx",
+      "ViewSwitcher.tsx"
+    ],
+    "views_count": 12,
+    "expected_views_coverage": 11,
+    "drawers": [
+      "BulkDrawer.tsx",
+      "CreateDrawer.tsx",
+      "CreateListingClient.tsx",
+      "CreateListingDrawer.tsx",
+      "CreateProjectClient.tsx",
+      "CreateVendorClient.tsx",
+      "DetailDrawer.tsx",
+      "EditDrawer.tsx",
+      "EditListingDrawer.tsx",
+      "ExportDrawer.tsx",
+      "HistoryDrawer.tsx",
+      "ImportDrawer.tsx",
+      "VendorProfileDrawer.tsx"
+    ],
+    "drawers_count": 13,
+    "expected_drawers_coverage": 7,
+    "service_files": [
+      "marketplace-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 3,
+    "has_supabase": false,
+    "submodules": [
+      "contracts",
+      "drawers",
+      "listings",
+      "messages",
+      "overview",
+      "payments",
+      "projects",
+      "reviews",
+      "settings",
+      "vendors",
+      "views"
+    ],
+    "submodules_count": 11,
+    "status": "GOOD"
+  },
+  {
+    "name": "opendeck",
+    "exists": true,
+    "main_client": "OpendeckClient.tsx",
+    "views": [
+      "GridView.tsx",
+      "KanbanView.tsx",
+      "ListView.tsx"
+    ],
+    "views_count": 3,
+    "expected_views_coverage": 3,
+    "drawers": [
+      "CreateDrawer.tsx",
+      "DetailDrawer.tsx",
+      "EditDrawer.tsx"
+    ],
+    "drawers_count": 3,
+    "expected_drawers_coverage": 3,
+    "service_files": [
+      "opendeck-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 0,
+    "has_supabase": true,
+    "submodules": [
+      "drawers",
+      "views"
+    ],
+    "submodules_count": 2,
+    "status": "GOOD"
+  },
+  {
+    "name": "people",
+    "exists": true,
+    "main_client": "PeopleClient.tsx",
+    "views": [
+      "CalendarView.tsx",
+      "CardView.tsx",
+      "GalleryView.tsx",
+      "KanbanView.tsx",
+      "ListView.tsx",
+      "PeopleChartView.tsx",
+      "TableView.tsx",
+      "TimelineView.tsx"
+    ],
+    "views_count": 8,
+    "expected_views_coverage": 7,
+    "drawers": [
+      "CreateDrawer.tsx",
+      "EditDrawer.tsx",
+      "ViewDrawer.tsx"
+    ],
+    "drawers_count": 3,
+    "expected_drawers_coverage": 3,
+    "service_files": [
+      "people-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 14,
+    "has_supabase": false,
+    "submodules": [
+      "assignments",
+      "competencies",
+      "contracts",
+      "directory",
+      "drawers",
+      "endorsements",
+      "network",
+      "onboarding",
+      "overview",
+      "roles",
+      "shortlists",
+      "training",
+      "views"
+    ],
+    "submodules_count": 13,
+    "status": "GOOD"
+  },
+  {
+    "name": "pipeline",
+    "exists": true,
+    "main_client": "PipelineClient.tsx",
+    "views": [
+      "CalendarView.tsx",
+      "ChartView.tsx",
+      "FormView.tsx",
+      "GalleryView.tsx",
+      "GridView.tsx",
+      "KanbanView.tsx",
+      "ListView.tsx",
+      "TimelineView.tsx"
+    ],
+    "views_count": 8,
+    "expected_views_coverage": 8,
+    "drawers": [
+      "CreateDrawer.tsx",
+      "EditDrawer.tsx",
+      "ViewDrawer.tsx"
+    ],
+    "drawers_count": 3,
+    "expected_drawers_coverage": 3,
+    "service_files": [
+      "pipeline-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 5,
+    "has_supabase": true,
+    "submodules": [
+      "contracting",
+      "drawers",
+      "manning",
+      "onboarding",
+      "overview",
+      "training",
+      "views"
+    ],
+    "submodules_count": 7,
+    "status": "GOOD"
+  },
+  {
+    "name": "procurement",
+    "exists": true,
+    "main_client": "ProcurementClient.tsx",
+    "views": [
+      "CalendarView.tsx",
+      "CardView.tsx",
+      "ChartView.tsx",
+      "FormView.tsx",
+      "GalleryView.tsx",
+      "GanttView.tsx",
+      "KanbanView.tsx",
+      "ListView.tsx",
+      "TableView.tsx",
+      "TimelineView.tsx",
+      "ViewSwitcher.tsx"
+    ],
+    "views_count": 11,
+    "expected_views_coverage": 11,
+    "drawers": [
+      "BulkDrawer.tsx",
+      "CreateDrawer.tsx",
+      "DetailDrawer.tsx",
+      "EditDrawer.tsx",
+      "ExportDrawer.tsx",
+      "HistoryDrawer.tsx",
+      "ImportDrawer.tsx"
+    ],
+    "drawers_count": 7,
+    "expected_drawers_coverage": 7,
+    "service_files": [
+      "procurement-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 17,
+    "has_supabase": false,
+    "submodules": [
+      "all",
+      "analytics",
+      "approvals",
+      "catalog",
+      "categories",
+      "contracts",
+      "drawers",
+      "feedback",
+      "integrations",
+      "orders",
+      "overview",
+      "products",
+      "requests",
+      "services",
+      "tracking",
+      "vendors",
+      "views"
+    ],
+    "submodules_count": 17,
+    "status": "GOOD"
+  },
+  {
+    "name": "profile",
+    "exists": true,
+    "main_client": "ProfileClient.tsx",
+    "views": [
+      "ProfileAnalyticsView.tsx",
+      "ProfileCalendarView.tsx",
+      "ProfileGridView.tsx",
+      "ProfileKanbanView.tsx",
+      "ProfileListView.tsx",
+      "ProfileTableView.tsx"
+    ],
+    "views_count": 6,
+    "expected_views_coverage": 0,
+    "drawers": [
+      "BulkActionsDrawer.tsx",
+      "CreateProfileDrawer.tsx",
+      "EditProfileDrawer.tsx",
+      "ExportDrawer.tsx"
+    ],
+    "drawers_count": 4,
+    "expected_drawers_coverage": 1,
+    "service_files": [
+      "profile-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 28,
+    "has_supabase": true,
+    "submodules": [
+      "activity",
+      "basic",
+      "certifications",
+      "contact",
+      "drawers",
+      "emergency",
+      "endorsements",
+      "health",
+      "history",
+      "job-history",
+      "overview",
+      "performance",
+      "professional",
+      "travel",
+      "uniform",
+      "views"
+    ],
+    "submodules_count": 16,
+    "status": "GOOD"
+  },
+  {
+    "name": "programming",
+    "exists": true,
+    "main_client": "ProgrammingClient.tsx",
+    "views": [
+      "CalendarView.tsx",
+      "CardView.tsx",
+      "ChartView.tsx",
+      "GalleryView.tsx",
+      "KanbanView.tsx",
+      "ListView.tsx",
+      "TableView.tsx",
+      "TimelineView.tsx"
+    ],
+    "views_count": 8,
+    "expected_views_coverage": 8,
+    "drawers": [
+      "CreateDrawer.tsx",
+      "EditDrawer.tsx",
+      "ViewDrawer.tsx"
+    ],
+    "drawers_count": 3,
+    "expected_drawers_coverage": 3,
+    "service_files": [
+      "programming-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 18,
+    "has_supabase": true,
+    "submodules": [
+      "calendar",
+      "call-sheets",
+      "drawers",
+      "events",
+      "itineraries",
+      "lineups",
+      "overview",
+      "performances",
+      "riders",
+      "spaces",
+      "views",
+      "workshops"
+    ],
+    "submodules_count": 12,
+    "status": "GOOD"
+  },
+  {
+    "name": "projects",
+    "exists": true,
+    "main_client": "ProjectsClient.tsx",
+    "views": [
+      "CalendarView.tsx",
+      "CardView.tsx",
+      "ChartView.tsx",
+      "FormView.tsx",
+      "GalleryView.tsx",
+      "GanttView.tsx",
+      "KanbanView.tsx",
+      "ListView.tsx",
+      "ProjectsChartView.tsx",
+      "TableView.tsx",
+      "TimelineView.tsx"
+    ],
+    "views_count": 11,
+    "expected_views_coverage": 10,
+    "drawers": [
+      "CreateDrawer.tsx",
+      "EditDrawer.tsx",
+      "ViewDrawer.tsx"
+    ],
+    "drawers_count": 3,
+    "expected_drawers_coverage": 3,
+    "service_files": [
+      "projects-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 9,
+    "has_supabase": true,
+    "submodules": [
+      "activations",
+      "drawers",
+      "files",
+      "inspections",
+      "locations",
+      "overview",
+      "risks",
+      "schedule",
+      "tasks",
+      "views"
+    ],
+    "submodules_count": 10,
+    "status": "GOOD"
+  },
+  {
+    "name": "resources",
+    "exists": true,
+    "main_client": "ResourcesClient.tsx",
+    "views": [
+      "CardView.tsx",
+      "GridView.tsx",
+      "ListView.tsx"
+    ],
+    "views_count": 3,
+    "expected_views_coverage": 3,
+    "drawers": [
+      "CreateDrawer.tsx",
+      "DetailDrawer.tsx"
+    ],
+    "drawers_count": 2,
+    "expected_drawers_coverage": 2,
+    "service_files": [
+      "resources-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 1,
+    "has_supabase": true,
+    "submodules": [
+      "drawers",
+      "featured",
+      "overview",
+      "policies",
+      "procedures",
+      "templates",
+      "trainings",
+      "views"
+    ],
+    "submodules_count": 8,
+    "status": "GOOD"
+  },
+  {
+    "name": "settings",
+    "exists": true,
+    "main_client": "SettingsClient.tsx",
+    "views": [
+      "SettingsCalendarView.tsx",
+      "SettingsChartView.tsx",
+      "SettingsGalleryView.tsx",
+      "SettingsGridView.tsx",
+      "SettingsKanbanView.tsx",
+      "SettingsListView.tsx",
+      "SettingsTimelineView.tsx"
+    ],
+    "views_count": 7,
+    "expected_views_coverage": 0,
+    "drawers": [
+      "CreateSettingsDrawer.tsx",
+      "EditSettingsDrawer.tsx"
+    ],
+    "drawers_count": 2,
+    "expected_drawers_coverage": 0,
+    "service_files": [
+      "settings-service.ts"
+    ],
+    "has_service_layer": true,
+    "api_routes_count": 15,
+    "has_supabase": true,
+    "submodules": [
+      "account",
+      "automations",
+      "billing",
+      "drawers",
+      "integrations",
+      "notifications",
+      "organization",
+      "overview",
+      "permissions",
+      "security",
+      "teams",
+      "views"
+    ],
+    "submodules_count": 12,
+    "status": "GOOD"
+  }
+]

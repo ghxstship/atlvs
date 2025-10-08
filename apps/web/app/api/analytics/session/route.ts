@@ -47,7 +47,7 @@ async function storeSessionData(payload: SessionAnalyticsPayload): Promise<void>
         duration: payload.metadata.duration,
         performance_data: payload.metadata.performance,
         created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       });
 
     if (sessionError) {
@@ -64,7 +64,7 @@ async function storeSessionData(payload: SessionAnalyticsPayload): Promise<void>
         event_data: event.data,
         url: event.url,
         performance_data: event.performance,
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString()
       }));
 
       // Insert in batches of 100
@@ -107,7 +107,7 @@ async function processSessionInsights(payload: SessionAnalyticsPayload): Promise
       description: `${rageClicks.length} rage click(s) detected - users repeatedly clicking same element`,
       page: rageClicks[0].url,
       timestamp: rageClicks[0].timestamp,
-      recommendation: 'Review UI/UX for confusing or unresponsive elements',
+      recommendation: 'Review UI/UX for confusing or unresponsive elements'
     });
   }
 
@@ -121,7 +121,7 @@ async function processSessionInsights(payload: SessionAnalyticsPayload): Promise
       description: `${deadClicks.length} dead clicks detected - users clicking non-interactive elements`,
       page: deadClicks[0].url,
       timestamp: deadClicks[0].timestamp,
-      recommendation: 'Consider making these elements interactive or removing them',
+      recommendation: 'Consider making these elements interactive or removing them'
     });
   }
 
@@ -134,7 +134,7 @@ async function processSessionInsights(payload: SessionAnalyticsPayload): Promise
       description: `${payload.metadata.errors} JavaScript errors occurred during session`,
       page: payload.metadata.landingPage,
       timestamp: payload.events.find(e => e.type === 'error')?.timestamp || new Date().toISOString(),
-      recommendation: 'Review error logs and fix JavaScript issues',
+      recommendation: 'Review error logs and fix JavaScript issues'
     });
   }
 
@@ -154,7 +154,7 @@ async function processSessionInsights(payload: SessionAnalyticsPayload): Promise
         description: `Slow page load detected (avg LCP: ${Math.round(avgLCP)}ms)`,
         page: payload.metadata.landingPage,
         timestamp: performanceEvents[0].timestamp,
-        recommendation: 'Optimize images, reduce JavaScript, improve server response time',
+        recommendation: 'Optimize images, reduce JavaScript, improve server response time'
       });
     }
   }
@@ -168,7 +168,7 @@ async function processSessionInsights(payload: SessionAnalyticsPayload): Promise
       description: 'Very short session duration - possible bounce or poor experience',
       page: payload.metadata.landingPage,
       timestamp: new Date(Date.now() - payload.metadata.duration).toISOString(),
-      recommendation: 'Review landing page content and user experience',
+      recommendation: 'Review landing page content and user experience'
     });
   }
 
@@ -178,7 +178,7 @@ async function processSessionInsights(payload: SessionAnalyticsPayload): Promise
       .from('analytics_insights')
       .insert(insights.map(insight => ({
         ...insight,
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString()
       })));
 
     if (error) {
@@ -212,7 +212,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     return NextResponse.json({
       success: true,
       sessionId: payload.sessionId,
-      eventsProcessed: payload.events.length,
+      eventsProcessed: payload.events.length
     });
 
   } catch (error) {
@@ -274,7 +274,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     return NextResponse.json({
       sessions: data,
       insightsSummary,
-      totalSessions: data?.length || 0,
+      totalSessions: data?.length || 0
     });
 
   } catch (error) {

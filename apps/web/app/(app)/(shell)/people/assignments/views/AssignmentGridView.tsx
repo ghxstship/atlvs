@@ -1,8 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import { DataGrid } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
+import { Badge, DataGrid } from '@ghxstship/ui';
 import type { Assignment } from '../types';
 
 interface AssignmentGridViewProps {

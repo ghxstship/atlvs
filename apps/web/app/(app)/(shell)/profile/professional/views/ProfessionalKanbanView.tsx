@@ -29,7 +29,7 @@ const KANBAN_COLUMNS = [
  color: 'bg-gray-50 border-gray-200',
  headerColor: 'bg-gray-100',
  statusFilter: (profile: ProfessionalProfile) => 
- profile.status === 'draft' || (profile.profile_completion_percentage || 0) < 50,
+ profile.status === 'draft' || (profile.profile_completion_percentage || 0) < 50
  },
  {
  id: 'in_progress',
@@ -38,7 +38,7 @@ const KANBAN_COLUMNS = [
  color: 'bg-yellow-50 border-yellow-200',
  headerColor: 'bg-yellow-100',
  statusFilter: (profile: ProfessionalProfile) => 
- profile.status === 'active' && (profile.profile_completion_percentage || 0) >= 50 && (profile.profile_completion_percentage || 0) < 90,
+ profile.status === 'active' && (profile.profile_completion_percentage || 0) >= 50 && (profile.profile_completion_percentage || 0) < 90
  },
  {
  id: 'review',
@@ -47,7 +47,7 @@ const KANBAN_COLUMNS = [
  color: 'bg-blue-50 border-blue-200',
  headerColor: 'bg-blue-100',
  statusFilter: (profile: ProfessionalProfile) => 
- profile.status === 'active' && (profile.profile_completion_percentage || 0) >= 90,
+ profile.status === 'active' && (profile.profile_completion_percentage || 0) >= 90
  },
  {
  id: 'inactive',
@@ -56,7 +56,7 @@ const KANBAN_COLUMNS = [
  color: 'bg-red-50 border-red-200',
  headerColor: 'bg-red-100',
  statusFilter: (profile: ProfessionalProfile) => 
- profile.status === 'inactive' || profile.status === 'archived',
+ profile.status === 'inactive' || profile.status === 'archived'
  },
 ];
 
@@ -67,7 +67,7 @@ export default function ProfessionalKanbanView({
  onView,
  onEdit,
  onDelete,
- loading,
+ loading
 }: ProfessionalKanbanViewProps) {
  const [draggedItem, setDraggedItem] = useState<string | null>(null);
 

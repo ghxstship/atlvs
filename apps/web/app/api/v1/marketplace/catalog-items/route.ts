@@ -37,7 +37,7 @@ const CreateCatalogItemSchema = z.object({
   tags: z.array(z.string()).optional(),
   vendorId: z.string().uuid().optional(),
   isPublic: z.boolean().default(true),
-  featured: z.boolean().default(false),
+  featured: z.boolean().default(false)
 });
 
 const UpdateCatalogItemSchema = CreateCatalogItemSchema.partial();

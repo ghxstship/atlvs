@@ -3,7 +3,7 @@
 import { Badge, Button, Card } from "@ghxstship/ui";
 import type { ProgrammingEvent } from "../types";
 import { STATUS_BADGE, EVENT_TYPE_LABEL } from "../ProgrammingEventsClient";
-import { Calendar, Edit, Eye, Tag, Users } from 'lucide-react';
+import { Calendar, Edit, Eye, Tag, Users, MapPin, Clock, Pencil } from 'lucide-react';
 
 type ProgrammingEventsTimelineViewProps = {
  events: ProgrammingEvent[];
@@ -14,7 +14,7 @@ type ProgrammingEventsTimelineViewProps = {
 export default function ProgrammingEventsTimelineView({
  events,
  onView,
- onEdit,
+ onEdit
 }: ProgrammingEventsTimelineViewProps) {
  // Sort events by start date
  const sortedEvents = [...events].sort((a, b) => 

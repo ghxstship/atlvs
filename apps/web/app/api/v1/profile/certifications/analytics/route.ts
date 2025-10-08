@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import {
   analyticsFilterSchema,
-  fetchCertificationAnalytics,
+  fetchCertificationAnalytics
 } from '@/app/(app)/(shell)/profile/certifications/lib/certificationService';
 
 export const dynamic = 'force-dynamic';
@@ -16,7 +16,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {

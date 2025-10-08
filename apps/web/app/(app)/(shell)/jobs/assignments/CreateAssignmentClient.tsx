@@ -6,7 +6,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Plus, Loader2, AlertCircle } from 'lucide-react';
+import { Plus, Loader2, AlertCircle } from 'lucide-react';import { Button, UnifiedInput, Select, Textarea, Drawer } from '@ghxstship/ui';
+import { Button, Select, Textarea, Drawer } from '@ghxstship/ui';
+
 import { usePostHog } from 'posthog-js/react';
 
 const createAssignmentSchema = z.object({
@@ -24,7 +26,7 @@ const createAssignmentSchema = z.object({
   currency: z.string().default('USD'),
   requirements: z.string().optional(),
   deliverables: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 type CreateAssignmentFormData = z.infer<typeof createAssignmentSchema>;
@@ -45,7 +47,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
     register,
     handleSubmit,
     reset,
-    formState: { errors, isValid },
+    formState: { errors, isValid }
   } = useForm<CreateAssignmentFormData>({
     resolver: zodResolver(createAssignmentSchema),
     mode: 'onChange',
@@ -53,8 +55,8 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
       assigneeType: 'internal',
       status: 'pending',
       priority: 'medium',
-      currency: 'USD',
-    },
+      currency: 'USD'
+    }
   });
 
   const onSubmit = async (data: CreateAssignmentFormData) => {
@@ -65,19 +67,19 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
       posthog?.capture('jobs_assignment_create_attempt', {
         organization_id: orgId,
         assignee_type: data.assigneeType,
-        priority: data.priority,
+        priority: data.priority
       });
 
       const response = await fetch('/api/v1/jobs/assignments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
         body: JSON.stringify({
           ...data,
-          organization_id: orgId,
-        }),
+          organization_id: orgId
+        })
       });
 
       if (!response.ok) {
@@ -90,7 +92,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
       posthog?.capture('jobs_assignment_create_success', {
         organization_id: orgId,
         assignment_id: result.id,
-        assignee_type: data.assigneeType,
+        assignee_type: data.assigneeType
       });
 
       // Log activity
@@ -103,8 +105,8 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
           title: data.title,
           assignee_type: data.assigneeType,
           priority: data.priority,
-          estimated_hours: data.estimatedHours,
-        },
+          estimated_hours: data.estimatedHours
+        }
       });
 
       reset();
@@ -116,7 +118,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
       
       posthog?.capture('jobs_assignment_create_error', {
         organization_id: orgId,
-        error: errorMessage,
+        error: errorMessage
       });
     } finally {
       setIsSubmitting(false);

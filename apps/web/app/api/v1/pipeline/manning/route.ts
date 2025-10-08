@@ -43,7 +43,7 @@ const CreateManningPlanSchema = z.object({
     unionRequirements: z.array(z.string()).optional(),
     safetyRequirements: z.array(z.string()).optional()
   }).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 const UpdateManningPlanSchema = CreateManningPlanSchema.partial().omit({ jobId: true });
@@ -56,7 +56,7 @@ const AssignPersonnelSchema = z.object({
   startDate: z.string(),
   endDate: z.string().optional(),
   status: z.enum(['assigned', 'confirmed', 'active', 'completed', 'cancelled']).default('assigned'),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 async function getAuthenticatedUser() {

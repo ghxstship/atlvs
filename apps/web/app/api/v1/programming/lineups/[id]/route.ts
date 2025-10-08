@@ -23,22 +23,22 @@ const updateLineupSchema = z.object({
     email: z.string().email().optional(),
     phone: z.string().optional(),
     agent: z.string().optional(),
-    manager: z.string().optional(),
+    manager: z.string().optional()
   }).optional(),
   technical_requirements: z.object({
     sound_check: z.string().datetime().optional(),
     equipment: z.array(z.string()).optional(),
-    special_requests: z.string().optional(),
+    special_requests: z.string().optional()
   }).optional(),
   contract_details: z.object({
     fee: z.number().min(0).optional(),
     currency: z.string().length(3).optional(),
     payment_terms: z.string().optional(),
-    contract_signed: z.boolean().optional(),
+    contract_signed: z.boolean().optional()
   }).optional(),
   notes: z.string().optional().nullable(),
   tags: z.array(z.string().max(32)).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 async function getSupabase() {
@@ -49,7 +49,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -156,7 +156,7 @@ export async function PATCH(
 
     const updatePayload = {
       ...data,
-      updated_by: user!.id,
+      updated_by: user!.id
     };
 
     const { data: lineup, error: updateError } = await supabase
@@ -183,8 +183,8 @@ export async function PATCH(
       action: 'update',
       details: {
         performer_name: lineup.performer_name,
-        changes: Object.keys(data),
-      },
+        changes: Object.keys(data)
+      }
     });
 
     return NextResponse.json(lineup);
@@ -246,8 +246,8 @@ export async function DELETE(
       action: 'delete',
       details: {
         performer_name: lineup.performer_name,
-        performer_type: lineup.performer_type,
-      },
+        performer_type: lineup.performer_type
+      }
     });
 
     return NextResponse.json({ message: 'Lineup deleted successfully' });

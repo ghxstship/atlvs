@@ -36,7 +36,7 @@ export default function FileListView({
  onDownload,
  onDelete,
  onShare,
- formatFileSize,
+ formatFileSize
 }: FileListViewProps) {
  const visibleFields = fieldVisibility.filter((f) => f.visible);
 

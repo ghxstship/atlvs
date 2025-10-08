@@ -19,7 +19,7 @@ import {
  SelectTrigger,
  SelectValue,
  Skeleton,
- useToastContext,
+ useToastContext
 } from '@ghxstship/ui';
 import type { SettingsGridViewProps, SettingRecord, SettingCategory, SettingType } from '../types';
 
@@ -29,7 +29,7 @@ export default function SettingsGridView({
  onEdit,
  onDelete,
  onSelect,
- selectedIds,
+ selectedIds
 }: SettingsGridViewProps) {
  const { toast } = useToastContext();
  const [searchQuery, setSearchQuery] = useState('');
@@ -109,7 +109,7 @@ export default function SettingsGridView({
  permissions: 'destructive',
  automations: 'secondary',
  compliance: 'outline',
- backup: 'secondary',
+ backup: 'secondary'
  } as const;
  
  return variants[category] || 'default';
@@ -121,7 +121,7 @@ export default function SettingsGridView({
  number: 'bg-green-100 text-green-800',
  boolean: 'bg-purple-100 text-purple-800',
  json: 'bg-orange-100 text-orange-800',
- array: 'bg-pink-100 text-pink-800',
+ array: 'bg-pink-100 text-pink-800'
  };
 
  return (

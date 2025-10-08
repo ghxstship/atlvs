@@ -106,7 +106,7 @@ export class ProjectExports {
     try {
       const { data: projects } = await projectQueries.getProjects(orgId, {
         ...options.filters,
-        limit: 10000,
+        limit: 10000
       });
 
       if (!projects || projects.length === 0) {
@@ -118,12 +118,12 @@ export class ProjectExports {
           exportDate: new Date().toISOString(),
           recordCount: projects.length,
           organizationId: orgId,
-          filters: options.filters || {},
+          filters: options.filters || {}
         },
         projects: projects.map(project => ({
           ...project,
-          _exportedAt: new Date().toISOString(),
-        })),
+          _exportedAt: new Date().toISOString()
+        }))
       };
 
       return JSON.stringify(exportData, null, 2);
@@ -168,7 +168,7 @@ export class TaskExports {
     try {
       const { data: tasks } = await taskQueries.getTasks(orgId, {
         ...options.filters,
-        limit: 10000,
+        limit: 10000
       });
 
       if (!tasks || tasks.length === 0) {
@@ -229,7 +229,7 @@ export class TaskExports {
     try {
       const { data: tasks } = await taskQueries.getTasks(orgId, {
         ...options.filters,
-        limit: 10000,
+        limit: 10000
       });
 
       if (!tasks || tasks.length === 0) {
@@ -241,12 +241,12 @@ export class TaskExports {
           exportDate: new Date().toISOString(),
           recordCount: tasks.length,
           organizationId: orgId,
-          filters: options.filters || {},
+          filters: options.filters || {}
         },
         tasks: tasks.map(task => ({
           ...task,
-          _exportedAt: new Date().toISOString(),
-        })),
+          _exportedAt: new Date().toISOString()
+        }))
       };
 
       return JSON.stringify(exportData, null, 2);
@@ -270,7 +270,7 @@ export class RiskExports {
     try {
       const { data: risks } = await riskQueries.getRisks(orgId, {
         ...options.filters,
-        limit: 10000,
+        limit: 10000
       });
 
       if (!risks || risks.length === 0) {
@@ -334,7 +334,7 @@ export class InspectionExports {
     try {
       const { data: inspections } = await inspectionQueries.getInspections(orgId, {
         ...options.filters,
-        limit: 10000,
+        limit: 10000
       });
 
       if (!inspections || inspections.length === 0) {
@@ -422,8 +422,8 @@ export class ComprehensiveProjectExports {
           projects: JSON.parse(projectsData),
           tasks: JSON.parse(tasksData),
           risks: this.parseCSV(risksData),
-          inspections: this.parseCSV(inspectionsData),
-        },
+          inspections: this.parseCSV(inspectionsData)
+        }
       };
 
       return JSON.stringify(completeExport, null, 2);
@@ -467,7 +467,7 @@ export class ComprehensiveProjectExports {
           filename: job.filename,
           status: 'pending',
           options: options,
-          created_at: job.createdAt,
+          created_at: job.createdAt
         }]);
 
       return job;
@@ -499,7 +499,7 @@ export class ComprehensiveProjectExports {
         error: data.error_message,
         createdAt: data.created_at,
         completedAt: data.completed_at,
-        recordCount: data.record_count || 0,
+        recordCount: data.record_count || 0
       };
     } catch (error) {
       console.error('Error getting export job:', error);

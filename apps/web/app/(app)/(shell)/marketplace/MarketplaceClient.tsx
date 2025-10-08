@@ -1,11 +1,6 @@
 'use client';
 import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
-import {
- useCallback,
- useEffect,
- useMemo,
- useState,
-} from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
  Button,
  CalendarView,
@@ -17,13 +12,13 @@ import {
  ListView,
  StateManagerProvider,
  TimelineView,
- ViewSwitcher,
+ ViewSwitcher
 } from '@ghxstship/ui';
 import type {
  DataViewConfig,
  SortConfig,
  ViewType,
- FilterConfig,
+ FilterConfig
 } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import {
@@ -31,13 +26,13 @@ import {
  createMarketplaceListing,
  updateMarketplaceListing,
  deleteMarketplaceListings,
- normalizeListingForDataView,
+ normalizeListingForDataView
 } from './lib/marketplace-service';
 import type {
  ListingFilters,
  MarketplaceListing,
  MarketplaceStats,
- UpsertListingDto,
+ UpsertListingDto
 } from './types';
 import { LISTING_FIELD_CONFIGS } from './field-config';
 import { MarketplaceDashboard } from './views/MarketplaceDashboard';
@@ -80,7 +75,7 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  const { listings: responseListings, stats: responseStats } =
  await fetchMarketplaceListings(orgId, {
  ...filters,
- search: searchQuery || undefined,
+ search: searchQuery || undefined
  });
 
  const sortedListings = (() => {
@@ -129,7 +124,7 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  }
  return {
  ...acc,
- [filter.field]: filter.value,
+ [filter.field]: filter.value
  } as ListingFilters;
  }, {} as ListingFilters);
 
@@ -181,7 +176,7 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  featuredListings: dto.featured
  ? prev.featuredListings + 1
  : prev.featuredListings,
- lastUpdated: new Date().toISOString(),
+ lastUpdated: new Date().toISOString()
  }
  : prev,
  );
@@ -239,7 +234,7 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
 
  if (format === 'json') {
  const blob = new Blob([JSON.stringify(data, null, 2)], {
- type: 'application/json',
+ type: 'application/json'
  });
  const url = URL.createObjectURL(blob);
  const link = document.createElement('a');
@@ -337,7 +332,7 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  id: 'delete',
  label: t('actions.deleteSelected'),
  onClick: handleDelete,
- variant: 'destructive',
+ variant: 'destructive'
  },
  ],
  actions: [
@@ -346,9 +341,9 @@ export default function MarketplaceClient({ orgId }: { orgId: string }) {
  label: t('actions.viewVendor'),
  onClick: (record) =>
  openVendorDrawer((record as MarketplaceListing).creator?.id ?? null),
- show: (record) => Boolean((record as MarketplaceListing).creator?.id),
+ show: (record) => Boolean((record as MarketplaceListing).creator?.id)
  },
- ],
+ ]
  }),
  [
  error,

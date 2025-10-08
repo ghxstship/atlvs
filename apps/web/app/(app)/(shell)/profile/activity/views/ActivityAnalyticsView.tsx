@@ -16,7 +16,7 @@ export default function ActivityAnalyticsView({
  stats,
  analytics,
  loading,
- analyticsLoading,
+ analyticsLoading
 }: ActivityAnalyticsViewProps) {
  if (loading || analyticsLoading) {
  return (

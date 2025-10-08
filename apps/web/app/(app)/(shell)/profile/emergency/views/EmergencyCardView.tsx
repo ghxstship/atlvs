@@ -16,14 +16,14 @@ const priorityVariants: Record<string, { label: string; variant: 'destructive' |
  critical: { label: 'Critical', variant: 'destructive' },
  high: { label: 'High', variant: 'default' },
  medium: { label: 'Medium', variant: 'secondary' },
- low: { label: 'Low', variant: 'outline' },
+ low: { label: 'Low', variant: 'outline' }
 };
 
 export default function EmergencyCardView({
  contact,
  loading,
  onEdit,
- onVerify,
+ onVerify
 }: EmergencyCardViewProps) {
  if (loading) {
  return (

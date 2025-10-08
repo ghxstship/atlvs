@@ -21,7 +21,7 @@ const schema = z.object({
   skills_gained: z.string().optional(),
   achievements: z.string().optional(),
   references: z.string().optional(),
-  is_current: z.boolean().default(false),
+  is_current: z.boolean().default(false)
 });
 
 type Values = z.infer<typeof schema>;
@@ -46,9 +46,9 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
       skills_gained: '',
       achievements: '',
       references: '',
-      is_current: false,
+      is_current: false
     },
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   async function onSubmit(values: Values) {
@@ -71,7 +71,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
         achievements: values.achievements ? values.achievements.split(',').map(s => s.trim()) : [],
         references: values.references || null,
         is_current: values.is_current,
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString()
       };
 
       // Log activity

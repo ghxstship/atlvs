@@ -16,7 +16,7 @@ export default function ContactMapView({
  contacts,
  loading,
  selectedContactId,
- onSelectContact,
+ onSelectContact
 }: ContactMapViewProps) {
  if (loading) {
  return (

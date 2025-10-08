@@ -17,7 +17,7 @@ export class CompaniesMutationsService {
     const { data, error } = await this.supabase.rpc('create_company_transaction', {
       company_data: input,
       org_id: orgId,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;
@@ -32,7 +32,7 @@ export class CompaniesMutationsService {
       company_id: id,
       update_data: input,
       user_id: userId,
-      expected_version: version,
+      expected_version: version
     });
 
     if (error) throw error;
@@ -45,7 +45,7 @@ export class CompaniesMutationsService {
   async bulkUpdateCompanies(updates: Array<{ id: string; data: UpdateCompanyInput }>, userId: string) {
     const { data, error } = await this.supabase.rpc('bulk_update_companies', {
       updates: updates,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;
@@ -58,7 +58,7 @@ export class CompaniesMutationsService {
   async softDeleteCompany(id: string, userId: string) {
     const { data, error } = await this.supabase.rpc('soft_delete_company', {
       company_id: id,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;
@@ -71,7 +71,7 @@ export class CompaniesMutationsService {
   async hardDeleteCompany(id: string, userId: string) {
     const { data, error } = await this.supabase.rpc('hard_delete_company', {
       company_id: id,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;
@@ -85,7 +85,7 @@ export class CompaniesMutationsService {
     const { data, error } = await this.supabase.rpc('bulk_delete_companies', {
       company_ids: ids,
       user_id: userId,
-      soft_delete: soft,
+      soft_delete: soft
     });
 
     if (error) throw error;
@@ -98,7 +98,7 @@ export class CompaniesMutationsService {
   async restoreCompany(id: string, userId: string) {
     const { data, error } = await this.supabase.rpc('restore_company', {
       company_id: id,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;

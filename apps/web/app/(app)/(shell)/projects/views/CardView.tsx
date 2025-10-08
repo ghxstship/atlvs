@@ -43,7 +43,7 @@ export default function CardView({
   loading = false,
   emptyMessage = "No data available",
   className = "",
-  cardLayout = 'comfortable',
+  cardLayout = 'comfortable'
 }: CardViewProps) {
   // Handle item selection
   const handleItemSelect = (itemId: string, checked: boolean, event: React.MouseEvent) => {

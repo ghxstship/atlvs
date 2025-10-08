@@ -1,8 +1,8 @@
 "use client";
 
-import { MoreVertical, Clock, Users, Calendar, Tag, AlertCircle, CheckCircle, Eye, Edit, Copy, Trash2, ChevronUp, ChevronDown, Briefcase } from "lucide-react";
+import { MoreVertical, Clock, Users, Calendar, Tag, AlertCircle, CheckCircle, Eye, Edit, Copy, Trash2, ChevronUp, ChevronDown, Briefcase } from 'lucide-react';
 import Image from "next/image";
-import { useState, useMemo } from "react";
+import { useState, useMemo } from 'react';
 import { Card, Badge, Button, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ghxstship/ui";
 import { format, parseISO, differenceInDays } from "date-fns";
 
@@ -61,7 +61,7 @@ export default function TaskBoardView({
  onViewTask,
  onEditTask,
  onDuplicateTask,
- onDeleteTask,
+ onDeleteTask
 }: TaskBoardViewProps) {
  const [collapsedColumns, setCollapsedColumns] = useState<Set<string>(new Set());
 
@@ -72,7 +72,7 @@ export default function TaskBoardView({
  in_progress: [],
  review: [],
  done: [],
- blocked: [],
+ blocked: []
  };
 
  tasks.forEach(task => {

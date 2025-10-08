@@ -56,28 +56,28 @@ const QUICK_ACTIONS = [
     description: 'Start a new job posting',
     href: '/jobs?action=create',
     icon: BriefcaseIcon,
-    color: 'bg-accent',
+    color: 'bg-accent'
   },
   {
     title: 'Browse Opportunities',
     description: 'View available opportunities',
     href: '/jobs/opportunities',
     icon: ClipboardDocumentListIcon,
-    color: 'bg-success',
+    color: 'bg-success'
   },
   {
     title: 'Submit New Bid',
     description: 'Create a new bid proposal',
     href: '/jobs/bids?action=create',
     icon: DocumentTextIcon,
-    color: 'bg-secondary',
+    color: 'bg-secondary'
   },
   {
     title: 'Review Compliance',
     description: 'Check compliance status',
     href: '/jobs/compliance',
     icon: CheckCircleIcon,
-    color: 'bg-warning',
+    color: 'bg-warning'
   },
 ];
 
@@ -132,7 +132,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
         activeContracts: contracts.filter((c: any) => c.status === 'active').length,
         pendingCompliance: compliance.filter((c: any) => c.status === 'pending').length,
         totalAssignments: assignments.length,
-        activeRFPs: rfps.filter((r: any) => r.status === 'open').length,
+        activeRFPs: rfps.filter((r: any) => r.status === 'open').length
       });
 
       // Load recent activity (combining multiple sources)
@@ -156,14 +156,14 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
           type: 'job' as const,
           title: job.title,
           status: job.status,
-          updatedAt: job.updated_at,
+          updatedAt: job.updated_at
         })),
         ...(recentOpportunities.data || []).map((opp: any) => ({
           id: opp.id,
           type: 'opportunity' as const,
           title: opp.title,
           status: opp.status,
-          updatedAt: opp.updated_at,
+          updatedAt: opp.updated_at
         })),
       ];
 

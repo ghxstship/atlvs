@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, CardHeader, CardTitle, CardContent, Button, Alert } from '@ghxstship/ui';
+import { Alert, Button, Card, CardBody, CardContent, CardHeader } from '@ghxstship/ui';
 import { ArrowLeft, Edit, DollarSign } from 'lucide-react';
 import { User } from '@supabase/supabase-js';
 import ViewRevenueDrawer from '../drawers/ViewRevenueDrawer';
@@ -30,7 +30,7 @@ export default function RevenueDetailClient({ revenue, user, orgId }: RevenueDet
  const revenueService = new RevenueService();
  await revenueService.updateRevenue(revenue.id, {
  ...data,
- updated_by: user.id,
+ updated_by: user.id
  });
 
  setSuccess(true);

@@ -26,7 +26,7 @@ const EventSchema = z.object({
   location: z.string().optional(),
   capacity: z.number().int().positive().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const PerformanceSchema = z.object({
@@ -39,7 +39,7 @@ const PerformanceSchema = z.object({
   duration: z.number().positive().optional(),
   status: z.enum(['planned', 'rehearsing', 'ready', 'performed', 'cancelled']).default('planned'),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export const programmingModuleConfig: ModuleConfig = {

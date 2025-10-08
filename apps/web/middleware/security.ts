@@ -27,7 +27,7 @@ export function securityMiddleware(req: NextRequest, response: NextResponse): Ne
     frame-ancestors 'none';
     base-uri 'self';
     form-action 'self';
-  `.replace(/\s{2,}/g, ' ').trim();
+  `.replace(/\s{2}/g, ' ').trim();
 
   response.headers.set('Content-Security-Policy', cspHeader);
 

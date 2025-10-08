@@ -7,22 +7,9 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@ghxstship/ui';
-import {
-  MoreHorizontal,
-  Eye,
-  Edit,
-  Trash2,
-  Star,
-  StarOff,
-  Archive,
-  MapPin,
-  DollarSign,
-  MessageSquare,
-  Calendar,
-  User
-} from 'lucide-react';
+import { MoreHorizontal, Eye, Edit, Trash2, Star, StarOff, Archive, MapPin, DollarSign, MessageSquare, Calendar, User, FileText } from 'lucide-react';
 import { marketplaceService } from '../lib/marketplace-service';
 import type { MarketplaceListing, ListingFilters } from '../types';
 
@@ -45,13 +32,13 @@ export default function CardView({
   onListingDelete,
   onListingView,
   selectedListings = [],
-  onSelectionChange,
+  onSelectionChange
 }: CardViewProps) {
   // Fetch listings
   const { data: listingsResponse, isLoading, error } = useQuery({
     queryKey: ['marketplace-listings', orgId, filters],
     queryFn: () => marketplaceService.getListings(orgId, filters),
-    refetchInterval: 30000,
+    refetchInterval: 30000
   });
 
   const listings = listingsResponse?.listings || [];
@@ -70,7 +57,7 @@ export default function CardView({
     if (!amount) return null;
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency,
+      currency
     }).format(amount);
   };
 

@@ -18,7 +18,7 @@ const createRiderSchema = z.object({
   priority: z.enum(['low', 'medium', 'high', 'critical']),
   requirements: z.string().optional(),
   notes: z.string().optional(),
-  event_id: z.string().min(1, 'Event is required'),
+  event_id: z.string().min(1, 'Event is required')
 });
 
 export default function CreateRiderClient({ orgId }: { orgId: string }) {
@@ -39,8 +39,8 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
       priority: 'medium',
       requirements: '',
       notes: '',
-      event_id: '',
-    },
+      event_id: ''
+    }
   });
 
   // Load events when drawer opens
@@ -68,7 +68,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
         ...data,
         organization_id: orgId,
         created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       const { error: insertError } = await sb

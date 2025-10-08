@@ -32,8 +32,8 @@ export class MarketplaceAPIService {
       const response = await fetch(`${this.baseUrl}/listings?${params}`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       });
 
       if (!response.ok) {
@@ -49,8 +49,8 @@ export class MarketplaceAPIService {
       const response = await fetch(`${this.baseUrl}/listings/${id}?orgId=${orgId}`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       });
 
       if (!response.ok) {
@@ -66,9 +66,9 @@ export class MarketplaceAPIService {
       const response = await fetch(`${this.baseUrl}/listings?orgId=${orgId}`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
@@ -84,9 +84,9 @@ export class MarketplaceAPIService {
       const response = await fetch(`${this.baseUrl}/listings/${id}?orgId=${orgId}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
@@ -102,8 +102,8 @@ export class MarketplaceAPIService {
       const response = await fetch(`${this.baseUrl}/listings/${id}?orgId=${orgId}`, {
         method: 'DELETE',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       });
 
       if (!response.ok) {
@@ -118,8 +118,8 @@ export class MarketplaceAPIService {
       const response = await fetch(`${this.baseUrl}/projects?orgId=${orgId}`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       });
 
       if (!response.ok) {
@@ -135,8 +135,8 @@ export class MarketplaceAPIService {
       const response = await fetch(`${this.baseUrl}/projects/${id}?orgId=${orgId}`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       });
 
       if (!response.ok) {
@@ -153,8 +153,8 @@ export class MarketplaceAPIService {
       const response = await fetch(`${this.baseUrl}/vendors?orgId=${orgId}`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       });
 
       if (!response.ok) {
@@ -170,8 +170,8 @@ export class MarketplaceAPIService {
       const response = await fetch(`${this.baseUrl}/vendors/${id}?orgId=${orgId}`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       });
 
       if (!response.ok) {
@@ -188,8 +188,8 @@ export class MarketplaceAPIService {
       const response = await fetch(`${this.baseUrl}/stats?orgId=${orgId}`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       });
 
       if (!response.ok) {
@@ -205,8 +205,8 @@ export class MarketplaceAPIService {
       const response = await fetch(`${this.baseUrl}/dashboard?orgId=${orgId}&userId=${userId}&userRole=${userRole}`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       });
 
       if (!response.ok) {
@@ -223,9 +223,9 @@ export class MarketplaceAPIService {
       const response = await fetch(`${this.baseUrl}/listings/bulk?orgId=${orgId}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ids, updates }),
+        body: JSON.stringify({ ids, updates })
       });
 
       if (!response.ok) {
@@ -241,9 +241,9 @@ export class MarketplaceAPIService {
       const response = await fetch(`${this.baseUrl}/listings/bulk?orgId=${orgId}`, {
         method: 'DELETE',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ids }),
+        body: JSON.stringify({ ids })
       });
 
       if (!response.ok) {

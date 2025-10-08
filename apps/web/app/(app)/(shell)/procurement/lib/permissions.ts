@@ -13,7 +13,7 @@ export enum PermissionLevel {
   CREATE = 2,
   UPDATE = 3,
   DELETE = 4,
-  ADMIN = 5,
+  ADMIN = 5
 }
 
 // User roles in procurement context
@@ -22,7 +22,7 @@ export enum ProcurementRole {
   MEMBER = 'member',
   MANAGER = 'manager',
   ADMIN = 'admin',
-  OWNER = 'owner',
+  OWNER = 'owner'
 }
 
 // Permission matrix for each role
@@ -33,7 +33,7 @@ const ROLE_PERMISSIONS: Record<ProcurementRole, Record<string, PermissionLevel>>
     requests: PermissionLevel.VIEW,
     contracts: PermissionLevel.VIEW,
     budgets: PermissionLevel.VIEW,
-    analytics: PermissionLevel.VIEW,
+    analytics: PermissionLevel.VIEW
   },
   [ProcurementRole.MEMBER]: {
     orders: PermissionLevel.UPDATE,
@@ -41,7 +41,7 @@ const ROLE_PERMISSIONS: Record<ProcurementRole, Record<string, PermissionLevel>>
     requests: PermissionLevel.CREATE,
     contracts: PermissionLevel.VIEW,
     budgets: PermissionLevel.VIEW,
-    analytics: PermissionLevel.VIEW,
+    analytics: PermissionLevel.VIEW
   },
   [ProcurementRole.MANAGER]: {
     orders: PermissionLevel.UPDATE,
@@ -49,7 +49,7 @@ const ROLE_PERMISSIONS: Record<ProcurementRole, Record<string, PermissionLevel>>
     requests: PermissionLevel.UPDATE,
     contracts: PermissionLevel.UPDATE,
     budgets: PermissionLevel.UPDATE,
-    analytics: PermissionLevel.UPDATE,
+    analytics: PermissionLevel.UPDATE
   },
   [ProcurementRole.ADMIN]: {
     orders: PermissionLevel.ADMIN,
@@ -57,7 +57,7 @@ const ROLE_PERMISSIONS: Record<ProcurementRole, Record<string, PermissionLevel>>
     requests: PermissionLevel.ADMIN,
     contracts: PermissionLevel.ADMIN,
     budgets: PermissionLevel.ADMIN,
-    analytics: PermissionLevel.ADMIN,
+    analytics: PermissionLevel.ADMIN
   },
   [ProcurementRole.OWNER]: {
     orders: PermissionLevel.ADMIN,
@@ -65,8 +65,8 @@ const ROLE_PERMISSIONS: Record<ProcurementRole, Record<string, PermissionLevel>>
     requests: PermissionLevel.ADMIN,
     contracts: PermissionLevel.ADMIN,
     budgets: PermissionLevel.ADMIN,
-    analytics: PermissionLevel.ADMIN,
-  },
+    analytics: PermissionLevel.ADMIN
+  }
 };
 
 // Permission check result
@@ -74,7 +74,7 @@ const PermissionCheckResultSchema = z.object({
   allowed: z.boolean(),
   reason: z.string().optional(),
   requiredLevel: z.nativeEnum(PermissionLevel),
-  userLevel: z.nativeEnum(PermissionLevel),
+  userLevel: z.nativeEnum(PermissionLevel)
 });
 
 export type PermissionCheckResult = z.infer<typeof PermissionCheckResultSchema>;
@@ -144,7 +144,7 @@ export class ProcurementPermissionsService {
         allowed: false,
         reason: 'Invalid user role',
         requiredLevel: PermissionLevel.NONE,
-        userLevel: PermissionLevel.NONE,
+        userLevel: PermissionLevel.NONE
       };
     }
 
@@ -157,7 +157,7 @@ export class ProcurementPermissionsService {
       allowed,
       reason: allowed ? undefined : `Insufficient permissions. Required: ${PermissionLevel[requiredLevel]}, User has: ${PermissionLevel[userLevel]}`,
       requiredLevel,
-      userLevel,
+      userLevel
     };
   }
 
@@ -206,7 +206,7 @@ export class ProcurementPermissionsService {
     return {
       allowed: true,
       requiredLevel: this.getRequiredLevel(action),
-      userLevel: await this.getUserLevel(resourceType),
+      userLevel: await this.getUserLevel(resourceType)
     };
   }
 
@@ -236,7 +236,7 @@ export class ProcurementPermissionsService {
       orders: ['approved_by', 'approved_at'],
       vendors: ['tax_id'],
       contracts: ['value', 'terms'],
-      budgets: ['amount'],
+      budgets: ['amount']
     };
 
     const sensitive = sensitiveFields[resourceType as keyof typeof sensitiveFields]?.includes(fieldName);

@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar, Target, ListTodo, Clock, Users, Edit, Eye, Trash2, ChevronUp, ChevronDown, AlertCircle, CheckCircle, ArrowUpDown } from "lucide-react";
-import { useState, useMemo } from "react";
+import { useState, useMemo } from 'react';
 import { Badge, Button, Card, Checkbox } from "@ghxstship/ui";
 import { format, parseISO, differenceInDays } from "date-fns";
 
@@ -96,7 +96,7 @@ export default function ScheduleListView({
  onViewMilestone,
  onEditMilestone,
  onViewTask,
- onEditTask,
+ onEditTask
 }: ScheduleListViewProps) {
  const [selectedItems, setSelectedItems] = useState<Set<string>(new Set());
  const [sortField, setSortField] = useState<SortField>("due_date");

@@ -13,5 +13,5 @@ export {
   localeDateFormats,
   isRTL,
   getDirection,
-  type Locale,
+  type Locale
 } from '@ghxstship/config/i18n/config';

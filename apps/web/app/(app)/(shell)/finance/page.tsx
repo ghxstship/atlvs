@@ -20,11 +20,11 @@ export default function ufinancePage() {
       search={{
         value: '',
         onChange: (value) => console.log('Search:', value),
-        placeholder: 'Search ufinance...',
+        placeholder: 'Search ufinance...'
       }}
       filters={{
         activeCount: 0,
-        onClear: () => console.log('Clear filters'),
+        onClear: () => console.log('Clear filters')
       }}
       sidebar={
         <div className="space-y-6">

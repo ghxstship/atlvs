@@ -1,6 +1,6 @@
 export default function DashboardOverviewLayout({
   content,
-  sidebar,
+  sidebar
 }: {
   content: React.ReactNode;
   sidebar: React.ReactNode;

@@ -4,23 +4,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import {
-  Drawer,
-  Button,
-  Input,
-  Select,
-  Textarea,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage,
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent
-} from '@ghxstship/ui';
-import { ArrowUpDown, Calendar, CreditCard, Building } from 'lucide-react';
+import { ArrowUpDown, Building, Button, Calendar, Card, CardBody, CardContent, CardHeader, CardTitle, CreditCard, Drawer, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, Textarea } from 'lucide-react';
+import { Button, Card, CardContent, CardHeader, CardTitle, Drawer, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select } from '@ghxstship/ui';
 
 const createTransactionSchema = z.object({
   description: z.string().min(1, 'Description is required').max(200),
@@ -32,7 +17,7 @@ const createTransactionSchema = z.object({
   category: z.string().min(1, 'Category is required'),
   project_id: z.string().uuid().optional(),
   reference_number: z.string().max(50).optional(),
-  notes: z.string().max(500).optional(),
+  notes: z.string().max(500).optional()
 });
 
 type CreateTransactionForm = z.infer<typeof createTransactionSchema>;
@@ -240,7 +225,7 @@ export default function CreateTransactionDrawer({
             <FormField>
               <FormItem>
                 <FormControl>
-                  <Textarea
+                  <textarea
                     {...register('notes')}
                     placeholder="Any additional notes or details..."
                     rows={3}

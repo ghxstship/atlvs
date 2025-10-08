@@ -80,7 +80,7 @@ export class MarketplaceQueryService {
     const listingData = {
       ...data,
       organization_id: orgId,
-      created_by: userId,
+      created_by: userId
     };
 
     const { data: listing, error } = await this.supabase
@@ -238,7 +238,7 @@ export class MarketplaceQueryService {
         featuredListings: 0,
         activeOffers: 0,
         activeRequests: 0,
-        activeExchanges: 0,
+        activeExchanges: 0
       }
     );
 
@@ -247,7 +247,7 @@ export class MarketplaceQueryService {
       ...stats,
       totalVendors: vendorsCount || 0,
       totalProjects: projectsCount || 0,
-      lastUpdated: new Date().toISOString(),
+      lastUpdated: new Date().toISOString()
     };
   }
 

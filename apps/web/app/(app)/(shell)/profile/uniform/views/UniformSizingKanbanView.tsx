@@ -34,7 +34,7 @@ const KANBAN_COLUMNS = [
  color: 'bg-red-50 border-red-200',
  headerColor: 'bg-red-100',
  minCompleteness: 0,
- maxCompleteness: 50,
+ maxCompleteness: 50
  },
  {
  id: 'partial',
@@ -43,7 +43,7 @@ const KANBAN_COLUMNS = [
  color: 'bg-yellow-50 border-yellow-200',
  headerColor: 'bg-yellow-100',
  minCompleteness: 51,
- maxCompleteness: 75,
+ maxCompleteness: 75
  },
  {
  id: 'nearly_complete',
@@ -52,7 +52,7 @@ const KANBAN_COLUMNS = [
  color: 'bg-blue-50 border-blue-200',
  headerColor: 'bg-blue-100',
  minCompleteness: 76,
- maxCompleteness: 90,
+ maxCompleteness: 90
  },
  {
  id: 'complete',
@@ -61,7 +61,7 @@ const KANBAN_COLUMNS = [
  color: 'bg-green-50 border-green-200',
  headerColor: 'bg-green-100',
  minCompleteness: 91,
- maxCompleteness: 100,
+ maxCompleteness: 100
  },
 ];
 
@@ -71,7 +71,7 @@ export default function UniformSizingKanbanView({
  selectedIds,
  onSelectionChange,
  onEdit,
- onView,
+ onView
 }: UniformSizingKanbanViewProps) {
  const [draggedItem, setDraggedItem] = useState<string | null>(null);
 

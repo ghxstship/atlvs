@@ -148,7 +148,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'email',
@@ -159,7 +159,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'job_title',
@@ -170,7 +170,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'department',
@@ -181,7 +181,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'employee_id',
@@ -192,7 +192,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'phone_primary',
@@ -203,7 +203,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: false,
-    filterable: false,
+    filterable: false
   },
   {
     key: 'location',
@@ -214,7 +214,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'status',
@@ -230,7 +230,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'profile_completion_percentage',
@@ -241,7 +241,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'certifications_count',
@@ -252,7 +252,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: false,
     sortable: true,
-    filterable: false,
+    filterable: false
   },
   {
     key: 'job_history_count',
@@ -263,7 +263,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: false,
     sortable: true,
-    filterable: false,
+    filterable: false
   },
   {
     key: 'last_login',
@@ -273,7 +273,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'created_at',
@@ -283,7 +283,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'updated_at',
@@ -293,7 +293,7 @@ export const PROFILE_OVERVIEW_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
 ];
 
@@ -303,7 +303,7 @@ export const VIEW_CONFIG = {
   table: { label: 'Table', icon: 'Table' },
   analytics: { label: 'Analytics', icon: 'BarChart3' },
   kanban: { label: 'Kanban', icon: 'Kanban' },
-  calendar: { label: 'Calendar', icon: 'Calendar' },
+  calendar: { label: 'Calendar', icon: 'Calendar' }
 } as const;
 
 export const QUICK_FILTERS = [
@@ -347,7 +347,7 @@ export function createEmptyProfileOverview(): Partial<ProfileOverview> {
     certifications_count: 0,
     job_history_count: 0,
     emergency_contacts_count: 0,
-    endorsements_count: 0,
+    endorsements_count: 0
   };
 }
 
@@ -359,7 +359,7 @@ export function createEmptyProfileOverviewStats(): ProfileOverviewStats {
     recentLogins: 0,
     departmentDistribution: [],
     completionDistribution: [],
-    statusDistribution: [],
+    statusDistribution: []
   };
 }
 
@@ -368,7 +368,7 @@ export function createEmptyProfileOverviewAnalytics(): ProfileOverviewAnalytics 
     completionTrends: [],
     loginActivity: [],
     departmentStats: [],
-    certificationStats: [],
+    certificationStats: []
   };
 }
 
@@ -378,7 +378,7 @@ export function getStatusColor(status: ProfileOverview['status']): string {
     active: 'success',
     inactive: 'secondary',
     pending: 'warning',
-    suspended: 'destructive',
+    suspended: 'destructive'
   };
   return colors[status] || 'secondary';
 }
@@ -412,32 +412,32 @@ export function getProfileCompletionTasks(profile: ProfileOverview): Array<{
     {
       task: 'Add profile photo',
       completed: !!profile.avatar_url,
-      priority: 'medium',
+      priority: 'medium'
     },
     {
       task: 'Complete job information',
       completed: !!(profile.job_title && profile.department),
-      priority: 'high',
+      priority: 'high'
     },
     {
       task: 'Add contact information',
       completed: !!profile.phone_primary,
-      priority: 'high',
+      priority: 'high'
     },
     {
       task: 'Add professional bio',
       completed: !!profile.bio,
-      priority: 'medium',
+      priority: 'medium'
     },
     {
       task: 'Add certifications',
       completed: profile.certifications_count > 0,
-      priority: 'high',
+      priority: 'high'
     },
     {
       task: 'Add job history',
       completed: profile.job_history_count > 0,
-      priority: 'medium',
+      priority: 'medium'
     },
   ];
 }

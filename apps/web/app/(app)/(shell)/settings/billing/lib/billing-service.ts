@@ -16,7 +16,7 @@ import type {
   BillingSearchParams,
   BillingStatistics,
   BillingExportOptions,
-  UsageMetrics,
+  UsageMetrics
 } from '../types';
 
 class BillingService {
@@ -52,7 +52,7 @@ class BillingService {
 
       return data ? {
         ...data,
-        plan_name: data.plan?.name || 'Unknown Plan',
+        plan_name: data.plan?.name || 'Unknown Plan'
       } : null;
     } catch (error) {
       console.error('Error fetching subscription:', error);
@@ -79,7 +79,7 @@ class BillingService {
         .from('billing_subscriptions')
         .update({
           plan_id: data.plan_id,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('organization_id', membership.organization_id)
         .select(`
@@ -92,7 +92,7 @@ class BillingService {
 
       return {
         ...updatedSubscription,
-        plan_name: updatedSubscription.plan?.name || 'Unknown Plan',
+        plan_name: updatedSubscription.plan?.name || 'Unknown Plan'
       };
     } catch (error) {
       console.error('Error changing plan:', error);
@@ -119,7 +119,7 @@ class BillingService {
         .update({
           cancel_at_period_end: true,
           canceled_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('organization_id', membership.organization_id);
 
@@ -186,7 +186,7 @@ class BillingService {
           last4: data.card_number.slice(-4),
           exp_month: data.exp_month,
           exp_year: data.exp_year,
-          is_default: true,
+          is_default: true
         }])
         .select()
         .single();
@@ -307,7 +307,7 @@ class BillingService {
         .upsert({
           organization_id: membership.organization_id,
           ...data,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .select()
         .single();
@@ -346,7 +346,7 @@ class BillingService {
           category: 'subscriptions',
           created_at: subscription.created_at,
           updated_at: subscription.updated_at,
-          metadata: subscription,
+          metadata: subscription
         });
       }
 
@@ -362,7 +362,7 @@ class BillingService {
           category: 'invoices',
           created_at: invoice.created_at,
           updated_at: invoice.created_at,
-          metadata: invoice,
+          metadata: invoice
         });
       });
 
@@ -378,7 +378,7 @@ class BillingService {
           category: 'payments',
           created_at: method.created_at,
           updated_at: method.created_at,
-          metadata: method,
+          metadata: method
         });
       });
 
@@ -394,7 +394,7 @@ class BillingService {
           category: 'plans',
           created_at: plan.created_at,
           updated_at: plan.created_at,
-          metadata: plan,
+          metadata: plan
         });
       });
 
@@ -449,7 +449,7 @@ class BillingService {
         users: { current: 12, limit: 25 },
         projects: { current: 8, limit: 50 },
         storage: { current: 2.3, limit: 10 },
-        apiCalls: { current: 15420, limit: 100000 },
+        apiCalls: { current: 15420, limit: 100000 }
       };
 
       return {
@@ -459,7 +459,7 @@ class BillingService {
         totalInvoices: invoices.length,
         paidInvoices,
         outstandingAmount,
-        usageMetrics,
+        usageMetrics
       };
     } catch (error) {
       console.error('Error fetching statistics:', error);
@@ -482,7 +482,7 @@ class BillingService {
             }));
 
         return new Blob([JSON.stringify(exportData, null, 2)], {
-          type: 'application/json',
+          type: 'application/json'
         });
       } else if (options.format === 'csv') {
         const headers = options.includeMetadata

@@ -1,27 +1,8 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import {
-  LayoutGrid,
-  List,
-  KanbanSquare,
-  Calendar,
-  Image,
-  Clock,
-  BarChart3,
-  GanttChart,
-  FormInput,
-  Settings,
-  MoreHorizontal
-} from 'lucide-react';
-import { Button } from '@ghxstship/ui';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
+import { BarChart3, Calendar, Clock, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, FormInput, GanttChart, Image, KanbanSquare, LayoutGrid, List, MoreHorizontal, Settings } from 'lucide-react';
+import { Badge, Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@ghxstship/ui';
 import { cn } from '@ghxstship/ui/lib/utils';
 
 // View Types
@@ -179,6 +160,7 @@ export const ViewSwitcher: React.FC<ViewSwitcherProps> = ({
   const handleViewChange = useCallback((viewType: ViewType) => {
     onViewChange(viewType);
     setIsOpen(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onViewChange]);
 
   // Get size classes
@@ -322,7 +304,7 @@ export const ViewCapabilities: React.FC<ViewCapabilitiesProps> = ({
   return (
     <div className={cn('flex flex-wrap gap-xs', className)}>
       {config.capabilities.map((capability) => (
-        <Badge key={capability} variant="outline" className="text-xs">
+        <Badge key={capability} variant="secondary" className="text-xs">
           {capability.replace('-', ' ')}
         </Badge>
       ))}
@@ -363,7 +345,7 @@ export const ViewSettings: React.FC<ViewSettingsProps> = ({
         </div>
 
         <Button
-          variant="outline"
+          variant="secondary"
           size="sm"
           onClick={() => onSettingsChange(settings)}
         >

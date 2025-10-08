@@ -16,7 +16,7 @@ const CreateAccountSchema = z.object({
   isActive: z.boolean().default(true),
   currency: z.string().default('USD'),
   balance: z.number().default(0),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 const UpdateAccountSchema = CreateAccountSchema.partial();

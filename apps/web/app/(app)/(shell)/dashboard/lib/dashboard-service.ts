@@ -80,7 +80,7 @@ export class DashboardService {
       return {
         ...dashboard,
         widget_count: widgetInfo?.count ?? 0,
-        share_count: shareInfo?.count ?? 0,
+        share_count: shareInfo?.count ?? 0
       } as DashboardListItem;
     });
   }
@@ -98,7 +98,7 @@ export class DashboardService {
         is_public: payload.is_public ?? false,
         tags: payload.tags ?? [],
         organization_id: orgId,
-        access_level: payload.access_level ?? 'organization',
+        access_level: payload.access_level ?? 'organization'
       })
       .select(`
         *,
@@ -118,7 +118,7 @@ export class DashboardService {
     return {
       ...data,
       widget_count: widgetInfo?.count ?? 0,
-      share_count: shareInfo?.count ?? 0,
+      share_count: shareInfo?.count ?? 0
     } as DashboardListItem;
   }
 
@@ -164,7 +164,7 @@ export class DashboardService {
     return {
       ...data,
       widget_count: data.dashboard_widgets?.[0]?.count ?? 0,
-      share_count: data.dashboard_shares?.[0]?.count ?? 0,
+      share_count: data.dashboard_shares?.[0]?.count ?? 0
     };
   }
 
@@ -273,7 +273,7 @@ export class DashboardService {
     const topWidgets = dashboardData
       .map((d) => ({
         id: d.id,
-        widgets: unwrapSingle<{ count?: number }>(d.dashboard_widgets)?.count ?? 0,
+        widgets: unwrapSingle<{ count?: number }>(d.dashboard_widgets)?.count ?? 0
       }))
       .sort((a, b) => b.widgets - a.widgets);
 
@@ -307,7 +307,7 @@ export class DashboardService {
         title: 'Shared Visibility',
         description: 'Dashboards visible outside the organization',
         value: `${dashboardData.filter((d) => d.is_public).length}/${dashboardData.length}`,
-        format: 'text',
+        format: 'text'
       }
     ];
   }

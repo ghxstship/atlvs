@@ -288,7 +288,7 @@ export const vendorSchema = z.object({
     city: z.string().optional(),
     state: z.string().optional(),
     postal_code: z.string().optional(),
-    country: z.string().optional(),
+    country: z.string().optional()
   }).optional(),
   primary_category: z.string().min(1, 'Primary category is required'),
   categories: z.array(z.string()).optional(),
@@ -301,7 +301,7 @@ export const vendorSchema = z.object({
   bio: z.string().optional(),
   notes: z.string().optional(),
   status: z.enum(['active', 'inactive', 'pending', 'suspended']),
-  availability_status: z.enum(['available', 'busy', 'unavailable']).optional(),
+  availability_status: z.enum(['available', 'busy', 'unavailable']).optional()
 });
 
 export const vendorContactSchema = z.object({
@@ -309,7 +309,7 @@ export const vendorContactSchema = z.object({
   title: z.string().optional(),
   email: z.string().email('Invalid email format').optional(),
   phone: z.string().optional(),
-  is_primary: z.boolean().default(false),
+  is_primary: z.boolean().default(false)
 });
 
 export const vendorDocumentSchema = z.object({
@@ -319,7 +319,7 @@ export const vendorDocumentSchema = z.object({
   file_size: z.number().positive().optional(),
   mime_type: z.string().optional(),
   expires_at: z.string().optional(),
-  status: z.enum(['active', 'expired', 'pending_review']).default('active'),
+  status: z.enum(['active', 'expired', 'pending_review']).default('active')
 });
 
 export const vendorPerformanceSchema = z.object({
@@ -328,7 +328,7 @@ export const vendorPerformanceSchema = z.object({
   delivery_score: z.number().min(1).max(5),
   communication_score: z.number().min(1).max(5),
   overall_score: z.number().min(1).max(5),
-  feedback: z.string().optional(),
+  feedback: z.string().optional()
 });
 
 export const vendorFiltersSchema = z.object({
@@ -348,15 +348,15 @@ export const vendorFiltersSchema = z.object({
   has_certifications: z.boolean().optional(),
   dateRange: z.object({
     start: z.string().optional(),
-    end: z.string().optional(),
-  }).optional(),
+    end: z.string().optional()
+  }).optional()
 });
 
 // Utility functions
 export const formatCurrency = (amount: number, currency: string = 'USD'): string => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: currency,
+    currency: currency
   }).format(amount);
 };
 
@@ -364,7 +364,7 @@ export const formatDate = (date: string): string => {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
-    day: 'numeric',
+    day: 'numeric'
   });
 };
 
@@ -374,7 +374,7 @@ export const formatDateTime = (date: string): string => {
     month: 'short',
     day: 'numeric',
     hour: '2-digit',
-    minute: '2-digit',
+    minute: '2-digit'
   });
 };
 
@@ -436,7 +436,7 @@ export const defaultVendorFields: VendorFieldConfig[] = [
     sortable: true,
     filterable: true,
     searchable: true,
-    width: 200,
+    width: 200
   },
   {
     key: 'display_name',
@@ -447,7 +447,7 @@ export const defaultVendorFields: VendorFieldConfig[] = [
     sortable: true,
     filterable: true,
     searchable: true,
-    width: 180,
+    width: 180
   },
   {
     key: 'business_type',
@@ -462,7 +462,7 @@ export const defaultVendorFields: VendorFieldConfig[] = [
       { value: 'individual', label: 'Individual' },
       { value: 'company', label: 'Company' },
       { value: 'agency', label: 'Agency' },
-    ],
+    ]
   },
   {
     key: 'primary_category',
@@ -472,7 +472,7 @@ export const defaultVendorFields: VendorFieldConfig[] = [
     visible: true,
     sortable: true,
     filterable: true,
-    width: 150,
+    width: 150
   },
   {
     key: 'status',
@@ -488,7 +488,7 @@ export const defaultVendorFields: VendorFieldConfig[] = [
       { value: 'inactive', label: 'Inactive' },
       { value: 'pending', label: 'Pending' },
       { value: 'suspended', label: 'Suspended' },
-    ],
+    ]
   },
   {
     key: 'rating',
@@ -497,7 +497,7 @@ export const defaultVendorFields: VendorFieldConfig[] = [
     visible: true,
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'hourly_rate',
@@ -506,7 +506,7 @@ export const defaultVendorFields: VendorFieldConfig[] = [
     visible: true,
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'email',
@@ -517,7 +517,7 @@ export const defaultVendorFields: VendorFieldConfig[] = [
     sortable: true,
     filterable: true,
     searchable: true,
-    width: 200,
+    width: 200
   },
   {
     key: 'phone',
@@ -526,7 +526,7 @@ export const defaultVendorFields: VendorFieldConfig[] = [
     visible: true,
     sortable: true,
     filterable: true,
-    width: 140,
+    width: 140
   },
   {
     key: 'created_at',
@@ -535,6 +535,6 @@ export const defaultVendorFields: VendorFieldConfig[] = [
     visible: true,
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
 ];

@@ -1,29 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Calendar,
-  Flag,
-  Globe,
-  Handshake,
-  Heart,
-  Megaphone,
-  Sparkles,
-  Users,
-} from 'lucide-react';
+import { ArrowRight, Calendar, Flag, Globe, Handshake, Heart, Megaphone, Sparkles, Users } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Community & Cultural Events | GHXSTSHIP',
   description:
-    'Celebrate heritage, coordinate volunteers, and partner with local organizations using GHXSTSHIP’s cultural event workflows.',
+    'Celebrate heritage, coordinate volunteers, and partner with local organizations using GHXSTSHIP’s cultural event workflows.'
 };
 
 const heroStats = [
@@ -37,51 +27,51 @@ const programPillars = [
   {
     title: 'Cultural Programming',
     description: 'Curate performances, exhibitions, and storytelling tracks with cultural advisors and heritage groups.',
-    icon: Sparkles,
+    icon: Sparkles
   },
   {
     title: 'Community Engagement',
     description: 'Coordinate neighborhood outreach, youth workshops, and multi-language communications.',
-    icon: Megaphone,
+    icon: Megaphone
   },
   {
     title: 'Cultural Partnerships',
     description: 'Manage collaborations with cultural centers, faith leaders, and heritage organizations.',
-    icon: Handshake,
+    icon: Handshake
   },
   {
     title: 'Volunteer Operations',
     description: 'Recruit, schedule, and train volunteers with shift bidding and credential management.',
-    icon: Users,
+    icon: Users
   },
   {
     title: 'Logistics & Compliance',
     description: 'Secure permits, coordinate municipal services, and document accessibility plans.',
-    icon: Flag,
+    icon: Flag
   },
   {
     title: 'Production Technology',
     description: 'Track staging, sound, lighting, and broadcast support with real-time updates from the field.',
-    icon: Calendar,
+    icon: Calendar
   },
 ];
 
 const engagementHighlights = [
   {
     title: 'Inclusive Programming',
-    description: 'Collect cultural requirements, dietary preferences, and ceremonial needs directly from stakeholders.',
+    description: 'Collect cultural requirements, dietary preferences, and ceremonial needs directly from stakeholders.'
   },
   {
     title: 'Language Access',
-    description: 'Coordinate translators, signage, and ASL interpreters so every community feels represented.',
+    description: 'Coordinate translators, signage, and ASL interpreters so every community feels represented.'
   },
   {
     title: 'Economic Impact',
-    description: 'Track local vendor spend, sponsorship activation, and grant outcomes for reporting.',
+    description: 'Track local vendor spend, sponsorship activation, and grant outcomes for reporting.'
   },
   {
     title: 'Legacy Documentation',
-    description: 'Archive traditions, recordings, and oral histories for future generations.',
+    description: 'Archive traditions, recordings, and oral histories for future generations.'
   },
 ];
 
@@ -93,7 +83,7 @@ const caseStudies = [
     result: '100% cultural participation · 95% community satisfaction · 50% increase in cultural awareness · 200+ new partnerships',
     quote:
       'GHXSTSHIP helped us deliver the most inclusive celebration our city has ever seen. Every community felt heard and represented.',
-    author: 'Elena Vasquez, Cultural Events Director',
+    author: 'Elena Vasquez, Cultural Events Director'
   },
   {
     company: 'Annual Harvest Festival',
@@ -102,7 +92,7 @@ const caseStudies = [
     result: '300% youth participation lift · 100% tradition authenticity · 80% better volunteer coordination · $500K local impact',
     quote:
       'The platform honored our heritage while introducing new experiences for the next generation. Nothing slipped through the cracks.',
-    author: 'Robert Thompson, Community Leader',
+    author: 'Robert Thompson, Community Leader'
   },
 ];
 

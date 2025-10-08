@@ -165,9 +165,9 @@ function createLiveRegion(): HTMLElement {
   liveRegion.setAttribute('aria-live', 'polite');
   liveRegion.setAttribute('aria-atomic', 'true');
   liveRegion.style.position = 'absolute';
-  liveRegion.style.left = '-10000px';
-  liveRegion.style.width = '1px';
-  liveRegion.style.height = '1px';
+  liveRegion.style.left = '-625rem'; // -10000px
+  liveRegion.style.width = '0.0625rem'; // 1px
+  liveRegion.style.height = '0.0625rem'; // 1px
   liveRegion.style.overflow = 'hidden';
 
   document.body.appendChild(liveRegion);

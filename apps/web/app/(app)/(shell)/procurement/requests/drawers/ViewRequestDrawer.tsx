@@ -1,12 +1,7 @@
 'use client';
 
-import { CheckCircle, XCircle, Clock, AlertTriangle, FileText, User, Calendar, DollarSign, Package, Building } from "lucide-react";
-import { 
- Badge, 
- Button,
- Separator
-} from '@ghxstship/ui';
-import { AppDrawer } from '@ghxstship/ui';
+import { AlertTriangle, Badge, Building, Button, Calendar, CheckCircle, Clock, DollarSign, FileText, Package, Separator, User, XCircle } from 'lucide-react';
+import { AppDrawer, Badge, Button, Separator } from '@ghxstship/ui';
 import type { ProcurementRequest } from '../types';
 
 interface ViewRequestDrawerProps {
@@ -278,11 +273,11 @@ export default function ViewRequestDrawer({
  </Button>
  )}
  {(request.status === 'draft' || request.status === 'rejected') && onDelete && (
- <Button variant="outline" onClick={() => onDelete(request)}>
+ <Button variant="secondary" onClick={() => onDelete(request)}>
  Delete Request
  </Button>
  )}
- <Button variant="outline" onClick={onClose}>
+ <Button variant="secondary" onClick={onClose}>
  Close
  </Button>
  </div>

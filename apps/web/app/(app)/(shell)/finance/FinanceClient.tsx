@@ -1,8 +1,8 @@
 'use client';
 
 
-import { useEffect, useState } from 'react';
-import { Drawer, type DataRecord } from '@ghxstship/ui';
+import { useEffect, useState, useCallback } from 'react';
+import { CalendarView, DataActions, DataGrid, DataViewProvider, Drawer, KanbanBoard, ListView, StateManagerProvider, ViewSwitcher, type DataRecord } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 
@@ -12,8 +12,10 @@ export default function FinanceClient({ orgId }: { orgId: string }) {
   const [loading, setLoading] = useState(false);
   const [financeData, setFinanceData] = useState<DataRecord[]>([]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadFinanceData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   async function loadFinanceData() {

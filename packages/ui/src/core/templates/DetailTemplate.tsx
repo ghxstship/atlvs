@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/Tabs';
-import { Button } from '../../unified/Button';
+import { Breadcrumb } from '../../layout/Breadcrumb/Breadcrumb';
+import { Tabs } from '../../molecules/Tabs/Tabs';
+import { Button } from '../../atoms/Button/Button';
 import { ArrowLeft } from 'lucide-react';
 import { cn } from '../../lib/utils';
 

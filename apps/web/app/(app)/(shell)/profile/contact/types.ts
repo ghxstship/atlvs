@@ -171,7 +171,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: '+1 (555) 123-4567',
     visible: true,
     editable: true,
-    section: 'Phone Information',
+    section: 'Phone Information'
   },
   {
     key: 'phone_secondary',
@@ -180,7 +180,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: '+1 (555) 987-6543',
     visible: true,
     editable: true,
-    section: 'Phone Information',
+    section: 'Phone Information'
   },
   {
     key: 'phone_mobile',
@@ -189,7 +189,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: '+1 (555) 555-5555',
     visible: true,
     editable: true,
-    section: 'Phone Information',
+    section: 'Phone Information'
   },
   {
     key: 'phone_work',
@@ -198,7 +198,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: '+1 (555) 111-2222',
     visible: true,
     editable: true,
-    section: 'Phone Information',
+    section: 'Phone Information'
   },
   // Primary Address
   {
@@ -208,7 +208,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: '123 Main Street',
     visible: true,
     editable: true,
-    section: 'Primary Address',
+    section: 'Primary Address'
   },
   {
     key: 'address_line2',
@@ -217,7 +217,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'Apt 4B, Suite 200',
     visible: true,
     editable: true,
-    section: 'Primary Address',
+    section: 'Primary Address'
   },
   {
     key: 'city',
@@ -226,7 +226,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'San Francisco',
     visible: true,
     editable: true,
-    section: 'Primary Address',
+    section: 'Primary Address'
   },
   {
     key: 'state_province',
@@ -235,7 +235,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'California',
     visible: true,
     editable: true,
-    section: 'Primary Address',
+    section: 'Primary Address'
   },
   {
     key: 'postal_code',
@@ -244,7 +244,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: '94102',
     visible: true,
     editable: true,
-    section: 'Primary Address',
+    section: 'Primary Address'
   },
   {
     key: 'country',
@@ -253,7 +253,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'United States',
     visible: true,
     editable: true,
-    section: 'Primary Address',
+    section: 'Primary Address'
   },
   // Emergency Contact
   {
@@ -263,7 +263,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'John Doe',
     visible: true,
     editable: true,
-    section: 'Emergency Contact',
+    section: 'Emergency Contact'
   },
   {
     key: 'emergency_contact_relationship',
@@ -272,7 +272,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'Spouse, Parent, Friend',
     visible: true,
     editable: true,
-    section: 'Emergency Contact',
+    section: 'Emergency Contact'
   },
   {
     key: 'emergency_contact_phone',
@@ -281,7 +281,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: '+1 (555) 999-8888',
     visible: true,
     editable: true,
-    section: 'Emergency Contact',
+    section: 'Emergency Contact'
   },
   {
     key: 'emergency_contact_email',
@@ -290,7 +290,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'emergency@example.com',
     visible: true,
     editable: true,
-    section: 'Emergency Contact',
+    section: 'Emergency Contact'
   },
 ];
 
@@ -299,7 +299,7 @@ export const VIEW_CONFIG = {
   card: { label: 'Card', icon: 'CreditCard' },
   list: { label: 'List', icon: 'List' },
   map: { label: 'Map', icon: 'Map' },
-  analytics: { label: 'Analytics', icon: 'BarChart3' },
+  analytics: { label: 'Analytics', icon: 'BarChart3' }
 } as const;
 
 export const QUICK_FILTERS = [
@@ -362,7 +362,7 @@ export function createEmptyContact(): ContactFormData {
     timezone: '',
     preferred_contact_method: 'email',
     do_not_contact: false,
-    contact_notes: '',
+    contact_notes: ''
   };
 }
 
@@ -374,7 +374,7 @@ export function createEmptyContactStats(): ContactStats {
     withEmergencyContact: 0,
     contactMethodDistribution: [],
     countryDistribution: [],
-    verificationStatus: [],
+    verificationStatus: []
   };
 }
 
@@ -386,7 +386,7 @@ export function createEmptyContactAnalytics(): ContactAnalytics {
     addressCompleteness: 0,
     phoneCompleteness: 0,
     recentUpdates: [],
-    geographicDistribution: [],
+    geographicDistribution: []
   };
 }
 

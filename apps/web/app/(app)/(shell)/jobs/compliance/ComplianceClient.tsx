@@ -1,6 +1,7 @@
 'use client';
 
 
+import { CalendarIcon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -118,7 +119,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
       // Transform the data to flatten relationships
       const transformedCompliance = (data || []).map((item: any) => ({
         ...item,
-        job_title: item.jobs?.title || 'Unknown Job',
+        job_title: item.jobs?.title || 'Unknown Job'
       }));
 
       setCompliance(transformedCompliance);

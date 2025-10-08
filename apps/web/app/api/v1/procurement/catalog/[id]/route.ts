@@ -16,7 +16,7 @@ const updateCatalogItemSchema = zod.object({
   supplier: zod.string().optional(),
   status: zod.enum(['active', 'inactive', 'discontinued']).optional(),
   specifications: zod.string().optional(),
-  tags: zod.array(zod.string()).optional(),
+  tags: zod.array(zod.string()).optional()
 });
 
 export async function GET(

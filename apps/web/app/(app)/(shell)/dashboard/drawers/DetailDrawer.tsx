@@ -1,39 +1,9 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import {
-  X,
-  Edit,
-  Copy,
-  Share,
-  Download,
-  Trash2,
-  MoreHorizontal,
-  Calendar,
-  User,
-  MapPin,
-  Tag,
-  Link,
-  ExternalLink,
-  Eye,
-  Clock,
-  CheckCircle,
-  AlertCircle
-} from 'lucide-react';
-import { Button } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Avatar, AvatarFallback, AvatarImage } from '@ghxstship/ui';
-import { Separator } from '@ghxstship/ui';
-import { ScrollArea } from '@ghxstship/ui';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@ghxstship/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
+import Image from "next/image";
+import { AlertCircle, Calendar, CheckCircle, Clock, Copy, Download, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, Edit, ExternalEye, ExternalLink, Link, MapPin, MoreHorizontal, Share, Tag, Trash2, User, X } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Card, CardBody, CardHeader, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, ScrollArea, Separator, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 import { cn } from '@ghxstship/ui/lib/utils';
 import { format } from 'date-fns';
 
@@ -237,11 +207,14 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
 
       case 'image':
         return (
-          <img
-            src={String(value || '')}
-            alt=""
-            className={cn('w-component-md h-component-md object-cover rounded border', field.className)}
-          />
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={String(value || '')}
+              alt=""
+              className={cn('w-component-md h-component-md object-cover rounded border', field.className)}
+            />
+          </>
         );
 
       case 'url':
@@ -592,7 +565,7 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
         {showFooter && record && (
           <div className="border-t p-lg">
             <div className="flex items-center justify-end gap-sm">
-              <Button variant="outline" onClick={onClose}>
+              <Button variant="secondary" onClick={onClose}>
                 Close
               </Button>
               {onEdit && (

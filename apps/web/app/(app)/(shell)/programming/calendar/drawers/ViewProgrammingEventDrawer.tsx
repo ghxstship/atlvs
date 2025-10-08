@@ -21,7 +21,7 @@ export default function ViewProgrammingEventDrawer({
  event,
  onEdit,
  onDelete,
- users,
+ users
 }: ViewProgrammingEventDrawerProps) {
  const statusConfig = STATUS_BADGE[event.status];
  

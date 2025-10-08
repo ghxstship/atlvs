@@ -32,7 +32,7 @@ export default function RiskGridView({
  getRiskLevelColor,
  getRiskLevelBadgeVariant,
  getStatusBadgeVariant,
- getCategoryBadgeVariant,
+ getCategoryBadgeVariant
 }: RiskGridViewProps) {
  const getRiskLevel = (score: number) => {
  if (score >= 20) return "Critical";

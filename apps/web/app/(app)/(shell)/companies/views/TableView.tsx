@@ -4,6 +4,8 @@
  */
 
 'use client';
+import { Avatar, DataGrid, Tooltip } from '@ghxstship/ui';
+import { Edit } from 'lucide-react';
 
 import { useState, useMemo } from 'react';
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
@@ -28,7 +30,7 @@ export default function TableView({
   onView,
   loading = false,
   onSort,
-  onFilter,
+  onFilter
 }: TableViewProps) {
   const [pageSize, setPageSize] = useState(25);
 
@@ -54,7 +56,7 @@ export default function TableView({
             </div>
           </Box>
         </Box>
-      ),
+      )
     },
     {
       field: 'status',
@@ -71,7 +73,7 @@ export default function TableView({
           }
           variant="outlined"
         />
-      ),
+      )
     },
     {
       field: 'size',
@@ -83,17 +85,17 @@ export default function TableView({
           size="small"
           variant="outlined"
         />
-      ),
+      )
     },
     {
       field: 'email',
       headerName: 'Email',
-      width: 200,
+      width: 200
     },
     {
       field: 'phone',
       headerName: 'Phone',
-      width: 150,
+      width: 150
     },
     {
       field: 'website',
@@ -110,20 +112,20 @@ export default function TableView({
             {params.value.replace(/^https?:\/\//, '')}
           </a>
         ) : null
-      ),
+      )
     },
     {
       field: 'founded_year',
       headerName: 'Founded',
       width: 100,
-      type: 'number',
+      type: 'number'
     },
     {
       field: 'created_at',
       headerName: 'Created',
       width: 150,
       type: 'dateTime',
-      valueFormatter: (params) => new Date(params.value).toLocaleDateString(),
+      valueFormatter: (params) => new Date(params.value).toLocaleDateString()
     },
     {
       field: 'actions',
@@ -159,14 +161,14 @@ export default function TableView({
             <MoreVert fontSize="small" />
           </IconButton>
         </Box>
-      ),
+      )
     },
   ], [onEdit, onDelete, onView]);
 
   const rows: GridRowsProp = useMemo(() =>
     companies.map(company => ({
       id: company.id,
-      ...company,
+      ...company
     })),
     [companies]
   );
@@ -201,11 +203,11 @@ export default function TableView({
         sx={{
           border: 0,
           '& .MuiDataGrid-columnHeaders': {
-            backgroundColor: 'grey.50',
+            backgroundColor: 'grey.50'
           },
           '& .MuiDataGrid-cell:focus': {
-            outline: 'none',
-          },
+            outline: 'none'
+          }
         }}
       />
     </Box>

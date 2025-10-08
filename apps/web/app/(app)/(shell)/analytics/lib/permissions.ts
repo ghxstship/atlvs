@@ -18,7 +18,7 @@ import type {
   OrganizationContext,
   DashboardPermissions,
   ReportPermissions,
-  ExportPermissions,
+  ExportPermissions
 } from '../types';
 
 // ============================================================================
@@ -91,7 +91,7 @@ const DEFAULT_DASHBOARD_PERMISSIONS: DashboardPermissions = {
   view: ['owner', 'admin', 'editor', 'viewer'],
   edit: ['owner', 'admin', 'editor'],
   delete: ['owner', 'admin'],
-  share: ['owner', 'admin', 'editor'],
+  share: ['owner', 'admin', 'editor']
 };
 
 const DEFAULT_REPORT_PERMISSIONS: ReportPermissions = {
@@ -99,14 +99,14 @@ const DEFAULT_REPORT_PERMISSIONS: ReportPermissions = {
   edit: ['owner', 'admin', 'editor'],
   delete: ['owner', 'admin'],
   run: ['owner', 'admin', 'editor', 'viewer'],
-  schedule: ['owner', 'admin', 'editor'],
+  schedule: ['owner', 'admin', 'editor']
 };
 
 const DEFAULT_EXPORT_PERMISSIONS: ExportPermissions = {
   view: ['owner', 'admin', 'editor', 'viewer'],
   create: ['owner', 'admin', 'editor'],
   delete: ['owner', 'admin'],
-  download: ['owner', 'admin', 'editor', 'viewer'],
+  download: ['owner', 'admin', 'editor', 'viewer']
 };
 
 // ============================================================================
@@ -180,7 +180,7 @@ class PermissionEvaluator {
       return {
         granted: false,
         level: 'none',
-        reason: 'Permission evaluation failed',
+        reason: 'Permission evaluation failed'
       };
     }
   }
@@ -230,7 +230,7 @@ class PermissionEvaluator {
       if (allowedRoles.includes(context.organization.role)) {
         return {
           granted: true,
-          level: this.mapRoleToLevel(context.organization.role),
+          level: this.mapRoleToLevel(context.organization.role)
         };
       }
     }
@@ -265,7 +265,7 @@ class PermissionEvaluator {
     if (action === 'create' && createRoles.includes(context.organization.role)) {
       return {
         granted: true,
-        level: this.mapRoleToLevel(context.organization.role),
+        level: this.mapRoleToLevel(context.organization.role)
       };
     }
 
@@ -283,7 +283,7 @@ class PermissionEvaluator {
     const defaults = {
       dashboard: DEFAULT_DASHBOARD_PERMISSIONS,
       report: DEFAULT_REPORT_PERMISSIONS,
-      export: DEFAULT_EXPORT_PERMISSIONS,
+      export: DEFAULT_EXPORT_PERMISSIONS
     };
 
     const resourcePermissions = permissions || defaults[resourceType];
@@ -379,8 +379,8 @@ export async function checkDashboardPermission(
         type: 'dashboard',
         createdBy: dashboard.created_by,
         permissions: dashboard.permissions,
-        isPublic: dashboard.is_public,
-      } : undefined,
+        isPublic: dashboard.is_public
+      } : undefined
     },
     action,
     'dashboard'
@@ -406,7 +406,7 @@ export async function checkReportPermission(
         createdBy: report.created_by,
         permissions: report.permissions,
         isPublic: false, // Reports don't have public visibility
-      } : undefined,
+      } : undefined
     },
     action,
     'report'
@@ -432,7 +432,7 @@ export async function checkExportPermission(
         createdBy: exportJob.created_by,
         permissions: exportJob.permissions,
         isPublic: false, // Exports don't have public visibility
-      } : undefined,
+      } : undefined
     },
     action,
     'export'
@@ -470,8 +470,8 @@ export async function checkBulkPermissions(
           type: resourceType,
           createdBy: resource.created_by,
           permissions: resource.permissions,
-          isPublic: resource.is_public,
-        } : undefined,
+          isPublic: resource.is_public
+        } : undefined
       },
       action,
       resourceType
@@ -494,7 +494,7 @@ async function getResourceDetails(
   const table = {
     dashboard: 'analytics_dashboards',
     report: 'analytics_reports',
-    export: 'analytics_exports',
+    export: 'analytics_exports'
   }[resourceType];
 
   const { data, error } = await supabase
@@ -526,7 +526,7 @@ export async function updateResourcePermissions(
     {
       user,
       organization,
-      resource: { id: resourceId, type: resourceType, createdBy: '', permissions: {} },
+      resource: { id: resourceId, type: resourceType, createdBy: '', permissions: {} }
     },
     'share', // Permission management is considered "sharing"
     resourceType
@@ -539,7 +539,7 @@ export async function updateResourcePermissions(
   const table = {
     dashboard: 'analytics_dashboards',
     report: 'analytics_reports',
-    export: 'analytics_exports',
+    export: 'analytics_exports'
   }[resourceType];
 
   const { error } = await supabase
@@ -575,7 +575,7 @@ export async function getEffectivePermissions(
         {
           user,
           organization,
-          resource: resourceId ? { id: resourceId, type: resourceType, createdBy: '' } : undefined,
+          resource: resourceId ? { id: resourceId, type: resourceType, createdBy: '' } : undefined
         },
         action,
         resourceType
@@ -621,7 +621,7 @@ function getAllowedActions(resourceType: ResourceType, role: string): Permission
   const defaults = {
     dashboard: DEFAULT_DASHBOARD_PERMISSIONS,
     report: DEFAULT_REPORT_PERMISSIONS,
-    export: DEFAULT_EXPORT_PERMISSIONS,
+    export: DEFAULT_EXPORT_PERMISSIONS
   };
 
   const permissions = defaults[resourceType];
@@ -660,7 +660,7 @@ export function logPermissionDecision(
     level: result.level,
     reason: result.reason,
     timestamp: new Date().toISOString(),
-    ...metadata,
+    ...metadata
   });
 }
 
@@ -679,5 +679,5 @@ export const AnalyticsPermissions = {
   logPermissionDecision,
   // Cache management
   invalidateCache: (pattern: string) => permissionCache.invalidate(pattern),
-  clearCache: () => permissionCache.clear(),
+  clearCache: () => permissionCache.clear()
 } as const;

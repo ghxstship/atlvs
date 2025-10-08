@@ -23,6 +23,8 @@ import {
   Badge,
   Alert,
   AlertDescription,
+  Separator,
+  Switch
 } from '@ghxstship/ui';
 
 interface AccountSettingsProps {

@@ -1,4 +1,5 @@
 'use client';
+import { Button, Drawer, Input } from '@ghxstship/ui';
 
 
 import { useState } from 'react';
@@ -17,7 +18,7 @@ const competencySchema = z.object({
   beginnerDefinition: z.string().optional(),
   intermediateDefinition: z.string().optional(),
   advancedDefinition: z.string().optional(),
-  expertDefinition: z.string().optional(),
+  expertDefinition: z.string().optional()
 });
 
 type CompetencyFormData = z.infer<typeof competencySchema>;
@@ -41,7 +42,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
     formState: { errors, isValid }
   } = useForm<CompetencyFormData>({
     resolver: zodResolver(competencySchema),
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   const onSubmit = async (data: CompetencyFormData) => {
@@ -57,21 +58,21 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
         beginner: data.beginnerDefinition || '',
         intermediate: data.intermediateDefinition || '',
         advanced: data.advancedDefinition || '',
-        expert: data.expertDefinition || '',
+        expert: data.expertDefinition || ''
       };
 
       const response = await fetch('/api/v1/people/competencies', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
         body: JSON.stringify({
           name: data.name,
           description: data.description,
           category: data.category,
-          levelDefinitions,
-        }),
+          levelDefinitions
+        })
       });
 
       if (!response.ok) {
@@ -86,7 +87,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
         competency_id: result.data.id,
         name: data.name,
         category: data.category,
-        organization_id: orgId,
+        organization_id: orgId
       });
 
       // Log activity
@@ -98,8 +99,8 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
         resource_id: result.data.id,
         details: {
           name: data.name,
-          category: data.category,
-        },
+          category: data.category
+        }
       });
 
       // Reset form and close drawer
@@ -111,7 +112,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
       console.error('Error creating competency:', error);
       posthog?.capture('people_competency_creation_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -181,7 +182,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
               <label className="block text-body-sm form-label mb-sm">
                 Competency Name *
               </label>
-              <UnifiedInput                 {...register('name')}
+              <Input                 {...register('name')}
                 placeholder="e.g., Lighting Design, Sound Engineering"
                 error={errors.name?.message}
               />
@@ -191,7 +192,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
               <label className="block text-body-sm form-label mb-sm">
                 Category
               </label>
-              <UnifiedInput                 {...register('category')}
+              <Input                 {...register('category')}
                 placeholder="e.g., Technical, Creative, Management"
               />
             </div>
@@ -200,7 +201,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
               <label className="block text-body-sm form-label mb-sm">
                 Description
               </label>
-              <Textarea
+              <textarea
                 {...register('description')}
                 placeholder="Brief description of this competency"
                 rows={3}
@@ -217,7 +218,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
                 <label className="block text-body-sm form-label mb-sm">
                   Beginner Level
                 </label>
-                <Textarea
+                <textarea
                   {...register('beginnerDefinition')}
                   placeholder="What defines beginner level proficiency?"
                   rows={2}
@@ -228,7 +229,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
                 <label className="block text-body-sm form-label mb-sm">
                   Intermediate Level
                 </label>
-                <Textarea
+                <textarea
                   {...register('intermediateDefinition')}
                   placeholder="What defines intermediate level proficiency?"
                   rows={2}
@@ -239,7 +240,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
                 <label className="block text-body-sm form-label mb-sm">
                   Advanced Level
                 </label>
-                <Textarea
+                <textarea
                   {...register('advancedDefinition')}
                   placeholder="What defines advanced level proficiency?"
                   rows={2}
@@ -250,7 +251,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
                 <label className="block text-body-sm form-label mb-sm">
                   Expert Level
                 </label>
-                <Textarea
+                <textarea
                   {...register('expertDefinition')}
                   placeholder="What defines expert level proficiency?"
                   rows={2}

@@ -10,7 +10,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@ghxstship/ui';
 import type { ProgrammingEntity } from '../types';
 
@@ -41,7 +41,7 @@ export function CardView<T extends ProgrammingEntity>({
   renderCard,
   emptyMessage = 'No data available',
   className,
-  columns = 3,
+  columns = 3
 }: CardViewProps<T>) {
   const [internalSelectedIds, setInternalSelectedIds] = useState<string[]>(selectedIds);
 

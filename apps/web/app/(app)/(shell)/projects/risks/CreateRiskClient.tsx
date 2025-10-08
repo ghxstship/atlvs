@@ -17,7 +17,7 @@ const createRiskSchema = z.object({
   category: z.string().min(1, 'Category is required'),
   impact: z.enum(['very_low', 'low', 'medium', 'high', 'very_high']),
   probability: z.enum(['very_low', 'low', 'medium', 'high', 'very_high']),
-  project_id: z.string().optional(),
+  project_id: z.string().optional()
 });
 
 export default function CreateRiskClient({ orgId }: { orgId: string }) {
@@ -37,8 +37,8 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
       category: '',
       impact: 'medium',
       probability: 'medium',
-      project_id: '',
-    },
+      project_id: ''
+    }
   });
 
   // Load projects when drawer opens
@@ -66,7 +66,7 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
         ...data,
         organization_id: orgId,
         status: 'identified',
-        project_id: data.project_id || null,
+        project_id: data.project_id || null
       };
 
       const { error: insertError } = await sb

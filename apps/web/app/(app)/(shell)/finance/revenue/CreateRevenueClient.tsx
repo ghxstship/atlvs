@@ -1,4 +1,5 @@
 'use client';
+import { Button, Card, Drawer, Input, Select } from '@ghxstship/ui';
 
 
 import { useState } from 'react';
@@ -112,7 +113,7 @@ export default function CreateRevenueClient({
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: formData.currency,
+      currency: formData.currency
     }).format(amount);
   };
 
@@ -143,7 +144,7 @@ export default function CreateRevenueClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Revenue Description *
             </label>
-            <UnifiedInput               value={formData.description}
+            <Input               value={formData.description}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               placeholder="e.g., Project Alpha Payment, Consulting Services, Product Sales"
               required
@@ -157,7 +158,7 @@ export default function CreateRevenueClient({
               </label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   value={formData.amount || ''}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, amount: parseFloat(e.target.value) || 0 }))}
                   placeholder="0.00"
@@ -221,7 +222,7 @@ export default function CreateRevenueClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.recognitionDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, recognitionDate: e.target.value }))}
                   className="pl-2xl"
@@ -235,7 +236,7 @@ export default function CreateRevenueClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Related Invoice ID
             </label>
-            <UnifiedInput               value={formData.invoiceId}
+            <Input               value={formData.invoiceId}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, invoiceId: e.target.value }))}
               placeholder="Optional: Link to existing invoice"
             />

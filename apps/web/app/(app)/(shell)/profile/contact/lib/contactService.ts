@@ -4,12 +4,12 @@ import type {
   ContactFilters,
   ContactStats,
   ContactAnalytics,
-  ContactFormData,
+  ContactFormData
 } from '../types';
 import { 
   createEmptyContactStats, 
   createEmptyContactAnalytics,
-  calculateContactCompleteness,
+  calculateContactCompleteness
 } from '../types';
 
 export const contactFilterSchema = zod.object({
@@ -21,7 +21,7 @@ export const contactFilterSchema = zod.object({
   has_emergency_contact: zod.boolean().optional(),
   preferred_contact_method: zod.enum(['all', 'email', 'phone', 'sms', 'mail']).optional(),
   limit: zod.number().min(1).max(100).default(50),
-  offset: zod.number().min(0).default(0),
+  offset: zod.number().min(0).default(0)
 });
 
 export const contactUpdateSchema = zod.object({
@@ -50,7 +50,7 @@ export const contactUpdateSchema = zod.object({
   timezone: zod.string().optional(),
   preferred_contact_method: zod.enum(['email', 'phone', 'sms', 'mail']).optional(),
   do_not_contact: zod.boolean().optional(),
-  contact_notes: zod.string().max(1000).optional(),
+  contact_notes: zod.string().max(1000).optional()
 });
 
 type SupabaseClient = ReturnType<typeof import('@ghxstship/auth').createServerClient>;
@@ -168,13 +168,13 @@ export async function fetchContacts(
 
     return {
       contacts: data || [],
-      total: count || 0,
+      total: count || 0
     };
   } catch (error) {
     console.error('Error fetching contacts:', error);
     return {
       contacts: [],
-      total: 0,
+      total: 0
     };
   }
 }
@@ -200,7 +200,7 @@ export async function updateUserContact(
       .from('user_profiles')
       .update({
         ...contactData,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq('user_id', userId)
       .eq('organization_id', orgId)
@@ -218,9 +218,9 @@ export async function updateUserContact(
         activity_type: 'contact_updated',
         activity_description: 'Updated contact information',
         metadata: {
-          fields_updated: Object.keys(contactData),
+          fields_updated: Object.keys(contactData)
         },
-        performed_by: userId,
+        performed_by: userId
       });
 
     return data;
@@ -241,7 +241,7 @@ export async function verifyContact(
       .update({
         verification_status: 'verified',
         last_verified: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq('user_id', userId)
       .eq('organization_id', orgId);
@@ -256,7 +256,7 @@ export async function verifyContact(
         organization_id: orgId,
         activity_type: 'contact_verified',
         activity_description: 'Verified contact information',
-        performed_by: userId,
+        performed_by: userId
       });
 
     return true;
@@ -296,7 +296,7 @@ export async function fetchContactStats(
       .map(([method, count]) => ({
         method,
         count,
-        percentage: totalContacts > 0 ? (count / totalContacts) * 100 : 0,
+        percentage: totalContacts > 0 ? (count / totalContacts) * 100 : 0
       }))
       .sort((a, b) => b.count - a.count);
 
@@ -312,7 +312,7 @@ export async function fetchContactStats(
       .map(([country, count]) => ({
         country,
         count,
-        percentage: totalContacts > 0 ? (count / totalContacts) * 100 : 0,
+        percentage: totalContacts > 0 ? (count / totalContacts) * 100 : 0
       }))
       .sort((a, b) => b.count - a.count)
       .slice(0, 10);
@@ -321,7 +321,7 @@ export async function fetchContactStats(
     const statusCounts: Record<string, number> = {
       verified: 0,
       pending: 0,
-      unverified: 0,
+      unverified: 0
     };
 
     contacts.forEach(contact => {
@@ -333,7 +333,7 @@ export async function fetchContactStats(
       .map(([status, count]) => ({
         status,
         count,
-        percentage: totalContacts > 0 ? (count / totalContacts) * 100 : 0,
+        percentage: totalContacts > 0 ? (count / totalContacts) * 100 : 0
       }));
 
     return {
@@ -343,7 +343,7 @@ export async function fetchContactStats(
       withEmergencyContact,
       contactMethodDistribution,
       countryDistribution,
-      verificationStatus,
+      verificationStatus
     };
   } catch (error) {
     console.error('Error fetching contact stats:', error);
@@ -411,7 +411,7 @@ export async function fetchContactAnalytics(
         recentUpdates.push({
           date: dateStr,
           updates,
-          verifications,
+          verifications
         });
       }
     }
@@ -430,7 +430,7 @@ export async function fetchContactAnalytics(
       .map(([region, count]) => ({
         region,
         count,
-        percentage: (count / contacts.length) * 100,
+        percentage: (count / contacts.length) * 100
       }))
       .sort((a, b) => b.count - a.count);
 
@@ -441,7 +441,7 @@ export async function fetchContactAnalytics(
       addressCompleteness,
       phoneCompleteness,
       recentUpdates,
-      geographicDistribution,
+      geographicDistribution
     };
   } catch (error) {
     console.error('Error fetching contact analytics:', error);
@@ -466,7 +466,7 @@ function getRegionFromCountry(country: string): string {
     'AU': 'Oceania',
     'NZ': 'Oceania',
     'BR': 'South America',
-    'AR': 'South America',
+    'AR': 'South America'
   };
   
   return regionMap[country] || 'Other';

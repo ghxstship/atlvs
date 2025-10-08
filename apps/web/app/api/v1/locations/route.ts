@@ -30,7 +30,7 @@ const createLocationSchema = z.object({
   accessibility_features: z.array(z.string()).optional(),
   notes: z.string().optional(),
   tags: z.array(z.string()).optional(),
-  is_featured: z.boolean().default(false),
+  is_featured: z.boolean().default(false)
 });
 
 const updateLocationSchema = createLocationSchema.partial();
@@ -104,7 +104,7 @@ export async function GET(request: NextRequest) {
       data: locations || [],
       count: count || 0,
       limit,
-      offset,
+      offset
     });
   } catch (error) {
     console.error("Error in GET /api/v1/locations:", error);
@@ -169,7 +169,7 @@ export async function POST(request: NextRequest) {
       .insert({
         ...locationData,
         organization_id: membership.organization_id,
-        created_by: user.id,
+        created_by: user.id
       })
       .select(`
         *,
@@ -192,8 +192,8 @@ export async function POST(request: NextRequest) {
       details: {
         name: location.name,
         type: location.type,
-        address: location.address,
-      },
+        address: location.address
+      }
     });
 
     return NextResponse.json(location, { status: 201 });

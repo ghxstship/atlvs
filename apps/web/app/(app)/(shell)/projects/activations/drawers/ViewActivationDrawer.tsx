@@ -1,6 +1,6 @@
 "use client";
 
-import { Eye, Edit, Calendar, DollarSign, MapPin, Building, Users, AlertTriangle, Link, FileText, Activity, MessageSquare, Clock, CheckCircle, XCircle } from "lucide-react";
+import { Activity, AlertTriangle, Building, Calendar, CheckCircle, Clock, DollarSign, Edit, Eye, FileText, Link, MapPin, MessageSquare, Users, XCircle } from 'lucide-react';
 import {
  Drawer,
  DrawerContent,
@@ -13,7 +13,7 @@ import {
  Tabs,
  TabsList,
  TabsTrigger,
- TabsContent,
+ TabsContent
 } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import type { Activation } from "./ActivationsClient";
@@ -29,7 +29,7 @@ export default function ViewActivationDrawer({
  open,
  onOpenChange,
  activation,
- onEdit,
+ onEdit
 }: ViewActivationDrawerProps) {
  const getStatusBadgeVariant = (status: string) => {
  switch (status) {

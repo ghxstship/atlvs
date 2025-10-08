@@ -1,10 +1,6 @@
 import { ReactNode, Suspense } from 'react';
 import Link from 'next/link';
-import { AppShell as AppShellTemplate } from '@ghxstship/ui/components/templates';
-import { VStack } from '@ghxstship/ui/components/layouts';
-import { Button } from '@ghxstship/ui/components/atomic/Button';
-import { Avatar } from '@ghxstship/ui/atoms/Avatar/Avatar';
-import { ThemeToggle } from '@ghxstship/ui/molecules/ThemeToggle/ThemeToggle';
+import { AppShell as AppShellTemplate, Stack, Button, Avatar, ThemeToggle } from '@ghxstship/ui';
 import { Command as CommandIcon, Settings2 } from 'lucide-react';
 
 import { requireAuth } from '../lib/sessionContext';
@@ -134,10 +130,10 @@ export default async function AppShell({ children }: AppShellProps) {
       )}
       header={headerContent}
     >
-      <VStack spacing="lg" fullHeight>
+      <Stack spacing="lg" fullHeight>
         <CommandPalette navSections={navSections} />
         {children}
-      </VStack>
+      </Stack>
     </AppShellTemplate>
   );
 }

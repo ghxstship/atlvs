@@ -49,7 +49,7 @@ export class MarketplacePermissionsService {
     return {
       orgRole: orgRoleResult,
       isVendor: !!vendorResult.data,
-      vendorId: vendorResult.data?.id || null,
+      vendorId: vendorResult.data?.id || null
     };
   }
 

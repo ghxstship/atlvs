@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import AppDrawer from "@ghxstship/ui";
 import type { DrawerFieldConfig } from "@ghxstship/ui";
@@ -20,7 +20,7 @@ export default function EditFileDrawer({
  onOpenChange,
  file,
  projects = [],
- onSuccess,
+ onSuccess
 }: EditFileDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -31,13 +31,13 @@ export default function EditFileDrawer({
  label: "File Name",
  type: "text",
  required: true,
- placeholder: "Enter file name",
+ placeholder: "Enter file name"
  },
  {
  key: "description",
  label: "Description",
  type: "textarea",
- placeholder: "Add a description for this file",
+ placeholder: "Add a description for this file"
  },
  {
  key: "project_id",
@@ -46,7 +46,7 @@ export default function EditFileDrawer({
  options: [
  { label: "No project", value: "" },
  ...projects.map((p) => ({ label: p.name, value: p.id })),
- ],
+ ]
  },
  {
  key: "category",
@@ -61,18 +61,18 @@ export default function EditFileDrawer({
  { label: "Specification", value: "specification" },
  { label: "Report", value: "report" },
  { label: "Other", value: "other" },
- ],
+ ]
  },
  {
  key: "version",
  label: "Version",
  type: "text",
- placeholder: "1.0",
+ placeholder: "1.0"
  },
  {
  key: "is_latest",
  label: "Mark as Latest Version",
- type: "checkbox",
+ type: "checkbox"
  },
  {
  key: "access_level",
@@ -82,13 +82,13 @@ export default function EditFileDrawer({
  { label: "Team", value: "team" },
  { label: "Public", value: "public" },
  { label: "Restricted", value: "restricted" },
- ],
+ ]
  },
  {
  key: "tags",
  label: "Tags (comma-separated)",
  type: "text",
- placeholder: "tag1, tag2, tag3",
+ placeholder: "tag1, tag2, tag3"
  },
  ];
 
@@ -110,7 +110,7 @@ export default function EditFileDrawer({
  is_latest: data.is_latest || false,
  access_level: data.access_level,
  tags: tags,
- updated_at: new Date().toISOString(),
+ updated_at: new Date().toISOString()
  })
  .eq("id", file.id);
 
@@ -135,7 +135,7 @@ export default function EditFileDrawer({
  version: file.version,
  is_latest: file.is_latest,
  access_level: file.access_level,
- tags: file.tags?.join(", ") || "",
+ tags: file.tags?.join(", ") || ""
  };
 
  return (

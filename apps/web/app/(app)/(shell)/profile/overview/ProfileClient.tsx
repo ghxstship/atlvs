@@ -147,106 +147,108 @@ const PROFILE_MODULES = [
 ] as const;
 
 export default function ProfileClient({ orgId, userId, userEmail }: { orgId: string; userId: string; userEmail: string }) {
- const supabase = useMemo(() => createBrowserClient(), []);
- const { addToast } = useToast();
- const [activeTab, setActiveTab] = useState('overview');
- const [refreshing, setRefreshing] = useState(false);
+  const supabase = useMemo(() => createBrowserClient(), []);
+  const { addToast } = useToast();
+  const [activeTab, setActiveTab] = useState('overview');
+  const [refreshing, setRefreshing] = useState(false);
 
- const handleRefresh = useCallback(async () => {
- setRefreshing(true);
- addToast({
- title: 'Refreshing Profile Data',
- description: 'Updating all profile modules...',
- type: 'info',
- });
- 
- // Simulate refresh delay
- await new Promise(resolve => setTimeout(resolve, 1000));
- 
- setRefreshing(false);
- addToast({
- title: 'Profile Data Refreshed',
- description: 'All profile modules have been updated successfully.',
- type: 'success',
- });
- }, [addToast]);
+  const handleRefresh = useCallback(async () => {
+    setRefreshing(true);
+    addToast({
+      title: 'Refreshing Profile Data',
+      description: 'Updating all profile modules...',
+      type: 'info'
+    });
+    
+    // Simulate refresh delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    setRefreshing(false);
+    addToast({
+      title: 'Profile Data Refreshed',
+      description: 'All profile modules have been updated successfully.',
+      type: 'success'
+    });
+  }, [addToast]);
 
- const renderActiveModule = () => {
- const module = PROFILE_MODULES.find(m => m.id === activeTab);
- if (!module) return null;
+  const renderActiveModule = () => {
+    const activeModule = PROFILE_MODULES.find(m => m.id === activeTab);
+    if (!activeModule) return null;
 
- const Component = module.component;
- return <Component orgId={orgId} userId={userId} />;
- };
+    const Component = activeModule.component;
+    return <Component orgId={orgId} userId={userId} />;
+  };
 
- return (
- <div className="h-full flex flex-col">
- {/* Header */}
- <div className="flex items-center justify-between mb-lg">
- <div>
- <h1 className="text-2xl font-bold">Profile Management</h1>
- <p className="text-muted-foreground">
- Comprehensive profile information and settings
- </p>
- </div>
- <div className="flex items-center gap-sm">
- <Button
- variant="outline"
- size="sm"
- onClick={handleRefresh}
- disabled={refreshing}
- >
- <RefreshCw className={`h-icon-xs w-icon-xs mr-sm ${refreshing ? 'animate-spin' : ''}`} />
- Refresh All
- </Button>
- </div>
- </div>
+  return (
+    <div className="h-full flex flex-col">
+      {/* Header */}
+      <div className="mb-lg">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold">Profile Management</h1>
+            <p className="text-muted-foreground">
+              Comprehensive profile information and settings
+            </p>
+          </div>
+          <div className="flex items-center gap-sm">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleRefresh}
+              disabled={refreshing}
+            >
+              <RefreshCw className={`h-icon-xs w-icon-xs mr-sm ${refreshing ? 'animate-spin' : ''}`} />
+              Refresh All
+            </Button>
+          </div>
+        </div>
+      </div>
 
- {/* Tab Navigation */}
- <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col">
- <TabsList className="grid grid-cols-7 lg:grid-cols-14 gap-xs h-auto p-xs bg-muted">
- {PROFILE_MODULES.map((module) => {
- const Icon = module.icon;
- return (
- <TabsTrigger
- key={module.id}
- value={module.id}
- className="flex flex-col items-center gap-xs p-xs h-auto data-[state=active]:bg-background"
- >
- <Icon className="h-icon-xs w-icon-xs" />
- <span className="text-xs font-medium">{module.label}</span>
- </TabsTrigger>
- );
- })}
- </TabsList>
+      {/* Tab Navigation */}
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col">
+        <TabsList className="grid grid-cols-7 lg:grid-cols-14 gap-xs h-auto p-xs bg-muted">
+          {PROFILE_MODULES.map((module) => {
+            const Icon = module.icon;
+            return (
+              <TabsTrigger
+                key={module.id}
+                value={module.id}
+                className="flex flex-col items-center gap-xs p-xs h-auto data-[state=active]:bg-background"
+              >
+                <Icon className="h-icon-xs w-icon-xs" />
+                <span className="text-xs font-medium">{module.label}</span>
+              </TabsTrigger>
+            );
+          })}
+        </TabsList>
 
- {/* Tab Content */}
- <div className="flex-1 mt-lg">
- {PROFILE_MODULES.map((module) => (
- <TabsContent
- key={module.id}
- value={module.id}
- className="h-full m-0 data-[state=inactive]:hidden"
- >
- <Card className="h-full">
- <div className="p-lg h-full">
- <div className="flex items-center gap-sm mb-md">
- <module.icon className="h-icon-sm w-icon-sm text-primary" />
- <div>
- <h2 className="text-lg font-semibold">{module.label}</h2>
- <p className="text-sm text-muted-foreground">{module.description}</p>
- </div>
- </div>
- 
- <div className="h-full">
- {renderActiveModule()}
- </div>
- </div>
- </Card>
- </TabsContent>
- ))}
- </div>
- </Tabs>
- </div>
- );
+        {/* Tab Content */}
+        <div className="flex-1 mt-lg">
+          {PROFILE_MODULES.map((module) => (
+            <TabsContent
+              key={module.id}
+              value={module.id}
+              className="h-full m-0 data-[state=inactive]:hidden"
+            >
+              <Card className="h-full">
+                <div className="p-lg h-full">
+                  <div className="flex items-center gap-sm mb-md">
+                    <module.icon className="h-icon-sm w-icon-sm text-primary" />
+                    <div>
+                      <h2 className="text-lg font-semibold">{module.label}</h2>
+                      <p className="text-sm text-muted-foreground">{module.description}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="h-full">
+                    {renderActiveModule()}
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+          ))}
+        </div>
+      </Tabs>
+    </div>
+  );
 }

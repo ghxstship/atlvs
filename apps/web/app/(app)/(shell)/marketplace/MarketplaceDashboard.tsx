@@ -17,7 +17,7 @@ import {
   Star,
   Target,
   Users,
-  Zap,
+  Zap
 } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -43,7 +43,7 @@ const INITIAL_STATS: MarketplaceDashboardStats = {
     responseRate: 0,
     profileViews: 0,
     proposalsSent: 0,
-    successRate: 0,
+    successRate: 0
   },
   client: {
     totalSpent: 0,
@@ -53,8 +53,8 @@ const INITIAL_STATS: MarketplaceDashboardStats = {
     avgProjectValue: 0,
     totalSaved: 0,
     proposalsReceived: 0,
-    avgCompletionTime: 0,
-  },
+    avgCompletionTime: 0
+  }
 };
 
 export default function MarketplaceDashboard({ orgId, userId, userRole }: MarketplaceDashboardProps) {
@@ -156,8 +156,8 @@ export default function MarketplaceDashboard({ orgId, userId, userRole }: Market
                         100
                       ).toFixed(0),
                     )
-                  : 0,
-            },
+                  : 0
+            }
           }));
         }
       }
@@ -188,8 +188,8 @@ export default function MarketplaceDashboard({ orgId, userId, userRole }: Market
             vendorsHired: contracts ? new Set(contracts.map((contract) => contract.vendor_id)).size : 0,
             avgProjectValue: contracts && contracts.length > 0 ? totalSpent / contracts.length : 0,
             totalSaved: Number((totalSpent * 0.15).toFixed(2)),
-            avgCompletionTime: 14,
-          },
+            avgCompletionTime: 14
+          }
         }));
       }
     } catch (error: unknown) {
@@ -199,7 +199,7 @@ export default function MarketplaceDashboard({ orgId, userId, userRole }: Market
           : {
               code: 'MARKETPLACE_DASHBOARD_ERROR',
               message: error instanceof Error ? error.message : 'Unknown marketplace dashboard error',
-              timestamp: new Date(),
+              timestamp: new Date()
             };
       reportError(appError);
     } finally {

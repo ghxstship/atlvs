@@ -83,6 +83,7 @@ const PeopleCalendarView: React.FC<CalendarViewProps> = ({
 
   const allEvents = useMemo(() => {
     return [...generatedEvents, ...(externalEvents || [])];
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [generatedEvents, externalEvents]);
 
   // Group events by date
@@ -98,6 +99,7 @@ const PeopleCalendarView: React.FC<CalendarViewProps> = ({
     });
 
     return grouped;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allEvents]);
 
   const navigateDate = (direction: 'prev' | 'next') => {

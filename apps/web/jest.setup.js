@@ -17,10 +17,10 @@ jest.mock('next/router', () => ({
       events: {
         on: jest.fn(),
         off: jest.fn(),
-        emit: jest.fn(),
-      },
+        emit: jest.fn()
+      }
     }
-  },
+  }
 }))
 
 // Mock Next.js navigation
@@ -32,7 +32,7 @@ jest.mock('next/navigation', () => ({
       prefetch: jest.fn(),
       back: jest.fn(),
       forward: jest.fn(),
-      refresh: jest.fn(),
+      refresh: jest.fn()
     }
   },
   useSearchParams() {
@@ -40,7 +40,7 @@ jest.mock('next/navigation', () => ({
   },
   usePathname() {
     return '/'
-  },
+  }
 }))
 
 // Mock fetch globally
@@ -57,20 +57,20 @@ Object.defineProperty(window, 'matchMedia', {
     removeListener: jest.fn(), // deprecated
     addEventListener: jest.fn(),
     removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  })),
+    dispatchEvent: jest.fn()
+  }))
 })
 
 // Mock IntersectionObserver
 global.IntersectionObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
   unobserve: jest.fn(),
-  disconnect: jest.fn(),
+  disconnect: jest.fn()
 }))
 
 // Mock ResizeObserver
 global.ResizeObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
   unobserve: jest.fn(),
-  disconnect: jest.fn(),
+  disconnect: jest.fn()
 }))

@@ -1,42 +1,10 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import {
-  X,
-  Clock,
-  User,
-  Edit,
-  Trash2,
-  Plus,
-  Eye,
-  Download,
-  Upload,
-  Settings,
-  AlertTriangle,
-  CheckCircle,
-  Info,
-  MoreHorizontal,
-  ChevronDown,
-  ChevronRight,
-  Filter,
-  Search
-} from 'lucide-react';
-import { Button } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Separator } from '@ghxstship/ui';
-import { ScrollArea } from '@ghxstship/ui';
-import { Input } from '@ghxstship/ui';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ghxstship/ui';
-import { Avatar, AvatarFallback, AvatarImage } from '@ghxstship/ui';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@ghxstship/ui';
-import { Card, CardContent } from '@ghxstship/ui';
+import { AlertTriangle, CheckCircle, ChevronDown, ChevronRight, Clock, Download, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Edit, Eye, Filter, Info, MoreHorizontal, Plus, Search, Settings, Trash2, Upload, User, X } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Card, CardBody, CardContent, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Input, ScrollArea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator } from '@ghxstship/ui';
 import { cn } from '@ghxstship/ui/lib/utils';
-import { format, formatDistanceToNow, isToday, isYesterday, isThisWeek, isThisMonth } from 'date-fns';
+import { format, formatDistanceToNow, isThisMonth, isThisWeek, isToday, isYesterday } from 'date-fns';
 
 // Activity Types
 export type ActivityType =
@@ -394,7 +362,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                     {/* Entity info */}
                     {(activity.entityId || activity.entityType) && (
                       <div className="flex items-center gap-xs mb-2">
-                        <Badge variant="outline" className="text-xs">
+                        <Badge variant="secondary" className="text-xs">
                           {activity.entityType}
                         </Badge>
                         {activity.entityId && (
@@ -531,11 +499,11 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
               <p className="text-sm text-muted-foreground truncate mt-1">{subtitle}</p>
             )}
             <div className="flex items-center gap-xs mt-2">
-              <Badge variant="outline">
+              <Badge variant="secondary">
                 {filteredActivities.length} activities
               </Badge>
               {groupBy !== 'none' && (
-                <Badge variant="outline">
+                <Badge variant="secondary">
                   Grouped by {groupBy}
                 </Badge>
               )}
@@ -599,7 +567,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
 
             {onExportActivities && (
               <Button
-                variant="outline"
+                variant="secondary"
                 size="sm"
                 onClick={() => onExportActivities(filter)}
                 className="w-full"

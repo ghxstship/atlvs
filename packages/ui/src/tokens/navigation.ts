@@ -149,9 +149,9 @@ export const navigationTokens = {
   // Backdrop System
   backdrop: {
     blur: {
-      sm: 'var(--nav-backdrop-blur-sm)', // 4px
-      md: 'var(--nav-backdrop-blur-md)', // 8px
-      lg: 'var(--nav-backdrop-blur-lg)', // 16px
+      sm: 'var(--nav-backdrop-blur-sm)', // var(--spacing-1)
+      md: 'var(--nav-backdrop-blur-md)', // var(--spacing-2)
+      lg: 'var(--nav-backdrop-blur-lg)', // var(--spacing-4)
     },
     opacity: {
       light: 'var(--nav-backdrop-opacity-light)', // 0.1
@@ -259,17 +259,17 @@ export const navigationCSSVariables = `
   --nav-radius-xl: 0.75rem;
 
   /* Navigation Shadows */
-  --nav-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --nav-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --nav-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --nav-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --nav-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --nav-shadow-sm: 0 1px 2px 0 hsl(var(--color-foreground) / 0.05);
+  --nav-shadow-md: 0 var(--spacing-1) 6px -1px hsl(var(--color-foreground) / 0.1), 0 2px var(--spacing-1) -2px hsl(var(--color-foreground) / 0.1);
+  --nav-shadow-lg: 0 10px 15px -3px hsl(var(--color-foreground) / 0.1), 0 var(--spacing-1) 6px -var(--spacing-1) hsl(var(--color-foreground) / 0.1);
+  --nav-shadow-xl: 0 var(--spacing-5) 25px -5px hsl(var(--color-foreground) / 0.1), 0 var(--spacing-2) 10px -6px hsl(var(--color-foreground) / 0.1);
+  --nav-shadow-inner: inset 0 2px var(--spacing-1) 0 hsl(var(--color-foreground) / 0.05);
   --nav-shadow-focus: 0 0 0 3px rgb(59 130 246 / 0.1);
 
   /* Navigation Backdrop */
-  --nav-backdrop-blur-sm: 4px;
-  --nav-backdrop-blur-md: 8px;
-  --nav-backdrop-blur-lg: 16px;
+  --nav-backdrop-blur-sm: var(--spacing-1);
+  --nav-backdrop-blur-md: var(--spacing-2);
+  --nav-backdrop-blur-lg: var(--spacing-4);
 
   --nav-backdrop-opacity-light: 0.1;
   --nav-backdrop-opacity-medium: 0.5;

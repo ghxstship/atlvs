@@ -10,5 +10,5 @@ export {
   Heading,
   Switch,
   Progress,
-  Loader,
+  Loader
 } from '@ghxstship/ui/atoms';

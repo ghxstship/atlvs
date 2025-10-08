@@ -1,25 +1,11 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, Skeleton, Drawer, type DataRecord } from '@ghxstship/ui';
-import { 
-  Banknote,
-  Plus,
-  Edit,
-  Trash2,
-  RefreshCw,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  DollarSign,
-  TrendingUp,
-  TrendingDown,
-  Building,
-  CreditCard
-} from 'lucide-react';
+import { Badge, Button, Card, DataGrid, Drawer, Skeleton, StateManagerProvider, ViewSwitcher, type DataRecord } from '@ghxstship/ui';
+import { AlertTriangle, Banknote, Building, CheckCircle, Clock, CreditCard, DollarSign, Edit, Plus, RefreshCw, Trash2, TrendingDown, TrendingUp } from 'lucide-react';
 
 interface AccountsClientProps {
   user: User;
@@ -59,8 +45,10 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadAccounts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadAccounts = async () => {
@@ -177,7 +165,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
   const formatCurrency = (amount: number, currency = 'USD') => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: currency
     }).format(amount);
   };
 

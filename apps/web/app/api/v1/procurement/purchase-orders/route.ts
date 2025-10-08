@@ -55,7 +55,7 @@ const CreatePurchaseOrderSchema = z.object({
     type: z.string(),
     size: z.number().optional()
   })).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 const UpdatePurchaseOrderSchema = CreatePurchaseOrderSchema.partial().omit({ vendorId: true });
@@ -169,7 +169,7 @@ export async function GET(request: NextRequest) {
       }, 0) || 0,
       totalOrders: purchaseOrders?.length || 0,
       pendingApproval: purchaseOrders?.filter(po => po.status === 'pending_approval').length || 0,
-      delivered: purchaseOrders?.filter(po => po.status === 'delivered').length || 0,
+      delivered: purchaseOrders?.filter(po => po.status === 'delivered').length || 0
     };
 
     await supabase.from('audit_logs').insert({

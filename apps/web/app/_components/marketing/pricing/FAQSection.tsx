@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { Card, CardContent } from '@ghxstship/ui';
+import { Card, CardBody, CardContent, cn } from '@ghxstship/ui';
 import { HelpCircle } from 'lucide-react';
-import { cn } from '@ghxstship/ui';
-import { typography, anton } from '../../lib/typography';
+import { anton, typography } from '../../lib/typography';
 import { layouts } from '../../lib/layouts';
 
 interface FAQ {

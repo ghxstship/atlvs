@@ -58,9 +58,9 @@ export class ListingsService {
       const response = await fetch('/api/v1/marketplace/listings', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(listingData),
+        body: JSON.stringify(listingData)
       });
 
       const data = await response.json();
@@ -81,9 +81,9 @@ export class ListingsService {
       const response = await fetch('/api/v1/marketplace/listings', {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id, ...listingData }),
+        body: JSON.stringify({ id, ...listingData })
       });
 
       const data = await response.json();
@@ -104,9 +104,9 @@ export class ListingsService {
       const response = await fetch('/api/v1/marketplace/listings', {
         method: 'DELETE',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id }),
+        body: JSON.stringify({ id })
       });
 
       if (!response.ok) {

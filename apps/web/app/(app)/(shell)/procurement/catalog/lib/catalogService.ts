@@ -14,13 +14,13 @@ import type {
   ExportConfig,
   ImportConfig,
   ImportResult,
-  CatalogActivity,
+  CatalogActivity
 } from '../types';
 import {
   catalogItemSchema,
   categorySchema,
   vendorSchema,
-  catalogFiltersSchema,
+  catalogFiltersSchema
 } from '../types';
 
 export class CatalogService {
@@ -151,7 +151,7 @@ export class CatalogService {
       return {
         items: paginatedItems,
         total,
-        hasMore,
+        hasMore
       };
     } catch (error) {
       console.error('Error fetching catalog items:', error);
@@ -177,7 +177,7 @@ export class CatalogService {
       return {
         ...data,
         type,
-        price: type === 'service' ? data.rate : data.price,
+        price: type === 'service' ? data.rate : data.price
       };
     } catch (error) {
       console.error('Error fetching catalog item:', error);
@@ -209,13 +209,13 @@ export class CatalogService {
         ...(validatedData.type === 'product' 
           ? { 
               price: validatedData.price || 0,
-              sku: validatedData.sku,
+              sku: validatedData.sku
             }
           : { 
               rate: validatedData.rate || 0,
-              unit: validatedData.unit || 'hour',
+              unit: validatedData.unit || 'hour'
             }
-        ),
+        )
       };
 
       const { data, error } = await this.supabase
@@ -229,13 +229,13 @@ export class CatalogService {
       // Log activity
       await this.logActivity(organizationId, userId, 'create', validatedData.type, data.id, {
         name: validatedData.name,
-        type: validatedData.type,
+        type: validatedData.type
       });
 
       return {
         ...data,
         type: validatedData.type,
-        price: validatedData.type === 'service' ? data.rate : data.price,
+        price: validatedData.type === 'service' ? data.rate : data.price
       };
     } catch (error) {
       console.error('Error creating catalog item:', error);
@@ -256,7 +256,7 @@ export class CatalogService {
       
       const table = type === 'product' ? 'products' : 'services';
       const payload: unknown = {
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       // Map common fields
@@ -290,13 +290,13 @@ export class CatalogService {
 
       // Log activity
       await this.logActivity(organizationId, userId, 'update', type, itemId, {
-        updates: Object.keys(payload),
+        updates: Object.keys(payload)
       });
 
       return {
         ...data,
         type,
-        price: type === 'service' ? data.rate : data.price,
+        price: type === 'service' ? data.rate : data.price
       };
     } catch (error) {
       console.error('Error updating catalog item:', error);
@@ -378,7 +378,7 @@ export class CatalogService {
         action: action.type,
         itemCount: action.itemIds.length,
         success,
-        failed,
+        failed
       });
 
       return { success, failed, errors };
@@ -413,7 +413,7 @@ export class CatalogService {
         .from('categories')
         .insert({
           organization_id: organizationId,
-          ...validatedData,
+          ...validatedData
         })
         .select()
         .single();
@@ -422,7 +422,7 @@ export class CatalogService {
 
       await this.logActivity(organizationId, userId, 'create', 'category', data.id, {
         name: validatedData.name,
-        type: validatedData.type,
+        type: validatedData.type
       });
 
       return data;
@@ -457,7 +457,7 @@ export class CatalogService {
         .from('vendors')
         .insert({
           organization_id: organizationId,
-          ...validatedData,
+          ...validatedData
         })
         .select()
         .single();
@@ -465,7 +465,7 @@ export class CatalogService {
       if (error) throw error;
 
       await this.logActivity(organizationId, userId, 'create', 'vendor', data.id, {
-        name: validatedData.name,
+        name: validatedData.name
       });
 
       return data;
@@ -619,7 +619,7 @@ export class CatalogService {
           action,
           resource_type: resourceType,
           resource_id: resourceId,
-          details,
+          details
         });
     } catch (error) {
       console.error('Error logging activity:', error);

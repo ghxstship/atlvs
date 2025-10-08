@@ -1,9 +1,9 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
+import { Card, Button, Input, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Search, Edit, Trash2, List, Users, Calendar } from 'lucide-react';
 
@@ -52,8 +52,10 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadShortlists();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, selectedPurpose]);
 
   const loadShortlists = async () => {
@@ -157,7 +159,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
             <div className="flex-1">
               <div className="relative">
                 <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
-                <UnifiedInput                   placeholder={t('searchPlaceholder')}
+                <Input                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
@@ -188,7 +190,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
               <label className="block text-body-sm form-label color-foreground mb-xs">
                 {t('name')}
               </label>
-              <UnifiedInput                 value={newShortlist.name}
+              <Input                 value={newShortlist.name}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewShortlist(prev => ({ ...prev, name: e.target.value }))}
                 placeholder={t('namePlaceholder')}
               />

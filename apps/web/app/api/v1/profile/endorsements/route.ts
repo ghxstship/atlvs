@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@ghxstship/auth';
 import {
   endorsementFilterSchema,
-  
   fetchEndorsements,
   fetchEndorsementById,
   fetchEndorsementStats,
@@ -13,7 +12,7 @@ import {
   deleteEndorsement,
   verifyEndorsement,
   toggleEndorsementFeatured,
-  toggleEndorsementPublic,
+  toggleEndorsementPublic
 } from '@/app/(app)/(shell)/profile/endorsements/lib/endorsementService';
 
 async function getSupabase() {
@@ -24,7 +23,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -72,7 +71,7 @@ export async function GET(request: NextRequest) {
       is_public: searchParams.get('is_public') || undefined,
       is_featured: searchParams.get('is_featured') || undefined,
       date_from: searchParams.get('date_from') || undefined,
-      date_to: searchParams.get('date_to') || undefined,
+      date_to: searchParams.get('date_to') || undefined
     };
 
     const validatedFilters = endorsementFilterSchema.parse(filters);
@@ -91,7 +90,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       ...result,
-      stats,
+      stats
     });
   } catch (error) {
     console.error('Error in GET /api/v1/profile/endorsements:', error);

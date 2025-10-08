@@ -124,7 +124,7 @@ export const CERTIFICATION_FIELD_CONFIG: FieldConfig[] = [
     required: true,
     placeholder: 'AWS Solutions Architect',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'issuing_organization',
@@ -133,7 +133,7 @@ export const CERTIFICATION_FIELD_CONFIG: FieldConfig[] = [
     required: true,
     placeholder: 'Amazon Web Services',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'certification_number',
@@ -141,21 +141,21 @@ export const CERTIFICATION_FIELD_CONFIG: FieldConfig[] = [
     type: 'text',
     placeholder: 'AWS-SAA-123456',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'issue_date',
     label: 'Issue Date',
     type: 'date',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'expiry_date',
     label: 'Expiry Date',
     type: 'date',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'status',
@@ -168,7 +168,7 @@ export const CERTIFICATION_FIELD_CONFIG: FieldConfig[] = [
       { value: 'revoked', label: 'Revoked' },
     ],
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'verification_url',
@@ -176,7 +176,7 @@ export const CERTIFICATION_FIELD_CONFIG: FieldConfig[] = [
     type: 'url',
     placeholder: 'https://verify.aws.com/...',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'attachment_url',
@@ -184,7 +184,7 @@ export const CERTIFICATION_FIELD_CONFIG: FieldConfig[] = [
     type: 'url',
     placeholder: 'https://example.com/cert.pdf',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'notes',
@@ -193,7 +193,7 @@ export const CERTIFICATION_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'Additional notes about this certification...',
     validation: { maxLength: 500 },
     visible: true,
-    editable: true,
+    editable: true
   },
 ];
 
@@ -201,7 +201,7 @@ export const VIEW_CONFIG = {
   list: { label: 'List', icon: 'List' },
   grid: { label: 'Grid', icon: 'Grid3X3' },
   table: { label: 'Table', icon: 'Table' },
-  analytics: { label: 'Analytics', icon: 'BarChart3' },
+  analytics: { label: 'Analytics', icon: 'BarChart3' }
 } as const;
 
 export const QUICK_FILTERS = [
@@ -235,7 +235,7 @@ export const STATUS_CONFIG = {
     label: 'Revoked', 
     color: 'bg-gray-100 text-gray-800',
     description: 'Certification has been revoked'
-  },
+  }
 } as const;
 
 export function createEmptyCertification(): Partial<Certification> {
@@ -248,7 +248,7 @@ export function createEmptyCertification(): Partial<Certification> {
     verification_url: '',
     attachment_url: '',
     notes: '',
-    status: 'active',
+    status: 'active'
   };
 }
 
@@ -261,7 +261,7 @@ export function createEmptyCertificationStats(): CertificationStats {
     organizationDistribution: [],
     statusDistribution: [],
     expiryTrends: [],
-    recentActivity: [],
+    recentActivity: []
   };
 }
 
@@ -274,8 +274,8 @@ export function createEmptyCertificationAnalytics(): CertificationAnalytics {
       overallCompliance: 0,
       criticalCertifications: 0,
       renewalRate: 0,
-      averageRenewalTime: 0,
-    },
+      averageRenewalTime: 0
+    }
   };
 }
 

@@ -10,7 +10,7 @@ interface RiskHeatmapViewProps {
 
 export default function RiskHeatmapView({
  risks,
- onView,
+ onView
 }: RiskHeatmapViewProps) {
  // Group risks by category and calculate statistics
  const categoryStats = risks.reduce((acc, risk) => {
@@ -22,7 +22,7 @@ export default function RiskHeatmapView({
  medium: 0,
  low: 0,
  avgScore: 0,
- risks: [],
+ risks: []
  };
  }
  

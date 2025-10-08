@@ -1,23 +1,11 @@
 'use client';
 
-import { DollarSign, Calendar, Tag, FileText } from "lucide-react";
+import { AppDrawer, Button, Calendar, Card, DollarSign, FileText, Input, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Tag, Textarea } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 // import { z } from 'zod';
-import {
- AppDrawer,
- Button,
- Input,
- Textarea,
- Select,
- SelectContent,
- SelectItem,
- SelectTrigger,
- SelectValue,
- Label,
- Card
-} from '@ghxstship/ui';
+import { AppDrawer, Button, Card, Input, Label, Select } from '@ghxstship/ui';
 import type { CreateBudgetData, Budget } from '../types';
 
 const CreateBudgetSchema = z.object({
@@ -116,7 +104,7 @@ export default function CreateBudgetDrawer({
 
  <div>
  <Label htmlFor="description">Description</Label>
- <Textarea
+ <textarea
  
  {...register('description')}
  placeholder="Enter budget description"

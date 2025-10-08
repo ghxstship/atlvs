@@ -18,7 +18,24 @@ import {
   Trash2,
   CreditCard,
   Globe
-} from 'lucide-react';
+} from 'lucide-react';import {
+  Card,
+  Button,
+  UnifiedInput,
+  Select,
+  Textarea,
+  Badge,
+  Drawer
+} from '@ghxstship/ui';
+import {
+  Card,
+  Button,
+  Select,
+  Textarea,
+  Badge,
+  Drawer
+} from '@ghxstship/ui';
+
 
 const travelRecordSchema = z.object({
   travel_type: z.enum(['business', 'personal', 'relocation', 'training', 'conference', 'other']),

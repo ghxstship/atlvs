@@ -2,10 +2,10 @@
 
 import React, { useMemo } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, Area, AreaChart } from 'recharts';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
+import { Card, CardContent, CardHeader, CardTitle, Tooltip } from '@ghxstship/ui';
 import { Badge } from '@ghxstship/ui';
 import { Button } from '@ghxstship/ui';
-import { Download, TrendingUp, TrendingDown, Minus } from 'lucide-react';
+import { Download, TrendingUp, TrendingDown, Minus, Pie, BarChart } from 'lucide-react';
 import type { ProgrammingEntity } from '../types';
 
 interface ChartViewProps<T extends ProgrammingEntity> {
@@ -39,7 +39,7 @@ export function ChartView<T extends ProgrammingEntity>({
   title = 'Programming Analytics',
   onExport,
   emptyMessage = 'No data available for charting',
-  className,
+  className
 }: ChartViewProps<T>) {
   // Process data for charts
   const chartData = useMemo(() => {
@@ -99,7 +99,7 @@ export function ChartView<T extends ProgrammingEntity>({
       capacity: value.totalCapacity,
       duration: value.totalDuration,
       avgCapacity: value.count > 0 ? Math.round(value.totalCapacity / value.count) : 0,
-      avgDuration: value.count > 0 ? Math.round(value.totalDuration / value.count) : 0,
+      avgDuration: value.count > 0 ? Math.round(value.totalDuration / value.count) : 0
     }));
   }, [data, groupBy]);
 
@@ -119,7 +119,7 @@ export function ChartView<T extends ProgrammingEntity>({
       totalCapacity,
       totalDuration,
       avgCapacity: totalItems > 0 ? Math.round(totalCapacity / totalItems) : 0,
-      avgDuration: totalItems > 0 ? Math.round(totalDuration / totalItems) : 0,
+      avgDuration: totalItems > 0 ? Math.round(totalDuration / totalItems) : 0
     };
   }, [data]);
 

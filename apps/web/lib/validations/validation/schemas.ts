@@ -84,12 +84,12 @@ export const paginationSchema = z.object({
   page: z.coerce.number().int().min(1).default(1),
   limit: z.coerce.number().int().min(1).max(100).default(20),
   sortBy: z.string().optional(),
-  sortOrder: z.enum(['asc', 'desc']).default('desc'),
+  sortOrder: z.enum(['asc', 'desc']).default('desc')
 });
 
 export const searchSchema = z.object({
   q: z.string().max(100).optional(),
-  filters: z.record(z.any()).optional(),
+  filters: z.record(z.any()).optional()
 });
 
 // Common entity schemas
@@ -106,8 +106,8 @@ export const organizationSchema = z.object({
     city: z.string().max(100),
     state: z.string().max(100),
     postalCode: z.string().max(20),
-    country: z.string().max(100),
-  }).optional(),
+    country: z.string().max(100)
+  }).optional()
 });
 
 export const userSchema = z.object({
@@ -118,7 +118,7 @@ export const userSchema = z.object({
   lastName: nameSchema.optional(),
   avatar: urlSchema,
   role: z.enum(['owner', 'admin', 'manager', 'producer', 'member']),
-  status: z.enum(['active', 'inactive', 'pending', 'suspended']),
+  status: z.enum(['active', 'inactive', 'pending', 'suspended'])
 });
 
 export const membershipSchema = z.object({
@@ -128,7 +128,7 @@ export const membershipSchema = z.object({
   role: z.enum(['owner', 'admin', 'manager', 'producer', 'member']),
   status: z.enum(['active', 'inactive', 'pending', 'suspended']),
   invitedAt: dateSchema.optional(),
-  joinedAt: dateSchema.optional(),
+  joinedAt: dateSchema.optional()
 });
 
 // Project schemas
@@ -143,7 +143,7 @@ export const projectSchema = z.object({
   budget: currencySchema.optional(),
   organizationId: uuidSchema,
   managerId: uuidSchema.optional(),
-  parentProjectId: uuidSchema.optional(),
+  parentProjectId: uuidSchema.optional()
 });
 
 // Finance schemas
@@ -158,7 +158,7 @@ export const transactionSchema = z.object({
   accountId: uuidSchema,
   projectId: uuidSchema.optional(),
   vendorId: uuidSchema.optional(),
-  invoiceId: uuidSchema.optional(),
+  invoiceId: uuidSchema.optional()
 });
 
 export const invoiceSchema = z.object({
@@ -172,7 +172,7 @@ export const invoiceSchema = z.object({
   paidDate: dateSchema.optional(),
   clientId: uuidSchema,
   projectId: uuidSchema.optional(),
-  notes: descriptionSchema,
+  notes: descriptionSchema
 });
 
 // People schemas
@@ -188,7 +188,7 @@ export const personSchema = z.object({
   salary: currencySchema.optional(),
   status: z.enum(['active', 'inactive', 'terminated', 'on_leave']),
   managerId: uuidSchema.optional(),
-  avatar: urlSchema,
+  avatar: urlSchema
 });
 
 // Company schemas
@@ -205,10 +205,10 @@ export const companySchema = z.object({
     city: z.string().max(100),
     state: z.string().max(100),
     postalCode: z.string().max(20),
-    country: z.string().max(100),
+    country: z.string().max(100)
   }).optional(),
   taxId: z.string().max(50).optional(),
-  status: z.enum(['active', 'inactive', 'prospect']),
+  status: z.enum(['active', 'inactive', 'prospect'])
 });
 
 // Procurement schemas
@@ -225,7 +225,7 @@ export const procurementOrderSchema = z.object({
   receivedDate: dateSchema.optional(),
   projectId: uuidSchema.optional(),
   approverId: uuidSchema.optional(),
-  notes: descriptionSchema,
+  notes: descriptionSchema
 });
 
 // Programming schemas
@@ -240,7 +240,7 @@ export const eventSchema = z.object({
   location: z.string().max(200),
   capacity: z.number().int().min(0).optional(),
   projectId: uuidSchema.optional(),
-  budget: currencySchema.optional(),
+  budget: currencySchema.optional()
 });
 
 // Jobs schemas
@@ -257,7 +257,7 @@ export const jobSchema = z.object({
   postedDate: dateSchema,
   closingDate: dateSchema.optional(),
   hiringManagerId: uuidSchema,
-  projectId: uuidSchema.optional(),
+  projectId: uuidSchema.optional()
 });
 
 // Validation middleware function
@@ -284,8 +284,8 @@ export function createValidationErrorResponse(errors: z.ZodError) {
     details: errors.errors.map(err => ({
       field: err.path.join('.'),
       message: err.message,
-      code: err.code,
-    })),
+      code: err.code
+    }))
   };
 }
 
@@ -293,7 +293,7 @@ export function createSuccessResponse<T>(data: T, meta?: any) {
   return {
     success: true,
     data,
-    ...(meta && { meta }),
+    ...(meta && { meta })
   };
 }
 
@@ -301,6 +301,6 @@ export function createErrorResponse(message: string, code?: string) {
   return {
     success: false,
     error: message,
-    ...(code && { code }),
+    ...(code && { code })
   };
 }

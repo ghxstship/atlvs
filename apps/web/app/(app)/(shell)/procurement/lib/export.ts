@@ -11,7 +11,7 @@ export enum ExportFormat {
   CSV = 'csv',
   JSON = 'json',
   XLSX = 'xlsx',
-  PDF = 'pdf',
+  PDF = 'pdf'
 }
 
 // Export options schema
@@ -23,9 +23,9 @@ const ExportOptionsSchema = z.object({
   includeRelated: z.boolean().default(false),
   dateRange: z.object({
     start: z.date(),
-    end: z.date(),
+    end: z.date()
   }).optional(),
-  filename: z.string().optional(),
+  filename: z.string().optional()
 });
 
 export type ExportOptions = z.infer<typeof ExportOptionsSchema>;
@@ -35,7 +35,7 @@ export enum ExportStatus {
   PENDING = 'pending',
   PROCESSING = 'processing',
   COMPLETED = 'completed',
-  FAILED = 'failed',
+  FAILED = 'failed'
 }
 
 // Export job interface
@@ -92,7 +92,7 @@ export class ProcurementExportService {
           success: false,
           filename: this.generateFilename(validatedOptions),
           recordCount: 0,
-          error: 'No data found matching the criteria',
+          error: 'No data found matching the criteria'
         };
       }
 
@@ -114,7 +114,7 @@ export class ProcurementExportService {
         success: false,
         filename: this.generateFilename(options),
         recordCount: 0,
-        error: error.message || 'Export failed',
+        error: error.message || 'Export failed'
       };
     }
   }
@@ -128,7 +128,7 @@ export class ProcurementExportService {
       filters = {},
       fields,
       includeRelated,
-      dateRange,
+      dateRange
     } = options;
 
     // Build query
@@ -177,7 +177,7 @@ export class ProcurementExportService {
       vendors: 'vendors',
       requests: 'procurement_requests',
       contracts: 'contracts',
-      budgets: 'budgets',
+      budgets: 'budgets'
     };
 
     return tableMap[entity] || entity;
@@ -246,7 +246,7 @@ export class ProcurementExportService {
       success: true,
       data: csvContent,
       filename: `${filename}.csv`,
-      recordCount: data.length,
+      recordCount: data.length
     };
   }
 
@@ -261,7 +261,7 @@ export class ProcurementExportService {
       success: true,
       data: jsonContent,
       filename: `${filename}.json`,
-      recordCount: data.length,
+      recordCount: data.length
     };
   }
 

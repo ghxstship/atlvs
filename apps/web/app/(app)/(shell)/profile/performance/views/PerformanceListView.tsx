@@ -6,7 +6,7 @@ import {
  Card,
  Badge,
  Button,
- Checkbox,
+ Checkbox
 } from '@ghxstship/ui';
 import type { PerformanceReview } from '../types';
 import {
@@ -14,7 +14,7 @@ import {
  getRatingLabel,
  getStatusBadgeVariant,
  REVIEW_TYPE_LABELS,
- REVIEW_STATUS_LABELS,
+ REVIEW_STATUS_LABELS
 } from '../types';
 
 interface PerformanceListViewProps {
@@ -36,7 +36,7 @@ export default function PerformanceListView({
  onView,
  onEdit,
  onDelete,
- loading = false,
+ loading = false
 }: PerformanceListViewProps) {
  const [expandedIds, setExpandedIds] = useState<Set<string>(new Set());
 

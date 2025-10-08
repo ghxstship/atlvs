@@ -5,7 +5,7 @@ import {
  Badge,
  Button,
  Card,
- Modal,
+ Modal
 } from "@ghxstship/ui";
 import type { ProgrammingItinerary } from "../types";
 import { STATUS_BADGE, TYPE_BADGE, TRANSPORTATION_TYPE_LABEL } from "../types";
@@ -25,7 +25,7 @@ export default function ViewProgrammingItineraryDrawer({
  itinerary,
  onEdit,
  onDelete,
- users,
+ users
 }: ViewProgrammingItineraryDrawerProps) {
  const handleClose = () => onOpenChange(false);
  const statusConfig = STATUS_BADGE[itinerary.status];
@@ -36,7 +36,7 @@ export default function ViewProgrammingItineraryDrawer({
  return {
  date: date.toLocaleDateString(),
  time: date.toLocaleTimeString(),
- full: date.toLocaleString(),
+ full: date.toLocaleString()
  };
  };
 
@@ -44,7 +44,7 @@ export default function ViewProgrammingItineraryDrawer({
  if (!amount || !currency) return null;
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

@@ -1,5 +1,5 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, Download, Eye, Edit } from 'lucide-react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import type { MediaAsset } from '../types';
 
@@ -7,7 +7,7 @@ const mediaTypeIcons = {
  image: Image,
  video: Video,
  audio: Music,
- other: FileCode,
+ other: FileCode
 };
 
 interface MediaGridViewProps {

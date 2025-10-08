@@ -8,11 +8,11 @@ import { createBrowserClient } from '@supabase/ssr';
 
 
 interface TeamInvitationStepProps {
-  user;
+  user: any;
   onNext: () => void;
   onBack: () => void;
   updateData: (data: any) => void;
-  data;
+  data: any;
 }
 
 interface TeamMember {
@@ -84,7 +84,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
               email: invite.email,
               role: invite.role,
               invited_by: user.id,
-              status: 'pending',
+              status: 'pending'
             }))
           );
 
@@ -100,8 +100,8 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                 email: invite.email,
                 role: invite.role,
                 organizationName: data.orgName,
-                inviterName: user.user_metadata?.full_name || user.email,
-              }),
+                inviterName: user.user_metadata?.full_name || user.email
+              })
             });
           } catch (emailError) {
             console.warn('Failed to send invitation email:', emailError);
@@ -111,12 +111,12 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
 
       updateData({
         teamInvites: invites,
-        skipTeamInvites: skipInvites,
+        skipTeamInvites: skipInvites
       });
 
       onNext();
-    } catch (err) {
-      setError(err.message || 'Failed to send invitations');
+    } catch (err: any) {
+      setError(err?.message || "An error occurred" || 'Failed to send invitations');
     } finally {
       setLoading(false);
     }
@@ -180,7 +180,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                   <select
                     className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                     value={currentRole}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCurrentRole(e.target.value as TeamMember['role'])}
+                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setCurrentRole(e.target.value as TeamMember['role'])}
                   >
                     {roles.map(role => (
                       <option key={role.value} value={role.value}>
@@ -229,7 +229,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                         <select
                           className=" px-md py-xs border border-border rounded text-body-sm bg-background"
                           value={invite.role}
-                          onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateInviteRole(index, e.target.value as TeamMember['role'])}
+                          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => updateInviteRole(index, e.target.value as TeamMember['role'])}
                         >
                           {roles.map(role => (
                             <option key={role.value} value={role.value}>
@@ -263,7 +263,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                   className="h-icon-xs w-icon-xs color-accent border-border rounded focus:ring-primary"
                 />
                 <label htmlFor="skip-invites" className="text-body-sm color-muted">
-                  Skip for now - I'll invite team members later
+                  Skip for now - I&apos;ll invite team members later
                 </label>
               </div>
             </div>

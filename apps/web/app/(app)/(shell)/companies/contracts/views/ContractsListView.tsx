@@ -17,7 +17,7 @@ export default function ContractsListView({
  onEdit,
  onView,
  onRenew,
- onTerminate,
+ onTerminate
 }: ContractsListViewProps) {
  const getStatusColor = (status: string) => {
  switch (status) {
@@ -135,7 +135,7 @@ export default function ContractsListView({
  
  <div className="flex items-center gap-sm ml-md">
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => onView(contract)}
  >
@@ -143,7 +143,7 @@ export default function ContractsListView({
  </Button>
  
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => onEdit(contract)}
  >
@@ -152,7 +152,7 @@ export default function ContractsListView({
  
  {contract.status === 'active' && (
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => onRenew(contract)}
  className="text-green-600 hover:text-green-700"
@@ -163,7 +163,7 @@ export default function ContractsListView({
  
  {contract.status === 'active' && (
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => onTerminate(contract)}
  className="text-red-600 hover:text-red-700"

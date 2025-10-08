@@ -212,7 +212,7 @@ export const jobFilterSchema = zod.object({
   industry: zod.string().optional(),
   date_from: zod.string().optional(),
   date_to: zod.string().optional(),
-  has_achievements: zod.boolean().optional(),
+  has_achievements: zod.boolean().optional()
 });
 
 export const jobUpsertSchema = zod.object({
@@ -235,7 +235,7 @@ export const jobUpsertSchema = zod.object({
   company_size: companySizeSchema.optional().nullable(),
   industry: zod.string().optional().nullable(),
   visibility: jobVisibilitySchema,
-  tags: zod.array(zod.string()),
+  tags: zod.array(zod.string())
 });
 
 // ============================================================================
@@ -249,7 +249,7 @@ export const EMPLOYMENT_TYPE_LABELS: Record<EmploymentType, string> = {
   freelance: 'Freelance',
   internship: 'Internship',
   temporary: 'Temporary',
-  consultant: 'Consultant',
+  consultant: 'Consultant'
 };
 
 export const COMPANY_SIZE_LABELS: Record<CompanySize, string> = {
@@ -257,36 +257,36 @@ export const COMPANY_SIZE_LABELS: Record<CompanySize, string> = {
   small: 'Small (11-50)',
   medium: 'Medium (51-200)',
   large: 'Large (201-1000)',
-  enterprise: 'Enterprise (1000+)',
+  enterprise: 'Enterprise (1000+)'
 };
 
 export const VISIBILITY_LABELS: Record<JobVisibility, string> = {
   public: 'Public',
   organization: 'Organization',
-  private: 'Private',
+  private: 'Private'
 };
 
 export const VIEW_CONFIG: Record<JobViewType, { label: string; description: string }> = {
   form: {
     label: 'Form',
-    description: 'Add or edit job history',
+    description: 'Add or edit job history'
   },
   card: {
     label: 'Card',
-    description: 'Detailed card view',
+    description: 'Detailed card view'
   },
   timeline: {
     label: 'Timeline',
-    description: 'Career timeline',
+    description: 'Career timeline'
   },
   resume: {
     label: 'Resume',
-    description: 'Resume format view',
+    description: 'Resume format view'
   },
   analytics: {
     label: 'Analytics',
-    description: 'Career insights',
-  },
+    description: 'Career insights'
+  }
 };
 
 export const QUICK_FILTERS = [
@@ -358,7 +358,7 @@ export function createEmptyFormData(): JobHistoryFormData {
     company_size: 'medium',
     industry: '',
     visibility: 'organization',
-    tags: [],
+    tags: []
   };
 }
 
@@ -373,7 +373,7 @@ export function createEmptyStats(): JobStats {
     byIndustry: [],
     skillsFrequency: [],
     companiesWorked: [],
-    averageJobDuration: 0,
+    averageJobDuration: 0
   };
 }
 
@@ -388,9 +388,9 @@ export function createEmptyAnalytics(): JobAnalytics {
       averageTenure: 0,
       longestTenure: 0,
       shortestTenure: 0,
-      jobChangesPerYear: 0,
+      jobChangesPerYear: 0
     },
-    locationHistory: [],
+    locationHistory: []
   };
 }
 
@@ -428,14 +428,14 @@ export function formatDate(date: string): string {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
+    day: 'numeric'
   });
 }
 
 export function formatDateShort(date: string): string {
   return new Date(date).toLocaleDateString('en-US', {
     month: 'short',
-    year: 'numeric',
+    year: 'numeric'
   });
 }
 
@@ -482,7 +482,7 @@ export function getEmploymentTypeIcon(type: EmploymentType): string {
     freelance: '💻',
     internship: '🎓',
     temporary: '⚡',
-    consultant: '🎯',
+    consultant: '🎯'
   };
   return icons[type];
 }

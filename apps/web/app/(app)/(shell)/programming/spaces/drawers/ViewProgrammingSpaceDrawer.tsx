@@ -7,7 +7,7 @@ import {
  Card,
  CardContent,
  CardHeader,
- CardTitle,
+ CardTitle
 } from '@ghxstship/ui';
 import AppDrawer, { type DrawerAction } from '@ghxstship/ui';
 
@@ -37,7 +37,7 @@ const STATUS_BADGE_CONFIG = {
  cleaning: { label: 'Cleaning', variant: 'info' as const },
  setup: { label: 'Setup', variant: 'warning' as const },
  breakdown: { label: 'Breakdown', variant: 'warning' as const },
- out_of_service: { label: 'Out of Service', variant: 'destructive' as const },
+ out_of_service: { label: 'Out of Service', variant: 'destructive' as const }
 };
 
 const ACCESS_LEVEL_BADGE_CONFIG = {
@@ -47,7 +47,7 @@ const ACCESS_LEVEL_BADGE_CONFIG = {
  talent_only: { label: 'Talent Only', variant: 'info' as const },
  vip: { label: 'VIP', variant: 'destructive' as const },
  crew_only: { label: 'Crew Only', variant: 'default' as const },
- private: { label: 'Private', variant: 'destructive' as const },
+ private: { label: 'Private', variant: 'destructive' as const }
 };
 
 const SPACE_KIND_CONFIG = {
@@ -70,7 +70,7 @@ const SPACE_KIND_CONFIG = {
  loading_dock: { label: 'Loading Dock', icon: '🚛' },
  parking: { label: 'Parking', icon: '🅿️' },
  outdoor: { label: 'Outdoor', icon: '🌳' },
- other: { label: 'Other', icon: '📍' },
+ other: { label: 'Other', icon: '📍' }
 };
 
 export default function ViewProgrammingSpaceDrawer({
@@ -79,7 +79,7 @@ export default function ViewProgrammingSpaceDrawer({
  space,
  users,
  onEdit,
- onDelete,
+ onDelete
 }: ViewProgrammingSpaceDrawerProps) {
  const getUserName = (userId: string | undefined | null) => {
  if (!userId) return 'Unknown';
@@ -97,14 +97,14 @@ export default function ViewProgrammingSpaceDrawer({
  label: 'Edit',
  icon: <Edit className="h-icon-xs w-icon-xs" />,
  variant: 'outline',
- onClick: () => onEdit(),
+ onClick: () => onEdit()
  },
  {
  key: 'delete',
  label: 'Delete',
  icon: <Trash2 className="h-icon-xs w-icon-xs" />,
  variant: 'destructive',
- onClick: () => onDelete(),
+ onClick: () => onDelete()
  },
  ];
 

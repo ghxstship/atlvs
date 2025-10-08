@@ -1,28 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Globe,
-  Layers,
-  Orbit,
-  PlayCircle,
-  Sparkles,
-  Users,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight, Globe, Layers, Orbit, PlayCircle, Sparkles, Users, Zap } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Immersive Experiences | GHXSTSHIP',
   description:
-    'Build XR installations, interactive exhibits, and immersive brand worlds with GHXSTSHIP’s production workflows.',
+    'Build XR installations, interactive exhibits, and immersive brand worlds with GHXSTSHIP’s production workflows.'
 };
 
 const heroStats = [
@@ -36,41 +27,41 @@ const experiencePhases = [
   {
     title: 'Concept & Story Design',
     description: 'Narrative development, moodboarding, and experience mapping with cross-disciplinary teams.',
-    icon: Sparkles,
+    icon: Sparkles
   },
   {
     title: 'Build & Integration',
     description: 'Coordinate 3D assets, interactive logic, and real-time engines across vendors.',
-    icon: Layers,
+    icon: Layers
   },
   {
     title: 'Deployment & Operations',
     description: 'Manage environment installs, QA runs, and live operations across physical and digital venues.',
-    icon: Globe,
+    icon: Globe
   },
   {
     title: 'Analytics & Lifecycles',
     description: 'Capture engagement metrics, iterate on content, and plan season-two enhancements.',
-    icon: Orbit,
+    icon: Orbit
   },
 ];
 
 const immersiveBenefits = [
   {
     title: 'Cross-Reality Collaboration',
-    description: 'Sync creative studios, technologists, and spatial sound designers with shared milestones.',
+    description: 'Sync creative studios, technologists, and spatial sound designers with shared milestones.'
   },
   {
     title: 'Asset Governance',
-    description: 'Version control for 3D assets, shaders, and spatial audio to keep builds consistent.',
+    description: 'Version control for 3D assets, shaders, and spatial audio to keep builds consistent.'
   },
   {
     title: 'Operational Excellence',
-    description: 'Automate checklists, safety reviews, and venue readiness for immersive activations.',
+    description: 'Automate checklists, safety reviews, and venue readiness for immersive activations.'
   },
   {
     title: 'Audience Intelligence',
-    description: 'Track dwell time, interaction paths, and sentiment to optimize future experiences.',
+    description: 'Track dwell time, interaction paths, and sentiment to optimize future experiences.'
   },
 ];
 
@@ -82,7 +73,7 @@ const caseStudies = [
     result: '45% faster build cycles · 60% lift in engagement · 4.8/5 audience rating · Global simultaneous launch',
     quote:
       'GHXSTSHIP unified our creative and technical teams. We launched an ambitious XR world without missing a beat.',
-    author: 'Elisa Park, Executive Producer',
+    author: 'Elisa Park, Executive Producer'
   },
   {
     company: 'Spectrum Museums',
@@ -91,7 +82,7 @@ const caseStudies = [
     result: '30% reduced production risk · 55% more visitor dwell time · 90% positive sentiment',
     quote:
       'Every discipline had clarity. GHXSTSHIP kept artifacts, media, and tech vendors synchronized perfectly.',
-    author: 'Marcus Lewis, Director of Innovation',
+    author: 'Marcus Lewis, Director of Innovation'
   },
 ];
 

@@ -10,7 +10,7 @@ import {
  formatRating,
  truncateText,
  getRelationshipColor,
- getVerificationBadgeVariant,
+ getVerificationBadgeVariant
 } from '../types';
 
 interface EndorsementCardViewProps {
@@ -24,7 +24,7 @@ export default function EndorsementCardView({
  endorsement,
  loading,
  onEdit,
- onVerify,
+ onVerify
 }: EndorsementCardViewProps) {
  if (loading) {
  return (

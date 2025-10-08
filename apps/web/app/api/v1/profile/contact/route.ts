@@ -9,7 +9,7 @@ import {
   fetchContacts,
   updateUserContact,
   verifyContact,
-  fetchContactStats,
+  fetchContactStats
 } from '@/app/(app)/(shell)/profile/contact/lib/contactService';
 
 async function getSupabase() {
@@ -20,7 +20,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -89,7 +89,7 @@ export async function GET(request: NextRequest) {
 
       return NextResponse.json({
         ...contactsData,
-        stats,
+        stats
       });
     }
 

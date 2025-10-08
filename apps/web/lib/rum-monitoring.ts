@@ -168,7 +168,7 @@ class RUMService {
       userAgent: navigator.userAgent,
       viewport: {
         width: window.innerWidth,
-        height: window.innerHeight,
+        height: window.innerHeight
       },
       events: [],
       metadata: {
@@ -181,15 +181,15 @@ class RUMService {
           averageFID: 0,
           averageCLS: 0,
           slowestPage: '',
-          errorRate: 0,
-        },
-      },
+          errorRate: 0
+        }
+      }
     };
 
     // Track page view
     this.trackEvent('page_view', {
       url: window.location.href,
-      title: document.title,
+      title: document.title
     });
 
     // Set up session timeout
@@ -267,7 +267,7 @@ class RUMService {
         const entries = list.getEntries();
         const lastEntry = entries[entries.length - 1];
         this.trackPerformance({
-          lcp: lastEntry.startTime,
+          lcp: lastEntry.startTime
         });
       });
       lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
@@ -277,7 +277,7 @@ class RUMService {
         const entries = list.getEntries();
         entries.forEach((entry: any) => {
           this.trackPerformance({
-            fid: entry.processingStart - entry.startTime,
+            fid: entry.processingStart - entry.startTime
           });
         });
       });
@@ -305,7 +305,7 @@ class RUMService {
           this.trackPerformance({
             domContentLoaded: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
             loadComplete: navigation.loadEventEnd - navigation.loadEventStart,
-            ttfb: navigation.responseStart - navigation.requestStart,
+            ttfb: navigation.responseStart - navigation.requestStart
           });
         }
       }, 0);
@@ -320,7 +320,7 @@ class RUMService {
       this.trackEvent('rage_click', {
         element: elementInfo,
         clickCount: 3,
-        timeWindow: 1000,
+        timeWindow: 1000
       });
       return;
     }
@@ -329,7 +329,7 @@ class RUMService {
     if (this.isDeadClick(target)) {
       this.trackEvent('dead_click', {
         element: elementInfo,
-        reason: 'non_interactive',
+        reason: 'non_interactive'
       });
       return;
     }
@@ -337,7 +337,7 @@ class RUMService {
     this.trackEvent('click', {
       element: elementInfo,
       x: event.clientX,
-      y: event.clientY,
+      y: event.clientY
     });
   }
 
@@ -350,7 +350,7 @@ class RUMService {
       element: this.getElementInfo(target),
       inputType: target.type,
       valueLength: value.length,
-      hasValue: value.length > 0,
+      hasValue: value.length > 0
     });
   }
 
@@ -363,7 +363,7 @@ class RUMService {
     this.trackEvent('scroll', {
       scrollTop,
       scrollPercent: Math.round(scrollPercent),
-      maxScroll: scrollHeight,
+      maxScroll: scrollHeight
     });
   }
 
@@ -373,7 +373,7 @@ class RUMService {
       filename: event.filename,
       lineno: event.lineno,
       colno: event.colno,
-      stack: event.error?.stack,
+      stack: event.error?.stack
     });
 
     if (this.currentSession) {
@@ -385,7 +385,7 @@ class RUMService {
     this.trackEvent('error', {
       type: 'unhandled_promise_rejection',
       reason: event.reason?.toString(),
-      stack: event.reason?.stack,
+      stack: event.reason?.stack
     });
 
     if (this.currentSession) {
@@ -404,7 +404,7 @@ class RUMService {
       timestamp: new Date().toISOString(),
       type,
       data,
-      url: window.location.href,
+      url: window.location.href
     };
 
     this.eventQueue.push(event);
@@ -448,7 +448,7 @@ class RUMService {
       id: element.id,
       textContent: this.shouldCaptureText(element) ? element.textContent?.substring(0, 100) : undefined,
       xpath: this.getXPath(element),
-      boundingRect: element.getBoundingClientRect(),
+      boundingRect: element.getBoundingClientRect()
     };
   }
 
@@ -531,7 +531,7 @@ class RUMService {
       averageFID: fidValues.length > 0 ? fidValues.reduce((a, b) => a + b) / fidValues.length : 0,
       averageCLS: clsValues.length > 0 ? clsValues.reduce((a, b) => a + b) / clsValues.length : 0,
       slowestPage: window.location.href,
-      errorRate: this.currentSession.metadata.errors / Math.max(this.currentSession.metadata.interactions, 1),
+      errorRate: this.currentSession.metadata.errors / Math.max(this.currentSession.metadata.interactions, 1)
     };
   }
 
@@ -545,7 +545,7 @@ class RUMService {
       const response = await fetch('/api/analytics/session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.currentSession),
+        body: JSON.stringify(this.currentSession)
       });
 
       if (!response.ok) {
@@ -612,8 +612,8 @@ export const defaultRUMConfig: RUMConfig = {
     maskEmails: true,
     maskCreditCards: true,
     maskPersonalInfo: true,
-    allowedDomains: ['ghxstship.com'],
-  },
+    allowedDomains: ['ghxstship.com']
+  }
 };
 
 export const rumService = new RUMService(defaultRUMConfig);

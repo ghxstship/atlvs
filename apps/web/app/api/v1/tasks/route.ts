@@ -16,7 +16,7 @@ const createTaskSchema = z.object({
   start_date: z.string().optional(),
   due_date: z.string().optional(),
   tags: z.array(z.string()).optional(),
-  dependencies: z.array(z.string().uuid()).optional(),
+  dependencies: z.array(z.string().uuid()).optional()
 });
 
 // GET /api/v1/tasks - List all tasks for the organization
@@ -107,7 +107,7 @@ export async function GET(request: NextRequest) {
       data: tasks,
       count,
       limit,
-      offset,
+      offset
     });
   } catch (error) {
     console.error("Error in GET /api/v1/tasks:", error);
@@ -236,7 +236,7 @@ export async function POST(request: NextRequest) {
         dependencies: data.dependencies || null,
         position,
         created_by: user.id,
-        updated_by: user.id,
+        updated_by: user.id
       })
       .select(`
         *,
@@ -264,8 +264,8 @@ export async function POST(request: NextRequest) {
       details: {
         title: newTask.title,
         status: newTask.status,
-        priority: newTask.priority,
-      },
+        priority: newTask.priority
+      }
     });
 
     return NextResponse.json(newTask, { status: 201 });

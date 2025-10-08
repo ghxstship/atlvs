@@ -2,9 +2,8 @@
 
 
 import { useState } from 'react';
-import { Card, CardContent, Badge } from '@ghxstship/ui';
-import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
-import { cn } from '@ghxstship/ui';
+import { Badge, Card, CardBody, CardContent, cn } from '@ghxstship/ui';
+import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 
 interface Testimonial {
   id: number;
@@ -37,7 +36,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     quote: 'GHXSTSHIP has revolutionized how we manage our productions. The integration between ATLVS and OPENDECK is seamless, and we\'ve reduced our project timelines by 40%.',
     project: 'The Last Frontier',
-    industry: 'Film & TV',
+    industry: 'Film & TV'
   },
   {
     id: 2,
@@ -48,7 +47,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     quote: 'Finding the right talent used to take weeks. With OPENDECK, we can connect with verified professionals in hours. The quality and speed are unmatched.',
     project: 'Global Brand Campaign',
-    industry: 'Advertising',
+    industry: 'Advertising'
   },
   {
     id: 3,
@@ -59,7 +58,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     quote: 'The real-time collaboration features in ATLVS have transformed our team dynamics. Everyone stays aligned, and nothing falls through the cracks anymore.',
     project: 'Music Festival Series',
-    industry: 'Events',
+    industry: 'Events'
   },
   {
     id: 4,
@@ -70,7 +69,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     quote: 'The analytics and reporting capabilities give us insights we never had before. We can predict bottlenecks and optimize our workflows proactively.',
     project: 'Corporate Video Series',
-    industry: 'Corporate',
+    industry: 'Corporate'
   },
   {
     id: 5,
@@ -81,7 +80,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     quote: 'GHXSTSHIP isn\'t just a tool, it\'s a competitive advantage. Our clients are amazed by our efficiency and the quality of our deliverables.',
     project: 'Documentary Series',
-    industry: 'Film & TV',
+    industry: 'Film & TV'
   },
 ];
 
@@ -92,7 +91,7 @@ const caseStudies: CaseStudy[] = [
     challenge: 'Managing complex multi-location shoots',
     result: '40% faster project completion',
     metric: '$2M saved annually',
-    logo: '/logos/meridian.svg',
+    logo: '/logos/meridian.svg'
   },
   {
     company: 'Apex Advertising',
@@ -100,7 +99,7 @@ const caseStudies: CaseStudy[] = [
     challenge: 'Finding specialized creative talent',
     result: '90% reduction in hiring time',
     metric: '300% ROI increase',
-    logo: '/logos/apex.svg',
+    logo: '/logos/apex.svg'
   },
   {
     company: 'Harmony Events',
@@ -108,7 +107,7 @@ const caseStudies: CaseStudy[] = [
     challenge: 'Coordinating large-scale events',
     result: '99.8% event success rate',
     metric: '50% cost reduction',
-    logo: '/logos/harmony.svg',
+    logo: '/logos/harmony.svg'
   },
 ];
 
@@ -128,7 +127,7 @@ export function SocialProof() {
       <div className="container mx-auto px-lg">
         {/* Section Header */}
         <div className="text-center mb-xl">
-          <Badge variant="outline" className="mb-sm">
+          <Badge variant="secondary" className="mb-sm">
             Social Proof
           </Badge>
           <h2 className="font-title text-heading-2 lg:text-display text-heading-3 mb-md">
@@ -245,7 +244,7 @@ export function SocialProof() {
                   </div>
 
                   {/* Industry Badge */}
-                  <Badge variant="outline" className="mb-sm">
+                  <Badge variant="secondary" className="mb-sm">
                     {study.industry}
                   </Badge>
 

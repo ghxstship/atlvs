@@ -25,7 +25,7 @@ const CreateAssignmentSchema = z.object({
     amount: z.number().positive(),
     status: z.enum(['pending', 'in_progress', 'completed', 'approved'])
   })).optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 const UpdateAssignmentSchema = CreateAssignmentSchema.partial();

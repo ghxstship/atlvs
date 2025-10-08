@@ -31,7 +31,7 @@ const UpdatePersonSchema = z.object({
     phone: z.string(),
     email: z.string().email().optional()
   }).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 async function getAuthenticatedUser() {
@@ -107,7 +107,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
       totalAssignments: person.assignments?.length || 0,
       activeAssignments: person.assignments?.filter((a: any) => a.status === 'active').length || 0,
       competencyCount: person.competencies?.length || 0,
-      utilization: calculateUtilization(person.projects || []),
+      utilization: calculateUtilization(person.projects || [])
     };
 
     await supabase.from('audit_logs').insert({

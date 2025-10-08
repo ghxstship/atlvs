@@ -128,12 +128,12 @@ export default function ColorSystemDemo() {
                   <Button variant="default" size="sm">Primary Small</Button>
                 </div>
                 <div className="flex gap-sm">
-                  <Button variant="outline" size="lg">Secondary Large</Button>
-                  <Button variant="outline" size="md">Outline Medium</Button>
+                  <Button variant="secondary" size="lg">Secondary Large</Button>
+                  <Button variant="secondary" size="md">Outline Medium</Button>
                   <Button variant="ghost" size="sm">Ghost Small</Button>
                 </div>
                 <div className="flex gap-sm">
-                  <Button variant="destructive" size="md">Destructive</Button>
+                  <Button variant="error" size="md">Destructive</Button>
                   <Button disabled size="md">Disabled</Button>
                 </div>
               </div>
@@ -152,7 +152,7 @@ export default function ColorSystemDemo() {
                   </Badge>
                 </div>
                 <div className="flex gap-sm">
-                  <Badge variant="destructive" className=" px-md py-xs text-sm font-medium">
+                  <Badge variant="error" className=" px-md py-xs text-sm font-medium">
                     Error
                   </Badge>
                   <Badge variant="secondary" className=" px-md py-xs text-sm font-medium">

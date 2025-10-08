@@ -19,7 +19,7 @@ import {
   Badge,
   Avatar,
   AvatarFallback,
-  AvatarImage,
+  AvatarImage
 } from '@ghxstship/ui';
 
 interface TeamsSettingsProps {

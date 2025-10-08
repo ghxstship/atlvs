@@ -1,29 +1,10 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Plus,
-  Edit3,
-  Trash2,
-  BarChart3,
-  PieChart,
-  LineChart,
-  TrendingUp,
-  Users,
-  DollarSign,
-  Calendar,
-  Activity,
-  Settings,
-  Eye,
-  Copy,
-  Share2,
-  Download,
-  LayoutGrid,
-  Layout
-} from 'lucide-react';
+import { Activity, BarChart3, Calendar, Copy, DollarSign, Download, Edit3, Eye, Layout, LayoutGrid, LineChart, PieChart, Plus, Settings, Share2, Trash2, TrendingUp, Users } from 'lucide-react';
 import CreateDashboardClient from './CreateDashboardClient';
 
 interface Widget {
@@ -68,8 +49,10 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadDashboards();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizationId]);
 
   const loadDashboards = async () => {
@@ -427,7 +410,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
               <Layout className="h-icon-xs w-icon-xs" />
               <span className="text-body-sm form-label">{dashboard.name}</span>
               {dashboard.isPublic && (
-                <Badge variant="outline">Public</Badge>
+                <Badge variant="secondary">Public</Badge>
               )}
             </div>
           </button>
@@ -470,7 +453,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
               <span className="text-body-sm form-label color-foreground">Add Widget:</span>
               <div className="flex items-center cluster-sm">
                 <Button
-                  variant="outline"
+                  variant="secondary"
                  
                   onClick={() => addWidget('chart', 'bar')}
                 >
@@ -478,7 +461,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                   Bar Chart
                 </Button>
                 <Button
-                  variant="outline"
+                  variant="secondary"
                  
                   onClick={() => addWidget('chart', 'line')}
                 >
@@ -486,7 +469,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                   Line Chart
                 </Button>
                 <Button
-                  variant="outline"
+                  variant="secondary"
                  
                   onClick={() => addWidget('chart', 'pie')}
                 >
@@ -494,7 +477,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                   Pie Chart
                 </Button>
                 <Button
-                  variant="outline"
+                  variant="secondary"
                  
                   onClick={() => addWidget('metric')}
                 >
@@ -570,7 +553,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
               <div className="flex items-center justify-end cluster-sm mt-lg">
                 <Button
                   type="button"
-                  variant="outline"
+                  variant="secondary"
                   onClick={() => setShowCreateForm(false)}
                 >
                   Cancel

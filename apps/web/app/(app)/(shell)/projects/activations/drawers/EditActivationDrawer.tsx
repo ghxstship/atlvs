@@ -1,7 +1,7 @@
 "use client";
 
 import { Edit } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import {
  Drawer,
@@ -15,7 +15,7 @@ import {
  Label,
  Select,
  Textarea,
- toast,
+ toast
 } from "@ghxstship/ui";
 import type { Activation } from "./ActivationsClient";
 
@@ -32,7 +32,7 @@ export default function EditActivationDrawer({
  onOpenChange,
  activation,
  projects = [],
- onSuccess,
+ onSuccess
 }: EditActivationDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -54,7 +54,7 @@ export default function EditActivationDrawer({
  success_metrics: {},
  stakeholders: [] as string[],
  dependencies: [] as string[],
- risks: [] as string[],
+ risks: [] as string[]
  });
 
  // Initialize form with activation data
@@ -76,7 +76,7 @@ export default function EditActivationDrawer({
  success_metrics: activation.success_metrics || {},
  stakeholders: activation.stakeholders || [],
  dependencies: activation.dependencies || [],
- risks: activation.risks || [],
+ risks: activation.risks || []
  });
  }
  }, [activation]);
@@ -108,7 +108,7 @@ export default function EditActivationDrawer({
  stakeholders: formData.stakeholders,
  dependencies: formData.dependencies,
  risks: formData.risks,
- updated_at: new Date().toISOString(),
+ updated_at: new Date().toISOString()
  };
 
  const { error } = await supabase

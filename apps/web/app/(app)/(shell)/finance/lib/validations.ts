@@ -14,7 +14,7 @@ export const createBudgetSchema = z.object({
  notes: z.string().max(500).optional(),
  project_id: z.string().uuid().optional(),
  period_start: z.string().optional(),
- period_end: z.string().optional(),
+ period_end: z.string().optional()
 });
 
 export const updateBudgetSchema = createBudgetSchema.partial();
@@ -30,14 +30,14 @@ export const createExpenseSchema = z.object({
  receipt_url: z.string().url().optional(),
  project_id: z.string().uuid().optional(),
  budget_id: z.string().uuid().optional(),
- notes: z.string().max(500).optional(),
+ notes: z.string().max(500).optional()
 });
 
 export const updateExpenseSchema = createExpenseSchema.partial();
 
 export const expenseApprovalSchema = z.object({
  action: z.enum(['approve', 'reject']),
- reason: z.string().max(500).optional(),
+ reason: z.string().max(500).optional()
 });
 
 // Revenue validation schemas
@@ -51,7 +51,7 @@ export const createRevenueSchema = z.object({
  client_id: z.string().uuid().optional(),
  project_id: z.string().uuid().optional(),
  invoice_number: z.string().max(50).optional(),
- notes: z.string().max(500).optional(),
+ notes: z.string().max(500).optional()
 });
 
 export const updateRevenueSchema = createRevenueSchema.partial();
@@ -67,7 +67,7 @@ export const createTransactionSchema = z.object({
  category: z.string().min(1, 'Category is required'),
  project_id: z.string().uuid().optional(),
  reference_number: z.string().max(50).optional(),
- notes: z.string().max(500).optional(),
+ notes: z.string().max(500).optional()
 });
 
 export const updateTransactionSchema = createTransactionSchema.partial();
@@ -81,7 +81,7 @@ export const createAccountSchema = z.object({
  initial_balance: z.number().default(0),
  currency: z.string().default('USD'),
  status: z.enum(['active', 'inactive', 'closed']).default('active'),
- notes: z.string().max(500).optional(),
+ notes: z.string().max(500).optional()
 });
 
 export const updateAccountSchema = createAccountSchema.partial();
@@ -104,8 +104,8 @@ export const createInvoiceSchema = z.object({
   description: z.string().min(1),
   quantity: z.number().positive(),
   unit_price: z.number().positive(),
-  amount: z.number().positive(),
- })).optional(),
+  amount: z.number().positive()
+ })).optional()
 });
 
 export const updateInvoiceSchema = createInvoiceSchema.partial();
@@ -121,7 +121,7 @@ export const createForecastSchema = z.object({
  scenario: z.enum(['best_case', 'worst_case', 'most_likely']).default('most_likely'),
  project_id: z.string().uuid().optional(),
  notes: z.string().max(500).optional(),
- assumptions: z.string().max(1000).optional(),
+ assumptions: z.string().max(1000).optional()
 });
 
 export const updateForecastSchema = createForecastSchema.partial();
@@ -135,7 +135,7 @@ export const financeSearchSchema = z.object({
  amount_min: z.number().optional(),
  amount_max: z.number().optional(),
  status: z.string().optional(),
- category: z.string().optional(),
+ category: z.string().optional()
 });
 
 export const financeFilterSchema = z.object({
@@ -143,30 +143,30 @@ export const financeFilterSchema = z.object({
  category: z.array(z.string()).optional(),
  date_range: z.object({
   start: z.string(),
-  end: z.string(),
+  end: z.string()
  }).optional(),
  amount_range: z.object({
   min: z.number(),
-  max: z.number(),
+  max: z.number()
  }).optional(),
  project_id: z.array(z.string()).optional(),
- client_id: z.array(z.string()).optional(),
+ client_id: z.array(z.string()).optional()
 });
 
 export const financeSortSchema = z.object({
  field: z.string(),
- direction: z.enum(['asc', 'desc']),
+ direction: z.enum(['asc', 'desc'])
 });
 
 // Bulk operations validation schemas
 export const bulkUpdateSchema = z.object({
  ids: z.array(z.string().uuid()),
- updates: z.record(z.any()),
+ updates: z.record(z.any())
 });
 
 export const bulkDeleteSchema = z.object({
  ids: z.array(z.string().uuid()),
- confirm_deletion: z.boolean().refine(val => val === true, 'Deletion must be confirmed'),
+ confirm_deletion: z.boolean().refine(val => val === true, 'Deletion must be confirmed')
 });
 
 // Import/Export validation schemas
@@ -177,22 +177,22 @@ export const importFinanceSchema = z.object({
  options: z.object({
   skip_duplicates: z.boolean().default(true),
   update_existing: z.boolean().default(false),
-  validate_data: z.boolean().default(true),
- }).optional(),
+  validate_data: z.boolean().default(true)
+ }).optional()
 });
 
 export const exportFinanceSchema = z.object({
  format: z.enum(['csv', 'xlsx', 'json', 'pdf']),
  module: z.enum(['budgets', 'expenses', 'revenue', 'transactions', 'accounts', 'invoices', 'forecasts']),
  filters: financeFilterSchema.optional(),
- include_related: z.boolean().default(false),
+ include_related: z.boolean().default(false)
 });
 
 // Real-time subscription schemas
 export const realtimeSubscriptionSchema = z.object({
  table: z.enum(['budgets', 'expenses', 'revenue', 'transactions', 'accounts', 'invoices', 'forecasts']),
  event: z.enum(['INSERT', 'UPDATE', 'DELETE', '*']),
- filter: z.record(z.any()).optional(),
+ filter: z.record(z.any()).optional()
 });
 
 // Type exports for use in components

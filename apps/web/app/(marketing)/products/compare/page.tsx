@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Check, CheckCircle, X, Zap, Globe } from 'lucide-react';
+import { ArrowRight, Check, CheckCircle, Globe, X, Zap } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
 import { MarketingSection } from '../../../_components/marketing';
 
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Compare Products - ATLVS vs OPENDECK | GHXSTSHIP',
     description: 'Compare ATLVS project management and OPENDECK marketplace features side-by-side to find the perfect solution for your creative workflow.',
-    url: 'https://ghxstship.com/products/compare',
-  },
+    url: 'https://ghxstship.com/products/compare'
+  }
 };
 
 const comparisonData: ComparisonCategory[] = [
@@ -37,7 +37,7 @@ const comparisonData: ComparisonCategory[] = [
       { name: 'Creative Marketplace', atlvs: false, opendeck: true },
       { name: 'Talent Network', atlvs: false, opendeck: true },
       { name: 'Resource Library', atlvs: false, opendeck: true },
-    ],
+    ]
   },
   {
     category: 'Analytics & Reporting',
@@ -47,7 +47,7 @@ const comparisonData: ComparisonCategory[] = [
       { name: 'Custom Reports', atlvs: true, opendeck: false },
       { name: 'Real-time Dashboards', atlvs: true, opendeck: true },
       { name: 'Budget Tracking', atlvs: true, opendeck: false },
-    ],
+    ]
   },
   {
     category: 'Integration & API',
@@ -57,7 +57,7 @@ const comparisonData: ComparisonCategory[] = [
       { name: 'Third-party Integrations', atlvs: true, opendeck: true },
       { name: 'Custom Workflows', atlvs: true, opendeck: false },
       { name: 'Automation Tools', atlvs: true, opendeck: false },
-    ],
+    ]
   },
   {
     category: 'Security & Compliance',
@@ -67,7 +67,7 @@ const comparisonData: ComparisonCategory[] = [
       { name: 'Audit Logs', atlvs: true, opendeck: true },
       { name: 'GDPR Compliance', atlvs: true, opendeck: true },
       { name: 'SOC 2 Certified', atlvs: true, opendeck: true },
-    ],
+    ]
   },
 ];
 
@@ -97,7 +97,7 @@ const productOverview: ProductOverviewItem[] = [
     ],
     bestFor: 'Production companies, agencies, and creative teams managing complex projects',
     startingPrice: '$29',
-    href: '/products/atlvs',
+    href: '/products/atlvs'
   },
   {
     name: 'OPENDECK',
@@ -113,7 +113,7 @@ const productOverview: ProductOverviewItem[] = [
     ],
     bestFor: 'Freelancers, agencies, and companies looking to connect with creative talent',
     startingPrice: '$19',
-    href: '/products/opendeck',
+    href: '/products/opendeck'
   },
 ];
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Button, Card } from '@ghxstship/ui';
 import { X, Gift, ArrowRight } from 'lucide-react';
 
@@ -8,6 +8,7 @@ export function ExitIntentPopup() {
   const [showPopup, setShowPopup] = useState(false);
   const [hasShown, setHasShown] = useState(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // Check if popup has already been shown in this session
     const popupShown = sessionStorage.getItem('exit_intent_shown');
@@ -30,7 +31,7 @@ export function ExitIntentPopup() {
         if (typeof window !== 'undefined' && (window as any).gtag) {
           (window as any).gtag('event', 'exit_intent_triggered', {
             event_category: 'engagement',
-            event_label: 'exit_popup',
+            event_label: 'exit_popup'
           });
         }
       }
@@ -45,6 +46,7 @@ export function ExitIntentPopup() {
       clearTimeout(timer);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasShown]);
 
   const handleClaim = () => {
@@ -53,7 +55,7 @@ export function ExitIntentPopup() {
       (window as any).gtag('event', 'exit_intent_conversion', {
         event_category: 'conversion',
         event_label: 'claim_discount',
-        value: 20,
+        value: 20
       });
     }
 
@@ -61,7 +63,7 @@ export function ExitIntentPopup() {
       (window as any).fbq('track', 'Lead', {
         content_name: 'exit_intent_discount',
         value: 20,
-        currency: 'USD',
+        currency: 'USD'
       });
     }
 
@@ -76,7 +78,7 @@ export function ExitIntentPopup() {
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'exit_intent_dismissed', {
         event_category: 'engagement',
-        event_label: 'exit_popup',
+        event_label: 'exit_popup'
       });
     }
   };

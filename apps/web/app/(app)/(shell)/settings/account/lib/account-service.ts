@@ -17,7 +17,7 @@ import type {
   AccountStatistics,
   AccountAuditLog,
   AccountExportOptions,
-  AccountFilterOptions,
+  AccountFilterOptions
 } from '../types';
 
 class AccountService {
@@ -54,7 +54,7 @@ class AccountService {
         .from('profiles')
         .update({
           ...data,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', user.id)
         .select()
@@ -190,7 +190,7 @@ class AccountService {
           user_id: user.id,
           key_prefix: keyPrefix,
           key_hash: await this.hashApiKey(keyValue),
-          created_at: new Date().toISOString(),
+          created_at: new Date().toISOString()
         }])
         .select()
         .single();
@@ -263,7 +263,7 @@ class AccountService {
         .upsert({
           user_id: user.id,
           secret,
-          created_at: new Date().toISOString(),
+          created_at: new Date().toISOString()
         });
 
       return qrCode;
@@ -300,7 +300,7 @@ class AccountService {
           secret: tempData.secret,
           backup_codes: backupCodes,
           is_enabled: true,
-          created_at: new Date().toISOString(),
+          created_at: new Date().toISOString()
         });
 
       // Clean up temp data
@@ -366,7 +366,7 @@ class AccountService {
           category: 'personal',
           created_at: profile.created_at,
           updated_at: profile.updated_at,
-          metadata: profile,
+          metadata: profile
         });
       }
 
@@ -382,7 +382,7 @@ class AccountService {
           category: 'sessions',
           created_at: session.created_at,
           updated_at: session.last_active,
-          metadata: session,
+          metadata: session
         });
       });
 
@@ -398,7 +398,7 @@ class AccountService {
           category: 'api',
           created_at: key.created_at,
           updated_at: key.last_used || key.created_at,
-          metadata: key,
+          metadata: key
         });
       });
 
@@ -414,7 +414,7 @@ class AccountService {
           category: 'security',
           created_at: twoFactor.created_at,
           updated_at: twoFactor.last_used || twoFactor.created_at,
-          metadata: twoFactor,
+          metadata: twoFactor
         });
       }
 
@@ -481,7 +481,7 @@ class AccountService {
         lastLoginDate: sessions[0]?.created_at || profile?.created_at || '',
         accountAge: profile ? Math.floor(
           (Date.now() - new Date(profile.created_at).getTime()) / (1000 * 60 * 60 * 24)
-        ) : 0,
+        ) : 0
       };
     } catch (error) {
       console.error('Error fetching statistics:', error);
@@ -527,7 +527,7 @@ class AccountService {
             }));
 
         return new Blob([JSON.stringify(exportData, null, 2)], {
-          type: 'application/json',
+          type: 'application/json'
         });
       } else if (options.format === 'csv') {
         const headers = options.includeMetadata
@@ -583,7 +583,7 @@ class AccountService {
           details,
           ip_address: 'unknown', // Would be populated by middleware
           user_agent: navigator.userAgent,
-          created_at: new Date().toISOString(),
+          created_at: new Date().toISOString()
         }]);
     } catch (error) {
       console.error('Error logging audit event:', error);

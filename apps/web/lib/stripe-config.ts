@@ -72,7 +72,7 @@ export const STRIPE_WEBHOOK_EVENTS = {
   CUSTOMER_SUBSCRIPTION_UPDATED: 'customer.subscription.updated',
   CUSTOMER_SUBSCRIPTION_DELETED: 'customer.subscription.deleted',
   INVOICE_PAYMENT_SUCCEEDED: 'invoice.payment_succeeded',
-  INVOICE_PAYMENT_FAILED: 'invoice.payment_failed',
+  INVOICE_PAYMENT_FAILED: 'invoice.payment_failed'
 } as const;
 
 // Subscription status types

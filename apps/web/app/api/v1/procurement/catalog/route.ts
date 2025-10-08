@@ -24,14 +24,14 @@ const catalogQuerySchema = zod.object({
 const bulkActionSchema = zod.object({
   type: zod.enum(['delete', 'update_status', 'update_category', 'update_supplier', 'export']),
   itemIds: zod.array(zod.string().uuid()),
-  data: zod.record(zod.any()).optional(),
+  data: zod.record(zod.any()).optional()
 });
 
 const exportConfigSchema = zod.object({
   format: zod.enum(['csv', 'xlsx', 'json', 'pdf']),
   fields: zod.array(zod.string()).default([]),
   includeHeaders: zod.boolean().default(true),
-  filename: zod.string().optional(),
+  filename: zod.string().optional()
 });
 
 export async function GET(request: NextRequest) {
@@ -81,20 +81,20 @@ export async function GET(request: NextRequest) {
       type: validatedQuery.type === 'all' ? undefined : validatedQuery.type,
       status: validatedQuery.status === 'all' ? undefined : validatedQuery.status,
       category: validatedQuery.category,
-      supplier: validatedQuery.supplier,
+      supplier: validatedQuery.supplier
     };
 
     if (validatedQuery.priceMin !== undefined || validatedQuery.priceMax !== undefined) {
       filters.priceRange = {
         min: validatedQuery.priceMin,
-        max: validatedQuery.priceMax,
+        max: validatedQuery.priceMax
       };
     }
 
     if (validatedQuery.dateStart || validatedQuery.dateEnd) {
       filters.dateRange = {
         start: validatedQuery.dateStart,
-        end: validatedQuery.dateEnd,
+        end: validatedQuery.dateEnd
       };
     }
 
@@ -105,7 +105,7 @@ export async function GET(request: NextRequest) {
     // Build sort
     const sort = {
       field: validatedQuery.sortField,
-      direction: validatedQuery.sortDirection,
+      direction: validatedQuery.sortDirection
     };
 
     const catalogService = new CatalogService();
@@ -124,8 +124,8 @@ export async function GET(request: NextRequest) {
         limit: validatedQuery.limit,
         total: result.total,
         hasMore: result.hasMore,
-        totalPages: Math.ceil(result.total / validatedQuery.limit),
-      },
+        totalPages: Math.ceil(result.total / validatedQuery.limit)
+      }
     });
   } catch (error: unknown) {
     if (error instanceof zod.ZodError) {
@@ -194,7 +194,7 @@ export async function POST(request: NextRequest) {
       
       return NextResponse.json({
         data: result,
-        message: `Bulk operation completed: ${result.success} successful, ${result.failed} failed`,
+        message: `Bulk operation completed: ${result.success} successful, ${result.failed} failed`
       });
     }
 
@@ -210,8 +210,8 @@ export async function POST(request: NextRequest) {
         data: {
           content: base64,
           contentType: blob.type,
-          filename: validatedConfig.filename || `catalog-export.${validatedConfig.format}`,
-        },
+          filename: validatedConfig.filename || `catalog-export.${validatedConfig.format}`
+        }
       });
     }
 

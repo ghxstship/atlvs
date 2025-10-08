@@ -6,7 +6,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Plus, Loader2, AlertCircle } from 'lucide-react';
+import { Plus, Loader2, AlertCircle } from 'lucide-react';import { Button, UnifiedInput, Select, Textarea, Drawer } from '@ghxstship/ui';
+import { Button, Select, Textarea, Drawer } from '@ghxstship/ui';
+
 import { usePostHog } from 'posthog-js/react';
 
 const createContractSchema = z.object({
@@ -22,7 +24,7 @@ const createContractSchema = z.object({
   endDate: z.string().optional(),
   terms: z.string().optional(),
   documentUrl: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 type CreateContractFormData = z.infer<typeof createContractSchema>;
@@ -43,15 +45,15 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
     register,
     handleSubmit,
     reset,
-    formState: { errors, isValid },
+    formState: { errors, isValid }
   } = useForm<CreateContractFormData>({
     resolver: zodResolver(createContractSchema),
     mode: 'onChange',
     defaultValues: {
       type: 'employment',
       status: 'draft',
-      currency: 'USD',
-    },
+      currency: 'USD'
+    }
   });
 
   const onSubmit = async (data: CreateContractFormData) => {
@@ -62,19 +64,19 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
       posthog?.capture('jobs_contract_create_attempt', {
         organization_id: orgId,
         contract_type: data.type,
-        value: data.value,
+        value: data.value
       });
 
       const response = await fetch('/api/v1/jobs/contracts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
         body: JSON.stringify({
           ...data,
-          organization_id: orgId,
-        }),
+          organization_id: orgId
+        })
       });
 
       if (!response.ok) {
@@ -87,7 +89,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
       posthog?.capture('jobs_contract_create_success', {
         organization_id: orgId,
         contract_id: result.id,
-        contract_type: data.type,
+        contract_type: data.type
       });
 
       // Log activity
@@ -100,8 +102,8 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
           title: data.title,
           type: data.type,
           value: data.value,
-          currency: data.currency,
-        },
+          currency: data.currency
+        }
       });
 
       reset();
@@ -113,7 +115,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
       
       posthog?.capture('jobs_contract_create_error', {
         organization_id: orgId,
-        error: errorMessage,
+        error: errorMessage
       });
     } finally {
       setIsSubmitting(false);

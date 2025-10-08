@@ -1,4 +1,5 @@
 'use client';
+import { Button, Card, Drawer, Input, Select } from '@ghxstship/ui';
 
 
 import { useState } from 'react';
@@ -118,7 +119,7 @@ export default function CreateExpenseClient({
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: formData.currency,
+      currency: formData.currency
     }).format(amount);
   };
 
@@ -149,7 +150,7 @@ export default function CreateExpenseClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Expense Description *
             </label>
-            <UnifiedInput               value={formData.description}
+            <Input               value={formData.description}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               placeholder="e.g., Client dinner, Office supplies, Travel expenses"
               required
@@ -163,7 +164,7 @@ export default function CreateExpenseClient({
               </label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   value={formData.amount || ''}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, amount: parseFloat(e.target.value) || 0 }))}
                   placeholder="0.00"
@@ -225,7 +226,7 @@ export default function CreateExpenseClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.expenseDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, expenseDate: e.target.value }))}
                   className="pl-2xl"
@@ -242,7 +243,7 @@ export default function CreateExpenseClient({
             </label>
             <div className="relative">
               <Upload className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-              <UnifiedInput                 type="url"
+              <Input                 type="url"
                 value={formData.receiptUrl}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, receiptUrl: e.target.value }))}
                 placeholder="https://example.com/receipt.pdf"

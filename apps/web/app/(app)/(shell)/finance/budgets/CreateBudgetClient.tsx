@@ -1,4 +1,5 @@
 'use client';
+import { Button, Card, Drawer, Input, Select } from '@ghxstship/ui';
 
 
 import { useState } from 'react';
@@ -118,7 +119,7 @@ export default function CreateBudgetClient({
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: formData.currency,
+      currency: formData.currency
     }).format(amount);
   };
 
@@ -149,7 +150,7 @@ export default function CreateBudgetClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Budget Name *
             </label>
-            <UnifiedInput               value={formData.name}
+            <Input               value={formData.name}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, name: e.target.value }))}
               placeholder="e.g., Q1 Marketing Budget, Project Alpha Budget"
               required
@@ -160,7 +161,7 @@ export default function CreateBudgetClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Description
             </label>
-            <Textarea
+            <textarea
               value={formData.description}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Describe the purpose and scope of this budget..."
@@ -175,7 +176,7 @@ export default function CreateBudgetClient({
               </label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   value={formData.amount || ''}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, amount: parseFloat(e.target.value) || 0 }))}
                   placeholder="0.00"
@@ -235,7 +236,7 @@ export default function CreateBudgetClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.startDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
                   className="pl-2xl"
@@ -249,7 +250,7 @@ export default function CreateBudgetClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.endDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, endDate: e.target.value }))}
                   className="pl-2xl"

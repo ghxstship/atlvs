@@ -28,7 +28,7 @@ const updateRiderSchema = z.object({
     crew_requirements: z.string().optional(),
     load_in_time: z.string().optional(),
     sound_check_time: z.string().optional(),
-    special_instructions: z.string().optional(),
+    special_instructions: z.string().optional()
   }).optional(),
   hospitality_requirements: z.object({
     catering: z.string().optional(),
@@ -38,7 +38,7 @@ const updateRiderSchema = z.object({
     towels_count: z.number().int().min(0).optional(),
     water_bottles: z.number().int().min(0).optional(),
     special_requests: z.string().optional(),
-    meal_times: z.string().optional(),
+    meal_times: z.string().optional()
   }).optional(),
   stage_plot: z.object({
     stage_dimensions: z.string().optional(),
@@ -47,7 +47,7 @@ const updateRiderSchema = z.object({
     backline: z.string().optional(),
     risers: z.string().optional(),
     special_staging: z.string().optional(),
-    plot_file_url: z.string().url().optional(),
+    plot_file_url: z.string().url().optional()
   }).optional(),
   security_requirements: z.object({
     security_level: z.string().optional(),
@@ -55,7 +55,7 @@ const updateRiderSchema = z.object({
     backstage_access: z.string().optional(),
     vip_requirements: z.string().optional(),
     crowd_control: z.string().optional(),
-    emergency_procedures: z.string().optional(),
+    emergency_procedures: z.string().optional()
   }).optional(),
   transportation: z.object({
     arrival_details: z.string().optional(),
@@ -63,7 +63,7 @@ const updateRiderSchema = z.object({
     local_transport: z.string().optional(),
     parking_requirements: z.string().optional(),
     load_in_access: z.string().optional(),
-    special_arrangements: z.string().optional(),
+    special_arrangements: z.string().optional()
   }).optional(),
   accommodation: z.object({
     hotel_requirements: z.string().optional(),
@@ -71,7 +71,7 @@ const updateRiderSchema = z.object({
     check_in_date: z.string().optional(),
     check_out_date: z.string().optional(),
     special_requests: z.string().optional(),
-    proximity_requirements: z.string().optional(),
+    proximity_requirements: z.string().optional()
   }).optional(),
   fulfilled_at: z.string().datetime().optional().nullable(),
   fulfilled_by: z.string().uuid().optional().nullable(),
@@ -83,7 +83,7 @@ const updateRiderSchema = z.object({
   approved_by: z.string().uuid().optional().nullable(),
   attachments: z.array(z.string()).optional(),
   tags: z.array(z.string().max(32)).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 async function getSupabase() {
@@ -94,7 +94,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -209,7 +209,7 @@ export async function PATCH(
     const updatePayload = {
       ...data,
       updated_by: user!.id,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data: rider, error: updateError } = await supabase
@@ -232,8 +232,8 @@ export async function PATCH(
       details: {
         title: rider.title,
         kind: rider.kind,
-        changes: Object.keys(data),
-      },
+        changes: Object.keys(data)
+      }
     });
 
     return NextResponse.json(rider);
@@ -286,8 +286,8 @@ export async function DELETE(
       details: {
         title: existingRider.title,
         kind: existingRider.kind,
-        event_id: existingRider.event_id,
-      },
+        event_id: existingRider.event_id
+      }
     });
 
     return NextResponse.json({ success: true });

@@ -20,7 +20,7 @@ export function AuthLayout({
   subtitle,
   badge,
   showTrustIndicators = true,
-  showFooter = false,
+  showFooter = false
 }: AuthLayoutProps) {
   return (
     <div className="relative min-h-screen overflow-hidden bg-background">
@@ -39,7 +39,7 @@ export function AuthLayout({
           <Card className="w-full max-w-md border border-border/40 bg-card/95 p-xl shadow-lg shadow-primary/5">
             <div className="stack-lg text-center">
               {badge && (
-                <Badge variant="outline" className="mx-auto px-lg py-xs text-xs uppercase tracking-wide">
+                <Badge variant="secondary" className="mx-auto px-lg py-xs text-xs uppercase tracking-wide">
                   {badge}
                 </Badge>
               )}

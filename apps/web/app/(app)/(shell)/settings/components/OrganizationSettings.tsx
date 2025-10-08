@@ -20,7 +20,7 @@ import {
   Badge,
   Alert,
   AlertDescription,
-  Separator,
+  Separator
 } from '@ghxstship/ui';
 
 interface OrganizationSettingsProps {

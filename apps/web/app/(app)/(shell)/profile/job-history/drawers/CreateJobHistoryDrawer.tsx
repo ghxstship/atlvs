@@ -19,7 +19,7 @@ import {
  Badge,
  Label,
  Separator,
- useToast,
+ useToast
 } from '@ghxstship/ui';
 import type { 
  JobHistoryEntry, 
@@ -49,7 +49,7 @@ const jobHistorySchema = z.object({
  company_size: z.enum(['startup', 'small', 'medium', 'large', 'enterprise']).optional(),
  industry: z.string().optional(),
  visibility: z.enum(['public', 'organization', 'private']).default('organization'),
- tags: z.array(z.string()).default([]),
+ tags: z.array(z.string()).default([])
 });
 
 type FormData = z.infer<typeof jobHistorySchema>;
@@ -104,7 +104,7 @@ export default function CreateJobHistoryDrawer({
  open,
  onClose,
  onSave,
- loading = false,
+ loading = false
 }: CreateJobHistoryDrawerProps) {
  const { addToast } = useToast();
  const [newSkill, setNewSkill] = useState('');
@@ -133,8 +133,8 @@ export default function CreateJobHistoryDrawer({
  reason_for_leaving: '',
  industry: '',
  visibility: 'organization',
- tags: [],
- },
+ tags: []
+ }
  });
 
  const { watch, setValue, getValues } = form;
@@ -194,7 +194,7 @@ export default function CreateJobHistoryDrawer({
  addToast({
  title: 'Job History Created',
  description: 'Your job history entry has been successfully created.',
- type: 'success',
+ type: 'success'
  });
  form.reset();
  onClose();
@@ -202,7 +202,7 @@ export default function CreateJobHistoryDrawer({
  addToast({
  title: 'Error',
  description: 'Failed to create job history entry. Please try again.',
- type: 'error',
+ type: 'error'
  });
  }
  }, [onSave, addToast, form, onClose]);

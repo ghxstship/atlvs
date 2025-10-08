@@ -1,10 +1,10 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, UnifiedInput, Card, Badge } from '@ghxstship/ui';
+import { Button, Input, Card, Badge } from '@ghxstship/ui';
 import { Plus, Save, Wrench, DollarSign, Edit, Trash2, Search, Clock } from 'lucide-react';
 
 interface Service {
@@ -45,12 +45,16 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
     status: 'active' as ServiceStatus
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadServices();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     filterServices();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [services, searchQuery]);
 
   const loadServices = async () => {
@@ -212,7 +216,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
       {/* Search */}
       <div className="relative">
         <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
-        <UnifiedInput           placeholder="Search services by name, category, unit, or supplier..."
+        <Input           placeholder="Search services by name, category, unit, or supplier..."
           value={searchQuery}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
           className="pl-2xl"
@@ -230,7 +234,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md mb-md">
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Service Name *</label>
-                <UnifiedInput                   value={formData.name}
+                <Input                   value={formData.name}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                   placeholder="Service name"
                 />
@@ -238,7 +242,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Category</label>
-                <UnifiedInput                   value={formData.category}
+                <Input                   value={formData.category}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, category: e.target.value }))}
                   placeholder="Consulting, Development, Design, etc."
                 />
@@ -257,7 +261,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Rate *</label>
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   step="0.01"
                   value={formData.rate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, rate: parseFloat(e.target.value) || 0 }))}
@@ -296,7 +300,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Supplier</label>
-                <UnifiedInput                   value={formData.supplier}
+                <Input                   value={formData.supplier}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, supplier: e.target.value }))}
                   placeholder="Service provider name"
                 />
@@ -325,7 +329,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
                 {saving ? 'Saving...' : (editingService ? 'Update Service' : 'Add Service')}
               </Button>
               <Button 
-                variant="outline" 
+                variant="secondary" 
                 onClick={() => {
                   resetForm();
                   setShowCreateForm(false);
@@ -394,7 +398,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
                 <div className="flex items-center gap-sm">
                   <Button
                    
-                    variant="outline"
+                    variant="secondary"
                     onClick={() => startEdit(service)}
                     className="flex-1"
                   >
@@ -403,7 +407,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
                   </Button>
                   <Button
                    
-                    variant="outline"
+                    variant="secondary"
                     onClick={() => handleDelete(service.id)}
                   >
                     <Trash2 className="h-3 w-3" />

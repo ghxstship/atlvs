@@ -18,7 +18,7 @@ export class FilesPermissionsService {
       const { data, error } = await this.supabase.rpc('can_view_file', {
         file_id: fileId,
         user_id: userId,
-        org_id: orgId,
+        org_id: orgId
       });
 
       if (error) return false;
@@ -36,7 +36,7 @@ export class FilesPermissionsService {
       const { data, error } = await this.supabase.rpc('can_edit_file', {
         file_id: fileId,
         user_id: userId,
-        org_id: orgId,
+        org_id: orgId
       });
 
       if (error) return false;
@@ -54,7 +54,7 @@ export class FilesPermissionsService {
       const { data, error } = await this.supabase.rpc('can_delete_file', {
         file_id: fileId,
         user_id: userId,
-        org_id: orgId,
+        org_id: orgId
       });
 
       if (error) return false;
@@ -72,7 +72,7 @@ export class FilesPermissionsService {
       const { data, error } = await this.supabase.rpc('can_create_in_folder', {
         folder_id: folderId,
         user_id: userId,
-        org_id: orgId,
+        org_id: orgId
       });
 
       if (error) return false;
@@ -90,7 +90,7 @@ export class FilesPermissionsService {
       const { data, error } = await this.supabase.rpc('can_manage_folder', {
         folder_id: folderId,
         user_id: userId,
-        org_id: orgId,
+        org_id: orgId
       });
 
       if (error) return false;
@@ -108,7 +108,7 @@ export class FilesPermissionsService {
       const { data, error } = await this.supabase.rpc('get_file_access_level', {
         file_id: fileId,
         user_id: userId,
-        org_id: orgId,
+        org_id: orgId
       });
 
       if (error) return null;
@@ -132,7 +132,7 @@ export class FilesPermissionsService {
         org_id: orgId,
         limit_val: params.limit || 50,
         offset_val: params.offset || 0,
-        min_access: params.minAccess || 'private',
+        min_access: params.minAccess || 'private'
       });
 
       if (error) throw error;
@@ -154,7 +154,7 @@ export class FilesPermissionsService {
         file_ids: fileIds,
         user_id: userId,
         org_id: orgId,
-        action_type: action,
+        action_type: action
       });
 
       if (error) throw error;
@@ -226,7 +226,7 @@ export class FilesPermissionsService {
         file_id: fileId,
         user_id: userId,
         action_type: action,
-        access_metadata: metadata || {},
+        access_metadata: metadata || {}
       });
     } catch (error) {
       // Log access logging failure but don't throw
@@ -270,7 +270,7 @@ export class FilesPermissionsService {
 
     this.permissionCache.set(cacheKey, {
       result,
-      expires: Date.now() + ttlMs,
+      expires: Date.now() + ttlMs
     });
 
     return result;

@@ -1,5 +1,5 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, Download, Filter, Phone, MapPin, ShieldCheck } from 'lucide-react';
 import { useMemo, type ChangeEvent } from 'react';
 import { Card, Badge, Button, Checkbox, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ghxstship/ui';
 import type { ContactInfo, ContactFilters, ContactSort } from '../types';
@@ -22,7 +22,7 @@ interface ContactListViewProps {
 const verificationBadges: Record<string, { label: string; variant: 'default' | 'outline' | 'destructive' | 'secondary' }> = {
  verified: { label: 'Verified', variant: 'default' },
  pending: { label: 'Pending Verification', variant: 'secondary' },
- unverified: { label: 'Unverified', variant: 'destructive' },
+ unverified: { label: 'Unverified', variant: 'destructive' }
 };
 
 export default function ContactListView({
@@ -36,7 +36,7 @@ export default function ContactListView({
  onChangeFilters,
  onChangeSort,
  onExport,
- onViewContact,
+ onViewContact
 }: ContactListViewProps) {
  const allSelected = contacts.length > 0 && contacts.every(contact => selectedItems.includes(contact.id));
  const someSelected = contacts.some(contact => selectedItems.includes(contact.id));

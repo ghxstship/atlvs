@@ -39,7 +39,7 @@ export default function ProfileOverviewTableView({
  onView,
  onStatusChange,
  onSort,
- currentSort,
+ currentSort
 }: ProfileOverviewTableViewProps) {
  const handleSort = (field: keyof ProfileOverview) => {
  if (!onSort) return;

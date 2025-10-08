@@ -153,7 +153,7 @@ class BusinessMetricsService {
         conversion: conversionMetrics,
         userEngagement: userEngagementMetrics,
         product: productMetrics,
-        financial: financialMetrics,
+        financial: financialMetrics
       };
 
       // Check for alerts
@@ -176,21 +176,21 @@ class BusinessMetricsService {
       revenueByPlan: {
         starter: 15000,
         professional: 45000,
-        enterprise: 65000,
+        enterprise: 65000
       },
       revenueByRegion: {
         'US': 75000,
         'EU': 35000,
-        'APAC': 15000,
+        'APAC': 15000
       },
       revenueGrowth: {
         monthly: 12.5,
         quarterly: 8.3,
-        yearly: 45.2,
+        yearly: 45.2
       },
       churnRate: 2.1,
       customerLifetimeValue: 1500,
-      customerAcquisitionCost: 250,
+      customerAcquisitionCost: 250
     };
   }
 
@@ -206,8 +206,8 @@ class BusinessMetricsService {
         landing: 0.7,
         signup: 0.85,
         onboarding: 0.95,
-        first_payment: 0.42,
-      },
+        first_payment: 0.42
+      }
     };
   }
 
@@ -221,15 +221,15 @@ class BusinessMetricsService {
       retentionRate: {
         day1: 0.85,
         day7: 0.65,
-        day30: 0.42,
+        day30: 0.42
       },
       featureUsage: {
         dashboard: 0.95,
         projects: 0.78,
         finance: 0.65,
         people: 0.58,
-        jobs: 0.45,
-      },
+        jobs: 0.45
+      }
     };
   }
 
@@ -246,20 +246,20 @@ class BusinessMetricsService {
         people: 0.68,
         jobs: 0.55,
         marketplace: 0.35,
-        companies: 0.42,
+        companies: 0.42
       },
       featureUsage: {
         file_upload: { total: 5000, active: 4500, adoption: 0.9 },
         real_time_updates: { total: 8000, active: 7500, adoption: 0.94 },
         bulk_actions: { total: 3000, active: 2800, adoption: 0.93 },
         advanced_search: { total: 6000, active: 5200, adoption: 0.87 },
-        export_import: { total: 2500, active: 2300, adoption: 0.92 },
+        export_import: { total: 2500, active: 2300, adoption: 0.92 }
       },
       apiUsage: {
         totalRequests: 2500000,
         averageResponseTime: 145,
         errorRate: 0.002, // 0.2%
-      },
+      }
     };
   }
 
@@ -275,9 +275,9 @@ class BusinessMetricsService {
         marketing: 8000,
         operations: 5000,
         sales: 12000,
-        other: 3000,
+        other: 3000
       },
-      costPerAcquisition: 250,
+      costPerAcquisition: 250
     };
   }
 
@@ -322,7 +322,7 @@ class BusinessMetricsService {
           threshold: severity === 'critical' ? threshold.critical : threshold.warning,
           severity,
           message: `${threshold.metric} is ${severity}: ${currentValue} ${threshold.comparison === 'gt' ? '>' : '<'} ${severity === 'critical' ? threshold.critical : threshold.warning}`,
-          timestamp: new Date().toISOString(),
+          timestamp: new Date().toISOString()
         });
       }
     }
@@ -359,7 +359,7 @@ class BusinessMetricsService {
         metric: alert.metric,
         currentValue: alert.currentValue,
         threshold: alert.threshold,
-        metadata: alert,
+        metadata: alert
       }
     );
   }
@@ -371,7 +371,7 @@ class BusinessMetricsService {
       period,
       data: metrics.revenue,
       trends: await this.calculateRevenueTrends(period),
-      forecasts: await this.generateRevenueForecasts(),
+      forecasts: await this.generateRevenueForecasts()
     };
   }
 
@@ -383,7 +383,7 @@ class BusinessMetricsService {
         { name: 'Leads', count: 320, conversion: metrics.conversion.visitorToLead },
         { name: 'Customers', count: 27, conversion: metrics.conversion.leadToCustomer },
       ],
-      dropOffPoints: metrics.conversion.funnelDropOff,
+      dropOffPoints: metrics.conversion.funnelDropOff
     };
   }
 
@@ -395,15 +395,15 @@ class BusinessMetricsService {
         mrr: metrics.revenue.monthlyRecurringRevenue,
         churn: metrics.revenue.churnRate,
         dau: metrics.userEngagement.dailyActiveUsers,
-        conversion: metrics.conversion.checkoutConversion,
+        conversion: metrics.conversion.checkoutConversion
       },
       secondary: {
         ltv: metrics.revenue.customerLifetimeValue,
         cac: metrics.revenue.customerAcquisitionCost,
         retention: metrics.userEngagement.retentionRate,
-        runway: metrics.financial.runway,
+        runway: metrics.financial.runway
       },
-      trends: await this.calculateKPITrends(),
+      trends: await this.calculateKPITrends()
     };
   }
 
@@ -412,7 +412,7 @@ class BusinessMetricsService {
     return {
       growth: 12.5,
       projected: 9500,
-      historical: [8000, 8200, 8500, 8800, 9200, 9500],
+      historical: [8000, 8200, 8500, 8800, 9200, 9500]
     };
   }
 
@@ -421,7 +421,7 @@ class BusinessMetricsService {
       conservative: 105000,
       realistic: 118000,
       optimistic: 135000,
-      confidence: 0.85,
+      confidence: 0.85
     };
   }
 
@@ -430,7 +430,7 @@ class BusinessMetricsService {
       mrr: { current: 8500, change: 12.5, trend: 'up' },
       churn: { current: 2.1, change: -0.3, trend: 'down' },
       dau: { current: 1250, change: 8.2, trend: 'up' },
-      conversion: { current: 42, change: 2.1, trend: 'up' },
+      conversion: { current: 42, change: 2.1, trend: 'up' }
     };
   }
 }

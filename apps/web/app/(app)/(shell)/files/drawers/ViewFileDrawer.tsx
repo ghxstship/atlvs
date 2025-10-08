@@ -1,6 +1,6 @@
 "use client";
 
-import { Eye, Edit, Download, FileText, Calendar, User, Tag, Lock, Globe, Users, HardDrive, Clock, Activity, MessageSquare, Link, Share2 } from "lucide-react";
+import { Activity, Calendar, Clock, Download, Edit, Eye, FileText, Globe, HardDrive, Link, Lock, MessageSquare, Share2, Tag, User, Users } from 'lucide-react';
 import {
   Button,
   Badge,
@@ -8,7 +8,7 @@ import {
   TabsList,
   TabsTrigger,
   TabsContent,
-  AppDrawer,
+  AppDrawer
 } from "@ghxstship/ui";
 import { format, parseISO, formatDistanceToNow } from "date-fns";
 import type { DigitalAsset } from "../types";
@@ -43,7 +43,7 @@ export default function ViewFileDrawer({
   file,
   onEdit,
   onDownload,
-  formatFileSize,
+  formatFileSize
 }: ViewFileDrawerProps) {
   const getAccessIcon = (level: string) => {
     switch (level) {
@@ -184,7 +184,7 @@ export default function ViewFileDrawer({
             </div>
           )}
         </div>
-      ),
+      )
     },
     {
       key: "details",
@@ -258,7 +258,7 @@ export default function ViewFileDrawer({
             </div>
           </div>
         </div>
-      ),
+      )
     },
     {
       key: "activity",
@@ -268,7 +268,7 @@ export default function ViewFileDrawer({
           <MessageSquare className="mx-auto h-icon-2xl w-icon-2xl mb-sm opacity-50" />
           <p>Activity tracking coming soon</p>
         </div>
-      ),
+      )
     },
   ];
 
@@ -284,7 +284,7 @@ export default function ViewFileDrawer({
           key: "download",
           label: "Download",
           icon: <Download className="h-icon-xs w-icon-xs" />,
-          onClick: onDownload,
+          onClick: onDownload
         },
         {
           key: "share",
@@ -293,13 +293,13 @@ export default function ViewFileDrawer({
           onClick: async () => {
             await navigator.clipboard.writeText(file.file_url || '');
             // Toast would show "Link copied to clipboard"
-          },
+          }
         },
         {
           key: "edit",
           label: "Edit",
           icon: <Edit className="h-icon-xs w-icon-xs" />,
-          onClick: onEdit,
+          onClick: onEdit
         },
       ]}
     />

@@ -15,7 +15,7 @@ export default function EmergencyAnalyticsView({
  stats,
  analytics,
  loading,
- analyticsLoading,
+ analyticsLoading
 }: EmergencyAnalyticsViewProps) {
  if (loading || analyticsLoading) {
  return (

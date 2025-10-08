@@ -49,7 +49,7 @@ const CreateOnboardingProcessSchema = z.object({
     timeoutDays: z.number().positive().optional(),
     reminderFrequency: z.number().positive().default(24) // hours
   }).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 const UpdateOnboardingProcessSchema = CreateOnboardingProcessSchema.partial();
@@ -60,7 +60,7 @@ const StartOnboardingSchema = z.object({
   startDate: z.string().optional(),
   customData: z.record(z.any()).optional(),
   skipSteps: z.array(z.string()).optional(),
-  assignedBy: z.string().uuid().optional(),
+  assignedBy: z.string().uuid().optional()
 });
 
 async function getAuthenticatedUser() {

@@ -53,7 +53,7 @@ export function FinalConfirmationStep({ user, data, onComplete }: FinalConfirmat
         .upsert({
           user_id: user.id,
           onboarding_completed: true,
-          onboarding_completed_at: new Date().toISOString(),
+          onboarding_completed_at: new Date().toISOString()
         });
 
       if (error) {
@@ -75,7 +75,7 @@ export function FinalConfirmationStep({ user, data, onComplete }: FinalConfirmat
       summary.push({
         icon: CreditCard,
         title: `${plan?.name ?? 'Unknown'} Plan Selected`,
-        description: `${data.billingCycle === 'annual' ? 'Annual' : 'Monthly'} billing • ${plan?.trialDays ?? 0}-day free trial`,
+        description: `${data.billingCycle === 'annual' ? 'Annual' : 'Monthly'} billing • ${plan?.trialDays ?? 0}-day free trial`
       });
     }
 
@@ -83,13 +83,13 @@ export function FinalConfirmationStep({ user, data, onComplete }: FinalConfirmat
       summary.push({
         icon: Building,
         title: 'Organization Created',
-        description: `${data.orgName ?? 'Your organization'} • You are the owner`,
+        description: `${data.orgName ?? 'Your organization'} • You are the owner`
       });
     } else if (data.setupType === 'join') {
       summary.push({
         icon: Building,
         title: 'Joined Organization',
-        description: `${data.orgName ?? 'Your organization'} • Role: ${data.userRole ?? 'member'}`,
+        description: `${data.orgName ?? 'Your organization'} • Role: ${data.userRole ?? 'member'}`
       });
     }
 
@@ -97,7 +97,7 @@ export function FinalConfirmationStep({ user, data, onComplete }: FinalConfirmat
       summary.push({
         icon: Users,
         title: 'Team Invitations Sent',
-        description: `${data.teamInvites.length} team member${data.teamInvites.length > 1 ? 's' : ''} invited`,
+        description: `${data.teamInvites.length} team member${data.teamInvites.length > 1 ? 's' : ''} invited`
       });
     }
 

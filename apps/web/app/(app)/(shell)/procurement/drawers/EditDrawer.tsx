@@ -18,7 +18,7 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
   open,
   onClose,
   data,
-  onSave,
+  onSave
 }) => {
   if (!open) return null;
 

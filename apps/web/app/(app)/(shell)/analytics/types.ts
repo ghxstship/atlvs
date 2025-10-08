@@ -875,8 +875,8 @@ export const DEFAULT_DASHBOARD_LAYOUTS = {
     gap: '1rem',
     responsive: {
       tablet: { columns: 8, gap: '0.75rem' },
-      mobile: { columns: 4, gap: '0.5rem' },
-    },
+      mobile: { columns: 4, gap: '0.5rem' }
+    }
   },
   masonry: {
     type: 'masonry' as const,
@@ -884,9 +884,9 @@ export const DEFAULT_DASHBOARD_LAYOUTS = {
     gap: '1rem',
     responsive: {
       tablet: { columns: 3, gap: '0.75rem' },
-      mobile: { columns: 2, gap: '0.5rem' },
-    },
-  },
+      mobile: { columns: 2, gap: '0.5rem' }
+    }
+  }
 } as const;
 
 /**
@@ -938,7 +938,7 @@ export const CHART_COLOR_PALETTES = {
     'hsl(var(--color-success) / 0.8)',
     'hsl(var(--color-success))',
     'hsl(var(--color-success) / 1.2)'
-  ],
+  ]
 } as const;
 
 /**

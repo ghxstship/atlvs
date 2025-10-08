@@ -39,7 +39,7 @@ export class CompaniesExportService {
     const { data, error } = await this.supabase.rpc('start_company_export', {
       org_id: orgId,
       user_id: userId,
-      export_options: options,
+      export_options: options
     });
 
     if (error) throw error;
@@ -65,7 +65,7 @@ export class CompaniesExportService {
       fileUrl: data.file_url,
       error: data.error_message,
       createdAt: new Date(data.created_at),
-      completedAt: data.completed_at ? new Date(data.completed_at) : undefined,
+      completedAt: data.completed_at ? new Date(data.completed_at) : undefined
     };
   }
 
@@ -89,7 +89,7 @@ export class CompaniesExportService {
       fileUrl: row.file_url,
       error: row.error_message,
       createdAt: new Date(row.created_at),
-      completedAt: row.completed_at ? new Date(row.completed_at) : undefined,
+      completedAt: row.completed_at ? new Date(row.completed_at) : undefined
     }));
   }
 
@@ -218,19 +218,19 @@ export class CompaniesExportService {
         id: 'basic',
         name: 'Basic Company Info',
         description: 'Name, industry, status, and contact info',
-        fields: ['name', 'industry', 'status', 'email', 'phone', 'website'],
+        fields: ['name', 'industry', 'status', 'email', 'phone', 'website']
       },
       {
         id: 'detailed',
         name: 'Detailed Company Profile',
         description: 'Complete company information including address and metadata',
-        fields: ['name', 'description', 'industry', 'status', 'email', 'phone', 'website', 'address', 'size', 'founded_year'],
+        fields: ['name', 'description', 'industry', 'status', 'email', 'phone', 'website', 'address', 'size', 'founded_year']
       },
       {
         id: 'analytics',
         name: 'Analytics Export',
         description: 'Company data optimized for analytics and reporting',
-        fields: ['name', 'industry', 'size', 'status', 'founded_year', 'created_at', 'updated_at'],
+        fields: ['name', 'industry', 'size', 'status', 'founded_year', 'created_at', 'updated_at']
       },
     ];
   }

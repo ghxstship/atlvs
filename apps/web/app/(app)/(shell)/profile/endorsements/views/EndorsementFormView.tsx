@@ -14,14 +14,14 @@ import {
  SelectValue,
  Textarea,
  Badge,
- Switch,
+ Switch
 } from '@ghxstship/ui';
 import type { Endorsement, EndorsementFormData } from '../types';
 import {
  RELATIONSHIP_LABELS,
  COMMON_SKILLS,
  formatDate,
- formatRating,
+ formatRating
 } from '../types';
 
 interface EndorsementFormViewProps {
@@ -43,7 +43,7 @@ export default function EndorsementFormView({
  saving,
  onFieldChange,
  onSave,
- onVerify,
+ onVerify
 }: EndorsementFormViewProps) {
  const [skillInput, setSkillInput] = useState('');
 

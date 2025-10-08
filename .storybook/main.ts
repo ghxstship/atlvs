@@ -3,6 +3,10 @@ import type { StorybookConfig } from '@storybook/nextjs';
 const config: StorybookConfig = {
   stories: [
     '../apps/web/app/_components/marketing/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../packages/ui/src/atoms/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../packages/ui/src/molecules/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../packages/ui/src/organisms/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../packages/ui/src/layout/**/*.stories.@(js|jsx|ts|tsx|mdx)',
     '../packages/ui/src/components/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
   addons: [

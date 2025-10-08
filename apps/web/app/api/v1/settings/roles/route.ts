@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { NextResponse, type NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
 import { createServerClient, createServiceRoleClient } from '@ghxstship/auth';
-import { rateLimitRequest } from '../../../../_components/lib/rate-limit';
+import { rateLimitRequest } from '../../../../../lib/rate-limit';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';

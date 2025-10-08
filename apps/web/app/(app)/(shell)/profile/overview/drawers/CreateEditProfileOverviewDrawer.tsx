@@ -27,7 +27,7 @@ import {
  Tabs,
  TabsContent,
  TabsList,
- TabsTrigger,
+ TabsTrigger
 } from '@ghxstship/ui';
 import type { ProfileOverview } from '../types';
 import { getStatusColor, getCompletionColor, getProfileCompletionTasks } from '../types';
@@ -39,7 +39,7 @@ const profileOverviewSchema = z.object({
  phone_primary: z.string().optional(),
  location: z.string().optional(),
  bio: z.string().max(500, 'Bio must be 500 characters or less').optional(),
- status: z.enum(['active', 'inactive', 'pending', 'suspended']),
+ status: z.enum(['active', 'inactive', 'pending', 'suspended'])
 });
 
 type ProfileOverviewFormData = z.infer<typeof profileOverviewSchema>;
@@ -59,7 +59,7 @@ export default function CreateEditProfileOverviewDrawer({
  profile,
  onSave,
  loading = false,
- mode,
+ mode
 }: CreateEditProfileOverviewDrawerProps) {
  const [activeTab, setActiveTab] = useState('basic');
  const [showPreview, setShowPreview] = useState(false);
@@ -73,8 +73,8 @@ export default function CreateEditProfileOverviewDrawer({
  phone_primary: '',
  location: '',
  bio: '',
- status: 'active',
- },
+ status: 'active'
+ }
  });
 
  // Reset form when profile changes
@@ -87,7 +87,7 @@ export default function CreateEditProfileOverviewDrawer({
  phone_primary: profile.phone_primary || '',
  location: profile.location || '',
  bio: profile.bio || '',
- status: profile.status,
+ status: profile.status
  });
  } else {
  form.reset({
@@ -97,7 +97,7 @@ export default function CreateEditProfileOverviewDrawer({
  phone_primary: '',
  location: '',
  bio: '',
- status: 'active',
+ status: 'active'
  });
  }
  }, [profile, form]);

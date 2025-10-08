@@ -18,7 +18,7 @@ const updateTaskSchema = z.object({
   due_date: z.string().nullable().optional(),
   tags: z.array(z.string()).nullable().optional(),
   dependencies: z.array(z.string().uuid()).nullable().optional(),
-  position: z.number().min(0).optional(),
+  position: z.number().min(0).optional()
 });
 
 // GET /api/v1/tasks/[id] - Get a single task
@@ -215,7 +215,7 @@ export async function PATCH(
     const updateData: Record<string, unknown> = {
       ...data,
       updated_by: user.id,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     if (completed_at !== undefined) {
@@ -250,8 +250,8 @@ export async function PATCH(
       resource_id: params.id,
       action: "update",
       details: {
-        changes: Object.keys(data),
-      },
+        changes: Object.keys(data)
+      }
     });
 
     return NextResponse.json(updatedTask);
@@ -370,8 +370,8 @@ export async function DELETE(
       resource_id: params.id,
       action: "delete",
       details: {
-        title: existingTask.title,
-      },
+        title: existingTask.title
+      }
     });
 
     return NextResponse.json(

@@ -17,7 +17,7 @@ export default function ContractsGridView({
  onEdit,
  onView,
  onRenew,
- onTerminate,
+ onTerminate
 }: ContractsGridViewProps) {
  const getStatusColor = (status: string): "secondary" | "outline" | "default" | "destructive" | "success" | "warning" | "info" | "ghost" | "gradient" => {
  switch (status) {
@@ -125,7 +125,7 @@ export default function ContractsGridView({
  
  <div className="flex items-center gap-sm">
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => onView(contract)}
  className="flex-1"
@@ -134,7 +134,7 @@ export default function ContractsGridView({
  </Button>
  
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => onEdit(contract)}
  className="flex-1"
@@ -144,7 +144,7 @@ export default function ContractsGridView({
  
  {contract.status === 'active' && (
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => onRenew(contract)}
  className="text-green-600 hover:text-green-700"

@@ -11,7 +11,7 @@ function sanitizeFilename(name: string) {
     .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-zA-Z0-9._-]/g, '_')
-    .replace(/_{2,}/g, '_')
+    .replace(/_{2}/g, '_')
     .slice(0, 120);
 }
 
@@ -62,7 +62,7 @@ export default function FilesUploadClient({ orgId }: { orgId: string }) {
         name: clean,
         path,
         mime_type: file.type,
-        size: file.size,
+        size: file.size
       }).select('id').maybeSingle();
       if (insErr) throw insErr;
 

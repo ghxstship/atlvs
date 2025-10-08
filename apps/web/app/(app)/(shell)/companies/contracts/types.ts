@@ -45,5 +45,5 @@ export interface ContractFormData {
 // Re-export from parent types
 export type {
   CompanyContract,
-  CreateContractForm,
+  CreateContractForm
 } from '../types';

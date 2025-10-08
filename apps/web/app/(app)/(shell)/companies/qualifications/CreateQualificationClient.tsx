@@ -1,18 +1,11 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, UnifiedInput, Textarea, Select, Card } from '@ghxstship/ui';
-import { 
-  Award,
-  Building,
-  Calendar,
-  FileCheck,
-  Save,
-  X
-} from 'lucide-react';
+import { Drawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
+import { Award, Building, Calendar, FileCheck, Save, X } from 'lucide-react';
 
 interface CreateQualificationClientProps {
   user: User;
@@ -80,10 +73,12 @@ export default function CreateQualificationClient({
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isOpen) {
       loadCompanies();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, orgId]);
 
   const loadCompanies = async () => {
@@ -219,7 +214,7 @@ export default function CreateQualificationClient({
               <label className="block text-body-sm form-label mb-xs">
                 Qualification Title *
               </label>
-              <UnifiedInput                 value={formData.title}
+              <Input                 value={formData.title}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('title', e.target.value)}
                 placeholder="Enter qualification title"
                 required
@@ -286,7 +281,7 @@ export default function CreateQualificationClient({
               <label className="block text-body-sm form-label mb-xs">
                 Issuing Authority
               </label>
-              <UnifiedInput                 value={formData.issuingAuthority}
+              <Input                 value={formData.issuingAuthority}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('issuingAuthority', e.target.value)}
                 placeholder="Organization that issued this qualification"
               />
@@ -296,7 +291,7 @@ export default function CreateQualificationClient({
               <label className="block text-body-sm form-label mb-xs">
                 Certificate Number
               </label>
-              <UnifiedInput                 value={formData.certificateNumber}
+              <Input                 value={formData.certificateNumber}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('certificateNumber', e.target.value)}
                 placeholder="Certificate or license number"
               />
@@ -308,7 +303,7 @@ export default function CreateQualificationClient({
                   <Calendar className="h-icon-xs w-icon-xs inline mr-xs" />
                   Issued Date
                 </label>
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.issuedDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('issuedDate', e.target.value)}
                 />
@@ -319,7 +314,7 @@ export default function CreateQualificationClient({
                   <Calendar className="h-icon-xs w-icon-xs inline mr-xs" />
                   Expiry Date
                 </label>
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.expiryDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('expiryDate', e.target.value)}
                 />
@@ -330,7 +325,7 @@ export default function CreateQualificationClient({
               <label className="block text-body-sm form-label mb-xs">
                 Document URL
               </label>
-              <UnifiedInput                 type="url"
+              <Input                 type="url"
                 value={formData.documentUrl}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('documentUrl', e.target.value)}
                 placeholder="https://documents.example.com/certificate.pdf"

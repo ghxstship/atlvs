@@ -4,7 +4,7 @@ import { Package2, Wrench, Edit, Trash2, Eye, MoreHorizontal, ArrowUpDown, Arrow
 import { useState } from 'react';
 import { Card, Badge, Button, Checkbox } from '@ghxstship/ui';
 import type { CatalogItem, CatalogSort } from '../types';
-import { formatCurrency, formatDate, getStatusColor } from '../types';
+import { formatCurrency, formatDate } from '../types';
 
 interface CatalogTableViewProps {
  items: CatalogItem[];
@@ -29,7 +29,7 @@ export default function CatalogTableView({
  onDeleteItem,
  onViewItem,
  sort,
- onSortChange,
+ onSortChange
 }: CatalogTableViewProps) {
  const handleItemSelection = (itemId: string, checked: boolean) => {
  if (checked) {
@@ -175,7 +175,7 @@ export default function CatalogTableView({
  </span>
  <Button
  size="sm"
- variant="outline"
+ variant="secondary"
  onClick={() => onSelectionChange([])}
  >
  Clear selection

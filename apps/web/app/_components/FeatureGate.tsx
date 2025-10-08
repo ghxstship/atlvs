@@ -53,7 +53,7 @@ export default async function FeatureGate({ feature, children }: { feature: Feat
   const featureFlags = {
     atlvs: (orgEnt?.feature_atlvs ?? false) || (userEnt?.feature_atlvs ?? false),
     opendeck: (orgEnt?.feature_opendeck ?? false) || (userEnt?.feature_opendeck ?? false),
-    ghxstship: (orgEnt?.feature_ghxstship ?? false) || (userEnt?.feature_ghxstship ?? false),
+    ghxstship: (orgEnt?.feature_ghxstship ?? false) || (userEnt?.feature_ghxstship ?? false)
   } as const;
 
   const allowed = featureFlags[feature];

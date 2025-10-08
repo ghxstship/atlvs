@@ -1,12 +1,8 @@
 'use client';
 
-import { Eye, Edit, Trash2, CheckCircle, XCircle, Clock, AlertTriangle, Plus } from "lucide-react";
+import { AlertTriangle, Badge, Button, Card, CheckCircle, Clock, Edit, Eye, Plus, Trash2, XCircle } from 'lucide-react';
 import { useState } from 'react';
-import { 
- Card, 
- Badge, 
- Button
-} from '@ghxstship/ui';
+import { Badge, Button, Card } from '@ghxstship/ui';
 import type { ProcurementRequest } from '../types';
 
 interface RequestKanbanViewProps {

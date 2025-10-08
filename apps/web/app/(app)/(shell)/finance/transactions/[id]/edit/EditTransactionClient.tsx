@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, CardHeader, CardTitle, CardContent, Button, Alert } from '@ghxstship/ui';
+import { Alert, Button, Card, CardBody, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { ArrowLeft, ArrowUpDown } from 'lucide-react';
 import { User } from '@supabase/supabase-js';
 import EditTransactionDrawer from '../../drawers/EditTransactionDrawer';

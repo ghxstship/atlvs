@@ -1,11 +1,11 @@
 'use client';
 
-import { User, Calendar, Building, Eye, Edit, Trash2, ExternalLink, Award, MapPin } from "lucide-react";
+import { Award, Building, Calendar, Edit, ExternalAward, ExternalLink, Eye, MapPin, Trash2, User } from 'lucide-react';
 import {
  Card,
  Badge,
  Button,
- Checkbox,
+ Checkbox
 } from '@ghxstship/ui';
 import type { ProfessionalProfile } from '../types';
 import {
@@ -14,7 +14,7 @@ import {
  getStatusBadgeVariant,
  getCompletionColor,
  EMPLOYMENT_TYPE_LABELS,
- PROFILE_STATUS_LABELS,
+ PROFILE_STATUS_LABELS
 } from '../types';
 
 interface ProfessionalGridViewProps {
@@ -36,7 +36,7 @@ export default function ProfessionalGridView({
  onView,
  onEdit,
  onDelete,
- loading = false,
+ loading = false
 }: ProfessionalGridViewProps) {
  const allSelected = profiles.length > 0 && selectedIds.length === profiles.length;
  const someSelected = selectedIds.length > 0 && selectedIds.length < profiles.length;

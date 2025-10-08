@@ -1,18 +1,8 @@
 'use client';
 
 import React from 'react';
-import {
- Drawer,
- Button,
- Badge,
- Card,
- CardHeader,
- CardTitle,
- CardContent,
- Progress
-} from '@ghxstship/ui';
-import { DollarSign, Calendar, Building, FileText, Edit, Receipt, TrendingUp } from 'lucide-react';
-import type { DataRecord } from '@ghxstship/ui';
+import { Badge, Building, Button, Calendar, Card, CardContent, CardHeader, CardTitle, DollarSign, Drawer, Edit, FileText, Progress, Receipt, TrendingUp } from 'lucide-react';
+import { Badge, Button, Card, CardContent, CardHeader, CardTitle, Drawer } from '@ghxstship/ui';
 
 interface ViewBudgetDrawerProps {
  isOpen: boolean;
@@ -49,7 +39,7 @@ export default function ViewBudgetDrawer({
  </Badge>
  </div>
  {onEdit && (
- <Button onClick={onEdit} variant="outline">
+ <Button onClick={onEdit} variant="secondary">
  <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit
  </Button>
@@ -114,7 +104,7 @@ export default function ViewBudgetDrawer({
  <CardContent className="space-y-md">
  <div className="flex justify-between">
  <span className="text-gray-600">Category</span>
- <Badge variant="outline">{budget.category}</Badge>
+ <Badge variant="secondary">{budget.category}</Badge>
  </div>
 
  <div className="flex justify-between">
@@ -229,7 +219,7 @@ export default function ViewBudgetDrawer({
 
  {/* Actions */}
  <div className="flex items-center justify-end gap-md pt-lg border-t">
- <Button onClick={onClose} variant="outline">
+ <Button onClick={onClose} variant="secondary">
  Close
  </Button>
  {onEdit && (

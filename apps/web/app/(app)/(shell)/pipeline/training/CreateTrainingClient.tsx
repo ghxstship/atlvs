@@ -1,7 +1,8 @@
 'use client';
+import { Button, Drawer, Input } from '@ghxstship/ui';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -26,7 +27,7 @@ const trainingSchema = z.object({
   prerequisites: z.string().optional(),
   certification: z.boolean().default(false),
   certificationBody: z.string().optional(),
-  validityPeriod: z.number().optional(),
+  validityPeriod: z.number().optional()
 });
 
 type TrainingFormData = z.infer<typeof trainingSchema>;
@@ -58,7 +59,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
       currency: 'USD',
       certification: false,
       duration: 8,
-      capacity: 20,
+      capacity: 20
     }
   });
 
@@ -76,9 +77,9 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
@@ -96,7 +97,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
         format: data.format,
         duration: data.duration,
         certification: data.certification,
-        organization_id: orgId,
+        organization_id: orgId
       });
 
       // Log activity
@@ -111,8 +112,8 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
           type: data.type,
           format: data.format,
           duration: data.duration,
-          certification: data.certification,
-        },
+          certification: data.certification
+        }
       });
 
       // Reset form and close drawer
@@ -124,7 +125,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
       console.error('Error creating training:', error);
       posthog?.capture('pipeline_training_creation_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -194,7 +195,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Training Title *
               </label>
-              <UnifiedInput                 {...register('title')}
+              <Input                 {...register('title')}
                 placeholder="e.g., Safety Orientation, Technical Skills Workshop"
                 error={errors.title?.message}
               />
@@ -237,7 +238,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Duration (hours) *
                 </label>
-                <UnifiedInput                   {...register('duration', { valueAsNumber: true })}
+                <Input                   {...register('duration', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   step="0.5"
@@ -250,7 +251,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Capacity *
                 </label>
-                <UnifiedInput                   {...register('capacity', { valueAsNumber: true })}
+                <Input                   {...register('capacity', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   placeholder="20"
@@ -262,7 +263,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Cost
                 </label>
-                <UnifiedInput                   {...register('cost', { valueAsNumber: true })}
+                <Input                   {...register('cost', { valueAsNumber: true })}
                   type="number"
                   min="0"
                   step="0.01"
@@ -277,7 +278,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Start Date *
                 </label>
-                <UnifiedInput                   {...register('startDate')}
+                <Input                   {...register('startDate')}
                   type="datetime-local"
                   error={errors.startDate?.message}
                 />
@@ -287,7 +288,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   End Date
                 </label>
-                <UnifiedInput                   {...register('endDate')}
+                <Input                   {...register('endDate')}
                   type="datetime-local"
                 />
               </div>
@@ -298,7 +299,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Provider/Instructor
                 </label>
-                <UnifiedInput                   {...register('provider')}
+                <Input                   {...register('provider')}
                   placeholder="Training provider or instructor name"
                 />
               </div>
@@ -307,7 +308,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Location
                 </label>
-                <UnifiedInput                   {...register('location')}
+                <Input                   {...register('location')}
                   placeholder="Training venue or online platform"
                 />
               </div>
@@ -317,7 +318,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Description
               </label>
-              <Textarea
+              <textarea
                 {...register('description')}
                 placeholder="Detailed description of the training program"
                 rows={3}
@@ -328,7 +329,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Prerequisites
               </label>
-              <Textarea
+              <textarea
                 {...register('prerequisites')}
                 placeholder="Required skills, experience, or prior training"
                 rows={2}
@@ -353,7 +354,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                     <label className="block text-body-sm form-label mb-sm">
                       Certification Body
                     </label>
-                    <UnifiedInput                       {...register('certificationBody')}
+                    <Input                       {...register('certificationBody')}
                       placeholder="e.g., OSHA, NFPA, etc."
                     />
                   </div>
@@ -362,7 +363,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                     <label className="block text-body-sm form-label mb-sm">
                       Validity Period (months)
                     </label>
-                    <UnifiedInput                       {...register('validityPeriod', { valueAsNumber: true })}
+                    <Input                       {...register('validityPeriod', { valueAsNumber: true })}
                       type="number"
                       min="1"
                       placeholder="12"

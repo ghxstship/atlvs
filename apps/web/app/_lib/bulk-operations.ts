@@ -40,7 +40,7 @@ export async function bulkDelete(
       options.onProgress?.(i + 1, ids.length);
       
       const response = await fetch(`${endpoint}/${id}`, {
-        method: 'DELETE',
+        method: 'DELETE'
       });
 
       if (response.ok) {
@@ -71,7 +71,7 @@ export async function bulkDelete(
     success: failureCount === 0,
     successCount,
     failureCount,
-    results,
+    results
   };
 }
 
@@ -96,7 +96,7 @@ export async function bulkUpdate<T = any>(
       const response = await fetch(`${endpoint}/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (response.ok) {
@@ -128,7 +128,7 @@ export async function bulkUpdate<T = any>(
     success: failureCount === 0,
     successCount,
     failureCount,
-    results,
+    results
   };
 }
 
@@ -143,7 +143,7 @@ export async function bulkExport(
   const response = await fetch(`${endpoint}/export`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ids, format }),
+    body: JSON.stringify({ ids, format })
   });
 
   if (!response.ok) {
@@ -192,6 +192,6 @@ export function useBulkOperations() {
     bulkUpdate,
     bulkExport,
     bulkArchive,
-    bulkRestore,
+    bulkRestore
   };
 }

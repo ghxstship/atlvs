@@ -36,7 +36,7 @@ export class MarketplaceService {
       const stats = await this.getStats(orgId);
 
       return {
-        listings,
+        listings
       };
     }, 'MarketplaceService.getListings');
   }
@@ -203,7 +203,7 @@ export class MarketplaceService {
           responseRate: 0,
           profileViews: 0,
           proposalsSent: 0,
-          successRate: 0,
+          successRate: 0
         },
         client: {
           totalSpent: 0,
@@ -213,8 +213,8 @@ export class MarketplaceService {
           avgProjectValue: 0,
           totalSaved: 0,
           proposalsReceived: 0,
-          avgCompletionTime: 0,
-        },
+          avgCompletionTime: 0
+        }
       };
 
       // In a real implementation, you would fetch this data from the database
@@ -351,3 +351,33 @@ export class MarketplaceService {
 }
 
 export const marketplaceService = new MarketplaceService();
+
+// Helper functions exported for convenience
+export async function fetchMarketplaceListings(orgId: string, filters?: ListingFilters): Promise<ListingsResponse> {
+  return marketplaceService.getListings(orgId, filters);
+}
+
+export async function createMarketplaceListing(orgId: string, userId: string, data: UpsertListingDto): Promise<MarketplaceListing> {
+  return marketplaceService.createListing(orgId, userId, data);
+}
+
+export async function updateMarketplaceListing(orgId: string, userId: string, id: string, data: UpsertListingDto): Promise<MarketplaceListing> {
+  return marketplaceService.updateListing(orgId, userId, id, data);
+}
+
+export async function deleteMarketplaceListings(orgId: string, userId: string, ids: string[]): Promise<void> {
+  // Delete listings one by one (no bulk delete method exists)
+  await Promise.all(ids.map(id => marketplaceService.deleteListing(orgId, userId, id)));
+}
+
+export function normalizeListingForDataView(listing: MarketplaceListing) {
+  return {
+    ...listing,
+    id: listing.id,
+    title: listing.title,
+    description: listing.description,
+    status: listing.status,
+    created_at: listing.created_at,
+    updated_at: listing.updated_at
+  };
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import { Plus, Search, Filter, Download, Upload, MoreHorizontal, List, Grid3X3, Calendar, BarChart3, Trash2 } from "lucide-react";
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import {
  Button,
@@ -12,7 +12,7 @@ import {
  TabsTrigger,
  TabsContent,
  Badge,
- EmptyState,
+ EmptyState
 } from "@ghxstship/ui";
 import type {
  ProgrammingPerformance,
@@ -20,7 +20,7 @@ import type {
  PerformanceSort,
  ViewType,
  PerformanceProject,
- PerformanceEvent,
+ PerformanceEvent
 } from "./types";
 import { STATUS_BADGE, PERFORMANCE_TYPE_BADGE, VIEW_CONFIG } from "./types";
 
@@ -57,7 +57,7 @@ export default function ProgrammingPerformancesClient({
  initialPerformances,
  projects,
  events,
- users,
+ users
 }: ProgrammingPerformancesClientProps) {
  const supabase = useMemo(() => createBrowserClient(), []);
 
@@ -73,7 +73,7 @@ export default function ProgrammingPerformancesClient({
  const [searchTerm, setSearchTerm] = useState("");
  const [sortConfig, setSortConfig] = useState<PerformanceSort>({
  field: "starts_at",
- direction: "asc",
+ direction: "asc"
  });
 
  // Drawer state
@@ -92,7 +92,7 @@ export default function ProgrammingPerformancesClient({
  event: "*",
  schema: "public",
  table: "programming_performances",
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  (payload) => {
  if (payload.eventType === "INSERT") {
@@ -193,7 +193,7 @@ export default function ProgrammingPerformancesClient({
 
  try {
  const response = await fetch(`/api/v1/programming/performances/${performance.id}`, {
- method: "DELETE",
+ method: "DELETE"
  });
 
  if (!response.ok) {
@@ -275,7 +275,7 @@ export default function ProgrammingPerformancesClient({
  onSort: setSortConfig,
  users,
  projects,
- events,
+ events
  };
 
  return (

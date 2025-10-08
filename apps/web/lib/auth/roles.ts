@@ -38,7 +38,7 @@ const roleAllowedModules: Record<Role, Set<ModuleId>> = {
   ]),
   partner: new Set([
     'dashboard','projects','resources','profile'
-  ]),
+  ])
 };
 
 export function canAccessModule(role: Role, moduleId: ModuleId): boolean {
@@ -96,7 +96,7 @@ const roleAllowedChildren: Partial<Record<Role, ModuleChildMap>> = {
     finance: new Set<ChildId>([
       'finance-overview',
       'finance-expenses',
-    ]),
+    ])
   },
   viewer: {
     settings: new Set<ChildId>([
@@ -106,7 +106,7 @@ const roleAllowedChildren: Partial<Record<Role, ModuleChildMap>> = {
     ]),
     finance: new Set<ChildId>([
       'finance-overview',
-    ]),
+    ])
   },
   client: {
     settings: new Set<ChildId>([
@@ -116,7 +116,7 @@ const roleAllowedChildren: Partial<Record<Role, ModuleChildMap>> = {
     ]),
     finance: new Set<ChildId>([
       'finance-overview',
-    ]),
+    ])
   },
   vendor: {
     settings: new Set<ChildId>([
@@ -126,13 +126,13 @@ const roleAllowedChildren: Partial<Record<Role, ModuleChildMap>> = {
     ]),
     finance: new Set<ChildId>([
       'finance-overview',
-    ]),
+    ])
   },
   partner: {
     finance: new Set<ChildId>([
       'finance-overview',
-    ]),
-  },
+    ])
+  }
 };
 
 export function canAccessChild(role: Role, moduleId: ModuleId, childId: ChildId): boolean {

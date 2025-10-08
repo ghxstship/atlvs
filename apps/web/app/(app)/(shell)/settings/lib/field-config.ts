@@ -1,7 +1,7 @@
 import type {
   SettingCategory,
   SettingType,
-  SettingsFieldConfig,
+  SettingsFieldConfig
 } from '../types';
 
 export type SettingsCategoryOption = {
@@ -42,7 +42,7 @@ export const SETTINGS_FIELD_CONFIG: SettingsFieldConfig[] = [
     type: 'text',
     width: 100,
     sortable: true,
-    filterable: false,
+    filterable: false
   },
   {
     key: 'name',
@@ -51,7 +51,7 @@ export const SETTINGS_FIELD_CONFIG: SettingsFieldConfig[] = [
     width: 200,
     sortable: true,
     filterable: true,
-    required: true,
+    required: true
   },
   {
     key: 'category',
@@ -62,8 +62,8 @@ export const SETTINGS_FIELD_CONFIG: SettingsFieldConfig[] = [
     filterable: true,
     options: SETTINGS_CATEGORY_OPTIONS.map((option) => ({
       value: option.value,
-      label: option.label,
-    })),
+      label: option.label
+    }))
   },
   {
     key: 'value',
@@ -71,7 +71,7 @@ export const SETTINGS_FIELD_CONFIG: SettingsFieldConfig[] = [
     type: 'text',
     width: 250,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'description',
@@ -79,7 +79,7 @@ export const SETTINGS_FIELD_CONFIG: SettingsFieldConfig[] = [
     type: 'textarea',
     width: 300,
     sortable: false,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'type',
@@ -90,8 +90,8 @@ export const SETTINGS_FIELD_CONFIG: SettingsFieldConfig[] = [
     filterable: true,
     options: SETTINGS_TYPE_OPTIONS.map((option) => ({
       value: option.value,
-      label: option.label,
-    })),
+      label: option.label
+    }))
   },
   {
     key: 'is_public',
@@ -103,7 +103,7 @@ export const SETTINGS_FIELD_CONFIG: SettingsFieldConfig[] = [
     options: [
       { value: 'true', label: 'Yes' },
       { value: 'false', label: 'No' },
-    ],
+    ]
   },
   {
     key: 'is_editable',
@@ -115,7 +115,7 @@ export const SETTINGS_FIELD_CONFIG: SettingsFieldConfig[] = [
     options: [
       { value: 'true', label: 'Yes' },
       { value: 'false', label: 'No' },
-    ],
+    ]
   },
   {
     key: 'created_at',
@@ -123,7 +123,7 @@ export const SETTINGS_FIELD_CONFIG: SettingsFieldConfig[] = [
     type: 'date',
     width: 150,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'updated_at',
@@ -131,6 +131,6 @@ export const SETTINGS_FIELD_CONFIG: SettingsFieldConfig[] = [
     type: 'date',
     width: 150,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
 ];

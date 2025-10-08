@@ -18,7 +18,7 @@ export const timestampSchema = z.number().int().positive('Invalid timestamp');
 export const paginationSchema = z.object({
   page: z.coerce.number().int().min(1).default(1),
   limit: z.coerce.number().int().min(1).max(1000).default(50),
-  offset: z.coerce.number().int().min(0).default(0),
+  offset: z.coerce.number().int().min(0).default(0)
 });
 
 // Sorting schemas
@@ -47,7 +47,7 @@ export const fileUploadSchema = z.object({
   name: z.string().min(1).max(255),
   type: z.string().min(1).max(100),
   size: z.number().int().min(0).max(50 * 1024 * 1024), // 50MB max
-  url: urlSchema.optional(),
+  url: urlSchema.optional()
 });
 
 // Address schemas
@@ -56,7 +56,7 @@ export const addressSchema = z.object({
   city: z.string().max(100).optional(),
   state: z.string().max(100).optional(),
   country: z.string().max(100).optional(),
-  postalCode: z.string().max(20).optional(),
+  postalCode: z.string().max(20).optional()
 }).optional();
 
 // Contact schemas
@@ -64,7 +64,7 @@ export const contactSchema = z.object({
   name: z.string().min(1).max(255),
   email: emailSchema.optional(),
   phone: phoneSchema.optional(),
-  role: z.string().max(100).optional(),
+  role: z.string().max(100).optional()
 });
 
 // Audit and logging schemas
@@ -73,18 +73,18 @@ export const auditLogSchema = z.object({
   resourceType: z.string().min(1).max(50),
   resourceId: uuidSchema.optional(),
   details: z.record(z.unknown()).optional(),
-  occurredAt: isoDateSchema.optional(),
+  occurredAt: isoDateSchema.optional()
 });
 
 // Common CRUD operation schemas
 export const createOperationSchema = z.object({
   createdBy: userIdSchema.optional(),
-  createdAt: isoDateSchema.optional(),
+  createdAt: isoDateSchema.optional()
 });
 
 export const updateOperationSchema = z.object({
   updatedBy: userIdSchema.optional(),
-  updatedAt: isoDateSchema.optional(),
+  updatedAt: isoDateSchema.optional()
 });
 
 // Query parameter validation
@@ -92,14 +92,14 @@ export const queryParamsSchema = z.object({
   search: searchSchema.optional(),
   filter: z.record(z.unknown()).optional(),
   sortBy: z.enum(commonSortFields).optional(),
-  sortOrder: sortOrderSchema.optional(),
+  sortOrder: sortOrderSchema.optional()
 }).merge(paginationSchema);
 
 // Bulk operation schemas
 export const bulkOperationSchema = z.object({
   operation: z.enum(['create', 'update', 'delete', 'activate', 'deactivate']),
   ids: z.array(uuidSchema).min(1).max(1000),
-  data: z.record(z.unknown()).optional(),
+  data: z.record(z.unknown()).optional()
 });
 
 // Export schemas
@@ -107,7 +107,7 @@ export const exportSchema = z.object({
   format: z.enum(['csv', 'json', 'xlsx', 'pdf']).default('csv'),
   fields: z.array(z.string()).optional(),
   filters: z.record(z.unknown()).optional(),
-  includeHeaders: z.boolean().default(true),
+  includeHeaders: z.boolean().default(true)
 });
 
 // Import schemas
@@ -115,7 +115,7 @@ export const importSchema = z.object({
   format: z.enum(['csv', 'json', 'xlsx']).default('csv'),
   data: z.array(z.record(z.unknown())),
   updateExisting: z.boolean().default(false),
-  validateOnly: z.boolean().default(false),
+  validateOnly: z.boolean().default(false)
 });
 
 // API response schemas
@@ -125,16 +125,16 @@ export const apiResponseSchema = <T extends z.ZodType>(dataSchema: T) => z.objec
     page: z.number(),
     limit: z.number(),
     total: z.number(),
-    pages: z.number(),
+    pages: z.number()
   }).optional(),
-  meta: z.record(z.unknown()).optional(),
+  meta: z.record(z.unknown()).optional()
 });
 
 export const errorResponseSchema = z.object({
   error: z.string(),
   code: z.string().optional(),
   details: z.unknown().optional(),
-  field: z.string().optional(),
+  field: z.string().optional()
 });
 
 // Validation result helpers
@@ -142,14 +142,14 @@ export function createValidationErrorResponse(errors: z.ZodError['errors']) {
   return {
     error: 'Validation failed',
     code: 'VALIDATION_ERROR',
-    details: errors,
+    details: errors
   };
 }
 
 export function createSuccessResponse<T>(data: T, meta?: Record<string, unknown>) {
   return {
     data,
-    ...(meta && { meta }),
+    ...(meta && { meta })
   };
 }
 
@@ -165,8 +165,8 @@ export function createPaginatedResponse<T>(
       page,
       limit,
       total,
-      pages: Math.ceil(total / limit),
-    },
+      pages: Math.ceil(total / limit)
+    }
   };
 }
 
@@ -240,7 +240,7 @@ export const featureFlagSchema = z.object({
   enabled: z.boolean().default(false),
   organizationId: organizationIdSchema.optional(),
   percentage: z.number().min(0).max(100).optional(),
-  conditions: z.record(z.unknown()).optional(),
+  conditions: z.record(z.unknown()).optional()
 });
 
 // Comprehensive validation for common entities
@@ -256,7 +256,7 @@ export const userProfileSchema = z.object({
   avatarUrl: urlSchema.optional(),
   timezone: z.string().optional(),
   language: z.string().optional(),
-  isActive: z.boolean().default(true),
+  isActive: z.boolean().default(true)
 });
 
 // Organization validation
@@ -270,7 +270,7 @@ export const organizationSchema = z.object({
   industry: z.string().max(100).optional(),
   size: z.enum(['startup', 'small', 'medium', 'large', 'enterprise']).optional(),
   timezone: z.string().optional(),
-  isActive: z.boolean().default(true),
+  isActive: z.boolean().default(true)
 });
 
 // Project validation
@@ -284,7 +284,7 @@ export const projectSchema = z.object({
   endDate: dateSchema.optional(),
   budget: amountSchema.optional(),
   currency: currencySchema,
-  progress: z.number().min(0).max(100).default(0),
+  progress: z.number().min(0).max(100).default(0)
 });
 
 // Company validation
@@ -306,7 +306,7 @@ export const companySchema = z.object({
   size: z.enum(['startup', 'small', 'medium', 'large', 'enterprise']).optional(),
   foundedYear: z.number().int().min(1800).max(new Date().getFullYear()).optional(),
   logoUrl: urlSchema.optional().or(z.literal('')),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 // Finance validation
@@ -319,7 +319,7 @@ export const financeTransactionSchema = z.object({
   description: z.string().min(1).max(500),
   date: dateSchema,
   status: z.enum(['pending', 'completed', 'cancelled']).default('pending'),
-  reference: z.string().max(255).optional(),
+  reference: z.string().max(255).optional()
 });
 
 // Programming/Event validation
@@ -335,7 +335,7 @@ export const eventSchema = z.object({
   capacity: z.number().int().min(0).optional(),
   isPublic: z.boolean().default(false),
   streamingUrl: urlSchema.optional(),
-  budget: amountSchema.optional(),
+  budget: amountSchema.optional()
 });
 
 // Assets validation
@@ -350,7 +350,7 @@ export const assetSchema = z.object({
   purchaseDate: dateSchema.optional(),
   purchasePrice: amountSchema.optional(),
   location: z.string().max(255).optional(),
-  assignedTo: uuidSchema.optional(),
+  assignedTo: uuidSchema.optional()
 });
 
 // Jobs validation
@@ -366,7 +366,7 @@ export const jobSchema = z.object({
   salaryMax: amountSchema.optional(),
   currency: currencySchema,
   requirements: z.array(z.string()).default([]),
-  benefits: z.array(z.string()).default([]),
+  benefits: z.array(z.string()).default([])
 });
 
 // People validation
@@ -381,7 +381,7 @@ export const personSchema = z.object({
   managerId: uuidSchema.optional(),
   hireDate: dateSchema.optional(),
   status: z.enum(['active', 'inactive', 'terminated']).default('active'),
-  avatarUrl: urlSchema.optional(),
+  avatarUrl: urlSchema.optional()
 });
 
 // Procurement validation
@@ -398,7 +398,7 @@ export const procurementSchema = z.object({
   estimatedCost: amountSchema.optional(),
   actualCost: amountSchema.optional(),
   currency: currencySchema,
-  requiredDate: dateSchema.optional(),
+  requiredDate: dateSchema.optional()
 });
 
 // Analytics validation
@@ -412,10 +412,10 @@ export const analyticsSchema = z.object({
   schedule: z.object({
     frequency: z.enum(['daily', 'weekly', 'monthly', 'quarterly']),
     time: z.string().regex(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/), // HH:MM format
-    timezone: z.string().default('UTC'),
+    timezone: z.string().default('UTC')
   }).optional(),
   lastRun: dateSchema.optional(),
-  nextRun: dateSchema.optional(),
+  nextRun: dateSchema.optional()
 });
 
 // Files/Resources validation
@@ -431,7 +431,7 @@ export const fileSchema = z.object({
   thumbnailUrl: urlSchema.optional(),
   tags: z.array(z.string()).default([]),
   visibility: visibilitySchema,
-  uploadedBy: userIdSchema,
+  uploadedBy: userIdSchema
 });
 
 // Settings validation
@@ -443,7 +443,7 @@ export const settingsSchema = z.object({
   type: z.enum(['string', 'number', 'boolean', 'json', 'array']).default('string'),
   description: z.string().max(500).optional(),
   isPublic: z.boolean().default(false),
-  updatedBy: userIdSchema,
+  updatedBy: userIdSchema
 });
 
 // Dashboard validation
@@ -456,7 +456,7 @@ export const dashboardSchema = z.object({
   settings: z.record(z.unknown()).default({}),
   isDefault: z.boolean().default(false),
   isPublic: z.boolean().default(false),
-  createdBy: userIdSchema,
+  createdBy: userIdSchema
 });
 
 // Profile validation
@@ -470,7 +470,7 @@ export const profileSchema = z.object({
     dateIssued: dateSchema,
     expiryDate: dateSchema.optional(),
     credentialId: z.string().max(255).optional(),
-    url: urlSchema.optional(),
+    url: urlSchema.optional()
   })).default([]),
   experience: z.array(z.object({
     title: z.string().min(1).max(255),
@@ -478,10 +478,10 @@ export const profileSchema = z.object({
     startDate: dateSchema,
     endDate: dateSchema.optional(),
     description: z.string().max(1000).optional(),
-    isCurrent: z.boolean().default(false),
+    isCurrent: z.boolean().default(false)
   })).default([]),
   socialLinks: z.record(urlSchema).optional(),
-  preferences: z.record(z.unknown()).default({}),
+  preferences: z.record(z.unknown()).default({})
 });
 
 // Pipeline validation
@@ -497,10 +497,10 @@ export const pipelineSchema = z.object({
     order: z.number().int().min(0),
     color: z.string().regex(/^#[0-9A-F]{6}$/i).optional(), // Hex color
     isWon: z.boolean().default(false),
-    isLost: z.boolean().default(false),
+    isLost: z.boolean().default(false)
   })),
   isActive: z.boolean().default(true),
-  createdBy: userIdSchema,
+  createdBy: userIdSchema
 });
 
 // Export the validation schemas
@@ -550,5 +550,5 @@ export const validationSchemas = {
 
   // Response schemas
   apiResponse: apiResponseSchema,
-  errorResponse: errorResponseSchema,
+  errorResponse: errorResponseSchema
 };

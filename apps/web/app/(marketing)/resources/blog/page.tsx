@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { anton } from '../../../_components/lib/typography';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Clock, User, Calendar, Lock, Eye } from 'lucide-react';
+import { ArrowRight, Calendar, Clock, Eye, Lock, User } from 'lucide-react';
 import { MarketingSection } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Blog | GHXSTSHIP Resources',
     description: 'Industry insights, best practices, and behind-the-scenes stories from managing live entertainment productions.',
-    url: 'https://ghxstship.com/resources/blog',
-  },
+    url: 'https://ghxstship.com/resources/blog'
+  }
 };
 
 const blogPosts = [
@@ -26,7 +26,7 @@ const blogPosts = [
     category: 'Case Study',
     isPremium: true,
     views: '2.1k',
-    image: '/api/placeholder/400/250',
+    image: '/api/placeholder/400/250'
   },
   {
     id: 'festival-chaos-management',
@@ -38,7 +38,7 @@ const blogPosts = [
     category: 'Best Practices',
     isPremium: false,
     views: '3.5k',
-    image: '/api/placeholder/400/250',
+    image: '/api/placeholder/400/250'
   },
   {
     id: 'cruise-ship-casting',
@@ -50,7 +50,7 @@ const blogPosts = [
     category: 'Innovation',
     isPremium: true,
     views: '1.8k',
-    image: '/api/placeholder/400/250',
+    image: '/api/placeholder/400/250'
   },
   {
     id: 'safety-first-always',
@@ -62,7 +62,7 @@ const blogPosts = [
     category: 'Safety',
     isPremium: false,
     views: '4.2k',
-    image: '/api/placeholder/400/250',
+    image: '/api/placeholder/400/250'
   },
   {
     id: 'budget-management-reality',
@@ -74,7 +74,7 @@ const blogPosts = [
     category: 'Finance',
     isPremium: true,
     views: '2.7k',
-    image: '/api/placeholder/400/250',
+    image: '/api/placeholder/400/250'
   },
   {
     id: 'vendor-relationships',
@@ -86,7 +86,7 @@ const blogPosts = [
     category: 'Relationships',
     isPremium: false,
     views: '1.9k',
-    image: '/api/placeholder/400/250',
+    image: '/api/placeholder/400/250'
   },
 ];
 

@@ -1,12 +1,12 @@
 'use client';
 
-import { ArrowUpDown, ArrowUp, ArrowDown, Eye, Edit, Trash2, ExternalLink, User } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown, Edit, ExternalLink, ExternalUser, Eye, Trash2, User } from 'lucide-react';
 import { useState } from 'react';
 import {
  Card,
  Badge,
  Button,
- Checkbox,
+ Checkbox
 } from '@ghxstship/ui';
 import type { ProfessionalProfile, ProfessionalSort } from '../types';
 import {
@@ -15,7 +15,7 @@ import {
  getStatusBadgeVariant,
  getCompletionColor,
  EMPLOYMENT_TYPE_LABELS,
- PROFILE_STATUS_LABELS,
+ PROFILE_STATUS_LABELS
 } from '../types';
 
 interface ProfessionalTableViewProps {
@@ -43,7 +43,7 @@ export default function ProfessionalTableView({
  onView,
  onEdit,
  onDelete,
- loading = false,
+ loading = false
 }: ProfessionalTableViewProps) {
  const allSelected = profiles.length > 0 && selectedIds.length === profiles.length;
  const someSelected = selectedIds.length > 0 && selectedIds.length < profiles.length;

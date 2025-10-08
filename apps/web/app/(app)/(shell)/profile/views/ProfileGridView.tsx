@@ -11,7 +11,7 @@ import {
  DropdownMenu,
  DropdownMenuContent,
  DropdownMenuItem,
- DropdownMenuTrigger,
+ DropdownMenuTrigger
 } from '@ghxstship/ui';
 
 import type { UserProfile, FieldConfig } from '../types';

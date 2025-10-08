@@ -6,7 +6,7 @@ import { createServerClient } from '@ghxstship/auth';
 import {
   activityFilterSchema,
   fetchUserActivityData,
-  fetchActivityStats,
+  fetchActivityStats
 } from '@/app/(app)/(shell)/profile/activity/lib/activityService';
 
 async function getSupabase() {
@@ -17,7 +17,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -80,7 +80,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       ...activityData,
-      stats,
+      stats
     });
   } catch (error) {
     console.error('Error in GET /api/v1/profile/activity:', error);
@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
         activity_type,
         activity_description,
         metadata: metadata || {},
-        performed_by: user!.id,
+        performed_by: user!.id
       })
       .select(`
         *,

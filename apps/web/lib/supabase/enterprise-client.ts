@@ -53,7 +53,7 @@ export class EnterpriseSupabaseClient {
         p_identifier_type: identifierType,
         p_endpoint: endpoint,
         p_limit: limit,
-        p_window_duration: windowDuration,
+        p_window_duration: windowDuration
       } as any);
 
       if (error) throw error;
@@ -85,7 +85,7 @@ export class EnterpriseSupabaseClient {
         p_details: details,
         p_ip_address: ipAddress,
         p_user_agent: userAgent,
-        p_session_id: sessionId,
+        p_session_id: sessionId
       } as any);
     } catch (error) {
       console.error('Security event logging failed:', error);
@@ -107,7 +107,7 @@ export class EnterpriseSupabaseClient {
         p_job_data: jobData,
         p_organization_id: organizationId,
         p_priority: priority,
-        p_scheduled_at: scheduledAt?.toISOString(),
+        p_scheduled_at: scheduledAt?.toISOString()
       } as any);
 
       if (error) throw error;
@@ -123,7 +123,7 @@ export class EnterpriseSupabaseClient {
     try {
       const client = await this.getClient();
       const { data, error } = await client.rpc('process_data_access_request', {
-        p_request_id: requestId,
+        p_request_id: requestId
       } as any);
 
       if (error) throw error;
@@ -140,7 +140,7 @@ export class EnterpriseSupabaseClient {
       const client = await this.getClient();
       const { error } = await client.rpc('process_data_erasure_request', {
         p_request_id: requestId,
-        p_anonymize_only: anonymizeOnly,
+        p_anonymize_only: anonymizeOnly
       } as any);
 
       if (error) throw error;
@@ -155,7 +155,7 @@ export class EnterpriseSupabaseClient {
     try {
       const client = await this.getClient();
       const { data, error } = await client.rpc('check_gdpr_compliance_status', {
-        p_organization_id: organizationId,
+        p_organization_id: organizationId
       } as any);
 
       if (error) throw error;
@@ -171,7 +171,7 @@ export class EnterpriseSupabaseClient {
     try {
       const client = await this.getClient();
       const { data, error } = await client.rpc('get_query_performance_stats', {
-        p_organization_id: organizationId,
+        p_organization_id: organizationId
       } as any);
 
       if (error) throw error;
@@ -186,7 +186,7 @@ export class EnterpriseSupabaseClient {
     try {
       const client = await this.getClient();
       const { data, error } = await client.rpc('analyze_table_performance', {
-        p_schema_name: schemaName,
+        p_schema_name: schemaName
       } as any);
 
       if (error) throw error;
@@ -201,7 +201,7 @@ export class EnterpriseSupabaseClient {
     try {
       const client = await this.getClient();
       const { data, error } = await client.rpc('get_table_statistics', {
-        p_schema_name: schemaName,
+        p_schema_name: schemaName
       } as any);
 
       if (error) throw error;

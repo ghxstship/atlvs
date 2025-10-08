@@ -93,9 +93,9 @@ async function jsonFetch(input: RequestInfo, init?: RequestInit): Promise<Respon
     ...init,
     headers: {
       'Content-Type': 'application/json',
-      ...(init?.headers ?? {}),
+      ...(init?.headers ?? {})
     },
-    credentials: 'include',
+    credentials: 'include'
   });
 }
 
@@ -107,14 +107,14 @@ export async function fetchSessions(): Promise<UserSessionSummary[]> {
 
 export async function revokeSession(sessionId: string): Promise<void> {
   const response = await jsonFetch(`/api/v1/settings/sessions?id=${encodeURIComponent(sessionId)}`, {
-    method: 'DELETE',
+    method: 'DELETE'
   });
   await handleResponse(response);
 }
 
 export async function revokeAllSessions(): Promise<number> {
   const response = await jsonFetch('/api/v1/settings/sessions?action=revoke-all', {
-    method: 'DELETE',
+    method: 'DELETE'
   });
   const payload = await handleResponse<{ count: number }>(response);
   return payload.count ?? 0;
@@ -129,21 +129,21 @@ export async function fetchApiKeys(): Promise<ApiKeySummary[]> {
 export async function createApiKey(input: CreateApiKeyInput): Promise<CreateApiKeyResult> {
   const response = await jsonFetch('/api/v1/settings/api-keys', {
     method: 'POST',
-    body: JSON.stringify(input),
+    body: JSON.stringify(input)
   });
   return handleResponse<CreateApiKeyResult>(response);
 }
 
 export async function revokeApiKey(apiKeyId: string): Promise<void> {
   const response = await jsonFetch(`/api/v1/settings/api-keys?id=${encodeURIComponent(apiKeyId)}`, {
-    method: 'DELETE',
+    method: 'DELETE'
   });
   await handleResponse(response);
 }
 
 export async function setupTwoFactor(): Promise<SetupTwoFactorResult> {
   const response = await jsonFetch('/api/v1/settings/security/2fa/setup', {
-    method: 'POST',
+    method: 'POST'
   });
   return handleResponse<SetupTwoFactorResult>(response);
 }
@@ -151,7 +151,7 @@ export async function setupTwoFactor(): Promise<SetupTwoFactorResult> {
 export async function verifyTwoFactor(code: string): Promise<VerifyTwoFactorResult> {
   const response = await jsonFetch('/api/v1/settings/security/2fa/verify', {
     method: 'POST',
-    body: JSON.stringify({ code }),
+    body: JSON.stringify({ code })
   });
   return handleResponse<VerifyTwoFactorResult>(response);
 }

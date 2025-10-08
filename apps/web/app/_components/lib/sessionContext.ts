@@ -97,9 +97,9 @@ export const getSessionContext = cache(async (): Promise<SessionContext | null> 
     entitlements: {
       feature_atlvs,
       feature_opendeck,
-      feature_ghxstship,
+      feature_ghxstship
     },
-    projectsAssignedCount,
+    projectsAssignedCount
   };
 });
 

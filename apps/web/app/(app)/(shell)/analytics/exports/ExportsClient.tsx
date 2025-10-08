@@ -1,34 +1,10 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Plus,
-  Download,
-  Calendar,
-  Clock,
-  FileText,
-  Database,
-  Filter,
-  Search,
-  Play,
-  Pause,
-  Trash2,
-  Edit3,
-  Eye,
-  Share2,
-  Settings,
-  CheckCircle,
-  XCircle,
-  AlertCircle,
-  FileSpreadsheet,
-  FileJson,
-  Files,
-  Archive,
-  RefreshCw
-} from 'lucide-react';
+import { AlertCircle, Archive, Calendar, CheckCircle, Clock, Database, Download, Edit3, Eye, FileJson, FileSpreadsheet, FileText, Files, Filter, Pause, Play, Plus, RefreshCw, Search, Settings, Share2, Trash2, XCircle } from 'lucide-react';
 
 interface ExportJob {
   id: string;
@@ -84,8 +60,10 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadExportData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizationId]);
 
   const loadExportData = async () => {
@@ -487,7 +465,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                     <div className="stack-sm">
                       <div className="flex items-center justify-between text-body-sm">
                         <span className="color-muted">Data Source:</span>
-                        <Badge variant="outline">
+                        <Badge variant="secondary">
                           {job.dataSource}
                         </Badge>
                       </div>
@@ -500,7 +478,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                       {job.schedule?.enabled && (
                         <div className="flex items-center justify-between text-body-sm">
                           <span className="color-muted">Schedule:</span>
-                          <Badge variant="outline">
+                          <Badge variant="secondary">
                             {job.schedule.frequency}
                           </Badge>
                         </div>
@@ -526,7 +504,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                     <div className="flex items-center justify-between mt-md pt-md border-t">
                       {job.fileUrl ? (
                         <Button
-                          variant="outline"
+                          variant="secondary"
                          
                           onClick={() => downloadFile(job.fileUrl!, `${job.name}.${job.format}`)}
                         >
@@ -538,7 +516,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                       )}
                       
                       <Button
-                        variant="outline"
+                        variant="secondary"
                        
                         onClick={() => toggleJobStatus(job.id)}
                       >
@@ -613,7 +591,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                     
                     {entry.fileUrl && entry.status === 'completed' && (
                       <Button
-                        variant="outline"
+                        variant="secondary"
                        
                         onClick={() => downloadFile(entry.fileUrl!, `export-${entry.id}.${job?.format || 'csv'}`)}
                       >
@@ -723,7 +701,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
               <div className="flex items-center justify-end cluster-sm mt-lg">
                 <Button
                   type="button"
-                  variant="outline"
+                  variant="secondary"
                   onClick={() => setShowCreateForm(false)}
                 >
                   Cancel

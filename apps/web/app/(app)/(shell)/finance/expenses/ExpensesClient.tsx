@@ -1,24 +1,11 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, Skeleton, Drawer, type DataRecord } from '@ghxstship/ui';
-import { 
-  Receipt,
-  Plus,
-  Edit,
-  Trash2,
-  Check,
-  X,
-  Clock,
-  AlertTriangle,
-  FileText,
-  DollarSign,
-  Calendar,
-  User as UserIcon
-} from 'lucide-react';
+import { Badge, Button, Card, DataGrid, Drawer, Skeleton, StateManagerProvider, ViewSwitcher, type DataRecord } from '@ghxstship/ui';
+import { AlertTriangle, Calendar, Check, Clock, DollarSign, Edit, FileText, Plus, Receipt, Trash2, User as UserIcon, X } from 'lucide-react';
 
 interface ExpensesClientProps {
   user: User;
@@ -61,8 +48,10 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadExpenses();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, statusFilter]);
 
   const loadExpenses = async () => {
@@ -212,7 +201,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
   const formatCurrency = (amount: number, currency = 'USD') => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: currency
     }).format(amount);
   };
 

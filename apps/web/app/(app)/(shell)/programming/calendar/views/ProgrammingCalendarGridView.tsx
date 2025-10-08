@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo } from 'react';
 import { Badge, Button, Card } from "@ghxstship/ui";
 import { 
  format, 
@@ -16,7 +16,7 @@ import {
 } from "date-fns";
 import type { ProgrammingEvent } from "../types";
 import { EVENT_TYPE_LABEL, STATUS_BADGE } from "../ProgrammingCalendarClient";
-import { Calendar, Edit, Eye } from 'lucide-react';
+import { Calendar, Edit, Eye, ChevronRight, MapPin, Clock, ChevronLeft } from 'lucide-react';
 
 type ProgrammingCalendarGridViewProps = {
  events: ProgrammingEvent[];
@@ -27,7 +27,7 @@ type ProgrammingCalendarGridViewProps = {
 export default function ProgrammingCalendarGridView({
  events,
  onView,
- onEdit,
+ onEdit
 }: ProgrammingCalendarGridViewProps) {
  const [currentDate, setCurrentDate] = useState(new Date());
 

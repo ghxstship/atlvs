@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button } from '@ghxstship/ui';
-import { Calendar, Clock, MessageCircle, MessageSquare, TrendingUp, Users } from 'lucide-react';
+import { ArrowRight, Calendar, Clock, MessageCircle, MessageSquare, TrendingUp, Users } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Community Forums | GHXSTSHIP',
-  description: 'Join the GHXSTSHIP community forums to connect with other users, share knowledge, and get support.',
+  description: 'Join the GHXSTSHIP community forums to connect with other users, share knowledge, and get support.'
 };
 
 const forumStats = [
@@ -29,7 +29,7 @@ const forumCategories = [
     posts: 1247,
     members: 892,
     icon: MessageSquare,
-    link: '#',
+    link: '#'
   },
   {
     title: 'Product Support',
@@ -37,7 +37,7 @@ const forumCategories = [
     posts: 2156,
     members: 1340,
     icon: Users,
-    link: '#',
+    link: '#'
   },
   {
     title: 'Feature Requests',
@@ -45,7 +45,7 @@ const forumCategories = [
     posts: 543,
     members: 678,
     icon: TrendingUp,
-    link: '#',
+    link: '#'
   },
   {
     title: 'Announcements',
@@ -53,22 +53,22 @@ const forumCategories = [
     posts: 89,
     members: 2456,
     icon: Clock,
-    link: '#',
+    link: '#'
   },
 ];
 
 const guidelines = [
   {
     title: 'Respect Every Voice',
-    description: 'Keep discussions constructive, inclusive, and grounded in real experience.',
+    description: 'Keep discussions constructive, inclusive, and grounded in real experience.'
   },
   {
     title: 'Share What Works',
-    description: 'Help others by detailing the tactics, templates, and workflows driving results.',
+    description: 'Help others by detailing the tactics, templates, and workflows driving results.'
   },
   {
     title: 'Stay Focused',
-    description: 'Use tags, pick the right category, and keep threads on-topic to help others find answers.',
+    description: 'Use tags, pick the right category, and keep threads on-topic to help others find answers.'
   },
 ];
 
@@ -77,19 +77,19 @@ const upcomingSessions = [
     title: 'Office Hours: Production Planning',
     date: 'Dec 12, 2024',
     time: '1:00 PM ET',
-    description: 'Drop in with your scheduling, budgeting, or staffing questions and leave with expert guidance.',
+    description: 'Drop in with your scheduling, budgeting, or staffing questions and leave with expert guidance.'
   },
   {
     title: 'Automation Deep Dive',
     date: 'Dec 19, 2024',
     time: '3:00 PM ET',
-    description: 'See how power users are leveraging ATLVS automations to reduce manual effort by 40%.',
+    description: 'See how power users are leveraging ATLVS automations to reduce manual effort by 40%.'
   },
   {
     title: 'Open Feedback Forum',
     date: 'Jan 9, 2025',
     time: '2:00 PM ET',
-    description: 'Bring your feature requests and collaborate with the product team on future releases.',
+    description: 'Bring your feature requests and collaborate with the product team on future releases.'
   },
 ];
 

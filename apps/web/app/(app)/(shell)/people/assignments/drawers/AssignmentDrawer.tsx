@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { AppDrawer } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
+import { AppDrawer, Badge } from '@ghxstship/ui';
 import type { Assignment } from '../types';
 import type { FieldConfig } from '@ghxstship/ui';
 
@@ -138,7 +137,7 @@ export default function AssignmentDrawer({
  <label className="block text-body-sm form-label mb-xs">Skills Required</label>
  <div className="flex flex-wrap gap-xs">
  {assignment.skills_required.map((skill, index) => (
- <Badge key={index} variant="outline">{skill}</Badge>
+ <Badge key={index} variant="secondary">{skill}</Badge>
  ))}
  </div>
  </div>

@@ -27,7 +27,7 @@ const PurchaseOrderSchema = z.object({
   approved_by: z.string().uuid().optional(),
   delivery_date: z.date().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const VendorSchema = z.object({
@@ -40,7 +40,7 @@ const VendorSchema = z.object({
   status: z.enum(['active', 'inactive', 'pending']).default('active'),
   rating: z.number().min(1).max(5).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export const procurementModuleConfig: ModuleConfig = {

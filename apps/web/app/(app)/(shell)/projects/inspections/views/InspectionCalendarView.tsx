@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo, useState } from 'react';
 import { Badge, Button } from "@ghxstship/ui";
 import { format, parseISO, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, addMonths, subMonths } from "date-fns";
 import type { Inspection } from "../InspectionsClient";
@@ -18,7 +18,7 @@ export default function InspectionCalendarView({
  inspections,
  onView,
  getTypeIcon,
- getStatusBadgeVariant,
+ getStatusBadgeVariant
 }: InspectionCalendarViewProps) {
  const [currentMonth, setCurrentMonth] = useState(new Date());
 

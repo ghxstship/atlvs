@@ -17,7 +17,7 @@ type Labels = { title: string; status: string; dueAt: string };
 const schema = z.object({
   title: z.string().min(2, 'Title is required'),
   status: z.string().min(2),
-  due_at: z.string().nullable().optional(),
+  due_at: z.string().nullable().optional()
 });
 
 export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; orgId: string }) {

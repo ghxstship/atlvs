@@ -1,12 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Card, CardContent, Button, Badge, UnifiedInput, Textarea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Tabs, TabsContent, TabsList, TabsTrigger, Drawer } from '@ghxstship/ui';
-import { 
-  User, Briefcase, Award, Globe, Mail, Phone, MapPin, Calendar,
-  DollarSign, Clock, Star, Upload, Plus, Edit, Trash2, Eye,
-  Camera, FileText, Link2, Shield, CheckCircle, AlertCircle
-} from 'lucide-react';
+import { useState, useCallback, useEffect } from 'react';
+import { Card, Button, Badge, Input, Textarea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Tabs, TabsContent, TabsList, TabsTrigger, Drawer , CardBody} from '@ghxstship/ui';
+import { AlertCircle, Award, Briefcase, Calendar, Camera, CheckCircle, Clock, DollarSign, Edit, Eye, FileText, Globe, Link2, Mail, MapPin, Phone, Plus, Shield, Star, Trash2, Upload, User } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -88,8 +84,10 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
     'Team Leadership'
   ];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadVendorProfile();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
   async function loadVendorProfile() {
@@ -196,7 +194,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               </div>
             </div>
           </div>
-          <Button onClick={() => setEditMode(!editMode)} variant="outline">
+          <Button onClick={() => setEditMode(!editMode)} variant="secondary">
             <Edit className="h-icon-xs w-icon-xs mr-sm" />
             {editMode ? 'Cancel' : 'Edit Profile'}
           </Button>
@@ -210,7 +208,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
             <div className="brand-opendeck grid grid-cols-1 md:grid-cols-2 gap-md">
               <div>
                 <label className="text-body-sm form-label">Business Name</label>
-                <UnifiedInput {...register('business_name')} placeholder="Your business name" />
+                <Input {...register('business_name')} placeholder="Your business name" />
                 {errors.business_name && (
                   <p className="text-body-sm color-destructive mt-xs">{errors.business_name.message}</p>
                 )}
@@ -235,7 +233,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Display Name</label>
-                <UnifiedInput {...register('display_name')} placeholder="Public display name" />
+                <Input {...register('display_name')} placeholder="Public display name" />
                 {errors.display_name && (
                   <p className="text-body-sm color-destructive mt-xs">{errors.display_name.message}</p>
                 )}
@@ -243,7 +241,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Email</label>
-                <UnifiedInput {...register('email')} type="email" placeholder="contact@example.com" />
+                <Input {...register('email')} type="email" placeholder="contact@example.com" />
                 {errors.email && (
                   <p className="text-body-sm color-destructive mt-xs">{errors.email.message}</p>
                 )}
@@ -251,12 +249,12 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Phone</label>
-                <UnifiedInput {...register('phone')} placeholder="+1 234 567 8900" />
+                <Input {...register('phone')} placeholder="+1 234 567 8900" />
               </div>
 
               <div>
                 <label className="text-body-sm form-label">Website</label>
-                <UnifiedInput {...register('website')} placeholder="https://example.com" />
+                <Input {...register('website')} placeholder="https://example.com" />
               </div>
 
               <div>
@@ -295,7 +293,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Years of Experience</label>
-                <UnifiedInput 
+                <Input 
                   {...register('years_experience', { valueAsNumber: true })} 
                   type="number" 
                   placeholder="5" 
@@ -304,7 +302,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Team Size</label>
-                <UnifiedInput 
+                <Input 
                   {...register('team_size', { valueAsNumber: true })} 
                   type="number" 
                   placeholder="10" 
@@ -313,7 +311,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Hourly Rate</label>
-                <UnifiedInput 
+                <Input 
                   {...register('hourly_rate', { valueAsNumber: true })} 
                   type="number" 
                   placeholder="150" 
@@ -322,13 +320,13 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Response Time</label>
-                <UnifiedInput {...register('response_time')} placeholder="Within 1 hour" />
+                <Input {...register('response_time')} placeholder="Within 1 hour" />
               </div>
             </div>
 
             <div>
               <label className="text-body-sm form-label">Tagline</label>
-              <UnifiedInput {...register('tagline')} placeholder="Your professional tagline" />
+              <Input {...register('tagline')} placeholder="Your professional tagline" />
             </div>
 
             <div>
@@ -341,7 +339,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
             </div>
 
             <div className="brand-opendeck flex justify-end cluster-sm">
-              <Button type="button" variant="outline" onClick={() => setEditMode(false)}>
+              <Button type="button" variant="secondary" onClick={() => setEditMode(false)}>
                 Cancel
               </Button>
               <Button type="submit" disabled={isSubmitting}>
@@ -533,14 +531,14 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               </div>
             </div>
             <div className="brand-opendeck flex cluster-sm mt-md">
-              <Button variant="outline" className="flex-1" onClick={() => {
+              <Button variant="secondary" className="flex-1" onClick={() => {
                 setSelectedItem(service);
                 setDrawerMode('service');
                 setDrawerOpen(true);
               }}>
                 Edit
               </Button>
-              <Button variant="outline" className="flex-1">
+              <Button variant="secondary" className="flex-1">
                 View
               </Button>
             </div>

@@ -6,7 +6,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Plus, Loader2, AlertCircle } from 'lucide-react';
+import { Plus, Loader2, AlertCircle } from 'lucide-react';import { Button, UnifiedInput, Select, Textarea, Drawer } from '@ghxstship/ui';
+import { Button, Select, Textarea, Drawer } from '@ghxstship/ui';
+
 import { usePostHog } from 'posthog-js/react';
 
 const createRfpSchema = z.object({
@@ -32,7 +34,7 @@ const createRfpSchema = z.object({
   questionsDeadline: z.string().optional(),
   minimumQualifications: z.string().optional(),
   preferredQualifications: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 type CreateRfpFormData = z.infer<typeof createRfpSchema>;
@@ -53,7 +55,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
     register,
     handleSubmit,
     reset,
-    formState: { errors, isValid },
+    formState: { errors, isValid }
   } = useForm<CreateRfpFormData>({
     resolver: zodResolver(createRfpSchema),
     mode: 'onChange',
@@ -63,8 +65,8 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
       category: 'services',
       currency: 'USD',
       isPublic: false,
-      allowQuestions: true,
-    },
+      allowQuestions: true
+    }
   });
 
   const onSubmit = async (data: CreateRfpFormData) => {
@@ -75,19 +77,19 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
       posthog?.capture('jobs_rfp_create_attempt', {
         organization_id: orgId,
         category: data.category,
-        budget: data.budget,
+        budget: data.budget
       });
 
       const response = await fetch('/api/v1/jobs/rfps', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
         body: JSON.stringify({
           ...data,
-          organization_id: orgId,
-        }),
+          organization_id: orgId
+        })
       });
 
       if (!response.ok) {
@@ -100,7 +102,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
       posthog?.capture('jobs_rfp_create_success', {
         organization_id: orgId,
         rfp_id: result.id,
-        category: data.category,
+        category: data.category
       });
 
       // Log activity
@@ -113,8 +115,8 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
           title: data.title,
           category: data.category,
           budget: data.budget,
-          status: data.status,
-        },
+          status: data.status
+        }
       });
 
       reset();
@@ -126,7 +128,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
       
       posthog?.capture('jobs_rfp_create_error', {
         organization_id: orgId,
-        error: errorMessage,
+        error: errorMessage
       });
     } finally {
       setIsSubmitting(false);

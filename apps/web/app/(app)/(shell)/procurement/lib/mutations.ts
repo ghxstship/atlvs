@@ -18,7 +18,7 @@ const MutationResultSchema = z.object({
   success: z.boolean(),
   data: z.any().optional(),
   error: z.string().optional(),
-  transactionId: z.string().optional(),
+  transactionId: z.string().optional()
 });
 
 export type MutationResult<T = any> = {
@@ -71,7 +71,7 @@ export class ProcurementMutationsService {
       const context: TransactionContext = {
         supabase: this.supabase,
         orgId: this.orgId,
-        userId: this.userId,
+        userId: this.userId
       };
 
       const result = await operation(context);
@@ -79,7 +79,7 @@ export class ProcurementMutationsService {
       return {
         success: true,
         data: result,
-        transactionId,
+        transactionId
       };
     } catch (error: unknown) {
       // Log error for debugging
@@ -88,7 +88,7 @@ export class ProcurementMutationsService {
       return {
         success: false,
         error: error.message || 'Transaction failed',
-        transactionId,
+        transactionId
       };
     }
   }
@@ -102,7 +102,7 @@ export class ProcurementMutationsService {
         .from('audit_logs')
         .insert({
           ...entry,
-          timestamp: new Date().toISOString(),
+          timestamp: new Date().toISOString()
         });
     } catch (error) {
       // Don't fail the main operation if audit logging fails
@@ -144,7 +144,7 @@ export class ProcurementMutationsService {
           requested_by: context.userId,
           status: 'draft',
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .select()
         .single();
@@ -158,7 +158,7 @@ export class ProcurementMutationsService {
         operation: 'INSERT',
         new_values: order,
         user_id: context.userId,
-        organization_id: context.orgId,
+        organization_id: context.orgId
       });
 
       return order;
@@ -212,7 +212,7 @@ export class ProcurementMutationsService {
         .from('purchase_orders')
         .update({
           ...updates,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', orderId)
         .eq('organization_id', context.orgId)
@@ -229,7 +229,7 @@ export class ProcurementMutationsService {
         old_values: currentOrder,
         new_values: updatedOrder,
         user_id: context.userId,
-        organization_id: context.orgId,
+        organization_id: context.orgId
       });
 
       return updatedOrder;
@@ -269,7 +269,7 @@ export class ProcurementMutationsService {
         operation: 'DELETE',
         old_values: currentOrder,
         user_id: context.userId,
-        organization_id: context.orgId,
+        organization_id: context.orgId
       });
 
       return { success: true };
@@ -307,7 +307,7 @@ export class ProcurementMutationsService {
           organization_id: context.orgId,
           status: vendorData.status || 'active',
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .select()
         .single();
@@ -321,7 +321,7 @@ export class ProcurementMutationsService {
         operation: 'INSERT',
         new_values: vendor,
         user_id: context.userId,
-        organization_id: context.orgId,
+        organization_id: context.orgId
       });
 
       return vendor;
@@ -353,7 +353,7 @@ export class ProcurementMutationsService {
             const result = await this.createPurchaseOrder.call({
               supabase: context.supabase,
               orgId: context.orgId,
-              userId: context.userId,
+              userId: context.userId
             }, orderData);
 
             if (result.success) {
@@ -382,7 +382,7 @@ export class ProcurementMutationsService {
     return this.updatePurchaseOrder(orderId, {
       status: 'approved',
       approved_by: this.userId,
-      approved_at: new Date().toISOString(),
+      approved_at: new Date().toISOString()
     });
   }
 
@@ -391,7 +391,7 @@ export class ProcurementMutationsService {
    */
   async rejectPurchaseOrder(orderId: string, reason: string): Promise<MutationResult> {
     return this.updatePurchaseOrder(orderId, {
-      status: 'cancelled',
+      status: 'cancelled'
     });
   }
 }

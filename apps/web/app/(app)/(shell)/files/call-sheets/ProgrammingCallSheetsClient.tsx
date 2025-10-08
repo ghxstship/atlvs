@@ -1,7 +1,7 @@
 "use client";
 
 import { CalendarDays, Calendar as CalendarIcon, Clock, Eye, FileText, Filter, LayoutGrid, List, MapPin, Pencil, Plus, RefreshCcw, Share2, Trash2, Users } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from "next/navigation";
 import { createBrowserClient } from "@ghxstship/auth";
 import {
@@ -10,7 +10,7 @@ import {
  Card,
  Checkbox,
  Input,
- Select,
+ Select
 } from "@ghxstship/ui";
 import { addDays, formatISO } from "date-fns";
 import CreateCallSheetDrawer from "./drawers/CreateCallSheetDrawer";
@@ -45,7 +45,7 @@ const STATUS_BADGE: Record<CallSheet["status"], { label: string; variant: "secon
  published: { label: "Published", variant: "info" },
  distributed: { label: "Distributed", variant: "success" },
  updated: { label: "Updated", variant: "warning" },
- cancelled: { label: "Cancelled", variant: "destructive" },
+ cancelled: { label: "Cancelled", variant: "destructive" }
 };
 
 const CALL_TYPE_LABEL: Record<CallSheet["call_type"], string> = {
@@ -55,7 +55,7 @@ const CALL_TYPE_LABEL: Record<CallSheet["call_type"], string> = {
  vendor: "Vendor",
  security: "Security",
  medical: "Medical",
- transport: "Transport",
+ transport: "Transport"
 };
 
 export default function ProgrammingCallSheetsClient({
@@ -64,7 +64,7 @@ export default function ProgrammingCallSheetsClient({
  initialCallSheets,
  projects,
  events,
- users,
+ users
 }: ProgrammingCallSheetsClientProps) {
  const supabase = useMemo(() => createBrowserClient(), []);
  const router = useRouter();
@@ -120,7 +120,7 @@ export default function ProgrammingCallSheetsClient({
  setLoading(true);
  const params = new URLSearchParams({
  limit: "200",
- offset: "0",
+ offset: "0"
  });
  if (selectedProject !== "all") params.set("project_id", selectedProject);
  if (selectedEvent !== "all") params.set("event_id", selectedEvent);
@@ -152,7 +152,7 @@ export default function ProgrammingCallSheetsClient({
  event: '*',
  schema: 'public',
  table: 'call_sheets',
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  () => {
  loadCallSheets();

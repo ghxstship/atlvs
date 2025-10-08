@@ -21,7 +21,7 @@ export default function UniformSizingGridView({
  selectedIds,
  onSelectionChange,
  onEdit,
- onView,
+ onView
 }: UniformSizingGridViewProps) {
  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 

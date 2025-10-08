@@ -1,7 +1,7 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { AuthLayout } from '../_components/AuthLayout';
@@ -21,6 +21,7 @@ export default function ResetPasswordPage() {
   const searchParams = useSearchParams();
   const supabase = createClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // Handle the auth callback from the email link
     const handleAuthCallback = async () => {
@@ -31,6 +32,7 @@ export default function ResetPasswordPage() {
     };
 
     handleAuthCallback();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supabase.auth]);
 
   const handleResetPassword = async (e: React.FormEvent) => {

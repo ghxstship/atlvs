@@ -51,7 +51,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
+      maximumFractionDigits: 0
     }).format(amount);
   };
 

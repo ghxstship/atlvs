@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { createServerClient, createServiceRoleClient } from '@ghxstship/auth';
-import { rateLimitRequest } from '../../../../_components/lib/rate-limit';
+import { rateLimitRequest } from '../../../../../lib/rate-limit';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -14,11 +14,11 @@ const InviteActionSchema = z.object({
   email: z.string().email().optional(),
   role: z.enum(['viewer', 'contributor', 'manager', 'admin']).optional(),
   emails: z.array(z.string().email()).optional(),
-  inviteId: z.string().uuid().optional(),
+  inviteId: z.string().uuid().optional()
 });
 
 const RevokeActionSchema = z.object({
-  inviteId: z.string().uuid(),
+  inviteId: z.string().uuid()
 });
 
 type AuthenticatedContext = {
@@ -36,11 +36,11 @@ async function getAuthenticatedContext(): Promise<AuthenticatedContext> {
       return c ? { name: c.name, value: c.value } : undefined;
     },
     set: (name: string, value: string, options) => cookieStore.set(name, value, options),
-    remove: (name: string) => cookieStore.delete(name),
+    remove: (name: string) => cookieStore.delete(name)
   });
 
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
   if (!user) throw new Error('Unauthorized');
 
@@ -64,7 +64,7 @@ async function getAuthenticatedContext(): Promise<AuthenticatedContext> {
     user,
     orgId: typedMembership.organization_id,
     role: typedMembership.role,
-    admin: createServiceRoleClient(),
+    admin: createServiceRoleClient()
   };
 }
 
@@ -73,7 +73,7 @@ function serializeError(error: unknown): string {
 }
 
 function extractDomain(email: string): string | null {
-  const match = email.toLowerCase().match(/@([a-z0-9.-]+\.[a-z]{2,})$/i);
+  const match = email.toLowerCase().match(/@([a-z0-9.-]+\.[a-z]{2})$/i);
   return match ? match[1] : null;
 }
 
@@ -124,7 +124,7 @@ async function getSeatContext(admin: ReturnType<typeof createServiceRoleClient>,
     seatsLimit,
     remainingSeats,
     activeCount: count ?? 0,
-    activeDomains,
+    activeDomains
   };
 }
 
@@ -172,7 +172,7 @@ export async function GET(request: NextRequest) {
       user_id: user.id,
       action: 'settings.teams.get',
       resource_type: 'organization_invites',
-      occurred_at: new Date().toISOString(),
+      occurred_at: new Date().toISOString()
     });
 
     return NextResponse.json({
@@ -181,11 +181,11 @@ export async function GET(request: NextRequest) {
         seatPolicy: seatContext.seatPolicy,
         seatsLimit: seatContext.seatsLimit,
         activeCount: seatContext.activeCount,
-        remainingSeats: seatContext.remainingSeats,
+        remainingSeats: seatContext.remainingSeats
       },
       domains: domains ?? [],
       activeDomains: Array.from(seatContext.activeDomains),
-      canManage: ['owner', 'admin'].includes(role),
+      canManage: ['owner', 'admin'].includes(role)
     });
   } catch (error: unknown) {
     console.error('Teams settings GET error:', error);
@@ -220,11 +220,11 @@ export async function POST(request: NextRequest) {
           role: inviteRole,
           status: 'pending',
           created_by: user.id,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         }, { onConflict: 'organization_id,email' });
 
       const { error: inviteError } = await admin.auth.admin.inviteUserByEmail(lowercaseEmail, {
-        redirectTo: process.env.NEXT_PUBLIC_APP_URL || undefined,
+        redirectTo: process.env.NEXT_PUBLIC_APP_URL || undefined
       });
       if (inviteError) throw new Error(inviteError.message);
     };
@@ -294,7 +294,7 @@ export async function POST(request: NextRequest) {
           organization_id: orgId,
           role: payload.role,
           status: 'active',
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         }, { onConflict: 'user_id,organization_id' });
 
       return NextResponse.json({ success: true });
@@ -317,7 +317,7 @@ export async function POST(request: NextRequest) {
       }
 
       const { error: resendError } = await admin.auth.admin.inviteUserByEmail((invite as unknown).email, {
-        redirectTo: process.env.NEXT_PUBLIC_APP_URL || undefined,
+        redirectTo: process.env.NEXT_PUBLIC_APP_URL || undefined
       });
 
       if (resendError) {
@@ -373,7 +373,7 @@ export async function DELETE(request: NextRequest) {
       action: 'settings.teams.invite.revoke',
       resource_type: 'organization_invites',
       resource_id: inviteId,
-      occurred_at: new Date().toISOString(),
+      occurred_at: new Date().toISOString()
     });
 
     return NextResponse.json({ success: true });

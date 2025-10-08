@@ -21,7 +21,7 @@ import {
   Badge,
   Alert,
   AlertDescription,
-  useToast,
+  useToast
 } from '@ghxstship/ui';
 
 interface SecuritySettingsProps {

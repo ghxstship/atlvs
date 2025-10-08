@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
+import type { ComponentType, SVGProps } from 'react';
 import Link from 'next/link';
-import { Badge } from '@ghxstship/ui';
-import { ArrowRight, Mail, Globe, Users, TrendingUp, Heart, Shield, Target, MapPin, Linkedin } from 'lucide-react';
+import { Badge, Button } from '@ghxstship/ui';
+import { ArrowRight, Globe, Heart, Linkedin, Mail, MapPin, Shield, Target, TrendingUp, Users } from 'lucide-react';
 
 import {
   MarketingSection,
   MarketingSectionHeader,
   MarketingCard,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing/layout/Section';
 import { anton } from '../../../_components/lib/typography';
 
@@ -70,8 +71,8 @@ const leadership: LeaderItem[] = [
     location: 'Global',
     image: '/api/placeholder/200/200',
     social: {
-      linkedin: 'https://www.linkedin.com/in/julianrclarkson/',
-    },
+      linkedin: 'https://www.linkedin.com/in/julianrclarkson/'
+    }
   },
   {
     name: 'Sarah Fry',
@@ -80,8 +81,8 @@ const leadership: LeaderItem[] = [
     location: 'Global',
     image: '/api/placeholder/200/200',
     social: {
-      linkedin: 'https://www.linkedin.com/in/frysarah8/',
-    },
+      linkedin: 'https://www.linkedin.com/in/frysarah8/'
+    }
   },
   {
     name: 'John Macejak',
@@ -90,8 +91,8 @@ const leadership: LeaderItem[] = [
     location: 'Global',
     image: '/api/placeholder/200/200',
     social: {
-      linkedin: 'https://www.linkedin.com/in/john-macejak-582946168/',
-    },
+      linkedin: 'https://www.linkedin.com/in/john-macejak-582946168/'
+    }
   },
   {
     name: 'Vita Sotakoun',
@@ -100,8 +101,8 @@ const leadership: LeaderItem[] = [
     location: 'Global',
     image: '/api/placeholder/200/200',
     social: {
-      linkedin: 'https://www.linkedin.com/in/vida-sotakoun/',
-    },
+      linkedin: 'https://www.linkedin.com/in/vida-sotakoun/'
+    }
   },
   {
     name: 'Kayla Harvy',
@@ -110,8 +111,8 @@ const leadership: LeaderItem[] = [
     location: 'Global',
     image: '/api/placeholder/200/200',
     social: {
-      linkedin: 'https://www.linkedin.com/in/kayla-harvey-731b8a34/',
-    },
+      linkedin: 'https://www.linkedin.com/in/kayla-harvey-731b8a34/'
+    }
   },
   {
     name: 'Dallas D-Cal Calles',
@@ -120,8 +121,8 @@ const leadership: LeaderItem[] = [
     location: 'Global',
     image: '/api/placeholder/200/200',
     social: {
-      linkedin: 'https://www.linkedin.com/in/dallascalles/',
-    },
+      linkedin: 'https://www.linkedin.com/in/dallascalles/'
+    }
   },
 ];
 
@@ -132,7 +133,7 @@ const departments: DepartmentItem[] = [
     count: 8,
     description: 'Steering the ship and keeping everyone pointed toward the same horizon',
     leads: ['Julian Clarkson', 'Sarah Fry', 'John Macejak'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'FPL',
@@ -140,7 +141,7 @@ const departments: DepartmentItem[] = [
     count: 12,
     description: 'Making sure the money flows right and the contracts actually protect us',
     leads: ['Marcus Chen', 'Lisa Rodriguez', 'David Kim'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'CDS',
@@ -148,7 +149,7 @@ const departments: DepartmentItem[] = [
     count: 15,
     description: 'Turning wild ideas into experiences that actually make sense',
     leads: ['Maya Patel', 'Alex Thompson', 'Sofia Martinez'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'EPR',
@@ -156,7 +157,7 @@ const departments: DepartmentItem[] = [
     count: 18,
     description: 'Crafting experiences that people remember and pay for',
     leads: ['Jordan Lee', 'Emma Wilson', 'Carlos Ruiz'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'MMM',
@@ -164,7 +165,7 @@ const departments: DepartmentItem[] = [
     count: 14,
     description: 'Getting the word out without being that annoying brand',
     leads: ['Taylor Swift', 'Ryan Park', 'Zoe Chen'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'SED',
@@ -172,7 +173,7 @@ const departments: DepartmentItem[] = [
     count: 22,
     description: 'Building spaces that don\'t fall down and actually work for humans',
     leads: ['Mike Johnson', 'Anna Garcia', 'Tom Anderson'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'SOL',
@@ -180,7 +181,7 @@ const departments: DepartmentItem[] = [
     count: 28,
     description: 'Moving mountains of stuff to the right place at the right time',
     leads: ['Rachel Kim', 'James Wilson', 'Maria Santos'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'ITC',
@@ -188,7 +189,7 @@ const departments: DepartmentItem[] = [
     count: 16,
     description: 'Keeping the digital world connected when everything wants to break',
     leads: ['Kevin Zhang', 'Priya Sharma', 'Lucas Brown'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'XTP',
@@ -196,7 +197,7 @@ const departments: DepartmentItem[] = [
     count: 35,
     description: 'Making the impossible look effortless, one technical miracle at a time',
     leads: ['Diana Ross', 'Marcus Johnson', 'Elena Rodriguez'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'BGS',
@@ -204,7 +205,7 @@ const departments: DepartmentItem[] = [
     count: 11,
     description: 'Making everything look intentional, even when it definitely wasn\'t',
     leads: ['Chris Lee', 'Samantha Davis', 'Roberto Martinez'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'PSS',
@@ -212,7 +213,7 @@ const departments: DepartmentItem[] = [
     count: 24,
     description: 'Keeping everyone safe while they\'re having way too much fun',
     leads: ['Officer Johnson', 'Captain Smith', 'Sergeant Williams'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'GSX',
@@ -220,7 +221,7 @@ const departments: DepartmentItem[] = [
     count: 19,
     description: 'Turning confused visitors into raving fans, one interaction at a time',
     leads: ['Isabella Chen', 'Noah Thompson', 'Ava Rodriguez'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'HFB',
@@ -228,7 +229,7 @@ const departments: DepartmentItem[] = [
     count: 32,
     description: 'Feeding people and keeping them happy, which is basically magic',
     leads: ['Vita Sotakoun', 'Chef Martinez', 'Sommelier Kim'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'ENT',
@@ -236,7 +237,7 @@ const departments: DepartmentItem[] = [
     count: 21,
     description: 'Wrangling creative personalities and making sure the show goes on',
     leads: ['Dallas D-Cal Calles', 'Melody Johnson', 'Rhythm Davis'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
   {
     code: 'TDX',
@@ -244,7 +245,7 @@ const departments: DepartmentItem[] = [
     count: 13,
     description: 'Getting people places and making sure they actually want to be there',
     leads: ['Journey Smith', 'Atlas Brown', 'Compass Wilson'],
-    color: 'from-primary to-secondary',
+    color: 'from-primary to-secondary'
   },
 ];
 
@@ -257,7 +258,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'Global',
     image: '/api/placeholder/150/150',
     tagline: 'Turns executive chaos into strategic clarity—because someone has to keep the C-suite focused',
-    profile: 'Alex translates big-picture vision into actionable plans that actually work. She\'s the reason leadership meetings end with decisions instead of more meetings.',
+    profile: 'Alex translates big-picture vision into actionable plans that actually work. She\'s the reason leadership meetings end with decisions instead of more meetings.'
   },
   {
     name: 'Marcus Chen',
@@ -267,7 +268,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'New York, NY',
     image: '/api/placeholder/150/150',
     tagline: 'Makes budgets that survive contact with reality—and lawyers who actually read contracts',
-    profile: 'Marcus has this weird talent for making numbers tell stories that make sense. He can spot a budget red flag from three spreadsheets away.',
+    profile: 'Marcus has this weird talent for making numbers tell stories that make sense. He can spot a budget red flag from three spreadsheets away.'
   },
   {
     name: 'Luna Rodriguez',
@@ -277,7 +278,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'Los Angeles, CA',
     image: '/api/placeholder/150/150',
     tagline: 'Transforms "wouldn\'t it be cool if..." into experiences people actually want to attend',
-    profile: 'Luna bridges the gap between wild creative dreams and practical execution. She\'s fluent in both artist-speak and project manager-speak.',
+    profile: 'Luna bridges the gap between wild creative dreams and practical execution. She\'s fluent in both artist-speak and project manager-speak.'
   },
   {
     name: 'Jordan Kim',
@@ -287,7 +288,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'Nashville, TN',
     image: '/api/placeholder/150/150',
     tagline: 'Curates lineups that sell tickets and creates moments people post about for years',
-    profile: 'Jordan has an uncanny ability to spot what audiences want before they know they want it. His programming decisions consistently drive revenue.',
+    profile: 'Jordan has an uncanny ability to spot what audiences want before they know they want it. His programming decisions consistently drive revenue.'
   },
   {
     name: 'Zoe Thompson',
@@ -297,7 +298,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'Austin, TX',
     image: '/api/placeholder/150/150',
     tagline: 'Builds buzz that converts to ticket sales—without being cringe about it',
-    profile: 'Zoe creates marketing campaigns that feel authentic instead of desperate. She understands the difference between viral and valuable.',
+    profile: 'Zoe creates marketing campaigns that feel authentic instead of desperate. She understands the difference between viral and valuable.'
   },
   {
     name: 'River Martinez',
@@ -307,7 +308,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'Denver, CO',
     image: '/api/placeholder/150/150',
     tagline: 'Builds festival grounds that don\'t flood, collapse, or become mud pits of despair',
-    profile: 'River turns empty fields into functional event spaces. He thinks about drainage, power distribution, and crowd flow so you don&apos;t have to.',
+    profile: 'River turns empty fields into functional event spaces. He thinks about drainage, power distribution, and crowd flow so you don&apos;t have to.'
   },
   {
     name: 'Casey Wilson',
@@ -317,7 +318,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'Chicago, IL',
     image: '/api/placeholder/150/150',
     tagline: 'Gets 50,000 people fed, watered, and happy without anyone noticing the complexity',
-    profile: 'Casey orchestrates the invisible ballet of event logistics. When everything runs smoothly, that\'s Casey\'s handiwork.',
+    profile: 'Casey orchestrates the invisible ballet of event logistics. When everything runs smoothly, that\'s Casey\'s handiwork.'
   },
   {
     name: 'Phoenix Zhang',
@@ -327,7 +328,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'Seattle, WA',
     image: '/api/placeholder/150/150',
     tagline: 'Keeps WiFi working when 100k people are trying to post the same sunset photo',
-    profile: 'Phoenix designs network infrastructure that survives the social media apocalypse. He plans for the worst-case scenario and then adds more bandwidth.',
+    profile: 'Phoenix designs network infrastructure that survives the social media apocalypse. He plans for the worst-case scenario and then adds more bandwidth.'
   },
   {
     name: 'Sage Anderson',
@@ -337,7 +338,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'Las Vegas, NV',
     image: '/api/placeholder/150/150',
     tagline: 'Makes stages that don\'t collapse and sound systems that actually work in the back row',
-    profile: 'Sage turns technical riders into reality. She speaks fluent audio engineer and can troubleshoot anything with a power cord.',
+    profile: 'Sage turns technical riders into reality. She speaks fluent audio engineer and can troubleshoot anything with a power cord.'
   },
   {
     name: 'Indigo Davis',
@@ -347,7 +348,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'Portland, OR',
     image: '/api/placeholder/150/150',
     tagline: 'Creates signage so good people actually know where they\'re going',
-    profile: 'Indigo designs wayfinding that works even when people are distracted, tired, or slightly intoxicated. Her signs prevent crowd disasters.',
+    profile: 'Indigo designs wayfinding that works even when people are distracted, tired, or slightly intoxicated. Her signs prevent crowd disasters.'
   },
   {
     name: 'Atlas Johnson',
@@ -357,7 +358,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'Miami, FL',
     image: '/api/placeholder/150/150',
     tagline: 'Keeps everyone safe while maintaining the vibe—no easy feat with 50k party people',
-    profile: 'Atlas balances security with accessibility. He prevents problems before they happen while keeping the atmosphere fun, not fortress-like.',
+    profile: 'Atlas balances security with accessibility. He prevents problems before they happen while keeping the atmosphere fun, not fortress-like.'
   },
   {
     name: 'Harmony Lee',
@@ -367,7 +368,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'San Francisco, CA',
     image: '/api/placeholder/150/150',
     tagline: 'Turns first-time visitors into lifelong fans through moments that matter',
-    profile: 'Harmony designs touchpoints that create emotional connections. She understands that great experiences happen in the details.',
+    profile: 'Harmony designs touchpoints that create emotional connections. She understands that great experiences happen in the details.'
   },
   {
     name: 'Basil Rodriguez',
@@ -377,7 +378,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'New Orleans, LA',
     image: '/api/placeholder/150/150',
     tagline: 'Feeds thousands without food poisoning—and makes it taste good too',
-    profile: 'Basil manages complex food operations that scale. He knows how to keep quality high when quantity gets ridiculous.',
+    profile: 'Basil manages complex food operations that scale. He knows how to keep quality high when quantity gets ridiculous.'
   },
   {
     name: 'Melody Santos',
@@ -387,7 +388,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'Los Angeles, CA',
     image: '/api/placeholder/150/150',
     tagline: 'Keeps artists happy, on time, and actually showing up to their own performances',
-    profile: 'Melody speaks fluent artist temperament. She manages egos, riders, and last-minute changes with diplomatic grace.',
+    profile: 'Melody speaks fluent artist temperament. She manages egos, riders, and last-minute changes with diplomatic grace.'
   },
   {
     name: 'Journey Park',
@@ -397,7 +398,7 @@ const teamMembers: TeamMemberItem[] = [
     location: 'Vancouver, Canada',
     image: '/api/placeholder/150/150',
     tagline: 'Gets people to events without losing their luggage, sanity, or enthusiasm',
-    profile: 'Journey creates travel experiences that enhance rather than exhaust. She turns logistics into part of the adventure.',
+    profile: 'Journey creates travel experiences that enhance rather than exhaust. She turns logistics into part of the adventure.'
   },
 ];
 
@@ -412,32 +413,32 @@ const cultureValues: CultureValue[] = [
   {
     title: 'Remote-First',
     description: 'We believe great work can happen anywhere. Our team spans the globe, working flexibly while staying connected.',
-    icon: Globe,
+    icon: Globe
   },
   {
     title: 'Creative Freedom',
     description: 'We encourage experimentation, creative thinking, and innovative approaches to solving complex problems.',
-    icon: Users,
+    icon: Users
   },
   {
     title: 'Continuous Learning',
     description: 'We invest in our team\'s growth through learning opportunities, conferences, and skill development programs.',
-    icon: TrendingUp,
+    icon: TrendingUp
   },
   {
     title: 'Inclusive Environment',
     description: 'We celebrate diverse perspectives and create an environment where everyone feels valued and heard.',
-    icon: Heart,
+    icon: Heart
   },
   {
     title: 'Work-Life Balance',
     description: 'We respect personal time and promote healthy boundaries between work and life.',
-    icon: Shield,
+    icon: Shield
   },
   {
     title: 'Impact-Driven',
     description: 'Every team member contributes to meaningful work that impacts creative professionals worldwide.',
-    icon: Target,
+    icon: Target
   },
 ];
 

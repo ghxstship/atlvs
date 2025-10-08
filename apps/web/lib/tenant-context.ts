@@ -55,7 +55,7 @@ export async function getTenantContext(): Promise<TenantContext | null> {
     return {
       organizationId,
       userId: user.id,
-      userRole: membership?.role || 'member',
+      userRole: membership?.role || 'member'
     };
   } catch (error) {
     console.error('Error getting tenant context:', error);
@@ -81,7 +81,7 @@ export function hasPermission(userRole: string | undefined, requiredPermission: 
     owner: ['*'], // All permissions
     admin: ['settings:manage', 'users:manage', 'projects:manage', 'finance:manage'],
     manager: ['projects:manage', 'users:view'],
-    member: ['projects:view', 'users:view'],
+    member: ['projects:view', 'users:view']
   };
   
   const permissions = rolePermissions[userRole] || [];

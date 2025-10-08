@@ -1,13 +1,13 @@
 "use client";
 
 import { MoreHorizontal, Edit, Eye, Trash2, ArrowUpDown, ArrowUp, ArrowDown, Clock, MapPin, DollarSign, Users, Calendar, Music } from "lucide-react";
-import { useState } from "react";
+import { useState } from 'react';
 import {
  Badge,
  Button,
  Card,
  Table,
- Checkbox,
+ Checkbox
 } from "@ghxstship/ui";
 import type { ProgrammingPerformance, PerformanceSort, PerformanceProject, PerformanceEvent } from "../types";
 import { STATUS_BADGE, PERFORMANCE_TYPE_BADGE } from "../types";
@@ -48,7 +48,7 @@ export default function ProgrammingPerformancesListView({
  onSort,
  users,
  projects,
- events,
+ events
 }: ProgrammingPerformancesListViewProps) {
  const [expandedRows, setExpandedRows] = useState<Set<string>(new Set());
 
@@ -56,7 +56,7 @@ export default function ProgrammingPerformancesListView({
  if (sortConfig.field === field) {
  onSort({
  field,
- direction: sortConfig.direction === "asc" ? "desc" : "asc",
+ direction: sortConfig.direction === "asc" ? "desc" : "asc"
  });
  } else {
  onSort({ field, direction: "asc" });
@@ -85,7 +85,7 @@ export default function ProgrammingPerformancesListView({
  const formatTime = (dateString: string) => {
  return new Date(dateString).toLocaleTimeString("en-US", {
  hour: "2-digit",
- minute: "2-digit",
+ minute: "2-digit"
  });
  };
 
@@ -93,7 +93,7 @@ export default function ProgrammingPerformancesListView({
  if (!amount || !currency) return "—";
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

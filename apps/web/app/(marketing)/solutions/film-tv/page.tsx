@@ -1,28 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Camera,
-  Clapperboard,
-  Film,
-  MonitorPlay,
-  Share2,
-  Star,
-  Users,
-} from 'lucide-react';
+import { ArrowRight, Camera, Clapperboard, Film, MonitorPlay, Share2, Star, Users } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Film & TV Solutions | GHXSTSHIP',
   description:
-    'Coordinate multi-market productions, manage crews, and control budgets with GHXSTSHIP’s film and television workflows.',
+    'Coordinate multi-market productions, manage crews, and control budgets with GHXSTSHIP’s film and television workflows.'
 };
 
 const heroStats = [
@@ -36,36 +27,36 @@ const workflowHighlights = [
   {
     title: 'Pre-Production',
     description: 'Script breakdowns, casting boards, and location scouting managed in one workspace.',
-    icon: Clapperboard,
+    icon: Clapperboard
   },
   {
     title: 'Production Control',
     description: 'Call sheets, run-of-show timelines, and asset approvals synced across crews and vendors.',
-    icon: Camera,
+    icon: Camera
   },
   {
     title: 'Post & Delivery',
     description: 'Review cycles, localization, and broadcast delivery tracked with audit-ready history.',
-    icon: MonitorPlay,
+    icon: MonitorPlay
   },
 ];
 
 const productionBenefits = [
   {
     title: 'Crew Collaboration',
-    description: 'Centralized communication, annotated assets, and approvals keep every department aligned.',
+    description: 'Centralized communication, annotated assets, and approvals keep every department aligned.'
   },
   {
     title: 'Budget Confidence',
-    description: 'Live burn reports highlight variances across locations and departments before they spike.',
+    description: 'Live burn reports highlight variances across locations and departments before they spike.'
   },
   {
     title: 'Global Talent Access',
-    description: 'Tap OPENDECK’s vetted roster to staff specialty crews and regional fixers in hours.',
+    description: 'Tap OPENDECK’s vetted roster to staff specialty crews and regional fixers in hours.'
   },
   {
     title: 'Executive Visibility',
-    description: 'Portfolio dashboards give studios and producers real-time status across slates.',
+    description: 'Portfolio dashboards give studios and producers real-time status across slates.'
   },
 ];
 
@@ -77,7 +68,7 @@ const caseStudies = [
     result: '30% fewer delays · 25% tighter budget control · 40% faster post-production',
     quote:
       'GHXSTSHIP gave our showrunners and line producers a single source of truth. The visibility saved us weeks every season.',
-    author: 'Sarah Chen, Executive Producer',
+    author: 'Sarah Chen, Executive Producer'
   },
   {
     company: 'Blackwater Productions',
@@ -86,7 +77,7 @@ const caseStudies = [
     result: '50% faster crew onboarding · 20% faster delivery · 35% lower travel costs',
     quote:
       'The OPENDECK network helped us source local crews instantly. We shipped on time without flying half the world.',
-    author: 'Marcus Rodriguez, Director',
+    author: 'Marcus Rodriguez, Director'
   },
 ];
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import { AppDrawer, type DrawerFieldConfig } from "@ghxstship/ui";
 import type { Risk } from "./RisksClient";
@@ -53,7 +53,7 @@ const calculateRiskScore = (probability: string, impact: string): number => {
  low: 2,
  medium: 3,
  high: 4,
- very_high: 5,
+ very_high: 5
  };
 
  return (weight[probability] ?? 3) * (weight[impact] ?? 3);
@@ -81,7 +81,7 @@ export default function EditRiskDrawer({
  risk,
  projects = [],
  users = [],
- onSuccess,
+ onSuccess
 }: EditRiskDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -89,7 +89,7 @@ export default function EditRiskDrawer({
  const projectOptions = useMemo(() => (
  projects.map((project): { label: string; value: string } => ({
  label: project.name,
- value: project.id,
+ value: project.id
  }))
 ), [projects]);
 
@@ -97,7 +97,7 @@ export default function EditRiskDrawer({
  [{ label: "Unassigned", value: "" },
  ...users.map((user): { label: string; value: string } => ({
  label: user.full_name || user.email,
- value: user.id,
+ value: user.id
  }))]
 ), [users]);
 
@@ -107,84 +107,84 @@ export default function EditRiskDrawer({
  label: "Risk Title",
  type: "text",
  required: true,
- placeholder: "Enter a clear, concise risk title",
+ placeholder: "Enter a clear, concise risk title"
  },
  {
  key: "description",
  label: "Description",
  type: "textarea",
  required: true,
- placeholder: "Describe the risk in detail, including potential consequences",
+ placeholder: "Describe the risk in detail, including potential consequences"
  },
  {
  key: "category",
  label: "Category",
  type: "select",
  required: true,
- options: CATEGORY_OPTIONS,
+ options: CATEGORY_OPTIONS
  },
  {
  key: "probability",
  label: "Probability",
  type: "select",
  required: true,
- options: PROBABILITY_OPTIONS,
+ options: PROBABILITY_OPTIONS
  },
  {
  key: "impact",
  label: "Impact",
  type: "select",
  required: true,
- options: IMPACT_OPTIONS,
+ options: IMPACT_OPTIONS
  },
  {
  key: "project_id",
  label: "Project",
  type: "select",
  required: true,
- options: projectOptions,
+ options: projectOptions
  },
  {
  key: "owner_id",
  label: "Risk Owner",
  type: "select",
- options: ownerOptions,
+ options: ownerOptions
  },
  {
  key: "status",
  label: "Status",
  type: "select",
- options: STATUS_OPTIONS,
+ options: STATUS_OPTIONS
  },
  {
  key: "identified_date",
  label: "Identified Date",
  type: "date",
- required: true,
+ required: true
  },
  {
  key: "review_date",
  label: "Review Date",
  type: "date",
- placeholder: "When should this risk be reviewed?",
+ placeholder: "When should this risk be reviewed?"
  },
  {
  key: "closed_date",
  label: "Closed Date",
  type: "date",
- placeholder: "When was this risk closed?",
+ placeholder: "When was this risk closed?"
  },
  {
  key: "mitigation_plan",
  label: "Mitigation Plan",
  type: "textarea",
- placeholder: "Describe how this risk will be mitigated or managed",
+ placeholder: "Describe how this risk will be mitigated or managed"
  },
  {
  key: "contingency_plan",
  label: "Contingency Plan",
  type: "textarea",
- placeholder: "What actions will be taken if this risk occurs?",
+ placeholder: "What actions will be taken if this risk occurs?"
  },
  ];
 
@@ -223,7 +223,7 @@ export default function EditRiskDrawer({
  identified_date: identifiedDateIso,
  review_date: reviewDateIso,
  closed_date: status === "closed" ? (closedDateIso ?? new Date().toISOString()) : closedDateIso,
- updated_at: new Date().toISOString(),
+ updated_at: new Date().toISOString()
  };
 
  setLoading(true);
@@ -263,7 +263,7 @@ export default function EditRiskDrawer({
  review_date: toDateInputValue(risk.review_date ?? null),
  closed_date: toDateInputValue(risk.closed_date ?? null),
  mitigation_plan: risk.mitigation_plan ?? "",
- contingency_plan: risk.contingency_plan ?? "",
+ contingency_plan: risk.contingency_plan ?? ""
  };
 
  return (

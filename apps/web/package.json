@@ -23,7 +23,6 @@
     "@ghxstship/application": "workspace:*",
     "@ghxstship/auth": "workspace:*",
     "@ghxstship/config": "workspace:*",
-    "@ghxstship/data-view": "workspace:*",
     "@ghxstship/domain": "workspace:*",
     "@ghxstship/icons": "workspace:*",
     "@ghxstship/infrastructure": "workspace:*",

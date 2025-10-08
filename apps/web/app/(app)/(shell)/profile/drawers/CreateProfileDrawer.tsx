@@ -21,7 +21,7 @@ import {
  Tabs,
  TabsList,
  TabsTrigger,
- TabsContent,
+ TabsContent
 } from '@ghxstship/ui';
 // import { z } from 'zod';
 
@@ -57,7 +57,7 @@ const createProfileSchema = z.object({
  // Additional Information
  bio: z.string().optional(),
  timezone: z.string().optional(),
- language: z.string().optional(),
+ language: z.string().optional()
 });
 
 type FormData = z.infer<typeof createProfileSchema>;
@@ -95,7 +95,7 @@ export default function CreateProfileDrawer({
  last_name: '',
  email: '',
  status: 'pending',
- employment_type: 'full_time',
+ employment_type: 'full_time'
  }
  });
 
@@ -116,7 +116,7 @@ export default function CreateProfileDrawer({
  await onSave(data);
  toast({
  title: 'Success',
- description: 'Profile created successfully',
+ description: 'Profile created successfully'
  });
  reset();
  onClose();
@@ -124,7 +124,7 @@ export default function CreateProfileDrawer({
  toast({
  title: 'Error',
  description: 'Failed to create profile',
- variant: 'destructive',
+ variant: 'destructive'
  });
  } finally {
  setLoading(false);

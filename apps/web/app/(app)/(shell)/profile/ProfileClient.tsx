@@ -1,12 +1,26 @@
 'use client';
 
-
-import { useTranslations } from 'next-intl';
+import { useState, useEffect, useCallback } from 'react';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, type DataRecord } from '@ghxstship/ui';
+import { Drawer } from '@ghxstship/ui';
 
-// Profile field configuration for ATLVS DataViews
-const fieldConfig: FieldConfig[] = [
+// Type definitions
+type DataRecord = Record<string, unknown>;
+
+interface FieldConfig {
+  key: string;
+  label: string;
+  type: string;
+  width?: number;
+  sortable?: boolean;
+  filterable?: boolean;
+  required?: boolean;
+  options?: Array<{ value: string; label: string }>;
+}
+
+// Profile field configuration for future ATLVS integration
+// Reserved for future ATLVS integration
+const _fieldConfig: FieldConfig[] = [
   {
     key: 'id',
     label: 'ID',
@@ -47,15 +61,7 @@ const fieldConfig: FieldConfig[] = [
     type: 'select',
     width: 150,
     sortable: true,
-    filterable: true,
-    options: [
-      { value: 'engineering', label: 'Engineering' },
-      { value: 'marketing', label: 'Marketing' },
-      { value: 'sales', label: 'Sales' },
-      { value: 'hr', label: 'Human Resources' },
-      { value: 'finance', label: 'Finance' },
-      { value: 'operations', label: 'Operations' }
-    ]
+    filterable: true
   },
   {
     key: 'phone',
@@ -136,149 +142,92 @@ const fieldConfig: FieldConfig[] = [
   }
 ];
 
-// Mock profile data for development
-const mockProfileData: DataRecord[] = [
-  {
-    id: '1',
-    full_name: 'John Doe',
-    email: 'john.doe@company.com',
-    title: 'Senior Software Engineer',
-    department: 'engineering',
-    phone: '+1 (555) 123-4567',
-    location: 'San Francisco, CA',
-    website: 'https://johndoe.dev',
-    bio: 'Experienced software engineer with expertise in full-stack development and cloud architecture.',
-    skills: ['JavaScript', 'React', 'Node.js', 'AWS', 'Docker'],
-    achievements: ['Employee of the Month', 'Tech Lead Certification', 'AWS Solutions Architect'],
-    status: 'active',
-    created_at: '2024-01-15T08:00:00Z',
-    updated_at: '2024-03-10T14:30:00Z'
-  },
-  {
-    id: '2',
-    full_name: 'Jane Smith',
-    email: 'jane.smith@company.com',
-    title: 'Product Manager',
-    department: 'marketing',
-    phone: '+1 (555) 987-6543',
-    location: 'New York, NY',
-    website: 'https://janesmith.com',
-    bio: 'Strategic product manager focused on user experience and market growth.',
-    skills: ['Product Strategy', 'User Research', 'Analytics', 'Agile'],
-    achievements: ['Product Launch Award', 'Customer Success Champion'],
-    status: 'active',
-    created_at: '2024-02-01T09:15:00Z',
-    updated_at: '2024-03-08T11:45:00Z'
-  }
-];
+export default function ProfileClient({ orgId, userId: _userId, userEmail: _userEmail }: { orgId: string; userId: string; userEmail: string }) {
+  const [profiles, setProfiles] = useState<DataRecord[]>([]);
+  const [loading, setLoading] = useState(true);
+  const supabase = createBrowserClient();
 
-// Mock data loading function
-async function loadMockData(): Promise<DataRecord[]> {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  return mockProfileData;
-}
-
-export default function ProfileClient({ orgId, userId, userEmail }: { orgId: string; userId: string; userEmail: string }) {
-  const t = useTranslations('profile');
-  const sb = createBrowserClient();
-
-  // DataViewConfig for ATLVS system
-  const dataViewConfig: DataViewConfig = {
-    id: 'profiles',
-    name: 'Profile Management',
-    viewType: 'grid',
-    defaultView: 'grid',
-    fields: fieldConfig,
-    data: mockProfileData,
-    onSearch: async (query: string) => {
-      // Search implemented with Supabase
-      const { data: searchResults } = await sb
+  // Load profiles from Supabase
+  const loadProfiles = useCallback(async () => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
         .from('user_profiles')
         .select('*')
-        .ilike('full_name', `%${query}%`)
-        .limit(50);
-      // In real implementation, update the data state
-      console.log('Search results:', searchResults);
-    },
-    onFilter: async (filters: any) => {
-      // Filtering implemented with Supabase
-      let query = sb.from('user_profiles').select('*');
-      Object.entries(filters).forEach(([key, value]) => {
-        if (value) query = query.eq(key, value);
-      });
-      const { data: filteredResults } = await query;
-      console.log('Filtered results:', filteredResults);
-    },
-    onSort: async (sorts: any) => {
-      // Sorting implemented with Supabase
-      const sort = sorts[0];
-      if (sort) {
-        const { data: sortedResults } = await sb
-          .from('user_profiles')
-          .select('*')
-          .order(sort.field, { ascending: sort.direction === 'asc' });
-        console.log('Sorted results:', sortedResults);
-      }
-    },
-    onRefresh: async () => {
-      // Data refresh implemented with Supabase
-      const { data: refreshedData } = await sb
-        .from('user_profiles')
-        .select('*')
+        .eq('organization_id', orgId)
         .order('created_at', { ascending: false });
-      console.log('Refreshed data:', refreshedData);
-      return refreshedData || [];
-    },
-    onExport: (data, format) => {
-      console.log('Export profiles:', format, data);
-    },
-    onImport: (data: any) => {
-      console.log('Import profiles:', data);
+
+      if (error) throw error;
+      setProfiles(data || []);
+    } catch (error) {
+      console.error('Error loading profiles:', error);
+      setProfiles([]);
+    } finally {
+      setLoading(false);
     }
-  };
+  }, [orgId, supabase]);
+
+  useEffect(() => {
+    loadProfiles();
+  }, [loadProfiles]);
 
   return (
     <div className="h-full">
-      <StateManagerProvider>
-        <DataViewProvider config={dataViewConfig}>
-          <div className="flex flex-col h-full stack-md">
-            {/* View Switcher and Actions */}
-            <div className="flex items-center justify-between">
-              <ViewSwitcher />
-              <DataActions />
-            </div>
+      <div className="flex flex-col h-full space-y-4">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <h1 className="text-2xl font-bold">User Profiles</h1>
+          <button
+            onClick={() => loadProfiles()}
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
+          >
+            Refresh
+          </button>
+        </div>
 
-            {/* Data Views */}
-            <DataGrid />
-            <KanbanBoard 
-              columns={[
-                { id: 'active', title: 'Active' },
-                { id: 'inactive', title: 'Inactive' },
-                { id: 'pending', title: 'Pending' }
-              ]}
-              statusField="status"
-              titleField="full_name"
-            />
-            <CalendarView 
-              startDateField="created_at"
-              titleField="full_name"
-            />
-            <ListView 
-              titleField="full_name"
-              subtitleField="title"
-            />
-
-            {/* Universal Drawer for CRUD operations */}
-            <Drawer title="Details"
-              open={false}
-              onClose={() => {}}
-            >
-              <div></div>
-            </Drawer>
+        {/* Data Display */}
+        {loading ? (
+          <div className="flex items-center justify-center h-64">
+            <p>Loading profiles...</p>
           </div>
-        </DataViewProvider>
-      </StateManagerProvider>
+        ) : profiles.length === 0 ? (
+          <div className="flex items-center justify-center h-64 border-2 border-dashed rounded-lg">
+            <p className="text-muted-foreground">No profiles found</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {profiles.map((profile) => {
+              const profileId = typeof profile.id === 'string' ? profile.id : String(profile.id);
+              const fullName = typeof profile.full_name === 'string' ? profile.full_name : 'Unknown';
+              const email = typeof profile.email === 'string' ? profile.email : '';
+              const title = typeof profile.title === 'string' ? profile.title : '';
+              const department = typeof profile.department === 'string' ? profile.department : '';
+              
+              return (
+                <div key={profileId} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <h3 className="font-semibold text-lg">{fullName}</h3>
+                  {email && <p className="text-sm text-gray-600">{email}</p>}
+                  {title && <p className="text-sm text-gray-700 mt-1">{title}</p>}
+                  {department && (
+                    <div className="mt-2">
+                      <span className="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded">
+                        {department}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Universal Drawer for CRUD operations */}
+        <Drawer title="Profile Details" open={false} onClose={() => {}}>
+          <div className="p-4">
+            <p className="text-gray-600">Profile details will be displayed here.</p>
+          </div>
+        </Drawer>
+      </div>
     </div>
   );
 }

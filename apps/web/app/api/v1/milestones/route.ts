@@ -11,7 +11,7 @@ const createMilestoneSchema = z.object({
   due_date: z.string(),
   status: z.enum(["pending", "completed", "overdue"]).optional(),
   progress: z.number().min(0).max(100).optional(),
-  dependencies: z.array(z.string().uuid()).optional(),
+  dependencies: z.array(z.string().uuid()).optional()
 });
 
 // GET /api/v1/milestones - List all milestones for the organization
@@ -102,7 +102,7 @@ export async function GET(request: NextRequest) {
       data: updatedMilestones,
       count,
       limit,
-      offset,
+      offset
     });
   } catch (error) {
     console.error("Error in GET /api/v1/milestones:", error);
@@ -206,7 +206,7 @@ export async function POST(request: NextRequest) {
         dependencies: data.dependencies || null,
         completed_at: data.progress === 100 ? new Date().toISOString() : null,
         created_by: user.id,
-        updated_by: user.id,
+        updated_by: user.id
       })
       .select(`
         *,
@@ -231,8 +231,8 @@ export async function POST(request: NextRequest) {
       action: "create",
       details: {
         title: newMilestone.title,
-        due_date: newMilestone.due_date,
-      },
+        due_date: newMilestone.due_date
+      }
     });
 
     return NextResponse.json(newMilestone, { status: 201 });

@@ -1,5 +1,5 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, Eye, Save, X, Building } from 'lucide-react';
 import { useState } from 'react';
 import {
  Button,
@@ -13,7 +13,7 @@ import {
  SelectValue,
  Textarea,
  Badge,
- Switch,
+ Switch
 } from '@ghxstship/ui';
 import type { HistoryEntry, HistoryEntryFormData } from '../types';
 import {
@@ -26,7 +26,7 @@ import {
  formatDate,
  formatDateRange,
  calculateDuration,
- getEntryTypeIcon,
+ getEntryTypeIcon
 } from '../types';
 
 interface HistoryFormViewProps {
@@ -46,7 +46,7 @@ export default function HistoryFormView({
  loading,
  saving,
  onFieldChange,
- onSave,
+ onSave
 }: HistoryFormViewProps) {
  const [skillInput, setSkillInput] = useState('');
  const [achievementInput, setAchievementInput] = useState('');

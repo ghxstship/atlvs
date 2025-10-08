@@ -51,7 +51,7 @@ export default function ViewTaskDrawer({
  open,
  onOpenChange,
  task,
- onEdit,
+ onEdit
 }: ViewTaskDrawerProps) {
  // Calculate days until due
  const getDaysUntil = () => {

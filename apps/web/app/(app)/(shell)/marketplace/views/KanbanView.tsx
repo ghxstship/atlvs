@@ -6,7 +6,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@ghxstship/ui';
 import {
   MoreHorizontal,
@@ -49,7 +49,7 @@ export default function KanbanView({
   onListingDelete,
   onListingView,
   selectedListings = [],
-  onSelectionChange,
+  onSelectionChange
 }: KanbanViewProps) {
   const [draggedListing, setDraggedListing] = useState<MarketplaceListing | null>(null);
 
@@ -57,7 +57,7 @@ export default function KanbanView({
   const { data: listingsResponse, isLoading, error } = useQuery({
     queryKey: ['marketplace-listings', orgId, filters],
     queryFn: () => marketplaceService.getListings(orgId, filters),
-    refetchInterval: 30000,
+    refetchInterval: 30000
   });
 
   const listings = listingsResponse?.listings || [];
@@ -131,7 +131,7 @@ export default function KanbanView({
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency,
-      minimumFractionDigits: 0,
+      minimumFractionDigits: 0
     }).format(amount);
   };
 

@@ -16,13 +16,13 @@ import {
  SelectValue,
  Label,
  Badge,
- Card,
+ Card
 } from '@ghxstship/ui';
 import type { ProfessionalProfile, ProfessionalFormData, EmploymentType, ProfileStatus } from '../types';
 import {
  EMPLOYMENT_TYPE_LABELS,
  PROFILE_STATUS_LABELS,
- COMMON_SKILLS,
+ COMMON_SKILLS
 } from '../types';
 
 const formSchema = z.object({
@@ -35,7 +35,7 @@ const formSchema = z.object({
  bio: z.string().optional(),
  linkedin_url: z.string().url().optional().or(z.literal('')),
  website_url: z.string().url().optional().or(z.literal('')),
- status: z.enum(['active', 'inactive', 'pending', 'suspended']),
+ status: z.enum(['active', 'inactive', 'pending', 'suspended'])
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -57,7 +57,7 @@ export default function CreateProfessionalDrawer({
  profile,
  managers = [],
  departments = [],
- loading = false,
+ loading = false
 }: CreateProfessionalDrawerProps) {
  const [skills, setSkills] = useState<string[]>([]);
  const [newSkill, setNewSkill] = useState('');
@@ -69,7 +69,7 @@ export default function CreateProfessionalDrawer({
  formState: { errors: _errors },
  reset,
  watch,
- setValue,
+ setValue
  } = useForm<FormData>({
  resolver: zodResolver(formSchema),
  defaultValues: {
@@ -82,8 +82,8 @@ export default function CreateProfessionalDrawer({
  bio: '',
  linkedin_url: '',
  website_url: '',
- status: 'active',
- },
+ status: 'active'
+ }
  });
 
  // Load profile data when editing
@@ -99,7 +99,7 @@ export default function CreateProfessionalDrawer({
  bio: profile.bio || '',
  linkedin_url: profile.linkedin_url || '',
  website_url: profile.website_url || '',
- status: profile.status,
+ status: profile.status
  });
  setSkills(profile.skills || []);
  } else {
@@ -113,7 +113,7 @@ export default function CreateProfessionalDrawer({
  bio: '',
  linkedin_url: '',
  website_url: '',
- status: 'active',
+ status: 'active'
  });
  setSkills([]);
  }
@@ -122,7 +122,7 @@ export default function CreateProfessionalDrawer({
  const onSubmit = async (data: FormData) => {
  await onSave({
  ...data,
- skills,
+ skills
  } as ProfessionalFormData);
  };
 

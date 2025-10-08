@@ -1,8 +1,8 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
-import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
+import { useState, useCallback, useEffect } from 'react';
+import { Card, Button, Input, Badge } from '@ghxstship/ui';
 import { Plus, FileText, Clock, CheckCircle, AlertTriangle, DollarSign, Calendar } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -58,8 +58,10 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
     notes: ''
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadData = async () => {
@@ -193,11 +195,11 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
       case 'draft':
         return <Badge variant="secondary" className="flex items-center gap-xs"><FileText className="w-3 h-3" />Draft</Badge>;
       case 'expired':
-        return <Badge variant="destructive" className="flex items-center gap-xs"><AlertTriangle className="w-3 h-3" />Expired</Badge>;
+        return <Badge variant="error" className="flex items-center gap-xs"><AlertTriangle className="w-3 h-3" />Expired</Badge>;
       case 'terminated':
-        return <Badge variant="destructive" className="flex items-center gap-xs"><AlertTriangle className="w-3 h-3" />Terminated</Badge>;
+        return <Badge variant="error" className="flex items-center gap-xs"><AlertTriangle className="w-3 h-3" />Terminated</Badge>;
       default:
-        return <Badge variant="outline">{status}</Badge>;
+        return <Badge variant="secondary">{status}</Badge>;
     }
   };
 
@@ -283,7 +285,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Value</label>
-                  <UnifiedInput                     type="number"
+                  <Input                     type="number"
                     step="0.01"
                     value={formData.value}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, value: e.target.value }))}
@@ -306,7 +308,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
               <div className="grid grid-cols-2 gap-md">
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Start Date</label>
-                  <UnifiedInput                     type="date"
+                  <Input                     type="date"
                     value={formData.startDate}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
                     required
@@ -314,7 +316,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">End Date</label>
-                  <UnifiedInput                     type="date"
+                  <Input                     type="date"
                     value={formData.endDate}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, endDate: e.target.value }))}
                   />
@@ -322,14 +324,14 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
               </div>
               <div>
                 <label className="block text-body-sm form-label mb-xs">Notes</label>
-                <UnifiedInput                   value={formData.notes}
+                <Input                   value={formData.notes}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
                   placeholder="Additional notes or terms"
                 />
               </div>
               <div className="flex gap-sm">
                 <Button type="submit">Create Contract</Button>
-                <Button type="button" variant="outline" onClick={() => setShowForm(false)}>
+                <Button type="button" variant="secondary" onClick={() => setShowForm(false)}>
                   Cancel
                 </Button>
               </div>
@@ -413,7 +415,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   {contract.status === 'sent' && (
                     <Button 
                       
-                      variant="outline"
+                      variant="secondary"
                       onClick={() => updateContractStatus(contract.id, 'signed')}
                     >
                       Mark as Signed
@@ -422,13 +424,13 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   {contract.status === 'signed' && (
                     <Button 
                       
-                      variant="destructive"
+                      variant="error"
                       onClick={() => updateContractStatus(contract.id, 'terminated')}
                     >
                       Terminate
                     </Button>
                   )}
-                  <Button variant="outline">
+                  <Button variant="secondary">
                     View Details
                   </Button>
                 </div>

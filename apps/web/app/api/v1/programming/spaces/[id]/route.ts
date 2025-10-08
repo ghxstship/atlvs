@@ -41,7 +41,7 @@ const updateSpaceSchema = z.object({
     kitchenette: z.boolean().optional(),
     storage: z.boolean().optional(),
     security_camera: z.boolean().optional(),
-    access_control: z.boolean().optional(),
+    access_control: z.boolean().optional()
   }).optional(),
   technical_specs: z.object({
     audio_inputs: z.number().int().min(0).optional(),
@@ -53,7 +53,7 @@ const updateSpaceSchema = z.object({
     load_capacity: z.number().min(0).optional(),
     hvac_zones: z.number().int().min(0).optional(),
     emergency_exits: z.number().int().min(0).optional(),
-    fire_safety: z.array(z.string()).optional(),
+    fire_safety: z.array(z.string()).optional()
   }).optional(),
   is_bookable: z.boolean().optional(),
   booking_advance_days: z.number().int().min(0).optional().nullable(),
@@ -79,7 +79,7 @@ const updateSpaceSchema = z.object({
   floor_plan: z.string().url().optional().nullable(),
   documents: z.array(z.string().url()).optional(),
   tags: z.array(z.string().max(32)).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 async function getSupabase() {
@@ -90,7 +90,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -191,7 +191,7 @@ export async function PATCH(
     const updatePayload = {
       ...data,
       updated_by: user!.id,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data: space, error: updateError } = await supabase
@@ -214,8 +214,8 @@ export async function PATCH(
       details: {
         name: space.name,
         kind: space.kind,
-        changes: Object.keys(data),
-      },
+        changes: Object.keys(data)
+      }
     });
 
     return NextResponse.json(space);
@@ -268,8 +268,8 @@ export async function DELETE(
       details: {
         name: existingSpace.name,
         kind: existingSpace.kind,
-        capacity: existingSpace.capacity,
-      },
+        capacity: existingSpace.capacity
+      }
     });
 
     return NextResponse.json({ success: true });

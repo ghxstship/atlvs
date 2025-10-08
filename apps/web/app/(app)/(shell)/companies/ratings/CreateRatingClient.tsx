@@ -1,17 +1,11 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, UnifiedInput, Textarea, Select, Card } from '@ghxstship/ui';
-import { 
-  Star,
-  Building,
-  MessageSquare,
-  Save,
-  X
-} from 'lucide-react';
+import { Drawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
+import { Building, MessageSquare, Save, Star, X } from 'lucide-react';
 
 interface CreateRatingClientProps {
   user: User;
@@ -64,11 +58,13 @@ export default function CreateRatingClient({
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isOpen) {
       loadCompanies();
       loadProjects();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, orgId]);
 
   const loadCompanies = async () => {
@@ -276,7 +272,7 @@ export default function CreateRatingClient({
               <label className="block text-body-sm form-label mb-xs">
                 Review Title *
               </label>
-              <UnifiedInput                 value={formData.title}
+              <Input                 value={formData.title}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('title', e.target.value)}
                 placeholder="Brief title for your review"
                 required

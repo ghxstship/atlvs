@@ -139,16 +139,16 @@ class IncidentResponseService {
       impact: {
         users: 0,
         revenue: 0,
-        description: 'Impact assessment in progress',
+        description: 'Impact assessment in progress'
       },
       timeline: [{
         timestamp: new Date().toISOString(),
         type: 'created',
         actor: reporter,
-        description: `Incident created: ${title}`,
+        description: `Incident created: ${title}`
       }],
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
     };
 
     this.incidents.set(incident.id, incident);
@@ -178,7 +178,7 @@ class IncidentResponseService {
     const updatedIncident = {
       ...incident,
       ...updates,
-      updatedAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
     };
 
     // Add timeline event
@@ -187,7 +187,7 @@ class IncidentResponseService {
       type: 'updated',
       actor,
       description: `Incident updated: ${Object.keys(updates).join(', ')}`,
-      metadata: updates,
+      metadata: updates
     });
 
     this.incidents.set(incidentId, updatedIncident);
@@ -215,7 +215,7 @@ class IncidentResponseService {
       timestamp: new Date().toISOString(),
       type: 'resolved',
       actor: resolver,
-      description: `Incident resolved`,
+      description: `Incident resolved`
     });
 
     // Schedule postmortem for high/critical incidents
@@ -237,7 +237,7 @@ class IncidentResponseService {
       timestamp: new Date().toISOString(),
       type: 'escalated',
       actor,
-      description: `Escalated to level ${level}`,
+      description: `Escalated to level ${level}`
     });
 
     // Notify escalation level
@@ -258,7 +258,7 @@ class IncidentResponseService {
       schedule,
       escalationPolicy,
       contactMethods: [],
-      active: true,
+      active: true
     };
 
     this.onCallRotations.set(rotation.id, rotation);
@@ -303,7 +303,7 @@ class IncidentResponseService {
     await this.sendNotification('incident_created', message, {
       incidentId: incident.id,
       severity: incident.severity,
-      services: incident.affectedServices,
+      services: incident.affectedServices
     });
   }
 
@@ -312,7 +312,7 @@ class IncidentResponseService {
 
     await this.sendNotification('incident_update', message, {
       incidentId: incident.id,
-      status: incident.status,
+      status: incident.status
     });
   }
 
@@ -321,7 +321,7 @@ class IncidentResponseService {
 
     await this.sendNotification('incident_resolved', message, {
       incidentId: incident.id,
-      resolutionTime: this.calculateResolutionTime(incident),
+      resolutionTime: this.calculateResolutionTime(incident)
     });
   }
 
@@ -331,7 +331,7 @@ class IncidentResponseService {
     await this.sendNotification('incident_escalation', message, {
       incidentId: incident.id,
       level,
-      severity: incident.severity,
+      severity: incident.severity
     });
   }
 
@@ -416,7 +416,7 @@ class IncidentResponseService {
         timestamp: new Date().toISOString(),
         type: 'assigned',
         actor: 'system',
-        description: `Auto-assigned to on-call engineer: ${onCallUser}`,
+        description: `Auto-assigned to on-call engineer: ${onCallUser}`
       });
     }
   }
@@ -533,7 +533,7 @@ function initializeDefaultRunbooks(): IncidentResponseRunbook[] {
         'Product Team',
         'Customer Success',
         'Executive Team',
-      ],
+      ]
     },
     {
       incidentType: 'performance_degradation',
@@ -571,7 +571,7 @@ function initializeDefaultRunbooks(): IncidentResponseRunbook[] {
         'Engineering Team',
         'DevOps Team',
         'Performance Team',
-      ],
+      ]
     },
   ];
 }
@@ -590,7 +590,7 @@ const defaultOnCallRotation: OnCallRotation = {
       startDate: new Date().toISOString(),
       endDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(), // 1 week
       timezone: 'UTC',
-      backupUsers: ['eng-lead-2', 'senior-eng-1'],
+      backupUsers: ['eng-lead-2', 'senior-eng-1']
     },
   ],
   escalationPolicy: [
@@ -599,25 +599,25 @@ const defaultOnCallRotation: OnCallRotation = {
       delayMinutes: 5,
       recipients: ['current-on-call'],
       channels: ['slack', 'email'],
-      description: 'Initial notification to on-call engineer',
+      description: 'Initial notification to on-call engineer'
     },
     {
       level: 2,
       delayMinutes: 15,
       recipients: ['engineering-lead', 'devops-lead'],
       channels: ['slack', 'email', 'sms'],
-      description: 'Escalate to team leads',
+      description: 'Escalate to team leads'
     },
     {
       level: 3,
       delayMinutes: 60,
       recipients: ['cto', 'ceo'],
       channels: ['email', 'sms', 'call'],
-      description: 'Executive escalation',
+      description: 'Executive escalation'
     },
   ],
   contactMethods: [],
-  active: true,
+  active: true
 };
 
 export const incidentResponseService = new IncidentResponseService();

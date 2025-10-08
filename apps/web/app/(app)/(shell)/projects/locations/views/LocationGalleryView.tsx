@@ -26,7 +26,7 @@ export default function LocationGalleryView({
  onDelete,
  onNavigate,
  getTypeIcon,
- getAvailabilityBadgeVariant,
+ getAvailabilityBadgeVariant
 }: LocationGalleryViewProps) {
  // Filter locations with images for gallery view
  const locationsWithImages = locations.filter(l => l.images && l.images.length > 0);

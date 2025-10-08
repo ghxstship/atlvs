@@ -4,7 +4,7 @@ import { TrendingUp, Users, Award, Building, BarChart3, PieChart, Calendar, Targ
 import React from 'react';
 import {
  Card,
- Badge,
+ Badge
 } from '@ghxstship/ui';
 import type { ProfessionalStats, ProfessionalAnalytics } from '../types';
 import { EMPLOYMENT_TYPE_LABELS, PROFILE_STATUS_LABELS } from '../types';
@@ -18,7 +18,7 @@ interface ProfessionalAnalyticsViewProps {
 export default function ProfessionalAnalyticsView({
  stats,
  analytics,
- loading = false,
+ loading = false
 }: ProfessionalAnalyticsViewProps) {
  if (loading) {
  return (

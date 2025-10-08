@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Button, UnifiedInput, Card, Badge } from '@ghxstship/ui';
-import { Plus, Save, Award, Calendar, ExternalLink, Trash2 } from 'lucide-react';
+import { Award, Calendar, ExternalLink, ExternalTrash2, Plus, Save, Trash2 } from 'lucide-react';
 
 interface Certification {
   id: string;

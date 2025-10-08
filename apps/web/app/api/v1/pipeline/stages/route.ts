@@ -42,7 +42,7 @@ const CreatePipelineStageSchema = z.object({
     escalationDays: z.number().positive().optional(),
     escalationTo: z.string().optional()
   }).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 const UpdatePipelineStageSchema = CreatePipelineStageSchema.partial();
@@ -54,7 +54,7 @@ const MoveItemSchema = z.object({
   toStageId: z.string().uuid('Invalid to stage ID'),
   reason: z.string().optional(),
   notes: z.string().optional(),
-  skipValidation: z.boolean().default(false),
+  skipValidation: z.boolean().default(false)
 });
 
 async function getAuthenticatedUser() {

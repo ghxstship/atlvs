@@ -5,7 +5,7 @@ import {
  Badge,
  Button,
  Card,
- Checkbox,
+ Checkbox
 } from "@ghxstship/ui";
 import type { ProgrammingPerformance, PerformanceSort, PerformanceProject, PerformanceEvent } from "../types";
 import { STATUS_BADGE, PERFORMANCE_TYPE_BADGE } from "../types";
@@ -46,7 +46,7 @@ export default function ProgrammingPerformancesGridView({
  onSort,
  users,
  projects,
- events,
+ events
 }: ProgrammingPerformancesGridViewProps) {
 
  const formatDateTime = (dateString: string) => {
@@ -60,7 +60,7 @@ export default function ProgrammingPerformancesGridView({
  const formatTime = (dateString: string) => {
  return new Date(dateString).toLocaleTimeString("en-US", {
  hour: "2-digit",
- minute: "2-digit",
+ minute: "2-digit"
  });
  };
 
@@ -68,7 +68,7 @@ export default function ProgrammingPerformancesGridView({
  if (!amount || !currency) return null;
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

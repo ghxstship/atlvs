@@ -17,7 +17,7 @@ import {
  Label,
  Checkbox,
  Badge,
- Card,
+ Card
 } from '@ghxstship/ui';
 import type { PerformanceReview, PerformanceFormData, PerformanceGoal } from '../types';
 import {
@@ -25,7 +25,7 @@ import {
  REVIEW_STATUS_LABELS,
  VISIBILITY_LABELS,
  createEmptyGoal,
- validatePerformanceForm,
+ validatePerformanceForm
 } from '../types';
 
 const formSchema = z.object({
@@ -44,7 +44,7 @@ const formSchema = z.object({
  reviewer_comments: z.string(),
  employee_comments: z.string(),
  promotion_recommended: z.boolean(),
- visibility: z.enum(['private', 'manager', 'hr', 'organization']),
+ visibility: z.enum(['private', 'manager', 'hr', 'organization'])
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -62,7 +62,7 @@ export default function CreatePerformanceReviewDrawer({
  onClose,
  onSave,
  review,
- loading = false,
+ loading = false
 }: CreatePerformanceReviewDrawerProps) {
  const [goals, setGoals] = useState<PerformanceGoal[]>([]);
  const [achievements, setAchievements] = useState<string[]>([]);
@@ -75,7 +75,7 @@ export default function CreatePerformanceReviewDrawer({
  formState: { errors },
  reset,
  watch,
- setValue,
+ setValue
  } = useForm<FormData>({
  resolver: zodResolver(formSchema),
  defaultValues: {
@@ -94,8 +94,8 @@ export default function CreatePerformanceReviewDrawer({
  reviewer_comments: '',
  employee_comments: '',
  promotion_recommended: false,
- visibility: 'manager',
- },
+ visibility: 'manager'
+ }
  });
 
  // Load review data when editing
@@ -117,7 +117,7 @@ export default function CreatePerformanceReviewDrawer({
  reviewer_comments: review.reviewer_comments || '',
  employee_comments: review.employee_comments || '',
  promotion_recommended: review.promotion_recommended,
- visibility: review.visibility,
+ visibility: review.visibility
  });
  setGoals(review.goals || []);
  setAchievements(review.achievements || []);
@@ -135,7 +135,7 @@ export default function CreatePerformanceReviewDrawer({
  hr_comments: '',
  next_review_date: '',
  salary_adjustment: '',
- tags,
+ tags
  };
 
  await onSave(formData);

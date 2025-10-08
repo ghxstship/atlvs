@@ -1,13 +1,13 @@
 "use client";
 
 import { MoreHorizontal, Edit, Eye, Trash2, ArrowUpDown, ArrowUp, ArrowDown, MapPin, Calendar, Users, DollarSign } from "lucide-react";
-import { useState } from "react";
+import { useState } from 'react';
 import {
  Badge,
  Button,
  Card,
  Table,
- Checkbox,
+ Checkbox
 } from "@ghxstship/ui";
 import type { ProgrammingItinerary, ItinerarySort } from "../types";
 import { STATUS_BADGE, TYPE_BADGE, TRANSPORTATION_TYPE_LABEL } from "../types";
@@ -44,7 +44,7 @@ export default function ProgrammingItinerariesListView({
  onDelete,
  sortConfig,
  onSort,
- users,
+ users
 }: ProgrammingItinerariesListViewProps) {
  const [expandedRows, setExpandedRows] = useState<Set<string>(new Set());
 
@@ -52,7 +52,7 @@ export default function ProgrammingItinerariesListView({
  if (sortConfig.field === field) {
  onSort({
  field,
- direction: sortConfig.direction === "asc" ? "desc" : "asc",
+ direction: sortConfig.direction === "asc" ? "desc" : "asc"
  });
  } else {
  onSort({ field, direction: "asc" });
@@ -78,7 +78,7 @@ export default function ProgrammingItinerariesListView({
  if (!amount || !currency) return "—";
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

@@ -3,7 +3,7 @@
 import { TrendingUp, Globe, CreditCard, ShieldCheck, Plane, Calendar, Target, MapPin } from "lucide-react";
 import {
  Card,
- Badge,
+ Badge
 } from '@ghxstship/ui';
 import type { TravelStats, TravelAnalytics } from '../types';
 import { TRAVEL_TYPE_LABELS, TRAVEL_STATUS_LABELS, getStatusBadgeVariant } from '../types';
@@ -17,7 +17,7 @@ interface TravelAnalyticsViewProps {
 export default function TravelAnalyticsView({
  stats,
  analytics,
- loading = false,
+ loading = false
 }: TravelAnalyticsViewProps) {
  if (loading) {
  return (

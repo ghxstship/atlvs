@@ -2,8 +2,8 @@
 
 
 import { useState } from 'react'
-import { Card, Button, UnifiedInput, Label } from '@ghxstship/ui'
-import { Mail, ArrowRight, CheckCircle } from 'lucide-react'
+import { Card, Button, Input, Label } from '@ghxstship/ui'
+import { ArrowRight, CheckCircle, Mail } from 'lucide-react'
 import Link from 'next/link'
 
 export default function ForgotPasswordForm() {
@@ -28,7 +28,7 @@ export default function ForgotPasswordForm() {
           <CheckCircle className="h-icon-2xl w-icon-2xl color-success mx-auto mb-md" />
           <h2 className="font-display text-heading-4 text-heading-3 mb-sm">Check Your Email</h2>
           <p className="color-muted mb-lg">
-            We've sent password reset instructions to <strong>{email}</strong>
+            We&apos;ve sent password reset instructions to <strong>{email}</strong>
           </p>
           <div className="brand-ghostship stack-sm">
             <Button 
@@ -57,7 +57,8 @@ export default function ForgotPasswordForm() {
             <Mail className="h-icon-xs w-icon-xs" />
             Email Address
           </Label>
-          <UnifiedInput             id="email"
+          <Input
+            id="email"
             type="email"
             placeholder="Enter your email address"
             value={email}
@@ -66,7 +67,7 @@ export default function ForgotPasswordForm() {
             className="mt-xs"
           />
           <p className="text-body-sm color-muted mt-sm">
-            Enter the email address associated with your account and we'll send you a link to reset your password.
+            Enter the email address associated with your account and we&apos;ll send you a link to reset your password.
           </p>
         </div>
         

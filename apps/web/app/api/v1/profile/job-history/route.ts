@@ -11,7 +11,7 @@ import {
   updateJobHistoryEntry,
   deleteJobHistoryEntry,
   toggleJobHistoryEntryCurrent,
-  updateJobHistoryEntryVisibility,
+  updateJobHistoryEntryVisibility
 } from '@/app/(app)/(shell)/profile/job-history/lib/jobHistoryService';
 import type { JobHistoryFilters } from '@/app/(app)/(shell)/profile/job-history/types';
 
@@ -23,7 +23,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -72,7 +72,7 @@ export async function GET(request: NextRequest) {
       industry: searchParams.get('industry') || 'all',
       date_from: searchParams.get('date_from') || undefined,
       date_to: searchParams.get('date_to') || undefined,
-      has_achievements: searchParams.get('has_achievements') === 'true',
+      has_achievements: searchParams.get('has_achievements') === 'true'
     };
 
     const validatedFilters = jobFilterSchema.parse(filtersInput);
@@ -85,7 +85,7 @@ export async function GET(request: NextRequest) {
       industry: validatedFilters.industry ?? 'all',
       date_from: validatedFilters.date_from,
       date_to: validatedFilters.date_to,
-      has_achievements: validatedFilters.has_achievements,
+      has_achievements: validatedFilters.has_achievements
     };
     const result = await fetchJobHistoryEntries(
       supabase,
@@ -102,7 +102,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       ...result,
-      stats,
+      stats
     });
   } catch (error) {
     console.error('Error in GET /api/v1/profile/job-history:', error);

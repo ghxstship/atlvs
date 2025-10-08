@@ -27,28 +27,28 @@ const updatePerformanceSchema = z.object({
     price_max: z.number().min(0).optional(),
     currency: z.string().length(3).optional(),
     sales_url: z.string().url().optional(),
-    sold_out: z.boolean().optional(),
+    sold_out: z.boolean().optional()
   }).optional(),
   technical_requirements: z.object({
     sound_system: z.string().optional(),
     lighting: z.string().optional(),
     stage_setup: z.string().optional(),
     equipment_needed: z.array(z.string()).optional(),
-    crew_requirements: z.string().optional(),
+    crew_requirements: z.string().optional()
   }).optional(),
   production_notes: z.object({
     rehearsal_schedule: z.string().optional(),
     call_time: z.string().datetime().optional(),
     sound_check: z.string().datetime().optional(),
-    special_instructions: z.string().optional(),
+    special_instructions: z.string().optional()
   }).optional(),
   audience_info: z.object({
     expected_attendance: z.number().int().min(0).optional(),
     target_demographic: z.string().optional(),
-    accessibility_notes: z.string().optional(),
+    accessibility_notes: z.string().optional()
   }).optional(),
   tags: z.array(z.string().max(32)).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 async function getSupabase() {
@@ -59,7 +59,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -166,7 +166,7 @@ export async function PATCH(
 
     const updatePayload = {
       ...data,
-      updated_by: user!.id,
+      updated_by: user!.id
     };
 
     const { data: performance, error: updateError } = await supabase
@@ -193,8 +193,8 @@ export async function PATCH(
       action: 'update',
       details: {
         name: performance.name,
-        changes: Object.keys(data),
-      },
+        changes: Object.keys(data)
+      }
     });
 
     return NextResponse.json(performance);
@@ -256,8 +256,8 @@ export async function DELETE(
       action: 'delete',
       details: {
         name: performance.name,
-        performance_type: performance.performance_type,
-      },
+        performance_type: performance.performance_type
+      }
     });
 
     return NextResponse.json({ message: 'Performance deleted successfully' });

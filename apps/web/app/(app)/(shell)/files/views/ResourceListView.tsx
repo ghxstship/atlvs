@@ -1,5 +1,5 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, Download, Edit, Star } from 'lucide-react';
 import { Badge, Button } from '@ghxstship/ui';
 import type { Resource } from '../types';
 
@@ -9,14 +9,14 @@ const resourceTypeIcons = {
  training: GraduationCap,
  template: File,
  procedure: Clipboard,
- featured: Star,
+ featured: Star
 };
 
 const statusColors = {
  draft: 'bg-secondary/50 color-muted',
  under_review: 'bg-accent/10 color-accent',
  published: 'bg-success/10 color-success',
- archived: 'bg-warning/10 color-warning',
+ archived: 'bg-warning/10 color-warning'
 };
 
 interface ResourceListViewProps {

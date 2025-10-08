@@ -18,7 +18,7 @@ const updateVendorSchema = z.object({
     city: z.string().optional(),
     state: z.string().optional(),
     postal_code: z.string().optional(),
-    country: z.string().optional(),
+    country: z.string().optional()
   }).optional(),
   primary_category: z.string().optional(),
   categories: z.array(z.string()).optional(),
@@ -31,7 +31,7 @@ const updateVendorSchema = z.object({
   tagline: z.string().optional(),
   years_experience: z.number().int().min(0).optional(),
   team_size: z.number().int().min(1).optional(),
-  availability_status: z.enum(['available', 'busy', 'unavailable']).optional(),
+  availability_status: z.enum(['available', 'busy', 'unavailable']).optional()
 });
 
 async function getAuthenticatedUser() {

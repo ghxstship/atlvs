@@ -1,9 +1,9 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Drawer } from '@ghxstship/ui';
+import { CalendarView, DataActions, DataGrid, DataViewProvider, Drawer, KanbanBoard, ListView, StateManagerProvider, ViewSwitcher } from '@ghxstship/ui';
 import type {
   FilterConfig,
   SortConfig
@@ -121,8 +121,10 @@ export default function ProcurementClient({ className }: ProcurementClientProps)
     }
   ];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function loadData() {

@@ -24,7 +24,7 @@ export function formatDate(
     year: 'numeric',
     month: 'short',
     day: 'numeric',
-    ...options,
+    ...options
   }).format(dateObj);
 }
 
@@ -42,7 +42,7 @@ export function formatTime(
   return new Intl.DateTimeFormat(targetLocale, {
     hour: '2-digit',
     minute: '2-digit',
-    ...options,
+    ...options
   }).format(dateObj);
 }
 
@@ -63,7 +63,7 @@ export function formatDateTime(
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-    ...options,
+    ...options
   }).format(dateObj);
 }
 
@@ -112,7 +112,7 @@ export function formatCurrency(
 
   return new Intl.NumberFormat(targetLocale, {
     style: 'currency',
-    currency,
+    currency
   }).format(amount);
 }
 
@@ -141,7 +141,7 @@ export function formatPercent(
   return new Intl.NumberFormat(targetLocale, {
     style: 'percent',
     minimumFractionDigits: 1,
-    maximumFractionDigits: 1,
+    maximumFractionDigits: 1
   }).format(number);
 }
 
@@ -211,7 +211,7 @@ export function formatInTimezone(
 
   return new Intl.DateTimeFormat(targetLocale, {
     ...options,
-    timeZone: timezone,
+    timeZone: timezone
   }).format(dateObj);
 }
 
@@ -336,7 +336,7 @@ export function formatInCalendar(
       year: 'numeric',
       month: 'long',
       day: 'numeric',
-      calendar,
+      calendar
     }).format(dateObj);
   } catch (error) {
     // Fallback to Gregorian calendar

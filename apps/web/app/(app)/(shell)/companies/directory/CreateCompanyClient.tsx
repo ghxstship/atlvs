@@ -4,16 +4,8 @@
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
-import { 
-  Building,
-  Globe,
-  Mail,
-  Phone,
-  MapPin,
-  Save,
-  X
-} from 'lucide-react';
+import { Drawer, Button, Input, Select, Textarea, Card } from '@ghxstship/ui';
+import { Building, Globe, Mail, MapPin, Phone, Save, X } from 'lucide-react';
 
 interface CreateCompanyClientProps {
   user: User;
@@ -180,7 +172,7 @@ export default function CreateCompanyClient({
               <label className="block text-body-sm form-label mb-xs">
                 Company Name *
               </label>
-              <UnifiedInput                 value={formData.name}
+              <Input                 value={formData.name}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('name', e.target.value)}
                 placeholder="Enter company name"
                 required
@@ -249,7 +241,7 @@ export default function CreateCompanyClient({
                   <Globe className="h-icon-xs w-icon-xs inline mr-xs" />
                   Website
                 </label>
-                <UnifiedInput                   type="url"
+                <Input                   type="url"
                   value={formData.website}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('website', e.target.value)}
                   placeholder="https://company.com"
@@ -261,7 +253,7 @@ export default function CreateCompanyClient({
                   <Mail className="h-icon-xs w-icon-xs inline mr-xs" />
                   Email
                 </label>
-                <UnifiedInput                   type="email"
+                <Input                   type="email"
                   value={formData.email}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('email', e.target.value)}
                   placeholder="contact@company.com"
@@ -274,7 +266,7 @@ export default function CreateCompanyClient({
                 <Phone className="h-icon-xs w-icon-xs inline mr-xs" />
                 Phone
               </label>
-              <UnifiedInput                 type="tel"
+              <Input                 type="tel"
                 value={formData.phone}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('phone', e.target.value)}
                 placeholder="+1 (555) 123-4567"
@@ -295,7 +287,7 @@ export default function CreateCompanyClient({
               <label className="block text-body-sm form-label mb-xs">
                 Street Address
               </label>
-              <UnifiedInput                 value={formData.address}
+              <Input                 value={formData.address}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('address', e.target.value)}
                 placeholder="123 Business Street"
               />
@@ -306,7 +298,7 @@ export default function CreateCompanyClient({
                 <label className="block text-body-sm form-label mb-xs">
                   City
                 </label>
-                <UnifiedInput                   value={formData.city}
+                <Input                   value={formData.city}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('city', e.target.value)}
                   placeholder="Los Angeles"
                 />
@@ -316,7 +308,7 @@ export default function CreateCompanyClient({
                 <label className="block text-body-sm form-label mb-xs">
                   State/Province
                 </label>
-                <UnifiedInput                   value={formData.state}
+                <Input                   value={formData.state}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('state', e.target.value)}
                   placeholder="CA"
                 />
@@ -326,7 +318,7 @@ export default function CreateCompanyClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Country
                 </label>
-                <UnifiedInput                   value={formData.country}
+                <Input                   value={formData.country}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('country', e.target.value)}
                   placeholder="USA"
                 />

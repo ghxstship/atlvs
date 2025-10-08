@@ -62,7 +62,7 @@ export default function BidGridView({
  style: 'currency',
  currency: 'USD',
  minimumFractionDigits: 0,
- maximumFractionDigits: 0,
+ maximumFractionDigits: 0
  }).format(amount);
  };
 

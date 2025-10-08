@@ -21,13 +21,13 @@ export default function ForgotPasswordPage() {
 
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}/auth/reset-password`,
+        redirectTo: `${window.location.origin}/auth/reset-password`
       });
 
       if (error) throw error;
       setSuccess(true);
-    } catch (error) {
-      setError(error.message);
+    } catch (error: any) {
+      setError(error?.message || 'An error occurred');
     } finally {
       setLoading(false);
     }
@@ -37,13 +37,13 @@ export default function ForgotPasswordPage() {
     return (
       <AuthLayout
         title="Check Your Email"
-        subtitle="We've sent a password reset link to your email address"
+        subtitle="We&apos;ve sent a password reset link to your email address"
         badge="EMAIL SENT"
         showTrustIndicators={false}
       >
         <div className="brand-ghostship text-center stack-lg">
           <AuthText className="text-center">
-            If you don't see the email in your inbox, check your spam folder.
+            If you don&apos;t see the email in your inbox, check your spam folder.
           </AuthText>
           
           <div className="brand-ghostship cluster justify-center">
@@ -60,7 +60,7 @@ export default function ForgotPasswordPage() {
   return (
     <AuthLayout
       title="Reset Password"
-      subtitle="Enter your email address and we'll send you a link to reset your password"
+      subtitle="Enter your email address and we&apos;ll send you a link to reset your password"
       badge="FORGOT PASSWORD"
       showTrustIndicators={false}
     >

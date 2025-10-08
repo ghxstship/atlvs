@@ -1,10 +1,10 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, UnifiedInput, Card, Badge } from '@ghxstship/ui';
+import { Button, Input, Card, Badge } from '@ghxstship/ui';
 import { Plus, Save, Package, Calendar, DollarSign, Truck, Eye, Edit, Trash2 } from 'lucide-react';
 
 interface ProcurementOrder {
@@ -44,8 +44,10 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
     project_id: ''
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadOrders();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadOrders = async () => {
@@ -213,7 +215,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md mb-md">
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Order Number</label>
-                <UnifiedInput                   value={formData.order_number}
+                <Input                   value={formData.order_number}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, order_number: e.target.value }))}
                   placeholder="PO-2024-001"
                 />
@@ -221,7 +223,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Vendor Name *</label>
-                <UnifiedInput                   value={formData.vendor_name}
+                <Input                   value={formData.vendor_name}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, vendor_name: e.target.value }))}
                   placeholder="Vendor Company Name"
                 />
@@ -229,7 +231,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
               
               <div className="stack-sm md:col-span-2">
                 <label className="text-body-sm form-label">Description *</label>
-                <UnifiedInput                   value={formData.description}
+                <Input                   value={formData.description}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
                   placeholder="Description of goods/services"
                 />
@@ -237,7 +239,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Total Amount *</label>
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   step="0.01"
                   value={formData.total_amount}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, total_amount: parseFloat(e.target.value) || 0 }))}
@@ -276,7 +278,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Order Date</label>
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.order_date}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, order_date: e.target.value }))}
                 />
@@ -284,7 +286,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Expected Delivery</label>
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.expected_delivery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, expected_delivery: e.target.value }))}
                 />
@@ -300,7 +302,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
                 {saving ? 'Saving...' : (editingOrder ? 'Update Order' : 'Create Order')}
               </Button>
               <Button 
-                variant="outline" 
+                variant="secondary" 
                 onClick={() => {
                   resetForm();
                   setShowCreateForm(false);
@@ -365,14 +367,14 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
                   <div className="flex items-center gap-sm">
                     <Button
                      
-                      variant="outline"
+                      variant="secondary"
                       onClick={() => startEdit(order)}
                     >
                       <Edit className="h-3 w-3" />
                     </Button>
                     <Button
                      
-                      variant="outline"
+                      variant="secondary"
                       onClick={() => handleDelete(order.id)}
                     >
                       <Trash2 className="h-3 w-3" />

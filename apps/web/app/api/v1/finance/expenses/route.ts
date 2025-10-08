@@ -21,7 +21,7 @@ const CreateExpenseSchema = z.object({
   status: z.enum(['draft', 'submitted', 'approved', 'rejected', 'paid']).default('draft'),
   approvedBy: z.string().uuid().optional(),
   approvedAt: z.string().optional(),
-  paidAt: z.string().optional(),
+  paidAt: z.string().optional()
 });
 
 const UpdateExpenseSchema = CreateExpenseSchema.partial();

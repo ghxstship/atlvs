@@ -1,7 +1,7 @@
 'use client';
 
-
 import { useEffect, useState } from 'react';
+import NextLink from 'next/link';
 import { Card, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -214,7 +214,7 @@ export default function ProgrammingOverviewClient({
               View all events and schedules in calendar format
             </p>
             <Button asChild>
-              <a href="/programming/calendar">Open Calendar</a>
+              <NextLink href="/programming/calendar">Open Calendar</NextLink>
             </Button>
           </Card>
           
@@ -224,7 +224,7 @@ export default function ProgrammingOverviewClient({
               Manage technical, hospitality, and stage plot requirements
             </p>
             <Button asChild>
-              <a href="/programming/riders">Manage Riders</a>
+              <NextLink href="/programming/riders">Manage Riders</NextLink>
             </Button>
           </Card>
           
@@ -234,7 +234,7 @@ export default function ProgrammingOverviewClient({
               Schedule and organize educational sessions
             </p>
             <Button asChild>
-              <a href="/programming/workshops">View Workshops</a>
+              <NextLink href="/programming/workshops">View Workshops</NextLink>
             </Button>
           </Card>
         </div>

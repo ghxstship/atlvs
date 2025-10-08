@@ -1,7 +1,7 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { AuthLayout } from '../_components/AuthLayout';
@@ -19,6 +19,7 @@ export default function VerifyEmailPage() {
   const searchParams = useSearchParams();
   const supabase = createClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // Get email from URL params or session
     const emailParam = searchParams?.get('email');
@@ -45,6 +46,7 @@ export default function VerifyEmailPage() {
     };
 
     handleEmailConfirmation();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams, supabase.auth, router]);
 
   const handleResendEmail = async () => {
@@ -59,7 +61,7 @@ export default function VerifyEmailPage() {
     try {
       const { error } = await supabase.auth.resend({
         type: 'signup',
-        email: email,
+        email: email
       });
 
       if (error) throw error;
@@ -93,7 +95,7 @@ export default function VerifyEmailPage() {
   return (
     <AuthLayout
       title="Check Your Email"
-      subtitle="We've sent a verification link to your email address"
+      subtitle="We&apos;ve sent a verification link to your email address"
       badge="VERIFY EMAIL"
       showTrustIndicators={false}
     >
@@ -114,7 +116,7 @@ export default function VerifyEmailPage() {
         </AuthText>
         
         <AuthText className="text-center">
-          If you don't see the email, check your spam folder or request a new one.
+          If you don&apos;t see the email, check your spam folder or request a new one.
         </AuthText>
 
         {error && (

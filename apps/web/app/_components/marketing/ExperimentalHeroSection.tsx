@@ -32,7 +32,7 @@ export function ExperimentalHeroSection() {
       <div className="container mx-auto px-md relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           {/* Badge */}
-          <Badge variant="outline" className="mb-lg animate-fade-in">
+          <Badge variant="secondary" className="mb-lg animate-fade-in">
             <Zap className="h-3 w-3 mr-xs" />
             Production Management Platform
           </Badge>
@@ -83,7 +83,7 @@ export function ExperimentalHeroSection() {
             <Link href="/products">
               <Button 
                 size="lg" 
-                variant="outline" 
+                variant="secondary" 
                 className="transition-all duration-200 hover:scale-105"
               >
                 Explore Products

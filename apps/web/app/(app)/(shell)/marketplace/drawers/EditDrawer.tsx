@@ -4,7 +4,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription,
+  DrawerDescription
 } from '@ghxstship/ui';
 import { Button } from '@ghxstship/ui';
 import { Input } from '@ghxstship/ui';
@@ -30,7 +30,7 @@ export default function EditDrawer({
   listing,
   open,
   onOpenChange,
-  onSave,
+  onSave
 }: EditDrawerProps) {
   const [formData, setFormData] = useState<Partial<MarketplaceListing>({});
   const [isSaving, setIsSaving] = useState(false);
@@ -56,8 +56,8 @@ export default function EditDrawer({
       ...prev,
       [parent]: {
         ...prev[parent],
-        [field]: value,
-      },
+        [field]: value
+      }
     }));
     setError(null);
   };

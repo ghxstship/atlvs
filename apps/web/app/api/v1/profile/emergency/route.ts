@@ -11,7 +11,7 @@ import {
   createEmergencyContact,
   updateEmergencyContact,
   deleteEmergencyContact,
-  verifyEmergencyContact,
+  verifyEmergencyContact
 } from '@/app/(app)/(shell)/profile/emergency/lib/emergencyService';
 
 async function getSupabase() {
@@ -22,7 +22,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -84,7 +84,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       ...data,
-      stats,
+      stats
     });
   } catch (err) {
     console.error('GET /api/v1/profile/emergency error:', err);

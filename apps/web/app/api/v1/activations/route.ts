@@ -20,7 +20,7 @@ const createActivationSchema = z.object({
   stakeholders: z.array(z.string()).optional(),
   dependencies: z.array(z.string()).optional(),
   risks: z.array(z.string()).optional(),
-  notes: z.string().optional().nullable(),
+  notes: z.string().optional().nullable()
 });
 
 const updateActivationSchema = createActivationSchema.partial();
@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
       data: activations || [],
       count: count || 0,
       limit,
-      offset,
+      offset
     });
   } catch (error) {
     console.error("Error in GET /api/v1/activations:", error);
@@ -158,7 +158,7 @@ export async function POST(request: NextRequest) {
         ...activationData,
         organization_id: membership.organization_id,
         created_by: user.id,
-        updated_by: user.id,
+        updated_by: user.id
       })
       .select(`
         *,
@@ -181,8 +181,8 @@ export async function POST(request: NextRequest) {
       details: {
         name: activation.name,
         status: activation.status,
-        type: activation.activation_type,
-      },
+        type: activation.activation_type
+      }
     });
 
     return NextResponse.json(activation, { status: 201 });
@@ -270,7 +270,7 @@ export async function PATCH(request: NextRequest) {
       .update({
         ...updates,
         updated_by: user.id,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq("id", id)
       .select(`
@@ -292,8 +292,8 @@ export async function PATCH(request: NextRequest) {
       resource_type: "activation",
       resource_id: activation.id,
       details: {
-        updates,
-      },
+        updates
+      }
     });
 
     return NextResponse.json(activation);
@@ -372,8 +372,8 @@ export async function DELETE(request: NextRequest) {
       resource_type: "activation",
       resource_id: id,
       details: {
-        name: existingActivation.name,
-      },
+        name: existingActivation.name
+      }
     });
 
     return NextResponse.json({ message: "Activation deleted successfully" });

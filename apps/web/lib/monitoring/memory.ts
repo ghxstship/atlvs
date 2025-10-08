@@ -15,7 +15,7 @@ export function getMemoryStats(): MemoryStats | null {
     usedJSHeapSize: Math.round(performance.memory.usedJSHeapSize / 1048576), // MB
     totalJSHeapSize: Math.round(performance.memory.totalJSHeapSize / 1048576), // MB
     jsHeapSizeLimit: Math.round(performance.memory.jsHeapSizeLimit / 1048576), // MB
-    timestamp: Date.now(),
+    timestamp: Date.now()
   };
 }
 
@@ -36,7 +36,7 @@ export function startMemoryMonitoring(intervalMs: number = 30000) {
       fetch('/api/analytics/memory', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(stats),
+        body: JSON.stringify(stats)
       }).catch(console.error);
     }
   }, intervalMs);

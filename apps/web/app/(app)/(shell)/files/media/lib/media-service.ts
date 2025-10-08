@@ -104,7 +104,7 @@ export class MediaService {
           total: count || 0,
           page,
           per_page: perPage,
-          total_pages: Math.ceil((count || 0) / perPage),
+          total_pages: Math.ceil((count || 0) / perPage)
         }
       };
     } catch (error) {
@@ -148,7 +148,7 @@ export class MediaService {
           ...data,
           status: 'active',
           view_count: 0,
-          download_count: 0,
+          download_count: 0
         })
         .select()
         .single();
@@ -172,7 +172,7 @@ export class MediaService {
         .from('files')
         .update({
           ...updateData,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', id)
         .eq('organization_id', orgId)
@@ -235,19 +235,19 @@ export class MediaService {
           {
             category: 'image' as const,
             count: assets.filter(asset => asset.category === 'image').length,
-            total_size: assets.filter(asset => asset.category === 'image').reduce((sum, asset) => sum + (asset.file_size || 0), 0),
+            total_size: assets.filter(asset => asset.category === 'image').reduce((sum, asset) => sum + (asset.file_size || 0), 0)
           },
           {
             category: 'video' as const,
             count: assets.filter(asset => asset.category === 'video').length,
-            total_size: assets.filter(asset => asset.category === 'video').reduce((sum, asset) => sum + (asset.file_size || 0), 0),
+            total_size: assets.filter(asset => asset.category === 'video').reduce((sum, asset) => sum + (asset.file_size || 0), 0)
           },
           {
             category: 'audio' as const,
             count: assets.filter(asset => asset.category === 'audio').length,
-            total_size: assets.filter(asset => asset.category === 'audio').reduce((sum, asset) => sum + (asset.file_size || 0), 0),
+            total_size: assets.filter(asset => asset.category === 'audio').reduce((sum, asset) => sum + (asset.file_size || 0), 0)
           },
-        ],
+        ]
       };
 
       return { data: stats };

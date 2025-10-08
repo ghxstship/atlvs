@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const BaseResponseSchema = z
   .object({
-    error: z.string().optional(),
+    error: z.string().optional()
   })
   .passthrough();
 
@@ -27,9 +27,9 @@ async function jsonFetch(url: string, init?: RequestInit) {
     ...init,
     headers: {
       'Content-Type': 'application/json',
-      ...(init?.headers ?? {}),
+      ...(init?.headers ?? {})
     },
-    credentials: 'include',
+    credentials: 'include'
   });
 }
 
@@ -40,7 +40,7 @@ export const GeneralSettingsSchema = z.object({
   dateFormat: z.string().optional(),
   currency: z.string().optional(),
   language: z.string().optional(),
-  fiscalYearStart: z.string().optional(),
+  fiscalYearStart: z.string().optional()
 });
 
 export type GeneralSettings = z.infer<typeof GeneralSettingsSchema>;
@@ -50,7 +50,7 @@ export const BrandingSettingsSchema = z.object({
   logo: z.string().nullable().optional(),
   primaryColor: z.string().optional(),
   secondaryColor: z.string().optional(),
-  customCss: z.string().nullable().optional(),
+  customCss: z.string().nullable().optional()
 });
 
 export type BrandingSettings = z.infer<typeof BrandingSettingsSchema>;
@@ -62,7 +62,7 @@ export const FeaturesSettingsSchema = z.object({
   enableMarketplace: z.boolean().optional(),
   enableFinance: z.boolean().optional(),
   enableReporting: z.boolean().optional(),
-  enableIntegrations: z.boolean().optional(),
+  enableIntegrations: z.boolean().optional()
 });
 
 export type FeaturesSettings = z.infer<typeof FeaturesSettingsSchema>;
@@ -74,14 +74,14 @@ export const PasswordPolicySchema = z.object({
   requireLowercase: z.boolean().optional(),
   requireNumbers: z.boolean().optional(),
   requireSymbols: z.boolean().optional(),
-  maxAge: z.number().optional(),
+  maxAge: z.number().optional()
 });
 
 export const PermissionsSettingsSchema = z.object({
   defaultUserRole: z.enum(['member', 'manager', 'admin']).optional(),
   allowSelfRegistration: z.boolean().optional(),
   requireEmailVerification: z.boolean().optional(),
-  passwordPolicy: PasswordPolicySchema.optional(),
+  passwordPolicy: PasswordPolicySchema.optional()
 });
 
 export type PermissionsSettings = z.infer<typeof PermissionsSettingsSchema>;
@@ -92,7 +92,7 @@ export const NotificationsSettingsSchema = z.object({
   smsEnabled: z.boolean().optional(),
   pushEnabled: z.boolean().optional(),
   defaultChannels: z.array(z.enum(['email', 'sms', 'push', 'in_app'])).optional(),
-  digestFrequency: z.enum(['none', 'daily', 'weekly', 'monthly']).optional(),
+  digestFrequency: z.enum(['none', 'daily', 'weekly', 'monthly']).optional()
 });
 
 export type NotificationsSettings = z.infer<typeof NotificationsSettingsSchema>;
@@ -103,7 +103,7 @@ export const IntegrationsSettingsSchema = z.object({
   apiRateLimit: z.number().positive().optional(),
   allowedDomains: z.array(z.string()).optional(),
   ssoEnabled: z.boolean().optional(),
-  ssoProvider: z.string().nullable().optional(),
+  ssoProvider: z.string().nullable().optional()
 });
 
 export type IntegrationsSettings = z.infer<typeof IntegrationsSettingsSchema>;
@@ -114,7 +114,7 @@ export const ComplianceSettingsSchema = z.object({
   auditLogRetentionDays: z.number().positive().optional(),
   requireDataProcessingConsent: z.boolean().optional(),
   enableGDPRCompliance: z.boolean().optional(),
-  enableSOXCompliance: z.boolean().optional(),
+  enableSOXCompliance: z.boolean().optional()
 });
 
 export type ComplianceSettings = z.infer<typeof ComplianceSettingsSchema>;
@@ -124,7 +124,7 @@ export const BackupSettingsSchema = z.object({
   autoBackupEnabled: z.boolean().optional(),
   backupFrequency: z.enum(['daily', 'weekly', 'monthly']).optional(),
   retentionPeriod: z.number().positive().optional(),
-  includeFiles: z.boolean().optional(),
+  includeFiles: z.boolean().optional()
 });
 
 export type BackupSettings = z.infer<typeof BackupSettingsSchema>;
@@ -138,14 +138,14 @@ export const SettingsSchema = z.object({
   notifications: NotificationsSettingsSchema.optional(),
   integrations: IntegrationsSettingsSchema.optional(),
   compliance: ComplianceSettingsSchema.optional(),
-  backup: BackupSettingsSchema.optional(),
+  backup: BackupSettingsSchema.optional()
 });
 
 export type Settings = z.infer<typeof SettingsSchema>;
 
 export const SettingsResponseSchema = z.object({
   settings: SettingsSchema,
-  lastUpdated: z.string().nullable().optional(),
+  lastUpdated: z.string().nullable().optional()
 });
 
 export type SettingsResponse = z.infer<typeof SettingsResponseSchema>;
@@ -158,7 +158,7 @@ export const UpdateSettingsInputSchema = z.object({
   notifications: NotificationsSettingsSchema.optional(),
   integrations: IntegrationsSettingsSchema.optional(),
   compliance: ComplianceSettingsSchema.optional(),
-  backup: BackupSettingsSchema.optional(),
+  backup: BackupSettingsSchema.optional()
 });
 
 export type UpdateSettingsInput = z.infer<typeof UpdateSettingsInputSchema>;
@@ -176,7 +176,7 @@ export async function updateSettings(input: UpdateSettingsInput): Promise<Settin
   const payload = UpdateSettingsInputSchema.parse(input);
   const response = await jsonFetch('/api/v1/settings', {
     method: 'PUT',
-    body: JSON.stringify(payload),
+    body: JSON.stringify(payload)
   });
   return handleResponse<SettingsResponse>(response);
 }
@@ -184,7 +184,7 @@ export async function updateSettings(input: UpdateSettingsInput): Promise<Settin
 export async function resetSettings(category?: string, confirm = true): Promise<{ success: boolean; message: string }> {
   const response = await jsonFetch('/api/v1/settings', {
     method: 'DELETE',
-    body: JSON.stringify({ category, confirm }),
+    body: JSON.stringify({ category, confirm })
   });
   return handleResponse(response);
 }

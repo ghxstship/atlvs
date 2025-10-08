@@ -247,7 +247,7 @@ export const historyFilterSchema = zod.object({
   is_current: zod.enum(['current', 'past', 'all']).optional(),
   date_from: zod.string().optional(),
   date_to: zod.string().optional(),
-  has_achievements: zod.boolean().optional(),
+  has_achievements: zod.boolean().optional()
 });
 
 export const historyUpsertSchema = zod.object({
@@ -269,7 +269,7 @@ export const historyUpsertSchema = zod.object({
   grade_gpa: zod.string().optional().nullable(),
   project_status: projectStatusSchema.optional().nullable(),
   visibility: historyVisibilitySchema,
-  tags: zod.array(zod.string()),
+  tags: zod.array(zod.string())
 });
 
 // ============================================================================
@@ -285,7 +285,7 @@ export const ENTRY_TYPE_LABELS: Record<HistoryEntryType, string> = {
   volunteer: 'Volunteer Work',
   internship: 'Internship',
   freelance: 'Freelance',
-  other: 'Other',
+  other: 'Other'
 };
 
 export const EMPLOYMENT_TYPE_LABELS: Record<EmploymentType, string> = {
@@ -294,7 +294,7 @@ export const EMPLOYMENT_TYPE_LABELS: Record<EmploymentType, string> = {
   contract: 'Contract',
   freelance: 'Freelance',
   internship: 'Internship',
-  volunteer: 'Volunteer',
+  volunteer: 'Volunteer'
 };
 
 export const EDUCATION_LEVEL_LABELS: Record<EducationLevel, string> = {
@@ -305,43 +305,43 @@ export const EDUCATION_LEVEL_LABELS: Record<EducationLevel, string> = {
   doctorate: 'Doctorate',
   certificate: 'Certificate',
   bootcamp: 'Bootcamp',
-  other: 'Other',
+  other: 'Other'
 };
 
 export const PROJECT_STATUS_LABELS: Record<ProjectStatus, string> = {
   completed: 'Completed',
   in_progress: 'In Progress',
   on_hold: 'On Hold',
-  cancelled: 'Cancelled',
+  cancelled: 'Cancelled'
 };
 
 export const VISIBILITY_LABELS: Record<HistoryVisibility, string> = {
   public: 'Public',
   organization: 'Organization',
-  private: 'Private',
+  private: 'Private'
 };
 
 export const VIEW_CONFIG: Record<HistoryViewType, { label: string; description: string }> = {
   form: {
     label: 'Form',
-    description: 'Add or edit history entries',
+    description: 'Add or edit history entries'
   },
   card: {
     label: 'Card',
-    description: 'Detailed card view',
+    description: 'Detailed card view'
   },
   timeline: {
     label: 'Timeline',
-    description: 'Chronological timeline',
+    description: 'Chronological timeline'
   },
   resume: {
     label: 'Resume',
-    description: 'Resume format view',
+    description: 'Resume format view'
   },
   analytics: {
     label: 'Analytics',
-    description: 'Career insights and metrics',
-  },
+    description: 'Career insights and metrics'
+  }
 };
 
 export const QUICK_FILTERS = [
@@ -399,7 +399,7 @@ export function createEmptyFormData(): HistoryEntryFormData {
     grade_gpa: '',
     project_status: 'completed',
     visibility: 'organization',
-    tags: [],
+    tags: []
   };
 }
 
@@ -413,7 +413,7 @@ export function createEmptyStats(): HistoryStats {
     byEmploymentType: [],
     byEducationLevel: [],
     skillsFrequency: [],
-    organizationsWorked: [],
+    organizationsWorked: []
   };
 }
 
@@ -425,7 +425,7 @@ export function createEmptyAnalytics(): HistoryAnalytics {
     educationJourney: [],
     achievementTimeline: [],
     careerGaps: [],
-    locationHistory: [],
+    locationHistory: []
   };
 }
 
@@ -463,14 +463,14 @@ export function formatDate(date: string): string {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
+    day: 'numeric'
   });
 }
 
 export function formatDateShort(date: string): string {
   return new Date(date).toLocaleDateString('en-US', {
     month: 'short',
-    year: 'numeric',
+    year: 'numeric'
   });
 }
 
@@ -519,7 +519,7 @@ export function getEntryTypeIcon(type: HistoryEntryType): string {
     volunteer: '🤝',
     internship: '👨‍💼',
     freelance: '💻',
-    other: '📋',
+    other: '📋'
   };
   return icons[type];
 }

@@ -1,66 +1,118 @@
+/**
+ * Alert Component — Alert/Notice Box
+ * Display important messages with variants
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
+ */
+
 'use client';
 
-import * as React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '../../lib/utils';
+import React from 'react';
+import { AlertCircle, CheckCircle2, Info, AlertTriangle, X } from 'lucide-react';
 
-const alertVariants = cva(
-  'relative w-full rounded-lg border p-md [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground',
-  {
-    variants: {
-      variant: {
-        default: 'bg-background text-foreground',
-        destructive:
-          'border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive',
-        warning:
-          'border-warning/50 text-warning bg-warning/10 [&>svg]:text-warning',
-        success:
-          'border-success/50 text-success bg-success/10 [&>svg]:text-success',
-        info:
-          'border-primary/50 text-accent bg-accent/10 [&>svg]:text-accent',
-      },
+export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Alert variant */
+  variant?: 'info' | 'success' | 'warning' | 'error';
+  
+  /** Alert title */
+  title?: string;
+  
+  /** Dismissible */
+  dismissible?: boolean;
+  
+  /** Dismiss handler */
+  onDismiss?: () => void;
+}
+
+/**
+ * Alert Component
+ * 
+ * @example
+ * ```tsx
+ * <Alert variant="success" title="Success!">
+ *   Your changes have been saved.
+ * </Alert>
+ * ```
+ */
+export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
+  (
+    {
+      variant = 'info',
+      title,
+      dismissible = false,
+      onDismiss,
+      className = '',
+      children,
+      ...props
     },
-    defaultVariants: {
-      variant: 'default',
-    },
+    ref
+  ) => {
+    const [dismissed, setDismissed] = React.useState(false);
+    
+    const handleDismiss = () => {
+      setDismissed(true);
+      onDismiss?.();
+    };
+    
+    if (dismissed) return null;
+    
+    const icons = {
+      info: Info,
+      success: CheckCircle2,
+      warning: AlertTriangle,
+      error: AlertCircle,
+    };
+    
+    const variantClasses = {
+      info: 'bg-[var(--color-info-background)] border-[var(--color-info)] text-[var(--color-info-foreground)]',
+      success: 'bg-[var(--color-success-background)] border-[var(--color-success)] text-[var(--color-success-foreground)]',
+      warning: 'bg-[var(--color-warning-background)] border-[var(--color-warning)] text-[var(--color-warning-foreground)]',
+      error: 'bg-[var(--color-error-background)] border-[var(--color-error)] text-[var(--color-error-foreground)]',
+    };
+    
+    const Icon = icons[variant];
+    
+    return (
+      <div
+        ref={ref}
+        role="alert"
+        className={`
+          flex gap-3 p-4
+          rounded-lg border-l-4
+          ${variantClasses[variant]}
+          ${className}
+        `}
+        {...props}
+      >
+        <Icon className="w-5 h-5 flex-shrink-0 mt-0.5" />
+        
+        <div className="flex-1 min-w-0">
+          {title && (
+            <div className="font-semibold mb-1">{title}</div>
+          )}
+          {children && (
+            <div className="text-sm">{children}</div>
+          )}
+        </div>
+        
+        {dismissible && (
+          <button
+            onClick={handleDismiss}
+            className="
+              p-1 rounded
+              hover:opacity-70
+              transition-opacity
+              flex-shrink-0
+            "
+            aria-label="Dismiss alert"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        )}
+      </div>
+    );
   }
 );
 
-const Alert = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>
->(({ className, variant, ...props }, ref) => (
-  <div
-    ref={ref}
-    role="alert"
-    className={cn(alertVariants({ variant }), className)}
-    {...props}
-  />
-));
 Alert.displayName = 'Alert';
-
-const AlertTitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-  <h5
-    ref={ref}
-    className={cn('mb-xs font-medium leading-none tracking-tight', className)}
-    {...props}
-  />
-));
-AlertTitle.displayName = 'AlertTitle';
-
-const AlertDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn('text-sm [&_p]:leading-relaxed', className)}
-    {...props}
-  />
-));
-AlertDescription.displayName = 'AlertDescription';
-
-export { Alert, AlertTitle, AlertDescription };

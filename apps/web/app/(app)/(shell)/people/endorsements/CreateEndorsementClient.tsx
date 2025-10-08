@@ -1,7 +1,8 @@
 'use client';
+import { Button, Drawer, Input } from '@ghxstship/ui';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -16,7 +17,7 @@ const endorsementSchema = z.object({
   rating: z.number().min(1, 'Rating must be at least 1').max(5, 'Rating cannot exceed 5'),
   comment: z.string().optional(),
   projectId: z.string().optional(),
-  endorsementType: z.enum(['skill', 'performance', 'leadership', 'collaboration', 'general']).default('skill'),
+  endorsementType: z.enum(['skill', 'performance', 'leadership', 'collaboration', 'general']).default('skill')
 });
 
 type EndorsementFormData = z.infer<typeof endorsementSchema>;
@@ -58,15 +59,17 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
     mode: 'onChange',
     defaultValues: {
       rating: 5,
-      endorsementType: 'skill',
+      endorsementType: 'skill'
     }
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isOpen) {
       loadPeople();
       loadCompetencies();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, orgId]);
 
   const loadPeople = async () => {
@@ -110,12 +113,12 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
         body: JSON.stringify({
           ...data,
-          endorserId: user.id,
-        }),
+          endorserId: user.id
+        })
       });
 
       if (!response.ok) {
@@ -132,7 +135,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
         competency_id: data.competencyId,
         rating: data.rating,
         type: data.endorsementType,
-        organization_id: orgId,
+        organization_id: orgId
       });
 
       // Log activity
@@ -146,8 +149,8 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
           person_id: data.personId,
           competency_id: data.competencyId,
           rating: data.rating,
-          type: data.endorsementType,
-        },
+          type: data.endorsementType
+        }
       });
 
       // Reset form and close drawer
@@ -159,7 +162,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
       console.error('Error creating endorsement:', error);
       posthog?.capture('people_endorsement_creation_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -303,7 +306,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
               <label className="block text-body-sm form-label mb-sm">
                 Project (Optional)
               </label>
-              <UnifiedInput                 {...register('projectId')}
+              <Input                 {...register('projectId')}
                 placeholder="Project ID or name where this was observed"
               />
             </div>
@@ -312,7 +315,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
               <label className="block text-body-sm form-label mb-sm">
                 Comments
               </label>
-              <Textarea
+              <textarea
                 {...register('comment')}
                 placeholder="Specific feedback, examples, and observations"
                 rows={4}

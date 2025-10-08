@@ -18,12 +18,12 @@ export const CreateCompanySchema = z.object({
     city: z.string().optional(),
     state: z.string().optional(),
     zip_code: z.string().optional(),
-    country: z.string().optional(),
+    country: z.string().optional()
   }).optional(),
   size: z.enum(['startup', 'small', 'medium', 'large', 'enterprise']).optional(),
   founded_year: z.number().min(1800).max(new Date().getFullYear()).optional(),
   logo_url: z.string().url().optional().or(z.literal('')),
-  status: z.enum(['active', 'inactive', 'prospect', 'former']).default('active'),
+  status: z.enum(['active', 'inactive', 'prospect', 'former']).default('active')
 });
 
 export const UpdateCompanySchema = CreateCompanySchema.partial();
@@ -35,19 +35,19 @@ export const CompanyFiltersSchema = z.object({
   founded_year_min: z.number().optional(),
   founded_year_max: z.number().optional(),
   has_contracts: z.boolean().optional(),
-  has_qualifications: z.boolean().optional(),
+  has_qualifications: z.boolean().optional()
 });
 
 export const CompanySearchSchema = z.object({
   query: z.string().min(1).max(100),
   fields: z.array(z.enum(['name', 'description', 'industry', 'website'])).optional(),
-  fuzzy: z.boolean().default(false),
+  fuzzy: z.boolean().default(false)
 });
 
 export const BulkCompanyOperationSchema = z.object({
   company_ids: z.array(z.string().uuid()),
   operation: z.enum(['update', 'delete', 'archive', 'activate']),
-  data: z.record(z.any()).optional(),
+  data: z.record(z.any()).optional()
 });
 
 export class CompaniesValidationsService {

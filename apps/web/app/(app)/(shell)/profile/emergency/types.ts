@@ -124,7 +124,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     type: 'text',
     required: true,
     placeholder: 'Enter full name',
-    section: 'Identity',
+    section: 'Identity'
   },
   {
     key: 'relationship',
@@ -132,7 +132,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     type: 'text',
     required: true,
     placeholder: 'e.g., Spouse, Parent, Supervisor',
-    section: 'Identity',
+    section: 'Identity'
   },
   {
     key: 'phone_primary',
@@ -140,21 +140,21 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
     type: 'tel',
     required: true,
     placeholder: '+1 (555) 123-4567',
-    section: 'Contact Details',
+    section: 'Contact Details'
   },
   {
     key: 'phone_secondary',
     label: 'Secondary Phone',
     type: 'tel',
     placeholder: '+1 (555) 765-4321',
-    section: 'Contact Details',
+    section: 'Contact Details'
   },
   {
     key: 'email',
     label: 'Email',
     type: 'email',
     placeholder: 'emergency@example.com',
-    section: 'Contact Details',
+    section: 'Contact Details'
   },
   {
     key: 'availability',
@@ -167,14 +167,14 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
       { value: 'night_only', label: 'Night Only' },
       { value: 'weekends', label: 'Weekends' },
       { value: 'on_call', label: 'On Call' },
-    ],
+    ]
   },
   {
     key: 'response_time_minutes',
     label: 'Response Time (minutes)',
     type: 'number',
     section: 'Availability',
-    placeholder: '15',
+    placeholder: '15'
   },
   {
     key: 'priority_level',
@@ -187,7 +187,7 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
       { value: 'high', label: 'High' },
       { value: 'medium', label: 'Medium' },
       { value: 'low', label: 'Low' },
-    ],
+    ]
   },
   {
     key: 'verification_status',
@@ -199,56 +199,56 @@ export const CONTACT_FIELD_CONFIG: FieldConfig[] = [
       { value: 'verified', label: 'Verified' },
       { value: 'pending', label: 'Pending Verification' },
       { value: 'unverified', label: 'Unverified' },
-    ],
+    ]
   },
   {
     key: 'is_primary',
     label: 'Primary Emergency Contact',
     type: 'checkbox',
-    section: 'Status',
+    section: 'Status'
   },
   {
     key: 'is_backup',
     label: 'Backup Contact',
     type: 'checkbox',
-    section: 'Status',
+    section: 'Status'
   },
   {
     key: 'address',
     label: 'Street Address',
     type: 'text',
-    section: 'Location',
+    section: 'Location'
   },
   {
     key: 'city',
     label: 'City',
     type: 'text',
-    section: 'Location',
+    section: 'Location'
   },
   {
     key: 'state_province',
     label: 'State/Province',
     type: 'text',
-    section: 'Location',
+    section: 'Location'
   },
   {
     key: 'country',
     label: 'Country',
     type: 'text',
-    section: 'Location',
+    section: 'Location'
   },
   {
     key: 'postal_code',
     label: 'Postal Code',
     type: 'text',
-    section: 'Location',
+    section: 'Location'
   },
   {
     key: 'notes',
     label: 'Notes',
     type: 'textarea',
     section: 'Additional Details',
-    placeholder: 'Emergency response instructions or other critical notes',
+    placeholder: 'Emergency response instructions or other critical notes'
   },
 ];
 
@@ -257,7 +257,7 @@ export const VIEW_CONFIG = {
   card: { label: 'Card', icon: 'IdCard' },
   roster: { label: 'Roster', icon: 'Users' },
   table: { label: 'Table', icon: 'Table' },
-  analytics: { label: 'Analytics', icon: 'BarChart3' },
+  analytics: { label: 'Analytics', icon: 'BarChart3' }
 } as const;
 
 export const QUICK_FILTERS = [
@@ -286,7 +286,7 @@ export function createEmptyFormData(): EmergencyContactFormData {
     priority_level: 'high',
     availability: '24_7',
     response_time_minutes: 15,
-    verification_status: 'pending',
+    verification_status: 'pending'
   };
 }
 
@@ -298,7 +298,7 @@ export function createEmptyStats(): EmergencyContactStats {
     verifiedContacts: 0,
     byPriority: [],
     responseTimeDistribution: [],
-    availabilityBreakdown: [],
+    availabilityBreakdown: []
   };
 }
 
@@ -309,7 +309,7 @@ export function createEmptyAnalytics(): EmergencyContactAnalytics {
     primaryCoverage: 0,
     averageResponseTime: 0,
     recentUpdates: [],
-    priorityTrends: [],
+    priorityTrends: []
   };
 }
 

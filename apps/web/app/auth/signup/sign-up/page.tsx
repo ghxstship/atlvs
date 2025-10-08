@@ -33,7 +33,7 @@ export default function SignUpPage() {
     try {
       const { error } = await supabase.auth.signUp({
         email,
-        password,
+        password
       })
 
       if (error) throw error

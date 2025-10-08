@@ -14,7 +14,7 @@ import {
  SelectTrigger,
  SelectContent,
  SelectItem,
- SelectValue,
+ SelectValue
 } from '@ghxstship/ui';
 import type { MarketplaceListing, UpsertListingDto } from '../types';
 import { Check, Edit, Tag } from 'lucide-react';
@@ -49,7 +49,7 @@ const editSchema = z.object({
  expiresAt: z.string().optional(),
  contactEmail: z.string().email('Invalid email').optional(),
  contactPhone: z.string().optional(),
- preferredContactMethod: z.enum(['email', 'phone', 'platform']).default('platform'),
+ preferredContactMethod: z.enum(['email', 'phone', 'platform']).default('platform')
 });
 
 type ListingEditValues = z.infer<typeof editSchema>;
@@ -69,7 +69,7 @@ export function EditListingDrawer({ open, listing, loading, onClose, onSubmit }:
  reset,
  setValue,
  handleSubmit,
- formState: { errors },
+ formState: { errors }
  } = useForm<ListingEditValues>({
  resolver: zodResolver(editSchema),
  defaultValues: {
@@ -82,8 +82,8 @@ export function EditListingDrawer({ open, listing, loading, onClose, onSubmit }:
  currency: 'USD',
  negotiable: true,
  flexible: true,
- preferredContactMethod: 'platform',
- },
+ preferredContactMethod: 'platform'
+ }
  });
 
  useEffect(() => {
@@ -114,7 +114,7 @@ export function EditListingDrawer({ open, listing, loading, onClose, onSubmit }:
  expiresAt: listing.expires_at ?? '',
  contactEmail: listing.contactInfo?.email ?? '',
  contactPhone: listing.contactInfo?.phone ?? '',
- preferredContactMethod: listing.contactInfo?.preferredMethod ?? 'platform',
+ preferredContactMethod: listing.contactInfo?.preferredMethod ?? 'platform'
  });
  }
  }, [listing, open, reset]);
@@ -152,7 +152,7 @@ export function EditListingDrawer({ open, listing, loading, onClose, onSubmit }:
  expiresAt: values.expiresAt || undefined,
  contactEmail: values.contactEmail || undefined,
  contactPhone: values.contactPhone || undefined,
- preferredContactMethod: values.preferredContactMethod,
+ preferredContactMethod: values.preferredContactMethod
  };
 
  void onSubmit(dto);
@@ -353,7 +353,7 @@ export function EditListingDrawer({ open, listing, loading, onClose, onSubmit }:
  </Button>
  </div>
  </form>
- ),
+ )
  },
  ]}
  />

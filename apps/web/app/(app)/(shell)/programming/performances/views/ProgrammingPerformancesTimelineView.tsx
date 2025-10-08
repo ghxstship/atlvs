@@ -1,11 +1,11 @@
 "use client";
 
 import { Edit, Eye, Trash2, Clock, MapPin, DollarSign, Calendar, Music, Users, Ticket } from "lucide-react";
-import { useMemo } from "react";
+import { useMemo } from 'react';
 import {
  Badge,
  Button,
- Card,
+ Card
 } from "@ghxstship/ui";
 import type { ProgrammingPerformance, PerformanceSort, PerformanceProject, PerformanceEvent } from "../types";
 import { STATUS_BADGE, PERFORMANCE_TYPE_BADGE } from "../types";
@@ -52,7 +52,7 @@ export default function ProgrammingPerformancesTimelineView({
  onSort,
  users,
  projects,
- events,
+ events
 }: ProgrammingPerformancesTimelineViewProps) {
  
  const timelineGroups = useMemo(() => {
@@ -70,7 +70,7 @@ export default function ProgrammingPerformancesTimelineView({
  if (!groups[groupDate]) {
  groups[groupDate] = {
  event: performance.event || undefined,
- performances: [],
+ performances: []
  };
  }
  groups[groupDate].performances.push(performance);
@@ -82,7 +82,7 @@ export default function ProgrammingPerformancesTimelineView({
  event: data.event,
  performances: data.performances.sort((a, b) => 
  new Date(a.starts_at).getTime() - new Date(b.starts_at).getTime()
- ),
+ )
  }))
  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
  }, [performances]);
@@ -93,14 +93,14 @@ export default function ProgrammingPerformancesTimelineView({
  weekday: "long",
  year: "numeric",
  month: "long",
- day: "numeric",
+ day: "numeric"
  });
  };
 
  const formatTime = (dateString: string) => {
  return new Date(dateString).toLocaleTimeString("en-US", {
  hour: "2-digit",
- minute: "2-digit",
+ minute: "2-digit"
  });
  };
 
@@ -108,7 +108,7 @@ export default function ProgrammingPerformancesTimelineView({
  if (!amount || !currency) return null;
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

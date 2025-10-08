@@ -17,7 +17,7 @@ export class DirectoryService extends CompaniesService {
         blacklistedCompanies: 0,
         byIndustry: {},
         bySize: {},
-        byCountry: {},
+        byCountry: {}
       };
     }
 
@@ -29,7 +29,7 @@ export class DirectoryService extends CompaniesService {
       blacklistedCompanies: companies.filter(c => c.status === 'blacklisted').length,
       byIndustry: {},
       bySize: {},
-      byCountry: {},
+      byCountry: {}
     };
 
     // Group by industry

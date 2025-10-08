@@ -10,6 +10,7 @@ import {
   CardContent,
   Button,
   Badge,
+  Skeleton
 } from '@ghxstship/ui'
 import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
 import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
@@ -22,7 +23,7 @@ import {
   Plus,
   ArrowUpRight,
   ArrowDownRight,
-  Activity,
+  Activity
 } from 'lucide-react'
 
 import { useMarketplaceOverview } from '../hooks/useMarketplaceOverview'
@@ -38,26 +39,26 @@ const metricIconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGEle
   totalListings: Briefcase,
   activeVendors: Users,
   activeProjects: LayoutDashboard,
-  responses: MessageSquare,
+  responses: MessageSquare
 }
 
 const trendToneMap: Record<'up' | 'down' | 'neutral', { badge: 'success' | 'destructive' | 'secondary'; iconClass: string }> = {
   up: { badge: 'success', iconClass: 'text-success' },
   down: { badge: 'destructive', iconClass: 'text-destructive' },
-  neutral: { badge: 'secondary', iconClass: 'text-muted-foreground' },
+  neutral: { badge: 'secondary', iconClass: 'text-muted-foreground' }
 }
 
 const activityIconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   listing_created: Briefcase,
   proposal_submitted: MessageSquare,
   contract_signed: LayoutDashboard,
-  payment_received: DollarSign,
+  payment_received: DollarSign
 }
 
 const activityStatusTone: Record<string, { variant: 'outline' | 'secondary'; textClass: string }> = {
   active: { variant: 'outline', textClass: 'text-success' },
   pending: { variant: 'outline', textClass: 'text-warning' },
-  completed: { variant: 'outline', textClass: 'text-muted-foreground' },
+  completed: { variant: 'outline', textClass: 'text-muted-foreground' }
 }
 
 export default function OverviewClient({ orgId }: { orgId: string }) {

@@ -4,39 +4,10 @@
  */
 
 'use client';
+import { Avatar, Button, Card, CardContent, Drawer, Tabs } from '@ghxstship/ui';
+import { AttachFile, Avatar, Box, Business, Button, Card, CardContent, Chip, Close, Divider, Drawer, Edit, Email, Grid, History, IconButton, Language, List, ListItem, ListItemAvatar, ListItemText, LocationOn, People, Phone, Tab, Tabs, Typography } from 'lucide-react';
 
-import { useState, useEffect } from 'react';
-import {
-  Drawer,
-  Box,
-  Typography,
-  Avatar,
-  Chip,
-  Divider,
-  Grid,
-  Card,
-  CardContent,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  IconButton,
-  Tabs,
-  Tab,
-  Button,
-} from '@mui/material';
-import {
-  Close,
-  Edit,
-  Email,
-  Phone,
-  Language,
-  Business,
-  LocationOn,
-  History,
-  AttachFile,
-  People,
-} from '@mui/icons-material';
+import { useEffect, useState, useCallback } from 'react';
 import type { Company } from '../types';
 
 interface TabPanelProps {
@@ -74,7 +45,7 @@ export default function DetailDrawer({
   onClose,
   company,
   onEdit,
-  loading = false,
+  loading = false
 }: DetailDrawerProps) {
   const [tabValue, setTabValue] = useState(0);
 
@@ -113,8 +84,8 @@ export default function DetailDrawer({
       sx={{
         '& .MuiDrawer-paper': {
           width: { xs: '100%', sm: 600 },
-          maxWidth: '100%',
-        },
+          maxWidth: '100%'
+        }
       }}
     >
       <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>

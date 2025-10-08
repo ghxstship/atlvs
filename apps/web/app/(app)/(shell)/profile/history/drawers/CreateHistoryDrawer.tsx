@@ -1,6 +1,6 @@
 'use client';
 
-import { Plus, X, Calendar, Building, MapPin, Award, Star, Tag, ExternalLink, DollarSign } from "lucide-react";
+import { Plus, X, Calendar, Building, MapPin, Award, Star, Tag, ExternalDollarSign } from "lucide-react";
 import { useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -19,7 +19,7 @@ import {
  Badge,
  Label,
  Separator,
- useToast,
+ useToast
 } from '@ghxstship/ui';
 import type { 
  HistoryEntry, 
@@ -49,7 +49,7 @@ const historyEntrySchema = z.object({
  grade_gpa: z.string().optional(),
  project_status: z.enum(['completed', 'in_progress', 'on_hold', 'cancelled']).optional(),
  visibility: z.enum(['public', 'organization', 'private']).default('organization'),
- tags: z.array(z.string()).default([]),
+ tags: z.array(z.string()).default([])
 });
 
 type FormData = z.infer<typeof historyEntrySchema>;
@@ -110,7 +110,7 @@ export default function CreateHistoryDrawer({
  open,
  onClose,
  onSave,
- loading = false,
+ loading = false
 }: CreateHistoryDrawerProps) {
  const { addToast } = useToast();
  const [newSkill, setNewSkill] = useState('');
@@ -135,8 +135,8 @@ export default function CreateHistoryDrawer({
  salary_range: '',
  grade_gpa: '',
  visibility: 'organization',
- tags: [],
- },
+ tags: []
+ }
  });
 
  const { watch, setValue, getValues } = form;
@@ -185,7 +185,7 @@ export default function CreateHistoryDrawer({
  addToast({
  title: 'History Entry Created',
  description: 'Your history entry has been successfully created.',
- type: 'success',
+ type: 'success'
  });
  form.reset();
  onClose();
@@ -193,7 +193,7 @@ export default function CreateHistoryDrawer({
  addToast({
  title: 'Error',
  description: 'Failed to create history entry. Please try again.',
- type: 'error',
+ type: 'error'
  });
  }
  }, [onSave, addToast, form, onClose]);

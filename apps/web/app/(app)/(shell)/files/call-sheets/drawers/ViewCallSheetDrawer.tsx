@@ -1,5 +1,5 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, Download, Eye, Edit, Users, Mail, Phone, MapPin, Share2 } from 'lucide-react';
 import { useState } from 'react';
 import {
  Button,
@@ -10,7 +10,7 @@ import {
  DrawerHeader,
  DrawerTitle,
  DrawerFooter,
- Separator,
+ Separator
 } from '@ghxstship/ui';
 import { format } from 'date-fns';
 import type { CallSheet } from '../lib/callSheetsService';
@@ -29,7 +29,7 @@ const STATUS_VARIANTS: Record<CallSheet['status'], 'secondary' | 'info' | 'warni
  published: 'info',
  distributed: 'warning',
  completed: 'success',
- cancelled: 'destructive',
+ cancelled: 'destructive'
 };
 
 export default function ViewCallSheetDrawer({
@@ -38,7 +38,7 @@ export default function ViewCallSheetDrawer({
  callSheet,
  onEdit,
  onDelete,
- onDistribute,
+ onDistribute
 }: ViewCallSheetDrawerProps) {
  const [activeTab, setActiveTab] = useState<'overview' | 'crew' | 'talent' | 'contacts'>('overview');
 

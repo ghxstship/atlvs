@@ -12,7 +12,7 @@ interface RiskMatrixViewProps {
 export default function RiskMatrixView({
  riskMatrix,
  onView,
- getRiskLevelColor,
+ getRiskLevelColor
 }: RiskMatrixViewProps) {
  const probabilities = ["very_high", "high", "medium", "low", "very_low"];
  const impacts = ["very_low", "low", "medium", "high", "very_high"];
@@ -23,7 +23,7 @@ export default function RiskMatrixView({
  low: 2,
  medium: 3,
  high: 4,
- very_high: 5,
+ very_high: 5
  };
  const score = probMap[prob] * probMap[imp];
  
@@ -88,7 +88,7 @@ export default function RiskMatrixView({
  low: 2,
  medium: 3,
  high: 4,
- very_high: 5,
+ very_high: 5
  };
  const score = probMap[probability] * probMap[impact];
 

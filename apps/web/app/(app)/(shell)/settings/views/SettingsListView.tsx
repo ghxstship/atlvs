@@ -9,7 +9,7 @@ import {
  Badge,
  Button,
  Input,
- Skeleton,
+ Skeleton
 } from '@ghxstship/ui';
 import type { SettingsListViewProps, SettingRecord, SettingCategory, SettingType } from '../types';
 
@@ -17,7 +17,7 @@ export default function SettingsListView({
  settings,
  loading,
  onEdit,
- onView,
+ onView
 }: SettingsListViewProps) {
  const [searchQuery, setSearchQuery] = useState('');
 
@@ -37,7 +37,7 @@ export default function SettingsListView({
  permissions: Lock,
  automations: SettingsIcon,
  compliance: Lock,
- backup: SettingsIcon,
+ backup: SettingsIcon
  };
  
  return icons[category] || SettingsIcon;
@@ -53,7 +53,7 @@ export default function SettingsListView({
  permissions: 'text-red-600 bg-red-100',
  automations: 'text-indigo-600 bg-indigo-100',
  compliance: 'text-gray-600 bg-gray-100',
- backup: 'text-teal-600 bg-teal-100',
+ backup: 'text-teal-600 bg-teal-100'
  };
  
  return colors[category] || 'text-gray-600 bg-gray-100';

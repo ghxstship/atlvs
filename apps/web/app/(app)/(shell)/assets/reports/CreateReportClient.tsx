@@ -4,15 +4,8 @@
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
-import { 
-  FileText,
-  Calendar,
-  BarChart3,
-  Filter,
-  Save,
-  X
-} from 'lucide-react';
+import { Drawer, Button, Input, Select, Textarea, Card } from '@ghxstship/ui';
+import { BarChart3, Calendar, FileText, Filter, Save, X } from 'lucide-react';
 
 interface CreateReportClientProps {
   user: User;
@@ -199,7 +192,7 @@ export default function CreateReportClient({
               <label className="block text-body-sm form-label mb-xs">
                 Report Name *
               </label>
-              <UnifiedInput                 value={formData.name}
+              <Input                 value={formData.name}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('name', e.target.value)}
                 placeholder="Enter report name"
                 required
@@ -301,7 +294,7 @@ export default function CreateReportClient({
               <label className="block text-body-sm form-label mb-xs">
                 Scheduled Date/Time
               </label>
-              <UnifiedInput                 type="datetime-local"
+              <Input                 type="datetime-local"
                 value={formData.scheduledDate}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('scheduledDate', e.target.value)}
               />
@@ -311,7 +304,7 @@ export default function CreateReportClient({
               <label className="block text-body-sm form-label mb-xs">
                 Recipients
               </label>
-              <UnifiedInput                 value={formData.recipients}
+              <Input                 value={formData.recipients}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('recipients', e.target.value)}
                 placeholder="Email addresses separated by commas"
               />

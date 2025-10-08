@@ -20,7 +20,7 @@ const CreateTransactionSchema = z.object({
   transactionDate: z.string(),
   status: z.enum(['pending', 'posted', 'reconciled', 'voided']).default('pending'),
   attachmentUrl: z.string().url().optional().or(z.literal('')),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 const UpdateTransactionSchema = CreateTransactionSchema.partial();

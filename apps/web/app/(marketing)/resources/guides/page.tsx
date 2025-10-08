@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { anton } from '../../../_components/lib/typography';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, BookOpen, Clock, Users, Star, Lock, Eye, CheckCircle } from 'lucide-react';
+import { ArrowRight, BookOpen, CheckCircle, Clock, Eye, Lock, Star, Users } from 'lucide-react';
 import { MarketingSection } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Guides | GHXSTSHIP Resources',
     description: 'Step-by-step guides to mastering production management, from crew coordination to budget tracking.',
-    url: 'https://ghxstship.com/resources/guides',
-  },
+    url: 'https://ghxstship.com/resources/guides'
+  }
 };
 
 const guides = [
@@ -27,7 +27,7 @@ const guides = [
     isPremium: false,
     rating: 4.9,
     completions: '2.3k',
-    preview: 'Learn the fundamentals of festival production including site planning, vendor coordination, and safety protocols.',
+    preview: 'Learn the fundamentals of festival production including site planning, vendor coordination, and safety protocols.'
   },
   {
     id: 'budget-management-mastery',
@@ -40,7 +40,7 @@ const guides = [
     isPremium: true,
     rating: 4.8,
     completions: '1.1k',
-    preview: 'Advanced strategies for budget tracking, cost control, and financial risk management in large-scale productions.',
+    preview: 'Advanced strategies for budget tracking, cost control, and financial risk management in large-scale productions.'
   },
   {
     id: 'crew-coordination-essentials',
@@ -53,7 +53,7 @@ const guides = [
     isPremium: false,
     rating: 4.7,
     completions: '1.8k',
-    preview: 'Proven methods for organizing large crews, managing schedules, and maintaining communication across departments.',
+    preview: 'Proven methods for organizing large crews, managing schedules, and maintaining communication across departments.'
   },
   {
     id: 'vendor-relationship-building',
@@ -66,7 +66,7 @@ const guides = [
     isPremium: true,
     rating: 4.6,
     completions: '950',
-    preview: 'Strategies for finding, vetting, and maintaining relationships with reliable suppliers and contractors.',
+    preview: 'Strategies for finding, vetting, and maintaining relationships with reliable suppliers and contractors.'
   },
   {
     id: 'safety-protocols-implementation',
@@ -79,7 +79,7 @@ const guides = [
     isPremium: true,
     rating: 4.9,
     completions: '1.4k',
-    preview: 'Real-world safety management including risk assessment, protocol development, and incident prevention.',
+    preview: 'Real-world safety management including risk assessment, protocol development, and incident prevention.'
   },
   {
     id: 'technology-integration-guide',
@@ -92,7 +92,7 @@ const guides = [
     isPremium: false,
     rating: 4.5,
     completions: '1.2k',
-    preview: 'Practical approach to adopting new technologies, training teams, and managing digital transformation.',
+    preview: 'Practical approach to adopting new technologies, training teams, and managing digital transformation.'
   },
 ];
 
@@ -276,21 +276,21 @@ export default function GuidesPage() {
                 description: 'Complete path from basic festival operations to managing 100K+ attendee events',
                 guides: 6,
                 duration: '8 hours',
-                level: 'Beginner to Advanced',
+                level: 'Beginner to Advanced'
               },
               {
                 title: 'Budget & Financial Management',
                 description: 'Master production budgeting from small events to multi-million dollar productions',
                 guides: 4,
                 duration: '5 hours',
-                level: 'Intermediate to Advanced',
+                level: 'Intermediate to Advanced'
               },
               {
                 title: 'Team Leadership Excellence',
                 description: 'Build skills to lead teams of 10 to 1,000+ across complex productions',
                 guides: 5,
                 duration: '6 hours',
-                level: 'All Levels',
+                level: 'All Levels'
               },
             ].map((path, index) => (
               <Card key={index} className="hover:shadow-elevation-3 transition-shadow">

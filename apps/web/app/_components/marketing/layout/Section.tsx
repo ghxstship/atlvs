@@ -8,14 +8,14 @@ const variantBase = {
   muted: 'bg-muted text-foreground',
   card: 'bg-card text-card-foreground border border-border',
   elevated: 'bg-card text-card-foreground shadow-elevation-2 border border-border',
-  gradient: 'bg-gradient-to-br from-primary/5 via-background to-secondary/5 text-foreground',
+  gradient: 'bg-gradient-to-br from-primary/5 via-background to-secondary/5 text-foreground'
 };
 
 const paddingMap = {
   none: 'py-0',
   sm: 'py-3xl',
   md: 'py-4xl',
-  lg: 'py-5xl',
+  lg: 'py-5xl'
 } as const;
 
 type SectionVariant = keyof typeof variantBase;
@@ -39,7 +39,7 @@ export function MarketingSection({
   containerClassName,
   variant = 'light',
   padding = 'md',
-  bleed = false,
+  bleed = false
 }: MarketingSectionProps) {
   return (
     <section
@@ -82,7 +82,7 @@ export function MarketingSectionHeader({
   description,
   align = 'center',
   actions,
-  highlight,
+  highlight
 }: MarketingSectionHeaderProps) {
   const heading = highlight
     ? title.replace(
@@ -142,7 +142,7 @@ export function MarketingCard({
   footer,
   className,
   highlight,
-  accent = 'primary',
+  accent = 'primary'
 }: MarketingCardProps) {
   const heading = highlight
     ? title.replace(
@@ -154,7 +154,7 @@ export function MarketingCard({
   const accentClass = {
     primary: 'bg-primary/10 text-primary',
     success: 'bg-success/10 text-success',
-    warning: 'bg-warning/10 text-warning',
+    warning: 'bg-warning/10 text-warning'
   }[accent];
 
   return (

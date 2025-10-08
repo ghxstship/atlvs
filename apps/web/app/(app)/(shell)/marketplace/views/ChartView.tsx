@@ -14,7 +14,7 @@ export default function ChartView({ orgId }: ChartViewProps) {
   const { data: stats, isLoading, error } = useQuery({
     queryKey: ['marketplace-stats', orgId],
     queryFn: () => marketplaceService.getStats(orgId),
-    refetchInterval: 30000,
+    refetchInterval: 30000
   });
 
   const chartData = useMemo(() => {
@@ -30,7 +30,7 @@ export default function ChartView({ orgId }: ChartViewProps) {
         { name: 'Active', value: stats.activeOffers + stats.activeRequests + stats.activeExchanges, color: 'hsl(var(--color-success))' },
         { name: 'Draft', value: 0, color: 'hsl(var(--color-muted))' }, // Would need to calculate from listings
         { name: 'Archived', value: 0, color: 'hsl(var(--color-destructive))' },
-      ],
+      ]
     };
   }, [stats]);
 

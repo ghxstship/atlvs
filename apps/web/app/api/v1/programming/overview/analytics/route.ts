@@ -9,7 +9,7 @@ const analyticsFilterSchema = z.object({
   period: z.enum(['7d', '30d', '90d', '1y']).default('30d'),
   module: z.enum(['events', 'workshops', 'spaces', 'performances', 'riders', 'lineups', 'call_sheets', 'itineraries']).optional(),
   metric: z.enum(['usage', 'revenue', 'participants', 'utilization', 'completion']).optional(),
-  granularity: z.enum(['hour', 'day', 'week', 'month']).default('day'),
+  granularity: z.enum(['hour', 'day', 'week', 'month']).default('day')
 });
 
 async function getSupabase() {
@@ -20,7 +20,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -48,7 +48,7 @@ function getPeriodDates(period: string) {
     '7d': 7,
     '30d': 30,
     '90d': 90,
-    '1y': 365,
+    '1y': 365
   };
   
   const days = periodMap[period as keyof typeof periodMap] || 30;
@@ -69,7 +69,7 @@ function generateTimeSeriesData(startDate: Date, endDate: Date, granularity: str
       period: current.toISOString().split('T')[0],
       value,
       change,
-      change_percentage: Math.round((change / value) * 100 * 100) / 100,
+      change_percentage: Math.round((change / value) * 100 * 100) / 100
     });
     
     // Increment based on granularity
@@ -180,33 +180,33 @@ export async function GET(request: NextRequest) {
           completion_rate: eventsData.data?.length ? 
             (eventsData.data.filter(e => e.status === 'completed').length / eventsData.data.length) * 100 : 0,
           average_participants: eventsData.data?.reduce((sum, e) => sum + (e.participants_count || 0), 0) / Math.max(eventsData.data?.length || 1, 1) || 0,
-          total_revenue: eventsData.data?.reduce((sum, e) => sum + (e.revenue || 0), 0) || 0,
+          total_revenue: eventsData.data?.reduce((sum, e) => sum + (e.revenue || 0), 0) || 0
         },
         workshops: {
           total_created: workshopsData.data?.length || 0,
           completion_rate: workshopsData.data?.length ?
             (workshopsData.data.filter(w => w.status === 'completed').length / workshopsData.data.length) * 100 : 0,
           average_participants: workshopsData.data?.reduce((sum, w) => sum + (w.current_participants || 0), 0) / Math.max(workshopsData.data?.length || 1, 1) || 0,
-          total_revenue: workshopsData.data?.reduce((sum, w) => sum + ((w.price || 0) * (w.current_participants || 0)), 0) || 0,
+          total_revenue: workshopsData.data?.reduce((sum, w) => sum + ((w.price || 0) * (w.current_participants || 0)), 0) || 0
         },
         spaces: {
           total_available: spacesData.data?.length || 0,
           utilization_rate: spacesData.data?.length ?
             (spacesData.data.filter(s => s.status === 'occupied').length / spacesData.data.length) * 100 : 0,
           average_capacity: spacesData.data?.reduce((sum, s) => sum + (s.capacity || 0), 0) / Math.max(spacesData.data?.length || 1, 1) || 0,
-          occupancy_rate: spacesData.data?.reduce((sum, s) => sum + (s.current_occupancy || 0), 0) / Math.max(spacesData.data?.reduce((sum, s) => sum + (s.capacity || 0), 0) || 1, 1) * 100 || 0,
+          occupancy_rate: spacesData.data?.reduce((sum, s) => sum + (s.current_occupancy || 0), 0) / Math.max(spacesData.data?.reduce((sum, s) => sum + (s.capacity || 0), 0) || 1, 1) * 100 || 0
         },
         performances: {
           total_scheduled: performancesData.data?.length || 0,
           completion_rate: performancesData.data?.length ?
             (performancesData.data.filter(p => p.status === 'completed').length / performancesData.data.length) * 100 : 0,
-          average_capacity: performancesData.data?.reduce((sum, p) => sum + (p.audience_capacity || 0), 0) / Math.max(performancesData.data?.length || 1, 1) || 0,
+          average_capacity: performancesData.data?.reduce((sum, p) => sum + (p.audience_capacity || 0), 0) / Math.max(performancesData.data?.length || 1, 1) || 0
         },
         riders: {
           total_created: ridersData.data?.length || 0,
           approval_rate: ridersData.data?.length ?
-            (ridersData.data.filter(r => r.status === 'approved').length / ridersData.data.length) * 100 : 0,
-        },
+            (ridersData.data.filter(r => r.status === 'approved').length / ridersData.data.length) * 100 : 0
+        }
       },
 
       // Growth metrics
@@ -214,21 +214,21 @@ export async function GET(request: NextRequest) {
         events: {
           period_growth: Math.floor(Math.random() * 30) + 5,
           participant_growth: Math.floor(Math.random() * 25) + 10,
-          revenue_growth: Math.floor(Math.random() * 40) + 15,
+          revenue_growth: Math.floor(Math.random() * 40) + 15
         },
         workshops: {
           period_growth: Math.floor(Math.random() * 35) + 8,
           participant_growth: Math.floor(Math.random() * 20) + 12,
-          completion_growth: Math.floor(Math.random() * 15) + 5,
+          completion_growth: Math.floor(Math.random() * 15) + 5
         },
         spaces: {
           utilization_growth: Math.floor(Math.random() * 20) + 3,
-          booking_growth: Math.floor(Math.random() * 25) + 7,
+          booking_growth: Math.floor(Math.random() * 25) + 7
         },
         performances: {
           period_growth: Math.floor(Math.random() * 28) + 6,
-          audience_growth: Math.floor(Math.random() * 22) + 9,
-        },
+          audience_growth: Math.floor(Math.random() * 22) + 9
+        }
       },
 
       // Comparative analysis
@@ -245,7 +245,7 @@ export async function GET(request: NextRequest) {
           { metric: 'Completion Rate', value: 91, benchmark: 85, status: 'above' },
           { metric: 'User Satisfaction', value: 4.3, benchmark: 4.0, status: 'above' },
           { metric: 'Response Time', value: 2.1, benchmark: 3.0, status: 'above' },
-        ],
+        ]
       },
 
       // Forecasting (simplified predictive analytics)
@@ -254,14 +254,14 @@ export async function GET(request: NextRequest) {
           events: Math.floor((eventsData.data?.length || 0) * 1.15),
           workshops: Math.floor((workshopsData.data?.length || 0) * 1.22),
           spaces_utilization: Math.min(95, (spacesData.data?.filter(s => s.status === 'occupied').length || 0) / Math.max(spacesData.data?.length || 1, 1) * 100 * 1.08),
-          performances: Math.floor((performancesData.data?.length || 0) * 1.12),
+          performances: Math.floor((performancesData.data?.length || 0) * 1.12)
         },
         trend_analysis: {
           overall_growth: 'positive',
           risk_factors: ['space_capacity_limits', 'instructor_availability'],
-          opportunities: ['workshop_expansion', 'virtual_events', 'hybrid_formats'],
-        },
-      },
+          opportunities: ['workshop_expansion', 'virtual_events', 'hybrid_formats']
+        }
+      }
     };
 
     return NextResponse.json(analytics);

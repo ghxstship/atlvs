@@ -117,8 +117,8 @@ function ContractsClient({ user }: ContractsClientProps) {
 
       const response = await fetch('/api/v1/jobs/contracts', {
         headers: {
-          'x-org-id': orgId,
-        },
+          'x-org-id': orgId
+        }
       });
 
       if (response.ok) {

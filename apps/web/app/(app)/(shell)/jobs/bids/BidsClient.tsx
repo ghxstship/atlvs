@@ -73,8 +73,8 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
       const response = await fetch('/api/v1/jobs/bids', {
         headers: {
           'x-org-id': orgId,
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       });
 
       if (!response.ok) {
@@ -139,9 +139,9 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
         method: 'POST',
         headers: {
           'x-org-id': orgId,
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
@@ -329,7 +329,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
                 status: 'draft',
                 amount: Number(formData.get('amount')),
                 currency: 'USD',
-                opportunityId: formData.get('opportunityId') as string,
+                opportunityId: formData.get('opportunityId') as string
               });
             }}>
               <div className="stack-md">

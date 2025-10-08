@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import { PieChart, FileText, Download, Settings } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
+import { Download, FileText, PieChart, Settings } from 'lucide-react';
+import { Button, Card, CardBody, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 
 interface DashboardReportsTabProps {
   dashboard?: unknown;

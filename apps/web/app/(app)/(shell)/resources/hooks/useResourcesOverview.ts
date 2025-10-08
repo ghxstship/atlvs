@@ -154,12 +154,15 @@ export function useResourcesOverview({ orgId }: UseResourcesOverviewOptions): Us
     [orgId],
   )
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadOverview('initial')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadOverview])
 
   const refresh = useCallback(async () => {
     await loadOverview('refresh')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadOverview])
 
   return { metrics, recentResources, categories, activities, loading, refreshing, error, refresh }

@@ -19,8 +19,8 @@ const createInspectionSchema = z.object({
     category: z.string(),
     item: z.string(),
     status: z.enum(["pass", "fail", "na", "pending"]).default("pending"),
-    notes: z.string().optional().nullable(),
-  })).optional(),
+    notes: z.string().optional().nullable()
+  })).optional()
 });
 
 const updateInspectionSchema = createInspectionSchema.partial().extend({
@@ -30,7 +30,7 @@ const updateInspectionSchema = createInspectionSchema.partial().extend({
   is_passed: z.boolean().optional(),
   findings: z.string().optional().nullable(),
   recommendations: z.string().optional().nullable(),
-  attachments: z.array(z.string()).optional(),
+  attachments: z.array(z.string()).optional()
 });
 
 // GET /api/v1/inspections - List inspections
@@ -103,7 +103,7 @@ export async function GET(request: NextRequest) {
       data: inspections || [],
       count: count || 0,
       limit,
-      offset,
+      offset
     });
   } catch (error) {
     console.error("Error in GET /api/v1/inspections:", error);
@@ -183,7 +183,7 @@ export async function POST(request: NextRequest) {
         organization_id: membership.organization_id,
         status: "scheduled",
         is_passed: false,
-        created_by: user.id,
+        created_by: user.id
       })
       .select(`
         *,
@@ -207,8 +207,8 @@ export async function POST(request: NextRequest) {
       details: {
         title: inspection.title,
         type: inspection.type,
-        scheduled_date: inspection.scheduled_date,
-      },
+        scheduled_date: inspection.scheduled_date
+      }
     });
 
     return NextResponse.json(inspection, { status: 201 });

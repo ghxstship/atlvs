@@ -155,7 +155,7 @@ export const STATUS_BADGE = {
   ready: { label: 'Ready', variant: 'info' as const },
   live: { label: 'Live', variant: 'destructive' as const },
   completed: { label: 'Completed', variant: 'success' as const },
-  cancelled: { label: 'Cancelled', variant: 'secondary' as const },
+  cancelled: { label: 'Cancelled', variant: 'secondary' as const }
 } as const;
 
 // Performance type configurations
@@ -167,7 +167,7 @@ export const PERFORMANCE_TYPE_BADGE = {
   spoken_word: { label: 'Spoken Word', icon: '🎙️' },
   variety: { label: 'Variety', icon: '🎪' },
   festival: { label: 'Festival', icon: '🎉' },
-  other: { label: 'Other', icon: '🎨' },
+  other: { label: 'Other', icon: '🎨' }
 } as const;
 
 // Currency options
@@ -185,7 +185,7 @@ export const VIEW_CONFIG = {
   list: { label: 'List', icon: 'List' },
   grid: { label: 'Grid', icon: 'Grid3X3' },
   timeline: { label: 'Timeline', icon: 'Calendar' },
-  analytics: { label: 'Analytics', icon: 'BarChart3' },
+  analytics: { label: 'Analytics', icon: 'BarChart3' }
 } as const;
 
 // Equipment options for technical requirements

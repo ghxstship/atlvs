@@ -24,7 +24,7 @@ import {
  TabsContent,
  TabsList,
  TabsTrigger,
- type DataRecord,
+ type DataRecord
 } from '@ghxstship/ui';
 import type { DataViewConfig, FieldConfig, FilterConfig, SortConfig } from '@ghxstship/ui/src/components/DataViews/types';
 
@@ -40,7 +40,7 @@ import type {
  RiderProject,
  STATUS_BADGE,
  PRIORITY_BADGE,
- RIDER_KIND_BADGE,
+ RIDER_KIND_BADGE
 } from './types';
 
 // Import view components
@@ -76,7 +76,7 @@ export default function ProgrammingRidersClient({
  initialRiders,
  projects,
  events,
- users,
+ users
 }: ProgrammingRidersClientProps) {
  const supabase = useMemo(() => createBrowserClient(), []);
 
@@ -105,7 +105,7 @@ export default function ProgrammingRidersClient({
  event: '*',
  schema: 'public',
  table: 'programming_riders',
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  (payload) => {
  if (payload.eventType === 'INSERT') {
@@ -218,7 +218,7 @@ export default function ProgrammingRidersClient({
  const handleDeleteRider = async (riderId: string) => {
  try {
  const response = await fetch(`/api/v1/programming/riders/${riderId}`, {
- method: 'DELETE',
+ method: 'DELETE'
  });
 
  if (!response.ok) throw new Error('Failed to delete rider');
@@ -251,8 +251,8 @@ export default function ProgrammingRidersClient({
  body: JSON.stringify({
  status: 'approved',
  approved_at: new Date().toISOString(),
- approved_by: currentUserId,
- }),
+ approved_by: currentUserId
+ })
  })
  )
  );
@@ -267,8 +267,8 @@ export default function ProgrammingRidersClient({
  body: JSON.stringify({
  status: 'fulfilled',
  fulfilled_at: new Date().toISOString(),
- fulfilled_by: currentUserId,
- }),
+ fulfilled_by: currentUserId
+ })
  })
  )
  );
@@ -321,7 +321,7 @@ export default function ProgrammingRidersClient({
  list: List,
  grid: Grid3X3,
  timeline: Clock,
- analytics: BarChart3,
+ analytics: BarChart3
  };
 
  return (

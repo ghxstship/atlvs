@@ -1,9 +1,9 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { Activity, Award, Calendar, CheckCircle, Clock, Edit, Eye, FileText, Package, Play, Plus, Search, Settings, Trash2, TrendingUp, Truck, User } from 'lucide-react';
 import { useState } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import type { TrackingItem } from '../types';
-import { formatCurrency, formatDate, getStatusColor, getPriorityColor } from '../types';
+import { formatCurrency, formatDate } from '../types';
 
 interface TrackingKanbanViewProps {
  items: TrackingItem[];
@@ -32,7 +32,7 @@ export default function TrackingKanbanView({
  onItemClick,
  onEditItem,
  onViewItem,
- onStatusChange,
+ onStatusChange
 }: TrackingKanbanViewProps) {
  const [draggedItem, setDraggedItem] = useState<TrackingItem | null>(null);
 
@@ -187,7 +187,7 @@ export default function TrackingKanbanView({
  </div>
  <div className="flex items-center gap-xs ml-sm">
  {overdue && (
- <Badge variant="destructive" className="text-xs">
+ <Badge variant="error" className="text-xs">
  Overdue
  </Badge>
  )}

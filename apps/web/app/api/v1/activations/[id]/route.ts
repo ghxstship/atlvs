@@ -20,7 +20,7 @@ const updateActivationSchema = z.object({
   stakeholders: z.array(z.string()).optional(),
   dependencies: z.array(z.string()).optional(),
   risks: z.array(z.string()).optional(),
-  notes: z.string().optional().nullable(),
+  notes: z.string().optional().nullable()
 });
 
 // GET /api/v1/activations/[id] - Get single activation
@@ -151,7 +151,7 @@ export async function PATCH(
       .update({
         ...updates,
         updated_by: user.id,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq("id", params.id)
       .select(`
@@ -172,7 +172,7 @@ export async function PATCH(
       action: "update",
       resource_type: "activation",
       resource_id: activation.id,
-      details: { updates },
+      details: { updates }
     });
 
     return NextResponse.json(activation);
@@ -245,8 +245,8 @@ export async function DELETE(
       resource_type: "activation",
       resource_id: params.id,
       details: {
-        name: existingActivation.name,
-      },
+        name: existingActivation.name
+      }
     });
 
     return NextResponse.json({ message: "Activation deleted successfully" });

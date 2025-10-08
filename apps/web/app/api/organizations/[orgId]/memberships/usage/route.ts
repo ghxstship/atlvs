@@ -50,6 +50,6 @@ export async function GET(_req: NextRequest, { params }: { params: { orgId: stri
   return NextResponse.json({
     seat_policy: entitlements?.seat_policy ?? 'user',
     seats_limit: entitlements?.seats_limit ?? null,
-    active_count: activeCount ?? 0,
+    active_count: activeCount ?? 0
   });
 }

@@ -3,7 +3,7 @@ import type {
   UserProfile,
   ProfileFilters,
   ProfileStats,
-  ProfileAnalytics,
+  ProfileAnalytics
 } from '../types';
 import { createEmptyProfileStats, createEmptyProfileAnalytics } from '../types';
 
@@ -13,13 +13,13 @@ export const profileFilterSchema = zod.object({
   employment_type: zod.enum(['full-time', 'part-time', 'contract', 'freelance', 'intern']).optional(),
   completion_range: zod.object({
     min: zod.number().min(0).max(100),
-    max: zod.number().min(0).max(100),
+    max: zod.number().min(0).max(100)
   }).optional(),
   search: zod.string().optional(),
   date_from: zod.string().datetime().optional(),
   date_to: zod.string().datetime().optional(),
   limit: zod.number().min(1).max(100).default(50),
-  offset: zod.number().min(0).default(0),
+  offset: zod.number().min(0).default(0)
 });
 
 export const profileUpdateSchema = zod.object({
@@ -44,12 +44,12 @@ export const profileUpdateSchema = zod.object({
   skills: zod.array(zod.string()).default([]),
   bio: zod.string().max(500).optional(),
   linkedin_url: zod.string().url().optional().or(zod.literal('')),
-  website_url: zod.string().url().optional().or(zod.literal('')),
+  website_url: zod.string().url().optional().or(zod.literal(''))
 });
 
 export const analyticsFilterSchema = zod.object({
   period: zod.enum(['7d', '30d', '90d', '1y']).default('30d'),
-  granularity: zod.enum(['day', 'week', 'month']).default('day'),
+  granularity: zod.enum(['day', 'week', 'month']).default('day')
 });
 
 type SupabaseClient = ReturnType<typeof import('@ghxstship/auth').createServerClient>;
@@ -60,7 +60,7 @@ export function getPeriodDates(period: string) {
     '7d': 7,
     '30d': 30,
     '90d': 90,
-    '1y': 365,
+    '1y': 365
   };
 
   const days = periodMap[period] ?? 30;
@@ -163,13 +163,13 @@ export async function fetchProfiles(
 
     return {
       profiles: data || [],
-      total: count || 0,
+      total: count || 0
     };
   } catch (error) {
     console.error('Error fetching profiles:', error);
     return {
       profiles: [],
-      total: 0,
+      total: 0
     };
   }
 }
@@ -193,7 +193,7 @@ export async function updateUserProfile(
         ...profileData,
         profile_completion_percentage: completionPercentage,
         last_updated_by: updatedBy,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .select(`
         *,
@@ -214,9 +214,9 @@ export async function updateUserProfile(
         activity_description: 'Profile information was updated',
         metadata: {
           fields_updated: Object.keys(profileData),
-          completion_percentage: completionPercentage,
+          completion_percentage: completionPercentage
         },
-        performed_by: updatedBy,
+        performed_by: updatedBy
       });
 
     return data;
@@ -278,7 +278,7 @@ export async function fetchProfileStats(
       .map(([department, count]) => ({
         department,
         count,
-        percentage: totalProfiles > 0 ? (count / totalProfiles) * 100 : 0,
+        percentage: totalProfiles > 0 ? (count / totalProfiles) * 100 : 0
       }))
       .sort((a, b) => b.count - a.count);
 
@@ -299,7 +299,7 @@ export async function fetchProfileStats(
       return {
         range,
         count,
-        percentage: totalProfiles > 0 ? (count / totalProfiles) * 100 : 0,
+        percentage: totalProfiles > 0 ? (count / totalProfiles) * 100 : 0
       };
     });
 
@@ -314,7 +314,7 @@ export async function fetchProfileStats(
       .map(([type, count]) => ({
         type,
         count,
-        percentage: totalProfiles > 0 ? (count / totalProfiles) * 100 : 0,
+        percentage: totalProfiles > 0 ? (count / totalProfiles) * 100 : 0
       }))
       .sort((a, b) => b.count - a.count);
 
@@ -325,7 +325,7 @@ export async function fetchProfileStats(
       recentUpdates,
       departmentDistribution,
       completionDistribution,
-      employmentTypeDistribution,
+      employmentTypeDistribution
     };
   } catch (error) {
     console.error('Error fetching profile stats:', error);
@@ -365,7 +365,7 @@ export async function fetchProfileAnalytics(
     const completionTrends = Object.entries(dailyUpdates).map(([date, data]) => ({
       date,
       averageCompletion: data.profilesUpdated > 0 ? data.completionSum / data.profilesUpdated : 0,
-      profilesUpdated: data.profilesUpdated,
+      profilesUpdated: data.profilesUpdated
     }));
 
     // Get current profile data for analysis
@@ -394,7 +394,7 @@ export async function fetchProfileAnalytics(
       department,
       totalProfiles: stats.totalProfiles,
       averageCompletion: stats.totalProfiles > 0 ? Math.round(stats.completionSum / stats.totalProfiles) : 0,
-      activeProfiles: stats.activeProfiles,
+      activeProfiles: stats.activeProfiles
     }));
 
     // Skills analysis
@@ -415,7 +415,7 @@ export async function fetchProfileAnalytics(
       .map(([skill, data]) => ({
         skill,
         count: data.count as number,
-        departments: Array.from(data.departments as Set<string>),
+        departments: Array.from(data.departments as Set<string>)
       }))
       .sort((a, b) => b.count - a.count)
       .slice(0, 20);
@@ -433,7 +433,7 @@ export async function fetchProfileAnalytics(
       .map(([language, count]) => ({
         language,
         count,
-        percentage: totalLanguageEntries > 0 ? (count / totalLanguageEntries) * 100 : 0,
+        percentage: totalLanguageEntries > 0 ? (count / totalLanguageEntries) * 100 : 0
       }))
       .sort((a, b) => b.count - a.count)
       .slice(0, 10);
@@ -442,7 +442,7 @@ export async function fetchProfileAnalytics(
       completionTrends,
       departmentStats: departmentStatsArray,
       skillsAnalysis,
-      languageDistribution,
+      languageDistribution
     };
   } catch (error) {
     console.error('Error fetching profile analytics:', error);

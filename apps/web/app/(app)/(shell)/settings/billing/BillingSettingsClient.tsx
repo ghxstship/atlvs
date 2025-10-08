@@ -10,12 +10,12 @@ import {
  Textarea,
  Loader,
  Label,
- useToastContext,
+ useToastContext
 } from '@ghxstship/ui';
 import {
  fetchBillingSettings,
  updateBillingSettings,
- type BillingSettingsResponse,
+ type BillingSettingsResponse
 } from '@/lib/services/settingsBillingClient';
 import BillingPortalClient from './BillingPortalClient';
 import Plans from './Plans';
@@ -31,7 +31,7 @@ const emptyForm: FormState = {
  billingEmail: '',
  billingAddress: '{\n "line1": "",\n "city": "",\n "state": "",\n "postal_code": "",\n "country": ""\n}',
  paymentMethod: '{\n "type": "",\n "details": {}\n}',
- invoiceSettings: '{\n "collection_method": "charge_automatically"\n}',
+ invoiceSettings: '{\n "collection_method": "charge_automatically"\n}'
 };
 
 function safeStringify(value: unknown) {
@@ -59,7 +59,7 @@ export default function BillingSettingsClient() {
  billingEmail: billing?.billingEmail ?? '',
  billingAddress: safeStringify(billing?.billingAddress ?? {}),
  paymentMethod: safeStringify(billing?.paymentMethod ?? {}),
- invoiceSettings: safeStringify(billing?.invoiceSettings ?? {}),
+ invoiceSettings: safeStringify(billing?.invoiceSettings ?? {})
  });
  } catch (error) {
  const message = error instanceof Error ? error.message : 'Unable to load billing settings';
@@ -84,7 +84,7 @@ export default function BillingSettingsClient() {
  billingEmail: form.billingEmail.trim() || undefined,
  billingAddress: form.billingAddress.trim() ? JSON.parse(form.billingAddress) : undefined,
  paymentMethod: form.paymentMethod.trim() ? JSON.parse(form.paymentMethod) : undefined,
- invoiceSettings: form.invoiceSettings.trim() ? JSON.parse(form.invoiceSettings) : undefined,
+ invoiceSettings: form.invoiceSettings.trim() ? JSON.parse(form.invoiceSettings) : undefined
  };
 
  const response = await updateBillingSettings(updates);

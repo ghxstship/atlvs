@@ -1,8 +1,8 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
-import { Card, Button, UnifiedInput, Badge, Drawer } from '@ghxstship/ui';
+import { useState, useCallback, useEffect } from 'react';
+import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
 // ChartBar component removed - using simple div for now
 import { Plus, Search, Filter, Download, Upload, BarChart3, PieChart, TrendingUp, Calendar, DollarSign, Package } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -63,12 +63,16 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
   const [selectedReport, setSelectedReport] = useState<AssetReport | null>(null);
   const [activeTab, setActiveTab] = useState<'reports' | 'analytics'>('reports');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadReports();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     filterReports();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reports, searchQuery, selectedType, selectedStatus]);
 
   const loadReports = async () => {
@@ -261,15 +265,15 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
       case 'scheduled':
         return <Badge variant="secondary">Scheduled</Badge>;
       case 'failed':
-        return <Badge variant="destructive">Failed</Badge>;
+        return <Badge variant="error">Failed</Badge>;
       default:
-        return <Badge variant="outline">{status}</Badge>;
+        return <Badge variant="secondary">{status}</Badge>;
     }
   };
 
   const getTypeBadge = (type: AssetReport['type']) => {
     const reportType = REPORT_TYPES.find(t => t.id === type);
-    return <Badge variant="outline">{reportType?.name || type}</Badge>;
+    return <Badge variant="secondary">{reportType?.name || type}</Badge>;
   };
 
   const formatDateTime = (dateString: string) => {
@@ -299,7 +303,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
           <p className="text-body-sm color-muted">Generate insights and reports on asset performance</p>
         </div>
         <div className="flex items-center gap-sm">
-          <Button variant="outline" className="flex items-center gap-sm">
+          <Button variant="secondary" className="flex items-center gap-sm">
             <Download className="w-icon-xs h-icon-xs" />
             Export All
           </Button>
@@ -343,7 +347,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
                 <div className="flex-1 min-w-container-sm">
                   <div className="relative">
                     <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted w-icon-xs h-icon-xs" />
-                    <UnifiedInput                       placeholder="Search reports..."
+                    <Input                       placeholder="Search reports..."
                       value={searchQuery}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                       className="pl-2xl"
@@ -415,7 +419,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
                           {report.status === 'ready' && (
                             <Button
                              
-                              variant="outline"
+                              variant="secondary"
                               onClick={() => handleDownloadReport(report)}
                             >
                               <Download className="w-3 h-3 mr-xs" />
@@ -425,7 +429,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
                           {(report.status === 'ready' || report.status === 'failed') && (
                             <Button
                              
-                              variant="outline"
+                              variant="secondary"
                               onClick={() => handleRegenerateReport(report.id)}
                             >
                               Regenerate
@@ -635,21 +639,21 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
           </div>
           <div>
             <label className="block text-body-sm form-label mb-xs">Report Title</label>
-            <UnifiedInput placeholder="Enter report title" />
+            <Input placeholder="Enter report title" />
           </div>
           <div className="grid grid-cols-2 gap-md">
             <div>
               <label className="block text-body-sm form-label mb-xs">Start Date</label>
-              <UnifiedInput type="date" />
+              <Input type="date" />
             </div>
             <div>
               <label className="block text-body-sm form-label mb-xs">End Date</label>
-              <UnifiedInput type="date" />
+              <Input type="date" />
             </div>
           </div>
           <div>
             <label className="block text-body-sm form-label mb-xs">Categories (Optional)</label>
-            <UnifiedInput placeholder="Select categories to include" />
+            <Input placeholder="Select categories to include" />
           </div>
           <div>
             <label className="block text-body-sm form-label mb-xs">Additional Filters</label>
@@ -661,7 +665,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
           </div>
           <div className="flex gap-sm pt-md">
             <Button className="flex-1">Generate Report</Button>
-            <Button variant="outline" onClick={() => setShowDrawer(false)}>
+            <Button variant="secondary" onClick={() => setShowDrawer(false)}>
               Cancel
             </Button>
           </div>

@@ -28,7 +28,7 @@ export function withValidation<T, C = unknown>(
               new z.ZodError([{
                 code: 'custom',
                 message: 'Invalid JSON in request body',
-                path: [],
+                path: []
               }])
             ),
             { status: 400 }
@@ -117,7 +117,7 @@ export async function validateRequestBody<T>(
       error: new z.ZodError([{
         code: 'custom',
         message: 'Invalid JSON in request body',
-        path: [],
+        path: []
       }])
     };
   }

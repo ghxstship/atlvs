@@ -20,7 +20,7 @@ export default function ProgrammingOverviewAnalyticsView({
  loading,
  analyticsLoading,
  period,
- moduleFilter,
+ moduleFilter
 }: ProgrammingOverviewAnalyticsViewProps) {
  const trendData = useMemo(() => [
  {
@@ -28,28 +28,28 @@ export default function ProgrammingOverviewAnalyticsView({
  data: analytics.eventTrends,
  color: 'text-blue-600',
  bgColor: 'bg-blue-50',
- icon: BarChart3,
+ icon: BarChart3
  },
  {
  title: 'Workshop Trends',
  data: analytics.workshopTrends,
  color: 'text-green-600',
  bgColor: 'bg-green-50',
- icon: Users,
+ icon: Users
  },
  {
  title: 'Space Trends',
  data: analytics.spaceTrends,
  color: 'text-purple-600',
  bgColor: 'bg-purple-50',
- icon: Activity,
+ icon: Activity
  },
  {
  title: 'Performance Trends',
  data: analytics.performanceTrends,
  color: 'text-red-600',
  bgColor: 'bg-red-50',
- icon: TrendingUp,
+ icon: TrendingUp
  },
  ], [analytics]);
 

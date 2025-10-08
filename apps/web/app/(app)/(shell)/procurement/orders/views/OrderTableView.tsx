@@ -4,7 +4,7 @@ import { Package, Calendar, DollarSign, Edit, Trash2, Eye, MoreHorizontal, Arrow
 import { useState } from 'react';
 import { Card, Badge, Button, Checkbox } from '@ghxstship/ui';
 import type { ProcurementOrder, OrderSort } from '../types';
-import { formatCurrency, formatDate, getStatusColor, getPriorityColor, getPaymentStatusColor } from '../types';
+import { formatCurrency, formatDate, getPaymentStatusColor } from '../types';
 
 interface OrderTableViewProps {
  orders: ProcurementOrder[];
@@ -29,7 +29,7 @@ export default function OrderTableView({
  onDeleteOrder,
  onViewOrder,
  sort,
- onSortChange,
+ onSortChange
 }: OrderTableViewProps) {
  const handleOrderSelection = (orderId: string, checked: boolean) => {
  if (checked) {
@@ -208,7 +208,7 @@ export default function OrderTableView({
  </span>
  <Button
  size="sm"
- variant="outline"
+ variant="secondary"
  onClick={() => onSelectionChange([])}
  >
  Clear selection
@@ -359,7 +359,7 @@ export default function OrderTableView({
  {order.status.replace('_', ' ')}
  </Badge>
  {overdue && (
- <Badge variant="destructive" className="ml-xs text-xs">
+ <Badge variant="error" className="ml-xs text-xs">
  Overdue
  </Badge>
  )}

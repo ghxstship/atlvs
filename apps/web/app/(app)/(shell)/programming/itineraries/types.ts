@@ -159,7 +159,7 @@ export const STATUS_BADGE = {
   confirmed: { label: 'Confirmed', variant: 'info' as const },
   in_progress: { label: 'In Progress', variant: 'warning' as const },
   completed: { label: 'Completed', variant: 'success' as const },
-  cancelled: { label: 'Cancelled', variant: 'destructive' as const },
+  cancelled: { label: 'Cancelled', variant: 'destructive' as const }
 } as const;
 
 // Type badge configurations
@@ -171,7 +171,7 @@ export const TYPE_BADGE = {
   business: { label: 'Business', icon: '💼' },
   personal: { label: 'Personal', icon: '👤' },
   crew: { label: 'Crew', icon: '👥' },
-  training: { label: 'Training', icon: '🎓' },
+  training: { label: 'Training', icon: '🎓' }
 } as const;
 
 // Transportation type labels
@@ -182,7 +182,7 @@ export const TRANSPORTATION_TYPE_LABEL = {
   bus: 'Bus',
   ship: 'Ship',
   walking: 'Walking',
-  other: 'Other',
+  other: 'Other'
 } as const;
 
 // Currency options
@@ -200,5 +200,5 @@ export const VIEW_CONFIG = {
   list: { label: 'List', icon: 'List' },
   timeline: { label: 'Timeline', icon: 'Calendar' },
   calendar: { label: 'Calendar', icon: 'CalendarDays' },
-  map: { label: 'Map', icon: 'Map' },
+  map: { label: 'Map', icon: 'Map' }
 } as const;

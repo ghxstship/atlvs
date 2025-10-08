@@ -36,8 +36,8 @@ export const i18nMiddleware = createMiddleware({
     // Accessible from all paths
     path: '/',
     // Strict same-site policy
-    sameSite: 'strict',
-  },
+    sameSite: 'strict'
+  }
 });
 
 /**
@@ -80,7 +80,7 @@ function parseAcceptLanguage(header: string): string | null {
       const [locale, q = '1'] = lang.trim().split(';q=');
       return {
         locale: locale.split('-')[0], // Get base language code
-        quality: parseFloat(q),
+        quality: parseFloat(q)
       };
     })
     .sort((a, b) => b.quality - a.quality);

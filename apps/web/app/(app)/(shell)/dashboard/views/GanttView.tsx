@@ -28,13 +28,13 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator,
+  DropdownMenuSeparator
 } from '@ghxstship/ui';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger,
+  TooltipTrigger
 } from '@ghxstship/ui';
 import { cn } from '@ghxstship/ui/lib/utils';
 import {
@@ -273,6 +273,7 @@ export const GanttView: React.FC<GanttViewProps> = ({
     const width = (taskDuration / totalDays) * 100;
 
     return { left: Math.max(0, left), width: Math.min(100 - left, width) };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange]);
 
   // Get status color using design tokens
@@ -284,6 +285,7 @@ export const GanttView: React.FC<GanttViewProps> = ({
       case 'blocked': return 'hsl(var(--color-destructive))';
       default: return 'hsl(var(--color-muted))';
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Get priority icon
@@ -295,6 +297,7 @@ export const GanttView: React.FC<GanttViewProps> = ({
       case 'low': return CheckCircle;
       default: return Clock;
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Render task bar

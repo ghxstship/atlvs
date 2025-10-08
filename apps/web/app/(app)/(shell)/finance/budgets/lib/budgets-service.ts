@@ -182,7 +182,7 @@ export class BudgetsService {
   formatCurrency(amount: number, currency = 'USD'): string {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: currency
     }).format(amount);
   }
 

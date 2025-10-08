@@ -1,10 +1,10 @@
 'use client';
 
 import { Package, DollarSign, TrendingUp, TrendingDown, Calendar, AlertCircle, CheckCircle, Clock, Truck, BarChart3, Activity } from "lucide-react";
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import type { ProcurementOrder, OrderStats, OrderAnalytics } from '../types';
-import { formatCurrency, formatDate, getStatusColor, getPriorityColor } from '../types';
+import { formatCurrency, formatDate } from '../types';
 
 interface OrderDashboardViewProps {
  orders: ProcurementOrder[];
@@ -19,13 +19,14 @@ export default function OrderDashboardView({
  loading = false,
  stats,
  analytics,
- onOrderClick,
+ onOrderClick
 }: OrderDashboardViewProps) {
  const [recentOrders, setRecentOrders] = useState<ProcurementOrder[]>([]);
  const [urgentOrders, setUrgentOrders] = useState<ProcurementOrder[]>([]);
  const [overdueOrders, setOverdueOrders] = useState<ProcurementOrder[]>([]);
  const [topVendors, setTopVendors] = useState<Array<{ vendor: string; count: number; value: number }>([]);
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  // Get recent orders (last 10)
  const recent = [...orders]
@@ -55,7 +56,7 @@ export default function OrderDashboardView({
  const existing = vendorMap.get(order.vendor_name) || { count: 0, value: 0 };
  vendorMap.set(order.vendor_name, {
  count: existing.count + 1,
- value: existing.value + order.total_amount,
+ value: existing.value + order.total_amount
  });
  }
  });
@@ -65,6 +66,7 @@ export default function OrderDashboardView({
  .sort((a, b) => b.value - a.value)
  .slice(0, 5);
  setTopVendors(vendors);
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [orders]);
 
  if (loading) {
@@ -125,7 +127,7 @@ export default function OrderDashboardView({
  topVendors: [],
  ordersByStatus: [],
  ordersByPriority: [],
- monthlyTrends: [],
+ monthlyTrends: []
  };
 
  const currentStats = stats || defaultStats;
@@ -345,7 +347,7 @@ export default function OrderDashboardView({
  ))}
  {overdueOrders.length > 5 && (
  <div className="text-center">
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  View All {overdueOrders.length} Overdue Orders
  </Button>
  </div>
@@ -361,7 +363,7 @@ export default function OrderDashboardView({
  <Calendar className="h-icon-xs w-icon-xs" />
  Recent Orders
  </h3>
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  View All
  </Button>
  </div>

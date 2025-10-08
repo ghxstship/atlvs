@@ -1,4 +1,4 @@
-import { Card, CardContent, Button } from '@ghxstship/ui';
+import { Button, Card, CardBody, CardContent } from '@ghxstship/ui';
 import { MapPin, Users, Linkedin, Twitter, Github } from 'lucide-react';
 import { typography } from '../../lib/typography';
 

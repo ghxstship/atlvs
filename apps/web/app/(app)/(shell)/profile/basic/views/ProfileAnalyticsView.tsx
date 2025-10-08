@@ -15,7 +15,7 @@ export default function ProfileAnalyticsView({
  stats,
  analytics,
  loading,
- analyticsLoading,
+ analyticsLoading
 }: ProfileAnalyticsViewProps) {
  if (loading || analyticsLoading) {
  return (

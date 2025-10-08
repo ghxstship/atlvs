@@ -5,14 +5,14 @@ import type {
   JobHistoryEntry,
   JobFilters,
   JobStats,
-  JobAnalytics,
+  JobAnalytics
 } from '../types';
 import {
   jobFilterSchema,
   jobUpsertSchema,
   filterJobEntries,
   sortJobEntries,
-  calculateDuration,
+  calculateDuration
 } from '../types';
 
 // ============================================================================
@@ -85,7 +85,7 @@ export async function fetchJobHistoryEntries(
 
   return {
     entries: data || [],
-    total: count || 0,
+    total: count || 0
   };
 }
 
@@ -134,7 +134,7 @@ export async function fetchJobHistoryStats(
       byIndustry: [],
       skillsFrequency: [],
       companiesWorked: [],
-      averageJobDuration: 0,
+      averageJobDuration: 0
     };
   }
 
@@ -160,7 +160,7 @@ export async function fetchJobHistoryStats(
   });
   const byEmploymentType = Array.from(employmentTypeMap.entries()).map(([type, count]) => ({
     type: type as unknown,
-    count,
+    count
   }));
 
   // Group by company size
@@ -172,7 +172,7 @@ export async function fetchJobHistoryStats(
   });
   const byCompanySize = Array.from(companySizeMap.entries()).map(([size, count]) => ({
     size: size as unknown,
-    count,
+    count
   }));
 
   // Group by industry
@@ -209,14 +209,14 @@ export async function fetchJobHistoryStats(
     
     companyMap.set(e.company_name, {
       positions: existing.positions + 1,
-      totalDuration: existing.totalDuration + duration,
+      totalDuration: existing.totalDuration + duration
     });
   });
   const companiesWorked = Array.from(companyMap.entries())
     .map(([company, { positions, totalDuration }]) => ({
       company,
       positions,
-      totalDuration,
+      totalDuration
     }))
     .sort((a, b) => b.totalDuration - a.totalDuration)
     .slice(0, 10);
@@ -234,7 +234,7 @@ export async function fetchJobHistoryStats(
     byIndustry,
     skillsFrequency,
     companiesWorked,
-    averageJobDuration,
+    averageJobDuration
   };
 }
 
@@ -265,9 +265,9 @@ export async function fetchJobHistoryAnalytics(
         averageTenure: 0,
         longestTenure: 0,
         shortestTenure: 0,
-        jobChangesPerYear: 0,
+        jobChangesPerYear: 0
       },
-      locationHistory: [],
+      locationHistory: []
     };
   }
 
@@ -304,7 +304,7 @@ export async function fetchJobHistoryAnalytics(
   const skillsEvolution = Array.from(skillsEvolutionMap.entries())
     .map(([skill, timeline]) => ({
       skill,
-      timeline: timeline.sort((a, b) => a.year - b.year),
+      timeline: timeline.sort((a, b) => a.year - b.year)
     }))
     .filter(s => s.timeline.length > 1)
     .slice(0, 10);
@@ -320,7 +320,7 @@ export async function fetchJobHistoryAnalytics(
       
       industryMap.set(entry.industry, {
         duration: existing.duration + duration,
-        positions: existing.positions + 1,
+        positions: existing.positions + 1
       });
     }
   });
@@ -328,7 +328,7 @@ export async function fetchJobHistoryAnalytics(
     .map(([industry, { duration, positions }]) => ({
       industry,
       duration,
-      positions,
+      positions
     }))
     .sort((a, b) => b.duration - a.duration)
     .slice(0, 10);
@@ -343,14 +343,14 @@ export async function fetchJobHistoryAnalytics(
     
     companyTenureMap.set(entry.company_name, {
       duration: existing.duration + duration,
-      positions: [...existing.positions, entry.job_title],
+      positions: [...existing.positions, entry.job_title]
     });
   });
   const companyTenure = Array.from(companyTenureMap.entries())
     .map(([company, { duration, positions }]) => ({
       company,
       duration,
-      positions,
+      positions
     }))
     .sort((a, b) => b.duration - a.duration)
     .slice(0, 10);
@@ -362,7 +362,7 @@ export async function fetchJobHistoryAnalytics(
       year: new Date(e.start_date).getFullYear(),
       range: e.salary_range!,
       company: e.company_name,
-      title: e.job_title,
+      title: e.job_title
     }))
     .sort((a, b) => a.year - b.year);
 
@@ -385,7 +385,7 @@ export async function fetchJobHistoryAnalytics(
     averageTenure,
     longestTenure,
     shortestTenure,
-    jobChangesPerYear,
+    jobChangesPerYear
   };
 
   // Calculate location history
@@ -400,7 +400,7 @@ export async function fetchJobHistoryAnalytics(
       existing.companies.add(entry.company_name);
       locationMap.set(entry.location, {
         duration: existing.duration + duration,
-        companies: existing.companies,
+        companies: existing.companies
       });
     }
   });
@@ -408,7 +408,7 @@ export async function fetchJobHistoryAnalytics(
     .map(([location, { duration, companies }]) => ({
       location,
       duration,
-      companies: companies.size,
+      companies: companies.size
     }))
     .sort((a, b) => b.duration - a.duration)
     .slice(0, 10);
@@ -420,7 +420,7 @@ export async function fetchJobHistoryAnalytics(
     companyTenure,
     salaryProgression,
     jobMobility,
-    locationHistory,
+    locationHistory
   };
 }
 
@@ -443,7 +443,7 @@ export async function createJobHistoryEntry(
       user_id: userId,
       ...validated,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .select()
     .single();
@@ -467,7 +467,7 @@ export async function updateJobHistoryEntry(
     .from('job_history')
     .update({
       ...validated,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', entryId)
     .select()
@@ -503,7 +503,7 @@ export async function toggleJobHistoryEntryCurrent(
 ): Promise<JobHistoryEntry> {
   const updateData: unknown = {
     is_current: isCurrent,
-    updated_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   };
 
   // If setting to current, clear end_date
@@ -535,7 +535,7 @@ export async function updateJobHistoryEntryVisibility(
     .from('job_history')
     .update({
       visibility,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', entryId)
     .select()

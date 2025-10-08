@@ -29,7 +29,7 @@ export default function BulkActionsDrawer({
  isOpen,
  onClose,
  selectedSizings,
- onExecute,
+ onExecute
 }: BulkActionsDrawerProps) {
  const [selectedAction, setSelectedAction] = useState<string>('');
  const [isExecuting, setIsExecuting] = useState(false);
@@ -165,7 +165,7 @@ export default function BulkActionsDrawer({
  </Card>
  )}
  </div>
- ),
+ )
  },
  {
  key: 'confirm',
@@ -242,7 +242,7 @@ export default function BulkActionsDrawer({
  </Alert>
  )}
  </div>
- ),
+ )
  },
  ];
 

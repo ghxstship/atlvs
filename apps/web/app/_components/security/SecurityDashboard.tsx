@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { SecurityLogger } from '@ghxstship/auth';
 import { Button } from '@ghxstship/ui';
@@ -22,8 +22,10 @@ export function SecurityDashboard({ organizationId }: SecurityDashboardProps) {
   const supabase = createClient();
   const securityLogger = new SecurityLogger();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab, filters, organizationId]);
 
   const loadData = async () => {

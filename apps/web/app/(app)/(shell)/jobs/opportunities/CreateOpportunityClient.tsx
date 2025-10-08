@@ -6,7 +6,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Plus, Loader2, AlertCircle } from 'lucide-react';
+import { Plus, Loader2, AlertCircle } from 'lucide-react';import { Button, UnifiedInput, Select, Textarea, Drawer } from '@ghxstship/ui';
+import { Button, Select, Textarea, Drawer } from '@ghxstship/ui';
+
 import { usePostHog } from 'posthog-js/react';
 
 const createOpportunitySchema = z.object({
@@ -21,7 +23,7 @@ const createOpportunitySchema = z.object({
   clientName: z.string().optional(),
   clientContact: z.string().optional(),
   source: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 type CreateOpportunityFormData = z.infer<typeof createOpportunitySchema>;
@@ -42,15 +44,15 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
     register,
     handleSubmit,
     reset,
-    formState: { errors, isValid },
+    formState: { errors, isValid }
   } = useForm<CreateOpportunityFormData>({
     resolver: zodResolver(createOpportunitySchema),
     mode: 'onChange',
     defaultValues: {
       type: 'other',
       status: 'lead',
-      currency: 'USD',
-    },
+      currency: 'USD'
+    }
   });
 
   const onSubmit = async (data: CreateOpportunityFormData) => {
@@ -61,19 +63,19 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
       posthog?.capture('jobs_opportunity_create_attempt', {
         organization_id: orgId,
         opportunity_type: data.type,
-        estimated_value: data.estimatedValue,
+        estimated_value: data.estimatedValue
       });
 
       const response = await fetch('/api/v1/jobs/opportunities', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
         body: JSON.stringify({
           ...data,
-          organization_id: orgId,
-        }),
+          organization_id: orgId
+        })
       });
 
       if (!response.ok) {
@@ -86,7 +88,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
       posthog?.capture('jobs_opportunity_create_success', {
         organization_id: orgId,
         opportunity_id: result.id,
-        opportunity_type: data.type,
+        opportunity_type: data.type
       });
 
       // Log activity
@@ -98,8 +100,8 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
         metadata: {
           title: data.title,
           type: data.type,
-          estimated_value: data.estimatedValue,
-        },
+          estimated_value: data.estimatedValue
+        }
       });
 
       reset();
@@ -111,7 +113,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
       
       posthog?.capture('jobs_opportunity_create_error', {
         organization_id: orgId,
-        error: errorMessage,
+        error: errorMessage
       });
     } finally {
       setIsSubmitting(false);

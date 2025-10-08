@@ -183,7 +183,7 @@ export const professionalFilterSchema = zod.object({
   hire_date_to: zod.string().optional(),
   completion_min: zod.number().min(0).max(100).optional(),
   has_linkedin: zod.boolean().optional(),
-  has_website: zod.boolean().optional(),
+  has_website: zod.boolean().optional()
 });
 
 export const professionalUpsertSchema = zod.object({
@@ -197,7 +197,7 @@ export const professionalUpsertSchema = zod.object({
   bio: zod.string().optional().nullable(),
   linkedin_url: zod.string().url().optional().nullable().or(zod.literal('')),
   website_url: zod.string().url().optional().nullable().or(zod.literal('')),
-  status: profileStatusSchema,
+  status: profileStatusSchema
 });
 
 // ============================================================================
@@ -209,41 +209,41 @@ export const EMPLOYMENT_TYPE_LABELS: Record<EmploymentType, string> = {
   'part-time': 'Part Time',
   contract: 'Contract',
   freelance: 'Freelance',
-  intern: 'Intern',
+  intern: 'Intern'
 };
 
 export const PROFILE_STATUS_LABELS: Record<ProfileStatus, string> = {
   active: 'Active',
   inactive: 'Inactive',
   pending: 'Pending',
-  suspended: 'Suspended',
+  suspended: 'Suspended'
 };
 
 export const VIEW_CONFIG: Record<ProfessionalViewType, { label: string; description: string }> = {
   list: {
     label: 'List',
-    description: 'Detailed list view with expandable cards',
+    description: 'Detailed list view with expandable cards'
   },
   grid: {
     label: 'Grid',
-    description: 'Card-based grid layout',
+    description: 'Card-based grid layout'
   },
   table: {
     label: 'Table',
-    description: 'Sortable data table',
+    description: 'Sortable data table'
   },
   analytics: {
     label: 'Analytics',
-    description: 'Professional insights and trends',
+    description: 'Professional insights and trends'
   },
   kanban: {
     label: 'Kanban',
-    description: 'Status-based board view',
+    description: 'Status-based board view'
   },
   calendar: {
     label: 'Calendar',
-    description: 'Hire date calendar view',
-  },
+    description: 'Hire date calendar view'
+  }
 };
 
 export const QUICK_FILTERS = [
@@ -293,7 +293,7 @@ export function createEmptyFormData(): ProfessionalFormData {
     bio: '',
     linkedin_url: '',
     website_url: '',
-    status: 'active',
+    status: 'active'
   };
 }
 
@@ -307,7 +307,7 @@ export function createEmptyStats(): ProfessionalStats {
     byStatus: [],
     completionDistribution: [],
     topSkills: [],
-    recentHires: [],
+    recentHires: []
   };
 }
 
@@ -322,8 +322,8 @@ export function createEmptyAnalytics(): ProfessionalAnalytics {
       averageCompletion: 0,
       highCompletion: 0,
       mediumCompletion: 0,
-      lowCompletion: 0,
-    },
+      lowCompletion: 0
+    }
   };
 }
 
@@ -364,7 +364,7 @@ export function formatDate(date: string): string {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
+    day: 'numeric'
   });
 }
 
@@ -372,7 +372,7 @@ export function formatDateShort(date: string): string {
   return new Date(date).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
-    year: 'numeric',
+    year: 'numeric'
   });
 }
 

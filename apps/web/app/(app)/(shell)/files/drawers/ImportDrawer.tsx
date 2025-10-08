@@ -1,17 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from 'react';
-import {
-  X,
-  Upload,
-  FileText,
-  CheckCircle,
-  AlertCircle,
-  Download,
-  Trash2,
-  Settings,
-  Eye,
-} from 'lucide-react';
+import { X, Upload, FileText, CheckCircle, AlertCircle, Download, Trash2, Settings, Eye, File } from 'lucide-react';
 import { Button, Progress, Badge, Separator, Select } from '@ghxstship/ui';
 import { filesImportService } from '../lib/import';
 import type { FileImportInput } from '../lib/validations';
@@ -38,7 +28,7 @@ export default function ImportDrawer({
   onClose,
   onImportComplete,
   orgId,
-  userId,
+  userId
 }: ImportDrawerProps) {
   const [selectedFormat, setSelectedFormat] = useState<ImportFormat>('csv');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -52,7 +42,7 @@ export default function ImportDrawer({
     update_existing: false,
     folder_id: '',
     category: '',
-    access_level: 'private' as const,
+    access_level: 'private' as const
   });
 
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -177,7 +167,7 @@ export default function ImportDrawer({
         success: 0,
         failed: 1,
         errors: [{ row: 0, error: error instanceof Error ? error.message : 'Import failed' }],
-        duplicates: [],
+        duplicates: []
       });
     } finally {
       setIsImporting(false);

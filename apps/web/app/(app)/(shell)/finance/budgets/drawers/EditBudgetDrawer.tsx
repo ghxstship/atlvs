@@ -4,24 +4,8 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import {
- Drawer,
- Button,
- Input,
- Select,
- Textarea,
- FormField,
- FormItem,
- FormLabel,
- FormControl,
- FormMessage,
- Card,
- CardHeader,
- CardTitle,
- CardContent
-} from '@ghxstship/ui';
-import { DollarSign, Calendar, Building } from 'lucide-react';
-import type { DataRecord } from '@ghxstship/ui';
+import { Building, Button, Calendar, Card, CardContent, CardHeader, CardTitle, DollarSign, Drawer, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, Textarea } from 'lucide-react';
+import { Button, Card, CardContent, CardHeader, CardTitle, Drawer, Input, Select } from '@ghxstship/ui';
 
 const editBudgetSchema = z.object({
  name: z.string().min(1, 'Budget name is required').max(100, 'Name too long'),
@@ -32,7 +16,7 @@ const editBudgetSchema = z.object({
  fiscal_year: z.number().int().min(2020).max(2030),
  status: z.enum(['active', 'inactive', 'exceeded']).default('active'),
  notes: z.string().max(500).optional(),
- project_id: z.string().uuid().optional(),
+ project_id: z.string().uuid().optional()
 });
 
 type EditBudgetForm = z.infer<typeof editBudgetSchema>;
@@ -59,9 +43,10 @@ export default function EditBudgetDrawer({
  reset,
  setValue
  } = useForm<EditBudgetForm>({
- resolver: zodResolver(editBudgetSchema),
+ resolver: zodResolver(editBudgetSchema)
  });
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  if (budget && isOpen) {
  reset({
@@ -73,9 +58,10 @@ export default function EditBudgetDrawer({
  fiscal_year: budget.fiscal_year || new Date().getFullYear(),
  status: budget.status || 'active',
  notes: budget.notes || '',
- project_id: budget.project_id || '',
+ project_id: budget.project_id || ''
  });
  }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [budget, isOpen, reset]);
 
  const handleFormSubmit = async (data: EditBudgetForm) => {
@@ -233,7 +219,7 @@ export default function EditBudgetDrawer({
  <FormField>
  <FormItem>
  <FormControl>
- <Textarea
+ <textarea
  {...register('notes')}
  placeholder="Any additional notes or details..."
  rows={3}

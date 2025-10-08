@@ -275,7 +275,7 @@ export const trackingItemSchema = z.object({
   order_date: z.string(),
   expected_delivery: z.string().optional(),
   tracking_number: z.string().optional(),
-  shipping_carrier: z.string().optional(),
+  shipping_carrier: z.string().optional()
 });
 
 export const trackingFiltersSchema = z.object({
@@ -287,17 +287,17 @@ export const trackingFiltersSchema = z.object({
   performance: z.enum(['all', 'on_time', 'early', 'late', 'overdue']).optional(),
   dateRange: z.object({
     start: z.string().optional(),
-    end: z.string().optional(),
+    end: z.string().optional()
   }).optional(),
   hasTracking: z.boolean().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional()
 });
 
 // Utility functions
 export const formatCurrency = (amount: number, currency: string = 'USD'): string => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: currency,
+    currency: currency
   }).format(amount);
 };
 
@@ -305,7 +305,7 @@ export const formatDate = (dateString: string): string => {
   return new Date(dateString).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
-    day: 'numeric',
+    day: 'numeric'
   });
 };
 
@@ -315,7 +315,7 @@ export const formatDateTime = (dateString: string): string => {
     month: 'short',
     day: 'numeric',
     hour: '2-digit',
-    minute: '2-digit',
+    minute: '2-digit'
   });
 };
 
@@ -427,5 +427,5 @@ export const statusWorkflow: Record<TrackingItem['status'], TrackingItem['status
   out_for_delivery: ['delivered', 'returned'],
   delivered: ['returned'],
   cancelled: [],
-  returned: [],
+  returned: []
 };

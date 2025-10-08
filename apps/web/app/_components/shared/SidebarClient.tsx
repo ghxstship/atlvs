@@ -3,16 +3,7 @@
 
 import { Badge, Button, cn } from '@ghxstship/ui';
 import React, { useState } from 'react';
-import { 
-  Home, 
-  Users, 
-  Building, 
-  Briefcase, 
-  Calendar, 
-  Settings,
-  ChevronDown,
-  ChevronRight
-} from 'lucide-react';
+import { Briefcase, Building, Calendar, ChevronDown, ChevronRight, Home, Settings, Users } from 'lucide-react';
 
 interface NavItem {
   name: string;
@@ -71,7 +62,7 @@ export default function SidebarClient() {
               <item.icon className="mr-sm h-icon-xs w-icon-xs" />
               {item.name}
               {item.badge && (
-                <Badge variant="outline" className="ml-auto">
+                <Badge variant="secondary" className="ml-auto">
                   {item.badge}
                 </Badge>
               )}

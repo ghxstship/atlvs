@@ -26,22 +26,22 @@ const trustBadges: TrustBadge[] = [
   {
     icon: Shield,
     label: 'SOC 2 Type II',
-    description: 'Certified',
+    description: 'Certified'
   },
   {
     icon: Award,
     label: 'ISO 27001',
-    description: 'Compliant',
+    description: 'Compliant'
   },
   {
     icon: CheckCircle,
     label: 'GDPR',
-    description: 'Ready',
+    description: 'Ready'
   },
   {
     icon: Zap,
     label: '99.9%',
-    description: 'Uptime SLA',
+    description: 'Uptime SLA'
   },
 ];
 
@@ -61,25 +61,25 @@ const metrics: Metric[] = [
     icon: Users,
     value: '500+',
     label: 'Enterprise Clients',
-    description: 'Fortune 500 companies trust GHXSTSHIP',
+    description: 'Fortune 500 companies trust GHXSTSHIP'
   },
   {
     icon: Globe,
     value: '50+',
     label: 'Countries',
-    description: 'Global reach across all continents',
+    description: 'Global reach across all continents'
   },
   {
     icon: CheckCircle,
     value: '100K+',
     label: 'Projects',
-    description: 'Successfully completed productions',
+    description: 'Successfully completed productions'
   },
   {
     icon: Award,
     value: '98%',
     label: 'Satisfaction',
-    description: 'Client satisfaction rating',
+    description: 'Client satisfaction rating'
   },
 ];
 
@@ -152,19 +152,19 @@ export function TrustSignals() {
             AWARDS & RECOGNITION
           </p>
           <div className="flex flex-wrap justify-center items-center gap-xl text-body-sm color-muted">
-            <Badge variant="outline" className="gap-xl">
+            <Badge variant="secondary" className="gap-xl">
               <Award className="h-icon-xs w-icon-xs" />
               Best Enterprise Software 2024
             </Badge>
-            <Badge variant="outline" className="gap-xl">
+            <Badge variant="secondary" className="gap-xl">
               <Users className="h-icon-xs w-icon-xs" />
               Top Workplace Technology
             </Badge>
-            <Badge variant="outline" className="gap-xl">
+            <Badge variant="secondary" className="gap-xl">
               <Shield className="h-icon-xs w-icon-xs" />
               Security Excellence Award
             </Badge>
-            <Badge variant="outline" className="gap-xl">
+            <Badge variant="secondary" className="gap-xl">
               <Globe className="h-icon-xs w-icon-xs" />
               Global Innovation Leader
             </Badge>

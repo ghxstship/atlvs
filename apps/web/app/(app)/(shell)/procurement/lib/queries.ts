@@ -10,17 +10,17 @@ import { z } from 'zod';
 const QueryFilterSchema = z.object({
   field: z.string(),
   operator: z.enum(['eq', 'neq', 'gt', 'gte', 'lt', 'lte', 'like', 'ilike', 'in', 'contains']),
-  value: z.any(),
+  value: z.any()
 });
 
 const QuerySortSchema = z.object({
   field: z.string(),
-  direction: z.enum(['asc', 'desc']),
+  direction: z.enum(['asc', 'desc'])
 });
 
 const QueryPaginationSchema = z.object({
   page: z.number().min(1).default(1),
-  pageSize: z.number().min(1).max(100).default(20),
+  pageSize: z.number().min(1).max(100).default(20)
 });
 
 export type QueryFilter = z.infer<typeof QueryFilterSchema>;
@@ -162,7 +162,7 @@ export class ProcurementQueriesService {
       total: count || 0,
       page,
       pageSize,
-      totalPages: Math.ceil((count || 0) / pageSize),
+      totalPages: Math.ceil((count || 0) / pageSize)
     };
   }
 
@@ -173,7 +173,7 @@ export class ProcurementQueriesService {
     return this.executeQuery('purchase_orders', {
       ...options,
       includes: ['vendor:vendors(name)', 'requested_by:users(name,avatar)'],
-      searchFields: ['po_number', 'title', 'description'],
+      searchFields: ['po_number', 'title', 'description']
     });
   }
 
@@ -183,7 +183,7 @@ export class ProcurementQueriesService {
   async getVendors(options: QueryOptions = {}) {
     return this.executeQuery('vendors', {
       ...options,
-      searchFields: ['name', 'contact_email'],
+      searchFields: ['name', 'contact_email']
     });
   }
 
@@ -217,7 +217,7 @@ export class ProcurementQueriesService {
       totalValue,
       pendingOrders,
       activeVendors,
-      averageOrderValue: totalOrders > 0 ? totalValue / totalOrders : 0,
+      averageOrderValue: totalOrders > 0 ? totalValue / totalOrders : 0
     };
   }
 
@@ -234,7 +234,7 @@ export class ProcurementQueriesService {
     return {
       recentOrders: ordersResult.data,
       recentVendors: vendorsResult.data,
-      analytics,
+      analytics
     };
   }
 
@@ -245,18 +245,18 @@ export class ProcurementQueriesService {
     const [orders, vendors] = await Promise.all([
       this.getPurchaseOrders({
         search: query,
-        pagination: { page: 1, pageSize: limit / 2 },
+        pagination: { page: 1, pageSize: limit / 2 }
       }),
       this.getVendors({
         search: query,
-        pagination: { page: 1, pageSize: limit / 2 },
+        pagination: { page: 1, pageSize: limit / 2 }
       }),
     ]);
 
     return {
       orders: orders.data,
       vendors: vendors.data,
-      total: orders.total + vendors.total,
+      total: orders.total + vendors.total
     };
   }
 
@@ -270,12 +270,12 @@ export class ProcurementQueriesService {
           filters: dateRange ? [{
             field: 'created_at',
             operator: 'gte',
-            value: dateRange.start.toISOString(),
+            value: dateRange.start.toISOString()
           }, {
             field: 'created_at',
             operator: 'lte',
-            value: dateRange.end.toISOString(),
-          }] : [],
+            value: dateRange.end.toISOString()
+          }] : []
         });
 
       case 'vendors':
@@ -288,7 +288,7 @@ export class ProcurementQueriesService {
           total: 1,
           page: 1,
           pageSize: 1,
-          totalPages: 1,
+          totalPages: 1
         };
 
       default:

@@ -14,9 +14,8 @@ import { useRouter } from 'next/navigation';
 import { Asset } from '../types';
 import { apiClient } from '../lib/api';
 import CreateDrawer from '../drawers/CreateDrawer';
-import { Button } from '@ghxstship/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { ArrowLeft, Plus, Save, Loader2 } from 'lucide-react';
+import { Button, Card, CardBody, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
+import { ArrowLeft, Loader2, Plus, Save } from 'lucide-react';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 import type { User as UIUser } from '@ghxstship/ui/config/types';
 
@@ -41,7 +40,7 @@ export default function CreateAssetClient({
     name: user.user_metadata?.full_name || user.user_metadata?.name,
     avatar: user.user_metadata?.avatar_url,
     role: 'user',
-    metadata: user.user_metadata as Record<string, unknown>,
+    metadata: user.user_metadata as Record<string, unknown>
   };
 
   // Handle successful asset creation
@@ -51,6 +50,7 @@ export default function CreateAssetClient({
     // Close drawer and redirect to asset detail
     setIsDrawerOpen(false);
     router.push(`/assets/${asset.id}`);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
   // Handle drawer close
@@ -60,6 +60,7 @@ export default function CreateAssetClient({
     setTimeout(() => {
       router.push('/assets');
     }, 300);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
   return (

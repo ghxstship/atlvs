@@ -3,7 +3,7 @@
 import { Drawer } from '@ghxstship/ui';
 import type {
  DataRecord as DrawerRecord,
- FieldConfig as DrawerFieldConfig,
+ FieldConfig as DrawerFieldConfig
 } from '@ghxstship/ui';
 import type { FieldConfig as DataViewFieldConfig } from '@ghxstship/ui';
 import type { ReactNode } from 'react';
@@ -80,7 +80,7 @@ const normalizeField = (
  const base: DrawerFieldConfig = {
  key: field.key,
  label: field.label,
- type: normalizeFieldType((field as { type: string }).type),
+ type: normalizeFieldType((field as { type: string }).type)
  };
 
  if ('required' in field) base.required = field.required;
@@ -107,13 +107,13 @@ export default function AppDrawer({
  success = null,
  onSave,
  onDelete,
- onDuplicate,
+ onDuplicate
 }: AppDrawerProps) {
  const resolvedTabs: DrawerTab[] = tabs ?? [
  {
  key: 'details',
  label: 'Details',
- content: <div className="p-lg">{children}</div>,
+ content: <div className="p-lg">{children}</div>
  },
  ];
 
@@ -126,7 +126,7 @@ export default function AppDrawer({
  variant: action.variant,
  onClick: (recordArg: DrawerRecord) => {
  (action.onClick ?? (() => {}))(recordArg);
- },
+ }
  }));
 
  return (

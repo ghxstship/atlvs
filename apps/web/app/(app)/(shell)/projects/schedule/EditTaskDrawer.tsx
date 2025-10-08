@@ -1,7 +1,7 @@
 "use client";
 
 import { ListTodo, Calendar, Clock, Users, AlertCircle, Trash2 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import { createBrowserClient } from "@ghxstship/auth";
 import {
@@ -10,7 +10,7 @@ import {
  Input,
  Select,
  Textarea,
- toast,
+ toast
 } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 
@@ -72,7 +72,7 @@ export default function EditTaskDrawer({
  task,
  projects,
  users,
- onSuccess,
+ onSuccess
 }: EditTaskDrawerProps) {
  const router = useRouter();
  const supabase = createBrowserClient();
@@ -90,7 +90,7 @@ export default function EditTaskDrawer({
  due_date: "",
  estimated_hours: "",
  actual_hours: "",
- tags: [] as string[],
+ tags: [] as string[]
  });
 
  const [errors, setErrors] = useState<Record<string, string>({});
@@ -110,7 +110,7 @@ export default function EditTaskDrawer({
  due_date: task.due_date || "",
  estimated_hours: task.estimated_hours?.toString() || "",
  actual_hours: task.actual_hours?.toString() || "",
- tags: task.tags || [],
+ tags: task.tags || []
  });
  }
  }, [task]);
@@ -146,7 +146,7 @@ export default function EditTaskDrawer({
  if (tagInput.trim() && !formData.tags.includes(tagInput.trim())) {
  setFormData({
  ...formData,
- tags: [...formData.tags, tagInput.trim()],
+ tags: [...formData.tags, tagInput.trim()]
  });
  setTagInput("");
  }
@@ -156,7 +156,7 @@ export default function EditTaskDrawer({
  const handleRemoveTag = (tag: string) => {
  setFormData({
  ...formData,
- tags: formData.tags.filter(t => t !== tag),
+ tags: formData.tags.filter(t => t !== tag)
  });
  };
 
@@ -179,7 +179,7 @@ export default function EditTaskDrawer({
  estimated_hours: formData.estimated_hours ? parseFloat(formData.estimated_hours) : null,
  actual_hours: formData.actual_hours ? parseFloat(formData.actual_hours) : null,
  tags: formData.tags.length > 0 ? formData.tags : null,
- updated_at: new Date().toISOString(),
+ updated_at: new Date().toISOString()
  };
 
  // Set completed_at if status is done

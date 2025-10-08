@@ -136,7 +136,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'https://example.com/avatar.jpg',
     section: 'basic',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'date_of_birth',
@@ -144,7 +144,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     type: 'date',
     section: 'basic',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'gender',
@@ -158,7 +158,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     ],
     section: 'basic',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'nationality',
@@ -167,7 +167,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'e.g., American, British, Canadian',
     section: 'basic',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'languages',
@@ -175,7 +175,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     type: 'tags',
     section: 'basic',
     visible: true,
-    editable: true,
+    editable: true
   },
   
   // Contact Information
@@ -186,7 +186,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: '+1 (555) 123-4567',
     section: 'contact',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'phone_secondary',
@@ -195,7 +195,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: '+1 (555) 123-4567',
     section: 'contact',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'address_line1',
@@ -204,7 +204,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: '123 Main Street',
     section: 'contact',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'address_line2',
@@ -213,7 +213,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'Apt 4B',
     section: 'contact',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'city',
@@ -222,7 +222,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'New York',
     section: 'contact',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'state_province',
@@ -231,7 +231,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'NY',
     section: 'contact',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'postal_code',
@@ -240,7 +240,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: '10001',
     section: 'contact',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'country',
@@ -249,7 +249,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'United States',
     section: 'contact',
     visible: true,
-    editable: true,
+    editable: true
   },
   
   // Professional Information
@@ -260,7 +260,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'Software Engineer',
     section: 'professional',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'department',
@@ -269,7 +269,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'Engineering',
     section: 'professional',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'employee_id',
@@ -278,7 +278,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'EMP001',
     section: 'professional',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'hire_date',
@@ -286,7 +286,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     type: 'date',
     section: 'professional',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'employment_type',
@@ -301,7 +301,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     ],
     section: 'professional',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'skills',
@@ -309,7 +309,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     type: 'tags',
     section: 'professional',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'bio',
@@ -319,7 +319,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     validation: { maxLength: 500 },
     section: 'professional',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'linkedin_url',
@@ -328,7 +328,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'https://linkedin.com/in/username',
     section: 'professional',
     visible: true,
-    editable: true,
+    editable: true
   },
   {
     key: 'website_url',
@@ -337,7 +337,7 @@ export const PROFILE_FIELD_CONFIG: FieldConfig[] = [
     placeholder: 'https://yourwebsite.com',
     section: 'professional',
     visible: true,
-    editable: true,
+    editable: true
   },
 ];
 
@@ -345,7 +345,7 @@ export const VIEW_CONFIG = {
   form: { label: 'Form', icon: 'Edit' },
   card: { label: 'Card', icon: 'User' },
   table: { label: 'Table', icon: 'Table' },
-  analytics: { label: 'Analytics', icon: 'BarChart3' },
+  analytics: { label: 'Analytics', icon: 'BarChart3' }
 } as const;
 
 export const QUICK_FILTERS = [
@@ -383,7 +383,7 @@ export function createEmptyProfile(): Partial<UserProfile> {
     linkedin_url: '',
     website_url: '',
     status: 'active',
-    profile_completion_percentage: 0,
+    profile_completion_percentage: 0
   };
 }
 
@@ -395,7 +395,7 @@ export function createEmptyProfileStats(): ProfileStats {
     recentUpdates: 0,
     departmentDistribution: [],
     completionDistribution: [],
-    employmentTypeDistribution: [],
+    employmentTypeDistribution: []
   };
 }
 
@@ -404,6 +404,6 @@ export function createEmptyProfileAnalytics(): ProfileAnalytics {
     completionTrends: [],
     departmentStats: [],
     skillsAnalysis: [],
-    languageDistribution: [],
+    languageDistribution: []
   };
 }

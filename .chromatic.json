@@ -1,0 +1,8 @@
+{
+  "projectId": "REPLACE_WITH_YOUR_CHROMATIC_PROJECT_ID",
+  "buildScriptName": "build-storybook",
+  "onlyChanged": true,
+  "exitZeroOnChanges": true,
+  "exitOnceUploaded": true,
+  "autoAcceptChanges": "main"
+}

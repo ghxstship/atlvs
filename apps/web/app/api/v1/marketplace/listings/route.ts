@@ -44,7 +44,7 @@ const CreateListingSchema = z.object({
   }),
   tags: z.array(z.string()).optional(),
   featured: z.boolean().default(false),
-  expiresAt: z.string().optional(),
+  expiresAt: z.string().optional()
 });
 
 const UpdateListingSchema = CreateListingSchema.partial();

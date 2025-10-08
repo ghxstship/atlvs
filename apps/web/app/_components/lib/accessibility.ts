@@ -11,14 +11,14 @@ export const accessibility = {
     complementary: 'role="complementary"',
     search: 'role="search"',
     button: 'role="button"',
-    link: 'role="link"',
+    link: 'role="link"'
   },
   
   // Focus management
   focus: {
     visible: 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
     ring: 'focus:ring-2 focus:ring-primary focus:ring-offset-2',
-    skip: 'sr-only focus:not-sr-only focus:absolute focus:top-md focus:left-4 z-50',
+    skip: 'sr-only focus:not-sr-only focus:absolute focus:top-md focus:left-4 z-50'
   },
   
   // Screen reader utilities
@@ -26,21 +26,21 @@ export const accessibility = {
     only: 'sr-only',
     focusable: 'sr-only focus:not-sr-only',
     description: 'aria-describedby',
-    labelledby: 'aria-labelledby',
+    labelledby: 'aria-labelledby'
   },
   
   // Color contrast helpers
   contrast: {
     high: 'text-foreground',
     medium: 'text-foreground/80',
-    low: 'text-muted-foreground',
+    low: 'text-muted-foreground'
   },
   
   // Interactive states
   interactive: {
     hover: 'hover:bg-muted/50',
     active: 'active:bg-muted',
-    disabled: 'disabled:opacity-50 disabled:cursor-not-allowed',
+    disabled: 'disabled:opacity-50 disabled:cursor-not-allowed'
   },
   
   // Semantic HTML helpers
@@ -48,8 +48,8 @@ export const accessibility = {
     heading: (level: number) => `h${level}`,
     landmark: (role: string) => `role="${role}"`,
     list: 'role="list"',
-    listitem: 'role="listitem"',
-  },
+    listitem: 'role="listitem"'
+  }
 } as const;
 
 // Accessibility validation helpers
@@ -76,5 +76,5 @@ export const a11yValidation = {
   validateKeyboardNav: (element: HTMLElement) => {
     // Check if element is focusable and has proper tab order
     return element.tabIndex >= 0 || element.hasAttribute('tabindex');
-  },
+  }
 } as const;

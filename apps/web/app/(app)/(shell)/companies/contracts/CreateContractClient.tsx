@@ -1,18 +1,11 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
-import { 
-  FileText,
-  Building,
-  Calendar,
-  DollarSign,
-  Save,
-  X
-} from 'lucide-react';
+import { Drawer, Button, Input, Select, Textarea, Card } from '@ghxstship/ui';
+import { Building, Calendar, DollarSign, FileText, Save, X } from 'lucide-react';
 
 interface CreateContractClientProps {
   user: User;
@@ -91,11 +84,13 @@ export default function CreateContractClient({
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isOpen) {
       loadCompanies();
       loadProjects();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, orgId]);
 
   const loadCompanies = async () => {
@@ -233,7 +228,7 @@ export default function CreateContractClient({
               <label className="block text-body-sm form-label mb-xs">
                 Contract Title *
               </label>
-              <UnifiedInput                 value={formData.title}
+              <Input                 value={formData.title}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('title', e.target.value)}
                 placeholder="Enter contract title"
                 required
@@ -345,7 +340,7 @@ export default function CreateContractClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Start Date
                 </label>
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.startDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('startDate', e.target.value)}
                 />
@@ -355,7 +350,7 @@ export default function CreateContractClient({
                 <label className="block text-body-sm form-label mb-xs">
                   End Date
                 </label>
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.endDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('endDate', e.target.value)}
                 />
@@ -368,7 +363,7 @@ export default function CreateContractClient({
                   <DollarSign className="h-icon-xs w-icon-xs inline mr-xs" />
                   Contract Value
                 </label>
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   step="0.01"
                   value={formData.value}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('value', e.target.value)}
@@ -397,7 +392,7 @@ export default function CreateContractClient({
               <label className="block text-body-sm form-label mb-xs">
                 Document URL
               </label>
-              <UnifiedInput                 type="url"
+              <Input                 type="url"
                 value={formData.documentUrl}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('documentUrl', e.target.value)}
                 placeholder="https://documents.example.com/contract.pdf"

@@ -9,7 +9,7 @@ import {
  Badge,
  Button,
  Input,
- Skeleton,
+ Skeleton
 } from '@ghxstship/ui';
 import type { AccountListViewProps, AccountRecord, AccountRecordType } from '../types';
 
@@ -17,7 +17,7 @@ export default function AccountListView({
  records,
  loading,
  onEdit,
- onView,
+ onView
 }: AccountListViewProps) {
  const [searchQuery, setSearchQuery] = useState('');
 
@@ -33,7 +33,7 @@ export default function AccountListView({
  session: Globe,
  api_key: Key,
  security: Shield,
- preference: User,
+ preference: User
  };
  
  return icons[type] || User;
@@ -45,7 +45,7 @@ export default function AccountListView({
  session: 'text-green-600 bg-green-100',
  api_key: 'text-purple-600 bg-purple-100',
  security: 'text-red-600 bg-red-100',
- preference: 'text-gray-600 bg-gray-100',
+ preference: 'text-gray-600 bg-gray-100'
  };
  
  return colors[type] || 'text-gray-600 bg-gray-100';
@@ -56,7 +56,7 @@ export default function AccountListView({
  active: 'text-green-700 bg-green-100',
  inactive: 'text-gray-700 bg-gray-100',
  expired: 'text-red-700 bg-red-100',
- revoked: 'text-red-700 bg-red-100',
+ revoked: 'text-red-700 bg-red-100'
  };
  
  return colors[status as keyof typeof colors] || 'text-gray-700 bg-gray-100';

@@ -1,9 +1,9 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { Activity, Award, Building, Calendar, Clock, Edit, Eye, FileText, Globe, Mail, MapPin, MoreHorizontal, Phone, Play, Plus, Search, Settings, Star, Trash2, TrendingUp, User } from 'lucide-react';
 import { useState } from 'react';
 import { Card, Badge, Button, Checkbox } from '@ghxstship/ui';
 import type { Vendor } from '../types';
-import { formatCurrency, formatDate, getStatusColor, getBusinessTypeColor, formatAddress } from '../types';
+import { formatCurrency, formatDate, getBusinessTypeColor, formatAddress } from '../types';
 
 interface VendorGridViewProps {
  vendors: Vendor[];
@@ -24,7 +24,7 @@ export default function VendorGridView({
  onVendorClick,
  onEditVendor,
  onDeleteVendor,
- onViewVendor,
+ onViewVendor
 }: VendorGridViewProps) {
  const [hoveredVendor, setHoveredVendor] = useState<string | null>(null);
 
@@ -178,7 +178,7 @@ export default function VendorGridView({
  {onDeleteVendor && (
  <Button
  size="sm"
- variant="destructive"
+ variant="error"
  onClick={(e) => {
  e.stopPropagation();
  onDeleteVendor(vendor);

@@ -11,49 +11,12 @@
  */
 
 import React, { useCallback, useMemo, useState } from "react";
-import {
-  Badge,
-  Button,
-  Drawer,
-  DrawerContent,
-  DrawerDescription,
-  DrawerHeader,
-  DrawerTitle,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-  cn,
-} from "@ghxstship/ui";
-import { Separator } from "@ghxstship/ui/components/Separator";
-import { Asset, EnrichedAsset } from "../types";
-import { apiClient } from "../lib/api";
-import {
-  AlertTriangle,
-  Calendar,
-  CheckCircle,
-  ChevronLeft,
-  ChevronRight,
-  Clock,
-  Copy,
-  Download,
-  Edit,
-  History,
-  Image as ImageIcon,
-  Loader2,
-  MapPin,
-  Package,
-  Settings,
-  Share,
-  Trash2,
-  User,
-  DollarSign,
-} from "lucide-react";
+import Image from "next/image";
+import { AlertTriangle, Badge, Button, Calendar, CheckCircle, ChevronLeft, ChevronRight, Clock, Copy, DollarSign, Download, Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, Edit, History, Image as ImageIcon, Loader2, MapPin, Package, Settings, Share, Tabs, TabsContent, TabsList, TabsTrigger, Trash2, User, cn } from 'lucide-react';
+import { Badge, Button, Drawer, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Separator, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
+import { Separator } from '@ghxstship/ui/components/Separator';
+import { Asset, EnrichedAsset } from '../types';
+import { apiClient } from '../lib/api';
 
 interface DetailDrawerProps {
   asset: Asset | null;
@@ -83,7 +46,7 @@ const formatCurrency = (value?: number | null) => {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
-    maximumFractionDigits: 0,
+    maximumFractionDigits: 0
   }).format(value);
 };
 
@@ -101,7 +64,7 @@ const isEnrichedAsset = (
 
 const InfoRow = ({
   label,
-  value,
+  value
 }: {
   label: string;
   value: React.ReactNode;
@@ -125,7 +88,7 @@ export default function DetailDrawer({
   onNext,
   hasPrevious = false,
   hasNext = false,
-  className = "",
+  className = ""
 }: DetailDrawerProps) {
   const [loading, setLoading] = useState(false);
   const [assetDetails, setAssetDetails] = useState<Asset | EnrichedAsset | null>(null);
@@ -143,6 +106,7 @@ export default function DetailDrawer({
     } finally {
       setLoading(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [asset?.id]);
 
   React.useEffect(() => {
@@ -154,86 +118,94 @@ export default function DetailDrawer({
     if (!isOpen) {
       setAssetDetails(null);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, asset?.id, fetchAssetDetails]);
 
   const displayAsset = assetDetails ?? asset;
-  if (!displayAsset) {
-    return null;
-  }
-
-  const enrichedAsset = isEnrichedAsset(displayAsset) ? displayAsset : null;
+  const enrichedAsset = displayAsset && isEnrichedAsset(displayAsset) ? displayAsset : null;
 
   const summaryItems = useMemo(
-    () => [
-      {
-        icon: Package,
-        label: "Category",
-        value: displayAsset.category?.replace(/_/g, " ") ?? "—",
-      },
-      {
-        icon: MapPin,
-        label: "Location",
-        value: enrichedAsset?.location?.name ?? "Unassigned",
-      },
-      {
-        icon: User,
-        label: "Assigned To",
-        value: enrichedAsset?.assigned_to?.name ?? "Unassigned",
-      },
-      {
-        icon: Calendar,
-        label: "Purchase Date",
-        value: formatDate(displayAsset.purchase_date as Date | string | undefined),
-      },
-      {
-        icon: Clock,
-        label: "Warranty Expiry",
-        value: formatDate(displayAsset.warranty_expiry as Date | string | undefined),
-      },
-      {
-        icon: Settings,
-        label: "Condition",
-        value: displayAsset.condition?.replace(/_/g, " ") ?? "—",
-      },
-    ],
+    () => {
+      if (!displayAsset) return [];
+      return [
+        {
+          icon: Package,
+          label: "Category",
+          value: displayAsset.category?.replace(/_/g, " ") ?? "—"
+        },
+        {
+          icon: MapPin,
+          label: "Location",
+          value: enrichedAsset?.location?.name ?? "Unassigned"
+        },
+        {
+          icon: User,
+          label: "Assigned To",
+          value: enrichedAsset?.assigned_to?.name ?? "Unassigned"
+        },
+        {
+          icon: Calendar,
+          label: "Purchase Date",
+          value: formatDate(displayAsset.purchase_date as Date | string | undefined)
+        },
+        {
+          icon: Clock,
+          label: "Warranty Expiry",
+          value: formatDate(displayAsset.warranty_expiry as Date | string | undefined)
+        },
+        {
+          icon: Settings,
+          label: "Condition",
+          value: displayAsset.condition?.replace(/_/g, " ") ?? "—"
+        },
+      ];
+    },
     [displayAsset, enrichedAsset],
   );
 
   const financialItems = useMemo(
-    () => [
-      {
-        icon: DollarSign,
-        label: "Purchase Price",
-        value: formatCurrency(displayAsset.purchase_price),
-      },
-      {
-        icon: DollarSign,
-        label: "Current Value",
-        value: formatCurrency(displayAsset.current_value),
-      },
-      {
-        icon: AlertTriangle,
-        label: "Depreciation Rate",
-        value:
-          typeof displayAsset.depreciation_rate === "number"
-            ? `${displayAsset.depreciation_rate}%`
-            : "—",
-      },
-      {
-        icon: CheckCircle,
-        label: "Supplier",
-        value: enrichedAsset?.supplier?.name ?? "—",
-      },
-    ],
+    () => {
+      if (!displayAsset) return [];
+      return [
+        {
+          icon: DollarSign,
+          label: "Purchase Price",
+          value: formatCurrency(displayAsset.purchase_price)
+        },
+        {
+          icon: DollarSign,
+          label: "Current Value",
+          value: formatCurrency(displayAsset.current_value)
+        },
+        {
+          icon: AlertTriangle,
+          label: "Depreciation Rate",
+          value:
+            typeof displayAsset.depreciation_rate === "number"
+              ? `${displayAsset.depreciation_rate}%`
+              : "—"
+        },
+        {
+          icon: CheckCircle,
+          label: "Supplier",
+          value: enrichedAsset?.supplier?.name ?? "—"
+        },
+      ];
+    },
     [displayAsset, enrichedAsset],
   );
 
   const specifications = useMemo(() => {
-    if (!displayAsset.specifications) return [] as Array<[string, unknown]>;
+    if (!displayAsset?.specifications) return [] as Array<[string, unknown]>;
     return Object.entries(displayAsset.specifications);
-  }, [displayAsset.specifications]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [displayAsset]);
 
-  const galleryImages = useMemo(() => displayAsset.image_urls ?? [], [displayAsset.image_urls]);
+  const galleryImages = useMemo(() => displayAsset?.image_urls ?? [], [displayAsset]);
+
+  if (!displayAsset) {
+    return null;
+  }
 
   const handleDrawerChange = (open: boolean) => {
     if (!open) {
@@ -266,7 +238,7 @@ export default function DetailDrawer({
                 <DrawerDescription className="flex flex-wrap items-center gap-sm text-sm">
                   Asset tag
                   <span className="font-medium text-foreground">{displayAsset.asset_tag}</span>
-                  <Badge variant="outline" className="capitalize">
+                  <Badge variant="secondary" className="capitalize">
                     {displayAsset.status?.replace(/_/g, " ") ?? "Unknown"}
                   </Badge>
                   <Badge variant="secondary" className="capitalize">
@@ -300,7 +272,7 @@ export default function DetailDrawer({
 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="outline" size="icon" aria-label="Asset actions">
+                    <Button variant="secondary" size="icon" aria-label="Asset actions">
                       <Settings className="h-icon-xs w-icon-xs" />
                     </Button>
                   </DropdownMenuTrigger>
@@ -389,8 +361,10 @@ export default function DetailDrawer({
                         key={url}
                         className="group relative overflow-hidden rounded-md border border-border"
                       >
-                        <img
-                          src={url}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img                           src={url}
                           alt="Asset"
                           className="h-component-lg w-full object-cover transition group-hover:scale-105"
                         />

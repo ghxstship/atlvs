@@ -1,7 +1,8 @@
 'use client';
+import { Button, Drawer, Input } from '@ghxstship/ui';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -17,7 +18,7 @@ const shortlistSchema = z.object({
   roleId: z.string().optional(),
   status: z.enum(['active', 'closed', 'archived']).default('active'),
   maxMembers: z.number().min(1, 'Max members must be at least 1').optional(),
-  tags: z.string().optional(),
+  tags: z.string().optional()
 });
 
 type ShortlistFormData = z.infer<typeof shortlistSchema>;
@@ -57,15 +58,17 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
     resolver: zodResolver(shortlistSchema),
     mode: 'onChange',
     defaultValues: {
-      status: 'active',
+      status: 'active'
     }
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isOpen) {
       loadProjects();
       loadRoles();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, orgId]);
 
   const loadProjects = async () => {
@@ -113,12 +116,12 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
         body: JSON.stringify({
           ...data,
-          tags: tagsArray,
-        }),
+          tags: tagsArray
+        })
       });
 
       if (!response.ok) {
@@ -135,7 +138,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
         project_id: data.projectId,
         role_id: data.roleId,
         status: data.status,
-        organization_id: orgId,
+        organization_id: orgId
       });
 
       // Log activity
@@ -149,8 +152,8 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
           name: data.name,
           project_id: data.projectId,
           role_id: data.roleId,
-          status: data.status,
-        },
+          status: data.status
+        }
       });
 
       // Reset form and close drawer
@@ -162,7 +165,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
       console.error('Error creating shortlist:', error);
       posthog?.capture('people_shortlist_creation_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -232,7 +235,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Shortlist Name *
               </label>
-              <UnifiedInput                 {...register('name')}
+              <Input                 {...register('name')}
                 placeholder="e.g., Sound Engineers - Festival 2024"
                 error={errors.name?.message}
               />
@@ -293,7 +296,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
                 <label className="block text-body-sm form-label mb-sm">
                   Max Members
                 </label>
-                <UnifiedInput                   {...register('maxMembers', { valueAsNumber: true })}
+                <Input                   {...register('maxMembers', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   placeholder="10"
@@ -305,7 +308,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Description
               </label>
-              <Textarea
+              <textarea
                 {...register('description')}
                 placeholder="Purpose and criteria for this shortlist"
                 rows={3}
@@ -316,7 +319,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Tags
               </label>
-              <UnifiedInput                 {...register('tags')}
+              <Input                 {...register('tags')}
                 placeholder="e.g., urgent, experienced, local (comma separated)"
               />
               <p className="text-body-sm color-muted mt-xs">

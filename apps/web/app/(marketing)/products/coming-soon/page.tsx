@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Calendar, Users, Shield, Zap, ExternalLink, MessageSquare, Lightbulb } from 'lucide-react';
+import { ArrowRight, Calendar, ExternalExternalMessageSquare, ExternalLink, Lightbulb, MessageSquare, Shield, Users, Zap } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
 import { MarketingSection } from '../../../_components/marketing';
 
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Coming Soon | GHXSTSHIP Products',
     description: 'Get a sneak peek at the next generation of GHXSTSHIP products launching in 2026.',
-    url: 'https://ghxstship.com/products/coming-soon',
-  },
+    url: 'https://ghxstship.com/products/coming-soon'
+  }
 };
 
 const upcomingProducts = [
@@ -39,7 +39,7 @@ const upcomingProducts = [
       'Enhanced security protocols',
     ],
     targetUsers: ['Event Organizers', 'Venue Owners', 'Security Teams', 'Developers'],
-    gradient: 'from-primary to-secondary',
+    gradient: 'from-primary to-secondary'
   },
   {
     id: 'mvnifest',
@@ -64,7 +64,7 @@ const upcomingProducts = [
       'Enhanced operational efficiency',
     ],
     targetUsers: ['Inventory Managers', 'Operations Teams', 'Asset Controllers', 'Production Coordinators'],
-    gradient: 'from-secondary to-primary',
+    gradient: 'from-secondary to-primary'
   },
   {
     id: 'opvs',
@@ -89,7 +89,7 @@ const upcomingProducts = [
       'Professional network expansion',
     ],
     targetUsers: ['Artists', 'Talent Managers', 'Booking Agents', 'Creative Professionals'],
-    gradient: 'from-primary to-secondary',
+    gradient: 'from-primary to-secondary'
   },
 ];
 
@@ -278,17 +278,17 @@ export default function ComingSoonPage() {
               {
                 icon: Lightbulb,
                 title: 'Submit Ideas',
-                description: 'Share your feature requests and product ideas with our development team',
+                description: 'Share your feature requests and product ideas with our development team'
               },
               {
                 icon: MessageSquare,
                 title: 'Join Discussions',
-                description: 'Participate in community discussions about upcoming features and improvements',
+                description: 'Participate in community discussions about upcoming features and improvements'
               },
               {
                 icon: Users,
                 title: 'Beta Testing',
-                description: 'Get early access to new features and help us test before public release',
+                description: 'Get early access to new features and help us test before public release'
               },
             ].map((item, index) => (
               <Card key={index} className="hover:shadow-elevation-3 transition-shadow text-center">

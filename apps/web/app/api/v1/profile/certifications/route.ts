@@ -10,7 +10,7 @@ import {
   createCertification,
   updateCertification,
   deleteCertification,
-  fetchCertificationStats,
+  fetchCertificationStats
 } from '@/app/(app)/(shell)/profile/certifications/lib/certificationService';
 
 async function getSupabase() {
@@ -21,7 +21,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -84,7 +84,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       ...certificationsData,
-      stats,
+      stats
     });
   } catch (error) {
     console.error('Error in GET /api/v1/profile/certifications:', error);

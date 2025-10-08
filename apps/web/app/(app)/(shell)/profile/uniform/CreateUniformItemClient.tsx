@@ -22,7 +22,7 @@ const schema = z.object({
   care_instructions: z.string().optional(),
   replacement_due: z.string().optional(),
   is_required: z.boolean().default(true),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 type Values = z.infer<typeof schema>;
@@ -48,9 +48,9 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
       care_instructions: '',
       replacement_due: '',
       is_required: true,
-      notes: '',
+      notes: ''
     },
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   async function onSubmit(values: Values) {
@@ -74,7 +74,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
         replacement_due: values.replacement_due || null,
         is_required: values.is_required,
         notes: values.notes || null,
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString()
       };
 
       // Log activity

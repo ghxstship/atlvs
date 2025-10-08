@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
       category: zod.string().optional(),
       supplier: zod.string().optional(),
       status: zod.enum(['all', 'active', 'inactive', 'discontinued']).default('all'),
-      type: zod.enum(['all', 'product', 'service']).default('all'),
+      type: zod.enum(['all', 'product', 'service']).default('all')
     });
 
     const url = new URL(request.url);
@@ -62,7 +62,7 @@ export async function GET(request: NextRequest) {
       category: validatedQuery.category,
       supplier: validatedQuery.supplier,
       status: validatedQuery.status,
-      type: validatedQuery.type,
+      type: validatedQuery.type
     });
 
     return NextResponse.json({ data: stats });

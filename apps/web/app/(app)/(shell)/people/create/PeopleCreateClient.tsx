@@ -1,25 +1,10 @@
 'use client';
 
-import { UserPlus, Mail, Building, Calendar, FileText, Users, Send, X, CheckCircle, AlertCircle } from 'lucide-react';
+import { AlertCircle, Badge, Building, Button, Calendar, Card, CheckCircle, FileText, Input, Mail, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Send, Tabs, TabsContent, TabsList, TabsTrigger, Textarea, UserPlus, Users, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useCallback, useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
+import { type ChangeEvent, type FormEvent, useCallback, useEffect, useState } from 'react';
 import { createBrowserClient } from '@ghxstship/auth';
-import {
-  Button,
-  Card,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  Textarea,
-  UnifiedInput,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-  Badge,
-} from '@ghxstship/ui';
+import { Badge, Button, Card, Input, Select, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 
 interface PeopleCreateClientProps {
   orgId: string;
@@ -94,7 +79,7 @@ export default function PeopleCreateClient({
   orgId,
   userId,
   userEmail,
-  userRole,
+  userRole
 }: PeopleCreateClientProps) {
   const router = useRouter();
   const supabase = createBrowserClient();
@@ -119,10 +104,11 @@ export default function PeopleCreateClient({
     bio: '',
     skills: [],
     message: '',
-    expiresInDays: 7,
+    expiresInDays: 7
   });
 
   // Load projects for project-specific invitations
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const loadProjects = async () => {
       try {
@@ -143,21 +129,25 @@ export default function PeopleCreateClient({
     if (formData.invitationType === 'project') {
       loadProjects();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, supabase, formData.invitationType]);
 
   const handleInputChange = useCallback((field: keyof CollaboratorFormData) =>
     (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setFormData(prev => ({ ...prev, [field]: e.target.value }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
   const handleSelectChange = useCallback((field: keyof CollaboratorFormData) =>
     (value: string) => {
       setFormData(prev => ({ ...prev, [field]: value }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
   const handleMultiSelectChange = useCallback((field: 'skills') =>
     (values: string[]) => {
       setFormData(prev => ({ ...prev, [field]: values }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
   const validateForm = (): string | null => {
@@ -268,7 +258,7 @@ ${inviterName}`;
         department: formData.department || null,
         bio: formData.bio || null,
         skills: formData.skills,
-        phone: formData.phone || null,
+        phone: formData.phone || null
       };
 
       const { data, error: insertError } = await supabase
@@ -300,7 +290,7 @@ ${inviterName}`;
         bio: '',
         skills: [],
         message: '',
-        expiresInDays: 7,
+        expiresInDays: 7
       });
 
       setActiveTab('basic');
@@ -353,7 +343,7 @@ ${inviterName}`;
           <div>
             <h1 className="text-3xl font-bold">Invite Collaborator</h1>
             <p className="text-muted-foreground">Invite external collaborators to work with your organization</p>
-            <Badge variant="outline" className="mt-2">
+            <Badge variant="secondary" className="mt-2">
               <AlertCircle className="h-3 w-3 mr-1" />
               Does not count against billing seats
             </Badge>
@@ -400,7 +390,7 @@ ${inviterName}`;
 
                   <div>
                     <label className="block text-sm font-medium mb-2">First Name *</label>
-                    <UnifiedInput
+                    <Input
                       value={formData.firstName}
                       onChange={handleInputChange('firstName')}
                       placeholder="Enter first name"
@@ -410,7 +400,7 @@ ${inviterName}`;
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Last Name *</label>
-                    <UnifiedInput
+                    <Input
                       value={formData.lastName}
                       onChange={handleInputChange('lastName')}
                       placeholder="Enter last name"
@@ -420,7 +410,7 @@ ${inviterName}`;
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Email *</label>
-                    <UnifiedInput
+                    <Input
                       type="email"
                       value={formData.email}
                       onChange={handleInputChange('email')}
@@ -431,7 +421,7 @@ ${inviterName}`;
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Phone</label>
-                    <UnifiedInput
+                    <Input
                       type="tel"
                       value={formData.phone}
                       onChange={handleInputChange('phone')}
@@ -448,7 +438,7 @@ ${inviterName}`;
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Company</label>
-                    <UnifiedInput
+                    <Input
                       value={formData.company}
                       onChange={handleInputChange('company')}
                       placeholder="Company or Organization"
@@ -457,7 +447,7 @@ ${inviterName}`;
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Job Title</label>
-                    <UnifiedInput
+                    <Input
                       value={formData.jobTitle}
                       onChange={handleInputChange('jobTitle')}
                       placeholder="Senior Developer, Project Manager, etc."
@@ -466,7 +456,7 @@ ${inviterName}`;
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Department</label>
-                    <UnifiedInput
+                    <Input
                       value={formData.department}
                       onChange={handleInputChange('department')}
                       placeholder="Engineering, Marketing, Sales, etc."
@@ -475,7 +465,7 @@ ${inviterName}`;
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Skills</label>
-                    <UnifiedInput
+                    <Input
                       value={formData.skills?.join(', ')}
                       onChange={(e) => handleMultiSelectChange('skills')(e.target.value.split(',').map(s => s.trim()).filter(Boolean))}
                       placeholder="JavaScript, React, Project Management (comma-separated)"
@@ -486,7 +476,7 @@ ${inviterName}`;
 
               <div>
                 <label className="block text-sm font-medium mb-2">Bio</label>
-                <Textarea
+                <textarea
                   value={formData.bio}
                   onChange={handleInputChange('bio')}
                   placeholder="Brief professional background or bio"
@@ -622,7 +612,7 @@ ${inviterName}`;
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Personalized Message</label>
-                    <Textarea
+                    <textarea
                       value={formData.message}
                       onChange={handleInputChange('message')}
                       placeholder="Add a personal message to the invitation..."
@@ -656,7 +646,7 @@ ${inviterName}`;
 
           {/* Actions */}
           <div className="flex justify-end gap-sm mt-6 pt-6 border-t">
-            <Button type="button" variant="outline" onClick={handleCancel}>
+            <Button type="button" variant="secondary" onClick={handleCancel}>
               <X className="h-icon-xs w-icon-xs mr-2" />
               Cancel
             </Button>

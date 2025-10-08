@@ -4,24 +4,8 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import {
-  Drawer,
-  Button,
-  Input,
-  Select,
-  Textarea,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage,
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent
-} from '@ghxstship/ui';
-import { DollarSign, Calendar, User, Building } from 'lucide-react';
-import type { DataRecord } from '@ghxstship/ui';
+import { Building, Button, Calendar, Card, CardContent, CardHeader, CardTitle, DollarSign, Drawer, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, Textarea, User } from 'lucide-react';
+import { Button, Card, CardContent, CardHeader, CardTitle, Drawer, Input, Select } from '@ghxstship/ui';
 
 const editRevenueSchema = z.object({
   source: z.string().min(1, 'Revenue source is required'),
@@ -32,7 +16,7 @@ const editRevenueSchema = z.object({
   client_id: z.string().optional(),
   project_id: z.string().optional(),
   invoice_number: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 type EditRevenueForm = z.infer<typeof editRevenueSchema>;
@@ -59,9 +43,10 @@ export default function EditRevenueDrawer({
     reset,
     setValue
   } = useForm<EditRevenueForm>({
-    resolver: zodResolver(editRevenueSchema),
+    resolver: zodResolver(editRevenueSchema)
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (revenue && isOpen) {
       reset({
@@ -74,9 +59,10 @@ export default function EditRevenueDrawer({
         client_id: revenue.client_id || '',
         project_id: revenue.project_id || '',
         invoice_number: revenue.invoice_number || '',
-        notes: revenue.notes || '',
+        notes: revenue.notes || ''
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [revenue, isOpen, reset]);
 
   const handleFormSubmit = async (data: EditRevenueForm) => {
@@ -245,7 +231,7 @@ export default function EditRevenueDrawer({
             <FormField>
               <FormItem>
                 <FormControl>
-                  <Textarea
+                  <textarea
                     {...register('notes')}
                     placeholder="Any additional notes or details..."
                     rows={3}

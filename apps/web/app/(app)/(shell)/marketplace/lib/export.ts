@@ -208,7 +208,7 @@ export class MarketplaceExportService {
       'view_count': 10,
       'created_at': 12,
       'updated_at': 12,
-      'expires_at': 12,
+      'expires_at': 12
     };
 
     return widthMap[field] || 15;
@@ -242,7 +242,7 @@ export class MarketplaceExportService {
         fieldCount: this.getDefaultFields().length,
         estimatedFileSize: this.estimateFileSize(listings),
         availableFormats: ['csv', 'json', 'excel', 'pdf'],
-        availableTemplates: Object.keys(this.getExportTemplates()),
+        availableTemplates: Object.keys(this.getExportTemplates())
       };
     }, 'MarketplaceExportService.getExportMetadata');
   }

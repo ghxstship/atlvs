@@ -1,10 +1,10 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, UnifiedInput, Card, Badge } from '@ghxstship/ui';
+import { Button, Input, Card, Badge } from '@ghxstship/ui';
 import { Package, Truck, MapPin, Calendar, Clock, Search, Filter, Eye } from 'lucide-react';
 
 interface TrackingOrder {
@@ -34,12 +34,16 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
   const [statusFilter, setStatusFilter] = useState<'all' | TrackingOrder['status']>('all');
   const [selectedOrder, setSelectedOrder] = useState<TrackingOrder | null>(null);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadOrders();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     filterOrders();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orders, searchQuery, statusFilter]);
 
   const loadOrders = async () => {
@@ -142,7 +146,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
       <div className="flex flex-col sm:flex-row gap-md">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
-          <UnifiedInput             placeholder="Search by order number, vendor, tracking number..."
+          <Input             placeholder="Search by order number, vendor, tracking number..."
             value={searchQuery}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
             className="pl-2xl"
@@ -195,7 +199,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
                       </Badge>
                       <Button
                        
-                        variant="outline"
+                        variant="secondary"
                         onClick={() => setSelectedOrder(order)}
                       >
                         <Eye className="h-3 w-3 mr-xs" />
@@ -265,7 +269,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
               <div className="flex items-center justify-between mb-md">
                 <h3 className="text-body text-heading-4">Order Details</h3>
                 <Button
-                  variant="outline"
+                  variant="secondary"
                  
                   onClick={() => setSelectedOrder(null)}
                 >

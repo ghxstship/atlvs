@@ -1,11 +1,11 @@
 'use client';
 
-
 import * as Sentry from '@sentry/nextjs';
+import { ErrorPage } from '@ghxstship/ui';
 
 export default function GlobalError({
   error,
-  reset,
+  reset
 }: {
   error: Error & { digest?: string };
   reset: () => void;
@@ -16,17 +16,19 @@ export default function GlobalError({
   return (
     <html>
       <body>
-        <div style={{ padding: 24 }}>
-          <h1>Something went wrong</h1>
-          <p>
-            {process.env.NODE_ENV === 'development'
+        <ErrorPage
+          code="500"
+          title="Something went wrong"
+          message={
+            process.env.NODE_ENV === 'development'
               ? error?.message
-              : 'An unexpected error occurred.'}
-          </p>
-          <button onClick={() => reset()} style={{ marginTop: 12 }}>
-            Try again
-          </button>
-        </div>
+              : 'An unexpected error occurred. Please try again.'
+          }
+          action={{
+            label: 'Try again',
+            onClick: reset
+          }}
+        />
       </body>
     </html>
   );

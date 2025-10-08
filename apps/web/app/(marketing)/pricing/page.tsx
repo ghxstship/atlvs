@@ -40,7 +40,7 @@ const plans = [
       { name: 'Priority support', included: false },
     ],
     cta: 'Start Free Trial',
-    popular: false,
+    popular: false
   },
   {
     id: 'pro',
@@ -65,7 +65,7 @@ const plans = [
       { name: 'SSO integration', included: false },
     ],
     cta: 'Start Free Trial',
-    popular: false,
+    popular: false
   },
   {
     id: 'team',
@@ -90,7 +90,7 @@ const plans = [
       { name: 'GXTEWAY Open Source Ticketing', included: false },
     ],
     cta: 'Start Free Trial',
-    popular: true,
+    popular: true
   },
   {
     id: 'vessel',
@@ -115,7 +115,7 @@ const plans = [
       { name: 'Dedicated account manager', included: false },
     ],
     cta: 'Start Free Trial',
-    popular: false,
+    popular: false
   },
   {
     id: 'fleet',
@@ -140,7 +140,7 @@ const plans = [
       { name: 'Dedicated account manager', included: true },
     ],
     cta: 'Contact Sales',
-    popular: false,
+    popular: false
   },
   {
     id: 'custom',
@@ -165,7 +165,7 @@ const plans = [
       { name: 'Dedicated success manager', included: true },
     ],
     cta: 'Contact Sales',
-    popular: false,
+    popular: false
   },
 ];
 
@@ -174,54 +174,54 @@ const addOns = [
     name: 'GXTEWAY Open Source Ticketing',
     description: 'Advanced ticketing solution for events and access control',
     price: 'Included in Vessel+',
-    features: ['Event ticketing', 'Access control', 'Attendee management', 'Real-time analytics'],
+    features: ['Event ticketing', 'Access control', 'Attendee management', 'Real-time analytics']
   },
   {
     name: 'Advanced Security',
     description: 'Enterprise-grade security for mission-critical operations',
     price: 49,
-    features: ['Advanced encryption', 'Audit logs', 'Compliance reporting', 'Security monitoring'],
+    features: ['Advanced encryption', 'Audit logs', 'Compliance reporting', 'Security monitoring']
   },
   {
     name: 'Premium Support',
     description: 'Dedicated support when you need it most',
     price: 99,
-    features: ['Dedicated account manager', 'Priority support', 'Custom training', 'Implementation assistance'],
+    features: ['Dedicated account manager', 'Priority support', 'Custom training', 'Implementation assistance']
   },
 ];
 
 const faqs = [
   {
     question: 'What\'s included in the free trial?',
-    answer: 'All plans include a 14-day free trial with full access to features. No credit card required to start.',
+    answer: 'All plans include a 14-day free trial with full access to features. No credit card required to start.'
   },
   {
     question: 'Can I change plans at any time?',
-    answer: 'Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we\'ll prorate any billing adjustments.',
+    answer: 'Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we\'ll prorate any billing adjustments.'
   },
   {
     question: 'What\'s the difference between Vessel and Fleet plans?',
-    answer: 'Vessel is designed for single project enterprises with advanced ticketing, while Fleet supports unlimited projects and regions with additional white-label solutions and dedicated account management.',
+    answer: 'Vessel is designed for single project enterprises with advanced ticketing, while Fleet supports unlimited projects and regions with additional white-label solutions and dedicated account management.'
   },
   {
     question: 'What is GXTEWAY Open Source Ticketing?',
-    answer: 'GXTEWAY is our open-source ticketing solution included with Vessel, Fleet, and Custom plans. It provides comprehensive event ticketing, access control, and attendee management capabilities.',
+    answer: 'GXTEWAY is our open-source ticketing solution included with Vessel, Fleet, and Custom plans. It provides comprehensive event ticketing, access control, and attendee management capabilities.'
   },
   {
     question: 'What payment methods do you accept?',
-    answer: 'We accept all major credit cards, PayPal, and can arrange invoicing for Enterprise customers.',
+    answer: 'We accept all major credit cards, PayPal, and can arrange invoicing for Enterprise customers.'
   },
   {
     question: 'Is there a setup fee?',
-    answer: 'No, there are no setup fees for any of our plans. You only pay the monthly or annual subscription fee.',
+    answer: 'No, there are no setup fees for any of our plans. You only pay the monthly or annual subscription fee.'
   },
   {
     question: 'Do you offer discounts for nonprofits or education?',
-    answer: 'Yes, we offer special pricing for qualified nonprofit organizations and educational institutions. Contact our sales team for details.',
+    answer: 'Yes, we offer special pricing for qualified nonprofit organizations and educational institutions. Contact our sales team for details.'
   },
   {
     question: 'What happens if I exceed my plan limits?',
-    answer: 'We\'ll notify you when you\'re approaching your limits and help you upgrade to a plan that better fits your needs.',
+    answer: 'We\'ll notify you when you\'re approaching your limits and help you upgrade to a plan that better fits your needs.'
   },
 ];
 

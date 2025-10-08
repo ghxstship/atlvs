@@ -43,14 +43,14 @@ const DashboardSchema = z.object({
       x: z.number().int(),
       y: z.number().int(),
       width: z.number().int(),
-      height: z.number().int(),
-    }),
+      height: z.number().int()
+    })
   })),
   refresh_interval: z.number().int().positive().optional(),
   filters: z.record(z.any()).optional(),
   tags: z.array(z.string()).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const ReportSchema = z.object({
@@ -68,7 +68,7 @@ const ReportSchema = z.object({
     label: z.string(),
     required: z.boolean().default(false),
     default_value: z.any().optional(),
-    options: z.array(z.any()).optional(),
+    options: z.array(z.any()).optional()
   })).optional(),
   columns: z.array(z.object({
     key: z.string(),
@@ -76,17 +76,17 @@ const ReportSchema = z.object({
     type: z.string(),
     format: z.string().optional(),
     aggregation: z.string().optional(),
-    visible: z.boolean().default(true),
+    visible: z.boolean().default(true)
   })),
   filters: z.array(z.object({
     field: z.string(),
     operator: z.string(),
     value: z.any(),
-    condition: z.enum(['and', 'or']).default('and'),
+    condition: z.enum(['and', 'or']).default('and')
   })).optional(),
   sorting: z.array(z.object({
     field: z.string(),
-    direction: z.enum(['asc', 'desc']),
+    direction: z.enum(['asc', 'desc'])
   })).optional(),
   grouping: z.array(z.string()).optional(),
   chart_config: z.object({
@@ -94,21 +94,21 @@ const ReportSchema = z.object({
     x_axis: z.string(),
     y_axis: z.string(),
     series: z.array(z.string()).optional(),
-    options: z.record(z.any()).optional(),
+    options: z.record(z.any()).optional()
   }).optional(),
   schedule: z.object({
     enabled: z.boolean().default(false),
     frequency: z.enum(['daily', 'weekly', 'monthly', 'quarterly']),
     time: z.string(),
     recipients: z.array(z.string().email()),
-    format: z.enum(['pdf', 'excel', 'csv']),
+    format: z.enum(['pdf', 'excel', 'csv'])
   }).optional(),
   owner_id: z.string().uuid(),
   shared_with: z.array(z.string().uuid()).optional(),
   is_public: z.boolean().default(false),
   tags: z.array(z.string()).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const ExportSchema = z.object({
@@ -131,7 +131,7 @@ const ExportSchema = z.object({
   completed_at: z.date().optional(),
   expires_at: z.date().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const MetricSchema = z.object({
@@ -153,7 +153,7 @@ const MetricSchema = z.object({
   owner_id: z.string().uuid(),
   tags: z.array(z.string()).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export const analyticsModuleConfig: ModuleConfig = {

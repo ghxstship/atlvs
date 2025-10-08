@@ -10,7 +10,7 @@ import {
   ProjectMilestone,
   FilterConfig,
   SortConfig,
-  PaginatedResponse,
+  PaginatedResponse
 } from "../types";
 
 // Query interfaces
@@ -160,7 +160,7 @@ export class ProjectQueries {
         total: count || 0,
         page: Math.floor((options.offset || 0) / (options.limit || 50)) + 1,
         per_page: options.limit || 50,
-        total_pages: Math.ceil((count || 0) / (options.limit || 50)),
+        total_pages: Math.ceil((count || 0) / (options.limit || 50))
       };
     } catch (error) {
       console.error('Error fetching projects:', error);
@@ -224,7 +224,7 @@ export class ProjectQueries {
         totalBudget: projects?.reduce((sum, p) => sum + (p.budget || 0), 0) || 0,
         totalSpent: projects?.reduce((sum, p) => sum + (p.actual_cost || 0), 0) || 0,
         averageProgress: projects?.length ?
-          Math.round(projects.reduce((sum, p) => sum + (p.progress || 0), 0) / projects.length) : 0,
+          Math.round(projects.reduce((sum, p) => sum + (p.progress || 0), 0) / projects.length) : 0
       };
 
       return stats;
@@ -237,7 +237,7 @@ export class ProjectQueries {
         overdue: 0,
         totalBudget: 0,
         totalSpent: 0,
-        averageProgress: 0,
+        averageProgress: 0
       };
     }
   }
@@ -327,7 +327,7 @@ export class TaskQueries {
         total: count || 0,
         page: Math.floor((options.offset || 0) / (options.limit || 50)) + 1,
         per_page: options.limit || 50,
-        total_pages: Math.ceil((count || 0) / (options.limit || 50)),
+        total_pages: Math.ceil((count || 0) / (options.limit || 50))
       };
     } catch (error) {
       console.error('Error fetching tasks:', error);
@@ -412,7 +412,7 @@ export class FileQueries {
         total: count || 0,
         page: Math.floor((options.offset || 0) / (options.limit || 50)) + 1,
         per_page: options.limit || 50,
-        total_pages: Math.ceil((count || 0) / (options.limit || 50)),
+        total_pages: Math.ceil((count || 0) / (options.limit || 50))
       };
     } catch (error) {
       console.error('Error fetching files:', error);
@@ -457,7 +457,7 @@ export class RiskQueries {
         total: count || 0,
         page: Math.floor((options.offset || 0) / (options.limit || 50)) + 1,
         per_page: options.limit || 50,
-        total_pages: Math.ceil((count || 0) / (options.limit || 50)),
+        total_pages: Math.ceil((count || 0) / (options.limit || 50))
       };
     } catch (error) {
       console.error('Error fetching risks:', error);
@@ -502,7 +502,7 @@ export class InspectionQueries {
         total: count || 0,
         page: Math.floor((options.offset || 0) / (options.limit || 50)) + 1,
         per_page: options.limit || 50,
-        total_pages: Math.ceil((count || 0) / (options.limit || 50)),
+        total_pages: Math.ceil((count || 0) / (options.limit || 50))
       };
     } catch (error) {
       console.error('Error fetching inspections:', error);
@@ -546,7 +546,7 @@ export class ActivationQueries {
         total: count || 0,
         page: Math.floor((options.offset || 0) / (options.limit || 50)) + 1,
         per_page: options.limit || 50,
-        total_pages: Math.ceil((count || 0) / (options.limit || 50)),
+        total_pages: Math.ceil((count || 0) / (options.limit || 50))
       };
     } catch (error) {
       console.error('Error fetching activations:', error);
@@ -583,7 +583,7 @@ export class LocationQueries {
         total: count || 0,
         page: Math.floor((options.offset || 0) / (options.limit || 50)) + 1,
         per_page: options.limit || 50,
-        total_pages: Math.ceil((count || 0) / (options.limit || 50)),
+        total_pages: Math.ceil((count || 0) / (options.limit || 50))
       };
     } catch (error) {
       console.error('Error fetching locations:', error);
@@ -628,7 +628,7 @@ export class MilestoneQueries {
         total: count || 0,
         page: Math.floor((options.offset || 0) / (options.limit || 50)) + 1,
         per_page: options.limit || 50,
-        total_pages: Math.ceil((count || 0) / (options.limit || 50)),
+        total_pages: Math.ceil((count || 0) / (options.limit || 50))
       };
     } catch (error) {
       console.error('Error fetching milestones:', error);

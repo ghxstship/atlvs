@@ -11,27 +11,27 @@ import { twMerge } from 'tailwind-merge';
 // MATHEMATICAL SPACING FOUNDATION
 // =============================================================================
 
-// Base unit: 4px (0.25rem) - Perfect for 8px grid system
+// Base unit: var(--spacing-1) (0.25rem) - Perfect for var(--spacing-2) grid system
 export const SPACING_UNITS = {
   0: '0',
   0.5: '0.125rem', // 2px
-  1: '0.25rem',    // 4px
+  1: '0.25rem',    // var(--spacing-1)
   1.5: '0.375rem', // 6px
-  2: '0.5rem',     // 8px
+  2: '0.5rem',     // var(--spacing-2)
   2.5: '0.625rem', // 10px
-  3: '0.75rem',    // 12px
+  3: '0.75rem',    // var(--spacing-3)
   3.5: '0.875rem', // 14px
-  4: '1rem',       // 16px
-  5: '1.25rem',    // 20px
-  6: '1.5rem',     // 24px
+  4: '1rem',       // var(--spacing-4)
+  5: '1.25rem',    // var(--spacing-5)
+  6: '1.5rem',     // var(--spacing-6)
   7: '1.75rem',    // 28px
-  8: '2rem',       // 32px
+  8: '2rem',       // var(--spacing-8)
   9: '2.25rem',    // 36px
-  10: '2.5rem',    // 40px
+  10: '2.5rem',    // var(--spacing-10)
   11: '2.75rem',   // 44px
-  12: '3rem',      // 48px
+  12: '3rem',      // var(--spacing-12)
   14: '3.5rem',    // 56px
-  16: '4rem',      // 64px
+  16: '4rem',      // var(--spacing-16)
   20: '5rem',      // 80px
   24: '6rem',      // 96px
   28: '7rem',      // 112px
@@ -51,13 +51,13 @@ export const SPACING_UNITS = {
 
 // Semantic spacing scale for consistent component spacing
 export const SEMANTIC_SPACING = {
-  xs: SPACING_UNITS[1],    // 4px
-  sm: SPACING_UNITS[2],    // 8px
-  md: SPACING_UNITS[4],    // 16px
-  lg: SPACING_UNITS[6],    // 24px
-  xl: SPACING_UNITS[8],    // 32px
-  '2xl': SPACING_UNITS[12], // 48px
-  '3xl': SPACING_UNITS[16], // 64px
+  xs: SPACING_UNITS[1],    // var(--spacing-1)
+  sm: SPACING_UNITS[2],    // var(--spacing-2)
+  md: SPACING_UNITS[4],    // var(--spacing-4)
+  lg: SPACING_UNITS[6],    // var(--spacing-6)
+  xl: SPACING_UNITS[8],    // var(--spacing-8)
+  '2xl': SPACING_UNITS[12], // var(--spacing-12)
+  '3xl': SPACING_UNITS[16], // var(--spacing-16)
   '4xl': SPACING_UNITS[24], // 96px
   '5xl': SPACING_UNITS[32], // 128px
 } as const;
@@ -115,7 +115,7 @@ const gridContainerVariants = cva(
       
       // Gap spacing
       gap: {
-        0: 'gap-0',
+        0: 'gap-none',
         1: 'gap-xs',
         2: 'gap-sm',
         3: 'gap-sm',
@@ -438,7 +438,7 @@ const spacingVariants = cva('', {
   variants: {
     // Margin
     m: {
-      0: 'm-0', 1: 'm-xs', 2: 'm-sm', 3: 'm-sm', 4: 'm-md', 5: 'm-lg', 6: 'm-lg', 8: 'm-xl', 10: 'm-2xl', 12: 'm-2xl', 16: 'm-3xl', 20: 'm-4xl', 24: 'm-5xl', 32: 'm-5xl',
+      0: 'm-none', 1: 'm-xs', 2: 'm-sm', 3: 'm-sm', 4: 'm-md', 5: 'm-lg', 6: 'm-lg', 8: 'm-xl', 10: 'm-2xl', 12: 'm-2xl', 16: 'm-3xl', 20: 'm-4xl', 24: 'm-5xl', 32: 'm-5xl',
       auto: 'm-auto',
     },
     mx: {
@@ -467,7 +467,7 @@ const spacingVariants = cva('', {
     
     // Padding
     p: {
-      0: 'p-0', 1: 'p-xs', 2: 'p-sm', 3: 'p-sm', 4: 'p-md', 5: 'p-lg', 6: 'p-lg', 8: 'p-xl', 10: 'p-2xl', 12: 'p-2xl', 16: 'p-3xl', 20: 'p-4xl', 24: 'p-5xl', 32: 'p-5xl',
+      0: 'p-none', 1: 'p-xs', 2: 'p-sm', 3: 'p-sm', 4: 'p-md', 5: 'p-lg', 6: 'p-lg', 8: 'p-xl', 10: 'p-2xl', 12: 'p-2xl', 16: 'p-3xl', 20: 'p-4xl', 24: 'p-5xl', 32: 'p-5xl',
     },
     px: {
       0: 'px-0', 1: 'px-xs', 2: 'px-sm', 3: 'px-sm', 4: 'px-md', 5: 'px-lg', 6: 'px-lg', 8: 'px-xl', 10: 'px-2xl', 12: 'px-2xl', 16: 'px-3xl', 20: 'px-4xl', 24: 'px-5xl', 32: 'px-5xl',
@@ -490,10 +490,10 @@ const spacingVariants = cva('', {
     
     // Space between children
     spaceX: {
-      0: 'space-x-0', 1: 'gap-xs', 2: 'gap-sm', 3: 'gap-sm', 4: 'gap-md', 5: 'space-x-lg', 6: 'gap-lg', 8: 'gap-xl', 10: 'space-x-2xl', 12: 'space-x-2xl', 16: 'space-x-3xl',
+      0: 'space-x-none', 1: 'gap-xs', 2: 'gap-sm', 3: 'gap-sm', 4: 'gap-md', 5: 'space-x-lg', 6: 'gap-lg', 8: 'gap-xl', 10: 'space-x-2xl', 12: 'space-x-2xl', 16: 'space-x-3xl',
     },
     spaceY: {
-      0: 'space-y-0', 1: 'gap-xs', 2: 'gap-sm', 3: 'gap-sm', 4: 'gap-md', 5: 'space-y-lg', 6: 'gap-lg', 8: 'gap-xl', 10: 'gap-2xl', 12: 'gap-2xl', 16: 'gap-3xl',
+      0: 'space-y-none', 1: 'gap-xs', 2: 'gap-sm', 3: 'gap-sm', 4: 'gap-md', 5: 'space-y-lg', 6: 'gap-lg', 8: 'gap-xl', 10: 'gap-2xl', 12: 'gap-2xl', 16: 'gap-3xl',
     },
   },
 });

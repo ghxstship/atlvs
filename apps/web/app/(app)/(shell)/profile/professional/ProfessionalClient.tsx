@@ -16,7 +16,16 @@ import {
   Users,
   TrendingUp,
   Calendar
-} from 'lucide-react';
+} from 'lucide-react';import {
+  Card,
+  Button,
+  UnifiedInput,
+  Select,
+  Textarea,
+  Badge
+} from '@ghxstship/ui';
+import { Card, Button, Select, Textarea, Badge } from '@ghxstship/ui';
+
 
 const professionalSchema = z.object({
   job_title: z.string().optional(),

@@ -4,10 +4,7 @@
 
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
-import { 
-  LayoutDashboard, Briefcase, User, Search, MessageSquare, 
-  DollarSign, Star, FileText, Settings
-} from 'lucide-react';
+import { Briefcase, DollarSign, FileText, LayoutDashboard, MessageSquare, Search, Settings, Star, User } from 'lucide-react';
 import OpenDeckDashboard from './OpenDeckDashboard';
 import VendorProfileClient from './VendorProfileClient';
 import ProjectPostingClient from './ProjectPostingClient';

@@ -1,6 +1,5 @@
 'use client';
 
-
 import Link from 'next/link';
 import { anton } from '../lib/typography';
 import { layouts } from '../lib/layouts';
@@ -28,7 +27,7 @@ const footerSections: FooterSection[] = [
       { label: 'Compare', href: '/products/compare' },
       { label: 'Pricing', href: '/pricing' },
       { label: 'Coming Soon', href: '/products/coming-soon' },
-    ],
+    ]
   },
   {
     title: 'Solutions',
@@ -44,7 +43,7 @@ const footerSections: FooterSection[] = [
       { label: 'Sporting Events & Tournaments', href: '/solutions/sporting-events-tournaments' },
       { label: 'Themed & Theatrical Entertainment', href: '/solutions/themed-theatrical-entertainment' },
       { label: 'Trade Shows & Conferences', href: '/solutions/trade-shows-conferences' },
-    ],
+    ]
   },
   {
     title: 'Resources',
@@ -54,7 +53,7 @@ const footerSections: FooterSection[] = [
       { label: 'Documentation', href: '/resources/documentation' },
       { label: 'Guides', href: '/resources/guides' },
       { label: 'API Reference', href: '/resources/api' },
-    ],
+    ]
   },
   {
     title: 'Company',
@@ -64,7 +63,7 @@ const footerSections: FooterSection[] = [
       { label: 'Careers', href: '/company/careers' },
       { label: 'Press', href: '/company/press' },
       { label: 'Contact', href: '/company/contact' },
-    ],
+    ]
   },
   {
     title: 'Community',
@@ -76,7 +75,7 @@ const footerSections: FooterSection[] = [
       { label: 'Impact', href: '/community/impact' },
       { label: 'Opportunities', href: '/community/opportunities' },
       { label: 'Partners', href: '/community/partners' },
-    ],
+    ]
   },
   {
     title: 'Legal',
@@ -86,7 +85,7 @@ const footerSections: FooterSection[] = [
       { label: 'Cookie Policy', href: '/cookies' },
       { label: 'Security', href: '/security' },
       { label: 'Accessibility', href: '/accessibility' },
-    ],
+    ]
   },
 ];
 

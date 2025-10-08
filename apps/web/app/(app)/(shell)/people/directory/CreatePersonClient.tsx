@@ -1,7 +1,8 @@
 'use client';
+import { Button, Drawer, Input } from '@ghxstship/ui';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -21,7 +22,7 @@ const personSchema = z.object({
   startDate: z.string().optional(),
   bio: z.string().optional(),
   skills: z.string().optional(),
-  status: z.enum(['active', 'inactive', 'terminated']).default('active'),
+  status: z.enum(['active', 'inactive', 'terminated']).default('active')
 });
 
 type PersonFormData = z.infer<typeof personSchema>;
@@ -47,7 +48,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
     resolver: zodResolver(personSchema),
     mode: 'onChange',
     defaultValues: {
-      status: 'active',
+      status: 'active'
     }
   });
 
@@ -66,12 +67,12 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
         body: JSON.stringify({
           ...data,
-          skills: skillsArray,
-        }),
+          skills: skillsArray
+        })
       });
 
       if (!response.ok) {
@@ -89,7 +90,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
         role: data.role,
         department: data.department,
         status: data.status,
-        organization_id: orgId,
+        organization_id: orgId
       });
 
       // Log activity
@@ -104,8 +105,8 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
           last_name: data.lastName,
           role: data.role,
           department: data.department,
-          status: data.status,
-        },
+          status: data.status
+        }
       });
 
       // Reset form and close drawer
@@ -117,7 +118,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
       console.error('Error creating person:', error);
       posthog?.capture('people_person_creation_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -188,7 +189,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
                 <label className="block text-body-sm form-label mb-sm">
                   First Name *
                 </label>
-                <UnifiedInput                   {...register('firstName')}
+                <Input                   {...register('firstName')}
                   placeholder="John"
                   error={errors.firstName?.message}
                 />
@@ -198,7 +199,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
                 <label className="block text-body-sm form-label mb-sm">
                   Last Name *
                 </label>
-                <UnifiedInput                   {...register('lastName')}
+                <Input                   {...register('lastName')}
                   placeholder="Smith"
                   error={errors.lastName?.message}
                 />
@@ -210,7 +211,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
                 <label className="block text-body-sm form-label mb-sm">
                   Email
                 </label>
-                <UnifiedInput                   {...register('email')}
+                <Input                   {...register('email')}
                   type="email"
                   placeholder="john.smith@example.com"
                   error={errors.email?.message}
@@ -221,7 +222,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
                 <label className="block text-body-sm form-label mb-sm">
                   Phone
                 </label>
-                <UnifiedInput                   {...register('phone')}
+                <Input                   {...register('phone')}
                   placeholder="+1 (555) 123-4567"
                 />
               </div>
@@ -232,7 +233,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
                 <label className="block text-body-sm form-label mb-sm">
                   Role
                 </label>
-                <UnifiedInput                   {...register('role')}
+                <Input                   {...register('role')}
                   placeholder="e.g., Production Manager, Rigger"
                 />
               </div>
@@ -241,7 +242,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
                 <label className="block text-body-sm form-label mb-sm">
                   Department
                 </label>
-                <UnifiedInput                   {...register('department')}
+                <Input                   {...register('department')}
                   placeholder="e.g., Production, Technical, Creative"
                 />
               </div>
@@ -252,7 +253,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
                 <label className="block text-body-sm form-label mb-sm">
                   Location
                 </label>
-                <UnifiedInput                   {...register('location')}
+                <Input                   {...register('location')}
                   placeholder="e.g., Los Angeles, CA"
                 />
               </div>
@@ -261,7 +262,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
                 <label className="block text-body-sm form-label mb-sm">
                   Start Date
                 </label>
-                <UnifiedInput                   {...register('startDate')}
+                <Input                   {...register('startDate')}
                   type="date"
                 />
               </div>
@@ -285,7 +286,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
               <label className="block text-body-sm form-label mb-sm">
                 Skills
               </label>
-              <UnifiedInput                 {...register('skills')}
+              <Input                 {...register('skills')}
                 placeholder="e.g., Lighting, Sound, Rigging (comma separated)"
               />
               <p className="text-body-sm color-muted mt-xs">
@@ -297,7 +298,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
               <label className="block text-body-sm form-label mb-sm">
                 Bio
               </label>
-              <Textarea
+              <textarea
                 {...register('bio')}
                 placeholder="Brief professional background and experience"
                 rows={3}

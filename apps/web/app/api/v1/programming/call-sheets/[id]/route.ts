@@ -33,35 +33,35 @@ const updateCallSheetSchema = z.object({
     name: z.string(),
     role: z.string(),
     phone: z.string().optional(),
-    email: z.string().email().optional(),
+    email: z.string().email().optional()
   })).optional(),
   schedule: z.array(z.object({
     time: z.string(),
     activity: z.string(),
     location: z.string().optional(),
-    notes: z.string().optional(),
+    notes: z.string().optional()
   })).optional(),
   crew_assignments: z.array(z.object({
     user_id: z.string().uuid().optional(),
     role: z.string(),
     department: z.string().optional(),
     call_time: z.string().optional(),
-    notes: z.string().optional(),
+    notes: z.string().optional()
   })).optional(),
   equipment_list: z.array(z.object({
     item: z.string(),
     quantity: z.number().int().min(1),
     responsible_person: z.string().optional(),
-    notes: z.string().optional(),
+    notes: z.string().optional()
   })).optional(),
   safety_notes: z.string().optional(),
   distribution_list: z.array(z.object({
     user_id: z.string().uuid().optional(),
     email: z.string().email().optional(),
-    method: z.enum(['email', 'sms', 'app']).default('email'),
+    method: z.enum(['email', 'sms', 'app']).default('email')
   })).optional(),
   tags: z.array(z.string().max(32)).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 async function getSupabase() {
@@ -72,7 +72,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -200,7 +200,7 @@ export async function PATCH(
       distribution_list: updates.distribution_list ?? existing.distribution_list,
       tags: updates.tags ?? existing.tags,
       metadata: updates.metadata ?? existing.metadata,
-      updated_by: user!.id,
+      updated_by: user!.id
     };
 
     const { data: callSheet, error: updateError } = await supabase
@@ -220,8 +220,8 @@ export async function PATCH(
       resource_id: params.id,
       action: 'update',
       details: {
-        updated_fields: Object.keys(updates),
-      },
+        updated_fields: Object.keys(updates)
+      }
     });
 
     return NextResponse.json(callSheet);
@@ -272,8 +272,8 @@ export async function DELETE(
       action: 'delete',
       details: {
         name: existing.name,
-        call_type: existing.call_type,
-      },
+        call_type: existing.call_type
+      }
     });
 
     return NextResponse.json({ success: true });

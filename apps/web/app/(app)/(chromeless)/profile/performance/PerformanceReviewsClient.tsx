@@ -1,11 +1,10 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Button, Card, CardHeader, CardContent, Badge } from '@ghxstship/ui';
-import { Star, TrendingUp, Award, Calendar, ChevronRight, BarChart3 } from 'lucide-react';
-import { useToast } from '@ghxstship/ui';
+import { Badge, Button, Card, CardBody, CardContent, CardHeader, useToast } from '@ghxstship/ui';
+import { Award, BarChart3, Calendar, ChevronRight, Star, TrendingUp } from 'lucide-react';
 
 interface PerformanceReview {
   id: string;
@@ -44,8 +43,10 @@ export default function PerformanceReviewsClient() {
   const { addToast } = useToast();
   const supabase = createClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchReviews();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchReviews = async () => {
@@ -66,7 +67,7 @@ export default function PerformanceReviewsClient() {
       addToast({
         type: 'error',
         title: 'Error',
-        description: 'Failed to load performance reviews',
+        description: 'Failed to load performance reviews'
       });
     } finally {
       setLoading(false);
@@ -89,7 +90,7 @@ export default function PerformanceReviewsClient() {
       addToast({
         type: 'success',
         title: 'Success',
-        description: 'Review acknowledged successfully',
+        description: 'Review acknowledged successfully'
       });
       fetchReviews();
     } catch (error) {
@@ -97,7 +98,7 @@ export default function PerformanceReviewsClient() {
       addToast({
         type: 'error',
         title: 'Error',
-        description: 'Failed to acknowledge review',
+        description: 'Failed to acknowledge review'
       });
     }
   };
@@ -157,7 +158,7 @@ export default function PerformanceReviewsClient() {
             <h2 className="text-heading-3">Performance Review</h2>
             <p className="color-muted">{selectedReview.review_period}</p>
           </div>
-          <Button variant="outline" onClick={() => setSelectedReview(null)}>
+          <Button variant="secondary" onClick={() => setSelectedReview(null)}>
             Back to Reviews
           </Button>
         </div>

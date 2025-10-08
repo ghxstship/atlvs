@@ -65,7 +65,7 @@ const CreateTrainingProgramSchema = z.object({
     maxAttempts: z.number().positive().default(3),
     timeLimit: z.number().positive().optional() // in minutes
   }).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 const UpdateTrainingProgramSchema = CreateTrainingProgramSchema.partial();
@@ -77,7 +77,7 @@ const EnrollParticipantSchema = z.object({
   dueDate: z.string().optional(),
   priority: z.enum(['low', 'medium', 'high', 'critical']).default('medium'),
   assignedBy: z.string().uuid().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 async function getAuthenticatedUser() {

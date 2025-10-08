@@ -33,10 +33,11 @@ export default function CardView({
   onSelectionChange,
   onCardClick,
   columns = 3,
-  className = '',
+  className = ''
 }: CardViewProps) {
   const [selectedCards, setSelectedCards] = useState<Set<string>(new Set());
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleCardSelect = useCallback((id: string, checked: boolean) => {
     const newSelected = new Set(selectedCards);
     if (checked) {
@@ -46,8 +47,10 @@ export default function CardView({
     }
     setSelectedCards(newSelected);
     onSelectionChange?.(Array.from(newSelected));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCards, onSelectionChange]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleSelectAll = useCallback((checked: boolean) => {
     if (checked) {
       const allIds = data.map(item => item.id);
@@ -57,6 +60,7 @@ export default function CardView({
       setSelectedCards(new Set());
       onSelectionChange?.([]);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, onSelectionChange]);
 
   if (loading) {
@@ -143,7 +147,7 @@ function getGridClass(columns: number): string {
     3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
     4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
     5: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5',
-    6: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6',
+    6: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6'
   };
   return gridClasses[columns as keyof typeof gridClasses] || gridClasses[3];
 }

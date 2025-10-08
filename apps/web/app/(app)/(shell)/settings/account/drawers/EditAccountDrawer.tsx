@@ -18,7 +18,7 @@ import {
  Eye,
  Copy,
  RefreshCw,
- X,
+ X
 } from "lucide-react";
 import { useState, useEffect } from 'react';
 import { type ControllerRenderProps, useForm } from 'react-hook-form';
@@ -42,7 +42,7 @@ import {
  TabsTrigger,
  Badge,
  Alert,
- AlertDescription,
+ AlertDescription
 } from '@ghxstship/ui';
 import type { AccountDrawerProps, AccountRecord, ProfileFormData, PasswordFormData } from '../types';
 import { accountService } from '../lib/account-service';
@@ -52,16 +52,16 @@ const profileFormSchema = z.object({
  email: z.string().email('Invalid email address'),
  phone: z.string().optional(),
  timezone: z.string().optional(),
- language: z.string().optional(),
+ language: z.string().optional()
 });
 
 const passwordFormSchema = z.object({
  current_password: z.string().min(1, 'Current password is required'),
  new_password: z.string().min(8, 'Password must be at least 8 characters'),
- confirm_password: z.string().min(1, 'Please confirm your password'),
+ confirm_password: z.string().min(1, 'Please confirm your password')
 }).refine((data) => data.new_password === data.confirm_password, {
  message: "Passwords don't match",
- path: ["confirm_password"],
+ path: ["confirm_password"]
 });
 
 export default function EditAccountDrawer({
@@ -70,7 +70,7 @@ export default function EditAccountDrawer({
  isOpen,
  onClose,
  onSave,
- onDelete,
+ onDelete
 }: AccountDrawerProps) {
  const { toast } = useToastContext();
  const [saving, setSaving] = useState(false);
@@ -87,8 +87,8 @@ export default function EditAccountDrawer({
  email: '',
  phone: '',
  timezone: '',
- language: '',
- },
+ language: ''
+ }
  });
 
  const passwordForm = useForm<PasswordFormData>({
@@ -96,8 +96,8 @@ export default function EditAccountDrawer({
  defaultValues: {
  current_password: '',
  new_password: '',
- confirm_password: '',
- },
+ confirm_password: ''
+ }
  });
 
  const isReadOnly = mode === 'view';
@@ -111,7 +111,7 @@ export default function EditAccountDrawer({
  email: record.metadata.email || '',
  phone: record.metadata.phone || '',
  timezone: record.metadata.timezone || '',
- language: record.metadata.language || '',
+ language: record.metadata.language || ''
  });
  }
  }
@@ -214,7 +214,7 @@ export default function EditAccountDrawer({
  session: 'User Session',
  api_key: 'API Key',
  security: 'Security Settings',
- preference: 'User Preferences',
+ preference: 'User Preferences'
  };
 
  const prefix = mode === 'view' ? 'View' : 'Edit';

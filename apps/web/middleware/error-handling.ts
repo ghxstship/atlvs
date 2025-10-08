@@ -25,7 +25,7 @@ export function errorHandlingMiddleware(
         error as Error,
         {
           path: req.nextUrl.pathname,
-          method: req.method,
+          method: req.method
         }
       );
 
@@ -33,13 +33,13 @@ export function errorHandlingMiddleware(
       return new NextResponse(
         JSON.stringify({
           error: 'Internal Server Error',
-          message: 'An unexpected error occurred',
+          message: 'An unexpected error occurred'
         }),
         {
           status: 500,
           headers: {
-            'Content-Type': 'application/json',
-          },
+            'Content-Type': 'application/json'
+          }
         }
       );
     }

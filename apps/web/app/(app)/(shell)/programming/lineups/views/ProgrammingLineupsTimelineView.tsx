@@ -1,11 +1,11 @@
 "use client";
 
 import { Edit, Eye, Trash2, Clock, MapPin, DollarSign, Calendar, Music, Users } from "lucide-react";
-import { useMemo } from "react";
+import { useMemo } from 'react';
 import {
  Badge,
  Button,
- Card,
+ Card
 } from "@ghxstship/ui";
 import type { ProgrammingLineup, LineupSort, LineupProject, LineupEvent } from "../types";
 import { STATUS_BADGE, PERFORMER_TYPE_BADGE } from "../types";
@@ -52,7 +52,7 @@ export default function ProgrammingLineupsTimelineView({
  onSort,
  users,
  projects,
- events,
+ events
 }: ProgrammingLineupsTimelineViewProps) {
  
  const timelineGroups = useMemo(() => {
@@ -72,7 +72,7 @@ export default function ProgrammingLineupsTimelineView({
  if (!groups[groupDate]) {
  groups[groupDate] = {
  event: lineup.event || undefined,
- lineups: [],
+ lineups: []
  };
  }
  groups[groupDate].lineups.push(lineup);
@@ -87,7 +87,7 @@ export default function ProgrammingLineupsTimelineView({
  if (!a.set_time) return 1;
  if (!b.set_time) return -1;
  return new Date(a.set_time).getTime() - new Date(b.set_time).getTime();
- }),
+ })
  }))
  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
  }, [lineups]);
@@ -98,7 +98,7 @@ export default function ProgrammingLineupsTimelineView({
  weekday: "long",
  year: "numeric",
  month: "long",
- day: "numeric",
+ day: "numeric"
  });
  };
 
@@ -106,7 +106,7 @@ export default function ProgrammingLineupsTimelineView({
  if (!timeString) return "TBD";
  return new Date(timeString).toLocaleTimeString("en-US", {
  hour: "2-digit",
- minute: "2-digit",
+ minute: "2-digit"
  });
  };
 
@@ -114,7 +114,7 @@ export default function ProgrammingLineupsTimelineView({
  if (!amount || !currency) return null;
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

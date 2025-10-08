@@ -1,24 +1,11 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, Skeleton, Drawer, UnifiedInput } from '@ghxstship/ui';
-import { 
-  FileText,
-  Plus,
-  Edit,
-  Trash2,
-  Eye,
-  Send,
-  Download,
-  Search,
-  AlertTriangle,
-  CheckCircle,
-  XCircle,
-  Clock
-} from 'lucide-react';
+import { Badge, Button, Card, Drawer, Input, Skeleton, StateManagerProvider } from '@ghxstship/ui';
+import { AlertTriangle, CheckCircle, Clock, Download, Edit, Eye, FileText, Plus, Search, Send, Trash2, XCircle } from 'lucide-react';
 import CreateInvoiceClient from './CreateInvoiceClient';
 
 interface InvoicesClientProps {

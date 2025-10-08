@@ -18,7 +18,24 @@ import {
   Trash2,
   CheckCircle,
   AlertCircle
-} from 'lucide-react';
+} from 'lucide-react';import {
+  Card,
+  Button,
+  UnifiedInput,
+  Select,
+  Textarea,
+  Badge,
+  Drawer
+} from '@ghxstship/ui';
+import {
+  Card,
+  Button,
+  Select,
+  Textarea,
+  Badge,
+  Drawer
+} from '@ghxstship/ui';
+
 
 const uniformItemSchema = z.object({
   item_type: z.enum(['shirt', 'pants', 'jacket', 'hat', 'shoes', 'accessories', 'safety-gear', 'other']),

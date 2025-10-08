@@ -25,7 +25,7 @@ export default function MarketplaceEditClient({
   orgId,
   userId,
   listingId,
-  initialListing,
+  initialListing
 }: MarketplaceEditClientProps) {
   const router = useRouter();
   const t = useTranslations('marketplace');
@@ -48,8 +48,8 @@ export default function MarketplaceEditClient({
       ...prev,
       [parent]: {
         ...prev[parent],
-        [field]: value,
-      },
+        [field]: value
+      }
     }));
     setError(null);
   };
@@ -91,7 +91,7 @@ export default function MarketplaceEditClient({
         flexible: formData.availability?.flexible || undefined,
         immediateAvailable: formData.availability?.immediateAvailable || undefined,
         requirements: formData.requirements || undefined,
-        tags: formData.tags || undefined,
+        tags: formData.tags || undefined
       };
 
       await marketplaceService.updateListing(orgId, userId, listingId, transformedData);

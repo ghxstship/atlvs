@@ -14,7 +14,7 @@ const UpdateCompetencySchema = z.object({
   certificationRequired: z.boolean().optional(),
   certificationBody: z.string().optional(),
   expiryPeriod: z.number().optional(), // in months
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional()
 });
 
 async function getAuthenticatedUser() {

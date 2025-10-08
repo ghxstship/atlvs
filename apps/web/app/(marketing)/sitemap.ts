@@ -41,6 +41,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${page}`,
     lastModified: new Date(),
     changeFrequency: page === '' ? 'daily' : 'weekly' as const,
-    priority: page === '' ? 1.0 : page.startsWith('/products') || page === '/pricing' ? 0.9 : 0.8,
+    priority: page === '' ? 1.0 : page.startsWith('/products') || page === '/pricing' ? 0.9 : 0.8
   }));
 }

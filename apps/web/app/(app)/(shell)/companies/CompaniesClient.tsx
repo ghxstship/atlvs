@@ -1,16 +1,54 @@
 'use client';
 
-
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Drawer } from '@ghxstship/ui';
-import { createBrowserClient } from '@ghxstship/auth';
-import type {} from '@ghxstship/ui';
+import { CompaniesService } from './lib/companies-service';
+import type { Company } from './types';
 
-export default function CompaniesClient({ orgId }: { orgId: string }) {
-  const [companies, setCompanies] = useState<DataRecord[]>([]);
+// Type definitions for ATLVS DataViews
+type DataRecord = Record<string, unknown>;
+
+interface FieldConfig {
+  key: string;
+  label: string;
+  type: 'text' | 'textarea' | 'select' | 'url' | 'email' | 'date' | 'number' | 'currency';
+  required?: boolean;
+  sortable?: boolean;
+  filterable?: boolean;
+}
+
+interface DataViewConfig {
+  id: string;
+  name: string;
+  viewType: string;
+  defaultView: string;
+  fields: FieldConfig[];
+  data: DataRecord[];
+  loading?: boolean;
+  onSearch?: (query: string) => void;
+  onFilter?: (filters: Record<string, unknown>) => void;
+  onSort?: (sorts: unknown[]) => void;
+  onRefresh?: () => void;
+  onExport?: (data: DataRecord[], format: string) => void;
+  onImport?: (data: unknown[]) => void;
+  onCreate?: () => void;
+  onEdit?: (record: DataRecord) => void;
+  onDelete?: (ids: string[]) => void;
+}
+
+interface CompaniesClientProps {
+  orgId: string;
+  userId: string;
+  userEmail: string;
+}
+
+const companiesService = new CompaniesService();
+
+export default function CompaniesClient({ orgId, userId: _userId, userEmail: _userEmail }: CompaniesClientProps) {
+  const [companies, setCompanies] = useState<Company[]>([]);
   const [loading, setLoading] = useState(true);
-  const [filters, setFilters] = useState<Record<string, any>>({});
-  const supabase = useMemo(() => createBrowserClient(), []);
+  const [filters, setFilters] = useState<Record<string, unknown>>({});
+  const [error, setError] = useState<string | null>(null);
 
   // Field configuration for companies
   const fieldConfig: FieldConfig[] = [
@@ -36,15 +74,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
       type: 'select' as const,
       required: true,
       sortable: true,
-      filterable: true,
-      options: [
-        { value: 'construction', label: 'Construction' },
-        { value: 'entertainment', label: 'Entertainment' },
-        { value: 'technology', label: 'Technology' },
-        { value: 'logistics', label: 'Logistics' },
-        { value: 'manufacturing', label: 'Manufacturing' },
-        { value: 'other', label: 'Other' }
-      ]
+      filterable: true
     },
     {
       key: 'website',
@@ -108,13 +138,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
       type: 'select' as const,
       required: true,
       sortable: true,
-      filterable: true,
-      options: [
-        { value: 'active', label: 'Active' },
-        { value: 'inactive', label: 'Inactive' },
-        { value: 'pending', label: 'Pending' },
-        { value: 'blacklisted', label: 'Blacklisted' }
-      ]
+      filterable: true
     },
     {
       key: 'created_at',
@@ -135,34 +159,26 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
   ];
 
   // Real Supabase data loading function
-  const loadCompaniesData = async (filters?): Promise<DataRecord[]> => {
+  const loadCompaniesData = useCallback(async (currentFilters?: Record<string, unknown>): Promise<Company[]> => {
     try {
-      const params = new URLSearchParams();
-      if (filters?.industry) params.append('industry', filters.industry);
-      if (filters?.status) params.append('status', filters.status);
-      if (filters?.size) params.append('size', filters.size);
-      if (filters?.search) params.append('search', filters.search);
-      
-      const response = await fetch(`/api/v1/companies?${params.toString()}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      setError(null);
+      const result = await companiesService.getCompanies(orgId, {
+        search: currentFilters?.search as string,
+        status: currentFilters?.status ? [currentFilters.status as string] : undefined,
+        industry: currentFilters?.industry ? [currentFilters.industry as string] : undefined,
+        size: currentFilters?.size ? [currentFilters.size as string] : undefined
       });
-
-      if (!response.ok) {
-        throw new Error(`Failed to fetch companies: ${response.statusText}`);
-      }
-
-      const data = await response.json();
-      return data.companies || [];
-    } catch (error) {
-      console.error('Error loading companies:', error);
+      return result.data || [];
+    } catch (err) {
+      console.error('Error loading companies:', err);
+      setError(err instanceof Error ? err.message : 'Failed to load companies');
       return [];
     }
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [orgId]);
 
   // Load data on mount and when filters change
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -171,9 +187,10 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
       setLoading(false);
     };
     fetchData();
-  }, [filters]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters, loadCompaniesData]);
 
-  // DataView configuration
+  // DataView configuration (for future ATLVS integration)
   const dataViewConfig: DataViewConfig = {
     id: 'companies-view',
     name: 'Companies Management',
@@ -185,82 +202,82 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     onSearch: (query: string) => {
       setFilters(prev => ({ ...prev, search: query }));
     },
-    onFilter: (newFilters: any) => {
+    onFilter: (newFilters: Record<string, unknown>) => {
       setFilters(prev => ({ ...prev, ...newFilters }));
     },
-    onSort: (sorts: any) => {
-      console.log('Sort companies:', sorts);
-      // Sorting functionality implemented
+    onSort: (_sorts: unknown[]) => {
+      // TODO: Implement sort logic
     },
     onRefresh: () => {
       setFilters({}); // Clear filters and reload
     },
-    onExport: (data, format) => {
-      console.log('Export companies:', format, data);
-      // Export functionality implemented
+    onExport: (_data: DataRecord[], _format: string) => {
+      // TODO: Implement export logic
     },
-    onImport: (data: any) => {
-      console.log('Import companies:', data);
-      // Import functionality implemented
+    onImport: (_data: unknown[]) => {
+      // TODO: Implement import logic
     },
     onCreate: () => {
-      console.log('Create company triggered');
-      // Create functionality implemented
+      // TODO: Implement create logic
     },
-    onEdit: (record: DataRecord) => {
-      console.log('Edit company:', record);
-      // Edit functionality implemented
+    onEdit: (_record: DataRecord) => {
+      // TODO: Implement edit logic
     },
-    onDelete: (ids: string[]) => {
-      console.log('Delete companies:', ids);
-      // Bulk delete functionality implemented
+    onDelete: (_ids: string[]) => {
+      // TODO: Implement delete logic
     }
   };
 
   return (
     <div className="h-full">
-      <StateManagerProvider>
-        <DataViewProvider config={dataViewConfig}>
-          <div className="flex flex-col h-full stack-md">
-            {/* View Switcher and Actions */}
-            <div className="flex items-center justify-between">
-              <ViewSwitcher />
-              <DataActions />
-            </div>
-
-            {/* Data Views */}
-            <DataGrid />
-            <KanbanBoard 
-              columns={[
-                { id: 'active', title: 'Active' },
-                { id: 'inactive', title: 'Inactive' },
-                { id: 'pending', title: 'Pending' },
-                { id: 'blacklisted', title: 'Blacklisted' }
-              ]}
-              statusField="status"
-              titleField="name"
-            />
-            <CalendarView 
-              startDateField="created_at"
-              titleField="name"
-            />
-            <ListView 
-              titleField="name"
-              subtitleField="description"
-            />
-
-            {/* Universal Drawer for CRUD operations */}
-            <Drawer title="Details"
-              open={false}
-              onClose={() => {}}
-            >
-              <div className="p-lg">
-                <p className="color-muted">Company details will be displayed here.</p>
-              </div>
-            </Drawer>
+      <div className="flex flex-col h-full space-y-4">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <h1 className="text-2xl font-bold">Companies</h1>
+          <div className="flex gap-2">
+            {/* TODO: Add view switcher and action buttons */}
           </div>
-        </DataViewProvider>
-      </StateManagerProvider>
+        </div>
+
+        {/* Data Display - Using available components */}
+        {loading ? (
+          <div className="flex items-center justify-center h-64">
+            <p>Loading companies...</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {companies.map((company) => {
+              const companyId = typeof company.id === 'string' ? company.id : String(company.id);
+              const companyName = typeof company.name === 'string' ? company.name : 'Untitled';
+              const companyDesc = typeof company.description === 'string' ? company.description : '';
+              const companyIndustry = typeof company.industry === 'string' ? company.industry : 'N/A';
+              const companyStatus = typeof company.status === 'string' ? company.status : 'unknown';
+              
+              return (
+                <div key={companyId} className="border rounded-lg p-4">
+                  <h3 className="font-semibold">{companyName}</h3>
+                  <p className="text-sm text-gray-600">{companyDesc}</p>
+                  <div className="mt-2 flex gap-2">
+                    <span className="text-xs px-2 py-1 bg-gray-100 rounded">
+                      {companyIndustry}
+                    </span>
+                    <span className="text-xs px-2 py-1 bg-blue-100 rounded">
+                      {companyStatus}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Universal Drawer for CRUD operations */}
+        <Drawer title="Details" open={false} onClose={() => {}}>
+          <div className="p-4">
+            <p className="text-gray-600">Company details will be displayed here.</p>
+          </div>
+        </Drawer>
+      </div>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription,
+  DrawerDescription
 } from '@ghxstship/ui';
 import { Button } from '@ghxstship/ui';
 import { Label } from '@ghxstship/ui';
@@ -34,7 +34,7 @@ export default function ExportDrawer({
   orgId,
   open,
   onOpenChange,
-  onExportComplete,
+  onExportComplete
 }: ExportDrawerProps) {
   const [format, setFormat] = useState<'csv' | 'json' | 'excel' | 'pdf'>('csv');
   const [selectedFields, setSelectedFields] = useState<string[]>([]);
@@ -120,14 +120,14 @@ export default function ExportDrawer({
         format,
         recordCount: metadata?.totalRecords || 0,
         fileSize: exportResults.length,
-        downloadUrl: `data:text/plain;charset=utf-8,${encodeURIComponent(exportResults)}`,
+        downloadUrl: `data:text/plain;charset=utf-8,${encodeURIComponent(exportResults)}`
       });
 
       onExportComplete?.(exportResults);
     } catch (error) {
       setResults({
         success: false,
-        error: error instanceof Error ? error.message : 'Export failed',
+        error: error instanceof Error ? error.message : 'Export failed'
       });
     } finally {
       setIsExporting(false);

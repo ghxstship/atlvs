@@ -8,11 +8,11 @@ import { createBrowserClient } from '@supabase/ssr';
 
 
 interface OrganizationSetupStepProps {
-  user;
+  user: any;
   onNext: () => void;
   onBack: () => void;
   updateData: (data: any) => void;
-  data;
+  data: any;
 }
 
 export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }: OrganizationSetupStepProps) {
@@ -58,7 +58,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
           .insert({
             name: orgName.trim(),
             slug: orgSlug,
-            created_by: user.id,
+            created_by: user.id
           })
           .select()
           .single();
@@ -72,7 +72,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             user_id: user.id,
             organization_id: org.id,
             role: 'owner',
-            status: 'active',
+            status: 'active'
           });
 
         if (membershipError) throw membershipError;
@@ -82,7 +82,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
           orgName,
           orgSlug,
           organizationId: org.id,
-          userRole: 'owner',
+          userRole: 'owner'
         });
 
       } else if (setupType === 'join') {
@@ -108,7 +108,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             user_id: user.id,
             organization_id: org.id,
             role: 'team_member',
-            status: 'active',
+            status: 'active'
           });
 
         if (membershipError) throw membershipError;
@@ -118,13 +118,13 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
           inviteCode,
           organizationId: org.id,
           orgName: org.name,
-          userRole: 'team_member',
+          userRole: 'team_member'
         });
       }
 
       onNext();
-    } catch (err) {
-      setError(err.message || 'Something went wrong');
+    } catch (err: any) {
+      setError(err?.message || "An error occurred" || 'Something went wrong');
     } finally {
       setLoading(false);
     }
@@ -154,7 +154,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                 CREATE ORGANIZATION
               </h3>
               <p className="color-muted mb-lg">
-                Start fresh with a new organization. You'll be the owner and can invite team members.
+                Start fresh with a new organization. You&apos;ll be the owner and can invite team members.
               </p>
               <Button className="w-full">
                 <Plus className="mr-sm h-icon-xs w-icon-xs" />
@@ -230,7 +230,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                     />
                   </div>
                   <p className="text-body-sm color-muted mt-xs">
-                    This will be your organization's unique URL
+                    This will be your organization&apos;s unique URL
                   </p>
                 </div>
               </div>

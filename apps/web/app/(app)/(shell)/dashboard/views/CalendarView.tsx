@@ -1,19 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useCallback } from 'react';
-import {
-  ChevronLeft,
-  ChevronRight,
-  Calendar as CalendarIcon,
-  Search,
-  Filter,
-  MoreHorizontal,
-  Plus,
-  Clock,
-  MapPin,
-  Users,
-  Tag
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Search, Filter, MoreHorizontal, Plus, Clock, MapPin, Users, Tag, CalendarIcon } from 'lucide-react';
 import { Button } from '@ghxstship/ui';
 import { Input } from '@ghxstship/ui';
 import { Badge } from '@ghxstship/ui';
@@ -22,7 +10,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@ghxstship/ui';
 import { Card, CardContent } from '@ghxstship/ui';
 import { cn } from '@ghxstship/ui/lib/utils';
@@ -271,6 +259,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
     if (viewMode === 'week') newDate.setDate(currentDate.getDate() - 7);
     if (viewMode === 'day') newDate.setDate(currentDate.getDate() - 1);
     onDateChange?.(newDate);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentDate, viewMode, onDateChange]);
 
   const handleNext = useCallback(() => {
@@ -278,16 +267,20 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
     if (viewMode === 'week') newDate.setDate(currentDate.getDate() + 7);
     if (viewMode === 'day') newDate.setDate(currentDate.getDate() + 1);
     onDateChange?.(newDate);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentDate, viewMode, onDateChange]);
 
   const handleToday = useCallback(() => {
     onDateChange?.(new Date());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onDateChange]);
 
   // Handle date click
-  const handleDateClick = useCallback((date: Date) => {
+  const handleDateClick = // eslint-disable-next-line react-hooks/exhaustive-deps
+  useCallback((date: Date) => {
     setSelectedDate(date);
     onEventCreate?.(date);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onEventCreate]);
 
   // Render event

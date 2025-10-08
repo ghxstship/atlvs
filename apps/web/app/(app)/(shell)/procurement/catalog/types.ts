@@ -231,14 +231,14 @@ export const catalogItemSchema = z.object({
   supplier: z.string().optional(),
   status: z.enum(['active', 'inactive', 'discontinued']),
   specifications: z.string().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional()
 });
 
 export const categorySchema = z.object({
   name: z.string().min(1, 'Category name is required').max(100, 'Name too long'),
   description: z.string().optional(),
   type: z.enum(['product', 'service', 'both']),
-  parent_id: z.string().uuid().optional(),
+  parent_id: z.string().uuid().optional()
 });
 
 export const vendorSchema = z.object({
@@ -248,7 +248,7 @@ export const vendorSchema = z.object({
   website: z.string().url('Invalid URL').optional(),
   address: z.string().optional(),
   rating: z.number().min(0).max(5).optional(),
-  status: z.enum(['active', 'inactive']),
+  status: z.enum(['active', 'inactive'])
 });
 
 export const catalogFiltersSchema = z.object({
@@ -259,20 +259,20 @@ export const catalogFiltersSchema = z.object({
   supplier: z.string().optional(),
   priceRange: z.object({
     min: z.number().min(0).optional(),
-    max: z.number().min(0).optional(),
+    max: z.number().min(0).optional()
   }).optional(),
   tags: z.array(z.string()).optional(),
   dateRange: z.object({
     start: z.string().optional(),
-    end: z.string().optional(),
-  }).optional(),
+    end: z.string().optional()
+  }).optional()
 });
 
 // Utility functions
 export const formatCurrency = (amount: number, currency: string = 'USD'): string => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: currency,
+    currency: currency
   }).format(amount);
 };
 
@@ -280,7 +280,7 @@ export const formatDate = (date: string): string => {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
-    day: 'numeric',
+    day: 'numeric'
   });
 };
 
@@ -290,7 +290,7 @@ export const formatDateTime = (date: string): string => {
     month: 'short',
     day: 'numeric',
     hour: '2-digit',
-    minute: '2-digit',
+    minute: '2-digit'
   });
 };
 
@@ -322,7 +322,7 @@ export const defaultCatalogFields: CatalogFieldConfig[] = [
     sortable: true,
     filterable: true,
     searchable: true,
-    width: 200,
+    width: 200
   },
   {
     key: 'type',
@@ -336,7 +336,7 @@ export const defaultCatalogFields: CatalogFieldConfig[] = [
     options: [
       { value: 'product', label: 'Product' },
       { value: 'service', label: 'Service' },
-    ],
+    ]
   },
   {
     key: 'category',
@@ -345,7 +345,7 @@ export const defaultCatalogFields: CatalogFieldConfig[] = [
     visible: true,
     sortable: true,
     filterable: true,
-    width: 150,
+    width: 150
   },
   {
     key: 'status',
@@ -360,7 +360,7 @@ export const defaultCatalogFields: CatalogFieldConfig[] = [
       { value: 'active', label: 'Active' },
       { value: 'inactive', label: 'Inactive' },
       { value: 'discontinued', label: 'Discontinued' },
-    ],
+    ]
   },
   {
     key: 'price',
@@ -369,7 +369,7 @@ export const defaultCatalogFields: CatalogFieldConfig[] = [
     visible: true,
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'supplier',
@@ -379,7 +379,7 @@ export const defaultCatalogFields: CatalogFieldConfig[] = [
     sortable: true,
     filterable: true,
     searchable: true,
-    width: 150,
+    width: 150
   },
   {
     key: 'created_at',
@@ -388,6 +388,6 @@ export const defaultCatalogFields: CatalogFieldConfig[] = [
     visible: true,
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
 ];

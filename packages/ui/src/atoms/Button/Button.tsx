@@ -1,186 +1,146 @@
-'use client';
-
 /**
- * GHXSTSHIP Unified Button Component
- * Enterprise-Grade Button with Full Accessibility & Performance
+ * Button Component — Primary Interactive Element
+ * Modern button with variants, sizes, and states
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
  */
 
+'use client';
+
 import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '../../lib/utils';
+import type { LucideIcon } from 'lucide-react';
 
-// ==========================================
-// BUTTON VARIANTS (CVA)
-// ==========================================
-
-const buttonVariants = cva(
-  // Base styles shared with card surfaces
-  [
-    'inline-flex',
-    'items-center',
-    'justify-center',
-    'whitespace-nowrap',
-    'rounded-lg',
-    'border',
-    'border-border',
-    'bg-card',
-    'text-card-foreground',
-    'text-sm',
-    'font-medium',
-    'shadow-sm',
-    'transition-all',
-    'duration-200',
-    'ease-out',
-    'hover:shadow-elevation-3',
-    'cursor-pointer',
-    'focus-visible:outline-none',
-    'focus-visible:ring-2',
-    'focus-visible:ring-offset-2',
-    'disabled:pointer-events-none',
-    'disabled:opacity-50',
-    'select-none',
-  ],
-  {
-    variants: {
-      variant: {
-        // Neutral-first button; brand color only on micro-interactions
-        default: [
-          'bg-foreground',
-          'text-background',
-          'border-border/10',
-          'hover:bg-foreground/90',
-          // Accent only appears as focus ring (microinteraction)
-          'focus-visible:ring-accent',
-          // Subtle hover ring tinted by context (ATLVS/OPENDECK)
-          'hover:ring-2',
-          'hover:ring-[hsl(var(--color-accent)/0.25)]',
-        ],
-        destructive: [
-          'bg-destructive',
-          'text-destructive-foreground',
-          'border-destructive/20',
-          'hover:bg-destructive/90',
-          'focus-visible:ring-destructive',
-        ],
-        outline: [
-          // Neutral surface with subtle hover using accent tint only as microinteraction
-          'border-border',
-          'bg-card',
-          'text-foreground',
-          'hover:bg-card/80',
-          'focus-visible:ring-accent',
-          'hover:ring-2',
-          'hover:ring-[hsl(var(--color-accent)/0.25)]',
-        ],
-        secondary: [
-          // Muted neutral secondary
-          'bg-muted',
-          'text-foreground',
-          'border-border',
-          'hover:bg-muted/70',
-          'focus-visible:ring-accent',
-          'hover:ring-2',
-          'hover:ring-[hsl(var(--color-accent)/0.25)]',
-        ],
-        ghost: [
-          'border-transparent',
-          'text-foreground',
-          // Neutral hover; no solid brand fill
-          'hover:bg-foreground/5',
-          'focus-visible:ring-accent',
-          'hover:ring-2',
-          'hover:ring-[hsl(var(--color-accent)/0.25)]',
-        ],
-        link: [
-          // Neutral base; brand accent on hover text only
-          'text-foreground',
-          'underline-offset-4',
-          'hover:underline',
-          'hover:text-accent',
-          'border-transparent',
-          'focus-visible:ring-accent',
-        ],
-        pop: [
-          'bg-accent',
-          'text-accent-foreground',
-          'border-2',
-          'border-black',
-          'font-bold',
-          'uppercase',
-          'tracking-wide',
-          'shadow-pop-base',
-          'hover:shadow-pop-md',
-          'hover:-translate-x-0.5',
-          'hover:-translate-y-0.5',
-          'active:shadow-pop-sm',
-          'active:translate-x-0.5',
-          'active:translate-y-0.5',
-          'focus-visible:ring-accent',
-        ],
-      },
-      size: {
-        default: ['h-icon-xl', 'px-md', 'py-sm'],
-        sm: ['h-9', 'rounded-md', 'px-3'],
-        lg: ['h-11', 'rounded-md', 'px-8'],
-        xl: ['h-icon-2xl', 'rounded-lg', 'px-10', 'text-base'],
-        icon: ['h-icon-xl', 'w-icon-xl', 'p-0'],
-      },
-      fullWidth: {
-        true: 'w-full',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default',
-    },
-  }
-);
-
-// ==========================================
-// COMPONENT TYPES
-// ==========================================
-
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Button variant */
+  variant?: 'primary' | 'secondary' | 'ghost' | 'destructive' | 'outline' | 'link';
+  
+  /** Button size */
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  
+  /** Loading state */
   loading?: boolean;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
+  
+  /** Icon (left) */
+  icon?: LucideIcon;
+  
+  /** Icon (right) */
+  iconRight?: LucideIcon;
+  
+  /** Full width */
+  fullWidth?: boolean;
 }
 
-// ==========================================
-// COMPONENT IMPLEMENTATION
-// ==========================================
-
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+/**
+ * Button Component
+ * 
+ * @example
+ * ```tsx
+ * <Button variant="primary" size="md">Click me</Button>
+ * <Button variant="ghost" icon={Plus}>Add Item</Button>
+ * ```
+ */
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      className,
-      variant,
-      size,
-      fullWidth,
-      asChild = false,
+      variant = 'primary',
+      size = 'md',
       loading = false,
-      leftIcon,
-      rightIcon,
+      icon: Icon,
+      iconRight: IconRight,
+      fullWidth = false,
       children,
       disabled,
+      className = '',
       ...props
     },
     ref
   ) => {
-    const isDisabled = disabled || loading;
-
-    const buttonContent = (
-      <>
+    const baseClasses = `
+      inline-flex items-center justify-center gap-2
+      font-medium
+      rounded-md
+      transition-all duration-200
+      focus:outline-none focus:ring-2 focus:ring-offset-2
+      disabled:opacity-50 disabled:cursor-not-allowed
+      ${fullWidth ? 'w-full' : ''}
+    `;
+    
+    const variantClasses = {
+      primary: `
+        bg-[var(--color-primary)]
+        text-[var(--color-primary-foreground)]
+        hover:opacity-90
+        focus:ring-[var(--color-primary)]
+      `,
+      secondary: `
+        bg-[var(--color-secondary)]
+        text-[var(--color-secondary-foreground)]
+        hover:opacity-90
+        focus:ring-[var(--color-secondary)]
+      `,
+      ghost: `
+        bg-transparent
+        text-[var(--color-foreground)]
+        hover:bg-[var(--color-muted)]
+        focus:ring-[var(--color-primary)]
+      `,
+      destructive: `
+        bg-[var(--color-error)]
+        text-[var(--color-error-foreground)]
+        hover:opacity-90
+        focus:ring-[var(--color-error)]
+      `,
+      outline: `
+        bg-transparent
+        border border-[var(--color-border)]
+        text-[var(--color-foreground)]
+        hover:bg-[var(--color-muted)]
+        focus:ring-[var(--color-primary)]
+      `,
+      link: `
+        bg-transparent
+        text-[var(--color-primary)]
+        hover:underline
+        focus:ring-[var(--color-primary)]
+        p-0
+      `,
+    };
+    
+    const sizeClasses = {
+      xs: 'px-2 py-1 text-xs',
+      sm: 'px-3 py-1.5 text-sm',
+      md: 'px-4 py-2 text-sm',
+      lg: 'px-5 py-2.5 text-base',
+      xl: 'px-6 py-3 text-base',
+    };
+    
+    const iconSizeClasses = {
+      xs: 'w-3 h-3',
+      sm: 'w-4 h-4',
+      md: 'w-4 h-4',
+      lg: 'w-5 h-5',
+      xl: 'w-5 h-5',
+    };
+    
+    return (
+      <button
+        ref={ref}
+        disabled={disabled || loading}
+        className={`
+          ${baseClasses}
+          ${variantClasses[variant]}
+          ${variant !== 'link' ? sizeClasses[size] : ''}
+          ${className}
+        `}
+        {...props}
+      >
         {loading && (
           <svg
-            className="mr-2 h-icon-xs w-icon-xs animate-spin"
+            className={`animate-spin ${iconSizeClasses[size]}`}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            aria-hidden="true"
           >
             <circle
               className="opacity-25"
@@ -193,84 +153,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             <path
               className="opacity-75"
               fill="currentColor"
-              d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
             />
           </svg>
         )}
-        {!loading && leftIcon && (
-          <span className="mr-2 flex-shrink-0" aria-hidden="true">
-            {leftIcon}
-          </span>
-        )}
+        {!loading && Icon && <Icon className={iconSizeClasses[size]} />}
         {children}
-        {rightIcon && (
-          <span className="ml-2 flex-shrink-0" aria-hidden="true">
-            {rightIcon}
-          </span>
-        )}
-      </>
-    );
-
-    if (asChild) {
-      return (
-        <span
-          className={cn(buttonVariants({ variant, size, fullWidth, className }))}
-          {...props}
-        >
-          {buttonContent}
-        </span>
-      );
-    }
-
-    return (
-      <button
-        className={cn(buttonVariants({ variant, size, fullWidth, className }))}
-        ref={ref}
-        disabled={isDisabled}
-        aria-disabled={isDisabled}
-        {...props}
-      >
-        {buttonContent}
+        {!loading && IconRight && <IconRight className={iconSizeClasses[size]} />}
       </button>
     );
   }
 );
 
 Button.displayName = 'Button';
-
-// ==========================================
-// COMPOUND COMPONENTS
-// ==========================================
-
-const ButtonGroup = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
-    orientation?: 'horizontal' | 'vertical';
-    attached?: boolean;
-  }
->(({ className, orientation = 'horizontal', attached = false, ...props }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        'inline-flex',
-        orientation === 'horizontal' ? 'flex-row' : 'flex-col',
-        attached && orientation === 'horizontal' && '[&>*:not(:first-child)]:ml-0 [&>*:not(:first-child)]:rounded-l-none [&>*:not(:last-child)]:rounded-r-none',
-        attached && orientation === 'vertical' && '[&>*:not(:first-child)]:mt-0 [&>*:not(:first-child)]:rounded-t-none [&>*:not(:last-child)]:rounded-b-none',
-        !attached && orientation === 'horizontal' && 'gap-xs',
-        !attached && orientation === 'vertical' && 'gap-xs',
-        className
-      )}
-      role="group"
-      {...props}
-    />
-  );
-});
-
-ButtonGroup.displayName = 'ButtonGroup';
-
-// ==========================================
-// EXPORTS
-// ==========================================
-
-export { Button, ButtonGroup, buttonVariants };

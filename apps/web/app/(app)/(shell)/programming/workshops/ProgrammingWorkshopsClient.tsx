@@ -12,7 +12,7 @@ import {
  SelectContent,
  SelectItem,
  SelectTrigger,
- SelectValue,
+ SelectValue
 } from '@ghxstship/ui';
 
 import type {
@@ -25,7 +25,7 @@ import type {
  WorkshopSkillLevel,
  WorkshopFormat,
  WorkshopProject,
- WorkshopEvent,
+ WorkshopEvent
 } from './types';
 
 // Import view components
@@ -61,7 +61,7 @@ export default function ProgrammingWorkshopsClient({
  initialWorkshops,
  projects,
  events,
- users,
+ users
 }: ProgrammingWorkshopsClientProps) {
  const supabase = useMemo(() => createBrowserClient(), []);
 
@@ -90,7 +90,7 @@ export default function ProgrammingWorkshopsClient({
  event: '*',
  schema: 'public',
  table: 'programming_workshops',
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  (payload) => {
  if (payload.eventType === 'INSERT') {
@@ -205,7 +205,7 @@ export default function ProgrammingWorkshopsClient({
  const handleDeleteWorkshop = async (workshopId: string) => {
  try {
  const response = await fetch(`/api/v1/programming/workshops/${workshopId}`, {
- method: 'DELETE',
+ method: 'DELETE'
  });
 
  if (!response.ok) throw new Error('Failed to delete workshop');
@@ -235,7 +235,7 @@ export default function ProgrammingWorkshopsClient({
  fetch(`/api/v1/programming/workshops/${id}`, {
  method: 'PATCH',
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify({ status: 'cancelled' }),
+ body: JSON.stringify({ status: 'cancelled' })
  })
  )
  );
@@ -247,7 +247,7 @@ export default function ProgrammingWorkshopsClient({
  fetch(`/api/v1/programming/workshops/${id}`, {
  method: 'PATCH',
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify({ status: 'open_registration' }),
+ body: JSON.stringify({ status: 'open_registration' })
  })
  )
  );
@@ -302,7 +302,7 @@ export default function ProgrammingWorkshopsClient({
  list: List,
  grid: Grid3X3,
  timeline: Calendar,
- analytics: BarChart3,
+ analytics: BarChart3
  };
 
  return (

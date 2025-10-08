@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Card, Badge, Button, Checkbox } from "@ghxstship/ui";
 import type { Location } from "../LocationsClient";
 import type { LucideIcon } from "lucide-react";
-import { Copy, Edit, MapPin, Navigation, Phone, Trash2, Users } from "lucide-react";
+import { Copy, Edit, MapPin, Navigation, Phone, Trash2, Users } from 'lucide-react';
 
 interface LocationGridViewProps {
  locations: Location[];
@@ -31,7 +31,7 @@ export default function LocationGridView({
  onNavigate,
  getTypeIcon,
  getAvailabilityBadgeVariant,
- getTypeBadgeVariant,
+ getTypeBadgeVariant
 }: LocationGridViewProps) {
  return (
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-md">

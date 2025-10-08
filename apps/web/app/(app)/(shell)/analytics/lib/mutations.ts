@@ -17,7 +17,7 @@ import type {
   CreateDashboardSchema,
   CreateReportSchema,
   CreateExportSchema,
-  AnalyticsAuditLog,
+  AnalyticsAuditLog
 } from '../types';
 
 // ============================================================================
@@ -78,7 +78,7 @@ class AuditLogger {
       timestamp: new Date().toISOString(),
       details,
       ipAddress,
-      userAgent,
+      userAgent
     };
 
     // In production, this would go to an audit table
@@ -113,7 +113,7 @@ export class DashboardMutations {
         .insert({
           ...dashboardData,
           organization_id: organizationId,
-          created_by: userId,
+          created_by: userId
         })
         .select()
         .single();
@@ -162,7 +162,7 @@ export class DashboardMutations {
         .from('analytics_dashboards')
         .update({
           ...updates,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', id)
         .eq('organization_id', organizationId);
@@ -294,7 +294,7 @@ export class DashboardMutations {
         ...originalDashboard,
         name: newName || `${originalDashboard.name} (Copy)`,
         is_template: false,
-        created_by: userId,
+        created_by: userId
       };
 
       delete (duplicateData as any).id;
@@ -350,7 +350,7 @@ export class DashboardMutations {
         .from('analytics_dashboards')
         .update({
           permissions,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', id)
         .eq('organization_id', organizationId)
@@ -409,7 +409,7 @@ export class ReportMutations {
         .insert({
           ...reportData,
           organization_id: organizationId,
-          created_by: userId,
+          created_by: userId
         })
         .select()
         .single();
@@ -457,7 +457,7 @@ export class ReportMutations {
         .from('analytics_reports')
         .update({
           ...updates,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', id)
         .eq('organization_id', organizationId)
@@ -565,7 +565,7 @@ export class ReportMutations {
         .from('analytics_reports')
         .update({
           last_run_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', id)
         .eq('organization_id', organizationId);
@@ -578,7 +578,7 @@ export class ReportMutations {
       const { data, error } = await supabase.rpc('execute_analytics_report', {
         report_id: id,
         organization_id: organizationId,
-        parameters,
+        parameters
       });
 
       if (error) throw error;
@@ -645,7 +645,7 @@ export class ExportMutations {
           ...exportData,
           organization_id: organizationId,
           created_by: userId,
-          status: 'pending',
+          status: 'pending'
         })
         .select()
         .single();
@@ -696,7 +696,7 @@ export class ExportMutations {
       const updateData: unknown = {
         status,
         updated_at: new Date().toISOString(),
-        ...additionalData,
+        ...additionalData
       };
 
       if (status === 'completed' || status === 'failed') {
@@ -833,7 +833,7 @@ export class ExportMutations {
     try {
       // In production, this would call a Supabase Edge Function
       await supabase.functions.invoke('process-analytics-export', {
-        body: { exportId },
+        body: { exportId }
       });
     } catch (error) {
       console.warn('Failed to trigger export processing:', error);
@@ -924,7 +924,7 @@ export class BulkMutations {
         .from('analytics_dashboards')
         .update({
           is_active: isActive,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .in('id', ids)
         .eq('organization_id', organizationId);
@@ -960,5 +960,5 @@ export const AnalyticsMutations = {
   dashboards: DashboardMutations,
   reports: ReportMutations,
   exports: ExportMutations,
-  bulk: BulkMutations,
+  bulk: BulkMutations
 } as const;

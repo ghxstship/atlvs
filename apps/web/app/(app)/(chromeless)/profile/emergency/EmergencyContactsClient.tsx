@@ -1,11 +1,10 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Button, UnifiedInput, Card, CardHeader, CardContent, Alert } from '@ghxstship/ui';
-import { Phone, Mail, User, AlertTriangle, Plus, Edit2, Trash2, Save, X } from 'lucide-react';
-import { useToast } from '@ghxstship/ui';
+import { Alert, Button, Card, CardBody, CardContent, CardHeader, Input, useToast } from '@ghxstship/ui';
+import { AlertTriangle, Edit2, Mail, Phone, Plus, Save, Trash2, User, X } from 'lucide-react';
 
 interface EmergencyContact {
   id: string;
@@ -27,8 +26,10 @@ export default function EmergencyContactsClient() {
   const { addToast } = useToast();
   const supabase = createClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchContacts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchContacts = async () => {
@@ -80,7 +81,7 @@ export default function EmergencyContactsClient() {
           .from('emergency_contacts')
           .insert({
             ...formData,
-            user_id: user.id,
+            user_id: user.id
           });
 
         if (error) throw error;
@@ -156,7 +157,7 @@ export default function EmergencyContactsClient() {
       phone_secondary: '',
       email: '',
       is_primary: false,
-      notes: '',
+      notes: ''
     });
   };
 
@@ -202,32 +203,32 @@ export default function EmergencyContactsClient() {
           </CardHeader>
           <CardContent className="stack-md">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-              <UnifiedInput                 label="Full Name"
+              <Input                 label="Full Name"
                 value={formData.name || ''}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="John Doe"
                 required
               />
-              <UnifiedInput                 label="Relationship"
+              <Input                 label="Relationship"
                 value={formData.relationship || ''}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, relationship: e.target.value })}
                 placeholder="Spouse, Parent, Friend, etc."
                 required
               />
-              <UnifiedInput                 label="Primary Phone"
+              <Input                 label="Primary Phone"
                 type="tel"
                 value={formData.phone_primary || ''}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, phone_primary: e.target.value })}
                 placeholder="+1 (555) 123-4567"
                 required
               />
-              <UnifiedInput                 label="Secondary Phone"
+              <Input                 label="Secondary Phone"
                 type="tel"
                 value={formData.phone_secondary || ''}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, phone_secondary: e.target.value })}
                 placeholder="+1 (555) 987-6543"
               />
-              <UnifiedInput                 label="Email"
+              <Input                 label="Email"
                 type="email"
                 value={formData.email || ''}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, email: e.target.value })}
@@ -246,7 +247,7 @@ export default function EmergencyContactsClient() {
                 </label>
               </div>
             </div>
-            <UnifiedInput               label="Notes"
+            <Input               label="Notes"
               value={formData.notes || ''}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, notes: e.target.value })}
               placeholder="Additional information..."
@@ -272,28 +273,28 @@ export default function EmergencyContactsClient() {
               {editingId === contact.id ? (
                 <div className="stack-md">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-                    <UnifiedInput                       label="Full Name"
+                    <Input                       label="Full Name"
                       value={formData.name || ''}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, name: e.target.value })}
                       required
                     />
-                    <UnifiedInput                       label="Relationship"
+                    <Input                       label="Relationship"
                       value={formData.relationship || ''}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, relationship: e.target.value })}
                       required
                     />
-                    <UnifiedInput                       label="Primary Phone"
+                    <Input                       label="Primary Phone"
                       type="tel"
                       value={formData.phone_primary || ''}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, phone_primary: e.target.value })}
                       required
                     />
-                    <UnifiedInput                       label="Secondary Phone"
+                    <Input                       label="Secondary Phone"
                       type="tel"
                       value={formData.phone_secondary || ''}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, phone_secondary: e.target.value })}
                     />
-                    <UnifiedInput                       label="Email"
+                    <Input                       label="Email"
                       type="email"
                       value={formData.email || ''}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, email: e.target.value })}
@@ -311,7 +312,7 @@ export default function EmergencyContactsClient() {
                       </label>
                     </div>
                   </div>
-                  <UnifiedInput                     label="Notes"
+                  <Input                     label="Notes"
                     value={formData.notes || ''}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, notes: e.target.value })}
                   />

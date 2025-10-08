@@ -6,7 +6,7 @@ import {
  Card,
  Badge,
  Button,
- Checkbox,
+ Checkbox
 } from '@ghxstship/ui';
 import type { TravelRecord } from '../types';
 import {
@@ -19,7 +19,7 @@ import {
  TRAVEL_STATUS_LABELS,
  VISA_STATUS_LABELS,
  isUpcomingTrip,
- isCurrentTrip,
+ isCurrentTrip
 } from '../types';
 
 interface TravelListViewProps {
@@ -41,7 +41,7 @@ export default function TravelListView({
  onView,
  onEdit,
  onDelete,
- loading = false,
+ loading = false
 }: TravelListViewProps) {
  const [expandedIds, setExpandedIds] = useState<Set<string>(new Set());
 

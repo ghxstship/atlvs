@@ -1,7 +1,7 @@
 "use client";
 
-import { CalendarDays, CalendarRange, Calendar as CalendarIcon, Eye, Filter, LayoutGrid, List, MapPin, Pencil, Plus, RefreshCcw, Share2, Trash2, Users } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { CalendarDays, CalendarRange, Calendar as CalendarIcon, Eye, Filter, LayoutGrid, List, MapPin, Pencil, Plus, RefreshCcw, Share2, Trash2, Users, CalendarIcon } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from "next/navigation";
 import { createBrowserClient } from "@ghxstship/auth";
 import {
@@ -10,7 +10,7 @@ import {
  Card,
  Checkbox,
  Input,
- Select,
+ Select
 } from "@ghxstship/ui";
 import { addMonths, formatISO } from "date-fns";
 import CreateProgrammingEventDrawer from "./drawers/CreateProgrammingEventDrawer";
@@ -44,7 +44,7 @@ const STATUS_BADGE: Record<ProgrammingEvent["status"], { label: string; variant:
  scheduled: { label: "Scheduled", variant: "info" },
  in_progress: { label: "In Progress", variant: "warning" },
  completed: { label: "Completed", variant: "success" },
- cancelled: { label: "Cancelled", variant: "destructive" },
+ cancelled: { label: "Cancelled", variant: "destructive" }
 };
 
 const EVENT_TYPE_LABEL: Record<ProgrammingEvent["event_type"], string> = {
@@ -55,7 +55,7 @@ const EVENT_TYPE_LABEL: Record<ProgrammingEvent["event_type"], string> = {
  rehearsal: "Rehearsal",
  setup: "Setup",
  breakdown: "Breakdown",
- other: "Other",
+ other: "Other"
 };
 
 export default function ProgrammingEventsClient({
@@ -63,7 +63,7 @@ export default function ProgrammingEventsClient({
  currentUserId,
  initialEvents,
  projects,
- users,
+ users
 }: ProgrammingEventsClientProps) {
  const supabase = useMemo(() => createBrowserClient(), []);
  const router = useRouter();
@@ -118,7 +118,7 @@ export default function ProgrammingEventsClient({
  limit: "200",
  offset: "0",
  start_at: dateRangeStart ? new Date(dateRangeStart).toISOString() : "",
- end_at: dateRangeEnd ? new Date(dateRangeEnd).toISOString() : "",
+ end_at: dateRangeEnd ? new Date(dateRangeEnd).toISOString() : ""
  });
  if (selectedProject !== "all") params.set("project_id", selectedProject);
  if (selectedStatus !== "all") params.set("status", selectedStatus);
@@ -149,7 +149,7 @@ export default function ProgrammingEventsClient({
  event: '*',
  schema: 'public',
  table: 'programming_events',
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  () => {
  loadEvents();

@@ -9,7 +9,7 @@ export const runtime = 'nodejs';
 const PublishRFPSchema = z.object({
   publishNotes: z.string().optional(),
   notifyContractors: z.boolean().default(true),
-  inviteList: z.array(z.string().uuid()).optional(),
+  inviteList: z.array(z.string().uuid()).optional()
 });
 
 async function getAuthenticatedUser() {

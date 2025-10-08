@@ -336,7 +336,7 @@ export const STATUS_BADGE = {
   in_progress: { label: 'In Progress', variant: 'info' as const },
   completed: { label: 'Completed', variant: 'success' as const },
   cancelled: { label: 'Cancelled', variant: 'destructive' as const },
-  postponed: { label: 'Postponed', variant: 'warning' as const },
+  postponed: { label: 'Postponed', variant: 'warning' as const }
 } as const;
 
 // Skill level badge configurations
@@ -345,7 +345,7 @@ export const SKILL_LEVEL_BADGE = {
   intermediate: { label: 'Intermediate', variant: 'warning' as const },
   advanced: { label: 'Advanced', variant: 'destructive' as const },
   expert: { label: 'Expert', variant: 'destructive' as const },
-  all_levels: { label: 'All Levels', variant: 'default' as const },
+  all_levels: { label: 'All Levels', variant: 'default' as const }
 } as const;
 
 // Category configurations
@@ -359,14 +359,14 @@ export const CATEGORY_BADGE = {
   marketing: { label: 'Marketing', icon: '📢' },
   finance: { label: 'Finance', icon: '💰' },
   legal: { label: 'Legal', icon: '⚖️' },
-  other: { label: 'Other', icon: '📚' },
+  other: { label: 'Other', icon: '📚' }
 } as const;
 
 // Format configurations
 export const FORMAT_BADGE = {
   in_person: { label: 'In Person', variant: 'success' as const, icon: '🏢' },
   virtual: { label: 'Virtual', variant: 'info' as const, icon: '💻' },
-  hybrid: { label: 'Hybrid', variant: 'warning' as const, icon: '🔄' },
+  hybrid: { label: 'Hybrid', variant: 'warning' as const, icon: '🔄' }
 } as const;
 
 // Type configurations
@@ -378,7 +378,7 @@ export const TYPE_BADGE = {
   training: { label: 'Training', icon: '📖' },
   certification: { label: 'Certification', icon: '🏆' },
   conference: { label: 'Conference', icon: '🎤' },
-  panel: { label: 'Panel', icon: '👥' },
+  panel: { label: 'Panel', icon: '👥' }
 } as const;
 
 // View configuration
@@ -386,7 +386,7 @@ export const VIEW_CONFIG = {
   list: { label: 'List', icon: 'List' },
   grid: { label: 'Grid', icon: 'Grid3X3' },
   timeline: { label: 'Timeline', icon: 'Calendar' },
-  analytics: { label: 'Analytics', icon: 'BarChart3' },
+  analytics: { label: 'Analytics', icon: 'BarChart3' }
 } as const;
 
 // Workshop analytics metrics

@@ -2,6 +2,7 @@
 
 import { Activity, Clock, User, FileText, CheckCircle, AlertCircle, Plus, ArrowRight, MoreHorizontal } from "lucide-react";
 import React from 'react';
+import Image from "next/image";
 import { Card, Avatar, Badge, Button } from '@ghxstship/ui';
 import type { BaseWidgetProps, ActivityItem } from '../types';
 
@@ -155,6 +156,9 @@ export default function EnhancedActivityWidget({
  {activity.user_name && (
  <div className="flex items-center space-x-xs mt-xs">
  <Avatar className="w-icon-xs h-icon-xs">
+ {/* eslint-disable-next-line @next/next/no-img-element */}
+
+ {/* eslint-disable-next-line @next/next/no-img-element */}
  <img 
  src={activity.user_avatar || '/default-avatar.png'} 
  alt={activity.user_name}

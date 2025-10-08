@@ -1,24 +1,11 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Badge, Button, Skeleton, Drawer, type DataRecord } from '@ghxstship/ui';
-import { StatusBadge, animationPresets } from "../../../../_components/ui"
-import { 
-  TrendingUp,
-  Plus,
-  Edit,
-  Trash2,
-  DollarSign,
-  Calendar,
-  Target,
-  CheckCircle,
-  Clock,
-  AlertTriangle,
-  BarChart3
-} from 'lucide-react';
+import { Badge, Button, Card, DataGrid, Drawer, Skeleton, StateManagerProvider, ViewSwitcher, type DataRecord } from '@ghxstship/ui';
+import { AlertTriangle, BarChart3, Calendar, CheckCircle, Clock, DollarSign, Edit, Plus, Target, Trash2, TrendingUp } from 'lucide-react';
 
 interface RevenueClientProps {
   user: User;
@@ -61,8 +48,10 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadRevenues();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, statusFilter]);
 
   const loadRevenues = async () => {
@@ -192,7 +181,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
   const formatCurrency = (amount: number, currency = 'USD') => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: currency
     }).format(amount);
   };
 
@@ -200,8 +189,8 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
     return new Date(dateString).toLocaleDateString();
   };
 
-  const getStatusBadge = (status: string) => {
-    return <StatusBadge status={status as any} />;
+  const getBadge = (status: string) => {
+    return <Badge status={status as any} />;
   };
 
   const getStatusIcon = (status: string) => {
@@ -445,7 +434,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                       <p className="text-body-sm color-foreground/70 capitalize">{revenue.category.replace('_', ' ')}</p>
                     </div>
                   </div>
-                  {getStatusBadge(revenue.status)}
+                  {getBadge(revenue.status)}
                 </div>
                 
                 <div className="stack-sm mb-md">

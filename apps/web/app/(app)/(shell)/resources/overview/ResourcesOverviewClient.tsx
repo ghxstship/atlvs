@@ -1,46 +1,34 @@
 'use client'
 
-import { useMemo } from 'react'
-import { useRouter } from 'next/navigation'
+import { useMemo } from 'react';
+import { useRouter } from 'next/navigation';
+import { Activity, Badge, BarChart, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Clock, Download, FileText, Filter, FolderOpen, Grid, Plus, Search, Star, Upload, Users } from 'lucide-react';
 import {
+  Badge,
+  Button,
   Card,
+  CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
-  Button,
-  Badge,
-} from '@ghxstship/ui'
-import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
-import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
-import {
-  FileText,
-  Download,
-  Upload,
-  Users,
-  Star,
-  FolderOpen,
-  Plus,
-  Search,
-  Filter,
-  BarChart,
-  Clock,
-  Activity,
-} from 'lucide-react'
+  Skeleton
+} from '@ghxstship/ui';
+import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton';
+import { Grid, HStack, Stack } from '@ghxstship/ui/components/layouts';
 
-import { useResourcesOverview } from '../hooks/useResourcesOverview'
+import { useResourcesOverview } from '../hooks/useResourcesOverview';
 
 const metricIconComponents: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   FileText,
   Download,
   Users,
-  Star,
+  Star
 }
 
 const trendToneMap: Record<'up' | 'down' | 'neutral', { badge: 'success' | 'destructive' | 'secondary'; text: string }> = {
   up: { badge: 'success', text: 'text-success' },
   down: { badge: 'destructive', text: 'text-destructive' },
-  neutral: { badge: 'secondary', text: 'text-muted-foreground' },
+  neutral: { badge: 'secondary', text: 'text-muted-foreground' }
 }
 
 const categoryToneMap: Record<'accent' | 'success' | 'warning' | 'destructive' | 'muted', string> = {
@@ -48,7 +36,7 @@ const categoryToneMap: Record<'accent' | 'success' | 'warning' | 'destructive' |
   success: 'bg-success',
   warning: 'bg-warning',
   destructive: 'bg-destructive',
-  muted: 'bg-muted-foreground/40',
+  muted: 'bg-muted-foreground/40'
 }
 
 export default function ResourcesOverviewClient({ orgId }: { orgId: string }) {
@@ -112,7 +100,7 @@ export default function ResourcesOverviewClient({ orgId }: { orgId: string }) {
           </p>
         </Stack>
         <HStack spacing="sm">
-          <Button variant="outline" onClick={() => router.push('/resources/upload')}>
+          <Button variant="secondary" onClick={() => router.push('/resources/upload')}>
             <Upload className="h-icon-xs w-icon-xs mr-xs" />
             Upload Resource
           </Button>
@@ -174,7 +162,7 @@ export default function ResourcesOverviewClient({ orgId }: { orgId: string }) {
                       <Stack spacing="xs">
                         <span className="text-sm font-semibold text-foreground">{resource.title}</span>
                         <HStack spacing="sm" align="center">
-                          <Badge variant="outline" className="capitalize">
+                          <Badge variant="secondary" className="capitalize">
                             {resource.type}
                           </Badge>
                           <span className="text-xs text-muted-foreground">{resource.downloads} downloads</span>
@@ -213,7 +201,7 @@ export default function ResourcesOverviewClient({ orgId }: { orgId: string }) {
                   </HStack>
                 ))}
               </Stack>
-              <Button variant="outline" className="mt-lg w-full" onClick={() => router.push('/resources/categories')}>
+              <Button variant="secondary" className="mt-lg w-full" onClick={() => router.push('/resources/categories')}>
                 <FolderOpen className="h-icon-xs w-icon-xs mr-xs" />
                 Manage Categories
               </Button>
@@ -227,19 +215,19 @@ export default function ResourcesOverviewClient({ orgId }: { orgId: string }) {
             </CardHeader>
             <CardContent>
               <Stack spacing="sm">
-                <Button variant="outline" className="justify-start" onClick={() => router.push('/resources/search')}>
+                <Button variant="secondary" className="justify-start" onClick={() => router.push('/resources/search')}>
                   <Search className="h-icon-xs w-icon-xs mr-xs" />
                   Search Resources
                 </Button>
-                <Button variant="outline" className="justify-start" onClick={() => router.push('/resources/filters')}>
+                <Button variant="secondary" className="justify-start" onClick={() => router.push('/resources/filters')}>
                   <Filter className="h-icon-xs w-icon-xs mr-xs" />
                   Advanced Filters
                 </Button>
-                <Button variant="outline" className="justify-start" onClick={() => router.push('/resources/analytics')}>
+                <Button variant="secondary" className="justify-start" onClick={() => router.push('/resources/analytics')}>
                   <BarChart className="h-icon-xs w-icon-xs mr-xs" />
                   View Analytics
                 </Button>
-                <Button variant="outline" className="justify-start" onClick={() => router.push('/resources/activity')}>
+                <Button variant="secondary" className="justify-start" onClick={() => router.push('/resources/activity')}>
                   <Clock className="h-icon-xs w-icon-xs mr-xs" />
                   Recent Activity
                 </Button>

@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar, Clock, MapPin, Plus, Save, X, DollarSign, Users, Music, Phone, Mail } from "lucide-react";
-import { useState } from "react";
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -14,7 +14,7 @@ import {
  Select,
  Textarea,
  Badge,
- Checkbox,
+ Checkbox
 } from "@ghxstship/ui";
 import type { LineupProject, LineupEvent } from "../types";
 import { PERFORMER_TYPE_BADGE, CURRENCY_OPTIONS, EQUIPMENT_OPTIONS, STAGE_OPTIONS, DURATION_PRESETS } from "../types";
@@ -33,22 +33,22 @@ const createLineupSchema = z.object({
  email: z.string().email().optional().or(z.literal("")),
  phone: z.string().optional(),
  agent: z.string().optional(),
- manager: z.string().optional(),
+ manager: z.string().optional()
  }).optional(),
  technical_requirements: z.object({
  sound_check: z.string().datetime().optional(),
  equipment: z.array(z.string()).optional(),
- special_requests: z.string().optional(),
+ special_requests: z.string().optional()
  }).optional(),
  contract_details: z.object({
  fee: z.number().min(0).optional(),
  currency: z.string().length(3).optional(),
  payment_terms: z.string().optional(),
- contract_signed: z.boolean().optional(),
+ contract_signed: z.boolean().optional()
  }).optional(),
  notes: z.string().optional(),
  tags: z.array(z.string().max(32)).optional(),
- metadata: z.record(z.any()).optional(),
+ metadata: z.record(z.any()).optional()
 });
 
 type CreateLineupFormData = z.infer<typeof createLineupSchema>;
@@ -70,7 +70,7 @@ export default function CreateProgrammingLineupDrawer({
  currentUserId,
  projects,
  events,
- onSuccess,
+ onSuccess
 }: CreateProgrammingLineupDrawerProps) {
  const handleClose = () => onOpenChange(false);
  const [loading, setLoading] = useState(false);
@@ -83,7 +83,7 @@ export default function CreateProgrammingLineupDrawer({
  watch,
  setValue,
  reset,
- formState: { errors },
+ formState: { errors }
  } = useForm<CreateLineupFormData>({
  resolver: zodResolver(createLineupSchema),
  defaultValues: {
@@ -92,8 +92,8 @@ export default function CreateProgrammingLineupDrawer({
  tags: [],
  contact_info: {},
  technical_requirements: { equipment: [] },
- contract_details: {},
- },
+ contract_details: {}
+ }
  });
 
  const watchedTags = watch("tags");
@@ -111,25 +111,25 @@ export default function CreateProgrammingLineupDrawer({
  email: data.contact_info?.email || undefined,
  phone: data.contact_info?.phone || undefined,
  agent: data.contact_info?.agent || undefined,
- manager: data.contact_info?.manager || undefined,
+ manager: data.contact_info?.manager || undefined
  },
  technical_requirements: {
  sound_check: data.technical_requirements?.sound_check || undefined,
  equipment: selectedEquipment.length > 0 ? selectedEquipment : undefined,
- special_requests: data.technical_requirements?.special_requests || undefined,
+ special_requests: data.technical_requirements?.special_requests || undefined
  },
  contract_details: {
  fee: data.contract_details?.fee || undefined,
  currency: data.contract_details?.currency || undefined,
  payment_terms: data.contract_details?.payment_terms || undefined,
- contract_signed: data.contract_details?.contract_signed || false,
- },
+ contract_signed: data.contract_details?.contract_signed || false
+ }
  };
  
  const response = await fetch("/api/v1/programming/lineups", {
  method: "POST",
  headers: { "Content-Type": "application/json" },
- body: JSON.stringify(payload),
+ body: JSON.stringify(payload)
  });
 
  if (!response.ok) {

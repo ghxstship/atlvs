@@ -24,7 +24,7 @@ export default function CalendarView({
   onDateClick,
   loading = false,
   emptyMessage = "No events scheduled",
-  className = "",
+  className = ""
 }: CalendarViewProps) {
   const [currentDate, setCurrentDate] = useState(new Date());
 

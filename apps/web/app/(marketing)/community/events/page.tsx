@@ -6,12 +6,12 @@ import { Calendar, Clock, MapPin, Users } from 'lucide-react';
 import {
   MarketingCard,
   MarketingSection,
-  MarketingSectionHeader,
+  MarketingSectionHeader
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Community Events | GHXSTSHIP',
-  description: 'Join GHXSTSHIP community events, workshops, and meetups to connect with fellow creators.',
+  description: 'Join GHXSTSHIP community events, workshops, and meetups to connect with fellow creators.'
 };
 
 const upcomingEvents = [
@@ -22,7 +22,7 @@ const upcomingEvents = [
     location: 'Virtual',
     seats: '156 registered',
     type: 'Workshop',
-    href: '#',
+    href: '#'
   },
   {
     title: 'GHXSTSHIP User Meetup – Los Angeles',
@@ -31,7 +31,7 @@ const upcomingEvents = [
     location: 'Los Angeles, CA',
     seats: '45 in person',
     type: 'Meetup',
-    href: '#',
+    href: '#'
   },
   {
     title: 'OPENDECK Product Demo & Q&A',
@@ -40,7 +40,7 @@ const upcomingEvents = [
     location: 'Virtual',
     seats: '89 registered',
     type: 'Product Session',
-    href: '#',
+    href: '#'
   },
 ];
 
@@ -49,13 +49,13 @@ const hostingInfo = [
     title: 'Host an Event',
     body: 'Bring the GHXSTSHIP community to your city or launch a virtual learning experience. We provide marketing, registration, and production support.',
     cta: 'Submit Proposal',
-    href: '#',
+    href: '#'
   },
   {
     title: 'Watch On-Demand',
     body: 'Catch up on recordings, decks, and resources from past workshops, product sessions, and mixers.',
     cta: 'View Archive',
-    href: '#',
+    href: '#'
   },
 ];
 

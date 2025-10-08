@@ -31,7 +31,7 @@ export const layouts = {
   // Background patterns
   gradientBg: 'bg-gradient-to-br from-primary/15 via-background to-accent/5',
   mutedBg: 'bg-muted/20',
-  primaryGradient: 'bg-gradient-to-r from-primary/10 via-background to-secondary/10',
+  primaryGradient: 'bg-gradient-to-r from-primary/10 via-background to-secondary/10'
 } as const;
 
 // Layout component classes
@@ -48,7 +48,7 @@ export const LayoutClasses = {
   
   // Common patterns
   cardHover: 'hover:shadow-floating transition-shadow',
-  buttonGroup: layouts.ctaGroup,
+  buttonGroup: layouts.ctaGroup
 } as const;
 
 // Responsive breakpoint helpers
@@ -57,5 +57,5 @@ export const breakpoints = {
   md: '768px',
   lg: '1024px',
   xl: '1280px',
-  '2xl': '1536px',
+  '2xl': '1536px'
 } as const;

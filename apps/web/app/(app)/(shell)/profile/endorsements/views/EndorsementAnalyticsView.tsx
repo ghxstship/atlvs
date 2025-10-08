@@ -6,7 +6,7 @@ import type { EndorsementStats, EndorsementAnalytics } from '../types';
 import {
  RELATIONSHIP_LABELS,
  formatDate,
- formatRating,
+ formatRating
 } from '../types';
 
 interface EndorsementAnalyticsViewProps {
@@ -20,7 +20,7 @@ export default function EndorsementAnalyticsView({
  stats,
  analytics,
  loading,
- analyticsLoading,
+ analyticsLoading
 }: EndorsementAnalyticsViewProps) {
  if (loading || analyticsLoading) {
  return (

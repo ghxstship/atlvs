@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 import {
  Card,
  Badge,
- Progress,
+ Progress
 } from '@ghxstship/ui';
 import type { JobHistoryEntry, EmploymentType, CompanySize } from '../types';
 
@@ -40,7 +40,7 @@ const getEmploymentTypeColor = (type: EmploymentType) => {
  freelance: 'pink',
  internship: 'cyan',
  temporary: 'orange',
- consultant: 'yellow',
+ consultant: 'yellow'
  };
  return colorMap[type] || 'gray';
 };
@@ -55,7 +55,7 @@ const calculateTenureInMonths = (startDate: string, endDate?: string | null, isC
 
 export default function JobHistoryAnalyticsView({
  entries,
- loading = false,
+ loading = false
 }: JobHistoryAnalyticsViewProps) {
  const analytics = useMemo((): AnalyticsData => {
  if (entries.length === 0) {
@@ -74,7 +74,7 @@ export default function JobHistoryAnalyticsView({
  companySizeDistribution: {},
  completionRate: 0,
  growthTrend: 'stable',
- careerProgression: 0,
+ careerProgression: 0
  };
  }
 
@@ -207,7 +207,7 @@ export default function JobHistoryAnalyticsView({
  companySizeDistribution,
  completionRate,
  growthTrend,
- careerProgression,
+ careerProgression
  };
  }, [entries]);
 

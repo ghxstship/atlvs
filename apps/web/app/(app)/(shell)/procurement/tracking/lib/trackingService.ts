@@ -10,7 +10,7 @@ import type {
   TrackingImportConfig,
   TrackingImportResult,
   TrackingAnalytics,
-  DeliveryPerformance,
+  DeliveryPerformance
 } from '../types';
 import { calculateDeliveryPerformance, calculateDaysToDelivery } from '../types';
 
@@ -114,13 +114,13 @@ export class TrackingService {
         ...item,
         vendor_name: item.vendor?.business_name || item.vendor_name,
         delivery_performance: calculateDeliveryPerformance(item.expected_delivery, item.actual_delivery),
-        days_to_delivery: calculateDaysToDelivery(item.order_date, item.actual_delivery),
+        days_to_delivery: calculateDaysToDelivery(item.order_date, item.actual_delivery)
       }));
 
       return {
         items,
         total: count || 0,
-        hasMore: (count || 0) > offset + limit,
+        hasMore: (count || 0) > offset + limit
       };
     } catch (error) {
       console.error('Error fetching tracking items:', error);
@@ -177,7 +177,7 @@ export class TrackingService {
       const statusBreakdown = Object.entries(statusCounts).map(([status, count]) => ({
         status,
         count,
-        percentage: (count / totalOrders) * 100,
+        percentage: (count / totalOrders) * 100
       }));
 
       // Carrier performance
@@ -204,7 +204,7 @@ export class TrackingService {
         carrier,
         orders: data.orders,
         onTimeRate: data.orders > 0 ? (data.onTime / data.orders) * 100 : 0,
-        avgDeliveryTime: data.orders > 0 ? data.totalDays / data.orders : 0,
+        avgDeliveryTime: data.orders > 0 ? data.totalDays / data.orders : 0
       }));
 
       // Vendor performance
@@ -229,7 +229,7 @@ export class TrackingService {
         vendor,
         orders: data.orders,
         onTimeRate: data.orders > 0 ? (data.onTime / data.orders) * 100 : 0,
-        avgDeliveryTime: data.orders > 0 ? data.totalDays / data.orders : 0,
+        avgDeliveryTime: data.orders > 0 ? data.totalDays / data.orders : 0
       }));
 
       // Delivery trends (last 12 months)
@@ -246,7 +246,7 @@ export class TrackingService {
         statusBreakdown,
         carrierPerformance,
         vendorPerformance,
-        deliveryTrends,
+        deliveryTrends
       };
     } catch (error) {
       console.error('Error calculating tracking stats:', error);
@@ -267,7 +267,7 @@ export class TrackingService {
         .update({
           ...updates,
           updated_by: userId,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', itemId)
         .eq('organization_id', organizationId)
@@ -300,7 +300,7 @@ export class TrackingService {
           ...event,
           tracking_id: trackingId,
           organization_id: organizationId,
-          created_by: userId,
+          created_by: userId
         })
         .select()
         .single();
@@ -311,7 +311,7 @@ export class TrackingService {
       if (event.event_type === 'delivered') {
         await this.updateTrackingItem(organizationId, trackingId, {
           status: 'delivered',
-          actual_delivery: new Date().toISOString(),
+          actual_delivery: new Date().toISOString()
         }, userId);
       }
 
@@ -356,7 +356,7 @@ export class TrackingService {
             case 'update_status':
               if (action.data?.status) {
                 await this.updateTrackingItem(organizationId, itemId, {
-                  status: action.data.status,
+                  status: action.data.status
                 }, userId);
               }
               break;
@@ -365,7 +365,7 @@ export class TrackingService {
               if (action.data?.tracking_number && action.data?.carrier) {
                 await this.updateTrackingItem(organizationId, itemId, {
                   tracking_number: action.data.tracking_number,
-                  shipping_carrier: action.data.carrier,
+                  shipping_carrier: action.data.carrier
                 }, userId);
               }
               break;
@@ -373,7 +373,7 @@ export class TrackingService {
             case 'update_carrier':
               if (action.data?.carrier) {
                 await this.updateTrackingItem(organizationId, itemId, {
-                  shipping_carrier: action.data.carrier,
+                  shipping_carrier: action.data.carrier
                 }, userId);
               }
               break;
@@ -390,7 +390,7 @@ export class TrackingService {
                 const newTags = [...new Set([...existingTags, ...action.data.tags])];
 
                 await this.updateTrackingItem(organizationId, itemId, {
-                  tags: newTags,
+                  tags: newTags
                 }, userId);
               }
               break;
@@ -413,7 +413,7 @@ export class TrackingService {
       await this.logActivity(organizationId, action.type, 'tracking', 'bulk', userId, {
         action: action.type,
         count: success,
-        errors: errors.length,
+        errors: errors.length
       });
 
       return { success, errors };
@@ -460,7 +460,7 @@ export class TrackingService {
         imported: 0,
         updated: 0,
         errors: [],
-        warnings: [],
+        warnings: []
       };
     } catch (error) {
       console.error('Error importing tracking data:', error);
@@ -488,7 +488,7 @@ export class TrackingService {
           delay_days: item.actual_delivery 
             ? Math.max(0, calculateDaysToDelivery(item.expected_delivery!, item.actual_delivery))
             : undefined,
-          delay_reason: item.delay_reason,
+          delay_reason: item.delay_reason
         }));
     } catch (error) {
       console.error('Error getting delivery performance:', error);
@@ -540,7 +540,7 @@ export class TrackingService {
         delivered,
         onTime,
         late,
-        avgDays,
+        avgDays
       });
     }
 
@@ -564,7 +564,7 @@ export class TrackingService {
           action,
           resource_type: resourceType,
           resource_id: resourceId,
-          details,
+          details
         });
     } catch (error) {
       console.error('Error logging activity:', error);

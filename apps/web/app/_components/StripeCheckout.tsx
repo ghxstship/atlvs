@@ -1,7 +1,7 @@
 'use client';
 
 
-import React, { useState } from 'react';
+import React, { useState, useCallback, useState } from 'react';
 import { Button } from '@ghxstship/ui';
 import { ArrowRight, Loader2 } from 'lucide-react';
 
@@ -108,6 +108,7 @@ export const useSubscription = () => {
     };
 
     fetchSubscription();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { subscription, loading };

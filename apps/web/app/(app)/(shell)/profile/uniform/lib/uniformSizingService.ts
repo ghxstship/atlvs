@@ -4,7 +4,7 @@ import type {
   UniformSizingFilters,
   UniformSizingStats,
   UniformSizingAnalytics,
-  RecentActivity,
+  RecentActivity
 } from '../types';
 import { 
   createEmptyUniformSizingStats, 
@@ -18,7 +18,7 @@ export const uniformSizingFilterSchema = zod.object({
   size_category: zod.enum(['clothing', 'measurements', 'equipment', 'all']).optional(),
   completeness_range: zod.object({
     min: zod.number().min(0).max(100),
-    max: zod.number().min(0).max(100),
+    max: zod.number().min(0).max(100)
   }).optional(),
   has_measurements: zod.boolean().optional(),
   has_clothing_sizes: zod.boolean().optional(),
@@ -27,10 +27,10 @@ export const uniformSizingFilterSchema = zod.object({
   date_to: zod.string().datetime().optional(),
   bmi_range: zod.object({
     min: zod.number().min(10).max(50),
-    max: zod.number().min(10).max(50),
+    max: zod.number().min(10).max(50)
   }).optional(),
   limit: zod.number().min(1).max(100).default(50),
-  offset: zod.number().min(0).default(0),
+  offset: zod.number().min(0).default(0)
 });
 
 export const uniformSizingUpdateSchema = zod.object({
@@ -46,18 +46,18 @@ export const uniformSizingUpdateSchema = zod.object({
   waist_cm: zod.number().min(50).max(180).optional(),
   inseam_cm: zod.number().min(60).max(120).optional(),
   equipment_preferences: zod.record(zod.any()).default({}),
-  special_requirements: zod.string().max(500).optional(),
+  special_requirements: zod.string().max(500).optional()
 });
 
 export const analyticsFilterSchema = zod.object({
   period: zod.enum(['7d', '30d', '90d', '1y']).default('30d'),
-  granularity: zod.enum(['day', 'week', 'month']).default('day'),
+  granularity: zod.enum(['day', 'week', 'month']).default('day')
 });
 
 export const bulkActionSchema = zod.object({
   action: zod.enum(['export', 'update-measurements', 'clear-data']),
   sizing_ids: zod.array(zod.string().uuid()),
-  data: zod.record(zod.any()).optional(),
+  data: zod.record(zod.any()).optional()
 });
 
 export const exportSchema = zod.object({
@@ -65,7 +65,7 @@ export const exportSchema = zod.object({
   sizing_ids: zod.array(zod.string().uuid()).optional(),
   filters: uniformSizingFilterSchema.optional(),
   fields: zod.array(zod.string()).optional(),
-  include_calculations: zod.boolean().default(true),
+  include_calculations: zod.boolean().default(true)
 });
 
 type SupabaseClient = ReturnType<typeof import('@ghxstship/auth').createServerClient>;
@@ -76,7 +76,7 @@ export function getPeriodDates(period: string) {
     '7d': 7,
     '30d': 30,
     '90d': 90,
-    '1y': 365,
+    '1y': 365
   };
 
   const days = periodMap[period] ?? 30;
@@ -114,7 +114,7 @@ export async function fetchUniformSizing(
       user_email: data.user?.email || '',
       user_avatar: data.user?.avatar_url,
       bmi: calculateBMI(data.height_cm, data.weight_kg),
-      size_completeness_percentage: calculateSizeCompleteness(data),
+      size_completeness_percentage: calculateSizeCompleteness(data)
     };
 
     return sizing;
@@ -190,18 +190,18 @@ export async function fetchUniformSizings(
       user_email: item.user?.email || '',
       user_avatar: item.user?.avatar_url,
       bmi: calculateBMI(item.height_cm, item.weight_kg),
-      size_completeness_percentage: calculateSizeCompleteness(item),
+      size_completeness_percentage: calculateSizeCompleteness(item)
     }));
 
     return {
       sizings,
-      total: count || 0,
+      total: count || 0
     };
   } catch (error) {
     console.error('Error fetching uniform sizings:', error);
     return {
       sizings: [],
-      total: 0,
+      total: 0
     };
   }
 }
@@ -220,7 +220,7 @@ export async function updateUniformSizing(
         user_id: userId,
         organization_id: orgId,
         ...sizingData,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .select(`
         *,
@@ -240,9 +240,9 @@ export async function updateUniformSizing(
         activity_description: 'Uniform sizing information was updated',
         metadata: {
           fields_updated: Object.keys(sizingData),
-          updated_by: updatedBy,
+          updated_by: updatedBy
         },
-        performed_by: updatedBy,
+        performed_by: updatedBy
       });
 
     // Transform and enrich the data
@@ -252,7 +252,7 @@ export async function updateUniformSizing(
       user_email: data.user?.email || '',
       user_avatar: data.user?.avatar_url,
       bmi: calculateBMI(data.height_cm, data.weight_kg),
-      size_completeness_percentage: calculateSizeCompleteness(data),
+      size_completeness_percentage: calculateSizeCompleteness(data)
     };
 
     return sizing;
@@ -309,7 +309,7 @@ export async function fetchUniformSizingStats(
       .map(([size, count]) => ({
         size,
         count,
-        percentage: totalRecords > 0 ? (count / totalRecords) * 100 : 0,
+        percentage: totalRecords > 0 ? (count / totalRecords) * 100 : 0
       }))
       .sort((a, b) => b.count - a.count)
       .slice(0, 10);
@@ -326,12 +326,12 @@ export async function fetchUniformSizingStats(
       averageBMI: bmis.length > 0 ? Math.round((bmis.reduce((sum, b) => sum + b, 0) / bmis.length) * 10) / 10 : 0,
       heightRange: {
         min: heights.length > 0 ? Math.min(...heights) : 0,
-        max: heights.length > 0 ? Math.max(...heights) : 0,
+        max: heights.length > 0 ? Math.max(...heights) : 0
       },
       weightRange: {
         min: weights.length > 0 ? Math.min(...weights) : 0,
-        max: weights.length > 0 ? Math.max(...weights) : 0,
-      },
+        max: weights.length > 0 ? Math.max(...weights) : 0
+      }
     };
 
     // Analyze equipment preferences
@@ -348,7 +348,7 @@ export async function fetchUniformSizingStats(
       .map(([preference, count]) => ({
         preference,
         count,
-        percentage: totalRecords > 0 ? (count / totalRecords) * 100 : 0,
+        percentage: totalRecords > 0 ? (count / totalRecords) * 100 : 0
       }))
       .sort((a, b) => b.count - a.count)
       .slice(0, 10);
@@ -360,9 +360,9 @@ export async function fetchUniformSizingStats(
       recentUpdates,
       sizeDistribution: {
         clothing: sizeDistribution,
-        measurements: measurementStats,
+        measurements: measurementStats
       },
-      equipmentPreferences,
+      equipmentPreferences
     };
   } catch (error) {
     console.error('Error fetching uniform sizing stats:', error);
@@ -402,7 +402,7 @@ export async function fetchUniformSizingAnalytics(
     const completionTrends = Object.entries(dailyUpdates).map(([date, data]) => ({
       date,
       averageCompleteness: 0, // Would need to calculate from actual data
-      recordsUpdated: data.recordsUpdated,
+      recordsUpdated: data.recordsUpdated
     }));
 
     // Get current sizing data for analysis
@@ -434,7 +434,7 @@ export async function fetchUniformSizingAnalytics(
         .map(([size, count]) => ({
           size,
           count,
-          percentage: sizings.length > 0 ? (count / sizings.length) * 100 : 0,
+          percentage: sizings.length > 0 ? (count / sizings.length) * 100 : 0
         }))
         .sort((a, b) => b.count - a.count);
 
@@ -448,7 +448,7 @@ export async function fetchUniformSizingAnalytics(
         date: date.toISOString().split('T')[0],
         averageHeight: 170 + Math.random() * 10,
         averageWeight: 70 + Math.random() * 20,
-        averageBMI: 22 + Math.random() * 4,
+        averageBMI: 22 + Math.random() * 4
       };
     }).reverse();
 
@@ -470,7 +470,7 @@ export async function fetchUniformSizingAnalytics(
         .map(([preference, count]) => ({
           preference,
           count,
-          percentage: sizings.length > 0 ? (count / sizings.length) * 100 : 0,
+          percentage: sizings.length > 0 ? (count / sizings.length) * 100 : 0
         }))
         .sort((a, b) => b.count - a.count);
 
@@ -481,9 +481,9 @@ export async function fetchUniformSizingAnalytics(
       completionTrends,
       sizeAnalysis: {
         clothingSizes,
-        measurementTrends,
+        measurementTrends
       },
-      equipmentAnalysis,
+      equipmentAnalysis
     };
   } catch (error) {
     console.error('Error fetching uniform sizing analytics:', error);
@@ -513,7 +513,7 @@ export async function fetchRecentActivity(
     return (data || []).map(activity => ({
       ...activity,
       user_name: activity.user?.full_name || 'Unknown User',
-      user_avatar: activity.user?.avatar_url,
+      user_avatar: activity.user?.avatar_url
     }));
   } catch (error) {
     console.error('Error fetching recent activity:', error);
@@ -538,7 +538,7 @@ export async function performBulkAction(
             .from('user_uniform_sizing')
             .update({
               ...data.measurements,
-              updated_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
             })
             .eq('organization_id', orgId)
             .in('id', sizing_ids);
@@ -565,7 +565,7 @@ export async function performBulkAction(
             inseam_cm: null,
             equipment_preferences: {},
             special_requirements: null,
-            updated_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
           })
           .eq('organization_id', orgId)
           .in('id', sizing_ids);
@@ -594,9 +594,9 @@ export async function performBulkAction(
           activity_description: `Uniform sizing ${actionType} via bulk action`,
           metadata: {
             bulk_action: actionType,
-            performed_by: performedBy,
+            performed_by: performedBy
           },
-          performed_by: performedBy,
+          performed_by: performedBy
         }))
       );
 
@@ -641,7 +641,7 @@ export async function exportUniformSizings(
         user_email: item.user?.email || '',
         user_avatar: item.user?.avatar_url,
         bmi: calculateBMI(item.height_cm, item.weight_kg),
-        size_completeness_percentage: calculateSizeCompleteness(item),
+        size_completeness_percentage: calculateSizeCompleteness(item)
       }));
     } else if (filters) {
       // Export based on filters
@@ -672,7 +672,7 @@ export async function exportUniformSizings(
       exportData = exportData.map(sizing => ({
         ...sizing,
         bmi_calculated: calculateBMI(sizing.height_cm, sizing.weight_kg),
-        completeness_calculated: calculateSizeCompleteness(sizing),
+        completeness_calculated: calculateSizeCompleteness(sizing)
       }));
     }
 

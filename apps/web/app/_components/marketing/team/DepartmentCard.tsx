@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge } from '@ghxstship/ui';
+import { Badge, Card, CardBody, CardContent } from '@ghxstship/ui';
 import { Users } from 'lucide-react';
 import { typography } from '../../lib/typography';
 
@@ -26,7 +26,7 @@ export function DepartmentCard({ department }: DepartmentCardProps) {
           <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-heading-4`}>
             {department.name}
           </h3>
-          <Badge variant="outline">
+          <Badge variant="secondary">
             {department.count} members
           </Badge>
         </div>

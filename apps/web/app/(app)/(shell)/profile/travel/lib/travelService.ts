@@ -6,7 +6,7 @@ import type {
   TravelInfo,
   TravelFilters,
   TravelStats,
-  TravelAnalytics,
+  TravelAnalytics
 } from '../types';
 import {
   travelFilterSchema,
@@ -14,7 +14,7 @@ import {
   travelInfoUpsertSchema,
   filterTravelRecords,
   sortTravelRecords,
-  calculateDuration,
+  calculateDuration
 } from '../types';
 
 // ============================================================================
@@ -97,7 +97,7 @@ export async function fetchTravelRecords(
 
   return {
     records: data || [],
-    total: count || 0,
+    total: count || 0
   };
 }
 
@@ -171,8 +171,8 @@ export async function fetchTravelStats(
         notRequired: 0,
         pending: 0,
         approved: 0,
-        denied: 0,
-      },
+        denied: 0
+      }
     };
   }
 
@@ -190,14 +190,14 @@ export async function fetchTravelStats(
     travelTypeMap.set(type, {
       count: existing.count + 1,
       totalExpenses: existing.totalExpenses + (r.expenses || 0),
-      totalDuration: existing.totalDuration + r.duration_days,
+      totalDuration: existing.totalDuration + r.duration_days
     });
   });
   const byTravelType = Array.from(travelTypeMap.entries()).map(([type, data]) => ({
     type: type as unknown,
     count: data.count,
     totalExpenses: data.totalExpenses,
-    averageDuration: data.totalDuration / data.count,
+    averageDuration: data.totalDuration / data.count
   }));
 
   // Group by country
@@ -207,13 +207,13 @@ export async function fetchTravelStats(
     const existing = countryMap.get(country) || { count: 0, totalExpenses: 0 };
     countryMap.set(country, {
       count: existing.count + 1,
-      totalExpenses: existing.totalExpenses + (r.expenses || 0),
+      totalExpenses: existing.totalExpenses + (r.expenses || 0)
     });
   });
   const byCountry = Array.from(countryMap.entries()).map(([country, data]) => ({
     country,
     count: data.count,
-    totalExpenses: data.totalExpenses,
+    totalExpenses: data.totalExpenses
   }));
 
   // Group by status
@@ -223,7 +223,7 @@ export async function fetchTravelStats(
   });
   const byStatus = Array.from(statusMap.entries()).map(([status, count]) => ({
     status: status as unknown,
-    count,
+    count
   }));
 
   // Monthly trends (last 12 months)
@@ -241,7 +241,7 @@ export async function fetchTravelStats(
     monthlyTrends.push({
       month: date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
       trips: monthRecords.length,
-      expenses: monthRecords.reduce((sum, r) => sum + (r.expenses || 0), 0),
+      expenses: monthRecords.reduce((sum, r) => sum + (r.expenses || 0), 0)
     });
   }
 
@@ -253,7 +253,7 @@ export async function fetchTravelStats(
     destinationMap.set(key, {
       country: r.country,
       count: existing.count + 1,
-      totalExpenses: existing.totalExpenses + (r.expenses || 0),
+      totalExpenses: existing.totalExpenses + (r.expenses || 0)
     });
   });
   const topDestinations = Array.from(destinationMap.entries())
@@ -261,7 +261,7 @@ export async function fetchTravelStats(
       destination: destination.split(', ')[0],
       country: data.country,
       count: data.count,
-      totalExpenses: data.totalExpenses,
+      totalExpenses: data.totalExpenses
     }))
     .sort((a, b) => b.count - a.count)
     .slice(0, 10);
@@ -272,7 +272,7 @@ export async function fetchTravelStats(
     notRequired: records.filter(r => !r.visa_required).length,
     pending: records.filter(r => r.visa_status === 'pending').length,
     approved: records.filter(r => r.visa_status === 'approved').length,
-    denied: records.filter(r => r.visa_status === 'denied').length,
+    denied: records.filter(r => r.visa_status === 'denied').length
   };
 
   return {
@@ -285,7 +285,7 @@ export async function fetchTravelStats(
     byStatus,
     monthlyTrends,
     topDestinations,
-    visaRequirements,
+    visaRequirements
   };
 }
 
@@ -316,8 +316,8 @@ export async function fetchTravelAnalytics(
       complianceMetrics: {
         visaCompliance: 0,
         documentationComplete: 0,
-        expenseReporting: 0,
-      },
+        expenseReporting: 0
+      }
     };
   }
 
@@ -339,7 +339,7 @@ export async function fetchTravelAnalytics(
       totalTrips: data.total,
       businessTrips: data.business,
       personalTrips: data.personal,
-      totalExpenses: data.expenses,
+      totalExpenses: data.expenses
     }))
     .sort((a, b) => a.period.localeCompare(b.period));
 
@@ -359,7 +359,7 @@ export async function fetchTravelAnalytics(
       frequency: data.visits.length,
       averageStay: data.visits.reduce((sum, v) => sum + v.duration_days, 0) / data.visits.length,
       totalExpenses: data.visits.reduce((sum, v) => sum + (v.expenses || 0), 0),
-      lastVisit: data.visits[data.visits.length - 1].start_date,
+      lastVisit: data.visits[data.visits.length - 1].start_date
     }))
     .sort((a, b) => b.frequency - a.frequency)
     .slice(0, 15);
@@ -420,7 +420,7 @@ export async function fetchTravelAnalytics(
       month,
       businessTrips: data.business,
       personalTrips: data.personal,
-      averageExpenses: data.business + data.personal > 0 ? data.expenses / (data.business + data.personal) : 0,
+      averageExpenses: data.business + data.personal > 0 ? data.expenses / (data.business + data.personal) : 0
     };
   });
 
@@ -438,8 +438,8 @@ export async function fetchTravelAnalytics(
     complianceMetrics: {
       visaCompliance: Math.round(visaCompliance),
       documentationComplete: Math.round(documentationComplete),
-      expenseReporting: Math.round(expenseReporting),
-    },
+      expenseReporting: Math.round(expenseReporting)
+    }
   };
 }
 
@@ -464,7 +464,7 @@ export async function createTravelRecord(
       user_id: userId,
       organization_id: organizationId,
       ...validated,
-      duration_days: duration,
+      duration_days: duration
     })
     .select()
     .single();
@@ -492,7 +492,7 @@ export async function updateTravelRecord(
     .update({
       ...validated,
       duration_days: duration,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', recordId)
     .select()
@@ -530,7 +530,7 @@ export async function updateTravelStatus(
     .from('user_travel_records')
     .update({
       status,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', recordId)
     .select()
@@ -558,7 +558,7 @@ export async function createOrUpdateTravelInfo(
       user_id: userId,
       organization_id: organizationId,
       ...validated,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .select()
     .single();
@@ -613,7 +613,7 @@ export async function fetchDestinations(
 
   const destinations = records.map(r => ({
     destination: r.destination,
-    country: r.country,
+    country: r.country
   }));
 
   // Remove duplicates

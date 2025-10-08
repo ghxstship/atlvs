@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, Badge, Progress, Button } from '@ghxstship/ui';
+import { Badge, Button, Card, CardBody, CardContent, CardDescription, CardHeader, CardTitle, Progress } from '@ghxstship/ui';
 import { Database, HardDrive, Clock, Shield, AlertCircle, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Database Management | Enterprise Dashboard',
-  description: 'Database performance, backup status, and disaster recovery',
+  description: 'Database performance, backup status, and disaster recovery'
 };
 
 export default function DatabasePage() {

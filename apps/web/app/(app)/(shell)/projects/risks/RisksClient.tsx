@@ -1,7 +1,7 @@
 "use client";
 
 import { Grid3x3, LayoutGrid, List, BarChart3, Search, Filter, Download, Plus, AlertTriangle, Shield, TrendingUp, Activity, Target, Zap, AlertCircle, CheckCircle, Clock, ArrowUpDown } from "lucide-react";
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import { createBrowserClient } from "@ghxstship/auth";
 import {
@@ -11,7 +11,7 @@ import {
  Input,
  Select,
  Checkbox,
- toast,
+ toast
 } from "@ghxstship/ui";
 import { format, parseISO, isBefore } from "date-fns";
 import CreateRiskDrawer from "./CreateRiskDrawer";
@@ -92,7 +92,7 @@ export default function RisksClient({
  projectId,
  initialRisks = [],
  projects = [],
- users = [],
+ users = []
 }: RisksClientProps) {
  const router = useRouter();
  const supabase = createBrowserClient();
@@ -125,7 +125,7 @@ export default function RisksClient({
  low: 2,
  medium: 3,
  high: 4,
- very_high: 5,
+ very_high: 5
  };
  return probMap[probability] * probMap[impact];
  };
@@ -176,7 +176,7 @@ export default function RisksClient({
  event: "*",
  schema: "public",
  table: "project_risks",
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  () => {
  loadRisks();
@@ -285,7 +285,7 @@ const riskMatrix = useMemo(() => {
  r.review_date && 
  r.status !== "closed" && 
  isBefore(parseISO(r.review_date), new Date())
- ).length,
+ ).length
  };
  return stats;
  }, [risks]);
@@ -349,7 +349,7 @@ const riskMatrix = useMemo(() => {
  ...riskData,
  title: `${risk.title} (Copy)`,
  status: "identified",
- identified_date: new Date().toISOString().split("T")[0],
+ identified_date: new Date().toISOString().split("T")[0]
  })
  .select()
  .single();

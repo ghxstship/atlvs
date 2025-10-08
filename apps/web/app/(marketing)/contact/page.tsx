@@ -1,22 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Globe,
-  Mail,
-  MapPin,
-  MessageCircle,
-  MessageSquare,
-  Phone,
-  Users,
-} from 'lucide-react';
+import { ArrowRight, Globe, Mail, MapPin, MessageCircle, MessageSquare, Phone, Users } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -27,8 +18,8 @@ export const metadata: Metadata = {
     title: 'Contact Us - We Actually Respond | GHXSTSHIP',
     description:
       "Reach the GHXSTSHIP team for support, sales, and partnerships. We answer emails, solve problems, and don't ghost you.",
-    url: 'https://ghxstship.com/contact',
-  },
+    url: 'https://ghxstship.com/contact'
+  }
 };
 
 const contactStats = [
@@ -44,28 +35,28 @@ const contactMethods = [
     title: 'Email Support',
     description: 'Talk with product specialists who understand production ops.',
     contact: 'support@ghxstship.com',
-    response: 'Replies within 24 hours',
+    response: 'Replies within 24 hours'
   },
   {
     icon: MessageSquare,
     title: 'Sales Inquiries',
     description: 'Discover the right plan, integrations, and onboarding program.',
     contact: 'sales@ghxstship.com',
-    response: 'Replies within 4 hours',
+    response: 'Replies within 4 hours'
   },
   {
     icon: Users,
     title: 'Partnerships',
     description: 'Collaborate on co-marketing, integrations, or strategic alliances.',
     contact: 'partnerships@ghxstship.com',
-    response: 'Replies within 48 hours',
+    response: 'Replies within 48 hours'
   },
   {
     icon: Phone,
     title: 'Phone Support',
     description: 'Speak to a human—no endless phone trees.',
     contact: '+1 (555) 123-4567',
-    response: 'Mon–Fri, 9am–6pm PST',
+    response: 'Mon–Fri, 9am–6pm PST'
   },
 ];
 
@@ -77,7 +68,7 @@ const offices = [
     phone: '+1 (555) 123-4567',
     email: 'sf@ghxstship.com',
     timezone: 'PST',
-    isHeadquarters: true,
+    isHeadquarters: true
   },
   {
     city: 'New York',
@@ -85,7 +76,7 @@ const offices = [
     zipcode: 'New York, NY 10013',
     phone: '+1 (555) 987-6543',
     email: 'ny@ghxstship.com',
-    timezone: 'EST',
+    timezone: 'EST'
   },
   {
     city: 'London',
@@ -93,30 +84,30 @@ const offices = [
     zipcode: 'London W1C 1DX, UK',
     phone: '+44 20 7123 4567',
     email: 'london@ghxstship.com',
-    timezone: 'GMT',
+    timezone: 'GMT'
   },
 ];
 
 const faqs = [
   {
     question: 'How do I get started with GHXSTSHIP?',
-    answer: 'Launch a free 14-day trial of ATLVS or OPENDECK—no credit card required. Explore features with guided tours and onboarding resources.',
+    answer: 'Launch a free 14-day trial of ATLVS or OPENDECK—no credit card required. Explore features with guided tours and onboarding resources.'
   },
   {
     question: 'Do you offer enterprise pricing?',
-    answer: 'Yes. Our sales team will craft a plan that includes volume licensing, implementation support, and dedicated success managers.',
+    answer: 'Yes. Our sales team will craft a plan that includes volume licensing, implementation support, and dedicated success managers.'
   },
   {
     question: 'Can GHXSTSHIP integrate with our existing tools?',
-    answer: 'Absolutely. We offer Slack, Asana, and finance integrations out-of-the-box, plus an API for custom workflows.',
+    answer: 'Absolutely. We offer Slack, Asana, and finance integrations out-of-the-box, plus an API for custom workflows.'
   },
   {
     question: 'What support options are available?',
-    answer: '24/7 email support, live chat during business hours, a comprehensive knowledge base, and guided training sessions.',
+    answer: '24/7 email support, live chat during business hours, a comprehensive knowledge base, and guided training sessions.'
   },
   {
     question: 'Is my data secure?',
-    answer: 'We are SOC 2 Type II certified, GDPR compliant, and encrypt data at rest and in transit. Security is prioritized in every release.',
+    answer: 'We are SOC 2 Type II certified, GDPR compliant, and encrypt data at rest and in transit. Security is prioritized in every release.'
   },
 ];
 

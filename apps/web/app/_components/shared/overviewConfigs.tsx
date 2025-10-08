@@ -11,7 +11,7 @@ export const projectsOverviewConfig: OverviewConfig = {
  milestones: "project_milestones",
  risks: "project_risks",
  files: "project_files",
- activity: "activity_logs",
+ activity: "activity_logs"
  },
  metrics: [
  {
@@ -22,7 +22,7 @@ export const projectsOverviewConfig: OverviewConfig = {
  icon: FolderOpen,
  iconColor: "text-primary",
  trend: (data) => data.main?.length > 0 ? "up" : "neutral",
- route: "/projects",
+ route: "/projects"
  },
  {
  id: "completion-rate",
@@ -35,7 +35,7 @@ export const projectsOverviewConfig: OverviewConfig = {
  },
  icon: Target,
  iconColor: "text-info",
- route: "/projects/tasks",
+ route: "/projects/tasks"
  },
  {
  id: "total-budget",
@@ -46,7 +46,7 @@ export const projectsOverviewConfig: OverviewConfig = {
  },
  icon: DollarSign,
  iconColor: "text-success",
- route: "/projects?view=budget",
+ route: "/projects?view=budget"
  },
  {
  id: "team-members",
@@ -60,7 +60,7 @@ export const projectsOverviewConfig: OverviewConfig = {
  },
  icon: Users,
  iconColor: "text-purple-500",
- route: "/projects/team",
+ route: "/projects/team"
  },
  ],
  statusFields: {
@@ -71,7 +71,7 @@ export const projectsOverviewConfig: OverviewConfig = {
  { value: "on_hold", label: "On Hold", color: CHART_COLORS.warning, icon: PauseCircle },
  { value: "completed", label: "Completed", color: CHART_COLORS.info, icon: CheckCircle2 },
  { value: "cancelled", label: "Cancelled", color: CHART_COLORS.error, icon: XCircle },
- ],
+ ]
  },
  quickActions: [
  { id: "new", label: "New Project", icon: Plus, route: "/projects?action=create", variant: "default" },
@@ -80,7 +80,7 @@ export const projectsOverviewConfig: OverviewConfig = {
  { id: "risks", label: "Risks", icon: AlertTriangle, route: "/projects/risks" },
  { id: "reports", label: "Reports", icon: BarChart3, route: "/projects/reports" },
  { id: "settings", label: "Settings", icon: Settings, route: "/projects/settings" },
- ],
+ ]
 };
 
 // Activations Module Configuration
@@ -88,7 +88,7 @@ export const activationsOverviewConfig: OverviewConfig = {
  module: "Activations",
  tables: {
  main: "project_activations",
- activity: "activity_logs",
+ activity: "activity_logs"
  },
  metrics: [
  {
@@ -98,7 +98,7 @@ export const activationsOverviewConfig: OverviewConfig = {
  subtitle: (data) => `${data.main?.filter((a: unknown) => a.status === "active").length || 0} active`,
  icon: Megaphone,
  iconColor: "text-primary",
- route: "/projects/activations",
+ route: "/projects/activations"
  },
  {
  id: "upcoming",
@@ -106,7 +106,7 @@ export const activationsOverviewConfig: OverviewConfig = {
  query: (data) => data.main?.filter((a: unknown) => a.status === "scheduled").length || 0,
  icon: Calendar,
  iconColor: "text-warning",
- route: "/projects/activations?status=scheduled",
+ route: "/projects/activations?status=scheduled"
  },
  {
  id: "total-budget",
@@ -116,7 +116,7 @@ export const activationsOverviewConfig: OverviewConfig = {
  return `$${(total / 1000).toFixed(0)}K`;
  },
  icon: DollarSign,
- iconColor: "text-success",
+ iconColor: "text-success"
  },
  {
  id: "completion",
@@ -124,7 +124,7 @@ export const activationsOverviewConfig: OverviewConfig = {
  query: (data) => data.main?.filter((a: unknown) => a.status === "completed").length || 0,
  icon: CheckCircle2,
  iconColor: "text-info",
- route: "/projects/activations?status=completed",
+ route: "/projects/activations?status=completed"
  },
  ],
  statusFields: {
@@ -135,13 +135,13 @@ export const activationsOverviewConfig: OverviewConfig = {
  { value: "active", label: "Active", color: CHART_COLORS.success, icon: Zap },
  { value: "completed", label: "Completed", color: CHART_COLORS.info, icon: CheckCircle2 },
  { value: "cancelled", label: "Cancelled", color: CHART_COLORS.error, icon: XCircle },
- ],
+ ]
  },
  quickActions: [
  { id: "new", label: "New Activation", icon: Plus, route: "/projects/activations?action=create", variant: "default" },
  { id: "calendar", label: "Calendar", icon: Calendar, route: "/projects/activations?view=calendar" },
  { id: "reports", label: "Reports", icon: BarChart3, route: "/projects/activations/reports" },
- ],
+ ]
 };
 
 // Locations Module Configuration
@@ -149,7 +149,7 @@ export const locationsOverviewConfig: OverviewConfig = {
  module: "Locations",
  tables: {
  main: "locations",
- activity: "activity_logs",
+ activity: "activity_logs"
  },
  metrics: [
  {
@@ -159,7 +159,7 @@ export const locationsOverviewConfig: OverviewConfig = {
  subtitle: (data) => `${data.main?.filter((l: unknown) => l.availability_status === "available").length || 0} available`,
  icon: MapPin,
  iconColor: "text-primary",
- route: "/projects/locations",
+ route: "/projects/locations"
  },
  {
  id: "capacity",
@@ -170,7 +170,7 @@ export const locationsOverviewConfig: OverviewConfig = {
  },
  subtitle: () => "people",
  icon: Users,
- iconColor: "text-info",
+ iconColor: "text-info"
  },
  {
  id: "featured",
@@ -178,7 +178,7 @@ export const locationsOverviewConfig: OverviewConfig = {
  query: (data) => data.main?.filter((l: unknown) => l.is_featured).length || 0,
  icon: Star,
  iconColor: "text-warning",
- route: "/projects/locations?featured=true",
+ route: "/projects/locations?featured=true"
  },
  {
  id: "types",
@@ -188,7 +188,7 @@ export const locationsOverviewConfig: OverviewConfig = {
  return types.size;
  },
  icon: Building,
- iconColor: "text-purple-500",
+ iconColor: "text-purple-500"
  },
  ],
  statusFields: {
@@ -198,13 +198,13 @@ export const locationsOverviewConfig: OverviewConfig = {
  { value: "booked", label: "Booked", color: CHART_COLORS.warning, icon: Calendar },
  { value: "maintenance", label: "Maintenance", color: CHART_COLORS.muted, icon: Settings },
  { value: "unavailable", label: "Unavailable", color: CHART_COLORS.error, icon: XCircle },
- ],
+ ]
  },
  quickActions: [
  { id: "new", label: "Add Location", icon: Plus, route: "/projects/locations?action=create", variant: "default" },
  { id: "map", label: "Map View", icon: MapPin, route: "/projects/locations?view=map" },
  { id: "gallery", label: "Gallery", icon: Camera, route: "/projects/locations?view=gallery" },
- ],
+ ]
 };
 
 // Inspections Module Configuration
@@ -212,7 +212,7 @@ export const inspectionsOverviewConfig: OverviewConfig = {
  module: "Inspections",
  tables: {
  main: "project_inspections",
- activity: "activity_logs",
+ activity: "activity_logs"
  },
  metrics: [
  {
@@ -222,7 +222,7 @@ export const inspectionsOverviewConfig: OverviewConfig = {
  subtitle: (data) => `${data.main?.filter((i: unknown) => i.status === "scheduled").length || 0} scheduled`,
  icon: ClipboardCheck,
  iconColor: "text-primary",
- route: "/projects/inspections",
+ route: "/projects/inspections"
  },
  {
  id: "pass-rate",
@@ -234,7 +234,7 @@ export const inspectionsOverviewConfig: OverviewConfig = {
  return `${Math.round((passed / completed.length) * 100)}%`;
  },
  icon: Shield,
- iconColor: "text-success",
+ iconColor: "text-success"
  },
  {
  id: "avg-score",
@@ -247,7 +247,7 @@ export const inspectionsOverviewConfig: OverviewConfig = {
  },
  subtitle: () => "out of 100",
  icon: Target,
- iconColor: "text-info",
+ iconColor: "text-info"
  },
  {
  id: "follow-ups",
@@ -255,7 +255,7 @@ export const inspectionsOverviewConfig: OverviewConfig = {
  query: (data) => data.main?.filter((i: unknown) => i.follow_up_required).length || 0,
  icon: AlertTriangle,
  iconColor: "text-warning",
- route: "/projects/inspections?follow_up=true",
+ route: "/projects/inspections?follow_up=true"
  },
  ],
  statusFields: {
@@ -266,13 +266,13 @@ export const inspectionsOverviewConfig: OverviewConfig = {
  { value: "completed", label: "Completed", color: CHART_COLORS.success, icon: CheckCircle2 },
  { value: "failed", label: "Failed", color: CHART_COLORS.error, icon: XCircle },
  { value: "cancelled", label: "Cancelled", color: CHART_COLORS.muted, icon: XCircle },
- ],
+ ]
  },
  quickActions: [
  { id: "new", label: "Schedule Inspection", icon: Plus, route: "/projects/inspections?action=create", variant: "default" },
  { id: "calendar", label: "Calendar", icon: Calendar, route: "/projects/inspections?view=calendar" },
  { id: "reports", label: "Reports", icon: BarChart3, route: "/projects/inspections/reports" },
- ],
+ ]
 };
 
 // Files Module Configuration
@@ -280,7 +280,7 @@ export const filesOverviewConfig: OverviewConfig = {
  module: "Files",
  tables: {
  main: "project_files",
- activity: "activity_logs",
+ activity: "activity_logs"
  },
  metrics: [
  {
@@ -289,7 +289,7 @@ export const filesOverviewConfig: OverviewConfig = {
  query: (data) => data.main?.length || 0,
  icon: FileText,
  iconColor: "text-primary",
- route: "/projects/files",
+ route: "/projects/files"
  },
  {
  id: "storage-used",
@@ -300,7 +300,7 @@ export const filesOverviewConfig: OverviewConfig = {
  return `${gb.toFixed(1)} GB`;
  },
  icon: Database,
- iconColor: "text-info",
+ iconColor: "text-info"
  },
  {
  id: "recent-uploads",
@@ -312,7 +312,7 @@ export const filesOverviewConfig: OverviewConfig = {
  },
  subtitle: () => "today",
  icon: Upload,
- iconColor: "text-success",
+ iconColor: "text-success"
  },
  {
  id: "shared",
@@ -320,7 +320,7 @@ export const filesOverviewConfig: OverviewConfig = {
  query: (data) => data.main?.filter((f: unknown) => f.access_level === "public").length || 0,
  icon: Users,
  iconColor: "text-purple-500",
- route: "/projects/files?access=public",
+ route: "/projects/files?access=public"
  },
  ],
  statusFields: {
@@ -331,13 +331,13 @@ export const filesOverviewConfig: OverviewConfig = {
  { value: "video", label: "Videos", color: CHART_COLORS.warning, icon: Camera },
  { value: "archive", label: "Archives", color: CHART_COLORS.muted, icon: Archive },
  { value: "other", label: "Other", color: CHART_COLORS.muted, icon: FileText },
- ],
+ ]
  },
  quickActions: [
  { id: "upload", label: "Upload Files", icon: Upload, route: "/projects/files?action=upload", variant: "default" },
  { id: "folders", label: "Folders", icon: FolderOpen, route: "/projects/files?view=folders" },
  { id: "shared", label: "Shared", icon: Users, route: "/projects/files?filter=shared" },
- ],
+ ]
 };
 
 // Export all configurations
@@ -346,5 +346,5 @@ export const overviewConfigs = {
  activations: activationsOverviewConfig,
  locations: locationsOverviewConfig,
  inspections: inspectionsOverviewConfig,
- files: filesOverviewConfig,
+ files: filesOverviewConfig
 };

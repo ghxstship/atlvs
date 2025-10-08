@@ -12,7 +12,7 @@ const createCertificationSchema = z.object({
   status: z.enum(['active', 'expired', 'suspended', 'revoked']).default('active'),
   verification_url: z.string().url().optional(),
   attachment_url: z.string().url().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 export async function GET(

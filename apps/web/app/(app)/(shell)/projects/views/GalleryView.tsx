@@ -32,7 +32,7 @@ export default function ImageView({
   layout = 'grid',
   imageField = 'file_url',
   titleField = 'name',
-  subtitleField = 'description',
+  subtitleField = 'description'
 }: ImageViewProps) {
   const [selectedItem, setSelectedItem] = useState<(null);
 

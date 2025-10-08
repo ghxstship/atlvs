@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, Button, UnifiedInput } from '@ghxstship/ui';
+import { Card, Button, Input } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import type { CreateTrainingRecordData } from './types';
@@ -26,8 +26,10 @@ export default function CreateTrainingRecordClient({ orgId }: CreateTrainingReco
  notes: ''
  });
 
- useEffect(() => {
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
  loadData();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [orgId]);
 
  const loadData = async () => {

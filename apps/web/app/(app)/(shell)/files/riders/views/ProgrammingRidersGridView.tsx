@@ -11,7 +11,7 @@ import {
  DropdownMenu,
  DropdownMenuContent,
  DropdownMenuItem,
- DropdownMenuTrigger,
+ DropdownMenuTrigger
 } from '@ghxstship/ui';
 
 import type { ProgrammingRider } from '../types';
@@ -31,7 +31,7 @@ const STATUS_BADGE_CONFIG = {
  approved: { label: 'Approved', variant: 'success' as const },
  rejected: { label: 'Rejected', variant: 'destructive' as const },
  fulfilled: { label: 'Fulfilled', variant: 'success' as const },
- cancelled: { label: 'Cancelled', variant: 'secondary' as const },
+ cancelled: { label: 'Cancelled', variant: 'secondary' as const }
 };
 
 const PRIORITY_BADGE_CONFIG = {
@@ -39,7 +39,7 @@ const PRIORITY_BADGE_CONFIG = {
  medium: { label: 'Medium', variant: 'default' as const },
  high: { label: 'High', variant: 'warning' as const },
  critical: { label: 'Critical', variant: 'destructive' as const },
- urgent: { label: 'Urgent', variant: 'destructive' as const },
+ urgent: { label: 'Urgent', variant: 'destructive' as const }
 };
 
 const RIDER_KIND_CONFIG = {
@@ -52,7 +52,7 @@ const RIDER_KIND_CONFIG = {
  accommodation: { label: 'Accommodation', icon: '🏨', color: 'bg-pink-100 text-pink-800' },
  production: { label: 'Production', icon: '🎬', color: 'bg-indigo-100 text-indigo-800' },
  artist: { label: 'Artist', icon: '🎤', color: 'bg-teal-100 text-teal-800' },
- crew: { label: 'Crew', icon: '👥', color: 'bg-gray-100 text-gray-800' },
+ crew: { label: 'Crew', icon: '👥', color: 'bg-gray-100 text-gray-800' }
 };
 
 export default function ProgrammingRidersGridView({
@@ -60,7 +60,7 @@ export default function ProgrammingRidersGridView({
  loading,
  onEdit,
  onView,
- onDelete,
+ onDelete
 }: ProgrammingRidersGridViewProps) {
  if (loading) {
  return (

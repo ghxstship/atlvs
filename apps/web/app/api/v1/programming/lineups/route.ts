@@ -9,7 +9,7 @@ const CreateLineupSchema = z.object({
   stage: z.string().max(100).optional(),
   starts_at: z.string().datetime().optional(),
   ends_at: z.string().datetime().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 export async function GET(request: NextRequest) {
@@ -129,7 +129,7 @@ export async function POST(request: NextRequest) {
 
     const lineupData = {
       ...validatedData,
-      organization_id: membership.organization_id,
+      organization_id: membership.organization_id
     };
 
     const { data: lineup, error } = await supabase

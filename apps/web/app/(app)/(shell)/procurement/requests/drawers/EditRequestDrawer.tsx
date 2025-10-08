@@ -1,22 +1,10 @@
 'use client';
 
-import { Save, X } from "lucide-react";
-import { useState, useEffect } from 'react';
+import { Button, Input, Label, Save, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator, Textarea, X } from 'lucide-react';
+import { useEffect, useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { 
- Button,
- Input,
- Textarea,
- Select,
- SelectContent,
- SelectItem,
- SelectTrigger,
- SelectValue,
- Label,
- Separator
-} from '@ghxstship/ui';
-import { AppDrawer } from '@ghxstship/ui';
+import { AppDrawer, Button, Input, Label, Select, Separator } from '@ghxstship/ui';
 import { CreateProcurementRequestSchema, type CreateProcurementRequest } from '../types';
 import type { ProcurementRequest } from '../types';
 
@@ -49,6 +37,7 @@ export default function EditRequestDrawer({
  });
 
  // Reset form when request changes
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  if (request && open) {
  reset({
@@ -68,6 +57,7 @@ export default function EditRequestDrawer({
  items: request.items || []
  });
  }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [request, open, reset]);
 
  const onSubmit = async (data: CreateProcurementRequest) => {
@@ -106,7 +96,7 @@ export default function EditRequestDrawer({
 
  <div className="space-y-sm">
  <Label htmlFor="description">Description</Label>
- <Textarea
+ <textarea
  
  {...register('description')}
  placeholder="Enter request description"
@@ -244,7 +234,7 @@ export default function EditRequestDrawer({
  
  <div className="space-y-sm">
  <Label htmlFor="business_justification">Justification *</Label>
- <Textarea
+ <textarea
  
  {...register('business_justification')}
  placeholder="Provide detailed business justification for this request"

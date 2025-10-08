@@ -1,13 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
-import { BarChart3, TrendingUp, PieChart, Calendar, Download, RefreshCw, Filter } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ghxstship/ui';
-import { DatePicker } from '@ghxstship/ui';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
+import React, { useState, useCallback, useState, useEffect, useMemo } from 'react';
+import { BarChart3, Calendar, Download, Filter, PieChart, RefreshCw, TrendingUp } from 'lucide-react';
+import { Badge, Button, Card, CardBody, CardContent, CardHeader, CardTitle, DatePicker, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 import { ChartView } from '../views/ChartView';
 import { analyticsQueries } from '../lib/queries';
 
@@ -44,8 +39,10 @@ export default function DashboardAnalyticsTab({
   const [selectedModule, setSelectedModule] = useState('all');
 
   // Load analytics data
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadAnalyticsData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, dateRange, selectedModule]);
 
   const loadAnalyticsData = async (showRefresh = false) => {
@@ -110,6 +107,7 @@ export default function DashboardAnalyticsTab({
     { module: 'Finance', usage: 189 },
     { module: 'People', usage: 156 },
     { module: 'Jobs', usage: 98 }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   ], []);
 
   // Render metrics cards

@@ -24,7 +24,7 @@ const CreateCompanySchema = z.object({
   size: z.enum(['startup', 'small', 'medium', 'large', 'enterprise']).optional(),
   foundedYear: z.number().int().min(1800).max(new Date().getFullYear()).optional(),
   logoUrl: z.string().url().optional().or(z.literal('')),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 const UpdateCompanySchema = CreateCompanySchema.partial();
@@ -35,7 +35,7 @@ const QuerySchema = z.object({
   size: z.string().optional(),
   search: z.string().optional(),
   limit: z.string().transform(val => parseInt(val) || 50).optional(),
-  offset: z.string().transform(val => parseInt(val) || 0).optional(),
+  offset: z.string().transform(val => parseInt(val) || 0).optional()
 });
 
 async function getAuthenticatedUser(request: NextRequest) {

@@ -21,7 +21,7 @@ import {
   CreateLocationSchema,
   UpdateLocationSchema,
   CreateMilestoneSchema,
-  UpdateMilestoneSchema,
+  UpdateMilestoneSchema
 } from "../types";
 import { checkPermission } from "./permissions";
 
@@ -59,7 +59,7 @@ export class ProjectMutations {
         organization_id: orgId,
         created_by: userId,
         created_at: now,
-        updated_at: now,
+        updated_at: now
       };
 
       const { data, error } = await this.supabase
@@ -82,7 +82,7 @@ export class ProjectMutations {
         resource_id: data.id,
         action: 'created',
         details: { name: projectData.name },
-        created_at: now,
+        created_at: now
       }]);
 
       return { data, success: true };
@@ -112,7 +112,7 @@ export class ProjectMutations {
         .from('projects')
         .update({
           ...updates,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', projectId)
         .eq('organization_id', orgId)
@@ -133,7 +133,7 @@ export class ProjectMutations {
         resource_id: projectId,
         action: 'updated',
         details: updates,
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString()
       }]);
 
       return { data, success: true };
@@ -162,7 +162,7 @@ export class ProjectMutations {
         .from('projects')
         .update({
           status: 'cancelled',
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', projectId)
         .eq('organization_id', orgId);
@@ -176,7 +176,7 @@ export class ProjectMutations {
         resource_type: 'project',
         resource_id: projectId,
         action: 'deleted',
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString()
       }]);
 
       return { success: true };
@@ -222,7 +222,7 @@ export class TaskMutations {
         position: nextPosition,
         created_by: userId,
         created_at: now,
-        updated_at: now,
+        updated_at: now
       };
 
       const { data, error } = await this.supabase
@@ -246,7 +246,7 @@ export class TaskMutations {
         resource_id: data.id,
         action: 'created',
         details: { title: taskData.title },
-        created_at: now,
+        created_at: now
       }]);
 
       return { data, success: true };
@@ -274,7 +274,7 @@ export class TaskMutations {
         .update({
           ...updates,
           updated_at: new Date().toISOString(),
-          updated_by: userId,
+          updated_by: userId
         })
         .eq('id', taskId)
         .eq('organization_id', orgId)
@@ -296,7 +296,7 @@ export class TaskMutations {
         resource_id: taskId,
         action: 'updated',
         details: updates,
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString()
       }]);
 
       return { data, success: true };
@@ -333,7 +333,7 @@ export class TaskMutations {
         resource_type: 'task',
         resource_id: taskId,
         action: 'deleted',
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString()
       }]);
 
       return { success: true };
@@ -361,7 +361,7 @@ export class TaskMutations {
           .update({
             position,
             updated_at: new Date().toISOString(),
-            updated_by: userId,
+            updated_by: userId
           })
           .eq('id', id)
           .eq('organization_id', orgId)
@@ -406,7 +406,7 @@ export class FileMutations {
         organization_id: orgId,
         uploaded_by: userId,
         created_at: now,
-        updated_at: now,
+        updated_at: now
       };
 
       const { data, error } = await this.supabase
@@ -429,7 +429,7 @@ export class FileMutations {
         resource_id: data.id,
         action: 'uploaded',
         details: { name: fileData.name },
-        created_at: now,
+        created_at: now
       }]);
 
       return { data, success: true };
@@ -456,7 +456,7 @@ export class FileMutations {
         .from('project_files')
         .update({
           ...updates,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', fileId)
         .eq('organization_id', orgId)
@@ -528,7 +528,7 @@ export class RiskMutations {
         organization_id: orgId,
         created_by: userId,
         created_at: now,
-        updated_at: now,
+        updated_at: now
       };
 
       const { data, error } = await this.supabase
@@ -567,7 +567,7 @@ export class RiskMutations {
         .from('project_risks')
         .update({
           ...updates,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', riskId)
         .eq('organization_id', orgId)
@@ -612,7 +612,7 @@ export class InspectionMutations {
         organization_id: orgId,
         created_by: userId,
         created_at: now,
-        updated_at: now,
+        updated_at: now
       };
 
       const { data, error } = await this.supabase
@@ -658,7 +658,7 @@ export class ActivationMutations {
         ...activationData,
         organization_id: orgId,
         created_at: now,
-        updated_at: now,
+        updated_at: now
       };
 
       const { data, error } = await this.supabase
@@ -704,7 +704,7 @@ export class LocationMutations {
         organization_id: orgId,
         created_by: userId,
         created_at: now,
-        updated_at: now,
+        updated_at: now
       };
 
       const { data, error } = await this.supabase
@@ -747,7 +747,7 @@ export class MilestoneMutations {
         organization_id: orgId,
         created_by: userId,
         created_at: now,
-        updated_at: now,
+        updated_at: now
       };
 
       const { data, error } = await this.supabase
@@ -786,7 +786,7 @@ export class MilestoneMutations {
         .from('project_milestones')
         .update({
           ...updates,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', milestoneId)
         .eq('organization_id', orgId)

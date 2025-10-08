@@ -1,10 +1,9 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
-import { Card, Badge } from '@ghxstship/ui';
-import { StatusBadge } from "../../../../_components/ui"
-import { TrendingUp, TrendingDown, Minus, MoreHorizontal } from 'lucide-react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
+import { Badge, Card } from '@ghxstship/ui';
+import { Minus, MoreHorizontal, TrendingDown, TrendingUp } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
 // Utility function to calculate percentage change
@@ -134,6 +133,7 @@ export default function MetricWidget({
     return () => {
       subscription.unsubscribe();
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, config, organizationId, supabase]);
 
   const formatValue = (value: number, format: string) => {
@@ -143,7 +143,7 @@ export default function MetricWidget({
           style: 'currency',
           currency: 'USD',
           minimumFractionDigits: 0,
-          maximumFractionDigits: 0,
+          maximumFractionDigits: 0
         }).format(value);
       case 'percentage':
         return `${value.toFixed(1)}%`;
@@ -233,7 +233,7 @@ export default function MetricWidget({
                   {formatValue(value, metric.format)}
                 </p>
                 {metric.color && (
-                  <Badge variant="outline">
+                  <Badge variant="secondary">
                     {metric.label}
                   </Badge>
                 )}

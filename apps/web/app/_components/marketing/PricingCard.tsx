@@ -1,12 +1,10 @@
 'use client';
 
 
-import { Card, CardContent, CardHeader  } from '@ghxstship/ui';
-import { Badge  } from '@ghxstship/ui';
-import { Check, ArrowRight } from 'lucide-react';
+import { Badge, Button, Card, CardBody, CardContent, CardHeader } from '@ghxstship/ui';
+import { ArrowRight, Check } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { typography, anton } from '../lib/typography';
-import { Button } from '@ghxstship/ui';
+import { anton, typography } from '../lib/typography';
 
 interface PricingCardProps {
   title: string;

@@ -15,7 +15,7 @@ export default function CertificationAnalyticsView({
  stats,
  analytics,
  loading,
- analyticsLoading,
+ analyticsLoading
 }: CertificationAnalyticsViewProps) {
  if (loading || analyticsLoading) {
  return (

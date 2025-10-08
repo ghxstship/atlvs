@@ -10,7 +10,7 @@ import {
   createProfessionalProfile,
   updateProfessionalProfile,
   deleteProfessionalProfile,
-  updateProfileStatus,
+  updateProfileStatus
 } from '@/app/(app)/(shell)/profile/professional/lib/professionalService';
 
 async function getSupabase() {
@@ -21,7 +21,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -72,7 +72,7 @@ export async function GET(request: NextRequest) {
       hire_date_to: searchParams.get('hire_date_to') || undefined,
       completion_min: searchParams.get('completion_min') ? parseInt(searchParams.get('completion_min')!) : undefined,
       has_linkedin: searchParams.get('has_linkedin') === 'true',
-      has_website: searchParams.get('has_website') === 'true',
+      has_website: searchParams.get('has_website') === 'true'
     };
 
     const validatedFilters = professionalFilterSchema.parse(filters);
@@ -89,7 +89,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       ...result,
-      stats,
+      stats
     });
   } catch (error) {
     console.error('Error in GET /api/v1/profile/professional:', error);

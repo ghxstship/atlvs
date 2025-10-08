@@ -1,27 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Building,
-  Calendar,
-  GlassWater,
-  Key,
-  Sparkle,
-  Users,
-} from 'lucide-react';
+import { ArrowRight, Building, Calendar, GlassWater, Key, Sparkle, Users } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Corporate & Private Events | GHXSTSHIP',
   description:
-    'Deliver executive meetings, investor gatherings, and luxury client experiences with GHXSTSHIP’s white-glove event workflows.',
+    'Deliver executive meetings, investor gatherings, and luxury client experiences with GHXSTSHIP’s white-glove event workflows.'
 };
 
 const heroStats = [
@@ -35,41 +27,41 @@ const eventPillars = [
   {
     title: 'Executive Production',
     description: 'Board meetings, investor summits, and strategic retreats orchestrated with enterprise precision.',
-    icon: Building,
+    icon: Building
   },
   {
     title: 'Luxury Guest Services',
     description: 'Concierge support, bespoke itineraries, and amenity management for VIP attendees.',
-    icon: GlassWater,
+    icon: GlassWater
   },
   {
     title: 'Security & Protocol',
     description: 'Confidential briefings, security checks, and discreet vendor coordination for high-profile guests.',
-    icon: Key,
+    icon: Key
   },
   {
     title: 'Hybrid Experiences',
     description: 'Broadcast-ready production, simultaneous translation, and digital attendee hubs.',
-    icon: Sparkle,
+    icon: Sparkle
   },
 ];
 
 const serviceHighlights = [
   {
     title: 'Personalized Guest Journeys',
-    description: 'Capture preferences, dietary needs, and travel details to deliver white-glove touchpoints.',
+    description: 'Capture preferences, dietary needs, and travel details to deliver white-glove touchpoints.'
   },
   {
     title: 'Stakeholder Alignment',
-    description: 'Keep executives, communications teams, and venue partners aligned with centralized updates.',
+    description: 'Keep executives, communications teams, and venue partners aligned with centralized updates.'
   },
   {
     title: 'Confidential Planning',
-    description: 'Secure document sharing, NDAs, and restricted access ensure sensitive information stays protected.',
+    description: 'Secure document sharing, NDAs, and restricted access ensure sensitive information stays protected.'
   },
   {
     title: 'Impact & ROI Reporting',
-    description: 'Measure engagement, sponsorship ROI, and pipeline influence from every event.',
+    description: 'Measure engagement, sponsorship ROI, and pipeline influence from every event.'
   },
 ];
 
@@ -81,7 +73,7 @@ const caseStudies = [
     result: '100% incident-free · 95% attendee satisfaction · 50% faster planning · Seamless hybrid execution',
     quote:
       'GHXSTSHIP delivered the most professional, seamless shareholder meeting in our history. Every detail was flawless.',
-    author: 'Sarah Chen, Chief Communications Officer',
+    author: 'Sarah Chen, Chief Communications Officer'
   },
   {
     company: 'Private Equity Firm',
@@ -90,7 +82,7 @@ const caseStudies = [
     result: '10/10 satisfaction · 100% confidentiality · 40% higher client engagement · $25M new business',
     quote:
       'The attention to detail and discretion exceeded expectations. GHXSTSHIP knows how to deliver five-star experiences.',
-    author: 'Michael Torres, Managing Partner',
+    author: 'Michael Torres, Managing Partner'
   },
 ];
 

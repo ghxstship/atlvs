@@ -1,13 +1,8 @@
 'use client';
 
-import { Eye, Edit, Trash2, CheckCircle, XCircle, Clock, AlertTriangle } from "lucide-react";
+import { AlertTriangle, Badge, Button, Card, CheckCircle, Checkbox, Clock, Edit, Eye, Trash2, XCircle } from 'lucide-react';
 import { useState } from 'react';
-import { 
- Card, 
- Badge, 
- Button,
- Checkbox
-} from '@ghxstship/ui';
+import { Badge, Button, Card, Checkbox } from '@ghxstship/ui';
 import type { ProcurementRequest } from '../types';
 
 interface RequestGridViewProps {
@@ -114,10 +109,10 @@ export default function RequestGridView({
  {selectedRequests.length} request{selectedRequests.length !== 1 ? 's' : ''} selected
  </span>
  <div className="flex gap-sm">
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  Submit Selected
  </Button>
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  Delete Selected
  </Button>
  </div>

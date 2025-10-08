@@ -12,26 +12,8 @@
 
 import React, { useState, useCallback } from 'react';
 import { AssetViewState } from '../types';
-import { Button } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@ghxstship/ui';
-import {
-  Table,
-  Grid3X3,
-  List,
-  Kanban,
-  Calendar,
-  Gallery,
-  GitBranch,
-  BarChart3,
-  MoreHorizontal,
-  Settings
-} from 'lucide-react';
+import { Badge, Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@ghxstship/ui';
+import { BarChart3, Calendar, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Gallery, GitBranch, Grid3X3, Kanban, List, MoreHorizontal, Settings, Table } from 'lucide-react';
 
 interface ViewSwitcherProps {
   currentView: AssetViewState['viewType'];
@@ -121,6 +103,7 @@ export default function ViewSwitcher({
       onViewChange(viewType);
       setIsTransitioning(false);
     }, 100);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentView, onViewChange, isTransitioning]);
 
   // Keyboard navigation
@@ -129,6 +112,7 @@ export default function ViewSwitcher({
       event.preventDefault();
       handleViewChange(viewType);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [handleViewChange]);
 
   // Get view option by ID

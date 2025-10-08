@@ -5,7 +5,7 @@ import {
  Badge,
  Button,
  Card,
- Checkbox,
+ Checkbox
 } from "@ghxstship/ui";
 import type { ProgrammingLineup, LineupSort, LineupProject, LineupEvent } from "../types";
 import { STATUS_BADGE, PERFORMER_TYPE_BADGE } from "../types";
@@ -46,14 +46,14 @@ export default function ProgrammingLineupsGridView({
  onSort,
  users,
  projects,
- events,
+ events
 }: ProgrammingLineupsGridViewProps) {
 
  const formatTime = (timeString: string | null) => {
  if (!timeString) return "TBD";
  return new Date(timeString).toLocaleTimeString("en-US", {
  hour: "2-digit",
- minute: "2-digit",
+ minute: "2-digit"
  });
  };
 
@@ -66,7 +66,7 @@ export default function ProgrammingLineupsGridView({
  if (!amount || !currency) return null;
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

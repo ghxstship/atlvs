@@ -9,7 +9,7 @@ import {
   Download,
   Trash2,
   Share,
-  GripVertical,
+  GripVertical
 } from 'lucide-react';
 import { Card, Button, Badge, DropdownMenu } from '@ghxstship/ui';
 import type { DigitalAsset } from '../types';
@@ -37,7 +37,7 @@ export default function KanbanView({
   onMoveFile,
   groupBy,
   formatFileSize,
-  getCategoryIcon,
+  getCategoryIcon
 }: KanbanViewProps) {
   const [draggedFile, setDraggedFile] = useState<string | null>(null);
   const [wipLimits, setWipLimits] = useState<Record<string, number>({});
@@ -97,7 +97,7 @@ export default function KanbanView({
       public: { title: 'Public', color: 'bg-green-100 border-green-300' },
       team: { title: 'Team', color: 'bg-blue-100 border-blue-300' },
       restricted: { title: 'Restricted', color: 'bg-yellow-100 border-yellow-300' },
-      private: { title: 'Private', color: 'bg-red-100 border-red-300' },
+      private: { title: 'Private', color: 'bg-red-100 border-red-300' }
     };
 
     return configs[groupKey as keyof typeof configs] || configs.other;

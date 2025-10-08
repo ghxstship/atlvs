@@ -30,7 +30,7 @@ const exportConfigSchema = z.object({
  filename: z.string().min(1, 'Filename is required'),
  includeHeaders: z.boolean().default(true),
  includeMetadata: z.boolean().default(false),
- notes: z.string().optional(),
+ notes: z.string().optional()
 });
 
 type ExportConfigFormData = z.infer<typeof exportConfigSchema>;
@@ -55,7 +55,7 @@ const FORMAT_ICONS = {
  csv: FileSpreadsheet,
  xlsx: FileSpreadsheet,
  json: FileJson,
- pdf: FileImage,
+ pdf: FileImage
 };
 
 export default function ExportDrawer({
@@ -63,7 +63,7 @@ export default function ExportDrawer({
  onClose,
  selectedSizings,
  totalCount,
- onExport,
+ onExport
 }: ExportDrawerProps) {
  const [currentStep, setCurrentStep] = useState(0);
  
@@ -82,8 +82,8 @@ export default function ExportDrawer({
  includeFields: ['first_name', 'last_name', 'height', 'weight', 'shirt_size', 'pants_size'],
  filename: `uniform-sizing-export-${new Date().toISOString().split('T')[0]}`,
  includeHeaders: true,
- includeMetadata: false,
- },
+ includeMetadata: false
+ }
  });
 
  const watchedFormat = watch('format');
@@ -224,7 +224,7 @@ export default function ExportDrawer({
  </p>
  </div>
  </div>
- ),
+ )
  },
  {
  key: 'fields',
@@ -282,7 +282,7 @@ export default function ExportDrawer({
  <p className="text-sm text-destructive">{errors.includeFields.message}</p>
  )}
  </div>
- ),
+ )
  },
  {
  key: 'options',
@@ -351,7 +351,7 @@ export default function ExportDrawer({
  </div>
  </Card>
  </div>
- ),
+ )
  },
  ];
 

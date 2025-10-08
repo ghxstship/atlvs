@@ -1,7 +1,7 @@
 "use client";
 
 import { Target, Calendar, AlertCircle } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import { createBrowserClient } from "@ghxstship/auth";
 import {
@@ -10,7 +10,7 @@ import {
  Input,
  Select,
  Textarea,
- toast,
+ toast
 } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 
@@ -53,7 +53,7 @@ export default function EditMilestoneDrawer({
  onOpenChange,
  milestone,
  projects,
- onSuccess,
+ onSuccess
 }: EditMilestoneDrawerProps) {
  const router = useRouter();
  const supabase = createBrowserClient();
@@ -66,7 +66,7 @@ export default function EditMilestoneDrawer({
  description: "",
  due_date: "",
  progress: 0,
- status: "pending" as "pending" | "completed" | "overdue",
+ status: "pending" as "pending" | "completed" | "overdue"
  });
 
  const [errors, setErrors] = useState<Record<string, string>({});
@@ -80,7 +80,7 @@ export default function EditMilestoneDrawer({
  description: milestone.description || "",
  due_date: milestone.due_date,
  progress: milestone.progress,
- status: milestone.status,
+ status: milestone.status
  });
  }
  }, [milestone]);
@@ -140,7 +140,7 @@ export default function EditMilestoneDrawer({
  : formData.progress === 100 
  ? milestone.completed_at 
  : null,
- updated_at: new Date().toISOString(),
+ updated_at: new Date().toISOString()
  })
  .eq("id", milestone.id)
  .select()

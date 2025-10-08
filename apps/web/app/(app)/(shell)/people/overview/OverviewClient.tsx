@@ -13,6 +13,7 @@ import {
   CardContent,
   Badge,
   Button,
+  Skeleton
 } from '@ghxstship/ui'
 import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
 import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
@@ -24,7 +25,7 @@ import {
   Star,
   Network,
   List,
-  Calendar,
+  Calendar
 } from 'lucide-react'
 
 interface OverviewStats {
@@ -90,7 +91,7 @@ const usePeopleOverview = (supabase: SupabaseClient, orgId: string) => {
           totalRoles: roles.count ?? 0,
           totalCompetencies: competencies.count ?? 0,
           totalEndorsements: endorsements.count ?? 0,
-          totalShortlists: shortlists.count ?? 0,
+          totalShortlists: shortlists.count ?? 0
         })
       } catch (err) {
         console.error('Error loading people overview:', err)
@@ -106,8 +107,10 @@ const usePeopleOverview = (supabase: SupabaseClient, orgId: string) => {
     [supabase, orgId],
   )
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadStats('initial')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadStats])
 
   return {
@@ -115,7 +118,7 @@ const usePeopleOverview = (supabase: SupabaseClient, orgId: string) => {
     refreshing,
     stats,
     error,
-    refresh: () => loadStats('refresh'),
+    refresh: () => loadStats('refresh')
   }
 }
 

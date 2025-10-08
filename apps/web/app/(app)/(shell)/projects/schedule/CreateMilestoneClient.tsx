@@ -15,7 +15,7 @@ const createMilestoneSchema = z.object({
   title: z.string().min(2, 'Title is required'),
   description: z.string().optional(),
   due_at: z.string().min(1, 'Due date is required'),
-  project_id: z.string().min(1, 'Project is required'),
+  project_id: z.string().min(1, 'Project is required')
 });
 
 export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
@@ -33,8 +33,8 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
       title: '',
       description: '',
       due_at: '',
-      project_id: '',
-    },
+      project_id: ''
+    }
   });
 
   // Load projects when drawer opens
@@ -62,7 +62,7 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
         ...data,
         organization_id: orgId,
         status: 'pending',
-        due_at: new Date(data.due_at).toISOString(),
+        due_at: new Date(data.due_at).toISOString()
       };
 
       const { error: insertError } = await sb

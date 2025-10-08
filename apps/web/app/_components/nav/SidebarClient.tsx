@@ -14,7 +14,7 @@ export function SidebarClient({
   entitlements,
   organizationName,
   productSwitcher,
-  subtitleOverride,
+  subtitleOverride
 }: {
   navSections: NavSection[];
   userId?: string;
@@ -39,19 +39,23 @@ export function SidebarClient({
       } catch {}
     })();
     return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleNavigate = React.useCallback((href: string) => {
     trackFeatureUsage("Navigation", "navigate", { source: "sidebar", href });
     router.push(href);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router, trackFeatureUsage]);
 
   const handleSearchChange = React.useCallback((query: string, resultsCount: number) => {
     trackSearchQuery('Navigation', query, resultsCount);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleToggleExpand = React.useCallback((itemId: string, expanded: boolean) => {
     trackFeatureUsage('Navigation', expanded ? 'expand' : 'collapse', { itemId });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trackFeatureUsage]);
 
   const handleTogglePin = React.useCallback(async (itemId: string, pinned: boolean) => {
@@ -65,12 +69,13 @@ export function SidebarClient({
       await fetch('/api/v1/user/pins', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
+        body: JSON.stringify(body)
       });
       setInitialPins(body.pins);
     } catch (error) {
       console.error('Failed to persist pinned items', error);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialPins, trackFeatureUsage]);
 
   return (

@@ -114,7 +114,7 @@ class PrivacyComplianceService {
       ipAddress: this.getClientIP(),
       userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : undefined,
       ...existing,
-      ...settings,
+      ...settings
     };
 
     // Update timestamp if settings changed
@@ -127,7 +127,7 @@ class PrivacyComplianceService {
     // Audit log the consent change
     await this.auditLogAction('consent_updated', userId, {
       oldSettings: existing,
-      newSettings: consentSettings,
+      newSettings: consentSettings
     });
 
     // Apply consent changes
@@ -190,7 +190,7 @@ class PrivacyComplianceService {
       userId,
       status: 'pending',
       requestedAt: new Date().toISOString(),
-      notes,
+      notes
     };
 
     this.privacyRequests.set(request.id, request);
@@ -198,7 +198,7 @@ class PrivacyComplianceService {
     // Audit log
     await this.auditLogAction('privacy_request_submitted', userId, {
       requestId: request.id,
-      type: request.type,
+      type: request.type
     });
 
     // Auto-process certain requests
@@ -243,7 +243,7 @@ class PrivacyComplianceService {
       await this.auditLogAction('privacy_request_completed', request.userId, {
         requestId,
         type: request.type,
-        processor,
+        processor
       });
 
     } catch (error) {
@@ -254,7 +254,7 @@ class PrivacyComplianceService {
         requestId,
         type: request.type,
         error: error instanceof Error ? error.message : 'Unknown error',
-        processor,
+        processor
       });
     }
 
@@ -270,7 +270,7 @@ class PrivacyComplianceService {
       analyticsData: userData.analytics,
       consentHistory: userData.consent,
       processingRecords: this.dataProcessingRecords,
-      dataRetention: this.config.dataRetentionPolicy,
+      dataRetention: this.config.dataRetentionPolicy
     };
   }
 
@@ -286,7 +286,7 @@ class PrivacyComplianceService {
     // Audit log the erasure
     await this.auditLogAction('data_erased', request.userId, {
       requestId: request.id,
-      erasedAt: new Date().toISOString(),
+      erasedAt: new Date().toISOString()
     });
   }
 
@@ -300,7 +300,7 @@ class PrivacyComplianceService {
     request.data = {
       export: userData,
       format: 'JSON',
-      exportedAt: new Date().toISOString(),
+      exportedAt: new Date().toISOString()
     };
   }
 
@@ -322,8 +322,8 @@ class PrivacyComplianceService {
         events: [], // Tracked events
       },
       consent: {
-        history: Array.from(this.consentSettings.get(userId) ? [this.consentSettings.get(userId)] : []),
-      },
+        history: Array.from(this.consentSettings.get(userId) ? [this.consentSettings.get(userId)] : [])
+      }
     };
   }
 
@@ -380,7 +380,7 @@ class PrivacyComplianceService {
       consentCompliance: await this.auditConsentCompliance(),
       dataRetention: await this.auditDataRetention(),
       processingRecords: await this.auditProcessingRecords(),
-      recommendations: [] as string[],
+      recommendations: [] as string[]
     };
 
     // Generate recommendations
@@ -404,7 +404,7 @@ class PrivacyComplianceService {
     return {
       totalConsents: consents.length,
       expiredConsents,
-      compliance: expiredConsents === 0 ? 'compliant' : 'needs_review',
+      compliance: expiredConsents === 0 ? 'compliant' : 'needs_review'
     };
   }
 
@@ -413,7 +413,7 @@ class PrivacyComplianceService {
     return {
       totalRecords: 0,
       overdueRecords: 0,
-      compliance: 'compliant',
+      compliance: 'compliant'
     };
   }
 
@@ -422,7 +422,7 @@ class PrivacyComplianceService {
       totalRecords: this.dataProcessingRecords.length,
       outdatedRecords: this.dataProcessingRecords.filter(r =>
         new Date(r.lastUpdated).getTime() < Date.now() - 180 * 24 * 60 * 60 * 1000 // 6 months
-      ).length,
+      ).length
     };
   }
 
@@ -500,7 +500,7 @@ class PrivacyComplianceService {
       userId,
       ipAddress: this.getClientIP(),
       userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : undefined,
-      details,
+      details
     };
 
     this.auditLog.push(logEntry);
@@ -545,7 +545,7 @@ class PrivacyComplianceService {
         recipients: ['GHXSTSHIP Analytics'],
         retentionPeriod: '26 months',
         dataSubjectRights: ['access', 'rectification', 'erasure', 'restriction', 'portability', 'objection'],
-        lastUpdated: new Date().toISOString(),
+        lastUpdated: new Date().toISOString()
       },
       {
         id: 'error-tracking',
@@ -555,7 +555,7 @@ class PrivacyComplianceService {
         recipients: ['Sentry'],
         retentionPeriod: '90 days',
         dataSubjectRights: ['access', 'erasure'],
-        lastUpdated: new Date().toISOString(),
+        lastUpdated: new Date().toISOString()
       },
       {
         id: 'user-preferences',
@@ -565,7 +565,7 @@ class PrivacyComplianceService {
         recipients: ['GHXSTSHIP Database'],
         retentionPeriod: 'Account lifetime',
         dataSubjectRights: ['access', 'rectification', 'erasure', 'portability'],
-        lastUpdated: new Date().toISOString(),
+        lastUpdated: new Date().toISOString()
       },
     ];
   }

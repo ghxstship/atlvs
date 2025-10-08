@@ -1,18 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import {
-  ChevronLeft,
-  ChevronRight,
-  Calendar as CalendarIcon,
-  Clock,
-  Eye,
-  Edit,
-  Download,
-  Trash2,
-  Share,
-  Plus,
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, Eye, Edit, Download, Trash2, Share, Plus, CalendarIcon } from 'lucide-react';
 import { Button, Card, Badge, DropdownMenu } from '@ghxstship/ui';
 import {
   format,
@@ -24,7 +13,7 @@ import {
   isSameMonth,
   isSameDay,
   addMonths,
-  subMonths,
+  subMonths
 } from 'date-fns';
 import type { DigitalAsset } from '../types';
 
@@ -51,7 +40,7 @@ export default function CalendarView({
   onDateSelect,
   selectedDate = new Date(),
   formatFileSize,
-  getCategoryIcon,
+  getCategoryIcon
 }: CalendarViewProps) {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [viewMode, setViewMode] = useState<'month' | 'week' | 'day'>('month');
@@ -107,7 +96,7 @@ export default function CalendarView({
         files: dayFiles,
         isCurrentMonth,
         isToday,
-        isSelected,
+        isSelected
       });
 
       day = addDays(day, 1);
@@ -130,7 +119,7 @@ export default function CalendarView({
       report: 'bg-orange-500',
       template: 'bg-cyan-500',
       policy: 'bg-red-500',
-      other: 'bg-gray-500',
+      other: 'bg-gray-500'
     };
     return colors[category as keyof typeof colors] || colors.other;
   };

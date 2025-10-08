@@ -13,7 +13,7 @@ import {
  SelectValue,
  Label,
  Checkbox,
- Badge,
+ Badge
 } from '@ghxstship/ui';
 import type { TravelRecord, TravelFormData, TravelType, VisaStatus, TravelStatus } from '../types';
 import {
@@ -23,7 +23,7 @@ import {
  COMMON_COUNTRIES,
  CURRENCIES,
  createEmptyFormData,
- validateTravelForm,
+ validateTravelForm
 } from '../types';
 
 interface CreateTravelRecordDrawerProps {
@@ -43,7 +43,7 @@ export default function CreateTravelRecordDrawer({
  record,
  loading = false,
  recentCountries = [],
- recentDestinations = [],
+ recentDestinations = []
 }: CreateTravelRecordDrawerProps) {
  const [formData, setFormData] = useState<TravelFormData>(createEmptyFormData());
  const [formErrors, setFormErrors] = useState<Record<string, string>({});
@@ -71,7 +71,7 @@ export default function CreateTravelRecordDrawer({
  currency: record.currency || 'USD',
  status: record.status,
  booking_reference: record.booking_reference || '',
- emergency_contact: record.emergency_contact || '',
+ emergency_contact: record.emergency_contact || ''
  });
  } else {
  setFormData(createEmptyFormData());
@@ -97,7 +97,7 @@ export default function CreateTravelRecordDrawer({
  const handleInputChange = (field: keyof TravelFormData, value: string | boolean) => {
  setFormData(prev => ({
  ...prev,
- [field]: value,
+ [field]: value
  }));
 
  if (formErrors[field as string]) {

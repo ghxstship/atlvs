@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Calendar, ExternalLink, Download, Mail, Phone, Globe, FileText } from 'lucide-react';
+import { ArrowRight, Calendar, Download, ExternalDownload, ExternalFileText, ExternalLink, FileText, Globe, Mail, Phone } from 'lucide-react';
 import { Anton } from 'next/font/google';
 import { MarketingSection } from '../../../_components/marketing';
 
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Press & Media - The Real Story Behind the Chaos | GHXSTSHIP',
     description: 'Press coverage and media kit for the production management company that actually works.',
-    url: 'https://ghxstship.com/company/press',
-  },
+    url: 'https://ghxstship.com/company/press'
+  }
 };
 
 const pressReleases = [
@@ -23,31 +23,31 @@ const pressReleases = [
     date: '2024-01-15',
     excerpt: 'Funding will support building more tools for production teams tired of juggling 47 different apps.',
     category: 'Funding',
-    featured: true,
+    featured: true
   },
   {
     title: 'GHXSTSHIP Launches AI-Powered Project Intelligence Features',
     date: '2024-01-10',
     excerpt: 'New AI capabilities help creative teams optimize workflows and predict project outcomes.',
-    category: 'Product',
+    category: 'Product'
   },
   {
     title: 'GHXSTSHIP Partners with Adobe to Streamline Creative Workflows',
     date: '2023-12-20',
     excerpt: 'Strategic partnership integrates GHXSTSHIP with Adobe Creative Suite for seamless collaboration.',
-    category: 'Partnership',
+    category: 'Partnership'
   },
   {
     title: 'GHXSTSHIP Surpasses 100,000 Creative Professionals on Platform',
     date: '2023-12-15',
     excerpt: 'Milestone reflects growing adoption of remote creative collaboration tools worldwide.',
-    category: 'Milestone',
+    category: 'Milestone'
   },
   {
     title: 'GHXSTSHIP Wins Best Creative Platform at 2023 SaaS Awards',
     date: '2023-11-30',
     excerpt: 'Recognition highlights platform\'s innovation in creative project management and collaboration.',
-    category: 'Award',
+    category: 'Award'
   },
 ];
 
@@ -57,35 +57,35 @@ const mediaCoverage = [
     publication: 'TechCrunch',
     date: '2024-01-12',
     excerpt: 'How GHXSTSHIP is enabling creative teams to work together seamlessly across the globe.',
-    url: 'https://techcrunch.com/ghxstship-remote-creative-work',
+    url: 'https://techcrunch.com/ghxstship-remote-creative-work'
   },
   {
     title: 'Top 10 SaaS Startups Transforming Creative Industries',
     publication: 'Forbes',
     date: '2024-01-08',
     excerpt: 'GHXSTSHIP featured among the most promising startups revolutionizing creative collaboration.',
-    url: 'https://forbes.com/top-creative-saas-startups',
+    url: 'https://forbes.com/top-creative-saas-startups'
   },
   {
     title: 'How AI is Reshaping Creative Project Management',
     publication: 'Fast Company',
     date: '2023-12-22',
     excerpt: 'Interview with GHXSTSHIP CEO on the role of AI in creative workflows.',
-    url: 'https://fastcompany.com/ai-creative-project-management',
+    url: 'https://fastcompany.com/ai-creative-project-management'
   },
   {
     title: 'The Rise of Global Creative Talent Networks',
     publication: 'Wired',
     date: '2023-12-18',
     excerpt: 'Deep dive into how platforms like GHXSTSHIP are connecting creative talent worldwide.',
-    url: 'https://wired.com/global-creative-talent-networks',
+    url: 'https://wired.com/global-creative-talent-networks'
   },
   {
     title: 'Remote Creative Teams: The New Normal',
     publication: 'Harvard Business Review',
     date: '2023-12-10',
     excerpt: 'Analysis of remote creative collaboration trends featuring GHXSTSHIP case studies.',
-    url: 'https://hbr.org/remote-creative-teams',
+    url: 'https://hbr.org/remote-creative-teams'
   },
 ];
 
@@ -94,25 +94,25 @@ const awards = [
     title: 'Best Creative Platform 2024',
     organization: 'Creative Industry Awards',
     date: '2024-01-20',
-    description: 'Recognized for innovation in creative collaboration tools',
+    description: 'Recognized for innovation in creative collaboration tools'
   },
   {
     title: 'Top 50 SaaS Companies to Watch',
     organization: 'TechCrunch',
     date: '2023-12-01',
-    description: 'Featured among the most promising SaaS startups',
+    description: 'Featured among the most promising SaaS startups'
   },
   {
     title: 'Innovation in Remote Work Award',
     organization: 'Remote Work Association',
     date: '2023-11-15',
-    description: 'Awarded for advancing remote creative collaboration',
+    description: 'Awarded for advancing remote creative collaboration'
   },
   {
     title: 'Customer Choice Award',
     organization: 'G2 Reviews',
     date: '2023-10-30',
-    description: 'Highest customer satisfaction in project management category',
+    description: 'Highest customer satisfaction in project management category'
   },
 ];
 
@@ -120,22 +120,22 @@ const mediaKit = [
   {
     title: 'Company Logos',
     description: 'High-resolution GHXSTSHIP logos in various formats',
-    items: ['SVG', 'PNG', 'EPS', 'PDF'],
+    items: ['SVG', 'PNG', 'EPS', 'PDF']
   },
   {
     title: 'Product Screenshots',
     description: 'High-quality screenshots of the GHXSTSHIP platform',
-    items: ['Dashboard', 'Project Views', 'Collaboration Tools', 'Mobile App'],
+    items: ['Dashboard', 'Project Views', 'Collaboration Tools', 'Mobile App']
   },
   {
     title: 'Executive Photos',
     description: 'Professional headshots of leadership team',
-    items: ['CEO', 'CTO', 'Head of Product', 'VP Engineering'],
+    items: ['CEO', 'CTO', 'Head of Product', 'VP Engineering']
   },
   {
     title: 'Company Information',
     description: 'Key facts, statistics, and company overview',
-    items: ['Fact Sheet', 'Company Timeline', 'Statistics', 'Boilerplate'],
+    items: ['Fact Sheet', 'Company Timeline', 'Statistics', 'Boilerplate']
   },
 ];
 

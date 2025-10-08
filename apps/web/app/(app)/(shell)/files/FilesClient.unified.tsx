@@ -11,7 +11,7 @@ import {
   Plus,
   Search,
   Play,
-  Trash2,
+  Trash2
 } from 'lucide-react';
 import { ModuleTemplate } from '@ghxstship/ui';
 import { filesModuleConfig } from '../../../../config/modules/files.config';
@@ -49,7 +49,7 @@ export default function FilesClientUnified({ user, orgId, translations = {} }: F
     name: user.user_metadata?.full_name || user.email || '',
     avatar: user.user_metadata?.avatar_url,
     role: user.role,
-    metadata: user.user_metadata,
+    metadata: user.user_metadata
   };
 
   return (

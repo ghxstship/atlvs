@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const BaseResponseSchema = z
   .object({
-    error: z.string().optional(),
+    error: z.string().optional()
   })
   .passthrough();
 
@@ -28,9 +28,9 @@ async function jsonFetch(url: string, init?: RequestInit) {
     ...init,
     headers: {
       'Content-Type': 'application/json',
-      ...(init?.headers ?? {}),
+      ...(init?.headers ?? {})
     },
-    credentials: 'include',
+    credentials: 'include'
   });
 }
 
@@ -52,7 +52,7 @@ export const IntegrationSettingsSchema = z
     syncFrequency: z.enum(['realtime', 'hourly', 'daily', 'weekly']).optional(),
     retryAttempts: z.number().min(0).max(10).optional(),
     timeout: z.number().positive().optional(),
-    rateLimitPerHour: z.number().positive().optional(),
+    rateLimitPerHour: z.number().positive().optional()
   })
   .partial();
 
@@ -70,7 +70,7 @@ export const IntegrationRecordSchema = z.object({
   settings: IntegrationSettingsSchema.optional(),
   last_sync: z.string().nullable().optional(),
   created_at: z.string().optional(),
-  updated_at: z.string().optional(),
+  updated_at: z.string().optional()
 });
 
 export type IntegrationRecord = z.infer<typeof IntegrationRecordSchema>;
@@ -78,14 +78,14 @@ export type IntegrationRecord = z.infer<typeof IntegrationRecordSchema>;
 export const AvailableIntegrationSchema = z.object({
   type: IntegrationTypeSchema,
   name: z.string(),
-  description: z.string(),
+  description: z.string()
 });
 
 export type AvailableIntegration = z.infer<typeof AvailableIntegrationSchema>;
 
 export const IntegrationsResponseSchema = z.object({
   integrations: z.array(IntegrationRecordSchema),
-  availableIntegrations: z.array(AvailableIntegrationSchema),
+  availableIntegrations: z.array(AvailableIntegrationSchema)
 });
 
 export type IntegrationsResponse = z.infer<typeof IntegrationsResponseSchema>;
@@ -96,7 +96,7 @@ export const CreateIntegrationInputSchema = z.object({
   enabled: z.boolean().optional().default(true),
   config: z.record(z.unknown()).default({}),
   credentials: z.record(z.unknown()).optional(),
-  settings: IntegrationSettingsSchema.optional(),
+  settings: IntegrationSettingsSchema.optional()
 });
 
 export type CreateIntegrationInput = z.infer<typeof CreateIntegrationInputSchema>;
@@ -109,7 +109,7 @@ export const UpdateIntegrationInputSchema = z
     config: z.record(z.unknown()).optional(),
     credentials: z.record(z.unknown()).optional(),
     settings: IntegrationSettingsSchema.optional(),
-    status: z.string().optional(),
+    status: z.string().optional()
   })
   .refine((value) => {
     const keysToCheck = Object.keys(value).filter(key => key !== 'id');
@@ -119,7 +119,7 @@ export const UpdateIntegrationInputSchema = z
 export type UpdateIntegrationInput = z.infer<typeof UpdateIntegrationInputSchema>;
 
 export const TestIntegrationInputSchema = z.object({
-  integrationId: z.string(),
+  integrationId: z.string()
 });
 
 export type TestIntegrationInput = z.infer<typeof TestIntegrationInputSchema>;
@@ -150,7 +150,7 @@ export async function createIntegration(input: CreateIntegrationInput): Promise<
   const payload = CreateIntegrationInputSchema.parse(input);
   const response = await jsonFetch('/api/v1/settings/integrations', {
     method: 'POST',
-    body: JSON.stringify(payload),
+    body: JSON.stringify(payload)
   });
   return handleResponse<IntegrationCreateResponse>(response);
 }
@@ -159,7 +159,7 @@ export async function updateIntegration(input: UpdateIntegrationInput): Promise<
   const payload = UpdateIntegrationInputSchema.parse(input);
   const response = await jsonFetch('/api/v1/settings/integrations', {
     method: 'PUT',
-    body: JSON.stringify(payload),
+    body: JSON.stringify(payload)
   });
   return handleResponse<IntegrationUpdateResponse>(response);
 }
@@ -167,7 +167,7 @@ export async function updateIntegration(input: UpdateIntegrationInput): Promise<
 export async function deleteIntegration(id: string): Promise<IntegrationDeleteResponse> {
   const response = await jsonFetch('/api/v1/settings/integrations', {
     method: 'DELETE',
-    body: JSON.stringify({ id }),
+    body: JSON.stringify({ id })
   });
   return handleResponse<IntegrationDeleteResponse>(response);
 }
@@ -176,7 +176,7 @@ export async function testIntegration(input: TestIntegrationInput): Promise<Inte
   const payload = TestIntegrationInputSchema.parse(input);
   const response = await jsonFetch('/api/v1/settings/integrations', {
     method: 'POST',
-    body: JSON.stringify({ action: 'test_integration', ...payload }),
+    body: JSON.stringify({ action: 'test_integration', ...payload })
   });
   return handleResponse<IntegrationTestResponse>(response);
 }

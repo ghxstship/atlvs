@@ -1,7 +1,7 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { Plus, FileText, BookOpen, GraduationCap, File, Clipboard, Star, Search, Download, Eye, Edit } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -68,8 +68,10 @@ export default function ResourcesClient() {
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchResources();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm, filterType]);
 
   const fetchResources = async () => {
@@ -279,7 +281,7 @@ export default function ResourcesClient() {
                 <div className="flex items-start justify-between mb-sm">
                   <div className="flex items-center cluster-sm">
                     <IconComponent className="w-icon-sm h-icon-sm color-accent" />
-                    <Badge variant="outline">
+                    <Badge variant="secondary">
                       {resource.status.replace('_', ' ')}
                     </Badge>
                     {resource.is_featured && (
@@ -305,14 +307,14 @@ export default function ResourcesClient() {
                 
                 <div className="flex items-center justify-between">
                   <div className="flex flex-wrap gap-xs">
-                    <Badge variant="outline">{resourceTypeLabels[resource.type]}</Badge>
-                    <Badge variant="outline">{resource.category}</Badge>
+                    <Badge variant="secondary">{resourceTypeLabels[resource.type]}</Badge>
+                    <Badge variant="secondary">{resource.category}</Badge>
                   </div>
                   
                   <div className="flex items-center cluster-sm">
                     <Button
                      
-                      variant="outline"
+                      variant="secondary"
                       onClick={(e: React.MouseEvent) => {
                         e.stopPropagation();
                         handleEdit(resource);
@@ -323,7 +325,7 @@ export default function ResourcesClient() {
                     {resource.file_url && (
                       <Button
                        
-                        variant="outline"
+                        variant="secondary"
                         onClick={(e: React.MouseEvent) => {
                           e.stopPropagation();
                           handleDownload(resource);

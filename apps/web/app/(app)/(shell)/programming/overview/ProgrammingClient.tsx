@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import {
  Button,
@@ -12,7 +12,7 @@ import {
  ListView,
  StateManagerProvider,
  ViewSwitcher,
- type DataRecord,
+ type DataRecord
 } from "@ghxstship/ui";
 import type { DataViewConfig, FieldConfig, FilterConfig, SortConfig } from "@ghxstship/ui/src/components/DataViews/types";
 import { Calendar, Filter, Search } from 'lucide-react';
@@ -44,14 +44,14 @@ export default function ProgrammingClient({ orgId }: { orgId: string }) {
  label: "Name",
  type: "text",
  sortable: true,
- filterable: true,
+ filterable: true
  },
  {
  key: "description",
  label: "Description",
  type: "text",
  sortable: false,
- filterable: true,
+ filterable: true
  },
  {
  key: "type",
@@ -62,42 +62,42 @@ export default function ProgrammingClient({ orgId }: { orgId: string }) {
  options: [
  { value: "event", label: "Event" },
  { value: "space", label: "Space" },
- ],
+ ]
  },
  {
  key: "event_date",
  label: "Event Date",
  type: "date",
  sortable: true,
- filterable: true,
+ filterable: true
  },
  {
  key: "start_time",
  label: "Start Time",
  type: "text",
  sortable: true,
- filterable: false,
+ filterable: false
  },
  {
  key: "end_time",
  label: "End Time",
  type: "text",
  sortable: true,
- filterable: false,
+ filterable: false
  },
  {
  key: "location",
  label: "Location",
  type: "text",
  sortable: true,
- filterable: true,
+ filterable: true
  },
  {
  key: "capacity",
  label: "Capacity",
  type: "number",
  sortable: true,
- filterable: true,
+ filterable: true
  },
  {
  key: "status",
@@ -109,21 +109,21 @@ export default function ProgrammingClient({ orgId }: { orgId: string }) {
  { value: "draft", label: "Draft" },
  { value: "published", label: "Published" },
  { value: "cancelled", label: "Cancelled" },
- ],
+ ]
  },
  {
  key: "record_type",
  label: "Record Type",
  type: "text",
  sortable: true,
- filterable: true,
+ filterable: true
  },
  {
  key: "created_at",
  label: "Created",
  type: "date",
  sortable: true,
- filterable: false,
+ filterable: false
  },
  ];
 
@@ -170,7 +170,7 @@ export default function ProgrammingClient({ orgId }: { orgId: string }) {
  status: event.status ?? null,
  record_type: "event",
  created_at: event.created_at ?? null,
- ...event,
+ ...event
  })),
  ...(spacesData ?? []).map((space: unknown) => ({
  id: space.id,
@@ -185,7 +185,7 @@ export default function ProgrammingClient({ orgId }: { orgId: string }) {
  status: space.availability ?? null,
  record_type: "space",
  created_at: space.created_at ?? null,
- ...space,
+ ...space
  })),
  ];
 
@@ -218,7 +218,7 @@ export default function ProgrammingClient({ orgId }: { orgId: string }) {
  onExport: (records: DataRecord[], format: string) => {
  },
  onImport: (records: DataRecord[]) => {
- },
+ }
  };
 
  return (

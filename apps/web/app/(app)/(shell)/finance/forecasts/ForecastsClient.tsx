@@ -1,25 +1,11 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, Skeleton, Drawer, type DataRecord } from '@ghxstship/ui';
-import { 
-  TrendingUp,
-  Plus,
-  Edit,
-  Trash2,
-  BarChart3,
-  Target,
-  Calendar,
-  DollarSign,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Activity,
-  PieChart
-} from 'lucide-react';
+import { Badge, Button, Card, DataGrid, Drawer, Skeleton, StateManagerProvider, ViewSwitcher, type DataRecord } from '@ghxstship/ui';
+import { Activity, AlertTriangle, BarChart3, Calendar, CheckCircle, Clock, DollarSign, Edit, PieChart, Plus, Target, Trash2, TrendingUp } from 'lucide-react';
 
 interface ForecastsClientProps {
   user: User;
@@ -63,8 +49,10 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadForecasts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, typeFilter, periodFilter]);
 
   const loadForecasts = async () => {
@@ -186,7 +174,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
   const formatCurrency = (amount: number, currency = 'USD') => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: currency
     }).format(amount);
   };
 

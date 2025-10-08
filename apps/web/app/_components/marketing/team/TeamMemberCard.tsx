@@ -1,4 +1,4 @@
-import { Card, CardContent, Badge } from '@ghxstship/ui';
+import { Badge, Card, CardBody, CardContent } from '@ghxstship/ui';
 import { MapPin, Users } from 'lucide-react';
 import { typography } from '../../lib/typography';
 
@@ -26,7 +26,7 @@ export function TeamMemberCard({ member, variant = 'default' }: TeamMemberCardPr
           {member.name}
         </h3>
         <p className="text-body-sm text-heading-4 color-accent mb-xs">{member.role}</p>
-        <Badge variant="outline" className="text-body-sm mb-sm">
+        <Badge variant="secondary" className="text-body-sm mb-sm">
           {member.department}
         </Badge>
         <div className="flex items-center justify-center gap-xs text-body-sm color-muted">

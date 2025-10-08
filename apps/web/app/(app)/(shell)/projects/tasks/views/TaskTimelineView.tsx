@@ -1,7 +1,7 @@
 "use client";
 
 import { AlertCircle, Briefcase, Calendar, Clock, ListTodo, Tag, TrendingUp, Users } from "lucide-react";
-import { useMemo } from "react";
+import { useMemo } from 'react';
 import { Badge, Card } from "@ghxstship/ui";
 import {
   differenceInDays,
@@ -11,7 +11,7 @@ import {
   isWithinInterval,
   parseISO,
   startOfMonth,
-  startOfWeek,
+  startOfWeek
 } from "date-fns";
 
 interface User {
@@ -86,7 +86,7 @@ export default function TaskTimelineView({ tasks, onViewTask, onEditTask }: Task
       thisWeek: [] as Task[],
       thisMonth: [] as Task[],
       later: [] as Task[],
-      noDueDate: [] as Task[],
+      noDueDate: [] as Task[]
     };
 
     tasks.forEach((task) => {
@@ -345,38 +345,38 @@ export default function TaskTimelineView({ tasks, onViewTask, onEditTask }: Task
       key: "overdue",
       title: "Overdue",
       icon: AlertCircle,
-      description: "Tasks that are past their due date and still require attention.",
+      description: "Tasks that are past their due date and still require attention."
     },
     {
       key: "today",
       title: "Due Today",
       icon: Clock,
-      description: "Tasks that must be completed today.",
+      description: "Tasks that must be completed today."
     },
     {
       key: "thisWeek",
       title: "This Week",
       icon: Calendar,
-      description: "Tasks scheduled to finish this week.",
+      description: "Tasks scheduled to finish this week."
     },
     {
       key: "thisMonth",
       title: "This Month",
       icon: Calendar,
-      description: "Tasks targeted for completion this month.",
+      description: "Tasks targeted for completion this month."
     },
     {
       key: "later",
       title: "Upcoming",
       icon: ListTodo,
-      description: "Tasks that are further out on the roadmap.",
+      description: "Tasks that are further out on the roadmap."
     },
     {
       key: "noDueDate",
       title: "No Due Date",
       icon: Tag,
       description: "Tasks that do not yet have a committed due date.",
-      showDate: false,
+      showDate: false
     },
   ];
 

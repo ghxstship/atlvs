@@ -19,7 +19,7 @@ import {
  SelectValue,
  Modal,
  Skeleton,
- useToastContext,
+ useToastContext
 } from '@ghxstship/ui';
 import {
  fetchIntegrations,
@@ -29,7 +29,7 @@ import {
  testIntegration,
  type IntegrationRecord,
  type AvailableIntegration,
- type CreateIntegrationInput,
+ type CreateIntegrationInput
 } from '@/lib/services/settingsIntegrationsClient';
 
 export default function IntegrationsSettingsClient() {
@@ -46,7 +46,7 @@ export default function IntegrationsSettingsClient() {
  name: '',
  type: 'webhook',
  enabled: true,
- config: {},
+ config: {}
  });
 
  const loadIntegrations = useCallback(async () => {
@@ -84,7 +84,7 @@ export default function IntegrationsSettingsClient() {
  try {
  await updateIntegration({
  id: integration.id,
- enabled: !integration.enabled,
+ enabled: !integration.enabled
  });
  toast.success('Integration updated');
  await loadIntegrations();
@@ -242,7 +242,7 @@ export default function IntegrationsSettingsClient() {
  onChange={(event: ChangeEvent<HTMLInputElement>) =>
  setFormData((prevState) => ({
  ...prevState,
- name: event.target.value,
+ name: event.target.value
  }))
  }
  placeholder="My Integration"
@@ -256,7 +256,7 @@ export default function IntegrationsSettingsClient() {
  onValueChange={(value) =>
  setFormData((prev: unknown) => ({
  ...prev,
- type: value as CreateIntegrationInput['type'],
+ type: value as CreateIntegrationInput['type']
  }))
  }
  >
@@ -282,7 +282,7 @@ export default function IntegrationsSettingsClient() {
  onChange={(event: ChangeEvent<HTMLInputElement>) =>
  setFormData((prev: unknown) => ({
  ...prev,
- config: { ...prev.config, url: event.target.value },
+ config: { ...prev.config, url: event.target.value }
  }))
  }
  />

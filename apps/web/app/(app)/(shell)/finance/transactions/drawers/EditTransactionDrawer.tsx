@@ -2,24 +2,8 @@
 
 import React, { useEffect, useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import {
-  Drawer,
-  Button,
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  Textarea,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  Label,
-  Checkbox,
-  UnifiedInput as Input
-} from '@ghxstship/ui';
-import { ArrowUpDown, Calendar } from 'lucide-react';
+import { ArrowUpDown, Button, Calendar, Card, CardContent, CardHeader, CardTitle, Checkbox, Drawer, Input as Input, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea } from 'lucide-react';
+import { Button, Card, CardContent, CardHeader, CardTitle, Checkbox, Drawer, Input, Label, Select } from '@ghxstship/ui';
 import type { Transaction, UpdateTransactionData } from '../types';
 
 interface EditTransactionDrawerProps {
@@ -78,7 +62,7 @@ export default function EditTransactionDrawer({
   onClose,
   transaction,
   isLoading = false,
-  onSubmit,
+  onSubmit
 }: EditTransactionDrawerProps) {
   const defaultValues = useMemo<EditTransactionForm>(() => ({
     title: transaction.title ?? '',
@@ -112,10 +96,12 @@ export default function EditTransactionDrawer({
     defaultValues
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isOpen) {
       reset(defaultValues);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultValues, isOpen, reset]);
 
   const reconciled = watch('reconciled');
@@ -190,7 +176,7 @@ export default function EditTransactionDrawer({
 
               <div className="grid gap-sm">
                 <Label htmlFor="transaction-description">Description</Label>
-                <Textarea
+                <textarea
                   id="transaction-description"
                   rows={3}
                   placeholder="Add context or notes"
@@ -357,7 +343,7 @@ export default function EditTransactionDrawer({
 
               <div className="grid gap-sm">
                 <Label htmlFor="transaction-notes">Internal Notes</Label>
-                <Textarea
+                <textarea
                   id="transaction-notes"
                   rows={3}
                   placeholder="Internal context for accounting teams"

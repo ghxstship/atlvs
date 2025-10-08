@@ -44,7 +44,7 @@ export default function TableView({
   onSelectionChange,
   loading = false,
   emptyMessage = "No data available",
-  className = "",
+  className = ""
 }: TableViewProps) {
   const [sortField, setSortField] = useState<string | null>(null);
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');

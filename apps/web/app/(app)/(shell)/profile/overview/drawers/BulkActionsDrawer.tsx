@@ -23,7 +23,7 @@ import {
  SelectValue,
  Alert,
  AlertDescription,
- Checkbox,
+ Checkbox
 } from '@ghxstship/ui';
 import type { ProfileOverview } from '../types';
 import { BULK_ACTIONS } from '../types';
@@ -31,8 +31,8 @@ import { BULK_ACTIONS } from '../types';
 const bulkActionSchema = z.object({
  action: z.enum(['activate', 'deactivate', 'delete']),
  confirmAction: z.boolean().refine(val => val === true, {
- message: 'You must confirm this action',
- }),
+ message: 'You must confirm this action'
+ })
 });
 
 type BulkActionFormData = z.infer<typeof bulkActionSchema>;
@@ -50,7 +50,7 @@ export default function BulkActionsDrawer({
  onClose,
  selectedProfiles,
  onExecute,
- loading = false,
+ loading = false
 }: BulkActionsDrawerProps) {
  const [selectedAction, setSelectedAction] = useState<'activate' | 'deactivate' | 'delete' | null>(null);
 
@@ -58,8 +58,8 @@ export default function BulkActionsDrawer({
  resolver: zodResolver(bulkActionSchema),
  defaultValues: {
  action: 'activate',
- confirmAction: false,
- },
+ confirmAction: false
+ }
  });
 
  const handleSubmit = async (data: BulkActionFormData) => {
@@ -81,22 +81,22 @@ export default function BulkActionsDrawer({
  description: 'Set the selected profiles to active status',
  icon: CheckCircle,
  color: 'success',
- warning: 'This will make the selected profiles active and accessible.',
+ warning: 'This will make the selected profiles active and accessible.'
  },
  deactivate: {
  title: 'Deactivate Profiles',
  description: 'Set the selected profiles to inactive status',
  icon: XCircle,
  color: 'warning',
- warning: 'This will make the selected profiles inactive and may restrict their access.',
+ warning: 'This will make the selected profiles inactive and may restrict their access.'
  },
  delete: {
  title: 'Delete Profiles',
  description: 'Permanently remove the selected profiles',
  icon: Trash2,
  color: 'destructive',
- warning: 'This action cannot be undone. All profile data will be permanently deleted.',
- },
+ warning: 'This action cannot be undone. All profile data will be permanently deleted.'
+ }
  };
  return details[action];
  };

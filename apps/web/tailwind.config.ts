@@ -1,7 +1,5 @@
 import type { Config } from 'tailwindcss';
 // Use JS runtime version to satisfy Node when loading Tailwind config
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import preset from '@ghxstship/config/tailwind-preset.js';
 
 export default {
@@ -37,7 +35,7 @@ export default {
         'container-md': '320px',
         'container-lg': '384px',
         'container-xl': '512px',
-        'container-2xl': '640px',
+        'container-2xl': '640px'
       },
       height: {
         // Icon sizes
@@ -81,7 +79,7 @@ export default {
         'screen-minus-header': 'calc(100vh - 64px)',
         'screen-minus-nav': 'calc(100vh - 120px)',
         'screen-minus-toolbar': 'calc(100vh - 200px)',
-        'screen-minus-xl': 'calc(100vh - 300px)',
+        'screen-minus-xl': 'calc(100vh - 300px)'
       },
       // CSS selector positioning tokens
       spacing: {
@@ -100,13 +98,13 @@ export default {
         'dropdown': '180px',
         'modal-sm': '320px',
         'modal-md': '420px',
-        'modal-lg': '500px',
+        'modal-lg': '500px'
       },
       maxWidth: {
         'compact': '140px',
-        'narrow': '150px',
-      },
-    },
+        'narrow': '150px'
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 } satisfies Config;

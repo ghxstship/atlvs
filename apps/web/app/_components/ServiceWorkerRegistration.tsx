@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 
 export function ServiceWorkerRegistration() {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
       // Register service worker
@@ -39,6 +40,7 @@ export function ServiceWorkerRegistration() {
       navigator.serviceWorker.addEventListener('controllerchange', () => {
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;

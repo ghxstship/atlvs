@@ -1,7 +1,7 @@
 "use client";
 
 import { ListTodo, Calendar, Clock, Users, AlertCircle, Tag, Plus, X } from "lucide-react";
-import { useState } from "react";
+import { useState } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import {
  AppDrawer,
@@ -9,7 +9,7 @@ import {
  Input,
  Select,
  Textarea,
- toast,
+ toast
 } from "@ghxstship/ui";
 import { format } from "date-fns";
 
@@ -42,7 +42,7 @@ export default function CreateTaskDrawer({
  projectId,
  projects,
  users,
- onSuccess,
+ onSuccess
 }: CreateTaskDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -58,7 +58,7 @@ export default function CreateTaskDrawer({
  start_date: "",
  due_date: "",
  estimated_hours: "",
- tags: [] as string[],
+ tags: [] as string[]
  });
 
  const [errors, setErrors] = useState<Record<string, string>({});
@@ -93,7 +93,7 @@ export default function CreateTaskDrawer({
  if (tag && !formData.tags.includes(tag)) {
  setFormData({
  ...formData,
- tags: [...formData.tags, tag],
+ tags: [...formData.tags, tag]
  });
  setTagInput("");
  }
@@ -103,7 +103,7 @@ export default function CreateTaskDrawer({
  const handleRemoveTag = (tag: string) => {
  setFormData({
  ...formData,
- tags: formData.tags.filter(t => t !== tag),
+ tags: formData.tags.filter(t => t !== tag)
  });
  };
 
@@ -133,7 +133,7 @@ export default function CreateTaskDrawer({
  due_date: formData.due_date || null,
  estimated_hours: formData.estimated_hours ? parseFloat(formData.estimated_hours) : null,
  tags: formData.tags.length > 0 ? formData.tags : null,
- position: 0,
+ position: 0
  })
  .select()
  .single();
@@ -153,7 +153,7 @@ export default function CreateTaskDrawer({
  start_date: "",
  due_date: "",
  estimated_hours: "",
- tags: [],
+ tags: []
  });
  setTagInput("");
  setErrors({});
@@ -180,7 +180,7 @@ export default function CreateTaskDrawer({
  start_date: "",
  due_date: "",
  estimated_hours: "",
- tags: [],
+ tags: []
  });
  setTagInput("");
  setErrors({});

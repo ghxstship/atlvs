@@ -9,7 +9,7 @@ import type {
   UpdatePipelineStage,
   CreatePipelineActivity,
   PipelineMetrics,
-  PipelineFilters,
+  PipelineFilters
 } from '../types';
 
 class PipelineService {
@@ -205,7 +205,7 @@ class PipelineService {
       average_deal_size: opportunities.length > 0 ? totalValue / opportunities.length : 0,
       average_sales_cycle: 0, // TODO: Calculate from date data
       conversion_rate: opportunities.length > 0 ? (wonOpps.length / opportunities.length) * 100 : 0,
-      stage_distribution: stageDistribution,
+      stage_distribution: stageDistribution
     };
   }
 

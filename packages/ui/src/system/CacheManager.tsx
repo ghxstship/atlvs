@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useCallback, useMemo } from 'react';
+import { tryCatch, Result, reportError } from '../utils/error-handling';
 
 // Cache configuration
 const CACHE_CONFIG = {

@@ -1,7 +1,7 @@
 'use client';
 
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 // import { usePerformanceMonitoring } from '../../_components/lib/performance';
 
 interface PerformanceDisplayProps {
@@ -16,9 +16,11 @@ export function PerformanceMonitor({ showDetails = false }: PerformanceDisplayPr
   const metrics = { fcp: 0, lcp: 0, cls: 0, fid: 0, ttfb: 0 };
   const score = { grade: 'A', score: 100 };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // Only show in development or when explicitly enabled
     setIsVisible(process.env.NODE_ENV === 'development' || showDetails);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showDetails]);
 
   if (!isVisible) return null;

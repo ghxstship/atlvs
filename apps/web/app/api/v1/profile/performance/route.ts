@@ -11,7 +11,7 @@ import {
   updatePerformanceReview,
   deletePerformanceReview,
   updateReviewStatus,
-  updateReviewVisibility,
+  updateReviewVisibility
 } from '@/app/(app)/(shell)/profile/performance/lib/performanceService';
 
 async function getSupabase() {
@@ -22,7 +22,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
       date_from: searchParams.get('date_from') || undefined,
       date_to: searchParams.get('date_to') || undefined,
       has_goals: searchParams.get('has_goals') === 'true',
-      promotion_recommended: searchParams.get('promotion_recommended') === 'true',
+      promotion_recommended: searchParams.get('promotion_recommended') === 'true'
     };
 
     const validatedFilters = performanceFilterSchema.parse(filters);
@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       ...result,
-      stats,
+      stats
     });
   } catch (error) {
     console.error('Error in GET /api/v1/profile/performance:', error);

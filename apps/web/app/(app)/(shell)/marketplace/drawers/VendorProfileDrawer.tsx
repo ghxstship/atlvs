@@ -26,7 +26,7 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  name: '',
  website: '',
  contactEmail: '',
- status: 'active',
+ status: 'active'
  });
 
  const [tabState, setTabState] = useState<'details' | 'edit' | 'comments' | 'activity'>('details');
@@ -37,7 +37,7 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  (async () => {
  const responseResult = await tryCatch(async () =>
  fetch('/api/v1/vendors?limit=100', {
- headers: { 'x-org-id': orgId },
+ headers: { 'x-org-id': orgId }
  })
  );
 
@@ -57,7 +57,7 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  name: found.display_name ?? found.business_name ?? '',
  website: found.website ?? '',
  contactEmail: found.email ?? '',
- status: found.status ?? 'active',
+ status: found.status ?? 'active'
  });
  } else {
  setVendor(null);
@@ -77,15 +77,15 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  method: 'PUT',
  headers: {
  'content-type': 'application/json',
- 'x-org-id': orgId,
+ 'x-org-id': orgId
  },
  body: JSON.stringify({
  id: vendorId,
  display_name: form.name,
  website: form.website || null,
  email: form.contactEmail || null,
- status: form.status,
- }),
+ status: form.status
+ })
  })
  );
 
@@ -193,7 +193,7 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  <span className="form-label">{t('vendor.primaryCategory')}:</span> {vendor.primary_category || '—'}
  </div>
  </div>
- ) : null,
+ ) : null
  },
  {
  key: 'edit',
@@ -265,7 +265,7 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  </Button>
  </div>
  </form>
- ) : null,
+ ) : null
  },
  {
  key: 'comments',
@@ -294,7 +294,7 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  </ul>
  )}
  </div>
- ),
+ )
  },
  {
  key: 'activity',
@@ -321,7 +321,7 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  </ul>
  )}
  </div>
- ),
+ )
  },
  ];
 

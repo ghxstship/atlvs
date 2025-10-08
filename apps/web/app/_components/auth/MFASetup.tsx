@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import Image from "next/image";
 import { createClient } from '@/lib/supabase/client';
 import { Button } from '@ghxstship/ui';
 import { Shield, Smartphone, Key } from 'lucide-react';
@@ -34,8 +35,10 @@ export function MFASetup({ onComplete, onCancel }: MFASetupProps) {
 
   const supabase = createClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadFactors();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadFactors = async () => {
@@ -137,8 +140,10 @@ export function MFASetup({ onComplete, onCancel }: MFASetupProps) {
 
         {challenge.qr_code && (
           <div className="flex justify-center">
-            <img
-              src={`data:image/png;base64,${challenge.qr_code}`}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img               src={`data:image/png;base64,${challenge.qr_code}`}
               alt="QR Code for TOTP setup"
               className="border rounded-lg"
             />

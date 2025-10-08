@@ -37,7 +37,7 @@ export default function LocationListView({
  onDuplicate,
  onNavigate,
  getTypeBadgeVariant,
- getAvailabilityBadgeVariant,
+ getAvailabilityBadgeVariant
 }: LocationListViewProps) {
  const visibleFields = fieldVisibility.filter((f) => f.visible);
 

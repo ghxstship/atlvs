@@ -1,9 +1,9 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { Activity, Award, Calendar, Clock, Edit, Eye, FileText, MoreHorizontal, Package2, Play, Plus, Search, Settings, Trash2, TrendingUp, User } from 'lucide-react';
 import { useState } from 'react';
 import { Card, Badge, Button, Checkbox } from '@ghxstship/ui';
 import type { CatalogItem } from '../types';
-import { formatCurrency, formatDate, getStatusColor, getTypeColor } from '../types';
+import { formatCurrency, formatDate, getTypeColor } from '../types';
 
 interface CatalogGridViewProps {
  items: CatalogItem[];
@@ -24,7 +24,7 @@ export default function CatalogGridView({
  onItemClick,
  onEditItem,
  onDeleteItem,
- onViewItem,
+ onViewItem
 }: CatalogGridViewProps) {
  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
@@ -165,7 +165,7 @@ export default function CatalogGridView({
  {onDeleteItem && (
  <Button
  size="sm"
- variant="destructive"
+ variant="error"
  onClick={(e) => {
  e.stopPropagation();
  onDeleteItem(item);

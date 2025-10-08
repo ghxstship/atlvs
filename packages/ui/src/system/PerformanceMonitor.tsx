@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Card, CardContent, CardHeader } from '../components/Card';
 import { Badge } from '../components/Badge';
+import { tryCatch, Result, reportError } from '../utils/error-handling';
 
 // Performance metrics interface
 interface PerformanceMetrics {
@@ -474,7 +475,7 @@ export function PerformanceDashboard() {
   }
 
   return (
-    <div className={`fixed bottom-4 right-4 z-50 transition-all ${isMinimized ? 'w-container-xs' : 'w-container-lg'}`}>
+    <div className={`fixed bottom-4 right-4 z-50 transition-all ${isMinimized ? 'w-48' : 'w-96'}`}>
       <Card className="shadow-popover border-2">
         <CardHeader className="p-md cursor-pointer" onClick={() => setIsMinimized(!isMinimized)}>
           <div className="flex items-center justify-between">
@@ -574,7 +575,7 @@ export function PerformanceDashboard() {
 
             {/* Network Tab */}
             {selectedTab === 'network' && (
-              <div className="gap-sm max-h-container-sm overflow-y-auto">
+              <div className="gap-sm max-h-64 overflow-y-auto">
                 {metrics.networkRequests.slice(-10).reverse().map((req, index) => (
                   <div key={index} className="p-sm bg-muted rounded text-xs">
                     <div className="flex justify-between items-center">
@@ -600,7 +601,7 @@ export function PerformanceDashboard() {
 
             {/* Components Tab */}
             {selectedTab === 'components' && (
-              <div className="gap-sm max-h-container-sm overflow-y-auto">
+              <div className="gap-sm max-h-64 overflow-y-auto">
                 {metrics.slowComponents.map((comp, index) => (
                   <div key={index} className="p-sm bg-muted rounded text-xs">
                     <div className="flex justify-between items-center">

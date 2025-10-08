@@ -9,7 +9,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@ghxstship/ui';
 import type { ProgrammingEntity } from '../types';
 
@@ -38,7 +38,7 @@ export function CalendarView<T extends ProgrammingEntity>({
   initialDate = new Date(),
   renderEvent,
   emptyMessage = 'No events scheduled',
-  className,
+  className
 }: CalendarViewProps<T>) {
   const [currentDate, setCurrentDate] = useState(initialDate);
 
@@ -89,7 +89,7 @@ export function CalendarView<T extends ProgrammingEntity>({
       calendarDays.push({
         date: new Date(year, month - 1, lastDayPrevMonth - i),
         isCurrentMonth: false,
-        events: [],
+        events: []
       });
     }
 
@@ -113,7 +113,7 @@ export function CalendarView<T extends ProgrammingEntity>({
       calendarDays.push({
         date,
         isCurrentMonth: true,
-        events: dayEvents,
+        events: dayEvents
       });
     }
 
@@ -123,7 +123,7 @@ export function CalendarView<T extends ProgrammingEntity>({
       calendarDays.push({
         date: new Date(year, month + 1, day),
         isCurrentMonth: false,
-        events: [],
+        events: []
       });
     }
 

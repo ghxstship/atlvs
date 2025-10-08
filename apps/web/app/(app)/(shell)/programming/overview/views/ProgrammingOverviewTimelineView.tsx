@@ -16,7 +16,7 @@ const actionIcons = {
  deleted: Trash2,
  approved: CheckCircle,
  cancelled: XCircle,
- completed: CheckCircle,
+ completed: CheckCircle
 };
 
 const actionColors = {
@@ -25,7 +25,7 @@ const actionColors = {
  deleted: 'text-red-600 bg-red-50',
  approved: 'text-green-600 bg-green-50',
  cancelled: 'text-red-600 bg-red-50',
- completed: 'text-purple-600 bg-purple-50',
+ completed: 'text-purple-600 bg-purple-50'
 };
 
 const typeIcons = {
@@ -36,7 +36,7 @@ const typeIcons = {
  space: Building,
  lineup: Music,
  call_sheet: FileText,
- itinerary: Calendar,
+ itinerary: Calendar
 };
 
 const typeColors = {
@@ -47,12 +47,12 @@ const typeColors = {
  space: 'bg-purple-100 text-purple-800',
  lineup: 'bg-pink-100 text-pink-800',
  call_sheet: 'bg-indigo-100 text-indigo-800',
- itinerary: 'bg-teal-100 text-teal-800',
+ itinerary: 'bg-teal-100 text-teal-800'
 };
 
 export default function ProgrammingOverviewTimelineView({
  activity,
- loading,
+ loading
 }: ProgrammingOverviewTimelineViewProps) {
  const groupedActivity = useMemo(() => {
  const groups: Record<string, ActivityItem[]> = {};
@@ -69,7 +69,7 @@ export default function ProgrammingOverviewTimelineView({
  .sort(([a], [b]) => new Date(b).getTime() - new Date(a).getTime())
  .map(([date, items]) => ({
  date,
- items: items.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()),
+ items: items.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
  }));
  }, [activity]);
 
@@ -119,7 +119,7 @@ export default function ProgrammingOverviewTimelineView({
  weekday: 'long',
  year: 'numeric',
  month: 'long',
- day: 'numeric',
+ day: 'numeric'
  })}
  </h3>
  <Badge variant="secondary" className="ml-auto">
@@ -188,7 +188,7 @@ export default function ProgrammingOverviewTimelineView({
  <p className="text-xs text-muted-foreground">
  {new Date(item.timestamp).toLocaleTimeString('en-US', {
  hour: '2-digit',
- minute: '2-digit',
+ minute: '2-digit'
  })}
  </p>
  </div>

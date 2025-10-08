@@ -1,24 +1,56 @@
 /**
- * GHXSTSHIP UI Package - Atomic Design System
- * Enterprise-Grade UI Components organized by atomic design principles
+ * @ghxstship/ui — Complete UI Component Library
+ * Production-grade components following Apple HIG 2030
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
  */
 
 // ========================================
-// ATOMIC DESIGN EXPORTS
+// CORE SYSTEM
+// ========================================
+
+// Design Tokens & Theme
+export * from './core/tokens';
+export * from './core/theme';
+
+// ========================================
+// LAYOUT SYSTEM
+// ========================================
+
+export * from './layout';
+
+// ========================================
+// DATA VIEWS
+// ========================================
+
+export * from './views';
+
+// ========================================
+// ATOMIC COMPONENTS
 // ========================================
 
 // Atoms - Single-purpose components
 export * from './atoms';
 
-// Molecules - Simple combinations
+// Molecules - Composite components
 export * from './molecules';
 
 // Organisms - Complex components
 export * from './organisms';
-export { Sidebar } from './components/Sidebar';
 
-// Templates - Page layouts
+// Templates - Page templates
 export * from './templates';
+
+// ========================================
+// UTILITIES & HOOKS
+// ========================================
+
+// Utilities
+export * from './utils';
+
+// Hooks
+export * from './hooks';
 
 // Patterns - Reusable patterns
 // export * from './patterns';
@@ -27,14 +59,16 @@ export * from './templates';
 // LEGACY EXPORTS (Backward Compatibility)
 // ========================================
 
-// Export unified design system tokens and providers (NOT atomic components to avoid duplicates)
+// Export design system tokens and providers directly from source
 export {
   DESIGN_TOKENS,
   SEMANTIC_TOKENS,
   getToken,
   generateCSSVariables,
+} from './tokens/unified-design-tokens';
+
+export {
   UnifiedThemeProvider,
-  GHXSTSHIPProvider,
   useTheme,
   useDesignTokens,
   useReducedMotion,
@@ -42,26 +76,46 @@ export {
   getCSSVariable,
   setCSSVariable,
   createThemeClasses,
+} from './providers/UnifiedThemeProvider';
+
+export {
   AccessibilityProvider,
   useAccessibility,
   useFocusManagement,
   useAnnouncements,
   useKeyboardNavigation,
   useLiveRegion,
-  cn,
-} from './index-unified';
+} from './accessibility/AccessibilityProvider';
 
-// Legacy component exports (backward compatibility - use atomic exports instead)
-// These are now exported via atomic structure above, keeping for compatibility
-export { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectSeparator } from './components/Select';
-export { Input } from './components/atomic/Input';
-export { Textarea } from './components/atomic/Textarea';
-export { Checkbox } from './components/atomic/Checkbox';
+export { cn } from './lib/utils';
 
-// Hooks
-export { useToast, ToastProvider } from './hooks/useToast';
-export type { Toast } from './hooks/useToast';
-export { useToastContext } from './organisms/Toast';
-export { useLocalStorage } from './hooks/useLocalStorage';
-export { useBulkOperations } from './hooks/useBulkOperations';
-export { useOptimisticUpdate } from './hooks/useOptimisticUpdate';
+// ========================================
+// PROVIDERS
+// ========================================
+
+export { StateManagerProvider } from './providers/StateManagerProvider';
+export { AdaptiveThemeProvider } from './providers/AdaptiveThemeProvider';
+
+// ========================================
+// COMPONENT ALIASES (Backward Compatibility)
+// ========================================
+
+// Drawer alias for AppDrawer
+export { Drawer as AppDrawer } from './layout/Drawer/Drawer';
+
+// Select sub-components (compatibility layer)
+// These are aliases for the native Select - apps should use the simple Select
+export { Select as SelectTrigger } from './atoms/Select/Select';
+export { Select as SelectContent } from './atoms/Select/Select';
+export { Select as SelectItem } from './atoms/Select/Select';
+export { Select as SelectValue } from './atoms/Select/Select';
+
+// GridView alias for DataGrid
+export { GridView as DataGrid } from './views/GridView/GridView';
+
+// KanbanView alias for KanbanBoard  
+export { KanbanView as KanbanBoard } from './views/KanbanView/KanbanView';
+
+// Note: All components are already exported via the atomic structure above
+// (atoms/molecules/organisms exports include all UI components)
+// All hooks are already exported via './hooks' export above

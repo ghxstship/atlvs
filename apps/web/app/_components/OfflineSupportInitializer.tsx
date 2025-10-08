@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { getOfflineSupportService } from '@ghxstship/infrastructure';
 
 export function OfflineSupportInitializer() {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // Initialize offline support service on client-side
     const initializeOfflineSupport = async () => {
@@ -16,6 +17,7 @@ export function OfflineSupportInitializer() {
     };
 
     initializeOfflineSupport();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null; // This component doesn't render anything

@@ -36,7 +36,7 @@ const ProfileSchema = z.object({
   location: z.string().optional(),
   timezone: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const ActivityLogSchema = z.object({
@@ -45,7 +45,7 @@ const ActivityLogSchema = z.object({
   action: z.string().min(1, 'Action is required'),
   description: z.string().optional(),
   metadata: z.record(z.any()).optional(),
-  created_at: z.date(),
+  created_at: z.date()
 });
 
 export const profileModuleConfig: ModuleConfig = {

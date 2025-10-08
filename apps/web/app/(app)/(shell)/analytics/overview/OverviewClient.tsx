@@ -1,32 +1,21 @@
 'use client'
 
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { SupabaseClient } from '@supabase/supabase-js'
-import { createBrowserClient } from '@ghxstship/auth'
+import { createBrowserClient } from '@ghxstship/auth';
+import { Activity, ArrowDownRight, ArrowUpRight, Badge, BarChart3, Button, Calendar, Card, CardContent, CardDescription, CardHeader, CardTitle, Clock, DollarSign, Grid, Minus, Target, TrendingUp, Users } from 'lucide-react';
 import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
   Badge,
   Button,
-} from '@ghxstship/ui'
-import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
-import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
-import {
-  Activity,
-  ArrowDownRight,
-  ArrowUpRight,
-  BarChart3,
-  Calendar,
-  Clock,
-  DollarSign,
-  Minus,
-  Target,
-  TrendingUp,
-  Users,
-} from 'lucide-react'
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  Skeleton
+} from '@ghxstship/ui';
+import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton';
+import { Grid, HStack, Stack } from '@ghxstship/ui/components/layouts';
 
 type ChangeType = 'increase' | 'decrease' | 'neutral'
 type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>
@@ -71,7 +60,7 @@ const formatCurrency = (amount: number, currency = 'USD') =>
   new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency,
-    maximumFractionDigits: 1,
+    maximumFractionDigits: 1
   }).format(amount)
 
 const formatTimestamp = (timestamp: string) => {
@@ -136,7 +125,7 @@ const useAnalyticsOverview = (supabase: SupabaseClient, organizationId: string) 
             change: 12.5,
             changeType: 'increase',
             icon: Target,
-            description: `${totalProjects} total projects`,
+            description: `${totalProjects} total projects`
           },
           {
             id: 'team-members',
@@ -145,7 +134,7 @@ const useAnalyticsOverview = (supabase: SupabaseClient, organizationId: string) 
             change: 8.2,
             changeType: 'increase',
             icon: Users,
-            description: 'Active team members',
+            description: 'Active team members'
           },
           {
             id: 'revenue',
@@ -154,7 +143,7 @@ const useAnalyticsOverview = (supabase: SupabaseClient, organizationId: string) 
             change: 15.3,
             changeType: 'increase',
             icon: DollarSign,
-            description: 'Total revenue this period',
+            description: 'Total revenue this period'
           },
           {
             id: 'events',
@@ -163,7 +152,7 @@ const useAnalyticsOverview = (supabase: SupabaseClient, organizationId: string) 
             change: -2.1,
             changeType: totalEvents > 0 ? 'decrease' : 'neutral',
             icon: Calendar,
-            description: 'Scheduled events',
+            description: 'Scheduled events'
           },
         ]
 
@@ -175,28 +164,28 @@ const useAnalyticsOverview = (supabase: SupabaseClient, organizationId: string) 
             type: 'project_created',
             description: 'New project "Blackwater Reverb" created',
             timestamp: new Date(Date.now() - 1000 * 60 * 30).toISOString(),
-            user: 'Captain Jack Sparrow',
+            user: 'Captain Jack Sparrow'
           },
           {
             id: '2',
             type: 'team_member_added',
             description: 'Elizabeth Swann joined the crew',
             timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
-            user: 'Will Turner',
+            user: 'Will Turner'
           },
           {
             id: '3',
             type: 'invoice_paid',
             description: 'Invoice #INV-001 marked as paid',
             timestamp: new Date(Date.now() - 1000 * 60 * 60 * 4).toISOString(),
-            user: 'Hector Barbossa',
+            user: 'Hector Barbossa'
           },
           {
             id: '4',
             type: 'event_scheduled',
             description: 'Main Deck Performance scheduled',
             timestamp: new Date(Date.now() - 1000 * 60 * 60 * 8).toISOString(),
-            user: 'Joshamee Gibbs',
+            user: 'Joshamee Gibbs'
           },
         ]
 
@@ -208,21 +197,21 @@ const useAnalyticsOverview = (supabase: SupabaseClient, organizationId: string) 
             name: 'Blackwater Reverb',
             category: 'Project',
             value: '$75,000',
-            change: 25.5,
+            change: 25.5
           },
           {
             id: '2',
             name: 'Captain Jack Sparrow',
             category: 'Team Member',
             value: '98% Rating',
-            change: 12.3,
+            change: 12.3
           },
           {
             id: '3',
             name: 'Main Deck Takeover',
             category: 'Event',
             value: '500 Attendees',
-            change: 18.7,
+            change: 18.7
           },
         ]
 
@@ -241,8 +230,10 @@ const useAnalyticsOverview = (supabase: SupabaseClient, organizationId: string) 
     [supabase, organizationId],
   )
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadOverviewData('initial')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadOverviewData])
 
   return {
@@ -252,7 +243,7 @@ const useAnalyticsOverview = (supabase: SupabaseClient, organizationId: string) 
     metrics,
     recentActivity,
     topPerformers,
-    refresh: () => loadOverviewData('refresh'),
+    refresh: () => loadOverviewData('refresh')
   }
 }
 
@@ -381,7 +372,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
                 </HStack>
               ))}
             </Stack>
-            <Button variant="outline" className="mt-lg w-full">
+            <Button variant="secondary" className="mt-lg w-full">
               {translations.viewAllActivity ?? 'View All Activity'}
             </Button>
           </CardContent>
@@ -397,7 +388,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
               {topPerformers.map((performer, index) => (
                 <HStack key={performer.id} justify="between" align="center">
                   <HStack spacing="sm" align="center">
-                    <Badge variant="outline">#{index + 1}</Badge>
+                    <Badge variant="secondary">#{index + 1}</Badge>
                     <Stack spacing="xs">
                       <span className="text-sm font-medium text-foreground">{performer.name}</span>
                       <span className="text-xs text-muted-foreground">{performer.category}</span>
@@ -410,7 +401,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
                 </HStack>
               ))}
             </Stack>
-            <Button variant="outline" className="mt-lg w-full">
+            <Button variant="secondary" className="mt-lg w-full">
               {translations.viewDetailedAnalytics ?? 'View Detailed Analytics'}
             </Button>
           </CardContent>
@@ -424,19 +415,19 @@ export default function OverviewClient({ organizationId, translations }: Overvie
         </CardHeader>
         <CardContent>
           <Grid cols={1} responsive={{ md: 3 }} spacing="md">
-            <Button variant="outline" className="justify-start">
+            <Button variant="secondary" className="justify-start">
               <HStack spacing="sm" align="center">
                 <BarChart3 className="h-icon-xs w-icon-xs" />
                 <span>{translations.createDashboard ?? 'Create Dashboard'}</span>
               </HStack>
             </Button>
-            <Button variant="outline" className="justify-start">
+            <Button variant="secondary" className="justify-start">
               <HStack spacing="sm" align="center">
                 <TrendingUp className="h-icon-xs w-icon-xs" />
                 <span>{translations.generateReport ?? 'Generate Report'}</span>
               </HStack>
             </Button>
-            <Button variant="outline" className="justify-start">
+            <Button variant="secondary" className="justify-start">
               <HStack spacing="sm" align="center">
                 <Clock className="h-icon-xs w-icon-xs" />
                 <span>{translations.scheduleExport ?? 'Schedule Export'}</span>

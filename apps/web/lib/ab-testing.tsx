@@ -63,7 +63,7 @@ export class ABTesting {
         test_id: testId,
         variant_id: variantId,
         conversion_event: event,
-        ...metadata,
+        ...metadata
       });
     }
 
@@ -73,7 +73,7 @@ export class ABTesting {
         test_id: testId,
         variant_id: variantId,
         conversion_event: event,
-        ...metadata,
+        ...metadata
       });
     }
 
@@ -85,7 +85,7 @@ export class ABTesting {
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'ab_test_page_view', {
         test_id: testId,
-        variant_id: variantId,
+        variant_id: variantId
       });
     }
   }
@@ -122,7 +122,7 @@ export const ACTIVE_AB_TESTS: ABTest[] = [
       { id: 'control', name: 'REVOLUTIONARY PRODUCTION MANAGEMENT PLATFORM', weight: 50 },
       { id: 'variant1', name: 'TRANSFORM YOUR CREATIVE WORKFLOW', weight: 25 },
       { id: 'variant2', name: 'THE COMPLETE PRODUCTION MANAGEMENT SOLUTION', weight: 25 },
-    ],
+    ]
   },
   {
     id: 'cta_button',
@@ -132,7 +132,7 @@ export const ACTIVE_AB_TESTS: ABTest[] = [
       { id: 'control', name: 'Get Started Free →', weight: 40 },
       { id: 'variant1', name: 'Start Free Trial', weight: 30 },
       { id: 'variant2', name: 'Try GHXSTSHIP Free', weight: 30 },
-    ],
+    ]
   },
   {
     id: 'pricing_display',
@@ -141,7 +141,7 @@ export const ACTIVE_AB_TESTS: ABTest[] = [
     variants: [
       { id: 'control', name: 'Show prices', weight: 50 },
       { id: 'variant1', name: 'Contact for pricing', weight: 50 },
-    ],
+    ]
   },
 ];
 
@@ -182,7 +182,7 @@ export function useABTest(testId: string) {
 export function ABTestVariant({
   testId,
   children,
-  variant: targetVariant,
+  variant: targetVariant
 }: {
   testId: string;
   children: React.ReactNode;

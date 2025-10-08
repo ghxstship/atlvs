@@ -20,7 +20,7 @@ const createSpaceSchema = z.object({
   amenities: z.string().optional(),
   availability_status: z.enum(['available', 'occupied', 'maintenance', 'reserved']),
   hourly_rate: z.number().min(0).optional(),
-  currency: z.string().optional(),
+  currency: z.string().optional()
 });
 
 export default function CreateSpaceClient({ orgId }: { orgId: string }) {
@@ -42,8 +42,8 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
       amenities: '',
       availability_status: 'available',
       hourly_rate: undefined,
-      currency: 'USD',
-    },
+      currency: 'USD'
+    }
   });
 
   const onSubmit = async (data: z.infer<typeof createSpaceSchema>) => {
@@ -57,7 +57,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
         capacity: data.capacity || null,
         hourly_rate: data.hourly_rate || null,
         created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       const { error: insertError } = await sb

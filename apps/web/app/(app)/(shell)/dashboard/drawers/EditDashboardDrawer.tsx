@@ -1,29 +1,11 @@
 "use client";
 
-import { Loader2, Save } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import {
-  AppDrawer,
-  Button,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  Switch,
-  Textarea,
-  toast,
-} from "@ghxstship/ui";
+import { AppDrawer, Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Loader2, Save, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Switch, Textarea, toast } from 'lucide-react';
+import { useEffect, useState, useCallback } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { AppDrawer, Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, Switch } from '@ghxstship/ui';
 import type { DashboardListItem } from "../types";
 
 const editDashboardSchema = z.object({
@@ -34,7 +16,7 @@ const editDashboardSchema = z.object({
   access_level: z.enum(["private", "team", "organization", "public"] as const),
   is_default: z.boolean().default(false),
   is_template: z.boolean().default(false),
-  tags: z.string().optional(),
+  tags: z.string().optional()
 });
 
 type EditDashboardForm = z.infer<typeof editDashboardSchema>;
@@ -69,7 +51,7 @@ function EditDashboardDrawer({
   onOpenChange,
   onClose,
   dashboard,
-  onSubmit,
+  onSubmit
 }: EditDashboardDrawerProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<EditDashboardForm>({
@@ -82,10 +64,11 @@ function EditDashboardDrawer({
       access_level: "team",
       is_default: false,
       is_template: false,
-      tags: "",
-    },
+      tags: ""
+    }
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!dashboard) {
       return;
@@ -99,8 +82,9 @@ function EditDashboardDrawer({
       access_level: dashboard.access_level ?? "team",
       is_default: dashboard.is_default ?? false,
       is_template: dashboard.is_template ?? false,
-      tags: tagsToInputValue(dashboard.tags),
+      tags: tagsToInputValue(dashboard.tags)
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dashboard, form]);
 
   const handleClose = () => {
@@ -114,7 +98,7 @@ function EditDashboardDrawer({
 
       await onSubmit({
         ...data,
-        tags: inputValueToTags(data.tags),
+        tags: inputValueToTags(data.tags)
       });
 
       handleClose();
@@ -153,7 +137,7 @@ function EditDashboardDrawer({
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Describe what this dashboard shows..." rows={3} {...field} />
+                  <textarea placeholder="Describe what this dashboard shows..." rows={3} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

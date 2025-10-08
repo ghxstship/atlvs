@@ -2,28 +2,19 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Anton } from 'next/font/google';
 import { Button } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Award,
-  Users,
-  Target,
-  Shield,
-  Heart,
-  Lightbulb,
-  Rocket,
-} from 'lucide-react';
+import { ArrowRight, Award, Heart, Lightbulb, Rocket, Shield, Target, Users } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 const anton = Anton({
   subsets: ['latin'],
   weight: ['400'],
-  display: 'swap',
+  display: 'swap'
 });
 
 export const metadata: Metadata = {
@@ -32,8 +23,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About GHXSTSHIP - Built by Production Veterans | GHXSTSHIP',
     description: 'Learn about GHXSTSHIP\'s mission, journey, and the experienced team revolutionizing creative production management.',
-    url: 'https://ghxstship.com/company/about',
-  },
+    url: 'https://ghxstship.com/company/about'
+  }
 };
 
 const stats = [
@@ -47,17 +38,17 @@ const missionPoints = [
   {
     icon: Target,
     title: 'PURPOSE-BUILT TOOLS',
-    description: 'We build software that actually works when the pressure is high and deadlines are non-negotiable.',
+    description: 'We build software that actually works when the pressure is high and deadlines are non-negotiable.'
   },
   {
     icon: Users,
     title: 'TEAM-FIRST DESIGN',
-    description: 'Every feature is designed with the people who use it in mind - not just what they need, but how they work.',
+    description: 'Every feature is designed with the people who use it in mind - not just what they need, but how they work.'
   },
   {
     icon: Shield,
     title: 'ENTERPRISE RELIABILITY',
-    description: 'When millions are on the line, you need systems that don\'t break. We\'ve built for that reality.',
+    description: 'When millions are on the line, you need systems that don\'t break. We\'ve built for that reality.'
   },
 ];
 
@@ -65,17 +56,17 @@ const values = [
   {
     icon: Heart,
     title: 'People First',
-    description: 'Creative professionals deserve tools that amplify their talents, not complicate their lives.',
+    description: 'Creative professionals deserve tools that amplify their talents, not complicate their lives.'
   },
   {
     icon: Lightbulb,
     title: 'Innovation Through Experience',
-    description: 'Every feature comes from years of hands-on production experience, not theoretical assumptions.',
+    description: 'Every feature comes from years of hands-on production experience, not theoretical assumptions.'
   },
   {
     icon: Rocket,
     title: 'Relentless Improvement',
-    description: 'We never stop pushing boundaries to make creative work more efficient and enjoyable.',
+    description: 'We never stop pushing boundaries to make creative work more efficient and enjoyable.'
   },
 ];
 
@@ -93,22 +84,22 @@ const leadership = [
   {
     name: 'Julian Clarkson',
     role: 'Founder & CEO',
-    bio: 'Former Formula 1 hospitality director who managed 1,000+ crew members. Built GHXSTSHIP after realizing existing tools were inadequate for real production demands.',
+    bio: 'Former Formula 1 hospitality director who managed 1,000+ crew members. Built GHXSTSHIP after realizing existing tools were inadequate for real production demands.'
   },
   {
     name: 'Sarah Chen',
     role: 'Chief Technology Officer',
-    bio: 'Former Netflix production technology lead. Pioneered digital workflow systems for major film studios and streaming platforms.',
+    bio: 'Former Netflix production technology lead. Pioneered digital workflow systems for major film studios and streaming platforms.'
   },
   {
     name: 'Marcus Thompson',
     role: 'VP of Product',
-    bio: 'Ex-Disney Imagineering director who designed operations for theme park openings and global entertainment events.',
+    bio: 'Ex-Disney Imagineering director who designed operations for theme park openings and global entertainment events.'
   },
   {
     name: 'Lisa Rodriguez',
     role: 'Chief Operating Officer',
-    bio: 'Former Universal Studios operations executive who managed logistics for blockbuster movie premieres and world tours.',
+    bio: 'Former Universal Studios operations executive who managed logistics for blockbuster movie premieres and world tours.'
   },
 ];
 
@@ -116,22 +107,22 @@ const awards = [
   {
     title: 'Best Production Management Platform',
     organization: 'Creative Industry Awards 2024',
-    description: 'Recognized for revolutionizing how creative teams manage complex productions.',
+    description: 'Recognized for revolutionizing how creative teams manage complex productions.'
   },
   {
     title: 'Innovation in SaaS',
     organization: 'TechCrunch Awards 2024',
-    description: 'Honored for building enterprise software that actually works in high-stakes creative environments.',
+    description: 'Honored for building enterprise software that actually works in high-stakes creative environments.'
   },
   {
     title: 'Best Workplace Culture',
     organization: 'Great Place to Work 2023',
-    description: 'Celebrated for our commitment to supporting creative professionals and fostering innovation.',
+    description: 'Celebrated for our commitment to supporting creative professionals and fostering innovation.'
   },
   {
     title: 'Fastest Growing SaaS Company',
     organization: 'Forrester Wave 2023',
-    description: 'Recognized for rapid adoption and market disruption in the creative technology space.',
+    description: 'Recognized for rapid adoption and market disruption in the creative technology space.'
   },
 ];
 
@@ -139,17 +130,17 @@ const relatedLinks = [
   {
     title: 'Our Solutions',
     description: 'Explore how GHXSTSHIP serves different creative industries and production types.',
-    href: '/solutions',
+    href: '/solutions'
   },
   {
     title: 'Careers',
     description: 'Join our team of production veterans building the future of creative operations.',
-    href: '/careers',
+    href: '/careers'
   },
   {
     title: 'Press & Media',
     description: 'Read the latest news and coverage about GHXSTSHIP from leading publications.',
-    href: '/press',
+    href: '/press'
   },
 ];
 

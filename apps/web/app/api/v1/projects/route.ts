@@ -19,7 +19,7 @@ const CreateProjectSchema = z.object({
   managerId: z.string().uuid().optional(),
   location: z.string().optional(),
   tags: z.array(z.string()).optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 const UpdateProjectSchema = CreateProjectSchema.partial();

@@ -1,22 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Award,
-  BarChart3,
-  Globe,
-  Handshake,
-  Lightbulb,
-  Rocket,
-  Users,
-} from 'lucide-react';
+import { ArrowRight, Award, BarChart3, Globe, Handshake, Lightbulb, Rocket, Users } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -27,8 +18,8 @@ export const metadata: Metadata = {
     title: 'Partnerships | GHXSTSHIP',
     description:
       'Join the GHXSTSHIP partner ecosystem. Integrate technology, co-launch solutions, and reach global production teams.',
-    url: 'https://ghxstship.com/partnerships',
-  },
+    url: 'https://ghxstship.com/partnerships'
+  }
 };
 
 const partnerStats = [
@@ -42,17 +33,17 @@ const partnerTracks = [
   {
     title: 'Technology Partners',
     description: 'Integrate your platform with ATLVS and OPENDECK to unlock automation, shared analytics, and a joint product roadmap.',
-    icon: Lightbulb,
+    icon: Lightbulb
   },
   {
     title: 'Solution Partners',
     description: 'Implement GHXSTSHIP for clients, deliver change management, and build managed service offerings that scale.',
-    icon: Handshake,
+    icon: Handshake
   },
   {
     title: 'Channel & Resellers',
     description: 'Grow revenue with localized marketing, lead sharing, and co-branded campaigns tailored to your territory.',
-    icon: Rocket,
+    icon: Rocket
   },
 ];
 
@@ -60,22 +51,22 @@ const partnerBenefits = [
   {
     title: 'Launch Support',
     description: 'Partner enablement, dedicated success managers, and technical validation ensure a smooth go-to-market.',
-    icon: Rocket,
+    icon: Rocket
   },
   {
     title: 'Revenue Programs',
     description: 'Tiered incentives, referral bonuses, and recurring revenue shares for long-term success.',
-    icon: BarChart3,
+    icon: BarChart3
   },
   {
     title: 'Co-Marketing Kits',
     description: 'Campaign assets, event sponsorships, and press opportunities to amplify your brand.',
-    icon: Globe,
+    icon: Globe
   },
   {
     title: 'Product Influence',
     description: 'Access to beta programs, roadmap councils, and direct collaboration with GHXSTSHIP product teams.',
-    icon: Lightbulb,
+    icon: Lightbulb
   },
 ];
 
@@ -83,17 +74,17 @@ const partnerProcess = [
   {
     step: '01',
     title: 'Apply & Align',
-    description: 'Share your offerings, customer segments, and goals. We’ll identify the best partnership track together.',
+    description: 'Share your offerings, customer segments, and goals. We’ll identify the best partnership track together.'
   },
   {
     step: '02',
     title: 'Enable & Integrate',
-    description: 'Complete enablement, build integrations or service packages, and finalize go-to-market plans.',
+    description: 'Complete enablement, build integrations or service packages, and finalize go-to-market plans.'
   },
   {
     step: '03',
     title: 'Launch & Grow',
-    description: 'Co-market your solution, activate success programs, and iterate with ongoing support from GHXSTSHIP.',
+    description: 'Co-market your solution, activate success programs, and iterate with ongoing support from GHXSTSHIP.'
   },
 ];
 
@@ -104,7 +95,7 @@ const successStories = [
     result: '300% revenue growth in 18 months',
     testimonial:
       'Partnering with GHXSTSHIP transformed our services business. We co-created offerings and tripled our revenue.',
-    author: 'Sarah Martinez, CEO',
+    author: 'Sarah Martinez, CEO'
   },
   {
     company: 'TechIntegrate Inc.',
@@ -112,7 +103,7 @@ const successStories = [
     result: '50K+ new users through integration',
     testimonial:
       'The GHXSTSHIP integration expanded our reach and generated tangible outcomes for joint customers.',
-    author: 'David Chen, CTO',
+    author: 'David Chen, CTO'
   },
 ];
 
@@ -120,17 +111,17 @@ const partnerResources = [
   {
     title: 'API Documentation',
     description: 'Explore authentication, webhooks, and integration guides for ATLVS and OPENDECK.',
-    href: '/resources/docs',
+    href: '/resources/docs'
   },
   {
     title: 'Marketing Playbooks',
     description: 'Access co-branding guidelines, event kits, and launch checklists.',
-    href: '/resources/guides',
+    href: '/resources/guides'
   },
   {
     title: 'Partner Support Center',
     description: 'Submit tickets, request enablement sessions, or chat with partner success.',
-    href: '/contact',
+    href: '/contact'
   },
 ];
 

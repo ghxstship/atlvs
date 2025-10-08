@@ -12,7 +12,7 @@ export function Container({ children, className, size = 'default' }: ContainerPr
     default: layouts.container,
     wide: layouts.containerWide,
     narrow: layouts.containerNarrow,
-    full: 'w-full px-md',
+    full: 'w-full px-md'
   };
 
   return (
@@ -48,13 +48,13 @@ export function Grid({
     cards: layouts.gridCards,
     stats: layouts.gridStats,
     pricing: layouts.gridPricing,
-    custom: '',
+    custom: ''
   };
 
   const gapClasses = {
     sm: 'gap-xl',
     md: 'gap-xl',
-    lg: 'gap-xl',
+    lg: 'gap-xl'
   };
 
   // Build custom grid classes if cols is provided

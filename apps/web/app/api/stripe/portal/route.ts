@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { createServerClient, createServiceRoleClient } from '@ghxstship/auth';
 import Stripe from 'stripe';
-import { rateLimitRequest } from '../../../_components/lib/rate-limit';
+import { rateLimitRequest } from '../../../../lib/rate-limit';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';

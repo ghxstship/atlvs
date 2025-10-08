@@ -19,7 +19,7 @@ const rolePermissions: Record<Role, Permission[]> = {
   owner: ['*'], // All permissions
   admin: ['settings:manage', 'users:manage', 'projects:manage', 'finance:manage', 'people:read', 'people:write', 'people:delete'],
   manager: ['projects:manage', 'users:view', 'finance:view', 'people:read', 'people:write'],
-  member: ['projects:view', 'users:view', 'people:read'],
+  member: ['projects:view', 'users:view', 'people:read']
 };
 
 export async function checkPermission(
@@ -73,7 +73,7 @@ export function hasRole(userRole: string | undefined, requiredRole: Role): boole
     owner: 4,
     admin: 3,
     manager: 2,
-    member: 1,
+    member: 1
   };
   
   const userLevel = roleHierarchy[userRole as Role] || 0;

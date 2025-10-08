@@ -5,7 +5,7 @@ import { MarketingLayoutClient } from '../_components/marketing/MarketingLayoutC
 export const metadata: Metadata = {
   title: {
     template: '%s | GHXSTSHIP',
-    default: 'GHXSTSHIP - Enterprise Production Management Platform',
+    default: 'GHXSTSHIP - Enterprise Production Management Platform'
   },
   description: 'ATLVS and OPENDECK - The complete enterprise production management and marketplace platform for creative professionals.',
   keywords: ['production management', 'creative platform', 'enterprise software', 'ATLVS', 'OPENDECK'],
@@ -15,11 +15,11 @@ export const metadata: Metadata = {
   formatDetection: {
     email: false,
     address: false,
-    telephone: false,
+    telephone: false
   },
   metadataBase: new URL('https://ghxstship.com'),
   alternates: {
-    canonical: '/',
+    canonical: '/'
   },
   openGraph: {
     type: 'website',
@@ -33,16 +33,16 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'GHXSTSHIP Platform',
+        alt: 'GHXSTSHIP Platform'
       },
-    ],
+    ]
   },
   twitter: {
     card: 'summary_large_image',
     title: 'GHXSTSHIP - Enterprise Production Management Platform',
     description: 'ATLVS and OPENDECK - The complete enterprise production management and marketplace platform for creative professionals.',
     images: ['/og-image.jpg'],
-    creator: '@ghxstship',
+    creator: '@ghxstship'
   },
   robots: {
     index: true,
@@ -52,16 +52,16 @@ export const metadata: Metadata = {
       follow: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+      'max-snippet': -1
+    }
   },
   verification: {
-    google: 'your-google-verification-code',
-  },
+    google: 'your-google-verification-code'
+  }
 };
 
 export default function MarketingLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {

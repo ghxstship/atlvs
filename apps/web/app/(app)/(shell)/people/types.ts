@@ -149,7 +149,7 @@ export const emergencyContactSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   relationship: z.string().min(1, 'Relationship is required'),
   phone: z.string().min(1, 'Phone is required'),
-  email: z.string().email().optional(),
+  email: z.string().email().optional()
 });
 
 export const createPersonSchema = z.object({
@@ -174,7 +174,7 @@ export const createPersonSchema = z.object({
   languages: z.array(z.string()).default([]),
   emergency_contact: emergencyContactSchema.optional().nullable(),
   salary_band: z.string().max(50).optional().nullable(),
-  performance_rating: z.number().min(1).max(5).optional().nullable(),
+  performance_rating: z.number().min(1).max(5).optional().nullable()
 });
 
 export const updatePersonSchema = createPersonSchema.partial();
@@ -185,7 +185,7 @@ export const createPersonSkillSchema = z.object({
   skill_level: z.enum(SKILL_LEVEL),
   years_experience: z.number().min(0).max(50),
   certified: z.boolean().default(false),
-  last_used: z.string().datetime().optional().nullable(),
+  last_used: z.string().datetime().optional().nullable()
 });
 
 export const updatePersonSkillSchema = createPersonSkillSchema.partial().omit({ person_id: true });
@@ -198,7 +198,7 @@ export const createPersonAssignmentSchema = z.object({
   start_date: z.string().datetime(),
   end_date: z.string().datetime().optional().nullable(),
   billable: z.boolean().default(true),
-  rate: z.number().min(0).optional().nullable(),
+  rate: z.number().min(0).optional().nullable()
 });
 
 export const updatePersonAssignmentSchema = createPersonAssignmentSchema.partial().omit({ person_id: true });
@@ -207,7 +207,7 @@ export const createPersonEndorsementSchema = z.object({
   person_id: z.string().uuid(),
   skill_name: z.string().min(1).max(100),
   comment: z.string().max(500).optional().nullable(),
-  rating: z.number().min(1).max(5),
+  rating: z.number().min(1).max(5)
 });
 
 export const createPerformanceReviewSchema = z.object({
@@ -220,7 +220,7 @@ export const createPerformanceReviewSchema = z.object({
   areas_for_improvement: z.array(z.string()).default([]),
   goals: z.array(z.string()).default([]),
   comments: z.string().max(2000).optional().nullable(),
-  status: z.enum(['draft', 'submitted', 'reviewed', 'acknowledged']).default('draft'),
+  status: z.enum(['draft', 'submitted', 'reviewed', 'acknowledged']).default('draft')
 });
 
 export const updatePerformanceReviewSchema = createPerformanceReviewSchema.partial().omit({ person_id: true });
@@ -260,7 +260,7 @@ export const PEOPLE_FIELDS: PeopleFieldConfig[] = [
     type: 'text',
     required: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'last_name',
@@ -268,7 +268,7 @@ export const PEOPLE_FIELDS: PeopleFieldConfig[] = [
     type: 'text',
     required: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'email',
@@ -276,14 +276,14 @@ export const PEOPLE_FIELDS: PeopleFieldConfig[] = [
     type: 'email',
     required: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'title',
     label: 'Job Title',
     type: 'text',
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'department',
@@ -294,7 +294,7 @@ export const PEOPLE_FIELDS: PeopleFieldConfig[] = [
     options: DEPARTMENT.map(d => ({ 
       value: d, 
       label: d.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') 
-    })),
+    }))
   },
   {
     key: 'employment_type',
@@ -306,7 +306,7 @@ export const PEOPLE_FIELDS: PeopleFieldConfig[] = [
     options: EMPLOYMENT_TYPE.map(t => ({ 
       value: t, 
       label: t.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') 
-    })),
+    }))
   },
   {
     key: 'status',
@@ -318,7 +318,7 @@ export const PEOPLE_FIELDS: PeopleFieldConfig[] = [
     options: PERSON_STATUS.map(s => ({ 
       value: s, 
       label: s.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') 
-    })),
+    }))
   },
   {
     key: 'start_date',
@@ -326,34 +326,34 @@ export const PEOPLE_FIELDS: PeopleFieldConfig[] = [
     type: 'date',
     required: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'manager_id',
     label: 'Manager',
     type: 'user',
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'location',
     label: 'Location',
     type: 'text',
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'skills',
     label: 'Skills',
     type: 'multiselect',
-    filterable: true,
+    filterable: true
   },
   {
     key: 'performance_rating',
     label: 'Performance Rating',
     type: 'number',
     sortable: true,
-    filterable: true,
+    filterable: true
   },
 ];
 

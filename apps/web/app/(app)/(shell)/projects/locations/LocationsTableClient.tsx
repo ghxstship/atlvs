@@ -31,7 +31,7 @@ const schema = z.object({
   country: z.string().optional(),
   type: z.enum(['venue', 'office', 'warehouse', 'studio', 'outdoor', 'virtual', 'other']),
   capacity: z.number().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 export default function LocationsTableClient({ rows, orgId }: { rows: LocationRow[]; orgId: string }) {

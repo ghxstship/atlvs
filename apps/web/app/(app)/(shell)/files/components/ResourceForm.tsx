@@ -85,7 +85,7 @@ const defaultFormData: ResourceFormData = {
  tags: '',
  version: '1.0',
  language: 'en',
- isFeatured: false,
+ isFeatured: false
 };
 
 export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: ResourceFormProps) {
@@ -114,7 +114,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
  tags: resource.tags?.join(', ') ?? '',
  version: resource.version ?? '1.0',
  language: resource.language ?? 'en',
- isFeatured: Boolean(resource.is_featured),
+ isFeatured: Boolean(resource.is_featured)
  });
  setFile(null);
  setErrors({});
@@ -185,7 +185,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
  return {
  url: data.publicUrl,
  size: selectedFile.size,
- type: selectedFile.type,
+ type: selectedFile.type
  };
  } catch (error) {
  console.error('File upload error:', error);
@@ -241,7 +241,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
  file_size: fileSize,
  file_type: fileType,
  download_count: resource?.download_count ?? 0,
- view_count: resource?.view_count ?? 0,
+ view_count: resource?.view_count ?? 0
  };
 
  const mutation = resource

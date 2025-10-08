@@ -11,7 +11,7 @@ import {
   updateHealthRecord,
   deleteHealthRecord,
   toggleHealthRecordActive,
-  updateHealthRecordReminder,
+  updateHealthRecordReminder
 } from '@/app/(app)/(shell)/profile/health/lib/healthService';
 
 async function getSupabase() {
@@ -22,7 +22,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -71,7 +71,7 @@ export async function GET(request: NextRequest) {
       is_active: searchParams.get('is_active') || 'all',
       date_from: searchParams.get('date_from') || undefined,
       date_to: searchParams.get('date_to') || undefined,
-      expiring_soon: searchParams.get('expiring_soon') === 'true',
+      expiring_soon: searchParams.get('expiring_soon') === 'true'
     };
 
     const validatedFilters = healthFilterSchema.parse(filters);
@@ -90,7 +90,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       ...result,
-      stats,
+      stats
     });
   } catch (error) {
     console.error('Error in GET /api/v1/profile/health:', error);

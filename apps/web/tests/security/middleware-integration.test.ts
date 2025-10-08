@@ -7,11 +7,11 @@ const mockValidateCSRFToken = vi.fn();
 
 vi.mock('../middleware', () => ({
   verifyAuthToken: mockVerifyAuthToken,
-  checkRBAC: mockCheckRBAC,
+  checkRBAC: mockCheckRBAC
 }));
 
 vi.mock('../../lib/csrf', () => ({
-  validateCSRFToken: mockValidateCSRFToken,
+  validateCSRFToken: mockValidateCSRFToken
 }));
 
 describe('Middleware Security Integration Tests', () => {
@@ -23,7 +23,7 @@ describe('Middleware Security Integration Tests', () => {
     it('should allow access to public routes without authentication', async () => {
       const mockRequest = {
         nextUrl: { pathname: '/' },
-        method: 'GET',
+        method: 'GET'
       };
 
       mockVerifyAuthToken.mockResolvedValue(null);
@@ -38,13 +38,13 @@ describe('Middleware Security Integration Tests', () => {
     it('should require authentication for protected routes', async () => {
       const mockRequest = {
         nextUrl: { pathname: '/dashboard' },
-        method: 'GET',
+        method: 'GET'
       };
 
       mockVerifyAuthToken.mockResolvedValue({
         user: { id: 'user-123' },
         membership: { role: 'member' },
-        orgId: 'org-123',
+        orgId: 'org-123'
       });
 
       // Protected routes should trigger auth verification
@@ -58,7 +58,7 @@ describe('Middleware Security Integration Tests', () => {
 
       const mockRequest = {
         nextUrl: { pathname: '/dashboard' },
-        url: 'https://example.com/dashboard',
+        url: 'https://example.com/dashboard'
       };
 
       // Should create redirect response
@@ -73,7 +73,7 @@ describe('Middleware Security Integration Tests', () => {
     it('should validate CSRF tokens for state-changing requests', async () => {
       const mockRequest = {
         method: 'POST',
-        nextUrl: { pathname: '/api/companies' },
+        nextUrl: { pathname: '/api/companies' }
       };
 
       mockValidateCSRFToken.mockReturnValue(true);
@@ -89,7 +89,7 @@ describe('Middleware Security Integration Tests', () => {
     it('should skip CSRF validation for safe methods', async () => {
       const mockRequest = {
         method: 'GET',
-        nextUrl: { pathname: '/api/companies' },
+        nextUrl: { pathname: '/api/companies' }
       };
 
       // GET requests should not require CSRF validation
@@ -103,7 +103,7 @@ describe('Middleware Security Integration Tests', () => {
 
       const mockRequest = {
         method: 'POST',
-        nextUrl: { pathname: '/api/companies' },
+        nextUrl: { pathname: '/api/companies' }
       };
 
       // Should return 403 Forbidden
@@ -148,7 +148,7 @@ describe('Middleware Security Integration Tests', () => {
         'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
         'Cross-Origin-Embedder-Policy': 'credentialless',
         'Cross-Origin-Opener-Policy': 'same-origin',
-        'Cross-Origin-Resource-Policy': 'same-origin',
+        'Cross-Origin-Resource-Policy': 'same-origin'
       };
 
       // Verify all critical security headers are present
@@ -169,7 +169,7 @@ describe('Middleware Security Integration Tests', () => {
     it('should provide CSRF tokens for authenticated requests', () => {
       const mockAuthData = {
         user: { id: 'user-123' },
-        membership: { role: 'member' },
+        membership: { role: 'member' }
       };
 
       // Authenticated requests should receive CSRF tokens

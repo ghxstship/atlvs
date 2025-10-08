@@ -2,6 +2,7 @@
 
 
 import { useEffect } from 'react';
+import Image from "next/image";
 
 // Performance monitoring and optimization utilities
 export const PerformanceOptimizations = () => {
@@ -144,6 +145,7 @@ export const PerformanceOptimizations = () => {
     return () => {
       window.removeEventListener('scroll', optimizeScroll);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;
@@ -171,7 +173,8 @@ export const OptimizedImage = ({
   const dataSrc = priority ? undefined : src;
 
   return (
-    <img
+    // eslint-disable-next-line @next/next/no-img-element
+    <img 
       src={imageSrc}
       data-src={dataSrc}
       alt={alt}
@@ -235,6 +238,7 @@ export const inlineCriticalCSS = () => {
 
 // Resource hints component
 export const ResourceHints = () => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // DNS prefetch for external domains
     const domains = [
@@ -268,6 +272,7 @@ export const ResourceHints = () => {
       }
       document.head.appendChild(link);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;

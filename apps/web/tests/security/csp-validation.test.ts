@@ -70,7 +70,7 @@ describe('Content Security Policy Tests', () => {
           'blocked-uri': 'https://evil.com/malicious.js',
           'source-file': 'https://evil.com/malicious.js',
           'line-number': 1,
-          'column-number': 1,
+          'column-number': 1
         }
       };
 
@@ -88,7 +88,7 @@ describe('Content Security Policy Tests', () => {
       'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
       'Cross-Origin-Embedder-Policy': 'credentialless',
       'Cross-Origin-Opener-Policy': 'same-origin',
-      'Cross-Origin-Resource-Policy': 'same-origin',
+      'Cross-Origin-Resource-Policy': 'same-origin'
     };
 
     it('should set all critical security headers', () => {

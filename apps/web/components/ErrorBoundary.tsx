@@ -78,7 +78,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       error: null,
       errorId: null,
       context: null,
-      retryCount: 0,
+      retryCount: 0
     };
   }
 
@@ -86,7 +86,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     return {
       hasError: true,
       error,
-      errorId: `error_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      errorId: `error_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
     };
   }
 
@@ -109,7 +109,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     // Add error breadcrumb
     this.addBreadcrumb('error', `Error caught by ${this.props.errorBoundaryName || 'ErrorBoundary'}`, 'error', {
       error: error.message,
-      componentStack: errorInfo.componentStack,
+      componentStack: errorInfo.componentStack
     });
 
     console.error('Error caught by ErrorBoundary:', error, context);
@@ -139,7 +139,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       userAgent: typeof window !== 'undefined' ? navigator.userAgent : undefined,
       viewport: typeof window !== 'undefined' ? {
         width: window.innerWidth,
-        height: window.innerHeight,
+        height: window.innerHeight
       } : undefined,
       timestamp: new Date().toISOString(),
       lastAction: this.lastAction,
@@ -148,8 +148,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         retryCount: this.state.retryCount,
         errorId: this.state.errorId,
         userRole: this.getUserRole(),
-        organizationPlan: this.getOrganizationPlan(),
-      },
+        organizationPlan: this.getOrganizationPlan()
+      }
     };
   }
 
@@ -165,7 +165,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         organizationId: context.organizationId,
         componentStack: context.componentStack,
         route: context.route,
-        error: error.stack,
+        error: error.stack
       }
     );
   }
@@ -176,7 +176,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       category,
       message,
       level,
-      data,
+      data
     };
 
     this.breadcrumbs.push(breadcrumb);
@@ -227,7 +227,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       error: null,
       errorId: null,
       context: null,
-      retryCount: 0,
+      retryCount: 0
     });
 
     this.addBreadcrumb('recovery', 'Error boundary reset', 'info');
@@ -274,11 +274,11 @@ const DefaultErrorFallback: React.FC<ErrorFallbackProps> = ({
     {
       label: 'Try Again',
       action: resetError,
-      primary: true,
+      primary: true
     },
     {
       label: 'Go to Dashboard',
-      action: () => window.location.href = '/dashboard',
+      action: () => window.location.href = '/dashboard'
     },
     {
       label: 'Report Issue',
@@ -293,7 +293,7 @@ Timestamp: ${context.timestamp}
 Please describe what you were doing when this error occurred:
         `);
         window.location.href = `mailto:support@ghxstship.com?subject=${subject}&body=${body}`;
-      },
+      }
     },
   ];
 
@@ -383,7 +383,7 @@ export function useErrorTracking() {
 
   return {
     addBreadcrumb,
-    setLastAction,
+    setLastAction
   };
 }
 

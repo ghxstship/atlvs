@@ -4,7 +4,7 @@
 import React from "react";
 
 import { useState } from 'react'
-import { Button, UnifiedInput, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@ghxstship/ui'
+import { Button, Input, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@ghxstship/ui'
 import { Mail, CheckCircle } from 'lucide-react'
 
 interface EmailVerificationStepProps {
@@ -58,7 +58,7 @@ export default function EmailVerificationStep({ onNext, onBack, data }: EmailVer
         </div>
         <CardTitle>Verify your email</CardTitle>
         <CardDescription>
-          We've sent a verification code to {(data as any)?.email || 'your email'}
+          We&apos;ve sent a verification code to {(data as any)?.email || 'your email'}
         </CardDescription>
       </CardHeader>
       
@@ -67,7 +67,8 @@ export default function EmailVerificationStep({ onNext, onBack, data }: EmailVer
           <label htmlFor="code" className="block text-body-sm form-label mb-sm">
             Verification Code
           </label>
-          <UnifiedInput             id="code"
+          <Input
+            id="code"
             type="text"
             placeholder="Enter 6-digit code"
             value={verificationCode}
@@ -86,7 +87,7 @@ export default function EmailVerificationStep({ onNext, onBack, data }: EmailVer
 
         <div className="brand-ghostship flex items-center justify-between text-body-sm">
           <span className="color-muted">
-            Didn't receive the code?
+            Didn&apos;t receive the code?
           </span>
           <Button
             variant="ghost"
@@ -100,7 +101,7 @@ export default function EmailVerificationStep({ onNext, onBack, data }: EmailVer
 
         <div className="brand-ghostship bg-secondary/50 rounded-lg p-sm">
           <p className="text-body-sm color-muted">
-            Check your spam folder if you don't see the email in your inbox.
+            Check your spam folder if you don&apos;t see the email in your inbox.
           </p>
         </div>
       </CardContent>

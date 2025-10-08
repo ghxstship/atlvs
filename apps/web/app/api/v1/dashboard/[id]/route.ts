@@ -11,7 +11,7 @@ const updateDashboardSchema = z.object({
   layout: z.array(z.any()).optional(),
   settings: z.record(z.any()).optional(),
   is_default: z.boolean().optional(),
-  is_public: z.boolean().optional(),
+  is_public: z.boolean().optional()
 });
 
 export async function GET(
@@ -82,7 +82,7 @@ export async function GET(
         user_id: user.id,
         organization_id: organizationId,
         dashboard_id: dashboard.id,
-        last_accessed_at: new Date().toISOString(),
+        last_accessed_at: new Date().toISOString()
       });
 
     // Log view activity
@@ -92,10 +92,10 @@ export async function GET(
       user_id: user.id,
       action: 'view',
       details: {
-        dashboard_name: dashboard.name,
+        dashboard_name: dashboard.name
       },
       ip_address: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip'),
-      user_agent: request.headers.get('user-agent'),
+      user_agent: request.headers.get('user-agent')
     });
 
     return NextResponse.json({ data: dashboard });
@@ -213,10 +213,10 @@ export async function PUT(
       action: 'update',
       details: {
         dashboard_name: dashboard.name,
-        updated_fields: Object.keys(validatedData),
+        updated_fields: Object.keys(validatedData)
       },
       ip_address: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip'),
-      user_agent: request.headers.get('user-agent'),
+      user_agent: request.headers.get('user-agent')
     });
 
     return NextResponse.json({ data: dashboard });
@@ -225,7 +225,7 @@ export async function PUT(
     if (error instanceof z.ZodError) {
       return NextResponse.json({
         error: 'Validation failed',
-        details: error.errors,
+        details: error.errors
       }, { status: 400 });
     }
 
@@ -334,10 +334,10 @@ export async function DELETE(
       action: 'delete',
       details: {
         dashboard_name: existingDashboard.name,
-        dashboard_id: existingDashboard.id,
+        dashboard_id: existingDashboard.id
       },
       ip_address: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip'),
-      user_agent: request.headers.get('user-agent'),
+      user_agent: request.headers.get('user-agent')
     });
 
     return NextResponse.json({ message: 'Dashboard deleted successfully' });

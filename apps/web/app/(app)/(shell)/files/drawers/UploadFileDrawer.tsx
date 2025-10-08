@@ -1,7 +1,7 @@
 "use client";
 
 import { Upload, X, FileText, Image, Video, Music, File } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import AppDrawer from "@ghxstship/ui";
 import type { DrawerFieldConfig } from "@ghxstship/ui";
@@ -22,7 +22,7 @@ export default function UploadFileDrawer({
  orgId,
  projectId,
  projects = [],
- onSuccess,
+ onSuccess
 }: UploadFileDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -37,13 +37,13 @@ export default function UploadFileDrawer({
  options: [
  { label: "Select a project", value: "" },
  ...projects.map((p) => ({ label: p.name, value: p.id })),
- ],
+ ]
  },
  {
  key: "description",
  label: "Description",
  type: "textarea",
- placeholder: "Add a description for these files",
+ placeholder: "Add a description for these files"
  },
  {
  key: "category",
@@ -58,7 +58,7 @@ export default function UploadFileDrawer({
  { label: "Specification", value: "specification" },
  { label: "Report", value: "report" },
  { label: "Other", value: "other" },
- ],
+ ]
  },
  {
  key: "access_level",
@@ -68,13 +68,13 @@ export default function UploadFileDrawer({
  { label: "Team", value: "team" },
  { label: "Public", value: "public" },
  { label: "Restricted", value: "restricted" },
- ],
+ ]
  },
  {
  key: "tags",
  label: "Tags (comma-separated)",
  type: "text",
- placeholder: "tag1, tag2, tag3",
+ placeholder: "tag1, tag2, tag3"
  },
  ];
 
@@ -158,7 +158,7 @@ export default function UploadFileDrawer({
  uploaded_by: user.id,
  tags: tags,
  access_level: data.access_level || "team",
- download_count: 0,
+ download_count: 0
  });
 
  if (dbError) throw dbError;

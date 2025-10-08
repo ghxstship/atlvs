@@ -1,556 +1,113 @@
+/**
+ * Navigation Component — Main Navigation
+ * Primary site navigation with nested items
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
+ */
+
+'use client';
+
 import React from 'react';
-import { twMerge } from 'tailwind-merge';
-import clsx from 'clsx';
-import { 
-  Search, 
-  Bell, 
-  Settings, 
-  User, 
-  Menu, 
-  X, 
-  ChevronDown,
-  Command,
-  Zap,
-  Globe,
-  Moon,
-  Sun,
-  Monitor
-} from 'lucide-react';
-import { SearchInput } from '../../components/atomic/Input';
-import { Button } from '../../atoms/Button';
-import { Badge } from '../../atoms/Badge';
+import { ChevronDown } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
-// Global Search Component
-export interface GlobalSearchProps {
-  placeholder?: string;
-  onSearch?: (query: string) => void;
-  shortcuts?: Array<{
-    key: string;
-    label: string;
-    action: () => void;
-  }>;
-  recentSearches?: string[];
-  suggestions?: Array<{
-    title: string;
-    subtitle?: string;
-    icon?: React.ReactNode;
-    action: () => void;
-  }>;
+export interface NavItem {
+  id: string;
+  label: string;
+  href?: string;
+  icon?: LucideIcon;
+  badge?: string;
+  children?: NavItem[];
+  active?: boolean;
 }
 
-export const GlobalSearch = React.forwardRef<HTMLDivElement, GlobalSearchProps>(
-  ({ placeholder = "Search everything...", onSearch, shortcuts, recentSearches, suggestions }, ref) => {
-    const [isOpen, setIsOpen] = React.useState(false);
-    const [query, setQuery] = React.useState('');
-    const searchRef = React.useRef<HTMLInputElement>(null);
-
-    // Global keyboard shortcut (Cmd+K / Ctrl+K)
-    React.useEffect(() => {
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-          e.preventDefault();
-          setIsOpen(true);
-          setTimeout(() => searchRef.current?.focus(), 100);
-        }
-        if (e.key === 'Escape') {
-          setIsOpen(false);
-          setQuery('');
-        }
-      };
-
-      document.addEventListener('keydown', handleKeyDown);
-      return () => document.removeEventListener('keydown', handleKeyDown);
-    }, []);
-
-    const handleSearch = (value: string) => {
-      setQuery(value);
-      onSearch?.(value);
-    };
-
-    return (
-      <>
-        {/* Search Trigger */}
-        <div ref={ref} className="relative">
-          <button
-            onClick={() => setIsOpen(true)}
-            className="flex items-center gap-sm w-full max-w-md px-sm py-sm text-sm text-muted-foreground bg-muted/50 hover:bg-muted transition-colors rounded-lg border border-border/50 hover:border-border"
-          >
-            <Search className="h-icon-xs w-icon-xs" />
-            <span className="flex-1 text-left">{placeholder}</span>
-            <div className="flex items-center gap-xs text-xs">
-              <kbd className="px-xs.5 py-0.5 bg-background border border-border rounded text-xs font-mono">
-                <Command className="h-3 w-3 inline mr-xs" />K
-              </kbd>
-            </div>
-          </button>
-        </div>
-
-        {/* Search Modal */}
-        {isOpen && (
-          <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm">
-            <div className="fixed left-1/2 top-1/4 -translate-x-1/2 w-full max-w-2xl">
-              <div className="bg-background border border-border rounded-xl shadow-popover overflow-hidden">
-                {/* Search Input */}
-                <div className="flex items-center px-md py-sm border-b border-border">
-                  <Search className="h-icon-sm w-icon-sm text-muted-foreground mr-sm" />
-                  <input
-                    ref={searchRef}
-                    type="text"
-                    value={query}
-                    onChange={(e: any) => handleSearch(e.target.value)}
-                    placeholder={placeholder}
-                    className="flex-1 bg-transparent outline-none text-sm font-body"
-                    autoComplete="off"
-                  />
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="p-xs hover:bg-muted rounded-sm transition-colors"
-                  >
-                    <X className="h-icon-xs w-icon-xs" />
-                  </button>
-                </div>
-
-                {/* Search Results */}
-                <div className="max-h-container-lg overflow-y-auto">
-                  {query ? (
-                    <div className="p-md">
-                      <p className="text-sm text-muted-foreground mb-md">
-                        Searching for "{query}"...
-                      </p>
-                      {suggestions?.map((suggestion, index) => (
-                        <button
-                          key={index}
-                          onClick={() => {
-                            suggestion.action();
-                            setIsOpen(false);
-                          }}
-                          className="flex items-center gap-sm w-full p-sm hover:bg-muted rounded-lg transition-colors text-left"
-                        >
-                          {suggestion.icon && (
-                            <div className="text-muted-foreground">
-                              {suggestion.icon}
-                            </div>
-                          )}
-                          <div>
-                            <p className="font-medium">{suggestion.title}</p>
-                            {suggestion.subtitle && (
-                              <p className="text-sm text-muted-foreground">
-                                {suggestion.subtitle}
-                              </p>
-                            )}
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="p-md gap-md">
-                      {/* Shortcuts */}
-                      {shortcuts && shortcuts.length > 0 && (
-                        <div>
-                          <h3 className="text-sm font-medium text-muted-foreground mb-sm">
-                            Quick Actions
-                          </h3>
-                          <div className="space-y-xs">
-                            {shortcuts.map((shortcut, index) => (
-                              <button
-                                key={index}
-                                onClick={() => {
-                                  shortcut.action();
-                                  setIsOpen(false);
-                                }}
-                                className="flex items-center justify-between w-full p-sm hover:bg-muted rounded-lg transition-colors text-left"
-                              >
-                                <span className="text-sm">{shortcut.label}</span>
-                                <kbd className="px-xs.5 py-0.5 bg-muted border border-border rounded text-xs font-mono">
-                                  {shortcut.key}
-                                </kbd>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Recent Searches */}
-                      {recentSearches && recentSearches.length > 0 && (
-                        <div>
-                          <h3 className="text-sm font-medium text-muted-foreground mb-sm">
-                            Recent Searches
-                          </h3>
-                          <div className="space-y-xs">
-                            {recentSearches.map((search, index) => (
-                              <button
-                                key={index}
-                                onClick={() => handleSearch(search)}
-                                className="flex items-center gap-sm w-full p-sm hover:bg-muted rounded-lg transition-colors text-left text-sm"
-                              >
-                                <Search className="h-3 w-3 text-muted-foreground" />
-                                {search}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </>
-    );
-  }
-);
-GlobalSearch.displayName = 'GlobalSearch';
-
-// Theme Switcher
-export interface ThemeSwitcherProps {
-  theme: 'light' | 'dark' | 'system';
-  onThemeChange: (theme: 'light' | 'dark' | 'system') => void;
+export interface NavigationProps {
+  /** Navigation items */
+  items: NavItem[];
+  
+  /** Orientation */
+  orientation?: 'horizontal' | 'vertical';
+  
+  /** Item click handler */
+  onItemClick?: (item: NavItem) => void;
 }
 
-export const ThemeSwitcher = React.forwardRef<HTMLDivElement, ThemeSwitcherProps>(
-  ({ theme, onThemeChange }, ref) => {
-    const [isOpen, setIsOpen] = React.useState(false);
-
-    const themes = [
-      { value: 'light', label: 'Light', icon: Sun },
-      { value: 'dark', label: 'Dark', icon: Moon },
-      { value: 'system', label: 'System', icon: Monitor },
-    ] as const;
-
-    const currentTheme = themes.find(t => t.value === theme);
-
-    return (
-      <div ref={ref} className="relative">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="relative inline-flex items-center justify-center rounded-md p-sm hover:bg-muted transition-colors"
-          aria-label="Toggle theme"
-        >
-          {currentTheme && <currentTheme.icon className="h-icon-xs w-icon-xs" />}
-        </button>
-
-        {isOpen && (
-          <>
-            <div 
-              className="fixed inset-0 z-40" 
-              onClick={() => setIsOpen(false)} 
-            />
-            <div className="absolute right-0 top-full mt-sm w-container-xs bg-background border border-border rounded-lg shadow-floating z-50 overflow-hidden">
-              {themes.map((themeOption: any) => (
-                <button
-                  key={themeOption.value}
-                  onClick={() => {
-                    onThemeChange(themeOption.value);
-                    setIsOpen(false);
-                  }}
-                  className={clsx(
-                    'flex items-center gap-sm w-full px-sm py-sm text-sm hover:bg-muted transition-colors',
-                    theme === themeOption.value && 'bg-muted text-accent'
-                  )}
-                >
-                  <themeOption.icon className="h-icon-xs w-icon-xs" />
-                  {themeOption.label}
-                </button>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
-    );
-  }
-);
-ThemeSwitcher.displayName = 'ThemeSwitcher';
-
-// Notification Bell
-export interface NotificationBellProps {
-  count?: number;
-  notifications?: Array<{
-    id: string;
-    title: string;
-    message: string;
-    time: string;
-    read: boolean;
-    type?: 'info' | 'success' | 'warning' | 'error';
-  }>;
-  onNotificationClick?: (id: string) => void;
-  onMarkAllRead?: () => void;
-}
-
-export const NotificationBell = React.forwardRef<HTMLDivElement, NotificationBellProps>(
-  ({ count = 0, notifications = [], onNotificationClick, onMarkAllRead }, ref) => {
-    const [isOpen, setIsOpen] = React.useState(false);
-
-    const typeColors = {
-      info: 'text-accent',
-      success: 'text-success',
-      warning: 'text-warning',
-      error: 'text-destructive',
-    };
-
-    return (
-      <div ref={ref} className="relative">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="relative inline-flex items-center justify-center rounded-md p-sm hover:bg-muted transition-colors"
-          aria-label="Notifications"
-        >
-          <Bell className="h-icon-xs w-icon-xs" />
-          {count > 0 && (
-            <Badge 
-              variant="destructive" 
-              className="absolute -top-1 -right-1 h-icon-sm w-icon-sm p-0 text-xs flex items-center justify-center"
-            >
-              {count > 99 ? '99+' : count}
-            </Badge>
-          )}
-        </button>
-
-        {isOpen && (
-          <>
-            <div 
-              className="fixed inset-0 z-40" 
-              onClick={() => setIsOpen(false)} 
-            />
-            <div className="absolute right-0 top-full mt-sm w-container-md bg-background border border-border rounded-lg shadow-floating z-50 overflow-hidden">
-              <div className="flex items-center justify-between p-md border-b border-border">
-                <h3 className="font-display text-sm font-semibold">Notifications</h3>
-                {count > 0 && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={onMarkAllRead}
-                  >
-                    Mark all read
-                  </Button>
-                )}
-              </div>
-              
-              <div className="max-h-container-lg overflow-y-auto">
-                {notifications.length === 0 ? (
-                  <div className="p-xl text-center text-muted-foreground">
-                    <Bell className="h-icon-lg w-icon-lg mx-auto mb-sm opacity-50" />
-                    <p className="text-sm">No notifications</p>
-                  </div>
-                ) : (
-                  notifications.map((notification: any) => (
-                    <button
-                      key={notification.id}
-                      onClick={() => {
-                        onNotificationClick?.(notification.id);
-                        setIsOpen(false);
-                      }}
-                      className={clsx(
-                        'flex items-start gap-sm w-full p-md hover:bg-muted transition-colors text-left border-b border-border/50 last:border-b-0',
-                        !notification.read && 'bg-muted/50'
-                      )}
-                    >
-                      <div className={clsx(
-                        'w-2 h-2 rounded-full mt-sm shrink-0',
-                        notification.read ? 'bg-muted-foreground/30' : 'bg-accent'
-                      )} />
-                      <div className="flex-1 min-w-0">
-                        <p className="font-medium text-sm truncate">
-                          {notification.title}
-                        </p>
-                        <p className="text-sm text-muted-foreground line-clamp-2 mt-xs">
-                          {notification.message}
-                        </p>
-                        <p className="text-xs text-muted-foreground mt-sm">
-                          {notification.time}
-                        </p>
-                      </div>
-                    </button>
-                  ))
-                )}
-              </div>
-            </div>
-          </>
-        )}
-      </div>
-    );
-  }
-);
-NotificationBell.displayName = 'NotificationBell';
-
-// User Menu
-export interface UserMenuProps {
-  user: {
-    name: string;
-    email: string;
-    avatar?: string;
-    role?: string;
+/**
+ * Navigation Component
+ */
+export const Navigation: React.FC<NavigationProps> = ({
+  items,
+  orientation = 'horizontal',
+  onItemClick,
+}) => {
+  const [expandedItems, setExpandedItems] = React.useState<Set<string>>(new Set());
+  
+  const toggleExpanded = (id: string) => {
+    setExpandedItems(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
   };
-  menuItems?: Array<{
-    label: string;
-    icon?: React.ReactNode;
-    action: () => void;
-    separator?: boolean;
-  }>;
-}
-
-export const UserMenu = React.forwardRef<HTMLDivElement, UserMenuProps>(
-  ({ user, menuItems = [] }, ref) => {
-    const [isOpen, setIsOpen] = React.useState(false);
-
+  
+  const renderItem = (item: NavItem, level = 0) => {
+    const hasChildren = item.children && item.children.length > 0;
+    const isExpanded = expandedItems.has(item.id);
+    
     return (
-      <div ref={ref} className="relative">
+      <div key={item.id}>
         <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-sm p-xs hover:bg-muted rounded-lg transition-colors"
+          onClick={() => {
+            if (hasChildren) {
+              toggleExpanded(item.id);
+            }
+            onItemClick?.(item);
+          }}
+          className={`
+            w-full flex items-center gap-2 px-3 py-2
+            rounded-md
+            text-sm font-medium
+            transition-colors
+            ${item.active
+              ? 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)]'
+              : 'text-[var(--color-foreground-secondary)] hover:bg-[var(--color-muted)] hover:text-[var(--color-foreground)]'
+            }
+          `}
+          style={{ paddingLeft: `${level * 1 + 0.75}rem` }}
         >
-          <div className="w-icon-lg h-icon-lg bg-accent/10 rounded-full flex items-center justify-center">
-            {user.avatar ? (
-              <img 
-                src={user.avatar} 
-                alt={user.name}
-                className="w-icon-lg h-icon-lg rounded-full object-cover"
-              />
-            ) : (
-              <User className="h-icon-xs w-icon-xs text-accent" />
-            )}
-          </div>
-          <ChevronDown className="h-3 w-3 text-muted-foreground" />
-        </button>
-
-        {isOpen && (
-          <>
-            <div 
-              className="fixed inset-0 z-40" 
-              onClick={() => setIsOpen(false)} 
+          {item.icon && <item.icon className="w-4 h-4" />}
+          <span className="flex-1 text-left">{item.label}</span>
+          {item.badge && (
+            <span className="px-2 py-0.5 rounded-full bg-[var(--color-primary)] text-[var(--color-primary-foreground)] text-xs">
+              {item.badge}
+            </span>
+          )}
+          {hasChildren && (
+            <ChevronDown
+              className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
             />
-            <div className="absolute right-0 top-full mt-sm w-container-sm bg-background border border-border rounded-lg shadow-floating z-50 overflow-hidden">
-              {/* User Info */}
-              <div className="p-md border-b border-border">
-                <p className="font-medium text-sm">{user.name}</p>
-                <p className="text-sm text-muted-foreground">{user.email}</p>
-                {user.role && (
-                  <Badge variant="outline" className="mt-sm text-xs">
-                    {user.role}
-                  </Badge>
-                )}
-              </div>
-
-              {/* Menu Items */}
-              <div className="py-sm">
-                {menuItems.map((item, index) => (
-                  <React.Fragment key={index}>
-                    {item.separator && <div className="h-px bg-border my-sm" />}
-                    <button
-                      onClick={() => {
-                        item.action();
-                        setIsOpen(false);
-                      }}
-                      className="flex items-center gap-sm w-full px-md py-sm text-sm hover:bg-muted transition-colors text-left"
-                    >
-                      {item.icon && (
-                        <span className="text-muted-foreground">
-                          {item.icon}
-                        </span>
-                      )}
-                      {item.label}
-                    </button>
-                  </React.Fragment>
-                ))}
-              </div>
-            </div>
-          </>
+          )}
+        </button>
+        
+        {hasChildren && isExpanded && (
+          <div className="mt-1">
+            {item.children!.map(child => renderItem(child, level + 1))}
+          </div>
         )}
       </div>
     );
-  }
-);
-UserMenu.displayName = 'UserMenu';
+  };
+  
+  return (
+    <nav className={orientation === 'vertical' ? 'space-y-1' : 'flex gap-1'}>
+      {items.map(item => renderItem(item))}
+    </nav>
+  );
+};
 
-// Top Navigation Bar
-export interface TopNavProps {
-  title?: string;
-  subtitle?: string;
-  leftContent?: React.ReactNode;
-  rightContent?: React.ReactNode;
-  showSearch?: boolean;
-  searchProps?: Partial<GlobalSearchProps>;
-  user?: UserMenuProps['user'];
-  userMenuItems?: UserMenuProps['menuItems'];
-  notifications?: NotificationBellProps['notifications'];
-  notificationCount?: number;
-  theme?: ThemeSwitcherProps['theme'];
-  onThemeChange?: ThemeSwitcherProps['onThemeChange'];
-  onNotificationClick?: (id: string) => void;
-  onMarkAllRead?: () => void;
-}
-
-export const TopNav = React.forwardRef<HTMLElement, TopNavProps>(
-  ({ 
-    title,
-    subtitle,
-    leftContent,
-    rightContent,
-    showSearch = true,
-    searchProps,
-    user,
-    userMenuItems,
-    notifications,
-    notificationCount,
-    theme = 'system',
-    onThemeChange,
-    onNotificationClick,
-    onMarkAllRead,
-  }, ref) => {
-    return (
-      <nav 
-        ref={ref}
-        className="sticky top-0 z-40 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
-      >
-        <div className="flex h-component-md items-center justify-between px-lg">
-          {/* Left Section */}
-          <div className="flex items-center gap-md">
-            {leftContent}
-            {(title || subtitle) && (
-              <div>
-                {title && (
-                  <h1 className="font-display text-lg font-semibold">{title}</h1>
-                )}
-                {subtitle && (
-                  <p className="text-sm text-muted-foreground font-body">{subtitle}</p>
-                )}
-              </div>
-            )}
-          </div>
-
-          {/* Center Section - Search */}
-          {showSearch && (
-            <div className="flex-1 max-w-md mx-xl">
-              <GlobalSearch {...searchProps} />
-            </div>
-          )}
-
-          {/* Right Section */}
-          <div className="flex items-center gap-sm">
-            {rightContent}
-            
-            {/* Theme Switcher */}
-            {onThemeChange && (
-              <ThemeSwitcher theme={theme} onThemeChange={onThemeChange} />
-            )}
-            
-            {/* Notifications */}
-            <NotificationBell
-              count={notificationCount}
-              notifications={notifications}
-              onNotificationClick={onNotificationClick}
-              onMarkAllRead={onMarkAllRead}
-            />
-            
-            {/* User Menu */}
-            {user && (
-              <UserMenu user={user} menuItems={userMenuItems} />
-            )}
-          </div>
-        </div>
-      </nav>
-    );
-  }
-);
-TopNav.displayName = 'TopNav';
+Navigation.displayName = 'Navigation';

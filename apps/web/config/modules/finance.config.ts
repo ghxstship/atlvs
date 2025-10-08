@@ -30,7 +30,7 @@ const BudgetSchema = z.object({
   status: z.enum(['active', 'inactive', 'exceeded']),
   notes: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const ExpenseSchema = z.object({
@@ -49,7 +49,7 @@ const ExpenseSchema = z.object({
   paid_at: z.date().optional(),
   notes: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const RevenueSchema = z.object({
@@ -65,7 +65,7 @@ const RevenueSchema = z.object({
   invoice_number: z.string().optional(),
   notes: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const InvoiceSchema = z.object({
@@ -89,10 +89,10 @@ const InvoiceSchema = z.object({
     description: z.string(),
     quantity: z.number(),
     unit_price: z.number(),
-    amount: z.number(),
+    amount: z.number()
   })).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const TransactionSchema = z.object({
@@ -109,7 +109,7 @@ const TransactionSchema = z.object({
   transaction_date: z.date(),
   status: z.enum(['pending', 'completed', 'failed', 'reversed']),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export const financeModuleConfig: ModuleConfig = {

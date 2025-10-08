@@ -10,7 +10,7 @@ import { z } from 'zod';
 export const API_CONFIG = {
   baseURL: '/api/v1/procurement',
   timeout: 30000,
-  retries: 3,
+  retries: 3
 };
 
 // Generic API response schema
@@ -21,8 +21,8 @@ const ApiResponseSchema = z.object({
   meta: z.object({
     total: z.number().optional(),
     page: z.number().optional(),
-    pageSize: z.number().optional(),
-  }).optional(),
+    pageSize: z.number().optional()
+  }).optional()
 });
 
 export type ApiResponse<T = any> = {
@@ -76,13 +76,13 @@ export class ProcurementApiService {
         success: true,
         data,
         meta: {
-          total: count,
-        },
+          total: count
+        }
       };
     } catch (error: unknown) {
       return {
         success: false,
-        error: error.message || 'API request failed',
+        error: error.message || 'API request failed'
       };
     }
   }
@@ -102,12 +102,12 @@ export class ProcurementApiService {
 
       return {
         success: true,
-        data: created,
+        data: created
       };
     } catch (error: unknown) {
       return {
         success: false,
-        error: error.message || 'Create operation failed',
+        error: error.message || 'Create operation failed'
       };
     }
   }
@@ -129,12 +129,12 @@ export class ProcurementApiService {
 
       return {
         success: true,
-        data: updated,
+        data: updated
       };
     } catch (error: unknown) {
       return {
         success: false,
-        error: error.message || 'Update operation failed',
+        error: error.message || 'Update operation failed'
       };
     }
   }
@@ -153,12 +153,12 @@ export class ProcurementApiService {
       if (error) throw error;
 
       return {
-        success: true,
+        success: true
       };
     } catch (error: unknown) {
       return {
         success: false,
-        error: error.message || 'Delete operation failed',
+        error: error.message || 'Delete operation failed'
       };
     }
   }
@@ -208,8 +208,8 @@ export class ProcurementApiService {
       data: results,
       error: errors.length > 0 ? errors.join('; ') : undefined,
       meta: {
-        total: items.length,
-      },
+        total: items.length
+      }
     };
   }
 
@@ -232,12 +232,12 @@ export class ProcurementApiService {
 
       return {
         success: true,
-        data,
+        data
       };
     } catch (error: unknown) {
       return {
         success: false,
-        error: error.message || 'Search failed',
+        error: error.message || 'Search failed'
       };
     }
   }

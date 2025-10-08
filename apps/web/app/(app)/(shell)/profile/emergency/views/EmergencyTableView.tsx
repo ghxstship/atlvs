@@ -1,5 +1,5 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, Download, ArrowUpDown, ShieldCheck, ShieldAlert } from 'lucide-react';
 import { useMemo } from 'react';
 import {
  Card,
@@ -17,7 +17,7 @@ import {
  SelectTrigger,
  SelectValue,
  SelectContent,
- SelectItem,
+ SelectItem
 } from '@ghxstship/ui';
 import type { EmergencyContact, EmergencyContactFilters, EmergencyContactSort } from '../types';
 import { formatPhone, formatAddress } from '../types';
@@ -40,7 +40,7 @@ interface EmergencyTableViewProps {
 const verificationBadges: Record<string, { label: string; variant: 'default' | 'secondary' | 'destructive' }> = {
  verified: { label: 'Verified', variant: 'default' },
  pending: { label: 'Pending', variant: 'secondary' },
- unverified: { label: 'Unverified', variant: 'destructive' },
+ unverified: { label: 'Unverified', variant: 'destructive' }
 };
 
 export default function EmergencyTableView({
@@ -55,7 +55,7 @@ export default function EmergencyTableView({
  onSortChange,
  onExport,
  onEdit,
- onVerify,
+ onVerify
 }: EmergencyTableViewProps) {
  const allSelected = contacts.length > 0 && contacts.every(contact => selectedIds.includes(contact.id));
  const someSelected = contacts.some(contact => selectedIds.includes(contact.id));
@@ -75,7 +75,7 @@ export default function EmergencyTableView({
  const handleSort = (field: EmergencyContactSort['field']) => {
  onSortChange({
  field,
- direction: sort.field === field && sort.direction === 'asc' ? 'desc' : 'asc',
+ direction: sort.field === field && sort.direction === 'asc' ? 'desc' : 'asc'
  });
  };
 

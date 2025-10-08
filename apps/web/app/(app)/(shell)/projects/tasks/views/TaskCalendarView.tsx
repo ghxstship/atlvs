@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar, ChevronLeft, ChevronRight, ListTodo, Clock, AlertCircle, Users, Tag } from "lucide-react";
-import { useState, useMemo } from "react";
+import { useState, useMemo } from 'react';
 import { Badge, Card, Button } from "@ghxstship/ui";
 import { 
  format, 
@@ -15,7 +15,7 @@ import {
  isToday,
  parseISO,
  addMonths,
- subMonths,
+ subMonths
 } from "date-fns";
 
 interface User {
@@ -44,7 +44,7 @@ interface TaskCalendarViewProps {
 export default function TaskCalendarView({
  tasks,
  onViewTask,
- onEditTask,
+ onEditTask
 }: TaskCalendarViewProps) {
  const [currentDate, setCurrentDate] = useState(new Date());
  const [selectedDate, setSelectedDate] = useState<Date | null>(null);

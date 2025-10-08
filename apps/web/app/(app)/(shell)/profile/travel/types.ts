@@ -264,7 +264,7 @@ export const travelFilterSchema = zod.object({
   expenses_max: zod.number().min(0).optional(),
   has_visa: zod.boolean().optional(),
   duration_min: zod.number().min(1).optional(),
-  duration_max: zod.number().min(1).optional(),
+  duration_max: zod.number().min(1).optional()
 });
 
 export const travelRecordUpsertSchema = zod.object({
@@ -284,7 +284,7 @@ export const travelRecordUpsertSchema = zod.object({
   currency: zod.string().default('USD'),
   status: travelStatusSchema,
   booking_reference: zod.string().optional().nullable(),
-  emergency_contact: zod.string().optional().nullable(),
+  emergency_contact: zod.string().optional().nullable()
 });
 
 export const travelInfoUpsertSchema = zod.object({
@@ -298,7 +298,7 @@ export const travelInfoUpsertSchema = zod.object({
     issue_date: zod.string(),
     expiry_date: zod.string(),
     visa_number: zod.string(),
-    status: visaStatusSchema,
+    status: visaStatusSchema
   })),
   preferred_airline: zod.string().optional().nullable(),
   frequent_flyer_numbers: zod.record(zod.string()),
@@ -306,7 +306,7 @@ export const travelInfoUpsertSchema = zod.object({
   meal_preference: zod.string().optional().nullable(),
   accommodation_preference: zod.string().optional().nullable(),
   travel_restrictions: zod.string().optional().nullable(),
-  countries_cannot_visit: zod.array(zod.string()),
+  countries_cannot_visit: zod.array(zod.string())
 });
 
 // ============================================================================
@@ -319,7 +319,7 @@ export const TRAVEL_TYPE_LABELS: Record<TravelType, string> = {
   relocation: 'Relocation',
   training: 'Training',
   conference: 'Conference',
-  other: 'Other',
+  other: 'Other'
 };
 
 export const VISA_STATUS_LABELS: Record<VisaStatus, string> = {
@@ -327,7 +327,7 @@ export const VISA_STATUS_LABELS: Record<VisaStatus, string> = {
   pending: 'Pending',
   approved: 'Approved',
   denied: 'Denied',
-  expired: 'Expired',
+  expired: 'Expired'
 };
 
 export const TRAVEL_STATUS_LABELS: Record<TravelStatus, string> = {
@@ -335,33 +335,33 @@ export const TRAVEL_STATUS_LABELS: Record<TravelStatus, string> = {
   confirmed: 'Confirmed',
   in_progress: 'In Progress',
   completed: 'Completed',
-  cancelled: 'Cancelled',
+  cancelled: 'Cancelled'
 };
 
 export const SEAT_PREFERENCE_LABELS: Record<SeatPreference, string> = {
   aisle: 'Aisle',
   window: 'Window',
   middle: 'Middle',
-  'no-preference': 'No Preference',
+  'no-preference': 'No Preference'
 };
 
 export const VIEW_CONFIG: Record<TravelViewType, { label: string; description: string }> = {
   list: {
     label: 'List',
-    description: 'Detailed list view with trip information',
+    description: 'Detailed list view with trip information'
   },
   grid: {
     label: 'Grid',
-    description: 'Card-based grid layout',
+    description: 'Card-based grid layout'
   },
   table: {
     label: 'Table',
-    description: 'Sortable data table',
+    description: 'Sortable data table'
   },
   analytics: {
     label: 'Analytics',
-    description: 'Travel insights and trends',
-  },
+    description: 'Travel insights and trends'
+  }
 };
 
 export const QUICK_FILTERS = [
@@ -449,7 +449,7 @@ export function createEmptyFormData(): TravelFormData {
     currency: 'USD',
     status: 'planned',
     booking_reference: '',
-    emergency_contact: '',
+    emergency_contact: ''
   };
 }
 
@@ -469,8 +469,8 @@ export function createEmptyStats(): TravelStats {
       notRequired: 0,
       pending: 0,
       approved: 0,
-      denied: 0,
-    },
+      denied: 0
+    }
   };
 }
 
@@ -484,8 +484,8 @@ export function createEmptyAnalytics(): TravelAnalytics {
     complianceMetrics: {
       visaCompliance: 0,
       documentationComplete: 0,
-      expenseReporting: 0,
-    },
+      expenseReporting: 0
+    }
   };
 }
 
@@ -539,7 +539,7 @@ export function formatDate(date: string): string {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
+    day: 'numeric'
   });
 }
 
@@ -547,7 +547,7 @@ export function formatDateShort(date: string): string {
   return new Date(date).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
-    year: 'numeric',
+    year: 'numeric'
   });
 }
 
@@ -559,7 +559,7 @@ export function formatCurrency(amount: number, currency: string = 'USD'): string
     style: 'currency',
     currency: currency,
     minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
+    maximumFractionDigits: 2
   }).format(amount);
 }
 

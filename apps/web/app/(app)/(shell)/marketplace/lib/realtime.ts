@@ -28,7 +28,7 @@ export class MarketplaceRealtimeService {
           event: 'INSERT',
           schema: 'public',
           table: 'marketplace_listings',
-          filter: `organization_id=eq.${orgId}`,
+          filter: `organization_id=eq.${orgId}`
         },
         (payload: RealtimePostgresChangesPayload<MarketplaceListing>) => {
           try {
@@ -46,7 +46,7 @@ export class MarketplaceRealtimeService {
           event: 'UPDATE',
           schema: 'public',
           table: 'marketplace_listings',
-          filter: `organization_id=eq.${orgId}`,
+          filter: `organization_id=eq.${orgId}`
         },
         (payload: RealtimePostgresChangesPayload<MarketplaceListing>) => {
           try {
@@ -64,7 +64,7 @@ export class MarketplaceRealtimeService {
           event: 'DELETE',
           schema: 'public',
           table: 'marketplace_listings',
-          filter: `organization_id=eq.${orgId}`,
+          filter: `organization_id=eq.${orgId}`
         },
         (payload: RealtimePostgresChangesPayload<MarketplaceListing>) => {
           try {
@@ -112,7 +112,7 @@ export class MarketplaceRealtimeService {
           event: 'INSERT',
           schema: 'public',
           table: 'marketplace_projects',
-          filter: `organization_id=eq.${orgId}`,
+          filter: `organization_id=eq.${orgId}`
         },
         (payload: RealtimePostgresChangesPayload<MarketplaceProject>) => {
           try {
@@ -130,7 +130,7 @@ export class MarketplaceRealtimeService {
           event: 'UPDATE',
           schema: 'public',
           table: 'marketplace_projects',
-          filter: `organization_id=eq.${orgId}`,
+          filter: `organization_id=eq.${orgId}`
         },
         (payload: RealtimePostgresChangesPayload<MarketplaceProject>) => {
           try {
@@ -148,7 +148,7 @@ export class MarketplaceRealtimeService {
           event: 'DELETE',
           schema: 'public',
           table: 'marketplace_projects',
-          filter: `organization_id=eq.${orgId}`,
+          filter: `organization_id=eq.${orgId}`
         },
         (payload: RealtimePostgresChangesPayload<MarketplaceProject>) => {
           try {
@@ -195,7 +195,7 @@ export class MarketplaceRealtimeService {
           event: 'INSERT',
           schema: 'public',
           table: 'opendeck_vendor_profiles',
-          filter: `organization_id=eq.${orgId}`,
+          filter: `organization_id=eq.${orgId}`
         },
         (payload: RealtimePostgresChangesPayload<VendorProfile>) => {
           try {
@@ -213,7 +213,7 @@ export class MarketplaceRealtimeService {
           event: 'UPDATE',
           schema: 'public',
           table: 'opendeck_vendor_profiles',
-          filter: `organization_id=eq.${orgId}`,
+          filter: `organization_id=eq.${orgId}`
         },
         (payload: RealtimePostgresChangesPayload<VendorProfile>) => {
           try {
@@ -231,7 +231,7 @@ export class MarketplaceRealtimeService {
           event: 'DELETE',
           schema: 'public',
           table: 'opendeck_vendor_profiles',
-          filter: `organization_id=eq.${orgId}`,
+          filter: `organization_id=eq.${orgId}`
         },
         (payload: RealtimePostgresChangesPayload<VendorProfile>) => {
           try {
@@ -276,7 +276,7 @@ export class MarketplaceRealtimeService {
       onInsert: (listing) => callbacks.onListingChange?.({ type: 'insert', data: listing }),
       onUpdate: (listing) => callbacks.onListingChange?.({ type: 'update', data: listing }),
       onDelete: (id) => callbacks.onListingChange?.({ type: 'delete', data: { id } }),
-      onError: callbacks.onError,
+      onError: callbacks.onError
     });
 
     // Subscribe to projects
@@ -284,7 +284,7 @@ export class MarketplaceRealtimeService {
       onInsert: (project) => callbacks.onProjectChange?.({ type: 'insert', data: project }),
       onUpdate: (project) => callbacks.onProjectChange?.({ type: 'update', data: project }),
       onDelete: (id) => callbacks.onProjectChange?.({ type: 'delete', data: { id } }),
-      onError: callbacks.onError,
+      onError: callbacks.onError
     });
 
     // Subscribe to vendors
@@ -292,7 +292,7 @@ export class MarketplaceRealtimeService {
       onInsert: (vendor) => callbacks.onVendorChange?.({ type: 'insert', data: vendor }),
       onUpdate: (vendor) => callbacks.onVendorChange?.({ type: 'update', data: vendor }),
       onDelete: (id) => callbacks.onVendorChange?.({ type: 'delete', data: { id } }),
-      onError: callbacks.onError,
+      onError: callbacks.onError
     });
 
     unsubscribers.push(listingsUnsubscribe, projectsUnsubscribe, vendorsUnsubscribe);
@@ -315,9 +315,9 @@ export class MarketplaceRealtimeService {
     const channel = this.supabase.channel(channelName, {
       config: {
         presence: {
-          key: 'user',
-        },
-      },
+          key: 'user'
+        }
+      }
     });
 
     channel

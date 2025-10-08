@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { MarketingSection } from './Section';
-import { MarketingSectionHeader } from './Section';
-import { MarketingCard } from './Section';
+import { MarketingCard, MarketingSection, MarketingSectionHeader } from './Section';
 
 const meta: Meta = {
   title: 'Marketing/Layout Components',
@@ -9,11 +7,11 @@ const meta: Meta = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: 'Core marketing layout components for consistent page structure and visual hierarchy.',
-      },
-    },
+        component: 'Core marketing layout components for consistent page structure and visual hierarchy.'
+      }
+    }
   },
-  tags: ['autodocs'],
+  tags: ['autodocs']
 };
 
 export default meta;
@@ -37,10 +35,10 @@ export const MarketingSectionStory: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'Basic marketing section with header and content area.',
-      },
-    },
-  },
+        story: 'Basic marketing section with header and content area.'
+      }
+    }
+  }
 };
 
 export const MarketingCardStory: StoryObj = {
@@ -69,10 +67,10 @@ export const MarketingCardStory: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'Grid of marketing cards demonstrating hover animations and responsive layout.',
-      },
-    },
-  },
+        story: 'Grid of marketing cards demonstrating hover animations and responsive layout.'
+      }
+    }
+  }
 };
 
 export const SectionVariants: StoryObj = {
@@ -115,10 +113,10 @@ export const SectionVariants: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'Demonstrates all available section variants for different content hierarchy levels.',
-      },
-    },
-  },
+        story: 'Demonstrates all available section variants for different content hierarchy levels.'
+      }
+    }
+  }
 };
 
 export const ResponsiveBehavior: StoryObj = {
@@ -147,11 +145,11 @@ export const ResponsiveBehavior: StoryObj = {
   parameters: {
     docs: {
       description: {
-        story: 'Shows how marketing components adapt to different screen sizes and devices.',
-      },
+        story: 'Shows how marketing components adapt to different screen sizes and devices.'
+      }
     },
     viewport: {
-      defaultViewport: 'mobile1',
-    },
-  },
+      defaultViewport: 'mobile1'
+    }
+  }
 };

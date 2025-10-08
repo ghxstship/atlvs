@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import { AppDrawer, type DrawerFieldConfig } from "@ghxstship/ui";
 import { Tag } from 'lucide-react';
@@ -20,7 +20,7 @@ export default function CreateLocationDrawer({
  orgId,
  projectId,
  projects = [],
- onSuccess,
+ onSuccess
 }: CreateLocationDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ export default function CreateLocationDrawer({
  [{ label: "No project", value: "" },
  ...projects.map((project): { label: string; value: string } => ({
  label: project.name,
- value: project.id,
+ value: project.id
  }))]
 ), [projects]);
 
@@ -39,7 +39,7 @@ export default function CreateLocationDrawer({
  label: "Location Name",
  type: "text",
  required: true,
- placeholder: "Enter location name",
+ placeholder: "Enter location name"
  },
  {
  key: "type",
@@ -55,61 +55,61 @@ export default function CreateLocationDrawer({
  { label: "Studio", value: "studio" },
  { label: "Residential", value: "residential" },
  { label: "Other", value: "other" },
- ],
+ ]
  },
  {
  key: "project_id",
  label: "Associated Project",
  type: "select",
- options: projectOptions,
+ options: projectOptions
  },
  {
  key: "address",
  label: "Street Address",
  type: "text",
- placeholder: "123 Main St",
+ placeholder: "123 Main St"
  },
  {
  key: "city",
  label: "City",
  type: "text",
- placeholder: "San Francisco",
+ placeholder: "San Francisco"
  },
  {
  key: "state",
  label: "State/Province",
  type: "text",
- placeholder: "CA",
+ placeholder: "CA"
  },
  {
  key: "country",
  label: "Country",
  type: "text",
- placeholder: "USA",
+ placeholder: "USA"
  },
  {
  key: "postal_code",
  label: "Postal Code",
  type: "text",
- placeholder: "94102",
+ placeholder: "94102"
  },
  {
  key: "capacity",
  label: "Capacity (people)",
  type: "number",
- placeholder: "100",
+ placeholder: "100"
  },
  {
  key: "size",
  label: "Size (sq ft)",
  type: "number",
- placeholder: "5000",
+ placeholder: "5000"
  },
  {
  key: "rental_rate",
  label: "Rental Rate (per day)",
  type: "currency",
- placeholder: "1500.00",
+ placeholder: "1500.00"
  },
  {
  key: "availability_status",
@@ -120,77 +120,77 @@ export default function CreateLocationDrawer({
  { label: "Booked", value: "booked" },
  { label: "Maintenance", value: "maintenance" },
  { label: "Unavailable", value: "unavailable" },
- ],
+ ]
  },
  {
  key: "contact_name",
  label: "Contact Name",
  type: "text",
- placeholder: "John Doe",
+ placeholder: "John Doe"
  },
  {
  key: "contact_phone",
  label: "Contact Phone",
  type: "text",
- placeholder: "+1 (555) 123-4567",
+ placeholder: "+1 (555) 123-4567"
  },
  {
  key: "contact_email",
  label: "Contact Email",
  type: "email",
- placeholder: "contact@example.com",
+ placeholder: "contact@example.com"
  },
  {
  key: "operating_hours",
  label: "Operating Hours",
  type: "text",
- placeholder: "Mon-Fri 9AM-5PM",
+ placeholder: "Mon-Fri 9AM-5PM"
  },
  {
  key: "parking_available",
  label: "Parking Available",
- type: "checkbox",
+ type: "checkbox"
  },
  {
  key: "parking_capacity",
  label: "Parking Capacity",
  type: "number",
- placeholder: "50",
+ placeholder: "50"
  },
  {
  key: "public_transport",
  label: "Public Transport Access",
  type: "textarea",
- placeholder: "Near BART station, Bus lines 14, 49",
+ placeholder: "Near BART station, Bus lines 14, 49"
  },
  {
  key: "amenities",
  label: "Amenities (comma-separated)",
  type: "text",
- placeholder: "WiFi, Kitchen, Restrooms, AV Equipment",
+ placeholder: "WiFi, Kitchen, Restrooms, AV Equipment"
  },
  {
  key: "accessibility_features",
  label: "Accessibility Features (comma-separated)",
  type: "text",
- placeholder: "Wheelchair ramp, Elevator, Accessible restrooms",
+ placeholder: "Wheelchair ramp, Elevator, Accessible restrooms"
  },
  {
  key: "notes",
  label: "Notes",
  type: "textarea",
- placeholder: "Additional information about the location",
+ placeholder: "Additional information about the location"
  },
  {
  key: "tags",
  label: "Tags (comma-separated)",
  type: "text",
- placeholder: "downtown, waterfront, historic",
+ placeholder: "downtown, waterfront, historic"
  },
  {
  key: "is_featured",
  label: "Featured Location",
- type: "checkbox",
+ type: "checkbox"
  },
  ];
 
@@ -298,7 +298,7 @@ export default function CreateLocationDrawer({
  tags: normalizeCsv(data.tags),
  is_featured: parseBoolean(data.is_featured, false),
  images: [] as string[],
- floor_plans: [] as string[],
+ floor_plans: [] as string[]
  };
 
  setLoading(true);

@@ -36,5 +36,5 @@ export interface RatingFormData {
 // Re-export from parent types
 export type {
   CompanyRating,
-  CreateRatingForm,
+  CreateRatingForm
 } from '../types';

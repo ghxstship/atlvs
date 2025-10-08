@@ -17,7 +17,24 @@ import {
   Building,
   Trash2,
   Clock
-} from 'lucide-react';
+} from 'lucide-react';import {
+  Card,
+  Button,
+  UnifiedInput,
+  Select,
+  Textarea,
+  Badge,
+  Drawer
+} from '@ghxstship/ui';
+import {
+  Card,
+  Button,
+  Select,
+  Textarea,
+  Badge,
+  Drawer
+} from '@ghxstship/ui';
+
 
 const historyEntrySchema = z.object({
   entry_type: z.enum(['employment', 'education', 'project', 'achievement', 'certification', 'other']),

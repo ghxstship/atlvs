@@ -1,18 +1,8 @@
 'use client';
 
-import { Eye, Edit, Trash2, CheckCircle, XCircle, Clock, AlertTriangle, ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
+import { AlertTriangle, ArrowDown, ArrowUp, ArrowUpDown, Badge, Button, CheckCircle, Checkbox, Clock, Edit, Eye, Table, TableBody, TableCell, TableHead, TableHeader, TableRow, Trash2, XCircle } from 'lucide-react';
 import { useState } from 'react';
-import { 
- Table,
- TableBody,
- TableCell,
- TableHead,
- TableHeader,
- TableRow,
- Badge, 
- Button,
- Checkbox
-} from '@ghxstship/ui';
+import { Badge, Button, Checkbox, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@ghxstship/ui';
 import type { ProcurementRequest } from '../types';
 
 interface RequestTableViewProps {

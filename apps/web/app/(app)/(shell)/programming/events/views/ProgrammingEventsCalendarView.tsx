@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight, Clock, MapPin } from "lucide-react";
 import { Badge, Button, Card } from "@ghxstship/ui";
-import { useState } from "react";
+import { useState } from 'react';
 import type { ProgrammingEvent } from "../types";
 import { STATUS_BADGE, EVENT_TYPE_LABEL } from "../ProgrammingEventsClient";
 
@@ -15,7 +15,7 @@ type ProgrammingEventsCalendarViewProps = {
 export default function ProgrammingEventsCalendarView({
  events,
  onView,
- onEdit,
+ onEdit
 }: ProgrammingEventsCalendarViewProps) {
  const [currentDate, setCurrentDate] = useState(new Date());
 

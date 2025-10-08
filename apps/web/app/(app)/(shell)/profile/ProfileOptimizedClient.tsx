@@ -7,7 +7,7 @@ import { createBrowserClient } from '@/lib/supabase/client';
 import { ModuleTemplate } from '@ghxstship/ui/core/templates/ModuleTemplate';
 import { DataViewProvider } from '@ghxstship/ui/providers/DataViewProvider';
 import { StateManagerProvider } from '@ghxstship/ui/providers/StateManagerProvider';
-import { ViewSwitcher } from '@ghxstship/ui';
+import { ViewSwitcher, StateManagerProvider, DataViewProvider } from '@ghxstship/ui';
 import { DataActions } from '@ghxstship/ui';
 import { UnifiedDrawer } from '@ghxstship/ui/unified/drawers/UnifiedDrawer';
 import { useToast } from '@ghxstship/ui/hooks/useToast';
@@ -73,7 +73,7 @@ const VirtualProfileList = ({ items, height = 600 }: { items: unknown[], height?
  count: items.length,
  getScrollElement: () => parentRef.current,
  estimateSize: () => 80,
- overscan: 5,
+ overscan: 5
  });
 
  return (
@@ -86,7 +86,7 @@ const VirtualProfileList = ({ items, height = 600 }: { items: unknown[], height?
  style={{
  height: `${virtualizer.getTotalSize()}px`,
  width: '100%',
- position: 'relative',
+ position: 'relative'
  }}
  >
  {virtualizer.getVirtualItems().map((virtualItem) => (
@@ -98,7 +98,7 @@ const VirtualProfileList = ({ items, height = 600 }: { items: unknown[], height?
  left: 0,
  width: '100%',
  height: `${virtualItem.size}px`,
- transform: `translateY(${virtualItem.start}px)`,
+ transform: `translateY(${virtualItem.start}px)`
  }}
  >
  <ProfileItemRow item={items[virtualItem.index]} />
@@ -183,7 +183,7 @@ export default function ProfileOptimizedClient({ orgId, userId }: ProfileOptimiz
  toast({
  title: 'Error',
  description: 'Failed to load profile data',
- variant: 'destructive',
+ variant: 'destructive'
  });
  } finally {
  setLoading(false);
@@ -228,13 +228,13 @@ export default function ProfileOptimizedClient({ orgId, userId }: ProfileOptimiz
  label: section.label,
  icon: section.icon,
  route: `/profile/${section.id}`,
- component: section.component,
+ component: section.component
  })),
  permissions: {
  view: ['profile:view'],
  create: ['profile:create'],
  update: ['profile:update'],
- delete: ['profile:delete'],
+ delete: ['profile:delete']
  },
  features: {
  search: true,
@@ -243,10 +243,10 @@ export default function ProfileOptimizedClient({ orgId, userId }: ProfileOptimiz
  export: true,
  import: false,
  bulkActions: false,
- realtime: true,
+ realtime: true
  },
  views: ['grid', 'list', 'kanban'],
- defaultView: 'list',
+ defaultView: 'list'
  }), []);
 
  if (loading && !profileData) {
@@ -265,7 +265,7 @@ export default function ProfileOptimizedClient({ orgId, userId }: ProfileOptimiz
  config={{
  module: 'profile',
  defaultView: 'list',
- features: moduleConfig.features,
+ features: moduleConfig.features
  }}
  >
  <div className="space-y-lg">

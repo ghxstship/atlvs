@@ -49,7 +49,7 @@ export function NewsletterSignup({
   const variants = {
     default: 'flex flex-col sm:flex-row gap-lg max-w-md',
     inline: 'flex gap-lg max-w-sm',
-    centered: 'flex flex-col sm:flex-row gap-lg max-w-md mx-auto',
+    centered: 'flex flex-col sm:flex-row gap-lg max-w-md mx-auto'
   };
 
   if (isSubscribed && showSuccess) {

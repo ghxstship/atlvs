@@ -88,7 +88,7 @@ export class TasksService {
           total: count || 0,
           page,
           per_page: perPage,
-          total_pages: Math.ceil((count || 0) / perPage),
+          total_pages: Math.ceil((count || 0) / perPage)
         }
       };
     } catch (error) {
@@ -150,7 +150,7 @@ export class TasksService {
           created_by: userId,
           position,
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .select(`
           *,
@@ -169,7 +169,7 @@ export class TasksService {
         title: data.title,
         status: data.status,
         priority: data.priority,
-        project_id: data.project_id,
+        project_id: data.project_id
       });
 
       return { data };
@@ -191,7 +191,7 @@ export class TasksService {
       const updates: unknown = {
         ...updateData,
         updated_by: userId,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       if (updateData.status === 'done' && !updateData.completed_at) {
@@ -219,7 +219,7 @@ export class TasksService {
 
       // Log audit trail
       await this.logActivity(orgId, userId, 'tasks.update', 'task', id, {
-        updated_fields: Object.keys(updateData),
+        updated_fields: Object.keys(updateData)
       });
 
       return { data };
@@ -256,7 +256,7 @@ export class TasksService {
       // Log audit trail
       await this.logActivity(orgId, userId, 'tasks.delete', 'task', id, {
         title: task?.title || 'Unknown',
-        project_id: task?.project_id,
+        project_id: task?.project_id
       });
 
       return { data: true };
@@ -279,7 +279,7 @@ export class TasksService {
         status: destinationStatus,
         position: destinationIndex,
         updated_by: userId,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       // Auto-set completion date when moving to done
@@ -303,7 +303,7 @@ export class TasksService {
       await this.logActivity(orgId, userId, 'tasks.reorder', 'task', taskId, {
         source_status: sourceStatus,
         destination_status: destinationStatus,
-        destination_index: destinationIndex,
+        destination_index: destinationIndex
       });
 
       return { data: true };
@@ -353,7 +353,7 @@ export class TasksService {
         overdue: 0,
         totalEstimatedHours: 0,
         totalActualHours: 0,
-        completionRate: 0,
+        completionRate: 0
       } as TaskStats);
 
       // Calculate completion rate
@@ -378,7 +378,7 @@ export class TasksService {
           event: '*',
           schema: 'public',
           table: 'project_tasks',
-          filter: `organization_id=eq.${orgId}`,
+          filter: `organization_id=eq.${orgId}`
         },
         callback
       )
@@ -396,7 +396,7 @@ export class TasksService {
       const updates: unknown = {
         status,
         updated_by: userId,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       // Auto-set completion date when marking as done
@@ -425,7 +425,7 @@ export class TasksService {
       await this.logActivity(orgId, userId, 'tasks.bulk_status_update', 'task', null, {
         task_ids: taskIds,
         new_status: status,
-        count: taskIds.length,
+        count: taskIds.length
       });
 
       return { data: data || [] };
@@ -447,7 +447,7 @@ export class TasksService {
         .update({
           assignee_id: assigneeId,
           updated_by: userId,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .in('id', taskIds)
         .eq('organization_id', orgId)
@@ -465,7 +465,7 @@ export class TasksService {
       await this.logActivity(orgId, userId, 'tasks.bulk_assign', 'task', null, {
         task_ids: taskIds,
         assignee_id: assigneeId,
-        count: taskIds.length,
+        count: taskIds.length
       });
 
       return { data: data || [] };
@@ -491,7 +491,7 @@ export class TasksService {
         resource_type: resourceType,
         resource_id: resourceId,
         details,
-        occurred_at: new Date().toISOString(),
+        occurred_at: new Date().toISOString()
       });
     } catch (error) {
       console.warn('Failed to log activity:', error);

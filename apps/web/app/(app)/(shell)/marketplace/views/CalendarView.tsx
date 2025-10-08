@@ -2,14 +2,7 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Badge } from '@ghxstship/ui';
 import { Button } from '@ghxstship/ui';
-import {
-  ChevronLeft,
-  ChevronRight,
-  Calendar as CalendarIcon,
-  Clock,
-  MapPin,
-  DollarSign
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, MapPin, DollarSign, CalendarIcon } from 'lucide-react';
 import { marketplaceService } from '../lib/marketplace-service';
 import type { MarketplaceListing, ListingFilters } from '../types';
 
@@ -32,7 +25,7 @@ export default function CalendarView({
   onListingDelete,
   onListingView,
   selectedListings = [],
-  onSelectionChange,
+  onSelectionChange
 }: CalendarViewProps) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -41,7 +34,7 @@ export default function CalendarView({
   const { data: listingsResponse, isLoading, error } = useQuery({
     queryKey: ['marketplace-listings', orgId, filters],
     queryFn: () => marketplaceService.getListings(orgId, filters),
-    refetchInterval: 30000,
+    refetchInterval: 30000
   });
 
   const listings = listingsResponse?.listings || [];
@@ -101,7 +94,7 @@ export default function CalendarView({
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency,
-      minimumFractionDigits: 0,
+      minimumFractionDigits: 0
     }).format(amount);
   };
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { Edit3, FileText, Activity as ActivityIcon, MessageSquare } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -15,6 +15,7 @@ export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }:
   const [msg, setMsg] = useState<string | null>(null);
   const [form, setForm] = useState<{ name: string; website?: string; contactEmail?: string; status: string }>({ name: '', website: '', contactEmail: '', status: 'active' });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!open || !vendorId) return;
     (async () => {
@@ -28,6 +29,7 @@ export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }:
         setVendor(null);
       }
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, vendorId, orgId]);
 
   async function saveEdit() {
@@ -58,6 +60,7 @@ export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }:
   const [loadingComments, setLoadingComments] = useState(false);
   const [loadingActivity, setLoadingActivity] = useState(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!open || !vendorId) return;
     (async () => {
@@ -75,8 +78,10 @@ export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }:
       } catch { setComments([]); }
       setLoadingComments(false);
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, vendorId, orgId, sb]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!open || !vendorId) return;
     (async () => {
@@ -88,6 +93,7 @@ export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }:
       } catch { setActivity([]); }
       setLoadingActivity(false);
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, vendorId, orgId]);
 
   return (

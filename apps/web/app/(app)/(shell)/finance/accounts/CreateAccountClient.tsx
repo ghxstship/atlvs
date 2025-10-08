@@ -1,4 +1,5 @@
 'use client';
+import { Button, Card, Drawer, Input, Select } from '@ghxstship/ui';
 
 
 import { useState } from 'react';
@@ -145,7 +146,7 @@ export default function CreateAccountClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Account Name *
             </label>
-            <UnifiedInput               value={formData.name}
+            <Input               value={formData.name}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, name: e.target.value }))}
               placeholder="e.g., Business Checking, Petty Cash, Corporate Credit Card"
               required
@@ -156,7 +157,7 @@ export default function CreateAccountClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Description
             </label>
-            <Textarea
+            <textarea
               value={formData.description}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Describe the purpose and use of this account..."
@@ -214,7 +215,7 @@ export default function CreateAccountClient({
                 <label className="block text-body-sm form-label color-foreground mb-sm">
                   Bank Name
                 </label>
-                <UnifiedInput                   value={formData.bankName}
+                <Input                   value={formData.bankName}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, bankName: e.target.value }))}
                   placeholder="e.g., Chase Bank, Bank of America"
                 />
@@ -225,7 +226,7 @@ export default function CreateAccountClient({
                   <label className="block text-body-sm form-label color-foreground mb-sm">
                     Account Number
                   </label>
-                  <UnifiedInput                     value={formData.accountNumber}
+                  <Input                     value={formData.accountNumber}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, accountNumber: e.target.value }))}
                     placeholder="****1234"
                     type="password"
@@ -239,7 +240,7 @@ export default function CreateAccountClient({
                   <label className="block text-body-sm form-label color-foreground mb-sm">
                     Routing Number
                   </label>
-                  <UnifiedInput                     value={formData.routingNumber}
+                  <Input                     value={formData.routingNumber}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, routingNumber: e.target.value }))}
                     placeholder="123456789"
                   />

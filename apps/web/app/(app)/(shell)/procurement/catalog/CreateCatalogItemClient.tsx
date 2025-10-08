@@ -1,7 +1,8 @@
 'use client';
+import { Button, Drawer, Input } from '@ghxstship/ui';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -23,7 +24,7 @@ const catalogItemSchema = z.object({
   supplier: z.string().optional(),
   status: z.enum(['active', 'inactive', 'discontinued']).default('active'),
   specifications: z.string().optional(),
-  tags: z.string().optional(),
+  tags: z.string().optional()
 });
 
 type CatalogItemFormData = z.infer<typeof catalogItemSchema>;
@@ -65,23 +66,25 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
     defaultValues: {
       type: 'product',
       currency: 'USD',
-      status: 'active',
+      status: 'active'
     }
   });
 
   const selectedType = watch('type');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isOpen) {
       loadCategories();
       loadVendors();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, orgId]);
 
   const loadCategories = async () => {
     try {
       const response = await fetch('/api/v1/procurement/categories', {
-        headers: { 'x-organization-id': orgId },
+        headers: { 'x-organization-id': orgId }
       });
       if (response.ok) {
         const result = await response.json();
@@ -95,7 +98,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
   const loadVendors = async () => {
     try {
       const response = await fetch('/api/v1/procurement/vendors', {
-        headers: { 'x-organization-id': orgId },
+        headers: { 'x-organization-id': orgId }
       });
       if (response.ok) {
         const result = await response.json();
@@ -123,7 +126,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
         supplier: data.supplier,
         status: data.status,
         specifications: data.specifications,
-        tags: data.tags,
+        tags: data.tags
       };
 
       let response;
@@ -137,13 +140,13 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'x-organization-id': orgId,
+            'x-organization-id': orgId
           },
           body: JSON.stringify({
             ...itemData,
             price: data.price || 0,
-            sku: data.sku,
-          }),
+            sku: data.sku
+          })
         });
       } else {
         endpoint = '/api/v1/procurement/services';
@@ -152,13 +155,13 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'x-organization-id': orgId,
+            'x-organization-id': orgId
           },
           body: JSON.stringify({
             ...itemData,
             rate: data.rate || 0,
-            unit: data.unit || 'hour',
-          }),
+            unit: data.unit || 'hour'
+          })
         });
       }
 
@@ -176,7 +179,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
         item_type: data.type,
         category: data.category,
         organization_id: orgId,
-        status: data.status,
+        status: data.status
       });
 
       // Log activity
@@ -190,8 +193,8 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
           item_name: data.name,
           item_type: data.type,
           category: data.category,
-          status: data.status,
-        },
+          status: data.status
+        }
       });
 
       // Reset form and close drawer
@@ -204,7 +207,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
       posthog?.capture('procurement_catalog_item_creation_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
         item_type: data.type,
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -307,7 +310,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   Name *
                 </label>
-                <UnifiedInput                   {...register('name')}
+                <Input                   {...register('name')}
                   placeholder={`Enter ${selectedType} name`}
                   error={errors.name?.message}
                 />
@@ -350,7 +353,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                     <label className="block text-body-sm form-label mb-sm">
                       Price
                     </label>
-                    <UnifiedInput                       {...register('price', { valueAsNumber: true })}
+                    <Input                       {...register('price', { valueAsNumber: true })}
                       type="number"
                       step="0.01"
                       min="0"
@@ -362,7 +365,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                     <label className="block text-body-sm form-label mb-sm">
                       SKU
                     </label>
-                    <UnifiedInput                       {...register('sku')}
+                    <Input                       {...register('sku')}
                       placeholder="Product SKU"
                     />
                   </div>
@@ -373,7 +376,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                     <label className="block text-body-sm form-label mb-sm">
                       Rate
                     </label>
-                    <UnifiedInput                       {...register('rate', { valueAsNumber: true })}
+                    <Input                       {...register('rate', { valueAsNumber: true })}
                       type="number"
                       step="0.01"
                       min="0"
@@ -436,7 +439,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   Description
                 </label>
-                <Textarea
+                <textarea
                   {...register('description')}
                   placeholder={`Brief description of this ${selectedType}`}
                   rows={3}
@@ -447,7 +450,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   Specifications
                 </label>
-                <Textarea
+                <textarea
                   {...register('specifications')}
                   placeholder="Technical specifications, requirements, or details"
                   rows={3}
@@ -458,7 +461,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   Tags
                 </label>
-                <UnifiedInput                   {...register('tags')}
+                <Input                   {...register('tags')}
                   placeholder="Comma-separated tags for easier searching"
                 />
               </div>

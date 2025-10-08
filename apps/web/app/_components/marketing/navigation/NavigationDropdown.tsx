@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
@@ -27,10 +27,28 @@ export function NavigationDropdown({
   isMobile = false 
 }: NavigationDropdownProps) {
   const pathname = usePathname();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [dropdownPosition, setDropdownPosition] = useState<'left' | 'right'>('left');
 
   const handleToggle = () => {
     onDropdownChange(activeDropdown === item.label ? null : item.label);
   };
+
+  // Adjust dropdown position based on viewport
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (!isMobile && activeDropdown === item.label && dropdownRef.current) {
+      const rect = dropdownRef.current.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      
+      if (rect.right > viewportWidth - 20) {
+        setDropdownPosition('right');
+      } else {
+        setDropdownPosition('left');
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeDropdown, item.label, isMobile]);
 
   if (isMobile) {
     return (
@@ -87,23 +105,6 @@ export function NavigationDropdown({
       </div>
     );
   }
-
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const [dropdownPosition, setDropdownPosition] = useState<'left' | 'right'>('left');
-
-  // Adjust dropdown position based on viewport
-  useEffect(() => {
-    if (activeDropdown === item.label && dropdownRef.current) {
-      const rect = dropdownRef.current.getBoundingClientRect();
-      const viewportWidth = window.innerWidth;
-      
-      if (rect.right > viewportWidth - 20) {
-        setDropdownPosition('right');
-      } else {
-        setDropdownPosition('left');
-      }
-    }
-  }, [activeDropdown, item.label]);
 
   // Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {

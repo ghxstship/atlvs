@@ -1,7 +1,7 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Card, Button, Badge } from '@ghxstship/ui';
 import { Plus, Package, TrendingUp, AlertTriangle, Settings, BarChart3 } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -25,6 +25,8 @@ interface Asset {
 
 interface AssetsClientProps {
   orgId: string;
+  userId: string;
+  userEmail: string;
 }
 
 const ASSET_CATEGORIES = [
@@ -43,7 +45,7 @@ const ASSET_CATEGORIES = [
   { id: 'artist_travel', name: 'Artist Travel & Lodging', icon: '✈️' }
 ] as const;
 
-export default function AssetsClient({ orgId }: AssetsClientProps) {
+export default function AssetsClient({ orgId, userId, userEmail }: AssetsClientProps) {
   const t = useTranslations('assets');
   const supabase = createBrowserClient();
   const [assets, setAssets] = useState<Asset[]>([]);
@@ -56,8 +58,10 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
     totalValue: 0
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadData = async () => {
@@ -178,13 +182,13 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
       case 'under_maintenance':
         return <Badge variant="secondary">Maintenance</Badge>;
       case 'damaged':
-        return <Badge variant="destructive">Damaged</Badge>;
+        return <Badge variant="error">Damaged</Badge>;
       case 'missing':
-        return <Badge variant="destructive">Missing</Badge>;
+        return <Badge variant="error">Missing</Badge>;
       case 'retired':
-        return <Badge variant="outline">Retired</Badge>;
+        return <Badge variant="secondary">Retired</Badge>;
       default:
-        return <Badge variant="outline">{status}</Badge>;
+        return <Badge variant="secondary">{status}</Badge>;
     }
   };
 

@@ -75,7 +75,7 @@ export class ProjectRealtime {
           event: '*',
           schema: 'public',
           table: 'projects',
-          filter: `organization_id=eq.${options.orgId}`,
+          filter: `organization_id=eq.${options.orgId}`
         },
         (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
@@ -83,7 +83,7 @@ export class ProjectRealtime {
             table: 'projects',
             record: payload.new || payload.record,
             oldRecord: payload.old,
-            timestamp: new Date().toISOString(),
+            timestamp: new Date().toISOString()
           };
 
           // Debounce if configured
@@ -103,7 +103,7 @@ export class ProjectRealtime {
       unsubscribe: () => {
         this.supabase.removeChannel(channel);
         this.subscriptions.delete(subscriptionId);
-      },
+      }
     };
 
     this.subscriptions.set(subscriptionId, subscription);
@@ -131,7 +131,7 @@ export class ProjectRealtime {
           event: '*',
           schema: 'public',
           table,
-          filter: `project_id=eq.${projectId}`,
+          filter: `project_id=eq.${projectId}`
         },
         (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
@@ -139,7 +139,7 @@ export class ProjectRealtime {
             table,
             record: payload.new || payload.record,
             oldRecord: payload.old,
-            timestamp: new Date().toISOString(),
+            timestamp: new Date().toISOString()
           };
 
           if (options.debounceMs) {
@@ -160,7 +160,7 @@ export class ProjectRealtime {
       unsubscribe: () => {
         this.supabase.removeChannel(channel);
         this.subscriptions.delete(subscriptionId);
-      },
+      }
     };
 
     this.subscriptions.set(subscriptionId, subscription);
@@ -194,7 +194,7 @@ export class TaskRealtime {
           event: '*',
           schema: 'public',
           table: 'project_tasks',
-          filter,
+          filter
         },
         (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
@@ -202,7 +202,7 @@ export class TaskRealtime {
             table: 'project_tasks',
             record: payload.new || payload.record,
             oldRecord: payload.old,
-            timestamp: new Date().toISOString(),
+            timestamp: new Date().toISOString()
           };
 
           if (options.debounceMs) {
@@ -221,7 +221,7 @@ export class TaskRealtime {
       unsubscribe: () => {
         this.supabase.removeChannel(channel);
         this.subscriptions.delete(subscriptionId);
-      },
+      }
     };
 
     this.subscriptions.set(subscriptionId, subscription);
@@ -255,7 +255,7 @@ export class FileRealtime {
           event: '*',
           schema: 'public',
           table: 'project_files',
-          filter,
+          filter
         },
         (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
@@ -263,7 +263,7 @@ export class FileRealtime {
             table: 'project_files',
             record: payload.new || payload.record,
             oldRecord: payload.old,
-            timestamp: new Date().toISOString(),
+            timestamp: new Date().toISOString()
           };
 
           if (options.debounceMs) {
@@ -282,7 +282,7 @@ export class FileRealtime {
       unsubscribe: () => {
         this.supabase.removeChannel(channel);
         this.subscriptions.delete(subscriptionId);
-      },
+      }
     };
 
     this.subscriptions.set(subscriptionId, subscription);
@@ -316,7 +316,7 @@ export class RiskRealtime {
           event: '*',
           schema: 'public',
           table: 'project_risks',
-          filter,
+          filter
         },
         (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
@@ -324,7 +324,7 @@ export class RiskRealtime {
             table: 'project_risks',
             record: payload.new || payload.record,
             oldRecord: payload.old,
-            timestamp: new Date().toISOString(),
+            timestamp: new Date().toISOString()
           };
 
           if (options.debounceMs) {
@@ -343,7 +343,7 @@ export class RiskRealtime {
       unsubscribe: () => {
         this.supabase.removeChannel(channel);
         this.subscriptions.delete(subscriptionId);
-      },
+      }
     };
 
     this.subscriptions.set(subscriptionId, subscription);
@@ -377,7 +377,7 @@ export class InspectionRealtime {
           event: '*',
           schema: 'public',
           table: 'project_inspections',
-          filter,
+          filter
         },
         (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
@@ -385,7 +385,7 @@ export class InspectionRealtime {
             table: 'project_inspections',
             record: payload.new || payload.record,
             oldRecord: payload.old,
-            timestamp: new Date().toISOString(),
+            timestamp: new Date().toISOString()
           };
 
           if (options.debounceMs) {
@@ -404,7 +404,7 @@ export class InspectionRealtime {
       unsubscribe: () => {
         this.supabase.removeChannel(channel);
         this.subscriptions.delete(subscriptionId);
-      },
+      }
     };
 
     this.subscriptions.set(subscriptionId, subscription);
@@ -438,7 +438,7 @@ export class ActivationRealtime {
           event: '*',
           schema: 'public',
           table: 'project_activations',
-          filter,
+          filter
         },
         (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
@@ -446,7 +446,7 @@ export class ActivationRealtime {
             table: 'project_activations',
             record: payload.new || payload.record,
             oldRecord: payload.old,
-            timestamp: new Date().toISOString(),
+            timestamp: new Date().toISOString()
           };
 
           if (options.debounceMs) {
@@ -465,7 +465,7 @@ export class ActivationRealtime {
       unsubscribe: () => {
         this.supabase.removeChannel(channel);
         this.subscriptions.delete(subscriptionId);
-      },
+      }
     };
 
     this.subscriptions.set(subscriptionId, subscription);
@@ -494,7 +494,7 @@ export class LocationRealtime {
           event: '*',
           schema: 'public',
           table: 'project_locations',
-          filter: `organization_id=eq.${options.orgId}`,
+          filter: `organization_id=eq.${options.orgId}`
         },
         (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
@@ -502,7 +502,7 @@ export class LocationRealtime {
             table: 'project_locations',
             record: payload.new || payload.record,
             oldRecord: payload.old,
-            timestamp: new Date().toISOString(),
+            timestamp: new Date().toISOString()
           };
 
           if (options.debounceMs) {
@@ -521,7 +521,7 @@ export class LocationRealtime {
       unsubscribe: () => {
         this.supabase.removeChannel(channel);
         this.subscriptions.delete(subscriptionId);
-      },
+      }
     };
 
     this.subscriptions.set(subscriptionId, subscription);
@@ -555,7 +555,7 @@ export class MilestoneRealtime {
           event: '*',
           schema: 'public',
           table: 'project_milestones',
-          filter,
+          filter
         },
         (payload: RealtimePostgresChangesPayload<any>) => {
           const change: RealtimeChange = {
@@ -563,7 +563,7 @@ export class MilestoneRealtime {
             table: 'project_milestones',
             record: payload.new || payload.record,
             oldRecord: payload.old,
-            timestamp: new Date().toISOString(),
+            timestamp: new Date().toISOString()
           };
 
           if (options.debounceMs) {
@@ -582,7 +582,7 @@ export class MilestoneRealtime {
       unsubscribe: () => {
         this.supabase.removeChannel(channel);
         this.subscriptions.delete(subscriptionId);
-      },
+      }
     };
 
     this.subscriptions.set(subscriptionId, subscription);
@@ -642,7 +642,7 @@ export class ProjectRealtimeManager {
       unsubscribe: () => {
         subscriptionIds.forEach(id => this.unsubscribe(id));
         this.subscriptions.delete(masterId);
-      },
+      }
     };
 
     this.subscriptions.set(masterId, masterSubscription);

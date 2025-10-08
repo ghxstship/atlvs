@@ -1,7 +1,8 @@
 'use client';
+import { Button, Drawer, Input } from '@ghxstship/ui';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -24,7 +25,7 @@ const onboardingTaskSchema = z.object({
   completionCriteria: z.string().optional(),
   automated: z.boolean().default(false),
   mandatory: z.boolean().default(true),
-  order: z.number().min(1, 'Order must be at least 1').default(1),
+  order: z.number().min(1, 'Order must be at least 1').default(1)
 });
 
 type OnboardingTaskFormData = z.infer<typeof onboardingTaskSchema>;
@@ -57,7 +58,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
       estimatedDuration: 1,
       automated: false,
       mandatory: true,
-      order: 1,
+      order: 1
     }
   });
 
@@ -75,9 +76,9 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
@@ -95,7 +96,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
         priority: data.priority,
         mandatory: data.mandatory,
         automated: data.automated,
-        organization_id: orgId,
+        organization_id: orgId
       });
 
       // Log activity
@@ -110,8 +111,8 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
           category: data.category,
           priority: data.priority,
           mandatory: data.mandatory,
-          automated: data.automated,
-        },
+          automated: data.automated
+        }
       });
 
       // Reset form and close drawer
@@ -123,7 +124,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
       console.error('Error creating onboarding task:', error);
       posthog?.capture('pipeline_onboarding_task_creation_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -193,7 +194,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Task Title *
               </label>
-              <UnifiedInput                 {...register('title')}
+              <Input                 {...register('title')}
                 placeholder="e.g., Complete Safety Orientation, Setup IT Equipment"
                 error={errors.title?.message}
               />
@@ -239,7 +240,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
                 <label className="block text-body-sm form-label mb-sm">
                   Estimated Duration *
                 </label>
-                <UnifiedInput                   {...register('estimatedDuration', { valueAsNumber: true })}
+                <Input                   {...register('estimatedDuration', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   placeholder="1"
@@ -265,7 +266,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
                 <label className="block text-body-sm form-label mb-sm">
                   Order
                 </label>
-                <UnifiedInput                   {...register('order', { valueAsNumber: true })}
+                <Input                   {...register('order', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   placeholder="1"
@@ -278,7 +279,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Assignee Role
               </label>
-              <UnifiedInput                 {...register('assigneeRole')}
+              <Input                 {...register('assigneeRole')}
                 placeholder="e.g., HR Manager, IT Administrator, Direct Supervisor"
               />
             </div>
@@ -287,7 +288,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Description
               </label>
-              <Textarea
+              <textarea
                 {...register('description')}
                 placeholder="Detailed description of the onboarding task"
                 rows={3}
@@ -298,7 +299,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Instructions
               </label>
-              <Textarea
+              <textarea
                 {...register('instructions')}
                 placeholder="Step-by-step instructions for completing this task"
                 rows={3}
@@ -309,7 +310,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Prerequisites
               </label>
-              <Textarea
+              <textarea
                 {...register('prerequisites')}
                 placeholder="Tasks or requirements that must be completed before this task"
                 rows={2}
@@ -320,7 +321,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Resources
               </label>
-              <Textarea
+              <textarea
                 {...register('resources')}
                 placeholder="Links, documents, or tools needed to complete this task"
                 rows={2}
@@ -331,7 +332,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Completion Criteria
               </label>
-              <Textarea
+              <textarea
                 {...register('completionCriteria')}
                 placeholder="How to verify that this task has been completed successfully"
                 rows={2}

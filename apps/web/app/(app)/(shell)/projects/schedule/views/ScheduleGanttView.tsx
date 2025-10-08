@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar, Target, ListTodo, Users, AlertCircle } from "lucide-react";
-import { useMemo } from "react";
+import { useMemo } from 'react';
 import { Badge, Card } from "@ghxstship/ui";
 import { 
  format, 
@@ -12,7 +12,7 @@ import {
  eachDayOfInterval,
  isWithinInterval,
  isSameDay,
- isToday,
+ isToday
 } from "date-fns";
 
 interface ScheduleItem {
@@ -43,7 +43,7 @@ interface ScheduleGanttViewProps {
 
 export default function ScheduleGanttView({
  items,
- onItemClick,
+ onItemClick
 }: ScheduleGanttViewProps) {
  // Calculate date range for the Gantt chart
  const { startDate, endDate, days } = useMemo(() => {
@@ -55,7 +55,7 @@ export default function ScheduleGanttView({
  days: eachDayOfInterval({ 
  start: startOfMonth(today), 
  end: endOfMonth(today) 
- }),
+ })
  };
  }
 
@@ -82,7 +82,7 @@ export default function ScheduleGanttView({
  days: eachDayOfInterval({ 
  start: startOfMonth(today), 
  end: endOfMonth(today) 
- }),
+ })
  };
  }
 
@@ -93,7 +93,7 @@ export default function ScheduleGanttView({
  return {
  startDate: start,
  endDate: end,
- days: eachDayOfInterval({ start, end }),
+ days: eachDayOfInterval({ start, end })
  };
  }, [items]);
 
@@ -141,7 +141,7 @@ export default function ScheduleGanttView({
  left: `${Math.max(0, left)}%`,
  width: `${Math.min(100 - left, width)}%`,
  backgroundColor: item.color || "#6B7280",
- opacity: item.status === "completed" || item.status === "done" ? 0.7 : 1,
+ opacity: item.status === "completed" || item.status === "done" ? 0.7 : 1
  };
  };
 

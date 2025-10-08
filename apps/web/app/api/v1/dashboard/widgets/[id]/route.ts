@@ -12,13 +12,13 @@ const updateWidgetSchema = z.object({
     x: z.number().min(0),
     y: z.number().min(0),
     w: z.number().min(1),
-    h: z.number().min(1),
+    h: z.number().min(1)
   }).optional(),
   config: z.record(z.any()).optional(),
   data_source: z.string().optional(),
   query_config: z.record(z.any()).optional(),
   refresh_interval: z.number().min(30).optional(),
-  is_visible: z.boolean().optional(),
+  is_visible: z.boolean().optional()
 });
 
 export async function GET(
@@ -177,10 +177,10 @@ export async function PUT(
       action: 'update',
       details: {
         widget_title: widget.title,
-        updated_fields: Object.keys(validatedData),
+        updated_fields: Object.keys(validatedData)
       },
       ip_address: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip'),
-      user_agent: request.headers.get('user-agent'),
+      user_agent: request.headers.get('user-agent')
     });
 
     return NextResponse.json({ data: widget });
@@ -189,7 +189,7 @@ export async function PUT(
     if (error instanceof z.ZodError) {
       return NextResponse.json({
         error: 'Validation failed',
-        details: error.errors,
+        details: error.errors
       }, { status: 400 });
     }
 
@@ -282,10 +282,10 @@ export async function DELETE(
       action: 'delete',
       details: {
         widget_title: existingWidget.title,
-        widget_id: existingWidget.id,
+        widget_id: existingWidget.id
       },
       ip_address: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip'),
-      user_agent: request.headers.get('user-agent'),
+      user_agent: request.headers.get('user-agent')
     });
 
     return NextResponse.json({ message: 'Widget deleted successfully' });

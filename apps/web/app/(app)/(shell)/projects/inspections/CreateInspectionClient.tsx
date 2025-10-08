@@ -17,7 +17,7 @@ const createInspectionSchema = z.object({
   scheduled_at: z.string().optional(),
   inspector_name: z.string().optional(),
   project_id: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 export default function CreateInspectionClient({ 
@@ -42,8 +42,8 @@ export default function CreateInspectionClient({
       scheduled_at: '',
       inspector_name: '',
       project_id: '',
-      notes: '',
-    },
+      notes: ''
+    }
   });
 
   const onSubmit = async (data: z.infer<typeof createInspectionSchema>) => {
@@ -56,7 +56,7 @@ export default function CreateInspectionClient({
         organization_id: orgId,
         project_id: data.project_id || null,
         scheduled_at: data.scheduled_at || null,
-        status: 'scheduled',
+        status: 'scheduled'
       };
 
       const { error: insertError } = await sb

@@ -103,28 +103,28 @@ export function useMarketplaceOverview({ orgId }: UseMarketplaceOverviewOptions)
             label: 'Total Listings',
             value: totalListings,
             change: 12,
-            trend: 'up',
+            trend: 'up'
           },
           {
             id: 'activeVendors',
             label: 'Active Vendors',
             value: vendorsData.length,
             change: 8,
-            trend: 'up',
+            trend: 'up'
           },
           {
             id: 'activeProjects',
             label: 'Active Projects',
             value: projectsData.length,
             change: 15,
-            trend: 'up',
+            trend: 'up'
           },
           {
             id: 'responses',
             label: 'Total Responses',
             value: totalResponses,
             change: -3,
-            trend: 'down',
+            trend: 'down'
           },
         ]
 
@@ -160,6 +160,6 @@ export function useMarketplaceOverview({ orgId }: UseMarketplaceOverviewOptions)
     loading,
     refreshing,
     error,
-    refresh,
+    refresh
   }
 }

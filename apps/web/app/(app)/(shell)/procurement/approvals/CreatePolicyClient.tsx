@@ -1,15 +1,9 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { Activity, Award, Calendar, Clock, FileText, Play, Plus, Save, Search, Settings, Trash2, TrendingUp, User, X } from 'lucide-react';
 import React, { useState } from 'react';
-import { useForm, useFieldArray } from 'react-hook-form';
+import { useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from '@ghxstship/ui';
-import { Input } from '@ghxstship/ui';
-import { Textarea } from '@ghxstship/ui';
-import { Select } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Card } from '@ghxstship/ui';
-import { useToastContext } from '@ghxstship/ui';
+import { Badge, Button, Card, Input, Select, Textarea, useToastContext } from '@ghxstship/ui';
 import { ApprovalsService } from './lib/approvalsService';
 import { CreateApprovalPolicySchema, type CreateApprovalPolicy } from './types';
 
@@ -273,7 +267,7 @@ export function CreatePolicyClient({
  <div className="space-y-lg">
  <div className="flex items-center justify-between">
  <h3 className="text-lg font-medium">Approval Steps</h3>
- <Button type="button" variant="outline" onClick={addApprovalStep}>
+ <Button type="button" variant="secondary" onClick={addApprovalStep}>
  <Plus className="h-icon-xs w-icon-xs mr-2" />
  Add Step
  </Button>
@@ -435,7 +429,7 @@ export function CreatePolicyClient({
  {step.conditions?.required !== false ? ' Required' : ' Optional'}
  </p>
  </div>
- <Badge variant="outline">
+ <Badge variant="secondary">
  {step.role}
  </Badge>
  </div>
@@ -454,7 +448,7 @@ export function CreatePolicyClient({
  {currentStep > 1 && (
  <Button
  type="button"
- variant="outline"
+ variant="secondary"
  onClick={() => setCurrentStep(currentStep - 1)}
  >
  Previous

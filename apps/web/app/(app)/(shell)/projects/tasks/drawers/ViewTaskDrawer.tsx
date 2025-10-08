@@ -1,6 +1,6 @@
 "use client";
 
-import { ListTodo, Calendar, Clock, Users, CheckCircle, AlertCircle, Edit, FileText, Activity, Tag, TrendingUp, Briefcase, GitBranch, Paperclip } from "lucide-react";
+import { ListTodo, Calendar, Clock, Users, CheckCircle, AlertCircle, Edit, FileText, Activity, Tag, TrendingUp, Briefcase, GitBranch, Paperclip } from 'lucide-react';
 import Image from "next/image";
 import { AppDrawer, Button, Badge, Progress, Card } from "@ghxstship/ui";
 import { format, parseISO, differenceInDays } from "date-fns";
@@ -58,7 +58,7 @@ export default function ViewTaskDrawer({
  open,
  onOpenChange,
  task,
- onEdit,
+ onEdit
 }: ViewTaskDrawerProps) {
  // Calculate days until due
  const getDaysUntil = () => {

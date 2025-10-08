@@ -20,11 +20,11 @@ export default function ujobsPage() {
       search={{
         value: '',
         onChange: (value) => console.log('Search:', value),
-        placeholder: 'Search ujobs...',
+        placeholder: 'Search ujobs...'
       }}
       filters={{
         activeCount: 0,
-        onClear: () => console.log('Clear filters'),
+        onClear: () => console.log('Clear filters')
       }}
       sidebar={
         <div className="space-y-6">

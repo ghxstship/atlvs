@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { Card, Badge, Button } from "@ghxstship/ui";
 import type { Location } from "../LocationsClient";
 import type { LucideIcon } from "lucide-react";
@@ -15,7 +15,7 @@ export default function LocationMapView({
  locations,
  onView,
  getTypeIcon,
- getAvailabilityBadgeVariant,
+ getAvailabilityBadgeVariant
 }: LocationMapViewProps) {
  const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
  const [mapError, setMapError] = useState(false);

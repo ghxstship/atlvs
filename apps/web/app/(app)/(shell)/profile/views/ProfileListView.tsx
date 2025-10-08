@@ -6,7 +6,7 @@ import {
  Badge,
  Button,
  Avatar,
- Checkbox,
+ Checkbox
 } from '@ghxstship/ui';
 
 import type { UserProfile, FieldConfig } from '../types';

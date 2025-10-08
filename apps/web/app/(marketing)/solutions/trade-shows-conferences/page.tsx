@@ -1,21 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Calendar,
-  ChartBar,
-  Handshake,
-  Network,
-  Users,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight, Calendar, ChartBar, Handshake, Network, Users, Zap } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -26,8 +18,8 @@ export const metadata: Metadata = {
     title: 'Trade Shows & Conferences Solutions | GHXSTSHIP',
     description:
       'Deliver growth-driving trade shows and conferences with GHXSTSHIP. Manage exhibitions, attendees, and business outcomes from one platform.',
-    url: 'https://ghxstship.com/solutions/trade-shows-conferences',
-  },
+    url: 'https://ghxstship.com/solutions/trade-shows-conferences'
+  }
 };
 
 const heroStats = [
@@ -41,41 +33,41 @@ const eventPillars = [
   {
     title: 'Large-Scale Attendee Management',
     description: 'Deliver registration, check-in, and live tracking for thousands of attendees, exhibitors, and speakers.',
-    icon: Users,
+    icon: Users
   },
   {
     title: 'Complex Scheduling Coordination',
     description: 'Control overlapping sessions, workshops, and venues with conflict resolution and resource allocation.',
-    icon: Calendar,
+    icon: Calendar
   },
   {
     title: 'Lead Generation & ROI Tracking',
     description: 'Capture leads, score opportunities, and tie business outcomes directly to the event experience.',
-    icon: ChartBar,
+    icon: ChartBar
   },
   {
     title: 'Networking Facilitation',
     description: 'Match attendees, cultivate meetings, and track engagement across structured networking formats.',
-    icon: Network,
+    icon: Network
   },
 ];
 
 const featureHighlights = [
   {
     title: 'Exhibition Management',
-    description: 'Coordinate floor plans, booth services, and exhibitor portals with real-time updates.',
+    description: 'Coordinate floor plans, booth services, and exhibitor portals with real-time updates.'
   },
   {
     title: 'Conference Orchestration',
-    description: 'Run multi-track agendas, speaker workflows, and virtual simulcasts from a unified command center.',
+    description: 'Run multi-track agendas, speaker workflows, and virtual simulcasts from a unified command center.'
   },
   {
     title: 'Attendee Experience Platform',
-    description: 'Deliver mobile apps, networking journeys, and gamification to keep participants engaged.',
+    description: 'Deliver mobile apps, networking journeys, and gamification to keep participants engaged.'
   },
   {
     title: 'Business Intelligence',
-    description: 'Measure lead quality, sponsor ROI, and engagement metrics across exhibitors and audiences.',
+    description: 'Measure lead quality, sponsor ROI, and engagement metrics across exhibitors and audiences.'
   },
 ];
 
@@ -87,7 +79,7 @@ const caseStudies = [
     result: '98% satisfaction · 300% networking lift · 85% lead boost · 40% lower operations cost',
     quote:
       'GHXSTSHIP transformed our summit into a frictionless experience. We finally delivered insights to every stakeholder.',
-    author: 'Maria Rodriguez, Event Director',
+    author: 'Maria Rodriguez, Event Director'
   },
   {
     company: 'Manufacturing Trade Expo',
@@ -96,7 +88,7 @@ const caseStudies = [
     result: '95% exhibitor renewal · 250% more qualified leads · 60% better traffic flow · $50M deals closed',
     quote:
       'Our exhibitors saw record ROI. GHXSTSHIP kept operations, leads, and insights perfectly aligned.',
-    author: 'David Chen, Trade Show Manager',
+    author: 'David Chen, Trade Show Manager'
   },
 ];
 

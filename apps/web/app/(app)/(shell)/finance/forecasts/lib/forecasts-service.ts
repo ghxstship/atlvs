@@ -91,7 +91,7 @@ export class ForecastsService implements ForecastWorkflowActions {
           organization_id: orgId,
           created_by: userId,
           status: 'draft',
-          currency: forecastData.currency || 'USD',
+          currency: forecastData.currency || 'USD'
         })
         .select()
         .single();
@@ -413,7 +413,7 @@ export class ForecastsService implements ForecastWorkflowActions {
   formatCurrency(amount: number, currency = 'USD'): string {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: currency
     }).format(amount);
   }
 
@@ -421,7 +421,7 @@ export class ForecastsService implements ForecastWorkflowActions {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
-      day: 'numeric',
+      day: 'numeric'
     });
   }
 

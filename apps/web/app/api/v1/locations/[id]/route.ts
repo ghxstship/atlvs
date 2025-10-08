@@ -32,7 +32,7 @@ const updateLocationSchema = z.object({
   tags: z.array(z.string()).optional(),
   is_featured: z.boolean().optional(),
   images: z.array(z.string()).optional(),
-  floor_plans: z.array(z.string()).optional(),
+  floor_plans: z.array(z.string()).optional()
 });
 
 // GET /api/v1/locations/[id] - Get single location
@@ -160,7 +160,7 @@ export async function PATCH(
       .from("locations")
       .update({
         ...updates,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq("id", params.id)
       .select(`
@@ -181,7 +181,7 @@ export async function PATCH(
       action: "update",
       resource_type: "location",
       resource_id: location.id,
-      details: { updates },
+      details: { updates }
     });
 
     return NextResponse.json(location);
@@ -254,8 +254,8 @@ export async function DELETE(
       resource_type: "location",
       resource_id: params.id,
       details: {
-        name: existingLocation.name,
-      },
+        name: existingLocation.name
+      }
     });
 
     return NextResponse.json({ message: "Location deleted successfully" });

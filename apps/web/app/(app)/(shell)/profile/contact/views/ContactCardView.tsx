@@ -16,7 +16,7 @@ export default function ContactCardView({
  contact,
  loading,
  onEdit,
- onVerify,
+ onVerify
 }: ContactCardViewProps) {
  if (loading) {
  return (

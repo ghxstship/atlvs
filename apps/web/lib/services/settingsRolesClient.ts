@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const BaseResponseSchema = z
   .object({
-    error: z.string().optional(),
+    error: z.string().optional()
   })
   .passthrough();
 
@@ -28,9 +28,9 @@ async function jsonFetch(url: string, init?: RequestInit) {
     ...init,
     headers: {
       'Content-Type': 'application/json',
-      ...(init?.headers ?? {}),
+      ...(init?.headers ?? {})
     },
-    credentials: 'include',
+    credentials: 'include'
   });
 }
 
@@ -44,13 +44,13 @@ export const RoleRecordSchema = z.object({
   isSystem: z.boolean(),
   assignedUsers: z.number().optional(),
   createdAt: z.string().nullable().optional(),
-  updatedAt: z.string().nullable().optional(),
+  updatedAt: z.string().nullable().optional()
 });
 
 export type RoleRecord = z.infer<typeof RoleRecordSchema>;
 
 const RolesResponseSchema = z.object({
-  roles: z.array(RoleRecordSchema),
+  roles: z.array(RoleRecordSchema)
 });
 
 export type RolesResponse = z.infer<typeof RolesResponseSchema>;
@@ -58,7 +58,7 @@ export type RolesResponse = z.infer<typeof RolesResponseSchema>;
 const CreateRoleInputSchema = z.object({
   name: z.string().min(1).max(50),
   description: z.string().optional(),
-  permissions: RolePermissionsSchema,
+  permissions: RolePermissionsSchema
 });
 
 export type CreateRoleInput = z.infer<typeof CreateRoleInputSchema>;
@@ -67,7 +67,7 @@ const UpdateRoleInputSchema = z.object({
   id: z.string(),
   name: z.string().min(1).max(50).optional(),
   description: z.string().optional(),
-  permissions: RolePermissionsSchema.optional(),
+  permissions: RolePermissionsSchema.optional()
 });
 
 export type UpdateRoleInput = z.infer<typeof UpdateRoleInputSchema>;
@@ -87,7 +87,7 @@ export async function createRole(input: CreateRoleInput): Promise<{ role: RoleRe
   const payload = CreateRoleInputSchema.parse(input);
   const response = await jsonFetch('/api/v1/settings/roles', {
     method: 'POST',
-    body: JSON.stringify(payload),
+    body: JSON.stringify(payload)
   });
   const data = await handleResponse<unknown>(response);
   return z.object({ role: RoleRecordSchema }).parse(data);
@@ -100,7 +100,7 @@ export async function updateRole(input: UpdateRoleInput): Promise<{ role: RoleRe
   void id; // Mark as intentionally unused
   const response = await jsonFetch(`/api/v1/settings/roles?${searchParams.toString()}`, {
     method: 'PUT',
-    body: JSON.stringify(rest),
+    body: JSON.stringify(rest)
   });
   const data = await handleResponse<unknown>(response);
   return z.object({ role: RoleRecordSchema }).parse(data);
@@ -109,7 +109,7 @@ export async function updateRole(input: UpdateRoleInput): Promise<{ role: RoleRe
 export async function deleteRole(roleId: string): Promise<{ success: true; message: string }> {
   const searchParams = new URLSearchParams({ id: roleId });
   const response = await jsonFetch(`/api/v1/settings/roles?${searchParams.toString()}`, {
-    method: 'DELETE',
+    method: 'DELETE'
   });
   return handleResponse(response);
 }

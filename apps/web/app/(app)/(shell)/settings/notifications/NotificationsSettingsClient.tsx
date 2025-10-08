@@ -20,7 +20,7 @@ import {
  Skeleton,
  Textarea,
  Toggle,
- useToastContext,
+ useToastContext
 } from '@ghxstship/ui';
 import {
  fetchNotificationSettings,
@@ -33,7 +33,7 @@ import {
  NotificationType,
  resetNotificationPreferences,
  sendTestNotification,
- updateNotificationSettings,
+ updateNotificationSettings
 } from '@/lib/services/settingsNotificationsClient';
 
 const FREQUENCY_OPTIONS: { value: NotificationFrequency; label: string }[] = [
@@ -58,14 +58,14 @@ const CATEGORY_LABELS: Record<NotificationCategory, string> = {
  marketplace_activity: 'Marketplace Activity',
  training_reminders: 'Training Reminders',
  compliance_updates: 'Compliance Updates',
- approval_requests: 'Approval Requests',
+ approval_requests: 'Approval Requests'
 };
 
 const TYPE_LABELS: Record<NotificationType, string> = {
  email: 'Email',
  sms: 'SMS',
  push: 'Push',
- in_app: 'In-App',
+ in_app: 'In-App'
 };
 
 interface PreferenceFormState extends NotificationPreference {}
@@ -87,7 +87,7 @@ const DEFAULT_GLOBAL_STATE: GlobalSettingsFormState = {
  quietHoursTimezone: 'UTC',
  digestEnabled: true,
  digestFrequency: 'daily',
- digestTime: '09:00',
+ digestTime: '09:00'
 };
 
 const DEFAULT_PREFERENCES: PreferenceFormState[] = [
@@ -95,25 +95,25 @@ const DEFAULT_PREFERENCES: PreferenceFormState[] = [
  type: 'email',
  enabled: true,
  frequency: 'immediate',
- categories: ['security_alerts', 'approval_requests'],
+ categories: ['security_alerts', 'approval_requests']
  },
  {
  type: 'in_app',
  enabled: true,
  frequency: 'immediate',
- categories: ['project_updates', 'job_assignments'],
+ categories: ['project_updates', 'job_assignments']
  },
  {
  type: 'push',
  enabled: false,
  frequency: 'immediate',
- categories: [],
+ categories: []
  },
  {
  type: 'sms',
  enabled: false,
  frequency: 'immediate',
- categories: ['security_alerts'],
+ categories: ['security_alerts']
  },
 ];
 
@@ -126,7 +126,7 @@ function buildGlobalState(settings: NotificationGlobalSettings | undefined): Glo
  quietHoursTimezone: settings.quietHours?.timezone ?? 'UTC',
  digestEnabled: settings.digestEnabled ?? true,
  digestFrequency: settings.digestFrequency ?? 'daily',
- digestTime: settings.digestTime ?? '09:00',
+ digestTime: settings.digestTime ?? '09:00'
  };
 }
 
@@ -137,12 +137,12 @@ function exportGlobalState(state: GlobalSettingsFormState): NotificationGlobalSe
  enabled: true,
  startTime: state.quietHoursStart,
  endTime: state.quietHoursEnd,
- timezone: state.quietHoursTimezone,
+ timezone: state.quietHoursTimezone
  }
  : { enabled: false, startTime: '22:00', endTime: '08:00', timezone: 'UTC' },
  digestEnabled: state.digestEnabled,
  digestFrequency: state.digestFrequency,
- digestTime: state.digestTime,
+ digestTime: state.digestTime
  };
 }
 
@@ -184,7 +184,7 @@ export default function NotificationsSettingsClient() {
  pref.type === type
  ? {
  ...pref,
- enabled,
+ enabled
  }
  : pref
  )
@@ -197,7 +197,7 @@ export default function NotificationsSettingsClient() {
  pref.type === type
  ? {
  ...pref,
- frequency,
+ frequency
  }
  : pref
  )
@@ -212,7 +212,7 @@ export default function NotificationsSettingsClient() {
  ...pref,
  categories: checked
  ? Array.from(new Set([...(pref.categories ?? []), category]))
- : (pref.categories ?? []).filter((cat) => cat !== category),
+ : (pref.categories ?? []).filter((cat) => cat !== category)
  }
  : pref
  )
@@ -222,7 +222,7 @@ export default function NotificationsSettingsClient() {
  const handleQuietHoursChange = (key: keyof GlobalSettingsFormState, value: string | boolean) => {
  setGlobalState((prev: unknown) => ({
  ...prev,
- [key]: value,
+ [key]: value
  }));
  };
 
@@ -235,26 +235,26 @@ export default function NotificationsSettingsClient() {
  type: 'email',
  enabled: false,
  frequency: 'immediate',
- categories: [],
+ categories: []
  },
  sms: {
  type: 'sms',
  enabled: false,
  frequency: 'immediate',
- categories: [],
+ categories: []
  },
  push: {
  type: 'push',
  enabled: false,
  frequency: 'immediate',
- categories: [],
+ categories: []
  },
  in_app: {
  type: 'in_app',
  enabled: false,
  frequency: 'immediate',
- categories: [],
- },
+ categories: []
+ }
  });
  }, [preferencesState]);
 
@@ -263,7 +263,7 @@ export default function NotificationsSettingsClient() {
  setSaving(true);
  await updateNotificationSettings({
  preferences: preferencesState,
- globalSettings: exportGlobalState(globalState),
+ globalSettings: exportGlobalState(globalState)
  });
  toast.success('Notification settings saved');
  await load();

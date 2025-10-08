@@ -11,7 +11,7 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { X, Edit, Trash2, Download, Share, History, ExternalLink } from 'lucide-react';
 
 interface DetailDrawerProps {
@@ -35,14 +35,16 @@ export default function DetailDrawer({
   onDelete,
   onDuplicate,
   loading = false,
-  className = '',
+  className = ''
 }: DetailDrawerProps) {
   const [activeTab, setActiveTab] = useState('overview');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isOpen) {
       setActiveTab('overview');
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   if (!isOpen) return null;

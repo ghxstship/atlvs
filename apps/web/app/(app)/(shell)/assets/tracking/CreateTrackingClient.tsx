@@ -4,15 +4,8 @@
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
-import { 
-  MapPin,
-  Calendar,
-  Navigation,
-  Activity,
-  Save,
-  X
-} from 'lucide-react';
+import { Drawer, Button, Input, Select, Textarea, Card } from '@ghxstship/ui';
+import { Activity, Calendar, MapPin, Navigation, Save, X } from 'lucide-react';
 
 interface CreateTrackingClientProps {
   user: User;
@@ -180,7 +173,7 @@ export default function CreateTrackingClient({
               <label className="block text-body-sm form-label mb-xs">
                 Asset ID *
               </label>
-              <UnifiedInput                 value={formData.assetId}
+              <Input                 value={formData.assetId}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assetId', e.target.value)}
                 placeholder="Enter asset ID"
                 required
@@ -235,7 +228,7 @@ export default function CreateTrackingClient({
               <label className="block text-body-sm form-label mb-xs">
                 Location *
               </label>
-              <UnifiedInput                 value={formData.location}
+              <Input                 value={formData.location}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('location', e.target.value)}
                 placeholder="Current location of the asset"
                 required
@@ -246,7 +239,7 @@ export default function CreateTrackingClient({
               <label className="block text-body-sm form-label mb-xs">
                 Coordinates (GPS)
               </label>
-              <UnifiedInput                 value={formData.coordinates}
+              <Input                 value={formData.coordinates}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('coordinates', e.target.value)}
                 placeholder="Latitude, Longitude (e.g., 40.7128, -74.0060)"
               />
@@ -257,7 +250,7 @@ export default function CreateTrackingClient({
                 <Calendar className="h-icon-xs w-icon-xs inline mr-xs" />
                 Timestamp *
               </label>
-              <UnifiedInput                 type="datetime-local"
+              <Input                 type="datetime-local"
                 value={formData.timestamp}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('timestamp', e.target.value)}
                 required
@@ -278,7 +271,7 @@ export default function CreateTrackingClient({
               <label className="block text-body-sm form-label mb-xs">
                 Assigned To
               </label>
-              <UnifiedInput                 value={formData.assignedTo}
+              <Input                 value={formData.assignedTo}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assignedTo', e.target.value)}
                 placeholder="Person currently responsible for asset"
               />

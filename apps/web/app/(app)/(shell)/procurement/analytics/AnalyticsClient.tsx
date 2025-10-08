@@ -1,20 +1,8 @@
 'use client';
 
-import { TrendingUp, TrendingDown, DollarSign, ShoppingCart, Clock, Users, BarChart3, PieChart, LineChart, Download, Filter, Calendar, Target, AlertTriangle, CheckCircle } from "lucide-react";
-import React, { useState, useEffect } from 'react';
-import {
- Badge,
- Button,
- Card,
- CardContent,
- CardDescription,
- CardHeader,
- CardTitle,
- Tabs,
- TabsContent,
- TabsList,
- TabsTrigger,
-} from '@ghxstship/ui';
+import { AlertTriangle, Badge, BarChart3, Button, Calendar, Card, CardContent, CardDescription, CardHeader, CardTitle, CheckCircle, Clock, DollarSign, Download, Filter, LineChart, PieChart, ShoppingCart, Tabs, TabsContent, TabsList, TabsTrigger, Target, TrendingDown, TrendingUp, Users } from 'lucide-react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
+import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 
 interface AnalyticsClientProps {
  className?: string;
@@ -54,8 +42,10 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  const [spendAnalysis, setSpendAnalysis] = useState<SpendAnalysis[]>([]);
  const [vendorPerformance, setVendorPerformance] = useState<VendorPerformance[]>([]);
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  loadAnalyticsData();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [timeRange, orgId]);
 
  async function loadAnalyticsData() {
@@ -200,18 +190,18 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  {/* Controls */}
  <div className="flex items-center justify-between">
  <div className="flex items-center space-x-xs">
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  <Filter className="h-icon-xs w-icon-xs mr-2" />
  Filters
  </Button>
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  <Calendar className="h-icon-xs w-icon-xs mr-2" />
  {timeRange === '7d' ? 'Last 7 days' : 
  timeRange === '30d' ? 'Last 30 days' : 
  timeRange === '90d' ? 'Last 90 days' : 'Last year'}
  </Button>
  </div>
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  <Download className="h-icon-xs w-icon-xs mr-2" />
  Export Report
  </Button>
@@ -411,7 +401,7 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  <div className="space-y-sm">
  <div className="flex items-center justify-between">
  <span className="text-sm">Single Source Dependencies</span>
- <Badge variant="destructive">High</Badge>
+ <Badge variant="error">High</Badge>
  </div>
  <div className="flex items-center justify-between">
  <span className="text-sm">Budget Overruns</span>

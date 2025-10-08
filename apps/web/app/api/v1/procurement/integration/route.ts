@@ -5,19 +5,19 @@ import { ProcurementService } from '@ghxstship/application';
 import { z } from 'zod';
 
 const createExpenseSchema = z.object({
-  purchase_order_id: z.string().uuid(),
+  purchase_order_id: z.string().uuid()
 });
 
 const allocateToProjectSchema = z.object({
   purchase_order_id: z.string().uuid(),
   project_id: z.string().uuid(),
-  allocation_percentage: z.number().min(1).max(100),
+  allocation_percentage: z.number().min(1).max(100)
 });
 
 const validateBudgetSchema = z.object({
   project_id: z.string().uuid(),
   amount: z.number().min(0),
-  currency: z.string().default('USD'),
+  currency: z.string().default('USD')
 });
 
 export async function POST(request: NextRequest) {

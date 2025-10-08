@@ -98,6 +98,7 @@ const PeopleTimelineView: React.FC<TimelineViewProps> = ({
   const allEvents = useMemo(() => {
     const combined = [...generatedEvents, ...(externalEvents || [])];
     return combined.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [generatedEvents, externalEvents]);
 
   const groupedEvents = useMemo(() => {

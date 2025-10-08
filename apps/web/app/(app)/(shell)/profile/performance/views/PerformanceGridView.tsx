@@ -5,7 +5,7 @@ import {
  Card,
  Badge,
  Button,
- Checkbox,
+ Checkbox
 } from '@ghxstship/ui';
 import type { PerformanceReview } from '../types';
 import {
@@ -13,7 +13,7 @@ import {
  getRatingLabel,
  getStatusBadgeVariant,
  REVIEW_TYPE_LABELS,
- REVIEW_STATUS_LABELS,
+ REVIEW_STATUS_LABELS
 } from '../types';
 
 interface PerformanceGridViewProps {
@@ -35,7 +35,7 @@ export default function PerformanceGridView({
  onView,
  onEdit,
  onDelete,
- loading = false,
+ loading = false
 }: PerformanceGridViewProps) {
  const allSelected = reviews.length > 0 && selectedIds.length === reviews.length;
  const someSelected = selectedIds.length > 0 && selectedIds.length < reviews.length;

@@ -11,14 +11,14 @@ const CreateCallSheetSchema = z.object({
     time: z.string(),
     activity: z.string(),
     location: z.string().optional(),
-    notes: z.string().optional(),
+    notes: z.string().optional()
   })).optional(),
   contacts: z.array(z.object({
     name: z.string(),
     role: z.string(),
     phone: z.string().optional(),
-    email: z.string().email().optional(),
-  })).optional(),
+    email: z.string().email().optional()
+  })).optional()
 });
 
 export async function GET(request: NextRequest) {
@@ -135,7 +135,7 @@ export async function POST(request: NextRequest) {
 
     const callSheetData = {
       ...validatedData,
-      organization_id: membership.organization_id,
+      organization_id: membership.organization_id
     };
 
     const { data: callSheet, error } = await supabase

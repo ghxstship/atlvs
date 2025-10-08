@@ -1,19 +1,11 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Card, Button, Badge, Skeleton, Drawer } from '@ghxstship/ui';
-import { 
-  Star,
-  Plus,
-  Edit,
-  Trash2,
-  Building,
-  Grid,
-  List
-} from 'lucide-react';
+import { Building, Edit, Grid, List, Plus, Star, Trash2 } from 'lucide-react';
 
 interface RatingsClientProps {
   user: User;
@@ -40,8 +32,10 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
   const [isCreateDrawerOpen, setIsCreateDrawerOpen] = useState(false);
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchRatings();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchRatings = async () => {

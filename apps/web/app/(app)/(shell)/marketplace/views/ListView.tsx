@@ -6,7 +6,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@ghxstship/ui';
 import {
   MoreHorizontal,
@@ -45,13 +45,13 @@ export default function ListView({
   onListingDelete,
   onListingView,
   selectedListings = [],
-  onSelectionChange,
+  onSelectionChange
 }: ListViewProps) {
   // Fetch listings
   const { data: listingsResponse, isLoading, error } = useQuery({
     queryKey: ['marketplace-listings', orgId, filters],
     queryFn: () => marketplaceService.getListings(orgId, filters),
-    refetchInterval: 30000,
+    refetchInterval: 30000
   });
 
   const listings = listingsResponse?.listings || [];
@@ -78,7 +78,7 @@ export default function ListView({
     if (!amount) return '-';
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency,
+      currency
     }).format(amount);
   };
 

@@ -1,8 +1,8 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
-import { Card, Button, UnifiedInput, Badge, Drawer } from '@ghxstship/ui';
+import { useState, useCallback, useEffect } from 'react';
+import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, Package, Edit, Trash2, Copy } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -63,12 +63,16 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
   const [selectedAsset, setSelectedAsset] = useState<Asset | null>(null);
   const [view, setView] = useState<'grid' | 'list' | 'kanban'>('grid');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadAssets();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     filterAssets();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [assets, searchQuery, selectedCategory, selectedStatus]);
 
   const loadAssets = async () => {
@@ -285,13 +289,13 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
       case 'under_maintenance':
         return <Badge variant="secondary">Maintenance</Badge>;
       case 'damaged':
-        return <Badge variant="destructive">Damaged</Badge>;
+        return <Badge variant="error">Damaged</Badge>;
       case 'missing':
-        return <Badge variant="destructive">Missing</Badge>;
+        return <Badge variant="error">Missing</Badge>;
       case 'retired':
-        return <Badge variant="outline">Retired</Badge>;
+        return <Badge variant="secondary">Retired</Badge>;
       default:
-        return <Badge variant="outline">{status}</Badge>;
+        return <Badge variant="secondary">{status}</Badge>;
     }
   };
 
@@ -315,11 +319,11 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
           <p className="text-body-sm color-muted">Master catalog of all available assets</p>
         </div>
         <div className="flex items-center gap-sm">
-          <Button variant="outline" className="flex items-center gap-sm">
+          <Button variant="secondary" className="flex items-center gap-sm">
             <Upload className="w-icon-xs h-icon-xs" />
             Import
           </Button>
-          <Button variant="outline" className="flex items-center gap-sm">
+          <Button variant="secondary" className="flex items-center gap-sm">
             <Download className="w-icon-xs h-icon-xs" />
             Export
           </Button>
@@ -337,7 +341,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
             <div className="flex-1 min-w-container-sm">
               <div className="relative">
                 <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted w-icon-xs h-icon-xs" />
-                <UnifiedInput                   placeholder="Search assets..."
+                <Input                   placeholder="Search assets..."
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
@@ -445,7 +449,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Badge variant="outline">
+                  <Badge variant="secondary">
                     {ASSET_CATEGORIES.find(cat => cat.id === asset.category)?.name}
                   </Badge>
                   {getStatusBadge(asset.status)}
@@ -481,13 +485,13 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
         <div className="p-lg stack-md">
           <div>
             <label className="block text-body-sm form-label mb-xs">Asset Name</label>
-            <UnifiedInput               placeholder="Enter asset name"
+            <Input               placeholder="Enter asset name"
               defaultValue={selectedAsset?.name}
             />
           </div>
           <div>
             <label className="block text-body-sm form-label mb-xs">Description</label>
-            <UnifiedInput               placeholder="Enter description"
+            <Input               placeholder="Enter description"
               defaultValue={selectedAsset?.description}
             />
           </div>
@@ -520,13 +524,13 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
           <div className="grid grid-cols-2 gap-md">
             <div>
               <label className="block text-body-sm form-label mb-xs">SKU</label>
-              <UnifiedInput                 placeholder="Enter SKU"
+              <Input                 placeholder="Enter SKU"
                 defaultValue={selectedAsset?.sku}
               />
             </div>
             <div>
               <label className="block text-body-sm form-label mb-xs">Location</label>
-              <UnifiedInput                 placeholder="Enter location"
+              <Input                 placeholder="Enter location"
                 defaultValue={selectedAsset?.location}
               />
             </div>
@@ -535,7 +539,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
             <Button className="flex-1">
               {selectedAsset ? 'Update Asset' : 'Create Asset'}
             </Button>
-            <Button variant="outline" onClick={() => setShowDrawer(false)}>
+            <Button variant="secondary" onClick={() => setShowDrawer(false)}>
               Cancel
             </Button>
           </div>

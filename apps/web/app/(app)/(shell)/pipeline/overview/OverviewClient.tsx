@@ -1,33 +1,9 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
-import { Card, Badge, Button } from '@ghxstship/ui';
-import { DynamicProgressBar } from "../../../../_components/ui"
-import { 
-  Users, 
-  CheckCircle, 
-  BarChart3, 
-  TrendingUp, 
-  Calendar, 
-  Clock, 
-  Target, 
-  Award,
-  DollarSign,
-  Activity,
-  Building,
-  Truck,
-  Wrench,
-  Zap,
-  Monitor,
-  Key,
-  Car,
-  Plane,
-  Music,
-  Coffee,
-  ArrowRight,
-  AlertTriangle
-} from 'lucide-react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
+import { Badge, Button, Card, Progress } from '@ghxstship/ui';
+import { Activity, AlertTriangle, ArrowRight, Award, BarChart3, Building, Calendar, Car, CheckCircle, Clock, Coffee, DollarSign, Key, Monitor, Music, Plane, Target, TrendingUp, Truck, Users, Wrench, Zap } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 
 interface PipelineStats {
@@ -88,8 +64,10 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
   const [loading, setLoading] = useState(true);
   const sb = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadOverviewData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadOverviewData = async () => {
@@ -295,8 +273,8 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               </div>
             </div>
             <div className="mt-md">
-              <DynamicProgressBar
-                percentage={trainingCompletion}
+              <Progress
+                value={trainingCompletion}
                 variant="default"
                 size="sm"
                 showLabel={false}
@@ -317,8 +295,8 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               </div>
             </div>
             <div className="mt-md">
-              <DynamicProgressBar
-                percentage={advancingProgress}
+              <Progress
+                value={advancingProgress}
                 variant="warning"
                 size="sm"
                 showLabel={false}
@@ -377,7 +355,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                     <AlertTriangle className="w-icon-xs h-icon-xs color-destructive" />
                     <span className="text-body-sm">Blocked</span>
                   </div>
-                  <Badge variant="destructive">
+                  <Badge variant="error">
                     {stats.advancingItems.blocked}
                   </Badge>
                 </div>
@@ -423,7 +401,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                     <AlertTriangle className="w-icon-xs h-icon-xs color-destructive" />
                     <span className="text-body-sm">Expired</span>
                   </div>
-                  <Badge variant="destructive">
+                  <Badge variant="error">
                     {stats.contractsStatus.expired}
                   </Badge>
                 </div>
@@ -531,19 +509,19 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
         <div className="p-lg">
           <h3 className="text-body text-heading-4 mb-md">Quick Actions</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-md">
-            <Button variant="outline" className="h-auto p-md flex flex-col items-center stack-sm">
+            <Button variant="secondary" className="h-auto p-md flex flex-col items-center stack-sm">
               <Users className="w-icon-md h-icon-md" />
               <span className="text-body-sm">Manage Crew</span>
             </Button>
-            <Button variant="outline" className="h-auto p-md flex flex-col items-center stack-sm">
+            <Button variant="secondary" className="h-auto p-md flex flex-col items-center stack-sm">
               <CheckCircle className="w-icon-md h-icon-md" />
               <span className="text-body-sm">Schedule Training</span>
             </Button>
-            <Button variant="outline" className="h-auto p-md flex flex-col items-center stack-sm">
+            <Button variant="secondary" className="h-auto p-md flex flex-col items-center stack-sm">
               <Building className="w-icon-md h-icon-md" />
               <span className="text-body-sm">Update Advancing</span>
             </Button>
-            <Button variant="outline" className="h-auto p-md flex flex-col items-center stack-sm">
+            <Button variant="secondary" className="h-auto p-md flex flex-col items-center stack-sm">
               <DollarSign className="w-icon-md h-icon-md" />
               <span className="text-body-sm">Review Contracts</span>
             </Button>

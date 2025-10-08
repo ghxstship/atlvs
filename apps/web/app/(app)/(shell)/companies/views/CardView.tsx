@@ -4,32 +4,10 @@
  */
 
 'use client';
+import { Avatar, Card, CardContent, Tooltip } from '@ghxstship/ui';
+import { Avatar, Box, Business, Card, CardActions, CardContent, Chip, Delete, Edit, Email, Grid, IconButton, Language, Menu, MenuItem, MoreVert, Phone, Tooltip, Typography, Visibility } from 'lucide-react';
 
-import { useState, useMemo } from 'react';
-import {
-  Box,
-  Card,
-  CardContent,
-  CardActions,
-  Typography,
-  Chip,
-  Avatar,
-  IconButton,
-  Grid,
-  Tooltip,
-  Menu,
-  MenuItem,
-} from '@mui/material';
-import {
-  Edit,
-  Delete,
-  Visibility,
-  MoreVert,
-  Email,
-  Phone,
-  Language,
-  Business,
-} from '@mui/icons-material';
+import { useMemo, useState } from 'react';
 import type { Company } from '../types';
 
 interface CardViewProps {
@@ -47,7 +25,7 @@ export default function CardView({
   onEdit,
   onDelete,
   onView,
-  loading = false,
+  loading = false
 }: CardViewProps) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
@@ -114,7 +92,7 @@ export default function CardView({
                       height: 48,
                       borderRadius: 1,
                       bgcolor: 'grey.200',
-                      mr: 2,
+                      mr: 2
                     }}
                   />
                   <Box sx={{ flex: 1 }}>
@@ -123,7 +101,7 @@ export default function CardView({
                         height: 20,
                         bgcolor: 'grey.200',
                         borderRadius: 1,
-                        mb: 1,
+                        mb: 1
                       }}
                     />
                     <Box
@@ -131,7 +109,7 @@ export default function CardView({
                         height: 16,
                         bgcolor: 'grey.200',
                         borderRadius: 1,
-                        width: '60%',
+                        width: '60%'
                       }}
                     />
                   </Box>
@@ -142,7 +120,7 @@ export default function CardView({
                       height: 16,
                       bgcolor: 'grey.200',
                       borderRadius: 1,
-                      mb: 1,
+                      mb: 1
                     }}
                   />
                   <Box
@@ -150,7 +128,7 @@ export default function CardView({
                       height: 16,
                       bgcolor: 'grey.200',
                       borderRadius: 1,
-                      width: '80%',
+                      width: '80%'
                     }}
                   />
                 </Box>
@@ -175,8 +153,8 @@ export default function CardView({
                 transition: 'all 0.2s ease-in-out',
                 '&:hover': {
                   transform: 'translateY(-4px)',
-                  boxShadow: 4,
-                },
+                  boxShadow: 4
+                }
               }}
             >
               <CardContent sx={{ flex: 1, p: 3 }}>

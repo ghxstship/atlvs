@@ -6,7 +6,7 @@ import type {
   WorkshopSummary,
   SpaceSummary,
   PerformanceSummary,
-  RiderSummary,
+  RiderSummary
 } from '../types';
 import { createEmptyProgrammingOverviewData } from '../types';
 
@@ -17,14 +17,14 @@ export const overviewFilterSchema = z.object({
   status: z.string().optional(),
   project_id: z.string().uuid().optional(),
   user_id: z.string().uuid().optional(),
-  search: z.string().optional(),
+  search: z.string().optional()
 });
 
 export const analyticsFilterSchema = z.object({
   period: z.enum(['7d', '30d', '90d', '1y']).default('30d'),
   module: z.enum(['events', 'workshops', 'spaces', 'performances', 'riders', 'lineups', 'call_sheets', 'itineraries']).optional(),
   metric: z.enum(['usage', 'revenue', 'participants', 'utilization', 'completion']).optional(),
-  granularity: z.enum(['hour', 'day', 'week', 'month']).default('day'),
+  granularity: z.enum(['hour', 'day', 'week', 'month']).default('day')
 });
 
 type SupabaseClient = ReturnType<typeof import('@ghxstship/auth').createServerClient>;
@@ -35,7 +35,7 @@ export function getPeriodDates(period: string) {
     '7d': 7,
     '30d': 30,
     '90d': 90,
-    '1y': 365,
+    '1y': 365
   };
 
   const days = periodMap[period] ?? 30;
@@ -79,7 +79,7 @@ export function generateTimeSeriesData(
       period: current.toISOString().split('T')[0],
       value,
       change,
-      change_percentage,
+      change_percentage
     });
 
     addStep(current);
@@ -244,7 +244,7 @@ export async function fetchProgrammingOverviewData(
       : 0,
     riderApprovalRate: ridersList.length
       ? (ridersList.filter(rider => rider.status === 'approved').length / ridersList.length) * 100
-      : 0,
+      : 0
   };
 
   const moduleMetrics = {
@@ -252,19 +252,19 @@ export async function fetchProgrammingOverviewData(
       total: stats.totalEvents,
       active: stats.upcomingEvents,
       growth_rate: 0,
-      completion_rate: stats.totalEvents > 0 ? (stats.completedEvents / stats.totalEvents) * 100 : 0,
+      completion_rate: stats.totalEvents > 0 ? (stats.completedEvents / stats.totalEvents) * 100 : 0
     },
     workshops: {
       total: stats.totalWorkshops,
       active: stats.activeWorkshops,
       completion_rate: stats.workshopCompletionRate,
-      average_rating: 4.2,
+      average_rating: 4.2
     },
     spaces: {
       total: stats.totalSpaces,
       utilization_rate: stats.spaceUtilizationRate,
       availability_rate: stats.totalSpaces > 0 ? (stats.availableSpaces / stats.totalSpaces) * 100 : 0,
-      booking_rate: 75,
+      booking_rate: 75
     },
     performances: {
       total: stats.totalPerformances,
@@ -274,14 +274,14 @@ export async function fetchProgrammingOverviewData(
         performancesList.length > 0
           ? performancesList.reduce((sum, performance) => sum + (performance.duration_minutes || 0), 0) /
             performancesList.length
-          : 0,
+          : 0
     },
     riders: {
       total: stats.totalRiders,
       approval_rate: stats.riderApprovalRate,
       average_processing_time: 2.5,
-      fulfillment_rate: 85,
-    },
+      fulfillment_rate: 85
+    }
   };
 
   const transformedActivity = (recentActivity.data ?? []).map(activity => ({
@@ -292,7 +292,7 @@ export async function fetchProgrammingOverviewData(
     description: activity.details?.description,
     user_name: (activity.user as unknown)?.full_name || (activity.user as unknown)?.email || 'Unknown User',
     timestamp: activity.created_at,
-    metadata: activity.details,
+    metadata: activity.details
   }));
 
   // Transform upcoming events
@@ -309,7 +309,7 @@ export async function fetchProgrammingOverviewData(
       ? { id: event.project[0].id, name: event.project[0].name } 
       : undefined,
     participants_count: event.participants_count,
-    spaces_count: event.spaces_count,
+    spaces_count: event.spaces_count
   }));
 
   // Transform active workshops
@@ -324,7 +324,7 @@ export async function fetchProgrammingOverviewData(
       : undefined,
     participants_count: workshop.current_participants || 0,
     max_participants: workshop.max_participants,
-    price: workshop.price,
+    price: workshop.price
   }));
 
   // Transform available spaces
@@ -336,7 +336,7 @@ export async function fetchProgrammingOverviewData(
     capacity: space.capacity,
     current_occupancy: space.current_occupancy,
     building: space.building,
-    floor: space.floor,
+    floor: space.floor
   }));
 
   // Transform scheduled performances
@@ -348,7 +348,7 @@ export async function fetchProgrammingOverviewData(
     scheduled_at: performance.scheduled_at,
     venue: performance.venue,
     duration_minutes: performance.duration_minutes,
-    audience_capacity: performance.audience_capacity,
+    audience_capacity: performance.audience_capacity
   }));
 
   // Transform pending riders
@@ -361,7 +361,7 @@ export async function fetchProgrammingOverviewData(
     created_at: rider.created_at || new Date().toISOString(),
     event: Array.isArray(rider.event) && rider.event[0]
       ? { id: rider.event[0].id, title: rider.event[0].title }
-      : undefined,
+      : undefined
   }));
 
   return {
@@ -373,7 +373,7 @@ export async function fetchProgrammingOverviewData(
     scheduledPerformances: scheduledPerformancesList,
     pendingRiders: pendingRidersList,
     moduleMetrics,
-    analytics: createEmptyProgrammingOverviewData().analytics,
+    analytics: createEmptyProgrammingOverviewData().analytics
   };
 }
 
@@ -442,7 +442,7 @@ export async function fetchProgrammingOverviewAnalytics(
       resource: (space as unknown).name || 'Unknown Space',
       utilization: space.current_occupancy || 0,
       capacity: space.capacity || 0,
-      efficiency: space.capacity ? ((space.current_occupancy || 0) / space.capacity) * 100 : 0,
+      efficiency: space.capacity ? ((space.current_occupancy || 0) / space.capacity) * 100 : 0
     })),
     performanceMetrics: [
       {
@@ -451,7 +451,7 @@ export async function fetchProgrammingOverviewAnalytics(
           ? (eventsList.filter(e => e.status === 'completed').length / eventsList.length) * 100 
           : 0,
         target: 95,
-        trend: 'up' as const,
+        trend: 'up' as const
       },
       {
         metric: 'Space Utilization',
@@ -459,7 +459,7 @@ export async function fetchProgrammingOverviewAnalytics(
           ? (spacesList.filter(s => s.status === 'occupied').length / spacesList.length) * 100
           : 0,
         target: 80,
-        trend: 'stable' as const,
+        trend: 'stable' as const
       },
       {
         metric: 'Workshop Completion',
@@ -467,7 +467,7 @@ export async function fetchProgrammingOverviewAnalytics(
           ? (workshopsList.filter(w => w.status === 'completed').length / workshopsList.length) * 100
           : 0,
         target: 90,
-        trend: 'up' as const,
+        trend: 'up' as const
       },
       {
         metric: 'Rider Approval Rate',
@@ -475,7 +475,7 @@ export async function fetchProgrammingOverviewAnalytics(
           ? (ridersList.filter(r => r.status === 'approved').length / ridersList.length) * 100
           : 0,
         target: 85,
-        trend: 'stable' as const,
+        trend: 'stable' as const
       },
     ],
     moduleUsage: [
@@ -491,7 +491,7 @@ export async function fetchProgrammingOverviewAnalytics(
         { module: 'Workshops', revenue: workshopsList.reduce((sum, w) => sum + ((w.price || 0) * (w.current_participants || 0)), 0) },
         { module: 'Spaces', revenue: 0 },
       ],
-      revenue_trends: generateTimeSeriesData(startDate, endDate, filters.granularity, 50),
+      revenue_trends: generateTimeSeriesData(startDate, endDate, filters.granularity, 50)
     },
     participantAnalytics: {
       total_participants: totalParticipants,
@@ -504,7 +504,7 @@ export async function fetchProgrammingOverviewAnalytics(
         { metric: 'Average Session Duration', value: 45, trend: 'up' as const },
         { metric: 'Return Rate', value: 68, trend: 'stable' as const },
         { metric: 'Satisfaction Score', value: 4.3, trend: 'up' as const },
-      ],
-    },
+      ]
+    }
   };
 }

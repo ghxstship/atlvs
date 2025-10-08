@@ -1,24 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Award,
-  Calendar,
-  ExternalLink,
-  Globe,
-  Mail,
-  MapPin,
-  Target,
-  TrendingUp,
-  Users,
-} from 'lucide-react';
+import { ArrowRight, Award, Calendar, ExternalGlobe, ExternalGlobe, ExternalLink, Globe, Mail, MapPin, Target, TrendingUp, Users } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -29,8 +18,8 @@ export const metadata: Metadata = {
     title: 'About Us - Building the Future of Creative Production | GHXSTSHIP',
     description:
       "Learn about GHXSTSHIP's mission, team, and commitment to revolutionizing creative production management.",
-    url: 'https://ghxstship.com/company',
-  },
+    url: 'https://ghxstship.com/company'
+  }
 };
 
 const heroStats = [
@@ -46,42 +35,42 @@ const leadership = [
     role: 'CEO & Co-Founder',
     bio: 'Former Netflix production exec leading global transformation programs for major studios.',
     image: '/team/sarah-chen.jpg',
-    linkedin: 'https://linkedin.com/in/sarahchen',
+    linkedin: 'https://linkedin.com/in/sarahchen'
   },
   {
     name: 'Marcus Rodriguez',
     role: 'CTO & Co-Founder',
     bio: 'Ex-Google engineering leader focused on AI automation and large-scale infrastructure.',
     image: '/team/marcus-rodriguez.jpg',
-    linkedin: 'https://linkedin.com/in/marcusrodriguez',
+    linkedin: 'https://linkedin.com/in/marcusrodriguez'
   },
   {
     name: 'Emily Watson',
     role: 'VP of Product',
     bio: 'Built creative workflow platforms at Adobe; obsessed with shipping inclusive experiences.',
     image: '/team/emily-watson.jpg',
-    linkedin: 'https://linkedin.com/in/emilywatson',
+    linkedin: 'https://linkedin.com/in/emilywatson'
   },
   {
     name: 'David Kim',
     role: 'VP of Engineering',
     bio: 'Former Spotify principal engineer building high-availability systems for global teams.',
     image: '/team/david-kim.jpg',
-    linkedin: 'https://linkedin.com/in/davidkim',
+    linkedin: 'https://linkedin.com/in/davidkim'
   },
   {
     name: 'Lisa Thompson',
     role: 'VP of Customer Success',
     bio: 'SaaS veteran from Salesforce helping enterprises realize rapid time-to-value.',
     image: '/team/lisa-thompson.jpg',
-    linkedin: 'https://linkedin.com/in/lisathompson',
+    linkedin: 'https://linkedin.com/in/lisathompson'
   },
   {
     name: 'Alex Rivera',
     role: 'VP of Marketing',
     bio: 'Growth marketing leader from HubSpot scaling B2B demand worldwide.',
     image: '/team/alex-rivera.jpg',
-    linkedin: 'https://linkedin.com/in/alexrivera',
+    linkedin: 'https://linkedin.com/in/alexrivera'
   },
 ];
 
@@ -106,25 +95,25 @@ const pressReleases = [
     title: 'GHXSTSHIP Raises $50M Series B to Accelerate AI Development',
     date: 'Dec 15, 2024',
     publication: 'TechCrunch',
-    href: '/press/series-b-funding',
+    href: '/press/series-b-funding'
   },
   {
     title: 'Major Studios Adopt GHXSTSHIP for Next-Gen Production Management',
     date: 'Nov 28, 2024',
     publication: 'Variety',
-    href: '/press/major-studios-adoption',
+    href: '/press/major-studios-adoption'
   },
   {
     title: 'GHXSTSHIP Partners with Leading VFX Houses for Workflow Integration',
     date: 'Nov 10, 2024',
     publication: 'The Hollywood Reporter',
-    href: '/press/vfx-partnerships',
+    href: '/press/vfx-partnerships'
   },
   {
     title: 'GHXSTSHIP Expands to Asia-Pacific with Singapore Office Opening',
     date: 'Oct 22, 2024',
     publication: 'Forbes',
-    href: '/press/apac-expansion',
+    href: '/press/apac-expansion'
   },
 ];
 
@@ -198,6 +187,9 @@ export default function CompanyPage() {
             <Card key={leader.name} className="border border-border bg-card shadow-sm">
               <CardContent className="flex flex-col gap-md p-xl">
                 <div className="aspect-square w-full overflow-hidden rounded-2xl bg-muted">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={leader.image} alt={leader.name} className="h-full w-full object-cover" />
                 </div>
                 <div className="space-y-xs">

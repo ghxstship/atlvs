@@ -12,7 +12,7 @@ export function WebVitals() {
         value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
         event_category: 'Web Vitals',
         event_label: metric.id,
-        non_interaction: true,
+        non_interaction: true
       })
     }
 
@@ -27,7 +27,7 @@ export function WebVitals() {
         metric_name: metric.name,
         metric_value: metric.value,
         metric_id: metric.id,
-        metric_rating: metric.rating,
+        metric_rating: metric.rating
       })
     }
   })

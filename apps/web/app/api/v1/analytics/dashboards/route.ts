@@ -17,13 +17,13 @@ const CreateDashboardSchema = z.object({
         x: z.number(),
         y: z.number(),
         w: z.number(),
-        h: z.number(),
+        h: z.number()
       }),
-      config: z.record(z.any()),
-    })),
+      config: z.record(z.any())
+    }))
   }),
   isPublic: z.boolean().default(false),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional()
 });
 
 const UpdateDashboardSchema = CreateDashboardSchema.partial();

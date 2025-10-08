@@ -33,10 +33,11 @@ export default function ListView({
   dense = false,
   onSelectionChange,
   onItemClick,
-  className = '',
+  className = ''
 }: ListViewProps) {
   const [selectedItems, setSelectedItems] = useState<Set<string>(new Set());
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleItemSelect = useCallback((id: string, checked: boolean) => {
     const newSelected = new Set(selectedItems);
     if (checked) {
@@ -46,6 +47,7 @@ export default function ListView({
     }
     setSelectedItems(newSelected);
     onSelectionChange?.(Array.from(newSelected));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedItems, onSelectionChange]);
 
   if (loading) {

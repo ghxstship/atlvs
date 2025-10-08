@@ -4,7 +4,7 @@ import type {
   ProfileOverviewFilters,
   ProfileOverviewStats,
   ProfileOverviewAnalytics,
-  RecentActivity,
+  RecentActivity
 } from '../types';
 import { 
   createEmptyProfileOverviewStats, 
@@ -16,7 +16,7 @@ export const profileOverviewFilterSchema = zod.object({
   department: zod.string().optional(),
   completion_range: zod.object({
     min: zod.number().min(0).max(100),
-    max: zod.number().min(0).max(100),
+    max: zod.number().min(0).max(100)
   }).optional(),
   search: zod.string().optional(),
   date_from: zod.string().datetime().optional(),
@@ -25,7 +25,7 @@ export const profileOverviewFilterSchema = zod.object({
   has_job_history: zod.boolean().optional(),
   recent_login: zod.boolean().optional(),
   limit: zod.number().min(1).max(100).default(50),
-  offset: zod.number().min(0).default(0),
+  offset: zod.number().min(0).default(0)
 });
 
 export const profileOverviewUpdateSchema = zod.object({
@@ -35,24 +35,24 @@ export const profileOverviewUpdateSchema = zod.object({
   phone_primary: zod.string().optional(),
   location: zod.string().optional(),
   bio: zod.string().max(500).optional(),
-  status: zod.enum(['active', 'inactive', 'pending', 'suspended']).optional(),
+  status: zod.enum(['active', 'inactive', 'pending', 'suspended']).optional()
 });
 
 export const analyticsFilterSchema = zod.object({
   period: zod.enum(['7d', '30d', '90d', '1y']).default('30d'),
-  granularity: zod.enum(['day', 'week', 'month']).default('day'),
+  granularity: zod.enum(['day', 'week', 'month']).default('day')
 });
 
 export const bulkActionSchema = zod.object({
   action: zod.enum(['activate', 'deactivate', 'delete']),
-  profile_ids: zod.array(zod.string().uuid()),
+  profile_ids: zod.array(zod.string().uuid())
 });
 
 export const exportSchema = zod.object({
   format: zod.enum(['csv', 'xlsx', 'json', 'pdf']),
   profile_ids: zod.array(zod.string().uuid()).optional(),
   filters: profileOverviewFilterSchema.optional(),
-  fields: zod.array(zod.string()).optional(),
+  fields: zod.array(zod.string()).optional()
 });
 
 type SupabaseClient = ReturnType<typeof import('@ghxstship/auth').createServerClient>;
@@ -63,7 +63,7 @@ export function getPeriodDates(period: string) {
     '7d': 7,
     '30d': 30,
     '90d': 90,
-    '1y': 365,
+    '1y': 365
   };
 
   const days = periodMap[period] ?? 30;
@@ -106,7 +106,7 @@ export async function fetchProfileOverview(
       certifications_count: data.certifications?.length || 0,
       job_history_count: data.job_history?.length || 0,
       emergency_contacts_count: data.emergency_contacts?.length || 0,
-      endorsements_count: data.endorsements?.length || 0,
+      endorsements_count: data.endorsements?.length || 0
     };
 
     return profile;
@@ -189,18 +189,18 @@ export async function fetchProfileOverviews(
       certifications_count: item.certifications?.length || 0,
       job_history_count: item.job_history?.length || 0,
       emergency_contacts_count: item.emergency_contacts?.length || 0,
-      endorsements_count: item.endorsements?.length || 0,
+      endorsements_count: item.endorsements?.length || 0
     }));
 
     return {
       profiles,
-      total: count || 0,
+      total: count || 0
     };
   } catch (error) {
     console.error('Error fetching profile overviews:', error);
     return {
       profiles: [],
-      total: 0,
+      total: 0
     };
   }
 }
@@ -218,7 +218,7 @@ export async function updateProfileOverview(
       .update({
         ...profileData,
         last_updated_by: updatedBy,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq('organization_id', orgId)
       .eq('user_id', userId)
@@ -244,9 +244,9 @@ export async function updateProfileOverview(
         activity_description: 'Profile overview information was updated',
         metadata: {
           fields_updated: Object.keys(profileData),
-          updated_by: updatedBy,
+          updated_by: updatedBy
         },
-        performed_by: updatedBy,
+        performed_by: updatedBy
       });
 
     // Transform the data
@@ -257,7 +257,7 @@ export async function updateProfileOverview(
       certifications_count: data.certifications?.length || 0,
       job_history_count: data.job_history?.length || 0,
       emergency_contacts_count: data.emergency_contacts?.length || 0,
-      endorsements_count: data.endorsements?.length || 0,
+      endorsements_count: data.endorsements?.length || 0
     };
 
     return profile;
@@ -319,7 +319,7 @@ export async function fetchProfileOverviewStats(
       .map(([department, count]) => ({
         department,
         count,
-        percentage: totalProfiles > 0 ? (count / totalProfiles) * 100 : 0,
+        percentage: totalProfiles > 0 ? (count / totalProfiles) * 100 : 0
       }))
       .sort((a, b) => b.count - a.count);
 
@@ -340,7 +340,7 @@ export async function fetchProfileOverviewStats(
       return {
         range,
         count,
-        percentage: totalProfiles > 0 ? (count / totalProfiles) * 100 : 0,
+        percentage: totalProfiles > 0 ? (count / totalProfiles) * 100 : 0
       };
     });
 
@@ -355,7 +355,7 @@ export async function fetchProfileOverviewStats(
       .map(([status, count]) => ({
         status,
         count,
-        percentage: totalProfiles > 0 ? (count / totalProfiles) * 100 : 0,
+        percentage: totalProfiles > 0 ? (count / totalProfiles) * 100 : 0
       }))
       .sort((a, b) => b.count - a.count);
 
@@ -366,7 +366,7 @@ export async function fetchProfileOverviewStats(
       recentLogins,
       departmentDistribution,
       completionDistribution,
-      statusDistribution,
+      statusDistribution
     };
   } catch (error) {
     console.error('Error fetching profile overview stats:', error);
@@ -419,7 +419,7 @@ export async function fetchProfileOverviewAnalytics(
     const completionTrends = Object.entries(dailyUpdates).map(([date, stats]) => ({
       date,
       averageCompletion: stats.profilesUpdated > 0 ? stats.completionSum / stats.profilesUpdated : 0,
-      profilesUpdated: stats.profilesUpdated,
+      profilesUpdated: stats.profilesUpdated
     }));
 
     // Mock login activity data (would need to be tracked separately)
@@ -428,7 +428,7 @@ export async function fetchProfileOverviewAnalytics(
       return {
         date: date.toISOString().split('T')[0],
         uniqueLogins: Math.floor(Math.random() * 50) + 10,
-        totalSessions: Math.floor(Math.random() * 100) + 20,
+        totalSessions: Math.floor(Math.random() * 100) + 20
       };
     }).reverse();
 
@@ -476,7 +476,7 @@ export async function fetchProfileOverviewAnalytics(
       department,
       totalProfiles: stats.totalProfiles,
       averageCompletion: stats.totalProfiles > 0 ? Math.round(stats.completionSum / stats.totalProfiles) : 0,
-      activeProfiles: stats.activeProfiles,
+      activeProfiles: stats.activeProfiles
     }));
 
     // Certification stats by department
@@ -503,14 +503,14 @@ export async function fetchProfileOverviewAnalytics(
       department,
       totalCertifications: stats.totalCertifications,
       averageCertifications: stats.profileCount > 0 ? Math.round(stats.totalCertifications / stats.profileCount) : 0,
-      expiringCertifications: stats.expiringCertifications,
+      expiringCertifications: stats.expiringCertifications
     }));
 
     return {
       completionTrends,
       loginActivity,
       departmentStats: departmentStatsArray,
-      certificationStats: certificationStatsArray,
+      certificationStats: certificationStatsArray
     };
   } catch (error) {
     console.error('Error fetching profile overview analytics:', error);
@@ -539,7 +539,7 @@ export async function fetchRecentActivity(
     return (data || []).map(activity => ({
       ...activity,
       user_name: activity.user?.full_name || 'Unknown User',
-      user_avatar: activity.user?.avatar_url,
+      user_avatar: activity.user?.avatar_url
     }));
   } catch (error) {
     console.error('Error fetching recent activity:', error);
@@ -565,7 +565,7 @@ export async function performBulkAction(
           .update({ 
             status: 'active',
             last_updated_by: performedBy,
-            updated_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
           })
           .eq('organization_id', orgId)
           .in('user_id', profile_ids);
@@ -577,7 +577,7 @@ export async function performBulkAction(
           .update({ 
             status: 'inactive',
             last_updated_by: performedBy,
-            updated_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
           })
           .eq('organization_id', orgId)
           .in('user_id', profile_ids);
@@ -610,9 +610,9 @@ export async function performBulkAction(
           activity_description: `Profile ${actionType}d via bulk action`,
           metadata: {
             bulk_action: actionType,
-            performed_by: performedBy,
+            performed_by: performedBy
           },
-          performed_by: performedBy,
+          performed_by: performedBy
         }))
       );
 
@@ -662,7 +662,7 @@ export async function exportProfileOverviews(
         certifications_count: item.certifications?.length || 0,
         job_history_count: item.job_history?.length || 0,
         emergency_contacts_count: item.emergency_contacts?.length || 0,
-        endorsements_count: item.endorsements?.length || 0,
+        endorsements_count: item.endorsements?.length || 0
       }));
     } else if (filters) {
       // Export based on filters

@@ -16,7 +16,7 @@ import type {
   ExportDataSource,
   ExportFilter,
   AnalyticsQueryResult,
-  TimeSeriesPoint,
+  TimeSeriesPoint
 } from '../types';
 
 // ============================================================================
@@ -158,11 +158,11 @@ class DataSourceProcessor {
         where: filters.map(f => ({
           field: f.field,
           operator: f.operator as any,
-          value: f.value,
+          value: f.value
         })),
-        parameters: dataSource.parameters,
+        parameters: dataSource.parameters
       },
-      organization_id: organizationId,
+      organization_id: organizationId
     });
 
     if (error) throw error;
@@ -257,7 +257,7 @@ class DataSourceProcessor {
     const { data, error } = await supabase.rpc('execute_analytics_report', {
       report_id: dataSource.source,
       organization_id: organizationId,
-      parameters: dataSource.parameters,
+      parameters: dataSource.parameters
     });
 
     if (error) throw error;
@@ -287,7 +287,7 @@ class ExportProcessor {
         .from('analytics_exports')
         .update({
           status: 'processing',
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', exportJob.id);
 
@@ -313,14 +313,14 @@ class ExportProcessor {
           file_size: fileBuffer.length,
           row_count: data.length,
           completed_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', exportJob.id);
 
       return {
         data: fileBuffer,
         rowCount: data.length,
-        fileSize: fileBuffer.length,
+        fileSize: fileBuffer.length
       };
     } catch (error) {
       // Update export job with error
@@ -330,7 +330,7 @@ class ExportProcessor {
           status: 'failed',
           error_message: error.message,
           completed_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', exportJob.id);
 
@@ -409,7 +409,7 @@ class BackgroundExportService {
       const { error: uploadError } = await supabase.storage
         .from('analytics-exports')
         .upload(fileName, result.data, {
-          contentType: this.getContentType(exportJob.format.type),
+          contentType: this.getContentType(exportJob.format.type)
         });
 
       if (uploadError) throw uploadError;
@@ -419,7 +419,7 @@ class BackgroundExportService {
         .from('analytics_exports')
         .update({
           file_url: fileName,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', exportId);
 
@@ -438,7 +438,7 @@ class BackgroundExportService {
       excel: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
       json: 'application/json',
       pdf: 'application/pdf',
-      xml: 'application/xml',
+      xml: 'application/xml'
     };
     return contentTypes[format as keyof typeof contentTypes] || 'application/octet-stream';
   }
@@ -534,7 +534,7 @@ class ExportUtils {
       excel: 50000,
       json: 100000,
       pdf: 10000,
-      xml: 50000,
+      xml: 50000
     };
 
     const limit = limits[format.type as keyof typeof limits];
@@ -559,7 +559,7 @@ class ExportUtils {
       excel: 1.2,
       json: 1.1,
       pdf: 2,
-      xml: 1.3,
+      xml: 1.3
     };
 
     return Math.ceil(estimatedSize * (multipliers[format.type as keyof typeof multipliers] || 1));
@@ -603,5 +603,5 @@ export const AnalyticsExport = {
 
   // Status and monitoring
   getQueueStatus: BackgroundExportService.getQueueStatus,
-  processScheduledExports: ExportScheduler.processScheduledExports,
+  processScheduledExports: ExportScheduler.processScheduledExports
 } as const;

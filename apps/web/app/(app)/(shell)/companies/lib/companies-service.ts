@@ -19,7 +19,7 @@ import type {
   ContractStats,
   QualificationStats,
   RatingStats,
-  ExportOptions,
+  ExportOptions
 } from '../types';
 
 export class CompaniesService {
@@ -78,7 +78,7 @@ export class CompaniesService {
       count: count || 0,
       page,
       limit,
-      total_pages: Math.ceil((count || 0) / limit),
+      total_pages: Math.ceil((count || 0) / limit)
     };
   }
 
@@ -100,7 +100,7 @@ export class CompaniesService {
       .insert({
         ...companyData,
         organization_id: orgId,
-        status: 'pending',
+        status: 'pending'
       })
       .select()
       .single();
@@ -151,7 +151,7 @@ export class CompaniesService {
       .from('company_contacts')
       .insert({
         ...contactData,
-        organization_id: orgId,
+        organization_id: orgId
       })
       .select()
       .single();
@@ -246,7 +246,7 @@ export class CompaniesService {
       count: count || 0,
       page,
       limit,
-      total_pages: Math.ceil((count || 0) / limit),
+      total_pages: Math.ceil((count || 0) / limit)
     };
   }
 
@@ -257,7 +257,7 @@ export class CompaniesService {
         ...contractData,
         organization_id: orgId,
         status: 'draft',
-        currency: contractData.currency || 'USD',
+        currency: contractData.currency || 'USD'
       })
       .select()
       .single();
@@ -349,7 +349,7 @@ export class CompaniesService {
       count: count || 0,
       page,
       limit,
-      total_pages: Math.ceil((count || 0) / limit),
+      total_pages: Math.ceil((count || 0) / limit)
     };
   }
 
@@ -359,7 +359,7 @@ export class CompaniesService {
       .insert({
         ...qualificationData,
         organization_id: orgId,
-        verification_status: 'pending',
+        verification_status: 'pending'
       })
       .select()
       .single();
@@ -450,7 +450,7 @@ export class CompaniesService {
       count: count || 0,
       page,
       limit,
-      total_pages: Math.ceil((count || 0) / limit),
+      total_pages: Math.ceil((count || 0) / limit)
     };
   }
 
@@ -461,7 +461,7 @@ export class CompaniesService {
         ...ratingData,
         organization_id: orgId,
         rater_user_id: userId,
-        is_public: ratingData.is_public ?? true,
+        is_public: ratingData.is_public ?? true
       })
       .select()
       .single();
@@ -500,7 +500,7 @@ export class CompaniesService {
 
     const payload = records.map((record) => ({
       ...record,
-      organization_id: orgId,
+      organization_id: orgId
     }));
 
     const { error, count } = await this.supabase
@@ -511,13 +511,13 @@ export class CompaniesService {
       return {
         success: false,
         inserted: 0,
-        errors: [error.message],
+        errors: [error.message]
       } as const;
     }
 
     return {
       success: true,
-      inserted: count ?? payload.length,
+      inserted: count ?? payload.length
     } as const;
   }
 
@@ -556,7 +556,7 @@ export class CompaniesService {
       }).length || 0,
       averageRating: ratings?.length ? 
         ratings.reduce((sum, r) => sum + r.rating, 0) / ratings.length : 0,
-      totalRatings: ratings?.length || 0,
+      totalRatings: ratings?.length || 0
     };
   }
 
@@ -605,7 +605,7 @@ export class CompaniesService {
       style: 'currency',
       currency,
       minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
+      maximumFractionDigits: 0
     }).format(amount);
   }
 
@@ -613,7 +613,7 @@ export class CompaniesService {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
-      day: 'numeric',
+      day: 'numeric'
     });
   }
 

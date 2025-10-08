@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
+import { useEffect, useState, useCallback } from 'react';
+import { Card, CardBody, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { Database, Clock, Zap, AlertTriangle } from 'lucide-react';
 
 interface DatabaseMetrics {
@@ -19,6 +19,7 @@ export function DatabasePerformanceMonitor() {
   const [metrics, setMetrics] = useState<DatabaseMetrics | null>(null);
   const [queryLog, setQueryLog] = useState<string[]>([]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // Simulate database metrics collection
     // In production, this would connect to your monitoring service
@@ -58,6 +59,7 @@ export function DatabasePerformanceMonitor() {
     const interval = setInterval(fetchDatabaseMetrics, 5000); // Every 5 seconds
 
     return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getMetricColor = (value: number, thresholds: { good: number; poor: number }) => {

@@ -204,7 +204,7 @@ export const healthFilterSchema = zod.object({
   is_active: zod.enum(['active', 'inactive', 'all']).optional(),
   date_from: zod.string().optional(),
   date_to: zod.string().optional(),
-  expiring_soon: zod.boolean().optional(),
+  expiring_soon: zod.boolean().optional()
 });
 
 export const healthUpsertSchema = zod.object({
@@ -223,7 +223,7 @@ export const healthUpsertSchema = zod.object({
   notes: zod.string().optional().nullable(),
   privacy_level: healthPrivacyLevelSchema,
   reminder_enabled: zod.boolean(),
-  reminder_days_before: zod.number().min(0).optional().nullable(),
+  reminder_days_before: zod.number().min(0).optional().nullable()
 });
 
 // ============================================================================
@@ -239,14 +239,14 @@ export const RECORD_TYPE_LABELS: Record<HealthRecordType, string> = {
   emergency: 'Emergency Info',
   lab_result: 'Lab Result',
   procedure: 'Medical Procedure',
-  appointment: 'Appointment',
+  appointment: 'Appointment'
 };
 
 export const SEVERITY_LABELS: Record<HealthSeverityLevel, string> = {
   low: 'Low',
   medium: 'Medium',
   high: 'High',
-  critical: 'Critical',
+  critical: 'Critical'
 };
 
 export const CATEGORY_LABELS: Record<HealthCategory, string> = {
@@ -255,37 +255,37 @@ export const CATEGORY_LABELS: Record<HealthCategory, string> = {
   chronic: 'Chronic',
   acute: 'Acute',
   routine: 'Routine',
-  emergency: 'Emergency',
+  emergency: 'Emergency'
 };
 
 export const PRIVACY_LABELS: Record<HealthPrivacyLevel, string> = {
   private: 'Private',
   medical_team: 'Medical Team',
   emergency_only: 'Emergency Only',
-  public: 'Public',
+  public: 'Public'
 };
 
 export const VIEW_CONFIG: Record<HealthViewType, { label: string; description: string }> = {
   form: {
     label: 'Form',
-    description: 'Add or edit health records',
+    description: 'Add or edit health records'
   },
   card: {
     label: 'Card',
-    description: 'Detailed card view',
+    description: 'Detailed card view'
   },
   timeline: {
     label: 'Timeline',
-    description: 'Chronological timeline',
+    description: 'Chronological timeline'
   },
   calendar: {
     label: 'Calendar',
-    description: 'Calendar view with reminders',
+    description: 'Calendar view with reminders'
   },
   analytics: {
     label: 'Analytics',
-    description: 'Health insights and metrics',
-  },
+    description: 'Health insights and metrics'
+  }
 };
 
 export const QUICK_FILTERS = [
@@ -335,7 +335,7 @@ export function createEmptyFormData(): HealthRecordFormData {
     notes: '',
     privacy_level: 'private',
     reminder_enabled: false,
-    reminder_days_before: 30,
+    reminder_days_before: 30
   };
 }
 
@@ -348,7 +348,7 @@ export function createEmptyStats(): HealthStats {
     byType: [],
     bySeverity: [],
     byCategory: [],
-    upcomingReminders: [],
+    upcomingReminders: []
   };
 }
 
@@ -361,7 +361,7 @@ export function createEmptyAnalytics(): HealthAnalytics {
     tagCloud: [],
     healthScore: 0,
     completenessScore: 0,
-    recentActivity: [],
+    recentActivity: []
   };
 }
 
@@ -395,7 +395,7 @@ export function formatDate(date: string): string {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
+    day: 'numeric'
   });
 }
 
@@ -403,7 +403,7 @@ export function formatDateShort(date: string): string {
   return new Date(date).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
-    year: 'numeric',
+    year: 'numeric'
   });
 }
 
@@ -427,7 +427,7 @@ export function getSeverityColor(severity: HealthSeverityLevel): string {
     low: 'green',
     medium: 'yellow',
     high: 'orange',
-    critical: 'red',
+    critical: 'red'
   };
   return colors[severity];
 }
@@ -442,7 +442,7 @@ export function getRecordTypeIcon(type: HealthRecordType): string {
     emergency: '🚨',
     lab_result: '🧪',
     procedure: '⚕️',
-    appointment: '📅',
+    appointment: '📅'
   };
   return icons[type];
 }

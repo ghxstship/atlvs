@@ -1,4 +1,5 @@
 'use client';
+import { Button, Drawer, Input } from '@ghxstship/ui';
 
 
 import { useState } from 'react';
@@ -18,7 +19,7 @@ const categorySchema = z.object({
   parent_category_id: z.string().optional(),
   color: z.string().optional(),
   status: z.enum(['active', 'inactive']).default('active'),
-  sort_order: z.number().min(0).optional(),
+  sort_order: z.number().min(0).optional()
 });
 
 type CategoryFormData = z.infer<typeof categorySchema>;
@@ -45,7 +46,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
     mode: 'onChange',
     defaultValues: {
       type: 'both',
-      status: 'active',
+      status: 'active'
     }
   });
 
@@ -61,9 +62,9 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-organization-id': orgId,
+          'x-organization-id': orgId
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
@@ -79,7 +80,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
         category_name: data.name,
         category_type: data.type,
         organization_id: orgId,
-        status: data.status,
+        status: data.status
       });
 
       // Log activity
@@ -92,8 +93,8 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
         details: {
           category_name: data.name,
           category_type: data.type,
-          status: data.status,
-        },
+          status: data.status
+        }
       });
 
       // Reset form and close drawer
@@ -105,7 +106,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
       console.error('Error creating category:', error);
       posthog?.capture('procurement_category_creation_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -186,7 +187,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Category Name *
               </label>
-              <UnifiedInput                 {...register('name')}
+              <Input                 {...register('name')}
                 placeholder="Enter category name"
                 error={errors.name?.message}
               />
@@ -240,7 +241,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Sort Order
               </label>
-              <UnifiedInput                 {...register('sort_order', { valueAsNumber: true })}
+              <Input                 {...register('sort_order', { valueAsNumber: true })}
                 type="number"
                 min="0"
                 placeholder="0"
@@ -251,7 +252,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Description
               </label>
-              <Textarea
+              <textarea
                 {...register('description')}
                 placeholder="Brief description of this category"
                 rows={3}

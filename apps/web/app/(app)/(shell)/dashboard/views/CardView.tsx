@@ -1,31 +1,9 @@
 'use client';
 
 import React, { useState, useMemo, useCallback } from 'react';
-import {
-  Search,
-  Filter,
-  MoreHorizontal,
-  Grid3X3,
-  List,
-  Heart,
-  Share,
-  Edit,
-  Trash2,
-  Eye
-} from 'lucide-react';
-import { Button } from '@ghxstship/ui';
-import { Input } from '@ghxstship/ui';
-import { Checkbox } from '@ghxstship/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Avatar, AvatarFallback, AvatarImage } from '@ghxstship/ui';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator,
-} from '@ghxstship/ui';
+import Image from "next/image";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, Edit, Eye, Filter, Grid3X3, Heart, List, MoreHorizontal, Search, Share, Trash2 } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Card, CardBody, CardContent, CardHeader, CardTitle, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Input } from '@ghxstship/ui';
 import { cn } from '@ghxstship/ui/lib/utils';
 
 // Card Layout Types
@@ -184,6 +162,7 @@ export const CardView: React.FC<CardViewProps> = ({
         return String(value || '').toLowerCase().includes(searchTerm);
       });
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, globalSearch, config]);
 
   // Handle selection
@@ -195,6 +174,7 @@ export const CardView: React.FC<CardViewProps> = ({
       : [...selectedRows, rowId];
 
     onSelectionChange(newSelection);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRows, onSelectionChange]);
 
   // Render field value
@@ -225,11 +205,14 @@ export const CardView: React.FC<CardViewProps> = ({
         );
       case 'image':
         return (
-          <img
-            src={String(value || '')}
-            alt=""
-            className={cn('w-full h-component-xl object-cover rounded', field.className)}
-          />
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={String(value || '')}
+              alt=""
+              className={cn('w-full h-component-xl object-cover rounded', field.className)}
+            />
+          </>
         );
       default:
         return <span className={field.className}>{String(value || '')}</span>;
@@ -481,7 +464,7 @@ export const CardView: React.FC<CardViewProps> = ({
           {/* Size Controls */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm">
+              <Button variant="secondary" size="sm">
                 Size
               </Button>
             </DropdownMenuTrigger>
@@ -524,7 +507,7 @@ export const CardView: React.FC<CardViewProps> = ({
           <div className="col-span-full flex items-center justify-center py-xsxl">
             <div className="text-center">
               <div className="text-muted-foreground mb-2">{emptyMessage}</div>
-              <Button variant="outline" size="sm">
+              <Button variant="secondary" size="sm">
                 Reset Filters
               </Button>
             </div>
@@ -546,7 +529,7 @@ export const CardView: React.FC<CardViewProps> = ({
 
           <div className="flex items-center gap-xs">
             <Button
-              variant="outline"
+              variant="secondary"
               size="sm"
               onClick={() => pagination.onPageChange(pagination.page - 1)}
               disabled={pagination.page === 1}
@@ -559,7 +542,7 @@ export const CardView: React.FC<CardViewProps> = ({
             </span>
 
             <Button
-              variant="outline"
+              variant="secondary"
               size="sm"
               onClick={() => pagination.onPageChange(pagination.page + 1)}
               disabled={pagination.page === Math.ceil(pagination.total / pagination.pageSize)}

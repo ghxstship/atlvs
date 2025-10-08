@@ -72,8 +72,8 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
       const response = await fetch('/api/v1/jobs/opportunities', {
         headers: {
           'x-org-id': orgId,
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       });
 
       if (!response.ok) {
@@ -143,9 +143,9 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
         method: 'POST',
         headers: {
           'x-org-id': orgId,
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
@@ -359,7 +359,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
                 status: 'lead',
                 clientName: formData.get('clientName') as string,
                 estimatedValue: formData.get('estimatedValue') ? Number(formData.get('estimatedValue')) : undefined,
-                currency: 'USD',
+                currency: 'USD'
               });
             }}>
               <div className="stack-md">

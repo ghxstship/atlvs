@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, TrendingUp, Users, DollarSign, Calendar, Lock, Eye, Award } from 'lucide-react';
+import { ArrowRight, Award, Calendar, DollarSign, Eye, Lock, TrendingUp, Users } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
 import { MarketingSection } from '../../../_components/marketing';
 
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Case Studies | GHXSTSHIP Resources',
     description: 'Real-world success stories and lessons learned from managing large-scale entertainment productions.',
-    url: 'https://ghxstship.com/resources/case-studies',
-  },
+    url: 'https://ghxstship.com/resources/case-studies'
+  }
 };
 
 const caseStudies = [
@@ -27,7 +27,7 @@ const caseStudies = [
     challenge: 'Managing massive hospitality operations for world-class sports entertainment event',
     results: ['Zero safety incidents', '100% regulatory compliance', 'Flawless VIP experience delivery'],
     isPremium: true,
-    featured: true,
+    featured: true
   },
   {
     id: 'edc-orlando-operations',
@@ -40,7 +40,7 @@ const caseStudies = [
     challenge: 'Coordinating complex multi-stage production with international talent',
     results: ['45% efficiency improvement', 'Zero production delays', '98% attendee satisfaction'],
     isPremium: true,
-    featured: true,
+    featured: true
   },
   {
     id: 'carnival-casting-revolution',
@@ -53,7 +53,7 @@ const caseStudies = [
     challenge: 'Scaling talent acquisition across 52 countries with manual processes',
     results: ['6 weeks to 5 minutes workflow', '300% scalability improvement', '40% cost reduction'],
     isPremium: false,
-    featured: true,
+    featured: true
   },
   {
     id: 'salvage-city-supper-club',
@@ -66,7 +66,7 @@ const caseStudies = [
     challenge: 'Delivering luxury hospitality in high-energy festival environment',
     results: ['24/7 operations success', 'Premium service standards', 'Zero operational failures'],
     isPremium: true,
-    featured: false,
+    featured: false
   },
   {
     id: 'factory-town-transformation',
@@ -79,7 +79,7 @@ const caseStudies = [
     challenge: 'Optimizing multi-departmental venue operations and entertainment programming',
     results: ['45% efficiency improvement', '50+ successful events', 'Zero safety incidents'],
     isPremium: false,
-    featured: false,
+    featured: false
   },
   {
     id: 'miami-music-week',
@@ -92,7 +92,7 @@ const caseStudies = [
     challenge: 'Coordinating multiple simultaneous productions with international talent',
     results: ['Flawless multi-stage execution', 'International artist satisfaction', 'Industry recognition'],
     isPremium: true,
-    featured: false,
+    featured: false
   },
 ];
 

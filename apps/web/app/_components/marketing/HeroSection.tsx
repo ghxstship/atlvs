@@ -1,9 +1,9 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Play, CheckCircle, Star, Users, Zap } from 'lucide-react';
+import { ArrowRight, CheckCircle, Play, Star, Users, Zap } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { Button } from '@ghxstship/ui';
 
@@ -24,11 +24,13 @@ const features = [
 export function HeroSection() {
   const [currentFeature, setCurrentFeature] = useState(0);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentFeature((prev: number) => (prev + 1) % features.length);
     }, 3000);
     return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

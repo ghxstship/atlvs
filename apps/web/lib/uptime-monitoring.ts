@@ -138,7 +138,7 @@ class UptimeMonitor {
       friendly_name: endpoint.name,
       url: endpoint.url,
       type: 1, // HTTP
-      interval: endpoint.interval,
+      interval: endpoint.interval
     }));
 
     // This would make actual API calls to UptimeRobot
@@ -171,7 +171,7 @@ class UptimeMonitor {
       overall: {
         uptime: 99.95,
         status: 'operational',
-        lastIncident: null,
+        lastIncident: null
       },
       endpoints: this.config.endpoints.map(endpoint => ({
         name: endpoint.name,
@@ -179,8 +179,8 @@ class UptimeMonitor {
         status: 'operational' as const,
         responseTime: 245,
         uptime: 99.98,
-        lastChecked: new Date().toISOString(),
-      })),
+        lastChecked: new Date().toISOString()
+      }))
     };
   }
 
@@ -190,12 +190,12 @@ class UptimeMonitor {
     return {
       period: {
         start: new Date(Date.now() - this.config.sla.reportingPeriodDays * 24 * 60 * 60 * 1000).toISOString(),
-        end: new Date().toISOString(),
+        end: new Date().toISOString()
       },
       uptime: status.overall.uptime,
       target: this.config.sla.targetUptime,
       compliance: status.overall.uptime >= this.config.sla.targetUptime,
-      incidents: [],
+      incidents: []
     };
   }
 }
@@ -243,7 +243,7 @@ export const defaultUptimeConfig: UptimeConfig = {
       interval: 5,
       expectedResponseTime: 3000,
       method: 'GET',
-      expectedStatusCodes: [200],
+      expectedStatusCodes: [200]
     },
     {
       url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/health`,
@@ -251,7 +251,7 @@ export const defaultUptimeConfig: UptimeConfig = {
       interval: 5,
       expectedResponseTime: 1000,
       method: 'GET',
-      expectedStatusCodes: [200],
+      expectedStatusCodes: [200]
     },
     {
       url: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/dashboard`,
@@ -259,7 +259,7 @@ export const defaultUptimeConfig: UptimeConfig = {
       interval: 10,
       expectedResponseTime: 5000,
       method: 'GET',
-      expectedStatusCodes: [200],
+      expectedStatusCodes: [200]
     },
   ],
   alerts: {
@@ -269,13 +269,13 @@ export const defaultUptimeConfig: UptimeConfig = {
     thresholds: {
       downtimeMinutes: 5,
       responseTimeMs: 10000,
-      errorRatePercent: 5,
-    },
+      errorRatePercent: 5
+    }
   },
   sla: {
     targetUptime: 99.9,
-    reportingPeriodDays: 30,
-  },
+    reportingPeriodDays: 30
+  }
 };
 
 export const uptimeMonitor = new UptimeMonitor(defaultUptimeConfig);

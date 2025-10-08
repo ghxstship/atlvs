@@ -4,16 +4,8 @@
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
-import { 
-  Package,
-  Tag,
-  DollarSign,
-  MapPin,
-  Calendar,
-  Save,
-  X
-} from 'lucide-react';
+import { Drawer, Button, Input, Select, Textarea, Card } from '@ghxstship/ui';
+import { Calendar, DollarSign, MapPin, Package, Save, Tag, X } from 'lucide-react';
 
 interface CreateAssetClientProps {
   user: User;
@@ -210,7 +202,7 @@ export default function CreateAssetClient({
               <label className="block text-body-sm form-label mb-xs">
                 Asset Name *
               </label>
-              <UnifiedInput                 value={formData.name}
+              <Input                 value={formData.name}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('name', e.target.value)}
                 placeholder="Enter asset name"
                 required
@@ -294,7 +286,7 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   SKU
                 </label>
-                <UnifiedInput                   value={formData.sku}
+                <Input                   value={formData.sku}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('sku', e.target.value)}
                   placeholder="Stock Keeping Unit"
                 />
@@ -304,7 +296,7 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Barcode
                 </label>
-                <UnifiedInput                   value={formData.barcode}
+                <Input                   value={formData.barcode}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('barcode', e.target.value)}
                   placeholder="Barcode number"
                 />
@@ -316,7 +308,7 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Manufacturer
                 </label>
-                <UnifiedInput                   value={formData.manufacturer}
+                <Input                   value={formData.manufacturer}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('manufacturer', e.target.value)}
                   placeholder="Manufacturer name"
                 />
@@ -326,7 +318,7 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Model
                 </label>
-                <UnifiedInput                   value={formData.model}
+                <Input                   value={formData.model}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('model', e.target.value)}
                   placeholder="Model number"
                 />
@@ -336,7 +328,7 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Serial Number
                 </label>
-                <UnifiedInput                   value={formData.serialNumber}
+                <Input                   value={formData.serialNumber}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('serialNumber', e.target.value)}
                   placeholder="Serial number"
                 />
@@ -358,7 +350,7 @@ export default function CreateAssetClient({
                 <Calendar className="h-icon-xs w-icon-xs inline mr-xs" />
                 Purchase Date
               </label>
-              <UnifiedInput                 type="date"
+              <Input                 type="date"
                 value={formData.purchaseDate}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('purchaseDate', e.target.value)}
               />
@@ -369,7 +361,7 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Purchase Cost
                 </label>
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   step="0.01"
                   value={formData.purchaseCost}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('purchaseCost', e.target.value)}
@@ -381,7 +373,7 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Current Value
                 </label>
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   step="0.01"
                   value={formData.currentValue}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('currentValue', e.target.value)}
@@ -404,7 +396,7 @@ export default function CreateAssetClient({
               <label className="block text-body-sm form-label mb-xs">
                 Location
               </label>
-              <UnifiedInput                 value={formData.location}
+              <Input                 value={formData.location}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('location', e.target.value)}
                 placeholder="Current location of the asset"
               />

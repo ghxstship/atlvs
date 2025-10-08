@@ -19,7 +19,7 @@ export default function BillingPortalClient() {
       const res = await fetch("/api/stripe/portal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: user.id }),
+        body: JSON.stringify({ userId: user.id })
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || "Failed to create portal session");
@@ -41,7 +41,7 @@ export default function BillingPortalClient() {
       const res = await fetch("/api/stripe/portal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ organizationId }),
+        body: JSON.stringify({ organizationId })
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || "Failed to create portal session");
@@ -72,7 +72,7 @@ export default function BillingPortalClient() {
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+        body: JSON.stringify(body)
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || "Failed to create checkout session");

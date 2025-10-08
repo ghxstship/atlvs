@@ -11,7 +11,7 @@ import {
   Download,
   Trash2,
   Share,
-  MoreHorizontal,
+  MoreHorizontal
 } from 'lucide-react';
 import { Card, Button, Input, Select, DropdownMenu, Badge, Textarea } from '@ghxstship/ui';
 import type { DigitalAsset } from '../types';
@@ -37,7 +37,7 @@ export default function FormView({
   onShare,
   onUpdateFile,
   formatFileSize,
-  getCategoryIcon,
+  getCategoryIcon
 }: FormViewProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -67,7 +67,7 @@ export default function FormView({
   const handleFieldChange = (field: string, value: unknown) => {
     setFormData(prev => ({
       ...prev,
-      [field]: value,
+      [field]: value
     }));
   };
 
@@ -94,7 +94,7 @@ export default function FormView({
       description: file.description || '',
       category: file.category,
       access_level: file.access_level,
-      tags: file.tags || [],
+      tags: file.tags || []
     });
   };
 

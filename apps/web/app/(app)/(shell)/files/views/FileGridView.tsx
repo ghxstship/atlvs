@@ -1,5 +1,6 @@
 "use client";
 
+import { Download, Share2 } from 'lucide-react';
 import { Card, Badge, Button, Checkbox } from "@ghxstship/ui";
 import { formatDistanceToNow } from "date-fns";
 import type { ProjectFile } from "../FilesClient";
@@ -30,7 +31,7 @@ export default function FileGridView({
  onShare,
  formatFileSize,
  getCategoryIcon,
- getAccessIcon,
+ getAccessIcon
 }: FileGridViewProps) {
  const getCategoryColor = (category: string) => {
  switch (category) {

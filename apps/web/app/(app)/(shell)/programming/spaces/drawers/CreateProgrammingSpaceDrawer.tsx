@@ -89,7 +89,7 @@ export default function CreateProgrammingSpaceDrawer({
  orgId,
  currentUserId,
  projects,
- onSuccess,
+ onSuccess
 }: CreateProgrammingSpaceDrawerProps) {
  const [loading, setLoading] = useState(false);
 
@@ -101,131 +101,131 @@ export default function CreateProgrammingSpaceDrawer({
  options: [
  { label: 'No Project', value: '' },
  ...projects.map((project) => ({ label: project.name, value: project.id })),
- ],
+ ]
  },
  {
  key: 'name',
  label: 'Space Name',
  type: 'text',
  required: true,
- placeholder: 'Enter space name',
+ placeholder: 'Enter space name'
  },
  {
  key: 'kind',
  label: 'Space Type',
  type: 'select',
  required: true,
- options: KIND_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: KIND_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'status',
  label: 'Status',
  type: 'select',
- options: STATUS_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: STATUS_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'access_level',
  label: 'Access Level',
  type: 'select',
- options: ACCESS_LEVEL_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: ACCESS_LEVEL_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'description',
  label: 'Description',
  type: 'textarea',
- placeholder: 'Describe this space and its primary use',
+ placeholder: 'Describe this space and its primary use'
  },
  {
  key: 'location',
  label: 'Location',
  type: 'text',
- placeholder: 'Enter venue or location details',
+ placeholder: 'Enter venue or location details'
  },
  {
  key: 'building',
  label: 'Building',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'floor',
  label: 'Floor',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'room_number',
  label: 'Room Number',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'capacity',
  label: 'Capacity',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'max_capacity',
  label: 'Max Capacity',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'area_sqft',
  label: 'Area (sq ft)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'is_bookable',
  label: 'Available for Booking',
- type: 'checkbox',
+ type: 'checkbox'
  },
  {
  key: 'hourly_rate',
  label: 'Hourly Rate ($)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'daily_rate',
  label: 'Daily Rate ($)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'setup_time',
  label: 'Setup Time (minutes)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'breakdown_time',
  label: 'Breakdown Time (minutes)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'cleaning_time',
  label: 'Cleaning Time (minutes)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'contact_person',
  label: 'Contact Person',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'contact_phone',
  label: 'Contact Phone',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'contact_email',
  label: 'Contact Email',
- type: 'email',
+ type: 'email'
  },
  ...AMENITY_FIELDS.map(({ key, label }) => ({
  key,
  label,
- type: 'checkbox' as const,
+ type: 'checkbox' as const
  })),
  {
  key: 'tags',
  label: 'Tags',
  type: 'text',
- placeholder: 'Enter tags separated by commas',
+ placeholder: 'Enter tags separated by commas'
  },
  ];
 
@@ -276,13 +276,13 @@ export default function CreateProgrammingSpaceDrawer({
  images: [],
  documents: [],
  tags,
- metadata: {},
+ metadata: {}
  };
 
  const response = await fetch('/api/v1/programming/spaces', {
  method: 'POST',
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify(payload),
+ body: JSON.stringify(payload)
  });
 
  if (!response.ok) {

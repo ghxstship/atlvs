@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 60 * 60 * 24, // 24 hours
-      path: '/',
+      path: '/'
     });
 
     // Set demo flag cookie
@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 60 * 60 * 24, // 24 hours
-      path: '/',
+      path: '/'
     });
 
     // Track demo access
@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
       campaign,
       timestamp: new Date().toISOString(),
       userAgent: request.headers.get('user-agent'),
-      referer: request.headers.get('referer'),
+      referer: request.headers.get('referer')
     });
 
     // TODO: In production, create actual demo user session with Supabase

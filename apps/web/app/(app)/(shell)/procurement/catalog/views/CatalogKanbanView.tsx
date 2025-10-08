@@ -1,9 +1,9 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { Activity, Award, Calendar, Clock, Edit, Eye, FileText, Play, Plus, Search, Settings, Trash2, TrendingUp, User } from 'lucide-react';
 import { useState } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import type { CatalogItem } from '../types';
-import { formatCurrency, formatDate, getStatusColor } from '../types';
+import { formatCurrency, formatDate } from '../types';
 
 interface CatalogKanbanViewProps {
  items: CatalogItem[];
@@ -32,7 +32,7 @@ export default function CatalogKanbanView({
  onEditItem,
  onDeleteItem,
  onViewItem,
- onStatusChange,
+ onStatusChange
 }: CatalogKanbanViewProps) {
  const [draggedItem, setDraggedItem] = useState<CatalogItem | null>(null);
 

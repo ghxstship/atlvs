@@ -3,7 +3,7 @@
 import { TrendingUp, Target, Award, Users, BarChart3, PieChart, Calendar, Star } from "lucide-react";
 import {
   Card,
-  Badge,
+  Badge
 } from '@ghxstship/ui';
 import type { PerformanceStats, PerformanceAnalytics } from '../types';
 import { REVIEW_TYPE_LABELS, REVIEW_STATUS_LABELS } from '../types';
@@ -17,7 +17,7 @@ interface PerformanceAnalyticsViewProps {
 export default function PerformanceAnalyticsView({
   stats,
   analytics,
-  loading = false,
+  loading = false
 }: PerformanceAnalyticsViewProps) {
   if (loading) {
     return (

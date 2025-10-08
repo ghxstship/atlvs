@@ -38,8 +38,8 @@ export async function createClient(providedCookies?: CookieStore) {
             // The `setAll` method was called outside of a request context.
             // This can be ignored if you have middleware refreshing sessions.
           }
-        },
-      },
+        }
+      }
     }
   );
 }
@@ -55,12 +55,12 @@ export async function createServiceClient() {
         },
         setAll() {
           // Service role client doesn't need cookies
-        },
+        }
       },
       auth: {
         autoRefreshToken: false,
-        persistSession: false,
-      },
+        persistSession: false
+      }
     }
   );
 }

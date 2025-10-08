@@ -14,7 +14,7 @@ import {
   Search,
   ArrowUpDown,
   Pin,
-  PinOff,
+  PinOff
 } from 'lucide-react';
 import { Button, Checkbox, Input, DropdownMenu, Badge } from '@ghxstship/ui';
 import type { DigitalAsset } from '../types';
@@ -58,7 +58,7 @@ export default function TableView({
   onBulkAction,
   formatFileSize,
   getCategoryIcon,
-  getAccessIcon,
+  getAccessIcon
 }: TableViewProps) {
   const [sortColumn, setSortColumn] = useState<string | null>(null);
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
@@ -80,7 +80,7 @@ export default function TableView({
           checked={selectedFiles.has(file.id)}
           onCheckedChange={() => onSelectFile(file.id)}
         />
-      ),
+      )
     },
     {
       key: 'title',
@@ -88,7 +88,7 @@ export default function TableView({
       sortable: true,
       filterable: true,
       width: 250,
-      frozen: true,
+      frozen: true
     },
     {
       key: 'category',
@@ -104,7 +104,7 @@ export default function TableView({
             <span className="capitalize">{file.category}</span>
           </div>
         );
-      },
+      }
     },
     {
       key: 'file_size',
@@ -112,7 +112,7 @@ export default function TableView({
       sortable: true,
       filterable: false,
       width: 100,
-      render: (file) => formatFileSize(file.file_size || 0),
+      render: (file) => formatFileSize(file.file_size || 0)
     },
     {
       key: 'access_level',
@@ -128,7 +128,7 @@ export default function TableView({
             <span className="capitalize">{file.access_level}</span>
           </div>
         );
-      },
+      }
     },
     {
       key: 'status',
@@ -142,7 +142,7 @@ export default function TableView({
         >
           {file.status}
         </Badge>
-      ),
+      )
     },
     {
       key: 'created_at',
@@ -150,7 +150,7 @@ export default function TableView({
       sortable: true,
       filterable: false,
       width: 150,
-      render: (file) => new Date(file.created_at).toLocaleDateString(),
+      render: (file) => new Date(file.created_at).toLocaleDateString()
     },
     {
       key: 'updated_at',
@@ -158,7 +158,7 @@ export default function TableView({
       sortable: true,
       filterable: false,
       width: 150,
-      render: (file) => new Date(file.updated_at).toLocaleDateString(),
+      render: (file) => new Date(file.updated_at).toLocaleDateString()
     },
     {
       key: 'actions',
@@ -200,7 +200,7 @@ export default function TableView({
             </DropdownMenu.Item>
           </DropdownMenu.Content>
         </DropdownMenu>
-      ),
+      )
     },
   ];
 
@@ -249,7 +249,7 @@ export default function TableView({
   const handleFilterChange = useCallback((columnKey: string, value: string) => {
     setFilters(prev => ({
       ...prev,
-      [columnKey]: value,
+      [columnKey]: value
     }));
   }, []);
 
@@ -270,7 +270,7 @@ export default function TableView({
   const handleColumnResize = useCallback((columnKey: string, width: number) => {
     setColumnWidths(prev => ({
       ...prev,
-      [columnKey]: width,
+      [columnKey]: width
     }));
   }, []);
 

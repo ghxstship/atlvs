@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Download, ChevronDown, ChevronRight, Folder, Trash2 } from 'lucide-react';
+import { useState } from 'react';
 import { Card, Badge, Button, Checkbox } from "@ghxstship/ui";
 import type { ProjectFile } from "../FilesClient";
 import type { LucideIcon } from "lucide-react";
@@ -24,7 +25,7 @@ export default function FileFolderView({
  onDownload,
  onDelete,
  formatFileSize,
- getCategoryIcon,
+ getCategoryIcon
 }: FileFolderViewProps) {
  const [expandedFolders, setExpandedFolders] = useState<Set<string>(
  new Set(Object.keys(groupedFiles))

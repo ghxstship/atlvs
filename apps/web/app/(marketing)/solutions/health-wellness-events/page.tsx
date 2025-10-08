@@ -7,13 +7,13 @@ import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Health & Wellness Experiences | GHXSTSHIP',
   description:
-    'Design transformative wellness retreats, mind-body programs, and community health events with GHXSTSHIP.',
+    'Design transformative wellness retreats, mind-body programs, and community health events with GHXSTSHIP.'
 };
 
 const heroStats = [
@@ -27,41 +27,41 @@ const wellnessPhases = [
   {
     title: 'Program Design',
     description: 'Curate mind-body schedules, practitioner rosters, and experiential agendas for every cohort.',
-    icon: Flower,
+    icon: Flower
   },
   {
     title: 'Participant Journey',
     description: 'Coordinate intake forms, dietary preferences, and personalized itineraries.',
-    icon: HeartPulse,
+    icon: HeartPulse
   },
   {
     title: 'Onsite Operations',
     description: 'Manage session timing, facility logistics, and wellness staff communications in real time.',
-    icon: Calendar,
+    icon: Calendar
   },
   {
     title: 'Post-Event Continuity',
     description: 'Deliver follow-up content, habit trackers, and community support spaces.',
-    icon: Sparkles,
+    icon: Sparkles
   },
 ];
 
 const wellnessBenefits = [
   {
     title: 'Holistic Care Coordination',
-    description: 'Connect medical teams, therapists, and wellness practitioners with shared insights.',
+    description: 'Connect medical teams, therapists, and wellness practitioners with shared insights.'
   },
   {
     title: 'Personalized Experiences',
-    description: 'Segment participants, tailor modalities, and track outcomes across cohorts.',
+    description: 'Segment participants, tailor modalities, and track outcomes across cohorts.'
   },
   {
     title: 'Operational Efficiency',
-    description: 'Automate scheduling, staffing, and vendor workflows to keep retreats focused on healing.',
+    description: 'Automate scheduling, staffing, and vendor workflows to keep retreats focused on healing.'
   },
   {
     title: 'Impact Measurement',
-    description: 'Quantify biometric trends, retention, and NPS to demonstrate wellness ROI.',
+    description: 'Quantify biometric trends, retention, and NPS to demonstrate wellness ROI.'
   },
 ];
 
@@ -73,7 +73,7 @@ const caseStudies = [
     result: '60% faster planning · 35% uplift in retention · 20% higher lifetime value · 99% satisfaction',
     quote:
       'GHXSTSHIP gave us total clarity—nutritionists, yoga instructors, and medical advisors all worked from the same playbook.',
-    author: 'Dr. Maya Patel, Founder',
+    author: 'Dr. Maya Patel, Founder'
   },
   {
     company: 'Vitality Health Network',
@@ -82,7 +82,7 @@ const caseStudies = [
     result: '50% participation increase · 40% fewer admin hours · 18% drop in stress indicators · 92% NPS',
     quote:
       'We moved from spreadsheets to a living wellness command center. GHXSTSHIP keeps teams aligned and participants cared for.',
-    author: 'Marcus Rodriguez, Director of Employee Wellbeing',
+    author: 'Marcus Rodriguez, Director of Employee Wellbeing'
   },
 ];
 

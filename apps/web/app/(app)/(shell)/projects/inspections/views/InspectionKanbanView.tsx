@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo } from "react";
+import { Edit, Trash2, Calendar, User } from 'lucide-react';
+import { useMemo } from 'react';
 import { Card, Badge, Button, Checkbox } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import type { Inspection } from "../InspectionsClient";
@@ -29,7 +30,7 @@ export default function InspectionKanbanView({
  onStatusChange,
  getTypeIcon,
  getTypeBadgeVariant,
- getScoreColor,
+ getScoreColor
 }: InspectionKanbanViewProps) {
  // Group inspections by status
  const groupedInspections = useMemo(() => {
@@ -38,7 +39,7 @@ export default function InspectionKanbanView({
  in_progress: [],
  completed: [],
  failed: [],
- cancelled: [],
+ cancelled: []
  };
 
  inspections.forEach((inspection) => {

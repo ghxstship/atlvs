@@ -335,12 +335,12 @@ export const CreateEventSchema = z.object({
   start_date: z.date(),
   end_date: z.date(),
   location: z.string().max(500, 'Location must be less than 500 characters').optional(),
-  capacity: z.number().int().positive().optional(),
+  capacity: z.number().int().positive().optional()
 });
 
 export const UpdateEventSchema = CreateEventSchema.partial().extend({
   id: z.string().uuid(),
-  status: z.enum(['scheduled', 'in-progress', 'completed', 'cancelled']).optional(),
+  status: z.enum(['scheduled', 'in-progress', 'completed', 'cancelled']).optional()
 });
 
 export const SearchFiltersSchema = z.object({
@@ -351,7 +351,7 @@ export const SearchFiltersSchema = z.object({
   date_to: z.date().optional(),
   location: z.string().optional(),
   capacity_min: z.number().int().positive().optional(),
-  capacity_max: z.number().int().positive().optional(),
+  capacity_max: z.number().int().positive().optional()
 });
 
 // UI State Types

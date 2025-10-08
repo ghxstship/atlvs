@@ -5,7 +5,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription,
+  DrawerDescription
 } from '@ghxstship/ui';
 import { Badge } from '@ghxstship/ui';
 import { Button } from '@ghxstship/ui';
@@ -52,20 +52,20 @@ export default function DetailDrawer({
   onEdit,
   onDelete,
   onFeature,
-  onArchive,
+  onArchive
 }: DetailDrawerProps) {
   // Fetch listing details
   const { data: listing, isLoading, error } = useQuery({
     queryKey: ['marketplace-listing-detail', orgId, listingId],
     queryFn: () => listingId ? marketplaceService.getListing(orgId, listingId) : null,
-    enabled: !!listingId && open,
+    enabled: !!listingId && open
   });
 
   const formatCurrency = (amount?: number, currency: string = 'USD') => {
     if (!amount) return 'Not specified';
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency,
+      currency
     }).format(amount);
   };
 

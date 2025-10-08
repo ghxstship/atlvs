@@ -33,7 +33,7 @@ const CreateBidSchema = z.object({
     name: z.string(),
     role: z.string(),
     experience: z.string().optional()
-  })).optional(),
+  })).optional()
 });
 
 const UpdateBidSchema = CreateBidSchema.partial();

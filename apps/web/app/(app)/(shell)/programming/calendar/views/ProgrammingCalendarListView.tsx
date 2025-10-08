@@ -4,7 +4,7 @@ import { Badge, Button, Card, Checkbox } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import type { ProgrammingEvent } from "../types";
 import { EVENT_TYPE_LABEL, STATUS_BADGE } from "../ProgrammingCalendarClient";
-import { Calendar, Check, Edit, Eye, Trash2, Users } from 'lucide-react';
+import { Calendar, Check, Edit, Eye, Trash2, Users, MapPin, Clock, Pencil } from 'lucide-react';
 
 type ProgrammingCalendarListViewProps = {
  events: ProgrammingEvent[];
@@ -21,7 +21,7 @@ export default function ProgrammingCalendarListView({
  onSelect,
  onView,
  onEdit,
- onDelete,
+ onDelete
 }: ProgrammingCalendarListViewProps) {
  if (events.length === 0) {
  return (

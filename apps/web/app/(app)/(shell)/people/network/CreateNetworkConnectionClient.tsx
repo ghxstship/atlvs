@@ -1,7 +1,8 @@
 'use client';
+import { Button, Drawer } from '@ghxstship/ui';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -17,7 +18,7 @@ const networkConnectionSchema = z.object({
   strength: z.enum(['weak', 'moderate', 'strong']).default('moderate'),
   notes: z.string().optional(),
   projectId: z.string().optional(),
-  isPublic: z.boolean().default(true),
+  isPublic: z.boolean().default(true)
 });
 
 type NetworkConnectionFormData = z.infer<typeof networkConnectionSchema>;
@@ -62,17 +63,19 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
     defaultValues: {
       relationshipType: 'colleague',
       strength: 'moderate',
-      isPublic: true,
+      isPublic: true
     }
   });
 
   const selectedPersonId = watch('personId');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isOpen) {
       loadPeople();
       loadProjects();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, orgId]);
 
   const loadPeople = async () => {
@@ -117,9 +120,9 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
@@ -136,7 +139,7 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
         connected_person_id: data.connectedPersonId,
         relationship_type: data.relationshipType,
         strength: data.strength,
-        organization_id: orgId,
+        organization_id: orgId
       });
 
       // Log activity
@@ -150,8 +153,8 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
           person_id: data.personId,
           connected_person_id: data.connectedPersonId,
           relationship_type: data.relationshipType,
-          strength: data.strength,
-        },
+          strength: data.strength
+        }
       });
 
       // Reset form and close drawer
@@ -163,7 +166,7 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
       console.error('Error creating network connection:', error);
       posthog?.capture('people_network_connection_creation_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -330,7 +333,7 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
               <label className="block text-body-sm form-label mb-sm">
                 Notes
               </label>
-              <Textarea
+              <textarea
                 {...register('notes')}
                 placeholder="Additional context about this relationship"
                 rows={3}

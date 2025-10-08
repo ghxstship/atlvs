@@ -7,7 +7,7 @@ import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
     title: 'Terms of Service | GHXSTSHIP',
     description:
       'Review the terms and conditions governing your use of GHXSTSHIP. Understand user responsibilities, compliance requirements, and legal protections.',
-    url: 'https://ghxstship.com/terms',
-  },
+    url: 'https://ghxstship.com/terms'
+  }
 };
 
 const keyHighlights = [
@@ -34,25 +34,25 @@ const overviewPoints = [
     title: 'Acceptance Of Terms',
     description:
       'Using GHXSTSHIP means you agree to these terms, our privacy policy, and all posted guidelines. Review updates regularly.',
-    icon: Gavel,
+    icon: Gavel
   },
   {
     title: 'Service Scope',
     description:
       'We provide production management software, APIs, and support services. Features may evolve with notice.',
-    icon: Scale,
+    icon: Scale
   },
   {
     title: 'Responsible Use',
     description:
       'Maintain accurate account information, safeguard credentials, and prohibit unauthorized or malicious activity.',
-    icon: Shield,
+    icon: Shield
   },
   {
     title: 'Data Stewardship',
     description:
       'You retain ownership of content while granting operational rights. We protect data through industry security practices.',
-    icon: Users,
+    icon: Users
   },
 ];
 
@@ -60,22 +60,22 @@ const enforcementHighlights = [
   {
     title: 'Acceptable Use Policy',
     description:
-      'No violations of law, intellectual property abuse, security breaches, or misuse of our APIs and integrations.',
+      'No violations of law, intellectual property abuse, security breaches, or misuse of our APIs and integrations.'
   },
   {
     title: 'Payment Terms',
     description:
-      'Subscriptions renew automatically unless cancelled. Outstanding balances may pause service access.',
+      'Subscriptions renew automatically unless cancelled. Outstanding balances may pause service access.'
   },
   {
     title: 'Dispute Resolution',
     description:
-      'Most disputes resolve through binding arbitration in California. You waive participation in class actions.',
+      'Most disputes resolve through binding arbitration in California. You waive participation in class actions.'
   },
   {
     title: 'Liability Limits',
     description:
-      'We limit liability to fees paid in the previous 12 months and disclaim indirect or consequential damages.',
+      'We limit liability to fees paid in the previous 12 months and disclaim indirect or consequential damages.'
   },
 ];
 
@@ -91,7 +91,7 @@ const sections = [
           These Terms apply to all visitors, users, and organizations leveraging GHXSTSHIP websites, mobile applications, and APIs.
         </p>
       </>
-    ),
+    )
   },
   {
     title: '2. Description of Service',
@@ -105,7 +105,7 @@ const sections = [
         </ul>
         <p>We may modify or discontinue features with reasonable notice in line with platform improvements.</p>
       </>
-    ),
+    )
   },
   {
     title: '3. User Accounts',
@@ -119,7 +119,7 @@ const sections = [
           <li>Notify GHXSTSHIP of unauthorized access immediately</li>
         </ul>
       </>
-    ),
+    )
   },
   {
     title: '4. Acceptable Use Policy',
@@ -137,7 +137,7 @@ const sections = [
           <li>No sharing of credentials or exceeding API rate limits</li>
         </ul>
       </>
-    ),
+    )
   },
   {
     title: '5. Content and Data',
@@ -147,7 +147,7 @@ const sections = [
         <p>Content must comply with applicable laws and community standards. We may remove material reported as violating these Terms.</p>
         <p>Maintain independent backups of critical data alongside GHXSTSHIP safeguards.</p>
       </>
-    ),
+    )
   },
   {
     title: '6. Payment Terms',
@@ -156,7 +156,7 @@ const sections = [
         <p>Subscription fees are invoiced per plan. Charges may recur automatically unless canceled before renewal.</p>
         <p>Late or unpaid balances can result in service suspension until resolved.</p>
       </>
-    ),
+    )
   },
   {
     title: '7. Intellectual Property',
@@ -164,7 +164,7 @@ const sections = [
       <>
         <p>GHXSTSHIP and its licensors retain rights to software, branding, and proprietary content. Users must not reproduce, reverse engineer, or misuse intellectual property without authorization.</p>
       </>
-    ),
+    )
   },
   {
     title: '8. Third-Party Services',
@@ -172,7 +172,7 @@ const sections = [
       <>
         <p>Some features rely on third-party tools. Their terms govern usage, and GHXSTSHIP is not liable for external services.</p>
       </>
-    ),
+    )
   },
   {
     title: '9. Disclaimer of Warranties',
@@ -180,7 +180,7 @@ const sections = [
       <>
         <p>GHXSTSHIP is provided “as is”. We do not guarantee uninterrupted availability, accuracy of data transmission, or error-free operation.</p>
       </>
-    ),
+    )
   },
   {
     title: '10. Limitation of Liability',
@@ -192,7 +192,7 @@ const sections = [
           <li>No responsibility for third-party actions or service interruptions</li>
         </ul>
       </>
-    ),
+    )
   },
   {
     title: '11. Indemnification',
@@ -200,7 +200,7 @@ const sections = [
       <>
         <p>You agree to defend and indemnify GHXSTSHIP against claims arising from misuse, violations of these Terms, or infringement of rights.</p>
       </>
-    ),
+    )
   },
   {
     title: '12. Termination',
@@ -209,7 +209,7 @@ const sections = [
         <p>Accounts may be ended by the user or GHXSTSHIP. Termination can result from policy breaches or unpaid balances.</p>
         <p>Access ceases after termination; export vital data beforehand.</p>
       </>
-    ),
+    )
   },
   {
     title: '13. Dispute Resolution',
@@ -218,7 +218,7 @@ const sections = [
         <p>Contact legal@ghxstship.com for informal resolution. Otherwise, disputes proceed through binding arbitration in California, excluding intellectual property matters.</p>
         <p>Parties waive participation in class actions.</p>
       </>
-    ),
+    )
   },
   {
     title: '14. General Provisions',
@@ -227,7 +227,7 @@ const sections = [
         <p>These Terms follow California law, include severability clauses, and represent the entire agreement along with the Privacy Policy.</p>
         <p>We may update Terms with reasonable advance notice of material changes.</p>
       </>
-    ),
+    )
   },
   {
     title: '15. Contact Information',
@@ -243,7 +243,7 @@ const sections = [
           <p><strong>Phone:</strong> +1 (555) 123-4567</p>
         </CardContent>
       </Card>
-    ),
+    )
   },
 ];
 

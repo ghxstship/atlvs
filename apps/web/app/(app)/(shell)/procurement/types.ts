@@ -184,7 +184,7 @@ const vendorAddressSchema = z.object({
   city: z.string().min(1),
   state: z.string().min(1),
   postal_code: z.string().min(1),
-  country: z.string().min(1),
+  country: z.string().min(1)
 });
 
 const purchaseOrderLineItemSchema = z.object({
@@ -193,7 +193,7 @@ const purchaseOrderLineItemSchema = z.object({
   unit_price: z.number().min(0, 'Unit price must be positive'),
   total_price: z.number().min(0),
   category: z.enum(PROCUREMENT_CATEGORY),
-  notes: z.string().max(500).optional().nullable(),
+  notes: z.string().max(500).optional().nullable()
 });
 
 export const createPurchaseOrderSchema = z.object({
@@ -211,7 +211,7 @@ export const createPurchaseOrderSchema = z.object({
   delivery_address: z.string().max(500).optional().nullable(),
   notes: z.string().max(2000).optional().nullable(),
   line_items: z.array(purchaseOrderLineItemSchema).min(1, 'At least one line item required'),
-  attachments: z.array(z.string().url()).default([]),
+  attachments: z.array(z.string().url()).default([])
 });
 
 export const updatePurchaseOrderSchema = createPurchaseOrderSchema.partial();
@@ -226,7 +226,7 @@ export const createProcurementRequestSchema = z.object({
   estimated_cost: z.number().min(0),
   currency: z.string().length(3).default('USD'),
   justification: z.string().max(1000).optional().nullable(),
-  needed_by: z.string().datetime().optional().nullable(),
+  needed_by: z.string().datetime().optional().nullable()
 });
 
 export const updateProcurementRequestSchema = createProcurementRequestSchema.partial();
@@ -248,7 +248,7 @@ export const createVendorSchema = z.object({
   certifications: z.array(z.string()).default([]),
   insurance_expiry: z.string().datetime().optional().nullable(),
   contract_start: z.string().datetime().optional().nullable(),
-  contract_end: z.string().datetime().optional().nullable(),
+  contract_end: z.string().datetime().optional().nullable()
 });
 
 export const updateVendorSchema = createVendorSchema.partial();
@@ -257,9 +257,9 @@ export const createProcurementApprovalSchema = z.object({
   request_id: z.string().uuid().optional().nullable(),
   purchase_order_id: z.string().uuid().optional().nullable(),
   status: z.enum(['pending', 'approved', 'rejected']).default('pending'),
-  comments: z.string().max(1000).optional().nullable(),
+  comments: z.string().max(1000).optional().nullable()
 }).refine(data => data.request_id || data.purchase_order_id, {
-  message: 'Either request_id or purchase_order_id must be provided',
+  message: 'Either request_id or purchase_order_id must be provided'
 });
 
 // ============================================================================
@@ -294,7 +294,7 @@ export const PURCHASE_ORDER_FIELDS: ProcurementFieldConfig[] = [
     label: 'PO Number',
     type: 'text',
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'title',
@@ -302,7 +302,7 @@ export const PURCHASE_ORDER_FIELDS: ProcurementFieldConfig[] = [
     type: 'text',
     required: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'vendor_id',
@@ -310,7 +310,7 @@ export const PURCHASE_ORDER_FIELDS: ProcurementFieldConfig[] = [
     type: 'vendor',
     required: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'status',
@@ -321,21 +321,21 @@ export const PURCHASE_ORDER_FIELDS: ProcurementFieldConfig[] = [
     options: PURCHASE_ORDER_STATUS.map(s => ({ 
       value: s, 
       label: s.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') 
-    })),
+    }))
   },
   {
     key: 'total_amount',
     label: 'Total Amount',
     type: 'currency',
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'delivery_date',
     label: 'Delivery Date',
     type: 'date',
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'payment_terms',
@@ -346,7 +346,7 @@ export const PURCHASE_ORDER_FIELDS: ProcurementFieldConfig[] = [
     options: PAYMENT_TERMS.map(t => ({ 
       value: t, 
       label: t.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') 
-    })),
+    }))
   },
 ];
 

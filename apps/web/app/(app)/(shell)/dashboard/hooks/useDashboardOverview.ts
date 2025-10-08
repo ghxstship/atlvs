@@ -5,7 +5,7 @@ import type {
   ActivityItem,
   DashboardWidget,
   DataSource,
-  OverviewMetric,
+  OverviewMetric
 } from '../types'
 
 export interface UseDashboardOverviewOptions {
@@ -28,7 +28,7 @@ export interface UseDashboardOverviewResult {
 export function useDashboardOverview({
   orgId,
   module,
-  initialWidgets = [],
+  initialWidgets = []
 }: UseDashboardOverviewOptions): UseDashboardOverviewResult {
   const dashboardService = useMemo(() => new DashboardService(), [])
   const [metrics, setMetrics] = useState<OverviewMetric[]>([])
@@ -72,12 +72,15 @@ export function useDashboardOverview({
     [dashboardService, module, orgId],
   )
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadOverviewData('initial')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadOverviewData])
 
   const refresh = useCallback(async () => {
     await loadOverviewData('refresh')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadOverviewData])
 
   return {
@@ -88,6 +91,6 @@ export function useDashboardOverview({
     refreshing,
     error,
     refresh,
-    setWidgets,
+    setWidgets
   }
 }

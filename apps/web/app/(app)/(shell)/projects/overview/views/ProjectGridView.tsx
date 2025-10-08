@@ -20,14 +20,14 @@ const statusColors = {
  active: 'green',
  on_hold: 'yellow',
  completed: 'gray',
- cancelled: 'red',
+ cancelled: 'red'
 } as const;
 
 const priorityColors = {
  low: 'green',
  medium: 'yellow',
  high: 'orange',
- critical: 'red',
+ critical: 'red'
 } as const;
 
 export default function ProjectGridView({
@@ -36,7 +36,7 @@ export default function ProjectGridView({
  onSelectProject,
  onView,
  onEdit,
- onDelete,
+ onDelete
 }: ProjectGridViewProps) {
  return (
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-md">
@@ -116,7 +116,7 @@ export default function ProjectGridView({
  <span>
  {new Intl.NumberFormat('en-US', {
  style: 'currency',
- currency: project.currency || 'USD',
+ currency: project.currency || 'USD'
  }).format(project.budget)}
  </span>
  </div>

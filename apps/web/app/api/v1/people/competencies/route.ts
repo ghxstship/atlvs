@@ -14,7 +14,7 @@ const CreateCompetencySchema = z.object({
   certificationRequired: z.boolean().default(false),
   certificationBody: z.string().optional(),
   expiryPeriod: z.number().optional(), // in months
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional()
 });
 
 const AssignCompetencySchema = z.object({
@@ -24,7 +24,7 @@ const AssignCompetencySchema = z.object({
   certifiedDate: z.string().optional(),
   expiryDate: z.string().optional(),
   verifiedBy: z.string().uuid().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 async function getAuthenticatedUser() {

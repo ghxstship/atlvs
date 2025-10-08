@@ -4,12 +4,12 @@ import type {
   CertificationFilters,
   CertificationStats,
   CertificationAnalytics,
-  CertificationFormData,
+  CertificationFormData
 } from '../types';
 import { 
   createEmptyCertificationStats, 
   createEmptyCertificationAnalytics,
-  getCertificationStatus,
+  getCertificationStatus
 } from '../types';
 
 export const certificationFilterSchema = zod.object({
@@ -21,7 +21,7 @@ export const certificationFilterSchema = zod.object({
   date_to: zod.string().datetime().optional(),
   issue_year: zod.string().optional(),
   limit: zod.number().min(1).max(100).default(50),
-  offset: zod.number().min(0).default(0),
+  offset: zod.number().min(0).default(0)
 });
 
 export const certificationCreateSchema = zod.object({
@@ -33,14 +33,14 @@ export const certificationCreateSchema = zod.object({
   status: zod.enum(['active', 'expired', 'suspended', 'revoked']).default('active'),
   verification_url: zod.string().url().optional().or(zod.literal('')),
   attachment_url: zod.string().url().optional().or(zod.literal('')),
-  notes: zod.string().max(500).optional(),
+  notes: zod.string().max(500).optional()
 });
 
 export const certificationUpdateSchema = certificationCreateSchema.partial();
 
 export const analyticsFilterSchema = zod.object({
   period: zod.enum(['7d', '30d', '90d', '1y']).default('30d'),
-  granularity: zod.enum(['day', 'week', 'month']).default('day'),
+  granularity: zod.enum(['day', 'week', 'month']).default('day')
 });
 
 type SupabaseClient = ReturnType<typeof import('@ghxstship/auth').createServerClient>;
@@ -51,7 +51,7 @@ export function getPeriodDates(period: string) {
     '7d': 7,
     '30d': 30,
     '90d': 90,
-    '1y': 365,
+    '1y': 365
   };
 
   const days = periodMap[period] ?? 30;
@@ -130,13 +130,13 @@ export async function fetchUserCertifications(
 
     return {
       certifications: data || [],
-      total: count || 0,
+      total: count || 0
     };
   } catch (error) {
     console.error('Error fetching user certifications:', error);
     return {
       certifications: [],
-      total: 0,
+      total: 0
     };
   }
 }
@@ -153,7 +153,7 @@ export async function createCertification(
       .insert({
         user_id: userId,
         organization_id: orgId,
-        ...certificationData,
+        ...certificationData
       })
       .select()
       .single();
@@ -170,9 +170,9 @@ export async function createCertification(
         activity_description: `Added certification: ${certificationData.name}`,
         metadata: {
           certification_name: certificationData.name,
-          issuing_organization: certificationData.issuing_organization,
+          issuing_organization: certificationData.issuing_organization
         },
-        performed_by: userId,
+        performed_by: userId
       });
 
     return data;
@@ -194,7 +194,7 @@ export async function updateCertification(
       .from('user_certifications')
       .update({
         ...certificationData,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq('id', certificationId)
       .eq('user_id', userId)
@@ -214,9 +214,9 @@ export async function updateCertification(
         activity_description: `Updated certification: ${data.name}`,
         metadata: {
           certification_id: certificationId,
-          certification_name: data.name,
+          certification_name: data.name
         },
-        performed_by: userId,
+        performed_by: userId
       });
 
     return data;
@@ -262,9 +262,9 @@ export async function deleteCertification(
           activity_description: `Removed certification: ${certification.name}`,
           metadata: {
             certification_id: certificationId,
-            certification_name: certification.name,
+            certification_name: certification.name
           },
-          performed_by: userId,
+          performed_by: userId
         });
     }
 
@@ -325,7 +325,7 @@ export async function fetchCertificationStats(
       .map(([organization, count]) => ({
         organization,
         count,
-        percentage: totalCertifications > 0 ? (count / totalCertifications) * 100 : 0,
+        percentage: totalCertifications > 0 ? (count / totalCertifications) * 100 : 0
       }))
       .sort((a, b) => b.count - a.count);
 
@@ -333,7 +333,7 @@ export async function fetchCertificationStats(
       .map(([status, count]) => ({
         status,
         count,
-        percentage: totalCertifications > 0 ? (count / totalCertifications) * 100 : 0,
+        percentage: totalCertifications > 0 ? (count / totalCertifications) * 100 : 0
       }))
       .sort((a, b) => b.count - a.count);
 
@@ -358,7 +358,7 @@ export async function fetchCertificationStats(
       expiryTrends.push({
         month: monthStart.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
         expiring,
-        expired,
+        expired
       });
     }
 
@@ -382,7 +382,7 @@ export async function fetchCertificationStats(
         recentActivity.push({
           date: dateStr,
           added,
-          renewed,
+          renewed
         });
       }
     }
@@ -395,7 +395,7 @@ export async function fetchCertificationStats(
       organizationDistribution,
       statusDistribution,
       expiryTrends,
-      recentActivity,
+      recentActivity
     };
   } catch (error) {
     console.error('Error fetching certification stats:', error);
@@ -453,7 +453,7 @@ export async function fetchCertificationAnalytics(
         date,
         totalCertifications: counts.total,
         newCertifications: counts.new,
-        renewals: counts.renewals,
+        renewals: counts.renewals
       }))
       .sort((a, b) => a.date.localeCompare(b.date));
 
@@ -492,7 +492,7 @@ export async function fetchCertificationAnalytics(
         activeCertifications: stats.active,
         averageValidityPeriod: stats.validityPeriods.length > 0 
           ? Math.round(stats.validityPeriods.reduce((sum, period) => sum + period, 0) / stats.validityPeriods.length)
-          : 0,
+          : 0
       }))
       .sort((a, b) => b.totalCertifications - a.totalCertifications);
 
@@ -531,7 +531,7 @@ export async function fetchCertificationAnalytics(
       return {
         timeframe: range.timeframe,
         count,
-        percentage: certifications.length > 0 ? (count / certifications.length) * 100 : 0,
+        percentage: certifications.length > 0 ? (count / certifications.length) * 100 : 0
       };
     });
 
@@ -564,8 +564,8 @@ export async function fetchCertificationAnalytics(
         overallCompliance: Math.round(overallCompliance),
         criticalCertifications: certifications.filter(cert => getCertificationStatus(cert).isExpiring).length,
         renewalRate: Math.round(renewalRate),
-        averageRenewalTime,
-      },
+        averageRenewalTime
+      }
     };
   } catch (error) {
     console.error('Error fetching certification analytics:', error);

@@ -1,20 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Clapperboard,
-  Drama,
-  Palette,
-  Users,
-  Wand2,
-} from 'lucide-react';
+import { ArrowRight, Clapperboard, Drama, Palette, Users, Wand2 } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -25,8 +18,8 @@ export const metadata: Metadata = {
     title: 'Themed & Theatrical Entertainment Solutions | GHXSTSHIP',
     description:
       'Create spectacular themed experiences and theatrical productions with GHXSTSHIP. Manage theme parks, live shows, and immersive entertainment.',
-    url: 'https://ghxstship.com/solutions/themed-theatrical-entertainment',
-  },
+    url: 'https://ghxstship.com/solutions/themed-theatrical-entertainment'
+  }
 };
 
 const heroStats = [
@@ -41,25 +34,25 @@ const productionPillars = [
     title: 'Complex Production Coordination',
     description:
       'Manage staged spectacles, parade launches, and venue schedules with cross-department checklists and live dashboards.',
-    icon: Clapperboard,
+    icon: Clapperboard
   },
   {
     title: 'Creative Asset Management',
     description:
       'Keep costumes, props, set pieces, and digital media organized with version control and availability tracking.',
-    icon: Palette,
+    icon: Palette
   },
   {
     title: 'Multi-Disciplinary Team Management',
     description:
       'Coordinate directors, choreographers, technicians, and performers with skill tagging and smart scheduling.',
-    icon: Users,
+    icon: Users
   },
   {
     title: 'Experience Consistency',
     description:
       'Protect quality standards with performance notes, safety protocols, and guest feedback loops.',
-    icon: Drama,
+    icon: Drama
   },
 ];
 
@@ -67,22 +60,22 @@ const featureHighlights = [
   {
     title: 'Production Command Center',
     description:
-      'Orchestrate rehearsals, cue sheets, and technical rehearsals with role-based workflows and approvals.',
+      'Orchestrate rehearsals, cue sheets, and technical rehearsals with role-based workflows and approvals.'
   },
   {
     title: 'Creative Asset Hub',
     description:
-      'Centralize wardrobe, props, scenic elements, and media files with audit trails and quick pulls.',
+      'Centralize wardrobe, props, scenic elements, and media files with audit trails and quick pulls.'
   },
   {
     title: 'Talent & Crew Coordination',
     description:
-      'Manage contracts, availability, training, and payroll handoffs for large creative teams.',
+      'Manage contracts, availability, training, and payroll handoffs for large creative teams.'
   },
   {
     title: 'Guest Experience Analytics',
     description:
-      'Understand satisfaction, dwell time, and per-guest revenue to fine tune every show cycle.',
+      'Understand satisfaction, dwell time, and per-guest revenue to fine tune every show cycle.'
   },
 ];
 
@@ -95,7 +88,7 @@ const caseStudies = [
     result: '100% on-time openings · 95% guest satisfaction · 40% fewer production delays · $2M operational savings',
     quote:
       'GHXSTSHIP enabled us to orchestrate our most ambitious expansion with precision and creativity.',
-    author: 'Maria Santos, Creative Director',
+    author: 'Maria Santos, Creative Director'
   },
   {
     company: 'Broadway Spectacular Productions',
@@ -105,7 +98,7 @@ const caseStudies = [
     result: '8 Tony nominations · 50% rehearsal efficiency gain · 30% lower production costs · 98% show completion',
     quote:
       'The platform transformed how we manage complex theatrical productions. Every show opened flawlessly.',
-    author: 'James Mitchell, Executive Producer',
+    author: 'James Mitchell, Executive Producer'
   },
 ];
 

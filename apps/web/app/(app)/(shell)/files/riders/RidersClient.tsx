@@ -1,6 +1,6 @@
 'use client';
 
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, CalendarIcon } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createBrowserClient } from '@ghxstship/auth';
 import {
@@ -14,7 +14,7 @@ import {
  ListView,
  StateManagerProvider,
  ViewSwitcher,
- type DataRecord,
+ type DataRecord
 } from '@ghxstship/ui';
 import type { DataViewConfig, FieldConfig, FilterConfig, SortConfig } from '@ghxstship/ui/src/components/DataViews/types';
 import { AppDrawer } from '@ghxstship/ui';
@@ -46,7 +46,7 @@ export default function RidersClient({ orgId }: { orgId: string }) {
  label: 'Event',
  type: 'text',
  sortable: true,
- filterable: true,
+ filterable: true
  },
  {
  key: 'kind',
@@ -60,7 +60,7 @@ export default function RidersClient({ orgId }: { orgId: string }) {
  required: true,
  sortable: true,
  filterable: true,
- groupable: true,
+ groupable: true
  },
  {
  key: 'status',
@@ -74,7 +74,7 @@ export default function RidersClient({ orgId }: { orgId: string }) {
  ],
  sortable: true,
  filterable: true,
- groupable: true,
+ groupable: true
  },
  {
  key: 'priority',
@@ -88,14 +88,14 @@ export default function RidersClient({ orgId }: { orgId: string }) {
  ],
  sortable: true,
  filterable: true,
- groupable: true,
+ groupable: true
  },
  {
  key: 'created_at',
  label: 'Created',
  type: 'date',
  sortable: true,
- filterable: true,
+ filterable: true
  }
  ];
 
@@ -133,7 +133,7 @@ export default function RidersClient({ orgId }: { orgId: string }) {
  priority: rider.priority ?? 'medium',
  created_at: rider.created_at,
  details: rider.details,
- ...rider,
+ ...rider
  }));
 
  setData(transformedData);

@@ -1,4 +1,5 @@
 'use client';
+import { Button, Card, Drawer, Input, Select } from '@ghxstship/ui';
 
 
 import { useState } from 'react';
@@ -120,7 +121,7 @@ export default function CreateForecastClient({
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: formData.currency,
+      currency: formData.currency
     }).format(amount);
   };
 
@@ -160,7 +161,7 @@ export default function CreateForecastClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Forecast Name *
             </label>
-            <UnifiedInput               value={formData.name}
+            <Input               value={formData.name}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, name: e.target.value }))}
               placeholder="e.g., Q1 Revenue Forecast, Annual Budget Projection"
               required
@@ -171,7 +172,7 @@ export default function CreateForecastClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Description
             </label>
-            <Textarea
+            <textarea
               value={formData.description}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Describe the forecast methodology and assumptions..."
@@ -186,7 +187,7 @@ export default function CreateForecastClient({
               </label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   value={formData.projectedAmount || ''}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, projectedAmount: parseFloat(e.target.value) || 0 }))}
                   placeholder="0.00"
@@ -242,7 +243,7 @@ export default function CreateForecastClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.forecastDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, forecastDate: e.target.value }))}
                   className="pl-2xl"
@@ -259,7 +260,7 @@ export default function CreateForecastClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.periodStart}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, periodStart: e.target.value }))}
                   className="pl-2xl"
@@ -274,7 +275,7 @@ export default function CreateForecastClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.periodEnd}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, periodEnd: e.target.value }))}
                   className="pl-2xl"

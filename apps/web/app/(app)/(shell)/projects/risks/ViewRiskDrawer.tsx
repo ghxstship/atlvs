@@ -5,7 +5,7 @@ import {
  Button,
  Badge,
  Progress,
- Card,
+ Card
 } from "@ghxstship/ui";
 import { AppDrawer } from "@ghxstship/ui";
 import { format, parseISO, formatDistanceToNow } from "date-fns";
@@ -33,7 +33,7 @@ export default function ViewRiskDrawer({
  getRiskLevelColor,
  getRiskLevelBadgeVariant,
  getStatusBadgeVariant,
- getCategoryBadgeVariant,
+ getCategoryBadgeVariant
 }: ViewRiskDrawerProps) {
  const CategoryIcon = getCategoryIcon(risk.category);
  
@@ -196,7 +196,7 @@ export default function ViewRiskDrawer({
  </div>
  )}
  </div>
- ),
+ )
  },
  {
  key: "mitigation",
@@ -286,7 +286,7 @@ export default function ViewRiskDrawer({
  </div>
  </div>
  </div>
- ),
+ )
  },
  {
  key: "timeline",
@@ -391,7 +391,7 @@ export default function ViewRiskDrawer({
  </p>
  </div>
  </div>
- ),
+ )
  },
  ];
 
@@ -407,7 +407,7 @@ export default function ViewRiskDrawer({
  key: "edit",
  label: "Edit",
  icon: <Edit className="h-icon-xs w-icon-xs" />,
- onClick: onEdit,
+ onClick: onEdit
  },
  ]}
  />

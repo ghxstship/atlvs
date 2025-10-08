@@ -27,7 +27,7 @@ export class FilesImportService {
       success: 0,
       failed: 0,
       errors: [] as Array<{ row: number; error: string }>,
-      duplicates: [] as Array<{ row: number; title: string }>,
+      duplicates: [] as Array<{ row: number; title: string }>
     };
 
     try {
@@ -67,7 +67,7 @@ export class FilesImportService {
         } catch (error) {
           results.errors.push({
             row: i,
-            error: error instanceof Error ? error.message : 'Unknown error',
+            error: error instanceof Error ? error.message : 'Unknown error'
           });
           results.failed++;
         }
@@ -76,7 +76,7 @@ export class FilesImportService {
     } catch (error) {
       results.errors.push({
         row: 0,
-        error: error instanceof Error ? error.message : 'CSV parsing failed',
+        error: error instanceof Error ? error.message : 'CSV parsing failed'
       });
     }
 
@@ -108,7 +108,7 @@ export class FilesImportService {
         success: 0,
         failed: 1,
         errors: [{ row: 0, error: 'Excel parsing failed' }],
-        duplicates: [],
+        duplicates: []
       };
     }
   }
@@ -131,7 +131,7 @@ export class FilesImportService {
       success: 0,
       failed: 0,
       errors: [] as Array<{ row: number; error: string }>,
-      duplicates: [] as Array<{ row: number; title: string }>,
+      duplicates: [] as Array<{ row: number; title: string }>
     };
 
     try {
@@ -163,7 +163,7 @@ export class FilesImportService {
         } catch (error) {
           results.errors.push({
             row: i,
-            error: error instanceof Error ? error.message : 'Unknown error',
+            error: error instanceof Error ? error.message : 'Unknown error'
           });
           results.failed++;
         }
@@ -172,7 +172,7 @@ export class FilesImportService {
     } catch (error) {
       results.errors.push({
         row: 0,
-        error: error instanceof Error ? error.message : 'JSON parsing failed',
+        error: error instanceof Error ? error.message : 'JSON parsing failed'
       });
     }
 
@@ -197,7 +197,7 @@ export class FilesImportService {
       success: 0,
       failed: 0,
       errors: [] as Array<{ row: number; error: string }>,
-      duplicates: [] as Array<{ row: number; title: string }>,
+      duplicates: [] as Array<{ row: number; title: string }>
     };
 
     try {
@@ -228,7 +228,7 @@ export class FilesImportService {
         } catch (error) {
           results.errors.push({
             row: i,
-            error: error instanceof Error ? error.message : 'Unknown error',
+            error: error instanceof Error ? error.message : 'Unknown error'
           });
           results.failed++;
         }
@@ -237,7 +237,7 @@ export class FilesImportService {
     } catch (error) {
       results.errors.push({
         row: 0,
-        error: error instanceof Error ? error.message : 'XML parsing failed',
+        error: error instanceof Error ? error.message : 'XML parsing failed'
       });
     }
 
@@ -336,7 +336,7 @@ export class FilesImportService {
       metadata: rawData.metadata || {},
       file_path: rawData.file_path || rawData.path || `imported/${Date.now()}_${title.replace(/[^a-zA-Z0-9]/g, '_')}`,
       file_size: parseInt(rawData.file_size) || 0,
-      mime_type: rawData.mime_type || rawData.content_type || 'application/octet-stream',
+      mime_type: rawData.mime_type || rawData.content_type || 'application/octet-stream'
     };
 
     return importData;
@@ -388,7 +388,7 @@ export class FilesImportService {
     return [{
       title: 'Sample XML Import',
       category: 'document',
-      description: 'Imported from XML',
+      description: 'Imported from XML'
     }];
   }
 
@@ -461,8 +461,8 @@ export class FilesImportService {
         success: 10,
         failed: 0,
         errors: [],
-        duplicates: [],
-      },
+        duplicates: []
+      }
     };
   }
 }

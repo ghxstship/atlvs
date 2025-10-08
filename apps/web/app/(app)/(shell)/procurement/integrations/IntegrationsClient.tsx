@@ -1,12 +1,8 @@
 'use client';
 
-import { Zap, Settings, CheckCircle, AlertCircle, XCircle, Plus, Search, Filter, RefreshCw, ExternalLink, Database, ShoppingCart, CreditCard, FileText, Truck, BarChart3, Globe, Lock, Webhook, Cloud } from "lucide-react";
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Input } from '@ghxstship/ui';
+import { AlertCircle, BarChart3, CardBody, CheckCircle, Cloud, CreditCard, Database, ExternalFileText, ExternalLink, FileText, Filter, Globe, Lock, Plus, RefreshCw, Search, Settings, ShoppingCart, Truck, Webhook, XCircle, Zap } from 'lucide-react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
+import { Badge, Button, Card, CardBody, CardContent, CardDescription, CardHeader, CardTitle, Input, Switch, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 // Simple Switch component replacement
 const Switch = ({ checked, onCheckedChange }: { checked: boolean; onCheckedChange: (checked: boolean) => void }) => (
  <button
@@ -62,8 +58,10 @@ export default function IntegrationsClient({ className, orgId }: IntegrationsCli
  const [searchQuery, setSearchQuery] = useState('');
  const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  loadIntegrationsData();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [orgId]);
 
  async function loadIntegrationsData() {
@@ -400,7 +398,7 @@ export default function IntegrationsClient({ className, orgId }: IntegrationsCli
  </select>
  </div>
  <div className="flex items-center space-x-xs">
- <Button variant="outline" size="sm" onClick={loadIntegrationsData}>
+ <Button variant="secondary" size="sm" onClick={loadIntegrationsData}>
  <RefreshCw className="h-icon-xs w-icon-xs mr-2" />
  Refresh
  </Button>
@@ -505,12 +503,12 @@ export default function IntegrationsClient({ className, orgId }: IntegrationsCli
  <h4 className="text-sm font-medium mb-2">Features</h4>
  <div className="flex flex-wrap gap-xs">
  {integration.features.slice(0, 3).map((feature, index) => (
- <Badge key={index} variant="outline" className="text-xs">
+ <Badge key={index} variant="secondary" className="text-xs">
  {feature}
  </Badge>
  ))}
  {integration.features.length > 3 && (
- <Badge variant="outline" className="text-xs">
+ <Badge variant="secondary" className="text-xs">
  +{integration.features.length - 3} more
  </Badge>
  )}
@@ -518,11 +516,11 @@ export default function IntegrationsClient({ className, orgId }: IntegrationsCli
  </div>
  
  <div className="flex justify-between mt-4">
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  <Settings className="h-3 w-3 mr-1" />
  Configure
  </Button>
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  <ExternalLink className="h-3 w-3 mr-1" />
  Docs
  </Button>
@@ -620,7 +618,7 @@ export default function IntegrationsClient({ className, orgId }: IntegrationsCli
  <Badge className={getComplexityColor(integration.setupComplexity)}>
  {integration.setupComplexity} setup
  </Badge>
- <Button size="sm" variant="outline">
+ <Button size="sm" variant="secondary">
  {integration.status === 'connected' ? 'Manage' : 'Connect'}
  </Button>
  </div>
@@ -657,7 +655,7 @@ export default function IntegrationsClient({ className, orgId }: IntegrationsCli
  placeholder="webhook_secret_key"
  className="flex-1"
  />
- <Button variant="outline" className="ml-2">
+ <Button variant="secondary" className="ml-2">
  Generate
  </Button>
  </div>
@@ -684,7 +682,7 @@ export default function IntegrationsClient({ className, orgId }: IntegrationsCli
  </div>
  
  <div className="flex justify-end space-x-xs">
- <Button variant="outline">Test Webhook</Button>
+ <Button variant="secondary">Test Webhook</Button>
  <Button>Save Configuration</Button>
  </div>
  </div>

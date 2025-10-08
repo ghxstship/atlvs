@@ -6,7 +6,7 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 function isValidDomain(domain: string) {
-  return /^[a-z0-9.-]+\.[a-z]{2,}$/i.test(domain);
+  return /^[a-z0-9.-]+\.[a-z]{2}$/i.test(domain);
 }
 
 export async function GET(req: NextRequest, { params }: { params: { orgId: string } }) {

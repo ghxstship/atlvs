@@ -4,7 +4,7 @@ import { Package, Truck, Clock, CheckCircle, AlertCircle, TrendingUp, TrendingDo
 import { useState, useMemo } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import type { TrackingItem, TrackingAnalytics } from '../types';
-import { formatCurrency, formatDate, getStatusColor, calculateDeliveryPerformance } from '../types';
+import { formatCurrency, formatDate, calculateDeliveryPerformance } from '../types';
 
 interface TrackingDashboardViewProps {
  items: TrackingItem[];
@@ -29,7 +29,7 @@ function MetricCard({ title, value, change, changeLabel, icon, color = 'blue' }:
  green: 'bg-green-50 text-green-600 border-green-200',
  orange: 'bg-orange-50 text-orange-600 border-orange-200',
  red: 'bg-red-50 text-red-600 border-red-200',
- purple: 'bg-purple-50 text-purple-600 border-purple-200',
+ purple: 'bg-purple-50 text-purple-600 border-purple-200'
  };
 
  return (
@@ -64,7 +64,7 @@ export default function TrackingDashboardView({
  analytics,
  loading = false,
  timeRange = '30d',
- onTimeRangeChange,
+ onTimeRangeChange
 }: TrackingDashboardViewProps) {
  const [selectedMetric, setSelectedMetric] = useState<string>('overview');
 
@@ -122,7 +122,7 @@ export default function TrackingDashboardView({
  onTimeRate,
  avgDeliveryTime,
  carrierStats,
- performanceData,
+ performanceData
  };
  }, [items]);
 

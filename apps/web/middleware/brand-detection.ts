@@ -16,7 +16,7 @@ const BRAND_DOMAINS: Record<string, string> = {
   'app.ghxstship.com': 'ghxstship',
   'opendeck.com': 'opendeck',
   'marketplace.opendeck.com': 'opendeck',
-  'localhost': process.env.NEXT_PUBLIC_BRAND_ID || DEFAULT_BRAND,
+  'localhost': process.env.NEXT_PUBLIC_BRAND_ID || DEFAULT_BRAND
 };
 
 /**
@@ -51,7 +51,7 @@ export async function brandDetectionMiddleware(request: NextRequest): Promise<Ne
       path: '/',
       maxAge: 60 * 60 * 24 * 365, // 1 year
       sameSite: 'lax',
-      secure: process.env.NODE_ENV === 'production',
+      secure: process.env.NODE_ENV === 'production'
     });
 
     // Also set as header for server components

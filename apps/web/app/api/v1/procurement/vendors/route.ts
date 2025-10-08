@@ -15,7 +15,7 @@ const vendorSchema = z.object({
     city: z.string().optional(),
     state: z.string().optional(),
     postal_code: z.string().optional(),
-    country: z.string().optional(),
+    country: z.string().optional()
   }).optional(),
   primary_category: z.string().min(1, 'Primary category is required'),
   categories: z.array(z.string()).optional(),
@@ -25,7 +25,7 @@ const vendorSchema = z.object({
   payment_terms: z.string().optional(),
   tax_id: z.string().optional(),
   vat_number: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 export async function GET(request: NextRequest) {
@@ -171,7 +171,7 @@ export async function POST(request: NextRequest) {
         vat_number: validatedData.vat_number,
         bio: validatedData.notes, // Map notes to bio field
         status: 'active', // Default status for procurement vendors
-        availability_status: 'available',
+        availability_status: 'available'
       })
       .select()
       .single();

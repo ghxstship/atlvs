@@ -1,7 +1,7 @@
 "use client";
 
 import { Plus, Search, Filter, Download, Upload, MoreHorizontal, Calendar, List, Map, Timeline, Trash2 } from "lucide-react";
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import {
  Button,
@@ -12,7 +12,7 @@ import {
  TabsTrigger,
  TabsContent,
  Badge,
- EmptyState,
+ EmptyState
 } from "@ghxstship/ui";
 import type {
  ProgrammingItinerary,
@@ -20,7 +20,7 @@ import type {
  ItinerarySort,
  ViewType,
  ItineraryProject,
- ItineraryEvent,
+ ItineraryEvent
 } from "./types";
 import { STATUS_BADGE, TYPE_BADGE, VIEW_CONFIG } from "./types";
 
@@ -57,7 +57,7 @@ export default function ProgrammingItinerariesClient({
  initialItineraries,
  projects,
  events,
- users,
+ users
 }: ProgrammingItinerariesClientProps) {
  const supabase = useMemo(() => createBrowserClient(), []);
 
@@ -73,7 +73,7 @@ export default function ProgrammingItinerariesClient({
  const [searchTerm, setSearchTerm] = useState("");
  const [sortConfig, setSortConfig] = useState<ItinerarySort>({
  field: "start_date",
- direction: "asc",
+ direction: "asc"
  });
 
  // Drawer state
@@ -92,7 +92,7 @@ export default function ProgrammingItinerariesClient({
  event: "*",
  schema: "public",
  table: "programming_itineraries",
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  (payload) => {
  if (payload.eventType === "INSERT") {
@@ -192,7 +192,7 @@ export default function ProgrammingItinerariesClient({
 
  try {
  const response = await fetch(`/api/v1/programming/itineraries/${itinerary.id}`, {
- method: "DELETE",
+ method: "DELETE"
  });
 
  if (!response.ok) {
@@ -264,7 +264,7 @@ export default function ProgrammingItinerariesClient({
  onDelete: handleDeleteItinerary,
  sortConfig,
  onSort: setSortConfig,
- users,
+ users
  };
 
  return (

@@ -165,7 +165,7 @@ export class UIStateValidator {
     const color = styles.color;
 
     // This is a simplified check - in production, use a proper contrast ratio calculator
-    if (backgroundColor === 'transparent' || backgroundColor === 'hsl(0 0% 0% / 0)') {
+    if (backgroundColor === 'transparent' || backgroundColor === 'hsl(var(--color-foreground) / 0)') {
       return true; // Assume parent has proper contrast
     }
 
@@ -268,9 +268,9 @@ export class UIStateValidator {
    * Validate spacing matches design tokens
    */
   private validateSpacing(styles: CSSStyleDeclaration): boolean {
-    const validSpacing = ['0px', '1px', '2px', '4px', '6px', '8px', '10px', '12px', 
-                          '14px', '16px', '20px', '24px', '28px', '32px', '36px', 
-                          '40px', '44px', '48px', '56px', '64px'];
+    const validSpacing = ['0px', '1px', '2px', 'var(--spacing-1)', '6px', 'var(--spacing-2)', '10px', 'var(--spacing-3)', 
+                          '14px', 'var(--spacing-4)', 'var(--spacing-5)', 'var(--spacing-6)', 'var(--spacing-7)', 'var(--spacing-8)', '36px', 
+                          'var(--spacing-10)', '44px', 'var(--spacing-12)', '56px', 'var(--spacing-16)'];
 
     const spacing = [
       styles.padding,
@@ -309,8 +309,8 @@ export class UIStateValidator {
    * Validate borders match design system
    */
   private validateBorders(styles: CSSStyleDeclaration): boolean {
-    const validBorderWidths = ['0px', '1px', '2px', '4px'];
-    const validBorderRadii = ['0px', '2px', '4px', '6px', '8px', '12px', '16px', '24px', '9999px'];
+    const validBorderWidths = ['0px', '1px', '2px', 'var(--spacing-1)'];
+    const validBorderRadii = ['0px', '2px', 'var(--spacing-1)', '6px', 'var(--spacing-2)', 'var(--spacing-3)', 'var(--spacing-4)', 'var(--spacing-6)', '9999px'];
 
     const borderWidth = styles.borderWidth;
     const borderRadius = styles.borderRadius;
@@ -331,11 +331,11 @@ export class UIStateValidator {
     const validShadowPatterns = [
       /0 1px 2px/,
       /0 1px 3px/,
-      /0 4px 6px/,
+      /0 var(--spacing-1) 6px/,
       /0 10px 15px/,
-      /0 20px 25px/,
+      /0 var(--spacing-5) 25px/,
       /0 25px 50px/,
-      /inset 0 2px 4px/,
+      /inset 0 2px var(--spacing-1)/,
     ];
 
     return validShadowPatterns.some(pattern => pattern.test(boxShadow));
@@ -523,7 +523,7 @@ export const ValidationReporter: React.FC<ValidationReporterProps> = ({
   return (
     <div
       className={`fixed ${positionClasses[position]} z-[9999] bg-foreground/90 text-background rounded-lg shadow-popover backdrop-blur-sm transition-all duration-300 ${
-        isMinimized ? 'w-auto' : 'w-container-lg'
+        isMinimized ? 'w-auto' : 'w-96'
       }`}
     >
       <div className="p-sm border-b border-white/20 flex justify-between items-center">
@@ -537,7 +537,7 @@ export const ValidationReporter: React.FC<ValidationReporterProps> = ({
       </div>
 
       {!isMinimized && (
-        <div className="p-sm max-h-container-lg overflow-y-auto">
+        <div className="p-sm max-h-96 overflow-y-auto">
           <div className="mb-sm text-sm">
             <div className="flex justify-between mb-xs">
               <span>Total Components:</span>
@@ -567,7 +567,7 @@ export const ValidationReporter: React.FC<ValidationReporterProps> = ({
                   }`}
                 >
                   <div className="font-semibold mb-xs">{name}</div>
-                  <div className="grid grid-cols-2 gap-xs text-small">
+                  <div className="grid grid-cols-2 gap-xs text-[10px]">
                     <div>States: {statesCount}/10</div>
                     <div>A11y: {a11yCount}/5</div>
                     <div>Render: {validation.performance.renderTime.toFixed(2)}ms</div>

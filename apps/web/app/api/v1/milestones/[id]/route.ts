@@ -11,7 +11,7 @@ const updateMilestoneSchema = z.object({
   due_date: z.string().optional(),
   status: z.enum(["pending", "completed", "overdue"]).optional(),
   progress: z.number().min(0).max(100).optional(),
-  dependencies: z.array(z.string().uuid()).nullable().optional(),
+  dependencies: z.array(z.string().uuid()).nullable().optional()
 });
 
 // GET /api/v1/milestones/[id] - Get a single milestone
@@ -208,7 +208,7 @@ export async function PATCH(
       ...data,
       status,
       updated_by: user.id,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     if (completed_at !== undefined) {
@@ -241,8 +241,8 @@ export async function PATCH(
       resource_id: params.id,
       action: "update",
       details: {
-        changes: Object.keys(data),
-      },
+        changes: Object.keys(data)
+      }
     });
 
     return NextResponse.json(updatedMilestone);
@@ -343,8 +343,8 @@ export async function DELETE(
       resource_id: params.id,
       action: "delete",
       details: {
-        title: existingMilestone.title,
-      },
+        title: existingMilestone.title
+      }
     });
 
     return NextResponse.json(

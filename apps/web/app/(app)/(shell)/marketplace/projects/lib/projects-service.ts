@@ -46,9 +46,9 @@ export class ProjectsService {
       const response = await fetch('/api/v1/marketplace/projects', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(projectData),
+        body: JSON.stringify(projectData)
       });
 
       const data = await response.json();
@@ -69,9 +69,9 @@ export class ProjectsService {
       const response = await fetch('/api/v1/marketplace/projects', {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id, ...projectData }),
+        body: JSON.stringify({ id, ...projectData })
       });
 
       const data = await response.json();
@@ -92,9 +92,9 @@ export class ProjectsService {
       const response = await fetch('/api/v1/marketplace/projects', {
         method: 'DELETE',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id }),
+        body: JSON.stringify({ id })
       });
 
       if (!response.ok) {

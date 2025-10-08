@@ -10,7 +10,7 @@ import {
  DropdownMenu,
  DropdownMenuContent,
  DropdownMenuItem,
- DropdownMenuTrigger,
+ DropdownMenuTrigger
 } from '@ghxstship/ui';
 
 import type { ProgrammingRider } from '../types';
@@ -29,7 +29,7 @@ const STATUS_BADGE_CONFIG = {
  approved: { label: 'Approved', variant: 'success' as const },
  rejected: { label: 'Rejected', variant: 'destructive' as const },
  fulfilled: { label: 'Fulfilled', variant: 'success' as const },
- cancelled: { label: 'Cancelled', variant: 'secondary' as const },
+ cancelled: { label: 'Cancelled', variant: 'secondary' as const }
 };
 
 const PRIORITY_BADGE_CONFIG = {
@@ -37,7 +37,7 @@ const PRIORITY_BADGE_CONFIG = {
  medium: { label: 'Medium', variant: 'default' as const },
  high: { label: 'High', variant: 'warning' as const },
  critical: { label: 'Critical', variant: 'destructive' as const },
- urgent: { label: 'Urgent', variant: 'destructive' as const },
+ urgent: { label: 'Urgent', variant: 'destructive' as const }
 };
 
 const RIDER_KIND_CONFIG = {
@@ -50,7 +50,7 @@ const RIDER_KIND_CONFIG = {
  accommodation: { label: 'Accommodation', icon: '🏨' },
  production: { label: 'Production', icon: '🎬' },
  artist: { label: 'Artist', icon: '🎤' },
- crew: { label: 'Crew', icon: '👥' },
+ crew: { label: 'Crew', icon: '👥' }
 };
 
 interface GroupedRiders {
@@ -61,7 +61,7 @@ export default function ProgrammingRidersTimelineView({
  riders,
  loading,
  onEdit,
- onView,
+ onView
 }: ProgrammingRidersTimelineViewProps) {
  // Group riders by event and date
  const groupedRiders: GroupedRiders = riders.reduce((groups, rider) => {

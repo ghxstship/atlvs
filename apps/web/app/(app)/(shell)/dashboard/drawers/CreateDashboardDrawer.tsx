@@ -1,21 +1,11 @@
 'use client';
 
-import { Plus, Loader2 } from "lucide-react";
+import { Button, Drawer, Input, Loader2, Plus, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 // import { z } from 'zod';
-import {
- Drawer,
- Button,
- Input,
- Textarea,
- Select,
- SelectContent,
- SelectItem,
- SelectTrigger,
- SelectValue
-} from '@ghxstship/ui';
+import { AppDrawer, Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, Switch } from '@ghxstship/ui';
 import type { DashboardLayout, AccessLevel } from '../types';
 
 const createDashboardSchema = z.object({
@@ -124,7 +114,7 @@ export default function CreateDashboardDrawer({
  <FormItem>
  <FormLabel>Description</FormLabel>
  <FormControl>
- <Textarea
+ <textarea
  placeholder="Describe what this dashboard will show..."
  rows={3}
  {...field}

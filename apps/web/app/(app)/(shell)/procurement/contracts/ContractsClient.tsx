@@ -1,15 +1,9 @@
 'use client';
 
-import { FileText, Calendar, DollarSign, AlertTriangle, CheckCircle, Clock, Users, Search, Filter, Plus, Download, Edit, Eye, RefreshCw, Building, Gavel, TrendingUp } from "lucide-react";
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Input } from '@ghxstship/ui';
+import { AlertTriangle, Building, Calendar, CheckCircle, Clock, DollarSign, Download, Edit, Eye, FileText, Filter, Gavel, Plus, RefreshCw, Search, TrendingUp, Users } from 'lucide-react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
+import { AppDrawer, Badge, Button, CalendarView, Card, CardBody, CardContent, CardDescription, CardHeader, CardTitle, DataActions, DataGrid, DataViewProvider, Input, KanbanBoard, ListView, Tabs, TabsContent, TabsList, TabsTrigger, ViewSwitcher } from '@ghxstship/ui';
 import type { FilterConfig, SortConfig, DataViewConfig, FieldConfig, DataRecord } from '@ghxstship/ui';
-import { DataActions, ViewSwitcher, DataGrid, KanbanBoard, CalendarView, ListView, DataViewProvider } from '@ghxstship/ui';
-import { AppDrawer } from '@ghxstship/ui';
 
 interface ContractsClientProps {
  className?: string;
@@ -138,8 +132,10 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  }
  ];
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  loadContractsData();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [orgId]);
 
  async function loadContractsData() {
@@ -416,11 +412,11 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  {/* Controls */}
  <div className="flex items-center justify-between">
  <div className="flex items-center space-x-xs">
- <Button variant="outline" size="sm" onClick={handleCreateContract}>
+ <Button variant="secondary" size="sm" onClick={handleCreateContract}>
  <Plus className="h-icon-xs w-icon-xs mr-2" />
  New Contract
  </Button>
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  <Download className="h-icon-xs w-icon-xs mr-2" />
  Export
  </Button>
@@ -514,14 +510,14 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  <div className="flex space-x-xs">
  <Button
  size="sm"
- variant="outline"
+ variant="secondary"
  onClick={() => handleViewContract(contract)}
  >
  <Eye className="h-3 w-3" />
  </Button>
  <Button
  size="sm"
- variant="outline"
+ variant="secondary"
  onClick={() => handleEditContract(contract)}
  >
  <RefreshCw className="h-3 w-3" />

@@ -1,7 +1,7 @@
 'use client';
 
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useCallback } from 'react';
 import { Bell, Check } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Drawer, Button, Badge } from '@ghxstship/ui';
@@ -29,6 +29,7 @@ export default function NotificationsBell() {
     setLoading(false);
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { load(); }, []);
 
   const unread = items.filter(i => !i.read).length;

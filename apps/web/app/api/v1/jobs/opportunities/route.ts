@@ -36,7 +36,7 @@ const CreateOpportunitySchema = z.object({
   visibility: z.enum(['public', 'invite_only', 'network', 'premium']).default('public'),
   status: z.enum(['draft', 'published', 'active', 'closed', 'filled']).default('draft'),
   applicationDeadline: z.string().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional()
 });
 
 const UpdateOpportunitySchema = CreateOpportunitySchema.partial();

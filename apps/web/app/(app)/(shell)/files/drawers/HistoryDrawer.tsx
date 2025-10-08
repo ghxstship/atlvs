@@ -13,7 +13,7 @@ import {
   Eye,
   AlertCircle,
   CheckCircle,
-  Info,
+  Info
 } from 'lucide-react';
 import { Button, Badge, Separator, ScrollArea } from '@ghxstship/ui';
 import type { DigitalAsset } from '../types';
@@ -39,7 +39,7 @@ interface AuditLogEntry {
 export default function HistoryDrawer({
   file,
   isOpen,
-  onClose,
+  onClose
 }: HistoryDrawerProps) {
   const [auditLogs, setAuditLogs] = useState<AuditLogEntry[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -69,8 +69,8 @@ export default function HistoryDrawer({
           ip_address: '192.168.1.100',
           changes: {
             description: { old: '', new: file.description },
-            tags: { old: [], new: file.tags },
-          },
+            tags: { old: [], new: file.tags }
+          }
         },
         {
           id: '2',
@@ -79,7 +79,7 @@ export default function HistoryDrawer({
           user_name: 'John Doe',
           action: 'download',
           details: 'Downloaded file',
-          ip_address: '192.168.1.100',
+          ip_address: '192.168.1.100'
         },
         {
           id: '3',
@@ -87,7 +87,7 @@ export default function HistoryDrawer({
           user_id: file.created_by,
           user_name: 'John Doe',
           action: 'create',
-          details: 'File uploaded',
+          details: 'File uploaded'
         },
       ];
 

@@ -1,25 +1,55 @@
 /**
- * Molecules - Level 2 Components
- * Simple combinations of atoms
+ * Molecules — Composite Components Export
+ * Complex components built from atoms
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
  */
 
-export * from './Breadcrumbs';
-export * from './SearchBox';
-export * from './Tabs';
-export * from './DatePicker';
-export * from './TagInput';
-export * from './FileUpload';
-export * from './Pagination';
-export * from './Alert';
-export * from './Tooltip';
-export * from './Toggle';
-export * from './ThemeToggle';
-export * from './SuspenseWrapper';
-export * from './ExportButton';
-export * from './EnhancedForm';
-// Note: SearchFilter is exported from components/SearchFilter.tsx, not molecules
-// To avoid naming conflict, import directly from components if needed
-export * from './SearchBar';
-export * from './FilterBuilder';
-export * from './UserSelector';
-export * from './BulkActions';
+// Card
+export { Card, CardHeader, CardBody, CardFooter, CardTitle, CardDescription, CardContent } from './Card/Card';
+export type { CardProps, CardHeaderProps, CardBodyProps, CardFooterProps } from './Card/Card';
+
+// Alert
+export { Alert } from './Alert/Alert';
+export type { AlertProps } from './Alert/Alert';
+
+// Dialog
+export { Dialog, DialogFooter } from './Dialog/Dialog';
+export type { DialogProps } from './Dialog/Dialog';
+
+// Tooltip
+export { Tooltip } from './Tooltip/Tooltip';
+export type { TooltipProps } from './Tooltip/Tooltip';
+
+// Tabs
+export { Tabs } from './Tabs/Tabs';
+export type { TabsProps, Tab } from './Tabs/Tabs';
+
+// Accordion
+export { Accordion } from './Accordion/Accordion';
+export type { AccordionProps, AccordionItem } from './Accordion/Accordion';
+
+// Dropdown
+export { Dropdown } from './Dropdown/Dropdown';
+export type { DropdownProps, DropdownItem } from './Dropdown/Dropdown';
+
+// Pagination
+export { Pagination } from './Pagination/Pagination';
+export type { PaginationProps } from './Pagination/Pagination';
+
+// Toast
+export { Toast, ToastContainer } from './Toast/Toast';
+export type { ToastProps, ToastContainerProps } from './Toast/Toast';
+
+// Popover
+export { Popover } from './Popover/Popover';
+export type { PopoverProps } from './Popover/Popover';
+
+// EmptyState
+export { EmptyState } from './EmptyState/EmptyState';
+export type { EmptyStateProps } from './EmptyState/EmptyState';
+
+// Modal
+export { Modal } from './Modal/Modal';
+export type { ModalProps } from './Modal/Modal';

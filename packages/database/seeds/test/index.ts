@@ -4,10 +4,16 @@
  * Minimal seed data for testing
  */
 
-import type { PrismaClient } from '@prisma/client';
-const PrismaClient = null as any;
+export {}; // Make this file a module
 
-const prisma = new PrismaClient();
+// Test seeds are disabled - no Prisma client instantiation
+// Uncomment when test seed logic is needed:
+// import { PrismaClient } from '@prisma/client';
+// const prisma = new PrismaClient();
+
+const prisma: any = {
+  $disconnect: async () => {},
+};
 
 async function main() {
   console.log('🧪 Seeding test database...');

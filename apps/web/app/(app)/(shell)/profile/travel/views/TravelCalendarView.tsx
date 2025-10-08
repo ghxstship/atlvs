@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, MapPin, Plane, Edit, Eye, DollarSign } from "lucide-react";
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, MapPin, Plane, Edit, Eye, DollarSign, CalendarIcon } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { 
  Card, 
@@ -28,7 +28,7 @@ export default function TravelCalendarView({
  onView,
  onEdit,
  onDelete,
- loading,
+ loading
 }: TravelCalendarViewProps) {
  const [currentDate, setCurrentDate] = useState(new Date());
  const [selectedDate, setSelectedDate] = useState<Date | null>(null);

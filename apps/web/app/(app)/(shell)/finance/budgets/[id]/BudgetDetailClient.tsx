@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, CardHeader, CardTitle, CardContent, Button, Alert, Badge, Progress } from '@ghxstship/ui';
+import { Alert, Badge, Button, Card, CardBody, CardContent, CardHeader, Progress } from '@ghxstship/ui';
 import { ArrowLeft, Edit, DollarSign, TrendingUp, Receipt, Building } from 'lucide-react';
 import { User } from '@supabase/supabase-js';
 import ViewBudgetDrawer from '../drawers/ViewBudgetDrawer';
@@ -30,7 +30,7 @@ export default function BudgetDetailClient({ budget, user, orgId }: BudgetDetail
  const budgetService = new BudgetService();
  await budgetService.updateBudget(budget.id, {
  ...data,
- updated_by: user.id,
+ updated_by: user.id
  });
 
  setSuccess(true);

@@ -9,7 +9,7 @@ import {
  TabsList,
  TabsTrigger,
  TabsContent,
- Badge,
+ Badge
 } from '@ghxstship/ui';
 import type {
  EmergencyContact,
@@ -18,7 +18,7 @@ import type {
  EmergencyContactStats,
  EmergencyContactAnalytics,
  EmergencyViewType,
- EmergencyContactFormData,
+ EmergencyContactFormData
 } from './types';
 import {
  VIEW_CONFIG,
@@ -27,7 +27,7 @@ import {
  createEmptyStats,
  createEmptyAnalytics,
  validateEmergencyForm,
- formatPhone,
+ formatPhone
 } from './types';
 import EmergencyFormView from './views/EmergencyFormView';
 import EmergencyCardView from './views/EmergencyCardView';
@@ -40,12 +40,12 @@ const DEFAULT_FILTERS: EmergencyContactFilters = {
  priority: 'all',
  verification_status: 'all',
  is_primary: 'all',
- availability: 'all',
+ availability: 'all'
 };
 
 const DEFAULT_SORT: EmergencyContactSort = {
  field: 'priority_level',
- direction: 'asc',
+ direction: 'asc'
 };
 
 interface EmergencyClientProps {
@@ -159,7 +159,7 @@ function EmergencyClient({ orgId, userId }: EmergencyClientProps) {
  const handleFieldChange = useCallback((field: keyof EmergencyContactFormData, value: EmergencyContactFormData[keyof EmergencyContactFormData]) => {
  setFormData(prev => ({
  ...prev,
- [field]: value,
+ [field]: value
  }));
  setFormErrors(prev => {
  if (!prev[field]) return prev;
@@ -193,7 +193,7 @@ function EmergencyClient({ orgId, userId }: EmergencyClientProps) {
  const response = await fetch(endpoint, {
  method: selectedContact ? 'PUT' : 'POST',
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify(payload),
+ body: JSON.stringify(payload)
  });
 
  if (!response.ok) {
@@ -214,7 +214,7 @@ function EmergencyClient({ orgId, userId }: EmergencyClientProps) {
   const handleVerify = useCallback(async (contactId: string) => {
     try {
       const response = await fetch(`/api/v1/profile/emergency?contact_id=${contactId}&action=verify`, {
-        method: 'POST',
+        method: 'POST'
       });
       if (!response.ok) {
         throw new Error('Failed to verify emergency contact');
@@ -235,7 +235,7 @@ function EmergencyClient({ orgId, userId }: EmergencyClientProps) {
     }
     try {
       const response = await fetch(`/api/v1/profile/emergency?contact_id=${contactId}`, {
-        method: 'DELETE',
+        method: 'DELETE'
       });
       if (!response.ok) {
         throw new Error('Failed to delete emergency contact');
@@ -310,7 +310,7 @@ function EmergencyClient({ orgId, userId }: EmergencyClientProps) {
  card: Contact2,
  roster: Users,
  table: Table,
- analytics: BarChart3,
+ analytics: BarChart3
  }), []);
 
  const quickFilterValue = useMemo(() => {
@@ -491,7 +491,7 @@ function mapContactToForm(contact: EmergencyContact): EmergencyContactFormData {
  priority_level: contact.priority_level,
  availability: contact.availability ?? '24_7',
  response_time_minutes: contact.response_time_minutes ?? 15,
- verification_status: contact.verification_status,
+ verification_status: contact.verification_status
  };
 }
 
@@ -513,7 +513,7 @@ function mapFormToPayload(data: EmergencyContactFormData) {
  priority_level: data.priority_level,
  availability: data.availability || null,
  response_time_minutes: data.response_time_minutes ?? null,
- verification_status: data.verification_status,
+ verification_status: data.verification_status
  };
 }
 

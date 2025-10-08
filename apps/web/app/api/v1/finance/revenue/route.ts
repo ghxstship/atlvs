@@ -17,7 +17,7 @@ const CreateRevenueSchema = z.object({
   revenueDate: z.string(),
   recognitionDate: z.string().optional(),
   status: z.enum(['projected', 'invoiced', 'received']).default('projected'),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 const UpdateRevenueSchema = CreateRevenueSchema.partial();

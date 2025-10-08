@@ -1,35 +1,17 @@
 'use client'
 
 import React, { useState } from 'react'
-import {
-  Filter,
-  Download,
-  Settings,
-  RefreshCw,
-  Grid3X3,
-  List,
-  BarChart3,
-} from 'lucide-react'
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  Badge,
-  Button,
-} from '@ghxstship/ui'
-import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
-import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
+import { BarChart3, Download, Filter, Grid3X3, List, RefreshCw, Settings } from 'lucide-react';
+import { Badge, Button, Card, CardHeader, CardBody, Grid, HStack, Skeleton, Stack } from '@ghxstship/ui';
 
 import EnhancedMetricWidget from '../widgets/EnhancedMetricWidget'
 import EnhancedChartWidget from '../widgets/EnhancedChartWidget'
 import EnhancedActivityWidget from '../widgets/EnhancedActivityWidget'
-import { useDashboardOverview } from '../hooks/useDashboardOverview'
+import { useDashboardOverview } from '../hooks/useDashboardOverview';
 import type {
   ModuleOverviewConfig,
   DashboardWidget,
-  DataSource,
+  DataSource
 } from '../types'
 
 interface OverviewTemplateProps {
@@ -51,7 +33,7 @@ export default function OverviewTemplate({
   module,
   config,
   customWidgets = [],
-  onNavigate,
+  onNavigate
 }: OverviewTemplateProps) {
   const [viewMode, setViewMode] = useState<ViewMode>('grid')
   const [showFilters, setShowFilters] = useState(false)
@@ -63,7 +45,7 @@ export default function OverviewTemplate({
     loading,
     refreshing,
     error,
-    refresh,
+    refresh
   } = useDashboardOverview({ orgId, module, initialWidgets: customWidgets })
 
   const metricGridConfig = React.useMemo(() => {
@@ -75,6 +57,7 @@ export default function OverviewTemplate({
       default:
         return { cols: 1 as const, responsive: { md: 2, lg: 4 } as const }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewMode])
 
   if (loading) {
@@ -87,11 +70,11 @@ export default function OverviewTemplate({
         <Grid cols={1} responsive={{ md: 2, lg: 4 }} spacing="md">
           {Array.from({ length: 4 }).map((_, index) => (
             <Card key={index}>
-              <CardContent className="space-y-sm">
+              <CardBody className="space-y-sm">
                 <Skeleton className="h-4 w-24" />
                 <Skeleton className="h-8 w-20" />
                 <Skeleton className="h-3 w-16" />
-              </CardContent>
+              </CardBody>
             </Card>
           ))}
         </Grid>
@@ -103,12 +86,12 @@ export default function OverviewTemplate({
     return (
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg text-destructive">{error}</CardTitle>
-          <CardDescription>Something went wrong while loading dashboard insights.</CardDescription>
+          <h3 className="text-lg text-destructive font-semibold">{error}</h3>
+          <p className="text-sm text-muted-foreground">Something went wrong while loading dashboard insights.</p>
         </CardHeader>
-        <CardContent>
+        <CardBody>
           <Button onClick={refresh}>Retry</Button>
-        </CardContent>
+        </CardBody>
       </Card>
     )
   }
@@ -129,7 +112,7 @@ export default function OverviewTemplate({
               change: metric.change,
               change_type: metric.change_type,
               target: metric.target,
-              status: metric.status,
+              status: metric.status
             },
             position: { x: 0, y: 0, w: 1, h: 1 },
             refresh_interval: '5_minutes',
@@ -137,7 +120,7 @@ export default function OverviewTemplate({
             organization_id: orgId,
             created_by: userId,
             created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
           }}
           metric={metric}
           isLoading={loading}
@@ -151,10 +134,10 @@ export default function OverviewTemplate({
 
     return (
       <Stack spacing="md">
-        <CardHeader>
-          <CardTitle className="text-lg text-foreground">Custom Widgets</CardTitle>
-          <CardDescription>Additional widgets tailored to this dashboard.</CardDescription>
-        </CardHeader>
+        <div className="mb-4">
+          <h3 className="text-lg text-foreground font-semibold mb-2">Custom Widgets</h3>
+          <p className="text-sm text-muted-foreground">Additional widgets tailored to this dashboard.</p>
+        </div>
         <Grid cols={viewMode === 'grid' ? 1 : 1} responsive={viewMode === 'grid' ? { lg: 2 } : undefined} spacing="md">
           {widgets.map((widget) => {
             switch (widget.type) {
@@ -195,14 +178,14 @@ export default function OverviewTemplate({
         </HStack>
         <HStack spacing="sm" align="center">
           <HStack spacing="xs" className="bg-muted rounded-lg p-xs">
-            <Button variant={viewMode === 'grid' ? 'default' : 'ghost'} size="sm" onClick={() => setViewMode('grid')}>
+            <Button variant={viewMode === 'grid' ? 'primary' : 'ghost'} size="sm" onClick={() => setViewMode('grid')}>
               <Grid3X3 className="h-icon-xs w-icon-xs" />
             </Button>
-            <Button variant={viewMode === 'list' ? 'default' : 'ghost'} size="sm" onClick={() => setViewMode('list')}>
+            <Button variant={viewMode === 'list' ? 'primary' : 'ghost'} size="sm" onClick={() => setViewMode('list')}>
               <List className="h-icon-xs w-icon-xs" />
             </Button>
             <Button
-              variant={viewMode === 'compact' ? 'default' : 'ghost'}
+              variant={viewMode === 'compact' ? 'primary' : 'ghost'}
               size="sm"
               onClick={() => setViewMode('compact')}
             >
@@ -226,7 +209,7 @@ export default function OverviewTemplate({
 
       {showFilters && (
         <Card>
-          <CardContent>
+          <CardBody>
             <HStack spacing="md" align="center">
               <span className="text-sm font-medium text-foreground">Filters</span>
               <HStack spacing="sm" align="center">
@@ -237,14 +220,14 @@ export default function OverviewTemplate({
                 </Button>
               </HStack>
             </HStack>
-          </CardContent>
+          </CardBody>
         </Card>
       )}
 
       <Stack spacing="md">
         <HStack justify="between" align="center">
           <h2 className="text-lg font-semibold text-foreground">Key Metrics</h2>
-          <Badge variant="outline" className="text-xs">
+          <Badge variant="secondary" className="text-xs">
             {metrics.length} metrics
           </Badge>
         </HStack>
@@ -254,15 +237,15 @@ export default function OverviewTemplate({
       {config.quick_actions.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg text-foreground">Quick Actions</CardTitle>
-            <CardDescription>Jump into commonly used dashboard workflows.</CardDescription>
+            <h3 className="text-lg text-foreground font-semibold mb-2">Quick Actions</h3>
+            <p className="text-sm text-muted-foreground">Jump into commonly used dashboard workflows.</p>
           </CardHeader>
-          <CardContent>
+          <CardBody>
             <Grid cols={2} responsive={{ md: 4 }} spacing="sm">
               {config.quick_actions.map((action, index) => (
                 <Button
                   key={index}
-                  variant="outline"
+                  variant="secondary"
                   className="justify-start"
                   onClick={() => action.href && onNavigate?.(action.href)}
                 >
@@ -273,7 +256,7 @@ export default function OverviewTemplate({
                 </Button>
               ))}
             </Grid>
-          </CardContent>
+          </CardBody>
         </Card>
       )}
 
@@ -281,10 +264,10 @@ export default function OverviewTemplate({
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg text-foreground">Recent Activity</CardTitle>
-          <CardDescription>Latest changes across dashboards and analytics.</CardDescription>
+          <h3 className="text-lg text-foreground font-semibold mb-2">Recent Activity</h3>
+          <p className="text-sm text-muted-foreground">Latest changes across dashboards and analytics.</p>
         </CardHeader>
-        <CardContent>
+        <CardBody>
           <EnhancedActivityWidget
             widget={{
               id: 'activity-feed',
@@ -298,24 +281,24 @@ export default function OverviewTemplate({
               organization_id: orgId,
               created_by: userId,
               created_at: new Date().toISOString(),
-              updated_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
             }}
             activities={activities}
             isLoading={loading}
             onViewAll={() => onNavigate?.(`/${module}/activity`)}
           />
-        </CardContent>
+        </CardBody>
       </Card>
 
       <Card>
-        <CardContent>
+        <CardBody>
           <HStack justify="between" align="center" className="text-xs text-muted-foreground">
             <span>Last updated {new Date().toLocaleTimeString()}</span>
             <span>
               {metrics.length} metrics • {activities.length} activities • {widgets.length} widgets
             </span>
           </HStack>
-        </CardContent>
+        </CardBody>
       </Card>
     </Stack>
   )

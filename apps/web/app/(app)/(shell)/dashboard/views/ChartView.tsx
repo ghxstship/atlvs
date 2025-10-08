@@ -16,23 +16,9 @@ import {
   Eye,
   EyeOff
 } from 'lucide-react';
-import { Button } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator,
-} from '@ghxstship/ui';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@ghxstship/ui';
+import { Badge, Button, Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@ghxstship/ui';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ghxstship/ui';
 import { cn } from '@ghxstship/ui/lib/utils';
 
 // Chart Types
@@ -149,6 +135,7 @@ export const ChartView: React.FC<ChartViewProps> = ({
   const [visibleSeries, setVisibleSeries] = useState<Set<string>(new Set());
 
   // Process chart data
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const chartData = useMemo(() => {
     if (!data.length) return { series: [], xAxis: [], yAxis: [] };
 
@@ -212,6 +199,7 @@ export const ChartView: React.FC<ChartViewProps> = ({
   }, [data, config]);
 
   // Handle legend click
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleLegendClick = useCallback((seriesName: string) => {
     setVisibleSeries(prev => {
       const newSet = new Set(prev);
@@ -223,9 +211,11 @@ export const ChartView: React.FC<ChartViewProps> = ({
       return newSet;
     });
     onLegendClick?.(seriesName);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onLegendClick]);
 
   // Render chart based on type
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const renderChart = useCallback(() => {
     if (loading) {
       return (
@@ -245,7 +235,7 @@ export const ChartView: React.FC<ChartViewProps> = ({
             <div className="text-destructive mb-2">Chart Error</div>
             <div className="text-sm text-muted-foreground">{error}</div>
             {onRefresh && (
-              <Button variant="outline" size="sm" onClick={onRefresh} className="mt-2">
+              <Button variant="secondary" size="sm" onClick={onRefresh} className="mt-2">
                 <RefreshCw className="h-icon-xs w-icon-xs mr-1" />
                 Retry
               </Button>
@@ -489,11 +479,11 @@ export const ChartView: React.FC<ChartViewProps> = ({
               {chartData.series.length} series • {chartData.series[0]?.data.length || 0} data points
             </div>
             <div className="flex items-center gap-xs">
-              <Badge variant="outline" className="text-xs">
+              <Badge variant="secondary" className="text-xs">
                 {config.type}
               </Badge>
               {config.interactive && (
-                <Badge variant="outline" className="text-xs">
+                <Badge variant="secondary" className="text-xs">
                   Interactive
                 </Badge>
               )}

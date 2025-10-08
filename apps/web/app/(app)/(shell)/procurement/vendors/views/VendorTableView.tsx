@@ -4,7 +4,7 @@ import { Building, Star, Edit, Trash2, Eye, MoreHorizontal, ArrowUpDown, ArrowUp
 import { useState } from 'react';
 import { Card, Badge, Button, Checkbox } from '@ghxstship/ui';
 import type { Vendor, VendorSort } from '../types';
-import { formatCurrency, formatDate, getStatusColor, getBusinessTypeColor } from '../types';
+import { formatCurrency, formatDate, getBusinessTypeColor } from '../types';
 
 interface VendorTableViewProps {
  vendors: Vendor[];
@@ -29,7 +29,7 @@ export default function VendorTableView({
  onDeleteVendor,
  onViewVendor,
  sort,
- onSortChange,
+ onSortChange
 }: VendorTableViewProps) {
  const handleVendorSelection = (vendorId: string, checked: boolean) => {
  if (checked) {
@@ -189,7 +189,7 @@ export default function VendorTableView({
  </span>
  <Button
  size="sm"
- variant="outline"
+ variant="secondary"
  onClick={() => onSelectionChange([])}
  >
  Clear selection

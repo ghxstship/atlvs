@@ -12,7 +12,7 @@ import type {
   Itinerary,
   Lineup,
   Space,
-  Workshop,
+  Workshop
 } from '../types';
 import { programmingMutations } from './mutations';
 import { programmingValidations } from './validations';
@@ -42,7 +42,7 @@ export class ProgrammingImportService {
           total_processed: 0,
           successful: 0,
           failed: 0,
-          errors: [{ row: 0, error: 'No data rows found in CSV' }],
+          errors: [{ row: 0, error: 'No data rows found in CSV' }]
         };
       }
 
@@ -77,7 +77,7 @@ export class ProgrammingImportService {
         total_processed: dataRows.length,
         successful,
         failed,
-        errors,
+        errors
       };
     } catch (error) {
       return {
@@ -85,7 +85,7 @@ export class ProgrammingImportService {
         total_processed: 0,
         successful: 0,
         failed: 0,
-        errors: [{ row: 0, error: `Import failed: ${error instanceof Error ? error.message : 'Unknown error'}` }],
+        errors: [{ row: 0, error: `Import failed: ${error instanceof Error ? error.message : 'Unknown error'}` }]
       };
     }
   }
@@ -113,7 +113,7 @@ export class ProgrammingImportService {
           total_processed: 0,
           successful: 0,
           failed: 0,
-          errors: [{ row: 0, error: 'No data rows found in CSV' }],
+          errors: [{ row: 0, error: 'No data rows found in CSV' }]
         };
       }
 
@@ -146,7 +146,7 @@ export class ProgrammingImportService {
         total_processed: dataRows.length,
         successful,
         failed,
-        errors,
+        errors
       };
     } catch (error) {
       return {
@@ -154,7 +154,7 @@ export class ProgrammingImportService {
         total_processed: 0,
         successful: 0,
         failed: 0,
-        errors: [{ row: 0, error: `Import failed: ${error instanceof Error ? error.message : 'Unknown error'}` }],
+        errors: [{ row: 0, error: `Import failed: ${error instanceof Error ? error.message : 'Unknown error'}` }]
       };
     }
   }
@@ -182,7 +182,7 @@ export class ProgrammingImportService {
           total_processed: 0,
           successful: 0,
           failed: 0,
-          errors: [{ row: 0, error: 'No data rows found in CSV' }],
+          errors: [{ row: 0, error: 'No data rows found in CSV' }]
         };
       }
 
@@ -215,7 +215,7 @@ export class ProgrammingImportService {
         total_processed: dataRows.length,
         successful,
         failed,
-        errors,
+        errors
       };
     } catch (error) {
       return {
@@ -223,7 +223,7 @@ export class ProgrammingImportService {
         total_processed: 0,
         successful: 0,
         failed: 0,
-        errors: [{ row: 0, error: `Import failed: ${error instanceof Error ? error.message : 'Unknown error'}` }],
+        errors: [{ row: 0, error: `Import failed: ${error instanceof Error ? error.message : 'Unknown error'}` }]
       };
     }
   }
@@ -250,7 +250,7 @@ export class ProgrammingImportService {
           total_processed: 0,
           successful: 0,
           failed: 0,
-          errors: [{ row: 0, error: 'JSON data must be an array' }],
+          errors: [{ row: 0, error: 'JSON data must be an array' }]
         };
       }
 
@@ -270,7 +270,7 @@ export class ProgrammingImportService {
               errors.push({
                 row: rowNumber,
                 error: validationResult.error,
-                data: item,
+                data: item
               });
               failed++;
               continue;
@@ -284,7 +284,7 @@ export class ProgrammingImportService {
           errors.push({
             row: rowNumber,
             error: error instanceof Error ? error.message : 'Unknown error',
-            data: item,
+            data: item
           });
           failed++;
         }
@@ -295,7 +295,7 @@ export class ProgrammingImportService {
         total_processed: data.length,
         successful,
         failed,
-        errors,
+        errors
       };
     } catch (error) {
       return {
@@ -303,7 +303,7 @@ export class ProgrammingImportService {
         total_processed: 0,
         successful: 0,
         failed: 0,
-        errors: [{ row: 0, error: `JSON parsing failed: ${error instanceof Error ? error.message : 'Unknown error'}` }],
+        errors: [{ row: 0, error: `JSON parsing failed: ${error instanceof Error ? error.message : 'Unknown error'}` }]
       };
     }
   }
@@ -335,7 +335,7 @@ export class ProgrammingImportService {
             errors.push({
               row: rowNumber,
               error: 'Validation failed',
-              data: eventData,
+              data: eventData
             });
             failed++;
             continue;
@@ -355,7 +355,7 @@ export class ProgrammingImportService {
         errors.push({
           row: rowNumber,
           error: error instanceof Error ? error.message : 'Unknown error',
-          data: Object.fromEntries(headers.map((h, idx) => [h, row[idx]])),
+          data: Object.fromEntries(headers.map((h, idx) => [h, row[idx]]))
         });
         failed++;
       }
@@ -390,7 +390,7 @@ export class ProgrammingImportService {
             errors.push({
               row: rowNumber,
               error: 'Validation failed',
-              data: performanceData,
+              data: performanceData
             });
             failed++;
             continue;
@@ -403,7 +403,7 @@ export class ProgrammingImportService {
         errors.push({
           row: rowNumber,
           error: error instanceof Error ? error.message : 'Unknown error',
-          data: Object.fromEntries(headers.map((h, idx) => [h, row[idx]])),
+          data: Object.fromEntries(headers.map((h, idx) => [h, row[idx]]))
         });
         failed++;
       }
@@ -438,7 +438,7 @@ export class ProgrammingImportService {
             errors.push({
               row: rowNumber,
               error: 'Validation failed',
-              data: workshopData,
+              data: workshopData
             });
             failed++;
             continue;
@@ -451,7 +451,7 @@ export class ProgrammingImportService {
         errors.push({
           row: rowNumber,
           error: error instanceof Error ? error.message : 'Unknown error',
-          data: Object.fromEntries(headers.map((h, idx) => [h, row[idx]])),
+          data: Object.fromEntries(headers.map((h, idx) => [h, row[idx]]))
         });
         failed++;
       }
@@ -674,8 +674,8 @@ export class ProgrammingImportService {
             end_date: '2024-01-15T12:00:00Z',
             location: 'Main Stage',
             capacity: 200,
-            status: 'scheduled',
-          },
+            status: 'scheduled'
+          }
         },
       ],
       performances: [
@@ -690,8 +690,8 @@ export class ProgrammingImportService {
             venue: 'Main Hall',
             date: '2024-01-15T19:00:00Z',
             duration: 120,
-            status: 'planned',
-          },
+            status: 'planned'
+          }
         },
       ],
       workshops: [
@@ -707,10 +707,10 @@ export class ProgrammingImportService {
             end_date: '2024-01-15T17:00:00Z',
             description: 'A sample workshop',
             capacity: 50,
-            status: 'planned',
-          },
+            status: 'planned'
+          }
         },
-      ],
+      ]
     };
 
     return templates[entityType] || [];
@@ -732,7 +732,7 @@ export class ProgrammingImportService {
 
     return {
       valid: errors.length === 0,
-      errors,
+      errors
     };
   }
 }

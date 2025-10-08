@@ -5,14 +5,14 @@ import type {
   HistoryEntry,
   HistoryFilters,
   HistoryStats,
-  HistoryAnalytics,
+  HistoryAnalytics
 } from '../types';
 import {
   historyFilterSchema,
   historyUpsertSchema,
   filterHistoryEntries,
   sortHistoryEntries,
-  calculateDuration,
+  calculateDuration
 } from '../types';
 
 // ============================================================================
@@ -87,7 +87,7 @@ export async function fetchHistoryEntries(
 
   return {
     entries: data || [],
-    total: count || 0,
+    total: count || 0
   };
 }
 
@@ -135,7 +135,7 @@ export async function fetchHistoryStats(
       byEmploymentType: [],
       byEducationLevel: [],
       skillsFrequency: [],
-      organizationsWorked: [],
+      organizationsWorked: []
     };
   }
 
@@ -161,7 +161,7 @@ export async function fetchHistoryStats(
   });
   const byType = Array.from(typeMap.entries()).map(([type, count]) => ({
     type: type as unknown,
-    count,
+    count
   }));
 
   // Group by employment type
@@ -173,7 +173,7 @@ export async function fetchHistoryStats(
   });
   const byEmploymentType = Array.from(employmentTypeMap.entries()).map(([type, count]) => ({
     type: type as unknown,
-    count,
+    count
   }));
 
   // Group by education level
@@ -185,7 +185,7 @@ export async function fetchHistoryStats(
   });
   const byEducationLevel = Array.from(educationLevelMap.entries()).map(([level, count]) => ({
     level: level as unknown,
-    count,
+    count
   }));
 
   // Skills frequency
@@ -211,7 +211,7 @@ export async function fetchHistoryStats(
       
       orgMap.set(e.organization, {
         count: existing.count + 1,
-        totalDuration: existing.totalDuration + duration,
+        totalDuration: existing.totalDuration + duration
       });
     }
   });
@@ -219,7 +219,7 @@ export async function fetchHistoryStats(
     .map(([organization, { count, totalDuration }]) => ({
       organization,
       count,
-      totalDuration,
+      totalDuration
     }))
     .sort((a, b) => b.totalDuration - a.totalDuration)
     .slice(0, 10);
@@ -233,7 +233,7 @@ export async function fetchHistoryStats(
     byEmploymentType,
     byEducationLevel,
     skillsFrequency,
-    organizationsWorked,
+    organizationsWorked
   };
 }
 
@@ -261,7 +261,7 @@ export async function fetchHistoryAnalytics(
       educationJourney: [],
       achievementTimeline: [],
       careerGaps: [],
-      locationHistory: [],
+      locationHistory: []
     };
   }
 
@@ -277,7 +277,7 @@ export async function fetchHistoryAnalytics(
   const careerProgression = Array.from(progressionMap.entries())
     .map(([year, yearEntries]) => ({
       year,
-      entries: yearEntries,
+      entries: yearEntries
     }))
     .sort((a, b) => a.year - b.year);
 
@@ -301,7 +301,7 @@ export async function fetchHistoryAnalytics(
   const skillsEvolution = Array.from(skillsEvolutionMap.entries())
     .map(([skill, timeline]) => ({
       skill,
-      timeline: timeline.sort((a, b) => a.year - b.year),
+      timeline: timeline.sort((a, b) => a.year - b.year)
     }))
     .filter(s => s.timeline.length > 1) // Only skills that evolved over time
     .slice(0, 10);
@@ -317,7 +317,7 @@ export async function fetchHistoryAnalytics(
       
       industryMap.set(entry.organization, {
         duration: existing.duration + duration,
-        entries: existing.entries + 1,
+        entries: existing.entries + 1
       });
     }
   });
@@ -325,7 +325,7 @@ export async function fetchHistoryAnalytics(
     .map(([industry, { duration, entries }]) => ({
       industry,
       duration,
-      entries,
+      entries
     }))
     .sort((a, b) => b.duration - a.duration)
     .slice(0, 10);
@@ -348,7 +348,7 @@ export async function fetchHistoryAnalytics(
   const educationJourney = Array.from(educationMap.entries()).map(([level, data]) => ({
     level: level as unknown,
     institutions: data.institutions,
-    completionYear: data.completionYear,
+    completionYear: data.completionYear
   }));
 
   // Calculate achievement timeline
@@ -359,7 +359,7 @@ export async function fetchHistoryAnalytics(
       achievementTimeline.push({
         year,
         achievements: entry.achievements,
-        entryId: entry.id,
+        entryId: entry.id
       });
     }
   });
@@ -381,7 +381,7 @@ export async function fetchHistoryAnalytics(
       careerGaps.push({
         startDate: prevEnd.toISOString().split('T')[0],
         endDate: currentStart.toISOString().split('T')[0],
-        duration: gapDays,
+        duration: gapDays
       });
     }
   }
@@ -397,7 +397,7 @@ export async function fetchHistoryAnalytics(
       
       locationMap.set(entry.location, {
         duration: existing.duration + duration,
-        entries: existing.entries + 1,
+        entries: existing.entries + 1
       });
     }
   });
@@ -405,7 +405,7 @@ export async function fetchHistoryAnalytics(
     .map(([location, { duration, entries }]) => ({
       location,
       duration,
-      entries,
+      entries
     }))
     .sort((a, b) => b.duration - a.duration)
     .slice(0, 10);
@@ -417,7 +417,7 @@ export async function fetchHistoryAnalytics(
     educationJourney,
     achievementTimeline,
     careerGaps,
-    locationHistory,
+    locationHistory
   };
 }
 
@@ -440,7 +440,7 @@ export async function createHistoryEntry(
       user_id: userId,
       ...validated,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .select()
     .single();
@@ -464,7 +464,7 @@ export async function updateHistoryEntry(
     .from('history_entries')
     .update({
       ...validated,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', entryId)
     .select()
@@ -500,7 +500,7 @@ export async function toggleHistoryEntryCurrent(
 ): Promise<HistoryEntry> {
   const updateData: unknown = {
     is_current: isCurrent,
-    updated_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   };
 
   // If setting to current, clear end_date
@@ -532,7 +532,7 @@ export async function updateHistoryEntryVisibility(
     .from('history_entries')
     .update({
       visibility,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', entryId)
     .select()

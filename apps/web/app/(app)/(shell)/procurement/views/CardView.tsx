@@ -4,6 +4,7 @@
  */
 
 'use client';
+import { Badge, Button, Card } from '@ghxstship/ui';
 
 import React from 'react';
 import { Card } from '@ghxstship/ui/components/Card';
@@ -28,7 +29,7 @@ export const CardView: React.FC<CardViewProps> = ({
   columns = 3,
   gap = 'md',
   showActions = true,
-  compact = false,
+  compact = false
 }) => {
   const {
     data,
@@ -37,7 +38,7 @@ export const CardView: React.FC<CardViewProps> = ({
     handleEdit,
     handleView,
     handleDelete,
-    config,
+    config
   } = useATLVS();
 
   if (loading) {
@@ -96,21 +97,21 @@ export const CardView: React.FC<CardViewProps> = ({
               <div className="flex gap-xs">
                 <Button
                   size="sm"
-                  variant="outline"
+                  variant="secondary"
                   onClick={() => handleView(item)}
                 >
                   <Eye className="h-icon-xs w-icon-xs" />
                 </Button>
                 <Button
                   size="sm"
-                  variant="outline"
+                  variant="secondary"
                   onClick={() => handleEdit(item)}
                 >
                   <Edit className="h-icon-xs w-icon-xs" />
                 </Button>
                 <Button
                   size="sm"
-                  variant="outline"
+                  variant="secondary"
                   onClick={() => handleDelete(item.id)}
                 >
                   <Trash2 className="h-icon-xs w-icon-xs" />

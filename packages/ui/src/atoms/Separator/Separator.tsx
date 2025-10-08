@@ -1,22 +1,56 @@
-import * as React from "react"
-import { cn } from "../../lib/utils"
+/**
+ * Separator Component — Divider Line
+ * Visual separator between content
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
+ */
 
-const Separator = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<"div"> & {
-    orientation?: "horizontal" | "vertical"
+'use client';
+
+import React from 'react';
+
+export interface SeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Orientation */
+  orientation?: 'horizontal' | 'vertical';
+  
+  /** Decorative (not semantic) */
+  decorative?: boolean;
+}
+
+/**
+ * Separator Component
+ * 
+ * @example
+ * ```tsx
+ * <Separator />
+ * <Separator orientation="vertical" />
+ * ```
+ */
+export const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>(
+  (
+    {
+      orientation = 'horizontal',
+      decorative = true,
+      className = '',
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <div
+        ref={ref}
+        role={decorative ? 'none' : 'separator'}
+        aria-orientation={decorative ? undefined : orientation}
+        className={`
+          bg-[var(--color-border)]
+          ${orientation === 'horizontal' ? 'h-px w-full' : 'w-px h-full'}
+          ${className}
+        `}
+        {...props}
+      />
+    );
   }
->(({ className, orientation = "horizontal", ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "shrink-0 bg-border",
-      orientation === "horizontal" ? "h-micro w-full" : "h-full w-micro",
-      className
-    )}
-    {...props}
-  />
-))
-Separator.displayName = "Separator"
+);
 
-export { Separator }
+Separator.displayName = 'Separator';

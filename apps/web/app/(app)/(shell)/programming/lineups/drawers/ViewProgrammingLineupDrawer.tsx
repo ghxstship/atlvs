@@ -5,7 +5,7 @@ import {
  Badge,
  Button,
  Card,
- Modal,
+ Modal
 } from "@ghxstship/ui";
 import type { ProgrammingLineup, LineupProject, LineupEvent } from "../types";
 import { STATUS_BADGE, PERFORMER_TYPE_BADGE } from "../types";
@@ -36,7 +36,7 @@ export default function ViewProgrammingLineupDrawer({
  onDelete,
  users,
  projects,
- events,
+ events
 }: ViewProgrammingLineupDrawerProps) {
  const handleClose = () => onOpenChange(false);
  const statusConfig = STATUS_BADGE[lineup.status];
@@ -48,7 +48,7 @@ export default function ViewProgrammingLineupDrawer({
  return {
  date: date.toLocaleDateString(),
  time: date.toLocaleTimeString(),
- full: date.toLocaleString(),
+ full: date.toLocaleString()
  };
  };
 
@@ -56,7 +56,7 @@ export default function ViewProgrammingLineupDrawer({
  if (!amount || !currency) return null;
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

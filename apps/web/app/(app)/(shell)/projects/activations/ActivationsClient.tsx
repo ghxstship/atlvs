@@ -1,7 +1,7 @@
 "use client";
 
 import { Grid3x3, LayoutGrid, Calendar, List, Search, Filter, Download, Upload, MoreVertical, Plus, Edit, Trash2, Eye, Copy, CheckCircle, Clock, Play, Rocket, DollarSign, Building, MapPin, ArrowUpDown, Columns } from "lucide-react";
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import { createBrowserClient } from "@ghxstship/auth";
 import {
@@ -19,7 +19,7 @@ import {
  DropdownMenuContent,
  DropdownMenuItem,
  DropdownMenuTrigger,
- toast,
+ toast
 } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import CreateActivationDrawer from "./drawers/CreateActivationDrawer";
@@ -94,7 +94,7 @@ export const FIELD_CONFIG = [
 export default function ActivationsClient({
  orgId,
  initialActivations = [],
- projects = [],
+ projects = []
 }: ActivationsClientProps) {
  const router = useRouter();
  const supabase = createBrowserClient();
@@ -169,7 +169,7 @@ export default function ActivationsClient({
  event: "*",
  schema: "public",
  table: "project_activations",
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  (payload) => {
  loadActivations();
@@ -289,7 +289,7 @@ export default function ActivationsClient({
  .insert({
  ...activationData,
  name: `${activation.name} (Copy)`,
- status: "planning",
+ status: "planning"
  })
  .select()
  .single();

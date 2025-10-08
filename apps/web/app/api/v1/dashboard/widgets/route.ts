@@ -13,13 +13,13 @@ const createWidgetSchema = z.object({
     x: z.number().min(0),
     y: z.number().min(0),
     w: z.number().min(1),
-    h: z.number().min(1),
+    h: z.number().min(1)
   }),
   config: z.record(z.any()).default({}),
   data_source: z.string().optional(),
   query_config: z.record(z.any()).default({}),
   refresh_interval: z.number().min(30).default(300),
-  is_visible: z.boolean().default(true),
+  is_visible: z.boolean().default(true)
 });
 
 // Widget update schema
@@ -30,7 +30,7 @@ const widgetQuerySchema = z.object({
   dashboard_id: z.string().uuid().optional(),
   widget_type: z.string().optional(),
   data_source: z.string().optional(),
-  is_visible: z.coerce.boolean().optional(),
+  is_visible: z.coerce.boolean().optional()
 });
 
 export async function GET(request: NextRequest) {
@@ -185,7 +185,7 @@ export async function POST(request: NextRequest) {
       .from('dashboard_widgets')
       .insert({
         ...validatedData,
-        organization_id: organizationId,
+        organization_id: organizationId
       })
       .select(`
         *,
@@ -207,10 +207,10 @@ export async function POST(request: NextRequest) {
       action: 'create',
       details: {
         widget_title: widget.title,
-        widget_type: widget.widget_type,
+        widget_type: widget.widget_type
       },
       ip_address: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip'),
-      user_agent: request.headers.get('user-agent'),
+      user_agent: request.headers.get('user-agent')
     });
 
     return NextResponse.json({ data: widget }, { status: 201 });
@@ -219,7 +219,7 @@ export async function POST(request: NextRequest) {
     if (error instanceof z.ZodError) {
       return NextResponse.json({
         error: 'Validation failed',
-        details: error.errors,
+        details: error.errors
       }, { status: 400 });
     }
 

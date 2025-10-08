@@ -1,13 +1,13 @@
 'use client';
 
-import { MapPin, Calendar, Building, Award, ExternalLink, Edit, Trash2, Eye, Clock, DollarSign, GraduationCap, Briefcase, Heart, Star, CheckCircle, Circle, Pause, X, ArrowDown } from "lucide-react";
+import { ArrowDown, Award, Briefcase, Building, Calendar, CheckCircle, Circle, Clock, DollarSign, Edit, ExternalEdit, ExternalLink, Eye, GraduationCap, Heart, MapPin, Pause, Star, Trash2, X } from 'lucide-react';
 import { useMemo } from 'react';
 import {
  Card,
  Badge,
  Button,
  Avatar,
- AvatarFallback,
+ AvatarFallback
 } from '@ghxstship/ui';
 import type { HistoryEntry, HistoryEntryType, EmploymentType, EducationLevel, ProjectStatus } from '../types';
 
@@ -31,7 +31,7 @@ const getEntryTypeIcon = (type: HistoryEntryType) => {
  volunteer: Heart,
  internship: Briefcase,
  freelance: Briefcase,
- other: Circle,
+ other: Circle
  };
  return iconMap[type] || Circle;
 };
@@ -46,7 +46,7 @@ const getEntryTypeColor = (type: HistoryEntryType) => {
  volunteer: 'red',
  internship: 'cyan',
  freelance: 'pink',
- other: 'gray',
+ other: 'gray'
  };
  return colorMap[type] || 'gray';
 };
@@ -54,7 +54,7 @@ const getEntryTypeColor = (type: HistoryEntryType) => {
 const formatDate = (dateString: string) => {
  return new Date(dateString).toLocaleDateString('en-US', {
  month: 'long',
- year: 'numeric',
+ year: 'numeric'
  });
 };
 
@@ -104,7 +104,7 @@ export default function HistoryTimelineView({
  onEdit,
  onDelete,
  onView,
- loading = false,
+ loading = false
 }: HistoryTimelineViewProps) {
  const timelineEntries = useMemo(() => {
  // Sort entries by start date (most recent first)

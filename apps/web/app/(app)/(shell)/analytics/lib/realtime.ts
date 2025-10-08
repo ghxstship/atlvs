@@ -16,7 +16,7 @@ import type {
   SubscriptionManager,
   Dashboard,
   Report,
-  ExportJob,
+  ExportJob
 } from '../types';
 
 // ============================================================================
@@ -47,7 +47,7 @@ class RealtimeSubscriptionManager implements SubscriptionManager {
             event: config.event,
             schema: 'public',
             table: config.table,
-            filter: config.filter,
+            filter: config.filter
           },
           (payload) => {
             try {
@@ -164,7 +164,7 @@ class DashboardRealtimeHandler {
         if (callbacks.onUpdate && payload.new) {
           callbacks.onUpdate(payload.new as Dashboard);
         }
-      },
+      }
     });
 
     // Subscribe to dashboard deletions
@@ -176,7 +176,7 @@ class DashboardRealtimeHandler {
         if (callbacks.onDelete) {
           callbacks.onDelete(dashboardId);
         }
-      },
+      }
     });
 
     this.subscriptions.push(
@@ -212,7 +212,7 @@ class DashboardRealtimeHandler {
         if (callbacks.onUpdate && payload.new) {
           callbacks.onUpdate(payload.new as Dashboard);
         }
-      },
+      }
     });
 
     const deleteSub = manager.subscribe({
@@ -223,7 +223,7 @@ class DashboardRealtimeHandler {
         if (callbacks.onDelete && payload.old) {
           callbacks.onDelete((payload.old as Dashboard).id);
         }
-      },
+      }
     });
 
     const createSub = manager.subscribe({
@@ -234,7 +234,7 @@ class DashboardRealtimeHandler {
         if (callbacks.onCreate && payload.new) {
           callbacks.onCreate(payload.new as Dashboard);
         }
-      },
+      }
     });
 
     return () => {
@@ -271,7 +271,7 @@ class ReportRealtimeHandler {
         if (callbacks.onUpdate && payload.new) {
           callbacks.onUpdate(payload.new as Report);
         }
-      },
+      }
     });
 
     const deleteSub = manager.subscribe({
@@ -282,7 +282,7 @@ class ReportRealtimeHandler {
         if (callbacks.onDelete) {
           callbacks.onDelete(reportId);
         }
-      },
+      }
     });
 
     return () => {
@@ -340,7 +340,7 @@ class ExportRealtimeHandler {
         if (exportJob.status === 'failed' && callbacks.onFail) {
           callbacks.onFail(exportJob, exportJob.error_message || 'Unknown error');
         }
-      },
+      }
     });
 
     return () => updateSub();
@@ -367,7 +367,7 @@ class ExportRealtimeHandler {
         if (callbacks.onCreate && payload.new) {
           callbacks.onCreate(payload.new as ExportJob);
         }
-      },
+      }
     });
 
     const updateSub = manager.subscribe({
@@ -384,7 +384,7 @@ class ExportRealtimeHandler {
         if (exportJob.status === 'failed' && callbacks.onFail) {
           callbacks.onFail(exportJob, exportJob.error_message || 'Unknown error');
         }
-      },
+      }
     });
 
     return () => {
@@ -412,9 +412,9 @@ class PresenceManager {
     this.presenceChannel = supabase.channel(`analytics_presence_${organizationId}`, {
       config: {
         presence: {
-          key: userId,
-        },
-      },
+          key: userId
+        }
+      }
     });
 
     this.presenceChannel
@@ -433,7 +433,7 @@ class PresenceManager {
           await this.presenceChannel.track({
             user_id: userId,
             online_at: new Date().toISOString(),
-            current_page: window.location.pathname,
+            current_page: window.location.pathname
           });
         }
       });
@@ -604,7 +604,7 @@ export const AnalyticsRealtime = {
     subscriptionManager.unsubscribeAll();
     presenceManager.cleanup();
     eventBroadcaster.clear();
-  },
+  }
 } as const;
 
 // ============================================================================
@@ -631,6 +631,7 @@ export function useDashboardRealtime(
     );
 
     return unsubscribe;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dashboardId, organizationId, callbacks]);
 }
 
@@ -652,6 +653,7 @@ export function useOrganizationDashboardsRealtime(
     );
 
     return unsubscribe;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizationId, callbacks]);
 }
 

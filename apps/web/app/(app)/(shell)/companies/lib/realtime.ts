@@ -53,7 +53,7 @@ export class CompaniesRealtimeService {
           event: '*',
           schema: 'public',
           table: 'companies',
-          filter: `organization_id=eq.${orgId}`,
+          filter: `organization_id=eq.${orgId}`
         },
         (payload: RealtimePostgresChangesPayload<Company>) => {
           try {
@@ -110,14 +110,14 @@ export class CompaniesRealtimeService {
         event: '*',
         schema: 'public',
         table: 'company_contracts',
-        filter: `organization_id=eq.${orgId}`,
+        filter: `organization_id=eq.${orgId}`
       },
       (payload) => {
         callbacks.onContractChange?.({
           type: payload.eventType,
           table: 'company_contracts',
           record: payload.new,
-          old_record: payload.old,
+          old_record: payload.old
         });
       }
     );
@@ -129,14 +129,14 @@ export class CompaniesRealtimeService {
         event: '*',
         schema: 'public',
         table: 'company_qualifications',
-        filter: `organization_id=eq.${orgId}`,
+        filter: `organization_id=eq.${orgId}`
       },
       (payload) => {
         callbacks.onQualificationChange?.({
           type: payload.eventType,
           table: 'company_qualifications',
           record: payload.new,
-          old_record: payload.old,
+          old_record: payload.old
         });
       }
     );
@@ -148,14 +148,14 @@ export class CompaniesRealtimeService {
         event: '*',
         schema: 'public',
         table: 'company_ratings',
-        filter: `organization_id=eq.${orgId}`,
+        filter: `organization_id=eq.${orgId}`
       },
       (payload) => {
         callbacks.onRatingChange?.({
           type: payload.eventType,
           table: 'company_ratings',
           record: payload.new,
-          old_record: payload.old,
+          old_record: payload.old
         });
       }
     );
@@ -167,14 +167,14 @@ export class CompaniesRealtimeService {
         event: '*',
         schema: 'public',
         table: 'company_contacts',
-        filter: `organization_id=eq.${orgId}`,
+        filter: `organization_id=eq.${orgId}`
       },
       (payload) => {
         callbacks.onContactChange?.({
           type: payload.eventType,
           table: 'company_contacts',
           record: payload.new,
-          old_record: payload.old,
+          old_record: payload.old
         });
       }
     );
@@ -210,9 +210,9 @@ export class CompaniesRealtimeService {
     const channel = this.supabase.channel(channelName, {
       config: {
         presence: {
-          key: userId,
-        },
-      },
+          key: userId
+        }
+      }
     });
 
     channel
@@ -235,7 +235,7 @@ export class CompaniesRealtimeService {
             user_id: userId,
             company_id: companyId,
             action: companyId ? 'editing' : 'viewing',
-            timestamp: Date.now(),
+            timestamp: Date.now()
           });
         }
       });
@@ -274,7 +274,7 @@ export class CompaniesRealtimeService {
     channel?.send({
       type: 'broadcast',
       event,
-      payload,
+      payload
     });
   }
 

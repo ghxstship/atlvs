@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
   cn,
+  Input
 } from '@ghxstship/ui';
 import { ArrowLeft, Save, AlertCircle } from 'lucide-react';
 import { marketplaceService } from '../lib/marketplace-service';
@@ -39,7 +40,7 @@ export default function MarketplaceCreateClient({
     type: 'offer',
     category: 'services',
     status: 'draft',
-    featured: false,
+    featured: false
   });
 
   const labelClass = 'block text-sm font-medium text-foreground';

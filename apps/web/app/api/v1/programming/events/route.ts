@@ -10,7 +10,7 @@ const CreateEventSchema = z.object({
   starts_at: z.string().datetime().optional(),
   ends_at: z.string().datetime().optional(),
   description: z.string().optional(),
-  venue: z.string().optional(),
+  venue: z.string().optional()
 });
 
 export async function GET(request: NextRequest) {
@@ -134,7 +134,7 @@ export async function POST(request: NextRequest) {
 
     const eventData = {
       ...validatedData,
-      organization_id: membership.organization_id,
+      organization_id: membership.organization_id
     };
 
     const { data: event, error } = await supabase

@@ -61,7 +61,7 @@ const CreateRFPSchema = z.object({
     name: z.string(),
     url: z.string().url(),
     type: z.string()
-  })).optional(),
+  })).optional()
 });
 
 const UpdateRFPSchema = CreateRFPSchema.partial();

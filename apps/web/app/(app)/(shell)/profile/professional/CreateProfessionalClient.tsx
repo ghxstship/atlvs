@@ -21,7 +21,7 @@ const schema = z.object({
   website_url: z.string().url().optional().or(z.literal('')),
   career_goals: z.string().optional(),
   mentorship_interests: z.string().optional(),
-  performance_rating: z.number().min(1).max(5).optional(),
+  performance_rating: z.number().min(1).max(5).optional()
 });
 
 type Values = z.infer<typeof schema>;
@@ -46,9 +46,9 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
       website_url: '',
       career_goals: '',
       mentorship_interests: '',
-      performance_rating: undefined,
+      performance_rating: undefined
     },
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   async function onSubmit(values: Values) {
@@ -71,7 +71,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
           website_url: values.website_url || null,
           career_goals: values.career_goals || null,
           mentorship_interests: values.mentorship_interests || null,
-          performance_rating: values.performance_rating || null,
+          performance_rating: values.performance_rating || null
         });
       
       if (insErr) throw insErr;

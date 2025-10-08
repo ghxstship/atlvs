@@ -15,6 +15,7 @@ import {
   Separator,
   Progress,
   useToast,
+  Label
 } from '@ghxstship/ui';
 
 interface BillingSettingsProps {

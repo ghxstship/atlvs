@@ -1,11 +1,11 @@
 "use client";
 
 import { ChevronLeft, ChevronRight, Edit, Eye, Trash2, MapPin, Users, DollarSign } from "lucide-react";
-import { useState, useMemo } from "react";
+import { useState, useMemo } from 'react';
 import {
  Badge,
  Button,
- Card,
+ Card
 } from "@ghxstship/ui";
 import type { ProgrammingItinerary, ItinerarySort } from "../types";
 import { STATUS_BADGE, TYPE_BADGE } from "../types";
@@ -48,7 +48,7 @@ export default function ProgrammingItinerariesCalendarView({
  onDelete,
  sortConfig,
  onSort,
- users,
+ users
 }: ProgrammingItinerariesCalendarViewProps) {
  const [currentDate, setCurrentDate] = useState(new Date());
 
@@ -76,7 +76,7 @@ export default function ProgrammingItinerariesCalendarView({
  days.push({
  date: new Date(currentCalendarDate),
  isCurrentMonth: currentCalendarDate.getMonth() === month,
- itineraries: dayItineraries,
+ itineraries: dayItineraries
  });
  
  currentCalendarDate.setDate(currentCalendarDate.getDate() + 1);
@@ -105,7 +105,7 @@ export default function ProgrammingItinerariesCalendarView({
  if (!amount || !currency) return null;
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

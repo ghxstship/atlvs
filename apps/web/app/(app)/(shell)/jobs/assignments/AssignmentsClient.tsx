@@ -1,6 +1,7 @@
 'use client';
 
 
+import { CalendarIcon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -117,7 +118,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
         job_title: assignment.jobs?.title || 'Unknown Job',
         assignee_name: assignment.user_profiles?.full_name || 'Unknown User',
         assignee_email: assignment.user_profiles?.email,
-        assignee_avatar: assignment.user_profiles?.avatar_url,
+        assignee_avatar: assignment.user_profiles?.avatar_url
       }));
 
       setAssignments(transformedAssignments);
@@ -197,7 +198,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
     if (!rate) return 'Rate not set';
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'USD',
+      currency: 'USD'
     }).format(rate);
   };
 

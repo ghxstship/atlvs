@@ -1,32 +1,23 @@
 'use client'
 
-import { useMemo } from 'react'
-import { useRouter } from 'next/navigation'
-import { useTranslations } from 'next-intl'
+import { useMemo } from 'react';
+import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { ArrowRight, Badge, Building, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, CheckCircle, Clock, DollarSign, Grid, Package, ShoppingCart, Tag, Wrench } from 'lucide-react';
 import {
+  Badge,
+  Button,
   Card,
+  CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
-  Button,
-  Badge,
-} from '@ghxstship/ui'
-import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton'
-import { Stack, HStack, Grid } from '@ghxstship/ui/components/layouts'
-import {
-  ShoppingCart,
-  Package,
-  Wrench,
-  Building,
-  Tag,
-  CheckCircle,
-  Clock,
-  DollarSign,
-  ArrowRight,
-} from 'lucide-react'
+  Skeleton
+} from '@ghxstship/ui';
+import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton';
+import { Grid, HStack, Stack } from '@ghxstship/ui/components/layouts';
 
-import { useProcurementOverview } from '../hooks/useProcurementOverview'
+import { useProcurementOverview } from '../hooks/useProcurementOverview';
 
 const quickActions = [
   { id: 'order', icon: ShoppingCart, label: 'Create Order', href: '/procurement/orders' },
@@ -50,28 +41,28 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         label: 'Total Orders',
         value: stats?.totalOrders ?? 0,
         icon: ShoppingCart,
-        tone: 'accent',
+        tone: 'accent'
       },
       {
         id: 'pendingOrders',
         label: 'Pending Orders',
         value: stats?.pendingOrders ?? 0,
         icon: Clock,
-        tone: 'warning',
+        tone: 'warning'
       },
       {
         id: 'completedOrders',
         label: 'Completed Orders',
         value: stats?.completedOrders ?? 0,
         icon: CheckCircle,
-        tone: 'success',
+        tone: 'success'
       },
       {
         id: 'totalSpent',
         label: 'Total Spent',
         value: stats ? formatCurrency(stats.totalSpent, stats.currency) : '$0.00',
         icon: DollarSign,
-        tone: 'secondary',
+        tone: 'secondary'
       },
     ],
     [stats],
@@ -86,7 +77,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         value: stats?.totalProducts ?? 0,
         href: '/procurement/products',
         icon: Package,
-        tone: 'accent',
+        tone: 'accent'
       },
       {
         id: 'services',
@@ -95,7 +86,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         value: stats?.totalServices ?? 0,
         href: '/procurement/services',
         icon: Wrench,
-        tone: 'success',
+        tone: 'success'
       },
       {
         id: 'vendors',
@@ -104,7 +95,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         value: stats?.totalVendors ?? 0,
         href: '/procurement/vendors',
         icon: Building,
-        tone: 'warning',
+        tone: 'warning'
       },
       {
         id: 'categories',
@@ -113,7 +104,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         value: stats?.totalCategories ?? 0,
         href: '/procurement/categories',
         icon: Tag,
-        tone: 'secondary',
+        tone: 'secondary'
       },
     ],
     [stats],
@@ -159,7 +150,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
     accent: { bg: 'bg-accent/10', text: 'text-accent' },
     warning: { bg: 'bg-warning/10', text: 'text-warning' },
     success: { bg: 'bg-success/10', text: 'text-success' },
-    secondary: { bg: 'bg-secondary/10', text: 'text-secondary' },
+    secondary: { bg: 'bg-secondary/10', text: 'text-secondary' }
   }
 
   const statusToneMap: Record<string, { bg: string; text: string }> = {
@@ -168,14 +159,14 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
     approved: { bg: 'bg-success/10', text: 'text-success' },
     delivered: { bg: 'bg-success/10', text: 'text-success' },
     completed: { bg: 'bg-success/10', text: 'text-success' },
-    cancelled: { bg: 'bg-destructive/10', text: 'text-destructive' },
+    cancelled: { bg: 'bg-destructive/10', text: 'text-destructive' }
   }
 
   const renderStatusBadge = (status: string) => {
     const normalized = status?.toLowerCase() ?? 'unknown'
     const tone = statusToneMap[normalized] ?? { bg: 'bg-muted/20', text: 'text-muted-foreground' }
     return (
-      <Badge variant="outline" className={`capitalize ${tone.bg} ${tone.text}`}>
+      <Badge variant="secondary" className={`capitalize ${tone.bg} ${tone.text}`}>
         {normalized.replace(/_/g, ' ')}
       </Badge>
     )
@@ -304,7 +295,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
             {quickActions.map((action) => (
               <Button
                 key={action.id}
-                variant="outline"
+                variant="secondary"
                 className="justify-start"
                 onClick={() => router.push(action.href)}
               >

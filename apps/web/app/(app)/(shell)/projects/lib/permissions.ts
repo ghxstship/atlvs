@@ -146,7 +146,7 @@ export async function getProjectPermissions(
         manage_members: true,
         manage_budget: true,
         view_financial: true,
-        export: true,
+        export: true
       },
       admin: {
         create: true,
@@ -156,7 +156,7 @@ export async function getProjectPermissions(
         manage_members: true,
         manage_budget: true,
         view_financial: true,
-        export: true,
+        export: true
       },
       manager: {
         create: true,
@@ -166,7 +166,7 @@ export async function getProjectPermissions(
         manage_members: true,
         manage_budget: true,
         view_financial: true,
-        export: true,
+        export: true
       },
       member: {
         create: true,
@@ -176,7 +176,7 @@ export async function getProjectPermissions(
         manage_members: false,
         manage_budget: false,
         view_financial: false,
-        export: true,
+        export: true
       },
       viewer: {
         create: false,
@@ -186,8 +186,8 @@ export async function getProjectPermissions(
         manage_members: false,
         manage_budget: false,
         view_financial: false,
-        export: false,
-      },
+        export: false
+      }
     };
 
     const permissions = { ...basePermissions[permissionLevel] };
@@ -210,7 +210,7 @@ export async function getProjectPermissions(
       manage_members: false,
       manage_budget: false,
       view_financial: false,
-      export: false,
+      export: false
     };
   }
 }
@@ -246,7 +246,7 @@ export async function getTaskPermissions(
         delete: true,
         assign: true,
         update_status: true,
-        manage_dependencies: true,
+        manage_dependencies: true
       },
       admin: {
         create: true,
@@ -255,7 +255,7 @@ export async function getTaskPermissions(
         delete: true,
         assign: true,
         update_status: true,
-        manage_dependencies: true,
+        manage_dependencies: true
       },
       manager: {
         create: true,
@@ -264,7 +264,7 @@ export async function getTaskPermissions(
         delete: true,
         assign: true,
         update_status: true,
-        manage_dependencies: true,
+        manage_dependencies: true
       },
       member: {
         create: true,
@@ -273,7 +273,7 @@ export async function getTaskPermissions(
         delete: false,
         assign: true,
         update_status: true,
-        manage_dependencies: false,
+        manage_dependencies: false
       },
       viewer: {
         create: false,
@@ -282,8 +282,8 @@ export async function getTaskPermissions(
         delete: false,
         assign: false,
         update_status: false,
-        manage_dependencies: false,
-      },
+        manage_dependencies: false
+      }
     };
 
     const permissions = { ...basePermissions[permissionLevel] };
@@ -304,7 +304,7 @@ export async function getTaskPermissions(
       delete: false,
       assign: false,
       update_status: false,
-      manage_dependencies: false,
+      manage_dependencies: false
     };
   }
 }
@@ -337,36 +337,36 @@ export async function getFilePermissions(
         download: true,
         delete: true,
         manage_versions: true,
-        change_access: true,
+        change_access: true
       },
       admin: {
         upload: true,
         download: true,
         delete: true,
         manage_versions: true,
-        change_access: true,
+        change_access: true
       },
       manager: {
         upload: true,
         download: true,
         delete: true,
         manage_versions: false,
-        change_access: false,
+        change_access: false
       },
       member: {
         upload: true,
         download: true,
         delete: false,
         manage_versions: false,
-        change_access: false,
+        change_access: false
       },
       viewer: {
         upload: false,
         download: true,
         delete: false,
         manage_versions: false,
-        change_access: false,
-      },
+        change_access: false
+      }
     };
 
     const permissions = { ...basePermissions[permissionLevel] };
@@ -388,7 +388,7 @@ export async function getFilePermissions(
       download: false,
       delete: false,
       manage_versions: false,
-      change_access: false,
+      change_access: false
     };
   }
 }
@@ -426,7 +426,7 @@ export async function checkPermission(
           admin: { create: true, read: true, update: true, delete: true },
           manager: { create: true, read: true, update: true, delete: false },
           member: { create: true, read: true, update: false, delete: false },
-          viewer: { create: false, read: true, update: false, delete: false },
+          viewer: { create: false, read: true, update: false, delete: false }
         };
 
         return rolePermissions[permissionLevel]?.[action] || false;
@@ -466,14 +466,14 @@ export async function getAllPermissions(
       delete: ['owner', 'admin', 'manager'].includes(permissionLevel),
       assign: ['owner', 'admin', 'manager', 'member'].includes(permissionLevel),
       update_status: ['owner', 'admin', 'manager', 'member'].includes(permissionLevel),
-      manage_dependencies: ['owner', 'admin', 'manager'].includes(permissionLevel),
+      manage_dependencies: ['owner', 'admin', 'manager'].includes(permissionLevel)
     },
     file: {
       upload: ['owner', 'admin', 'manager', 'member'].includes(permissionLevel),
       download: true,
       delete: ['owner', 'admin', 'manager'].includes(permissionLevel),
       manage_versions: ['owner', 'admin'].includes(permissionLevel),
-      change_access: ['owner', 'admin'].includes(permissionLevel),
+      change_access: ['owner', 'admin'].includes(permissionLevel)
     },
     activation: {
       create: ['owner', 'admin', 'manager'].includes(permissionLevel),
@@ -481,7 +481,7 @@ export async function getAllPermissions(
       update: ['owner', 'admin', 'manager'].includes(permissionLevel),
       delete: ['owner', 'admin'].includes(permissionLevel),
       manage_stakeholders: ['owner', 'admin', 'manager'].includes(permissionLevel),
-      update_status: ['owner', 'admin', 'manager'].includes(permissionLevel),
+      update_status: ['owner', 'admin', 'manager'].includes(permissionLevel)
     },
     risk: {
       create: ['owner', 'admin', 'manager', 'member'].includes(permissionLevel),
@@ -490,7 +490,7 @@ export async function getAllPermissions(
       delete: ['owner', 'admin', 'manager'].includes(permissionLevel),
       assess: ['owner', 'admin', 'manager'].includes(permissionLevel),
       mitigate: ['owner', 'admin', 'manager', 'member'].includes(permissionLevel),
-      close: ['owner', 'admin', 'manager'].includes(permissionLevel),
+      close: ['owner', 'admin', 'manager'].includes(permissionLevel)
     },
     inspection: {
       create: ['owner', 'admin', 'manager'].includes(permissionLevel),
@@ -499,7 +499,7 @@ export async function getAllPermissions(
       delete: ['owner', 'admin'].includes(permissionLevel),
       conduct: ['owner', 'admin', 'manager', 'member'].includes(permissionLevel),
       approve: ['owner', 'admin', 'manager'].includes(permissionLevel),
-      manage_checklist: ['owner', 'admin', 'manager'].includes(permissionLevel),
+      manage_checklist: ['owner', 'admin', 'manager'].includes(permissionLevel)
     },
     location: {
       create: ['owner', 'admin', 'manager'].includes(permissionLevel),
@@ -507,7 +507,7 @@ export async function getAllPermissions(
       update: ['owner', 'admin', 'manager'].includes(permissionLevel),
       delete: ['owner', 'admin'].includes(permissionLevel),
       manage_facilities: ['owner', 'admin', 'manager'].includes(permissionLevel),
-      assign_projects: ['owner', 'admin', 'manager'].includes(permissionLevel),
+      assign_projects: ['owner', 'admin', 'manager'].includes(permissionLevel)
     },
     milestone: {
       create: ['owner', 'admin', 'manager', 'member'].includes(permissionLevel),
@@ -515,8 +515,8 @@ export async function getAllPermissions(
       update: ['owner', 'admin', 'manager', 'member'].includes(permissionLevel),
       delete: ['owner', 'admin', 'manager'].includes(permissionLevel),
       complete: ['owner', 'admin', 'manager', 'member'].includes(permissionLevel),
-      manage_dependencies: ['owner', 'admin', 'manager'].includes(permissionLevel),
-    },
+      manage_dependencies: ['owner', 'admin', 'manager'].includes(permissionLevel)
+    }
   };
 
   if (projectId) {

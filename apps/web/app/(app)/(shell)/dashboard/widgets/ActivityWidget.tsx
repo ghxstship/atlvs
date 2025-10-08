@@ -1,7 +1,7 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { Card, Badge } from '@ghxstship/ui';
 import { MoreHorizontal, Clock, User, FileText, DollarSign, Users } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
@@ -112,6 +112,7 @@ export default function ActivityWidget({
       subscription.unsubscribe();
       clearInterval(interval);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, config, organizationId, supabase]);
 
   const generateActivityDescription = (log): string => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar, Clock, MapPin, Plus, Save, X, DollarSign, Users, Music, Phone, Mail } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -14,7 +14,7 @@ import {
  Select,
  Textarea,
  Badge,
- Checkbox,
+ Checkbox
 } from "@ghxstship/ui";
 import type { ProgrammingLineup, LineupProject, LineupEvent } from "../types";
 import { PERFORMER_TYPE_BADGE, CURRENCY_OPTIONS, EQUIPMENT_OPTIONS, STAGE_OPTIONS, DURATION_PRESETS } from "../types";
@@ -33,22 +33,22 @@ const editLineupSchema = z.object({
  email: z.string().email().optional().or(z.literal("")),
  phone: z.string().optional(),
  agent: z.string().optional(),
- manager: z.string().optional(),
+ manager: z.string().optional()
  }).optional(),
  technical_requirements: z.object({
  sound_check: z.string().datetime().optional(),
  equipment: z.array(z.string()).optional(),
- special_requests: z.string().optional(),
+ special_requests: z.string().optional()
  }).optional(),
  contract_details: z.object({
  fee: z.number().min(0).optional(),
  currency: z.string().length(3).optional(),
  payment_terms: z.string().optional(),
- contract_signed: z.boolean().optional(),
+ contract_signed: z.boolean().optional()
  }).optional(),
  notes: z.string().optional(),
  tags: z.array(z.string().max(32)).optional(),
- metadata: z.record(z.any()).optional(),
+ metadata: z.record(z.any()).optional()
 });
 
 type EditLineupFormData = z.infer<typeof editLineupSchema>;
@@ -72,7 +72,7 @@ export default function EditProgrammingLineupDrawer({
  currentUserId,
  projects,
  events,
- onSuccess,
+ onSuccess
 }: EditProgrammingLineupDrawerProps) {
  const handleClose = () => onOpenChange(false);
  const [loading, setLoading] = useState(false);
@@ -85,9 +85,9 @@ export default function EditProgrammingLineupDrawer({
  watch,
  setValue,
  reset,
- formState: { errors },
+ formState: { errors }
  } = useForm<EditLineupFormData>({
- resolver: zodResolver(editLineupSchema),
+ resolver: zodResolver(editLineupSchema)
  });
 
  const watchedTags = watch("tags");
@@ -109,23 +109,23 @@ export default function EditProgrammingLineupDrawer({
  email: lineup.contact_info.email || "",
  phone: lineup.contact_info.phone || "",
  agent: lineup.contact_info.agent || "",
- manager: lineup.contact_info.manager || "",
+ manager: lineup.contact_info.manager || ""
  },
  technical_requirements: {
  sound_check: lineup.technical_requirements.sound_check 
  ? new Date(lineup.technical_requirements.sound_check).toISOString().slice(0, 16) 
  : "",
- special_requests: lineup.technical_requirements.special_requests || "",
+ special_requests: lineup.technical_requirements.special_requests || ""
  },
  contract_details: {
  fee: lineup.contract_details.fee || undefined,
  currency: lineup.contract_details.currency || "",
  payment_terms: lineup.contract_details.payment_terms || "",
- contract_signed: lineup.contract_details.contract_signed || false,
+ contract_signed: lineup.contract_details.contract_signed || false
  },
  notes: lineup.notes || "",
  tags: lineup.tags || [],
- metadata: lineup.metadata || {},
+ metadata: lineup.metadata || {}
  });
  
  setSelectedEquipment(lineup.technical_requirements.equipment || []);
@@ -143,25 +143,25 @@ export default function EditProgrammingLineupDrawer({
  email: data.contact_info?.email || undefined,
  phone: data.contact_info?.phone || undefined,
  agent: data.contact_info?.agent || undefined,
- manager: data.contact_info?.manager || undefined,
+ manager: data.contact_info?.manager || undefined
  },
  technical_requirements: {
  sound_check: data.technical_requirements?.sound_check || undefined,
  equipment: selectedEquipment.length > 0 ? selectedEquipment : undefined,
- special_requests: data.technical_requirements?.special_requests || undefined,
+ special_requests: data.technical_requirements?.special_requests || undefined
  },
  contract_details: {
  fee: data.contract_details?.fee || undefined,
  currency: data.contract_details?.currency || undefined,
  payment_terms: data.contract_details?.payment_terms || undefined,
- contract_signed: data.contract_details?.contract_signed || false,
- },
+ contract_signed: data.contract_details?.contract_signed || false
+ }
  };
  
  const response = await fetch(`/api/v1/programming/lineups/${lineup.id}`, {
  method: "PATCH",
  headers: { "Content-Type": "application/json" },
- body: JSON.stringify(payload),
+ body: JSON.stringify(payload)
  });
 
  if (!response.ok) {

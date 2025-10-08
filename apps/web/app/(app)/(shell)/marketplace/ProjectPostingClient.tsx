@@ -1,6 +1,6 @@
 'use client';
 
-import { Plus, Edit, Trash2, Eye, Calendar, DollarSign, MapPin, Users, Paperclip, Search, AlertCircle } from "lucide-react";
+import { Plus, Edit, Trash2, Eye, Calendar, DollarSign, MapPin, Users, Paperclip, Search, AlertCircle, Key } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from 'react';
 import {
  Card,
@@ -12,7 +12,7 @@ import {
  SelectContent,
  SelectItem,
  SelectTrigger,
- SelectValue,
+ SelectValue
 } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { AppDrawer } from '@ghxstship/ui';
@@ -133,7 +133,7 @@ const createInitialFormData = (): ProjectFormData => ({
  duration: '',
  isUrgent: false,
  locationType: 'remote',
- visibility: 'public',
+ visibility: 'public'
 });
 
 export default function ProjectPostingClient({ userId, orgId }: ProjectPostingClientProps) {
@@ -218,7 +218,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  duration: project.duration ?? '',
  isUrgent: project.is_urgent ?? false,
  locationType: (project.location_type as ProjectLocationType) || 'remote',
- visibility: (project.visibility as ProjectVisibility) || 'public',
+ visibility: (project.visibility as ProjectVisibility) || 'public'
  });
  } else {
  setSelectedProject(null);
@@ -385,7 +385,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  visibility: formData.visibility,
  client_id: userId,
  organization_id: orgId,
- status: selectedProject?.status || 'open',
+ status: selectedProject?.status || 'open'
  };
 
  try {
@@ -786,7 +786,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  </div>
  </div>
  </form>
- ),
+ )
  }]}
  />
  </div>

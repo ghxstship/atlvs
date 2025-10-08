@@ -50,7 +50,7 @@ const FileSchema = z.object({
   permissions: z.object({
     view: z.array(z.string()),
     edit: z.array(z.string()),
-    delete: z.array(z.string()),
+    delete: z.array(z.string())
   }).optional(),
   metadata: z.record(z.any()).optional(),
   version: z.number().int().positive().default(1),
@@ -66,7 +66,7 @@ const FileSchema = z.object({
   expires_at: z.date().optional(),
   tags: z.array(z.string()).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 // Folder Schema
@@ -86,14 +86,14 @@ const FolderSchema = z.object({
   permissions: z.object({
     view: z.array(z.string()),
     edit: z.array(z.string()),
-    delete: z.array(z.string()),
+    delete: z.array(z.string())
   }).optional(),
   file_count: z.number().int().default(0),
   total_size: z.number().int().default(0),
   is_system: z.boolean().default(false),
   tags: z.array(z.string()).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export const filesModuleConfig: ModuleConfig = {

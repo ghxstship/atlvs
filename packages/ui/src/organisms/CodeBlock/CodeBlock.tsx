@@ -1,116 +1,107 @@
+/**
+ * CodeBlock Component — Syntax Highlighted Code
+ * Display code with syntax highlighting
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
+ */
+
 'use client';
 
-import * as React from 'react';
-import { useTheme } from '../../providers/ThemeProvider';
+import React from 'react';
+import { Copy, Check } from 'lucide-react';
 
 export interface CodeBlockProps {
-  /** Code content to display */
+  /** Code content */
   code: string;
-  /** Programming language for syntax highlighting */
+  
+  /** Language */
   language?: string;
+  
   /** Show line numbers */
   showLineNumbers?: boolean;
-  /** Highlight specific lines (1-indexed) */
-  highlightLines?: number[];
-  /** Optional className */
-  className?: string;
-  /** Optional title */
-  title?: string;
+  
+  /** Allow copy */
+  allowCopy?: boolean;
+  
+  /** Max height */
+  maxHeight?: string;
 }
 
 /**
- * CodeBlock - Theme-aware code block with syntax highlighting
- * 
- * Automatically adapts syntax highlighting theme based on current theme.
- * Supports multiple syntax highlighters (Prism, Highlight.js, Shiki).
- * 
- * @example
- * ```tsx
- * <CodeBlock
- *   code="const hello = 'world';"
- *   language="typescript"
- *   showLineNumbers
- *   title="example.ts"
- * />
- * ```
+ * CodeBlock Component
  */
-export function CodeBlock({
+export const CodeBlock: React.FC<CodeBlockProps> = ({
   code,
   language = 'text',
-  showLineNumbers = false,
-  highlightLines = [],
-  className = '',
-  title,
-}: CodeBlockProps) {
-  const { effectiveTheme } = useTheme();
-  const isDark = effectiveTheme.includes('dark');
-  const codeRef = React.useRef<HTMLElement>(null);
-
-  // Apply syntax highlighting on mount and theme change
-  React.useEffect(() => {
-    if (!codeRef.current) return;
-
-    // Check for Prism.js
-    if (typeof window !== 'undefined' && (window as any).Prism) {
-      (window as any).Prism.highlightElement(codeRef.current);
+  showLineNumbers = true,
+  allowCopy = true,
+  maxHeight = '500px',
+}) => {
+  const [copied, setCopied] = React.useState(false);
+  
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy code:', err);
     }
-    
-    // Check for Highlight.js
-    if (typeof window !== 'undefined' && (window as any).hljs) {
-      (window as any).hljs.highlightElement(codeRef.current);
-    }
-  }, [code, language, isDark]);
-
+  };
+  
   const lines = code.split('\n');
-
+  
   return (
-    <div className={`code-block ${className}`} data-theme={isDark ? 'dark' : 'light'}>
-      {title && (
-        <div className="code-block-title bg-muted px-md py-sm text-sm font-medium border-b border-border">
-          {title}
+    <div className="relative group">
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-2 bg-[var(--color-muted)] border-b border-[var(--color-border)] rounded-t-lg">
+        <div className="text-sm text-[var(--color-foreground-secondary)] font-mono">
+          {language}
         </div>
-      )}
-      <div className="code-block-content relative">
-        <pre className="bg-card text-card-foreground p-md rounded-lg overflow-x-auto">
-          <code
-            ref={codeRef}
-            className={`language-${language}`}
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.875rem',
-              lineHeight: '1.5',
-            }}
+        {allowCopy && (
+          <button
+            onClick={handleCopy}
+            className="
+              flex items-center gap-1 px-2 py-1 rounded
+              text-sm text-[var(--color-foreground-secondary)]
+              hover:bg-[var(--color-background)] hover:text-[var(--color-foreground)]
+              transition-colors
+            "
           >
+            {copied ? (
+              <>
+                <Check className="w-4 h-4" />
+                Copied
+              </>
+            ) : (
+              <>
+                <Copy className="w-4 h-4" />
+                Copy
+              </>
+            )}
+          </button>
+        )}
+      </div>
+      
+      {/* Code */}
+      <div
+        className="overflow-auto bg-[var(--color-surface)] border border-[var(--color-border)] border-t-0 rounded-b-lg"
+        style={{ maxHeight }}
+      >
+        <pre className="p-4">
+          <code className="text-sm font-mono">
             {showLineNumbers ? (
-              <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+              <table className="w-full">
                 <tbody>
-                  {lines.map((line, index) => {
-                    const lineNumber = index + 1;
-                    const isHighlighted = highlightLines.includes(lineNumber);
-                    return (
-                      <tr
-                        key={index}
-                        style={{
-                          backgroundColor: isHighlighted
-                            ? 'var(--color-accent)'
-                            : 'transparent',
-                        }}
-                      >
-                        <td
-                          style={{
-                            paddingRight: '1rem',
-                            textAlign: 'right',
-                            userSelect: 'none',
-                            color: 'var(--color-muted-foreground)',
-                            minWidth: '3ch',
-                          }}
-                        >
-                          {lineNumber}
-                        </td>
-                        <td style={{ paddingLeft: '1rem' }}>{line}</td>
-                      </tr>
-                    );
-                  })}
+                  {lines.map((line, index) => (
+                    <tr key={index}>
+                      <td className="pr-4 text-right text-[var(--color-foreground-muted)] select-none w-12">
+                        {index + 1}
+                      </td>
+                      <td className="whitespace-pre">{line || ' '}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             ) : (
@@ -121,20 +112,6 @@ export function CodeBlock({
       </div>
     </div>
   );
-}
+};
 
-/**
- * Apply syntax highlighting theme on mount
- */
-export function useSyntaxHighlighting(library: 'prism' | 'highlight' = 'prism') {
-  const { effectiveTheme } = useTheme();
-
-  React.useEffect(() => {
-    if (typeof document === 'undefined') return;
-
-    // Dynamically import and apply syntax theme
-    import('../../utils/syntax-theme-adapter').then(({ applySyntaxTheme }) => {
-      applySyntaxTheme(library);
-    });
-  }, [effectiveTheme, library]);
-}
+CodeBlock.displayName = 'CodeBlock';

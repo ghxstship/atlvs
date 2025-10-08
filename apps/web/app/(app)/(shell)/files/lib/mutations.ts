@@ -17,7 +17,7 @@ export class FilesMutationsService {
     const { data, error } = await this.supabase.rpc('create_file_transaction', {
       file_data: input,
       org_id: orgId,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;
@@ -32,7 +32,7 @@ export class FilesMutationsService {
       file_id: id,
       update_data: input,
       user_id: userId,
-      expected_version: version,
+      expected_version: version
     });
 
     if (error) throw error;
@@ -45,7 +45,7 @@ export class FilesMutationsService {
   async bulkUpdateFiles(updates: Array<{ id: string; data: UpdateAssetInput }>, userId: string) {
     const { data, error } = await this.supabase.rpc('bulk_update_files', {
       updates: updates,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;
@@ -58,7 +58,7 @@ export class FilesMutationsService {
   async softDeleteFile(id: string, userId: string) {
     const { data, error } = await this.supabase.rpc('soft_delete_file', {
       file_id: id,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;
@@ -71,7 +71,7 @@ export class FilesMutationsService {
   async hardDeleteFile(id: string, userId: string) {
     const { data, error } = await this.supabase.rpc('hard_delete_file', {
       file_id: id,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;
@@ -85,7 +85,7 @@ export class FilesMutationsService {
     const { data, error } = await this.supabase.rpc('bulk_delete_files', {
       file_ids: ids,
       user_id: userId,
-      soft_delete: soft,
+      soft_delete: soft
     });
 
     if (error) throw error;
@@ -98,7 +98,7 @@ export class FilesMutationsService {
   async restoreFile(id: string, userId: string) {
     const { data, error } = await this.supabase.rpc('restore_file', {
       file_id: id,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;
@@ -112,7 +112,7 @@ export class FilesMutationsService {
     const { data, error } = await this.supabase.rpc('create_file_version', {
       file_id: fileId,
       version_data: versionData,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;
@@ -126,7 +126,7 @@ export class FilesMutationsService {
     const { data, error } = await this.supabase.rpc('move_file_to_folder', {
       file_id: fileId,
       folder_id: folderId,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;
@@ -141,7 +141,7 @@ export class FilesMutationsService {
       folder_name: name,
       parent_folder_id: parentId,
       org_id: orgId,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;
@@ -155,7 +155,7 @@ export class FilesMutationsService {
     const { data, error } = await this.supabase.rpc('update_file_folder', {
       folder_id: id,
       folder_updates: updates,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;
@@ -168,7 +168,7 @@ export class FilesMutationsService {
   async deleteFolder(id: string, userId: string) {
     const { data, error } = await this.supabase.rpc('delete_file_folder', {
       folder_id: id,
-      user_id: userId,
+      user_id: userId
     });
 
     if (error) throw error;

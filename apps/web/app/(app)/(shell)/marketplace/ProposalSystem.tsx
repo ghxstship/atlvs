@@ -2,7 +2,7 @@
 
 
 
-import { Send, DollarSign, Calendar, CheckCircle, XCircle, Star, Award, AlertCircle, FileText } from "lucide-react";
+import { Send, DollarSign, Calendar, CheckCircle, XCircle, Star, Award, AlertCircle, FileText, Key } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from 'react';
 import {
  Card,
@@ -14,7 +14,7 @@ import {
  SelectContent,
  SelectItem,
  SelectTrigger,
- SelectValue,
+ SelectValue
 } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { AppDrawer } from '@ghxstship/ui';
@@ -105,7 +105,7 @@ const createInitialFormData = (): ProposalFormData => ({
  estimatedHours: '',
  proposedTimeline: '',
  startAvailability: '',
- questions: '',
+ questions: ''
 });
 
 export default function ProposalSystem({ projectId, vendorId, userId, mode }: ProposalSystemProps) {
@@ -217,7 +217,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  estimatedHours: proposal.estimated_hours != null ? String(proposal.estimated_hours) : '',
  proposedTimeline: proposal.proposed_timeline,
  startAvailability: proposal.start_availability ?? '',
- questions: proposal.questions ?? '',
+ questions: proposal.questions ?? ''
  });
  } else {
  setSelectedProposal(null);
@@ -299,7 +299,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  questions: trimmedQuestions || null,
  project_id: projectId,
  vendor_id: vendorId,
- status: 'submitted',
+ status: 'submitted'
  };
 
  try {
@@ -314,7 +314,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  await supabase.rpc('increment', {
  table_name: 'opendeck_projects',
  column_name: 'proposals_count',
- row_id: projectId,
+ row_id: projectId
  });
 
  setDrawerOpen(false);
@@ -718,7 +718,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  <div className="p-lg">
  <p className="text-body-sm color-muted">Proposal details are available in the cards above.</p>
  </div>
- ),
+ )
  }]}
  />
  </div>

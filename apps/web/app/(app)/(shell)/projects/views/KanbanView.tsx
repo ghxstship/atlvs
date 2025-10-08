@@ -32,7 +32,7 @@ export default function KanbanView({
   onMoveCard,
   loading = false,
   emptyMessage = "No data available",
-  className = "",
+  className = ""
 }: KanbanViewProps) {
   // Group data by status/column
   const groupedData = React.useMemo(() => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar, Clock, MapPin, Users, AlertCircle, Tag, Plus, X, Trash2 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import {
  AppDrawer,
@@ -9,7 +9,7 @@ import {
  Input,
  Select,
  Textarea,
- toast,
+ toast
 } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import type { ProgrammingEvent, ProgrammingEventProject } from "../types";
@@ -31,7 +31,7 @@ export default function EditProgrammingEventDrawer({
  orgId,
  currentUserId,
  projects,
- onSuccess,
+ onSuccess
 }: EditProgrammingEventDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -52,7 +52,7 @@ export default function EditProgrammingEventDrawer({
  timezone: "UTC",
  is_all_day: false,
  broadcast_url: "",
- tags: [] as string[],
+ tags: [] as string[]
  });
 
  const [errors, setErrors] = useState<Record<string, string>({});
@@ -76,7 +76,7 @@ export default function EditProgrammingEventDrawer({
  timezone: event.timezone || "UTC",
  is_all_day: event.is_all_day,
  broadcast_url: event.broadcast_url || "",
- tags: event.tags || [],
+ tags: event.tags || []
  });
  }
  }, [event]);
@@ -113,7 +113,7 @@ export default function EditProgrammingEventDrawer({
  if (tag && !formData.tags.includes(tag)) {
  setFormData({
  ...formData,
- tags: [...formData.tags, tag],
+ tags: [...formData.tags, tag]
  });
  setTagInput("");
  }
@@ -123,7 +123,7 @@ export default function EditProgrammingEventDrawer({
  const handleRemoveTag = (tag: string) => {
  setFormData({
  ...formData,
- tags: formData.tags.filter(t => t !== tag),
+ tags: formData.tags.filter(t => t !== tag)
  });
  };
 
@@ -154,8 +154,8 @@ export default function EditProgrammingEventDrawer({
  tags: formData.tags,
  resources: event.resources || [],
  staffing: event.staffing || [],
- metadata: event.metadata || {},
- }),
+ metadata: event.metadata || {}
+ })
  });
 
  if (!response.ok) {
@@ -181,7 +181,7 @@ export default function EditProgrammingEventDrawer({
  setLoading(true);
  try {
  const response = await fetch(`/api/v1/programming/events/${event.id}`, {
- method: "DELETE",
+ method: "DELETE"
  });
 
  if (!response.ok) {

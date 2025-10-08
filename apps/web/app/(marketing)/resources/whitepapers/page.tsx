@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, FileText, Download, Lock, Calendar, Users, TrendingUp, Eye } from 'lucide-react';
+import { ArrowRight, Calendar, Download, Eye, FileText, Lock, TrendingUp, Users } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
 import { MarketingSection } from '../../../_components/marketing';
 
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Whitepapers | GHXSTSHIP Resources',
     description: 'In-depth research and analysis on production management trends, industry insights, and best practices.',
-    url: 'https://ghxstship.com/resources/whitepapers',
-  },
+    url: 'https://ghxstship.com/resources/whitepapers'
+  }
 };
 
 const whitepapers = [
@@ -28,7 +28,7 @@ const whitepapers = [
     isPremium: true,
     featured: true,
     topics: ['Technology Trends', 'Workforce Evolution', 'Market Analysis', 'Future Predictions'],
-    preview: 'The production management landscape is undergoing rapid transformation. This report analyzes key trends including AI adoption, remote collaboration tools, and changing workforce expectations.',
+    preview: 'The production management landscape is undergoing rapid transformation. This report analyzes key trends including AI adoption, remote collaboration tools, and changing workforce expectations.'
   },
   {
     id: 'budget-optimization-strategies',
@@ -41,7 +41,7 @@ const whitepapers = [
     isPremium: true,
     featured: false,
     topics: ['Cost Reduction', 'Budget Planning', 'ROI Optimization', 'Risk Management'],
-    preview: 'Analysis of 50+ productions reveals key strategies for optimizing budgets without compromising quality or safety standards.',
+    preview: 'Analysis of 50+ productions reveals key strategies for optimizing budgets without compromising quality or safety standards.'
   },
   {
     id: 'remote-production-playbook',
@@ -54,7 +54,7 @@ const whitepapers = [
     isPremium: false,
     featured: true,
     topics: ['Remote Teams', 'Digital Workflows', 'Communication', 'Technology Stack'],
-    preview: 'Practical strategies for maintaining productivity and team cohesion when managing productions across multiple locations and time zones.',
+    preview: 'Practical strategies for maintaining productivity and team cohesion when managing productions across multiple locations and time zones.'
   },
   {
     id: 'safety-compliance-framework',
@@ -67,7 +67,7 @@ const whitepapers = [
     isPremium: true,
     featured: false,
     topics: ['Safety Protocols', 'Regulatory Compliance', 'Risk Assessment', 'Incident Prevention'],
-    preview: 'Comprehensive framework addressing new safety challenges in modern production environments, including technology integration and remote oversight.',
+    preview: 'Comprehensive framework addressing new safety challenges in modern production environments, including technology integration and remote oversight.'
   },
   {
     id: 'vendor-relationship-study',
@@ -80,7 +80,7 @@ const whitepapers = [
     isPremium: false,
     featured: false,
     topics: ['Vendor Selection', 'Contract Negotiation', 'Performance Metrics', 'Relationship Building'],
-    preview: 'Analysis of vendor relationships across 100+ productions reveals key factors for successful long-term partnerships.',
+    preview: 'Analysis of vendor relationships across 100+ productions reveals key factors for successful long-term partnerships.'
   },
   {
     id: 'technology-adoption-report',
@@ -93,7 +93,7 @@ const whitepapers = [
     isPremium: true,
     featured: false,
     topics: ['Tech ROI', 'Implementation Strategies', 'Change Management', 'Performance Metrics'],
-    preview: 'Quantitative analysis of technology investments across various production types, with clear ROI calculations and implementation timelines.',
+    preview: 'Quantitative analysis of technology investments across various production types, with clear ROI calculations and implementation timelines.'
   },
 ];
 
@@ -364,17 +364,17 @@ export default function WhitepapersPage() {
               {
                 title: 'Quarterly Industry Reports',
                 description: 'Comprehensive analysis of production management trends and market changes',
-                frequency: 'Every 3 months',
+                frequency: 'Every 3 months'
               },
               {
                 title: 'Exclusive Research Access',
                 description: 'Early access to all whitepapers and research reports before public release',
-                frequency: 'Immediate access',
+                frequency: 'Immediate access'
               },
               {
                 title: 'Custom Research Requests',
                 description: 'Request specific research topics relevant to your production challenges',
-                frequency: 'On demand',
+                frequency: 'On demand'
               },
             ].map((benefit, index) => (
               <Card key={index} className="hover:shadow-elevation-3 transition-shadow text-center">

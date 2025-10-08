@@ -1,10 +1,10 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { Activity, AlertCircle, Award, Calendar, CheckCircle, ChevronRight, Clock, Edit, ExternalEye, ExternalEye, ExternalLink, Eye, FileText, MapPin, Package, Play, Plus, Search, Settings, Trash2, TrendingUp, Truck, User } from 'lucide-react';
 import { useState } from 'react';
 import { Card, Badge, Button, Checkbox } from '@ghxstship/ui';
 import Link from 'next/link';
 import type { TrackingItem, TrackingEvent } from '../types';
-import { formatCurrency, formatDate, formatDateTime, getStatusColor, getPriorityColor, getPerformanceColor, calculateDeliveryPerformance } from '../types';
+import { formatCurrency, formatDate, formatDateTime, getPerformanceColor, calculateDeliveryPerformance } from '../types';
 
 interface TrackingTimelineViewProps {
  items: TrackingItem[];
@@ -25,7 +25,7 @@ export default function TrackingTimelineView({
  onItemClick,
  onEditItem,
  onViewItem,
- onTrackPackage,
+ onTrackPackage
 }: TrackingTimelineViewProps) {
  const [expandedItems, setExpandedItems] = useState<Set<string>(new Set());
 
@@ -117,9 +117,7 @@ export default function TrackingTimelineView({
  <div className="flex items-center gap-md">
  <Checkbox
  checked={selectedItems.length === items.length && items.length > 0}
- onCheckedChange={handleSelectAll}
- aria-
- />
+ onCheckedChange={handleSelectAll} />
  <span className="text-sm text-gray-600">
  {selectedItems.length > 0 ? `${selectedItems.length} selected` : `${items.length} items`}
  </span>

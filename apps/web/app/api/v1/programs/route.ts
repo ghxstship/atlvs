@@ -68,7 +68,7 @@ const CreateProgramSchema = z.object({
       findings: z.string().optional()
     })).optional()
   }).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 const UpdateProgramSchema = CreateProgramSchema.partial();

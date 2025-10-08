@@ -1,7 +1,7 @@
 'use client';
 
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@ghxstship/ui';
+import { Card, CardBody, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { Activity, TrendingUp, AlertCircle } from 'lucide-react';
 
 export default function MonitoringDashboard() {

@@ -2,7 +2,20 @@
 
 
 import { useEffect, useState } from 'react';
-import { Drawer, type Button, Card, Badge } from '@ghxstship/ui';
+import {
+  Drawer,
+  type Button,
+  Card,
+  Badge,
+  StateManagerProvider,
+  DataViewProvider,
+  ViewSwitcher,
+  DataActions,
+  DataGrid,
+  KanbanBoard,
+  ListView,
+  Button
+} from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, MapPin, Users, Square, Home, Coffee, Presentation } from 'lucide-react';

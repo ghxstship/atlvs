@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, Badge } from '@ghxstship/ui';
-import { Shield, Activity, Database, Users, Settings, AlertTriangle } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, Badge } from '@ghxstship/ui';
+import { Activity, AlertTriangle, Database, Settings, Shield, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Enterprise Dashboard | GHXSTSHIP',
-  description: 'Enterprise-grade monitoring, security, and compliance dashboard',
+  description: 'Enterprise-grade monitoring, security, and compliance dashboard'
 };
 
 export default function EnterprisePage() {
@@ -16,7 +16,7 @@ export default function EnterprisePage() {
       href: '/admin/enterprise/monitoring',
       icon: Activity,
       color: 'color-accent',
-      bgColor: 'bg-accent/10',
+      bgColor: 'bg-accent/10'
     },
     {
       title: 'Security Dashboard',
@@ -24,7 +24,7 @@ export default function EnterprisePage() {
       href: '/admin/enterprise/security',
       icon: Shield,
       color: 'color-success',
-      bgColor: 'bg-success/10',
+      bgColor: 'bg-success/10'
     },
     {
       title: 'Database Management',
@@ -32,7 +32,7 @@ export default function EnterprisePage() {
       href: '/admin/enterprise/database',
       icon: Database,
       color: 'color-secondary',
-      bgColor: 'bg-secondary/10',
+      bgColor: 'bg-secondary/10'
     },
     {
       title: 'User Management',
@@ -40,7 +40,7 @@ export default function EnterprisePage() {
       href: '/admin/enterprise/users',
       icon: Users,
       color: 'color-warning',
-      bgColor: 'bg-warning/10',
+      bgColor: 'bg-warning/10'
     },
     {
       title: 'System Configuration',
@@ -48,7 +48,7 @@ export default function EnterprisePage() {
       href: '/admin/enterprise/settings',
       icon: Settings,
       color: 'color-muted',
-      bgColor: 'bg-muted/30',
+      bgColor: 'bg-muted/30'
     },
     {
       title: 'Incident Management',
@@ -56,7 +56,7 @@ export default function EnterprisePage() {
       href: '/admin/enterprise/incidents',
       icon: AlertTriangle,
       color: 'color-destructive',
-      bgColor: 'bg-destructive/10',
+      bgColor: 'bg-destructive/10'
     },
   ];
 

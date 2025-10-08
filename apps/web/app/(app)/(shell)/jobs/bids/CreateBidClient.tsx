@@ -6,7 +6,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Plus, Loader2, AlertCircle } from 'lucide-react';
+import { Plus, Loader2, AlertCircle } from 'lucide-react';import { Button, UnifiedInput, Select, Textarea, Drawer } from '@ghxstship/ui';
+import { Button, Select, Textarea, Drawer } from '@ghxstship/ui';
+
 import { usePostHog } from 'posthog-js/react';
 
 const createBidSchema = z.object({
@@ -19,7 +21,7 @@ const createBidSchema = z.object({
   currency: z.string().default('USD'),
   estimatedDuration: z.string().optional(),
   responseDeadline: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 type CreateBidFormData = z.infer<typeof createBidSchema>;
@@ -40,14 +42,14 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
     register,
     handleSubmit,
     reset,
-    formState: { errors, isValid },
+    formState: { errors, isValid }
   } = useForm<CreateBidFormData>({
     resolver: zodResolver(createBidSchema),
     mode: 'onChange',
     defaultValues: {
       type: 'fixed_price',
-      currency: 'USD',
-    },
+      currency: 'USD'
+    }
   });
 
   const onSubmit = async (data: CreateBidFormData) => {
@@ -58,20 +60,20 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
       posthog?.capture('jobs_bid_create_attempt', {
         organization_id: orgId,
         bid_type: data.type,
-        amount: data.amount,
+        amount: data.amount
       });
 
       const response = await fetch('/api/v1/jobs/bids', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
         body: JSON.stringify({
           ...data,
           organization_id: orgId,
-          status: 'draft',
-        }),
+          status: 'draft'
+        })
       });
 
       if (!response.ok) {
@@ -84,7 +86,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
       posthog?.capture('jobs_bid_create_success', {
         organization_id: orgId,
         bid_id: result.id,
-        bid_type: data.type,
+        bid_type: data.type
       });
 
       // Log activity
@@ -97,8 +99,8 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
           title: data.title,
           type: data.type,
           amount: data.amount,
-          currency: data.currency,
-        },
+          currency: data.currency
+        }
       });
 
       reset();
@@ -110,7 +112,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
       
       posthog?.capture('jobs_bid_create_error', {
         organization_id: orgId,
-        error: errorMessage,
+        error: errorMessage
       });
     } finally {
       setIsSubmitting(false);

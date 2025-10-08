@@ -6,7 +6,7 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from '@ghxstship/ui';
 import { Badge } from '@ghxstship/ui';
 import { Button } from '@ghxstship/ui';
@@ -14,7 +14,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@ghxstship/ui';
 import {
   MoreHorizontal,
@@ -48,7 +48,7 @@ export default function TableView({
   onListingDelete,
   onListingView,
   selectedListings = [],
-  onSelectionChange,
+  onSelectionChange
 }: TableViewProps) {
   const [sortField, setSortField] = useState<string>('created_at');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
@@ -59,7 +59,7 @@ export default function TableView({
     queryFn: () => marketplaceService.getListings(orgId, {
       ...filters,
       sortBy: sortField,
-      sortOrder: sortDirection,
+      sortOrder: sortDirection
     }),
     refetchInterval: 30000, // Refresh every 30 seconds
   });
@@ -98,7 +98,7 @@ export default function TableView({
     if (!amount) return '-';
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency,
+      currency
     }).format(amount);
   };
 

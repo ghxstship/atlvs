@@ -41,7 +41,7 @@ const ListingSchema = z.object({
   rating: z.number().min(1).max(5).optional(),
   review_count: z.number().int().default(0),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const VendorSchema = z.object({
@@ -62,7 +62,7 @@ const VendorSchema = z.object({
   verified: z.boolean().default(false),
   status: z.enum(['active', 'inactive', 'suspended']),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export const marketplaceModuleConfig: ModuleConfig = {

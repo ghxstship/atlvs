@@ -1,9 +1,8 @@
 'use client';
+import { Button, Card, Input, Select, Skeleton } from '@ghxstship/ui';
 
 import React, { useState } from 'react';
-import { Button } from '@ghxstship/ui/atoms';
-import { Select } from '@ghxstship/ui/atoms';
-import { Skeleton, SkeletonText, SkeletonCircle } from '@ghxstship/ui/atoms';
+import { Button, Select, Skeleton, SkeletonCircle, SkeletonText } from '@ghxstship/ui/atoms';
 import { SearchBar } from '@ghxstship/ui/molecules';
 import { Card } from '@ghxstship/ui/organisms';
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { Edit, Trash2, MapPin, Calendar, User, AlertTriangle } from 'lucide-react';
 import { Card, Badge, Button, Checkbox } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import type { Inspection } from "../InspectionsClient";
@@ -32,7 +33,7 @@ export default function InspectionGridView({
  getTypeIcon,
  getStatusBadgeVariant,
  getTypeBadgeVariant,
- getScoreColor,
+ getScoreColor
 }: InspectionGridViewProps) {
  const getStatusIcon = (status: string) => {
  switch (status) {

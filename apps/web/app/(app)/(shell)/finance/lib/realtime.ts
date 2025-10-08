@@ -114,9 +114,9 @@ export class FinanceRealtime {
    const channel = this.supabase.channel(channelName, {
      config: {
        presence: {
-         key: userId,
-       },
-     },
+         key: userId
+       }
+     }
    });
 
    // Handle presence events
@@ -136,7 +136,7 @@ export class FinanceRealtime {
          await channel.track({
            user_id: userId,
            user_email: userEmail,
-           online_at: new Date().toISOString(),
+           online_at: new Date().toISOString()
          });
        }
      });

@@ -9,7 +9,7 @@ import type {
  WorkshopType,
  WorkshopStatus,
  WorkshopSkillLevel,
- WorkshopFormat,
+ WorkshopFormat
 } from '../types';
 
 interface User {
@@ -95,7 +95,7 @@ export default function CreateProgrammingWorkshopDrawer({
  projects,
  events,
  users,
- onSuccess,
+ onSuccess
 }: CreateProgrammingWorkshopDrawerProps) {
  const [loading, setLoading] = useState(false);
 
@@ -107,7 +107,7 @@ export default function CreateProgrammingWorkshopDrawer({
  options: [
  { label: 'No Project', value: '' },
  ...projects.map((project) => ({ label: project.name, value: project.id })),
- ],
+ ]
  },
  {
  key: 'event_id',
@@ -119,131 +119,131 @@ export default function CreateProgrammingWorkshopDrawer({
  label: `${event.title} - ${new Date(event.start_at).toLocaleDateString()}`, 
  value: event.id 
  })),
- ],
+ ]
  },
  {
  key: 'title',
  label: 'Workshop Title',
  type: 'text',
  required: true,
- placeholder: 'Enter workshop title',
+ placeholder: 'Enter workshop title'
  },
  {
  key: 'description',
  label: 'Description',
  type: 'textarea',
- placeholder: 'Describe the workshop content and goals',
+ placeholder: 'Describe the workshop content and goals'
  },
  {
  key: 'category',
  label: 'Category',
  type: 'select',
  required: true,
- options: CATEGORY_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: CATEGORY_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'type',
  label: 'Type',
  type: 'select',
- options: TYPE_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: TYPE_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'status',
  label: 'Status',
  type: 'select',
- options: STATUS_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: STATUS_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'skill_level',
  label: 'Skill Level',
  type: 'select',
- options: SKILL_LEVEL_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: SKILL_LEVEL_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'format',
  label: 'Format',
  type: 'select',
- options: FORMAT_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: FORMAT_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'start_date',
  label: 'Start Date & Time',
  type: 'date',
- required: true,
+ required: true
  },
  {
  key: 'end_date',
  label: 'End Date & Time',
- type: 'date',
+ type: 'date'
  },
  {
  key: 'duration_minutes',
  label: 'Duration (minutes)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'location',
  label: 'Location',
  type: 'text',
- placeholder: 'Physical location or address',
+ placeholder: 'Physical location or address'
  },
  {
  key: 'venue',
  label: 'Venue',
  type: 'text',
- placeholder: 'Venue name',
+ placeholder: 'Venue name'
  },
  {
  key: 'virtual_link',
  label: 'Virtual Link',
  type: 'text',
- placeholder: 'Zoom, Teams, or other virtual meeting link',
+ placeholder: 'Zoom, Teams, or other virtual meeting link'
  },
  {
  key: 'max_participants',
  label: 'Max Participants',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'min_participants',
  label: 'Min Participants',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'registration_opens_at',
  label: 'Registration Opens',
- type: 'date',
+ type: 'date'
  },
  {
  key: 'registration_deadline',
  label: 'Registration Deadline',
- type: 'date',
+ type: 'date'
  },
  {
  key: 'price',
  label: 'Price',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'currency',
  label: 'Currency',
  type: 'text',
- placeholder: 'USD, EUR, GBP, etc.',
+ placeholder: 'USD, EUR, GBP, etc.'
  },
  {
  key: 'early_bird_price',
  label: 'Early Bird Price',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'early_bird_deadline',
  label: 'Early Bird Deadline',
- type: 'date',
+ type: 'date'
  },
  {
  key: 'member_discount',
  label: 'Member Discount (%)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'primary_instructor_id',
@@ -255,42 +255,42 @@ export default function CreateProgrammingWorkshopDrawer({
  label: user.full_name || user.email, 
  value: user.id 
  })),
- ],
+ ]
  },
  {
  key: 'objectives',
  label: 'Learning Objectives',
  type: 'textarea',
- placeholder: 'List learning objectives, one per line',
+ placeholder: 'List learning objectives, one per line'
  },
  {
  key: 'prerequisites',
  label: 'Prerequisites',
  type: 'textarea',
- placeholder: 'List prerequisites, one per line',
+ placeholder: 'List prerequisites, one per line'
  },
  {
  key: 'materials_provided',
  label: 'Materials Provided',
  type: 'textarea',
- placeholder: 'List materials provided, one per line',
+ placeholder: 'List materials provided, one per line'
  },
  {
  key: 'materials_required',
  label: 'Materials Required',
  type: 'textarea',
- placeholder: 'List materials participants need to bring, one per line',
+ placeholder: 'List materials participants need to bring, one per line'
  },
  {
  key: 'agenda',
  label: 'Agenda',
  type: 'textarea',
- placeholder: 'Workshop agenda and schedule',
+ placeholder: 'Workshop agenda and schedule'
  },
  {
  key: 'has_assessment',
  label: 'Has Assessment',
- type: 'checkbox',
+ type: 'checkbox'
  },
  {
  key: 'assessment_type',
@@ -302,42 +302,42 @@ export default function CreateProgrammingWorkshopDrawer({
  { label: 'Project', value: 'project' },
  { label: 'Presentation', value: 'presentation' },
  { label: 'Practical', value: 'practical' },
- ],
+ ]
  },
  {
  key: 'certification_available',
  label: 'Certification Available',
- type: 'checkbox',
+ type: 'checkbox'
  },
  {
  key: 'certification_criteria',
  label: 'Certification Criteria',
  type: 'textarea',
- placeholder: 'Requirements for certification',
+ placeholder: 'Requirements for certification'
  },
  {
  key: 'internal_notes',
  label: 'Internal Notes',
  type: 'textarea',
- placeholder: 'Internal notes for staff',
+ placeholder: 'Internal notes for staff'
  },
  {
  key: 'public_notes',
  label: 'Public Notes',
  type: 'textarea',
- placeholder: 'Public notes visible to participants',
+ placeholder: 'Public notes visible to participants'
  },
  {
  key: 'cancellation_policy',
  label: 'Cancellation Policy',
  type: 'textarea',
- placeholder: 'Cancellation and refund policy',
+ placeholder: 'Cancellation and refund policy'
  },
  {
  key: 'tags',
  label: 'Tags',
  type: 'text',
- placeholder: 'Enter tags separated by commas',
+ placeholder: 'Enter tags separated by commas'
  },
  ];
 
@@ -419,13 +419,13 @@ export default function CreateProgrammingWorkshopDrawer({
  public_notes: data.public_notes || null,
  cancellation_policy: data.cancellation_policy || null,
  tags,
- metadata: {},
+ metadata: {}
  };
 
  const response = await fetch('/api/v1/programming/workshops', {
  method: 'POST',
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify(payload),
+ body: JSON.stringify(payload)
  });
 
  if (!response.ok) {

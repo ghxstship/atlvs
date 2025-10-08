@@ -22,7 +22,7 @@ const schema = z.object({
   visa_status: z.enum(['not_required', 'pending', 'approved', 'denied']).optional(),
   total_expense: z.number().min(0).optional(),
   currency: z.string().default('USD'),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 type Values = z.infer<typeof schema>;
@@ -48,9 +48,9 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
       visa_status: 'not_required',
       total_expense: undefined,
       currency: 'USD',
-      notes: '',
+      notes: ''
     },
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   async function onSubmit(values: Values) {
@@ -74,7 +74,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
         total_expense: values.total_expense || null,
         currency: values.currency,
         notes: values.notes || null,
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString()
       };
 
       // Log activity

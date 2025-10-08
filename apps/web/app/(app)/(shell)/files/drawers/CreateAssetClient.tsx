@@ -60,7 +60,7 @@ const categoryIcons = {
  template: File,
  policy: FileText,
  contract: FileText,
- other: File,
+ other: File
 };
 
 const categoryOptions = [

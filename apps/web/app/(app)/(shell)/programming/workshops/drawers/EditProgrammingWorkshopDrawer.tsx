@@ -10,7 +10,7 @@ import type {
  WorkshopType,
  WorkshopStatus,
  WorkshopSkillLevel,
- WorkshopFormat,
+ WorkshopFormat
 } from '../types';
 
 interface User {
@@ -98,7 +98,7 @@ export default function EditProgrammingWorkshopDrawer({
  projects,
  events,
  users,
- onSuccess,
+ onSuccess
 }: EditProgrammingWorkshopDrawerProps) {
  const [loading, setLoading] = useState(false);
 
@@ -110,7 +110,7 @@ export default function EditProgrammingWorkshopDrawer({
  options: [
  { label: 'No Project', value: '' },
  ...projects.map((project) => ({ label: project.name, value: project.id })),
- ],
+ ]
  },
  {
  key: 'event_id',
@@ -122,125 +122,125 @@ export default function EditProgrammingWorkshopDrawer({
  label: `${event.title} - ${new Date(event.start_at).toLocaleDateString()}`, 
  value: event.id 
  })),
- ],
+ ]
  },
  {
  key: 'title',
  label: 'Workshop Title',
  type: 'text',
- required: true,
+ required: true
  },
  {
  key: 'description',
  label: 'Description',
- type: 'textarea',
+ type: 'textarea'
  },
  {
  key: 'category',
  label: 'Category',
  type: 'select',
  required: true,
- options: CATEGORY_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: CATEGORY_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'type',
  label: 'Type',
  type: 'select',
- options: TYPE_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: TYPE_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'status',
  label: 'Status',
  type: 'select',
- options: STATUS_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: STATUS_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'skill_level',
  label: 'Skill Level',
  type: 'select',
- options: SKILL_LEVEL_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: SKILL_LEVEL_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'format',
  label: 'Format',
  type: 'select',
- options: FORMAT_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: FORMAT_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'start_date',
  label: 'Start Date & Time',
  type: 'date',
- required: true,
+ required: true
  },
  {
  key: 'end_date',
  label: 'End Date & Time',
- type: 'date',
+ type: 'date'
  },
  {
  key: 'duration_minutes',
  label: 'Duration (minutes)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'location',
  label: 'Location',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'venue',
  label: 'Venue',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'virtual_link',
  label: 'Virtual Link',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'max_participants',
  label: 'Max Participants',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'min_participants',
  label: 'Min Participants',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'registration_opens_at',
  label: 'Registration Opens',
- type: 'date',
+ type: 'date'
  },
  {
  key: 'registration_deadline',
  label: 'Registration Deadline',
- type: 'date',
+ type: 'date'
  },
  {
  key: 'price',
  label: 'Price',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'currency',
  label: 'Currency',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'early_bird_price',
  label: 'Early Bird Price',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'early_bird_deadline',
  label: 'Early Bird Deadline',
- type: 'date',
+ type: 'date'
  },
  {
  key: 'member_discount',
  label: 'Member Discount (%)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'primary_instructor_id',
@@ -252,41 +252,41 @@ export default function EditProgrammingWorkshopDrawer({
  label: user.full_name || user.email, 
  value: user.id 
  })),
- ],
+ ]
  },
  {
  key: 'objectives',
  label: 'Learning Objectives',
  type: 'textarea',
- placeholder: 'List learning objectives, one per line',
+ placeholder: 'List learning objectives, one per line'
  },
  {
  key: 'prerequisites',
  label: 'Prerequisites',
  type: 'textarea',
- placeholder: 'List prerequisites, one per line',
+ placeholder: 'List prerequisites, one per line'
  },
  {
  key: 'materials_provided',
  label: 'Materials Provided',
  type: 'textarea',
- placeholder: 'List materials provided, one per line',
+ placeholder: 'List materials provided, one per line'
  },
  {
  key: 'materials_required',
  label: 'Materials Required',
  type: 'textarea',
- placeholder: 'List materials participants need to bring, one per line',
+ placeholder: 'List materials participants need to bring, one per line'
  },
  {
  key: 'agenda',
  label: 'Agenda',
- type: 'textarea',
+ type: 'textarea'
  },
  {
  key: 'has_assessment',
  label: 'Has Assessment',
- type: 'checkbox',
+ type: 'checkbox'
  },
  {
  key: 'assessment_type',
@@ -298,42 +298,42 @@ export default function EditProgrammingWorkshopDrawer({
  { label: 'Project', value: 'project' },
  { label: 'Presentation', value: 'presentation' },
  { label: 'Practical', value: 'practical' },
- ],
+ ]
  },
  {
  key: 'certification_available',
  label: 'Certification Available',
- type: 'checkbox',
+ type: 'checkbox'
  },
  {
  key: 'certification_criteria',
  label: 'Certification Criteria',
- type: 'textarea',
+ type: 'textarea'
  },
  {
  key: 'internal_notes',
  label: 'Internal Notes',
- type: 'textarea',
+ type: 'textarea'
  },
  {
  key: 'public_notes',
  label: 'Public Notes',
- type: 'textarea',
+ type: 'textarea'
  },
  {
  key: 'cancellation_policy',
  label: 'Cancellation Policy',
- type: 'textarea',
+ type: 'textarea'
  },
  {
  key: 'refund_policy',
  label: 'Refund Policy',
- type: 'textarea',
+ type: 'textarea'
  },
  {
  key: 'tags',
  label: 'Tags',
- type: 'text',
+ type: 'text'
  },
  ];
 
@@ -377,7 +377,7 @@ export default function EditProgrammingWorkshopDrawer({
  public_notes: workshop.public_notes || '',
  cancellation_policy: workshop.cancellation_policy || '',
  refund_policy: workshop.refund_policy || '',
- tags: workshop.tags?.join(', ') || '',
+ tags: workshop.tags?.join(', ') || ''
  }), [workshop]);
 
  const handleSubmit = async (data: Record<string, unknown>) => {
@@ -458,13 +458,13 @@ export default function EditProgrammingWorkshopDrawer({
  public_notes: data.public_notes || null,
  cancellation_policy: data.cancellation_policy || null,
  refund_policy: data.refund_policy || null,
- tags,
+ tags
  };
 
  const response = await fetch(`/api/v1/programming/workshops/${workshop.id}`, {
  method: 'PATCH',
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify(payload),
+ body: JSON.stringify(payload)
  });
 
  if (!response.ok) {

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, FileText, Code, Zap, Lock, Search, BookOpen, ExternalLink } from 'lucide-react';
+import { ArrowRight, BookOpen, Code, ExternalLink, FileText, Lock, Search, Zap } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
 import { MarketingSection } from '../../../_components/marketing';
 
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Documentation | GHXSTSHIP Resources',
     description: 'Complete technical documentation, API references, and integration guides for GHXSTSHIP platform.',
-    url: 'https://ghxstship.com/resources/documentation',
-  },
+    url: 'https://ghxstship.com/resources/documentation'
+  }
 };
 
 const docSections = [
@@ -24,7 +24,7 @@ const docSections = [
     icon: Zap,
     articles: 8,
     isPremium: false,
-    topics: ['Account Setup', 'First Project', 'Team Invites', 'Basic Navigation'],
+    topics: ['Account Setup', 'First Project', 'Team Invites', 'Basic Navigation']
   },
   {
     id: 'api-reference',
@@ -33,7 +33,7 @@ const docSections = [
     icon: Code,
     articles: 25,
     isPremium: true,
-    topics: ['Authentication', 'Projects API', 'People API', 'Webhooks'],
+    topics: ['Authentication', 'Projects API', 'People API', 'Webhooks']
   },
   {
     id: 'integrations',
@@ -42,7 +42,7 @@ const docSections = [
     icon: ExternalLink,
     articles: 12,
     isPremium: false,
-    topics: ['Zapier', 'Slack', 'Google Workspace', 'Microsoft Teams'],
+    topics: ['Zapier', 'Slack', 'Google Workspace', 'Microsoft Teams']
   },
   {
     id: 'advanced-features',
@@ -51,7 +51,7 @@ const docSections = [
     icon: BookOpen,
     articles: 15,
     isPremium: true,
-    topics: ['Custom Workflows', 'Advanced Reporting', 'SSO Setup', 'Data Export'],
+    topics: ['Custom Workflows', 'Advanced Reporting', 'SSO Setup', 'Data Export']
   },
 ];
 
@@ -62,7 +62,7 @@ const popularDocs = [
     category: 'Getting Started',
     readTime: '5 min',
     isPremium: false,
-    popularity: 'Most Popular',
+    popularity: 'Most Popular'
   },
   {
     title: 'Projects API Documentation',
@@ -70,7 +70,7 @@ const popularDocs = [
     category: 'API Reference',
     readTime: '15 min',
     isPremium: true,
-    popularity: 'Developer Favorite',
+    popularity: 'Developer Favorite'
   },
   {
     title: 'Slack Integration Setup',
@@ -78,7 +78,7 @@ const popularDocs = [
     category: 'Integrations',
     readTime: '8 min',
     isPremium: false,
-    popularity: 'Team Essential',
+    popularity: 'Team Essential'
   },
   {
     title: 'Custom Workflow Builder',
@@ -86,7 +86,7 @@ const popularDocs = [
     category: 'Advanced Features',
     readTime: '20 min',
     isPremium: true,
-    popularity: 'Power User',
+    popularity: 'Power User'
   },
 ];
 
@@ -307,19 +307,19 @@ export default function DocumentationPage() {
                 title: 'API Explorer',
                 description: 'Interactive API documentation with live examples and testing capabilities',
                 icon: Code,
-                isPremium: true,
+                isPremium: true
               },
               {
                 title: 'SDK Libraries',
                 description: 'Official SDKs for JavaScript, Python, PHP, and more programming languages',
                 icon: FileText,
-                isPremium: false,
+                isPremium: false
               },
               {
                 title: 'Webhooks Guide',
                 description: 'Real-time notifications and event-driven integrations with your applications',
                 icon: Zap,
-                isPremium: true,
+                isPremium: true
               },
             ].map((resource, index) => (
               <Card key={index} className="hover:shadow-elevation-3 transition-shadow text-center">

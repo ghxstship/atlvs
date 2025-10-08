@@ -188,7 +188,7 @@ export class JobsPermissions {
 
     return {
       ...basePermissions,
-      update: basePermissions.update || canUpdateOwnBid,
+      update: basePermissions.update || canUpdateOwnBid
     };
   }
 
@@ -293,7 +293,7 @@ export class JobsPermissions {
           create: true,
           read: true,
           update: true,
-          delete: true,
+          delete: true
         };
 
       case 'admin':
@@ -301,7 +301,7 @@ export class JobsPermissions {
           create: true,
           read: true,
           update: true,
-          delete: true,
+          delete: true
         };
 
       case 'manager':
@@ -309,7 +309,7 @@ export class JobsPermissions {
           create: true,
           read: true,
           update: true,
-          delete: false,
+          delete: false
         };
 
       case 'member':
@@ -317,7 +317,7 @@ export class JobsPermissions {
           create: true,
           read: true,
           update: false,
-          delete: false,
+          delete: false
         };
 
       case 'viewer':
@@ -325,7 +325,7 @@ export class JobsPermissions {
           create: false,
           read: true,
           update: false,
-          delete: false,
+          delete: false
         };
 
       default:
@@ -333,7 +333,7 @@ export class JobsPermissions {
           create: false,
           read: false,
           update: false,
-          delete: false,
+          delete: false
         };
     }
   }

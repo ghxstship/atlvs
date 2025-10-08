@@ -1,6 +1,6 @@
 'use client';
 
-import { Calendar, Users, Building, Music, FileText, Clock, TrendingUp, ArrowRight, Activity, BarChart3 } from "lucide-react";
+import { Activity, ArrowRight, BarChart3, Building, Calendar, Clock, FileText, Music, TrendingUp, Users } from 'lucide-react';
 import { useMemo } from 'react';
 import { Badge, Button, Card, Skeleton } from '@ghxstship/ui';
 import Link from 'next/link';
@@ -30,7 +30,7 @@ const iconMap = {
  GraduationCap: Users,
  Users: Users,
  FileText: FileText,
- ClipboardList: FileText,
+ ClipboardList: FileText
 };
 
 export default function ProgrammingOverviewDashboardView({
@@ -39,7 +39,7 @@ export default function ProgrammingOverviewDashboardView({
  quickActions,
  selectedItems,
  onSelectItem,
- onSelectAll,
+ onSelectAll
 }: ProgrammingOverviewDashboardViewProps) {
  const statsCards = useMemo(() => [
  {
@@ -49,7 +49,7 @@ export default function ProgrammingOverviewDashboardView({
  trend: 'up' as const,
  icon: Calendar,
  color: 'text-blue-600',
- bgColor: 'bg-blue-50',
+ bgColor: 'bg-blue-50'
  },
  {
  title: 'Available Spaces',
@@ -58,7 +58,7 @@ export default function ProgrammingOverviewDashboardView({
  trend: 'up' as const,
  icon: Building,
  color: 'text-purple-600',
- bgColor: 'bg-purple-50',
+ bgColor: 'bg-purple-50'
  },
  {
  title: 'Active Workshops',
@@ -67,7 +67,7 @@ export default function ProgrammingOverviewDashboardView({
  trend: 'up' as const,
  icon: Users,
  color: 'text-green-600',
- bgColor: 'bg-green-50',
+ bgColor: 'bg-green-50'
  },
  {
  title: 'Total Revenue',
@@ -76,7 +76,7 @@ export default function ProgrammingOverviewDashboardView({
  trend: 'up' as const,
  icon: TrendingUp,
  color: 'text-emerald-600',
- bgColor: 'bg-emerald-50',
+ bgColor: 'bg-emerald-50'
  },
  {
  title: 'Total Participants',
@@ -85,7 +85,7 @@ export default function ProgrammingOverviewDashboardView({
  trend: 'up' as const,
  icon: Users,
  color: 'text-orange-600',
- bgColor: 'bg-orange-50',
+ bgColor: 'bg-orange-50'
  },
  {
  title: 'Pending Riders',
@@ -94,7 +94,7 @@ export default function ProgrammingOverviewDashboardView({
  trend: 'down' as const,
  icon: FileText,
  color: 'text-yellow-600',
- bgColor: 'bg-yellow-50',
+ bgColor: 'bg-yellow-50'
  },
  ], [data.stats]);
 
@@ -266,7 +266,7 @@ export default function ProgrammingOverviewDashboardView({
  <div
  className="bg-primary h-2 rounded-full"
  style={{
- width: `${Math.min(100, (metrics.completion_rate || 0))}%`,
+ width: `${Math.min(100, (metrics.completion_rate || 0))}%`
  }}
  />
  </div>

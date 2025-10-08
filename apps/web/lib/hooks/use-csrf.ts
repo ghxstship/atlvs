@@ -26,7 +26,7 @@ export function useCSRFToken() {
     try {
       const response = await fetch('/api/csrf-token', {
         method: 'GET',
-        credentials: 'same-origin',
+        credentials: 'same-origin'
       });
 
       if (response.ok) {
@@ -51,7 +51,7 @@ export function useCSRFToken() {
   return {
     csrfToken,
     loading,
-    refreshToken,
+    refreshToken
   };
 }
 
@@ -64,7 +64,7 @@ export function addCSRFTokenToHeaders(headers: HeadersInit = {}, csrfToken?: str
 
   return {
     ...headers,
-    'X-CSRF-Token': token,
+    'X-CSRF-Token': token
   };
 }
 
@@ -101,6 +101,6 @@ export async function csrfFetch(
   return fetch(url, {
     ...options,
     headers,
-    credentials: 'same-origin',
+    credentials: 'same-origin'
   });
 }

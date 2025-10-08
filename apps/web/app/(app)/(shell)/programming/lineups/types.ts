@@ -133,7 +133,7 @@ export const STATUS_BADGE = {
   confirmed: { label: 'Confirmed', variant: 'success' as const },
   tentative: { label: 'Tentative', variant: 'warning' as const },
   cancelled: { label: 'Cancelled', variant: 'destructive' as const },
-  pending: { label: 'Pending', variant: 'default' as const },
+  pending: { label: 'Pending', variant: 'default' as const }
 } as const;
 
 // Performer type configurations
@@ -145,7 +145,7 @@ export const PERFORMER_TYPE_BADGE = {
   host: { label: 'Host', icon: '📺' },
   comedian: { label: 'Comedian', icon: '😄' },
   dancer: { label: 'Dancer', icon: '💃' },
-  other: { label: 'Other', icon: '🎭' },
+  other: { label: 'Other', icon: '🎭' }
 } as const;
 
 // Currency options
@@ -163,7 +163,7 @@ export const VIEW_CONFIG = {
   list: { label: 'List', icon: 'List' },
   grid: { label: 'Grid', icon: 'Grid3X3' },
   timeline: { label: 'Timeline', icon: 'Calendar' },
-  schedule: { label: 'Schedule', icon: 'Clock' },
+  schedule: { label: 'Schedule', icon: 'Clock' }
 } as const;
 
 // Equipment options for technical requirements

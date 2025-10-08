@@ -70,7 +70,7 @@ export class ProjectImports {
         skippedRecords: 0,
         errorRecords: 0,
         errors: [],
-        warnings: [],
+        warnings: []
       };
 
       // Parse CSV
@@ -84,7 +84,7 @@ export class ProjectImports {
         result.success = false;
         result.errors.push({
           row: 0,
-          message: `Missing required headers: ${missingHeaders.join(', ')}`,
+          message: `Missing required headers: ${missingHeaders.join(', ')}`
         });
         return result;
       }
@@ -106,7 +106,7 @@ export class ProjectImports {
         skippedRecords: 0,
         errorRecords: 1,
         errors: [{ row: 0, message: error.message }],
-        warnings: [],
+        warnings: []
       };
     }
   }
@@ -128,7 +128,7 @@ export class ProjectImports {
         skippedRecords: 0,
         errorRecords: 0,
         errors: [],
-        warnings: [],
+        warnings: []
       };
 
       const data = JSON.parse(jsonContent);
@@ -162,7 +162,7 @@ export class ProjectImports {
         skippedRecords: 0,
         errorRecords: 1,
         errors: [{ row: 0, message: error.message }],
-        warnings: [],
+        warnings: []
       };
     }
   }
@@ -185,7 +185,7 @@ export class ProjectImports {
           result.errors.push({
             row: result.totalRecords - rows.length + index + 1,
             message: 'Missing required fields: name or status',
-            data: projectData,
+            data: projectData
           });
           return;
         }
@@ -214,7 +214,7 @@ export class ProjectImports {
             result.errors.push({
               row: result.totalRecords - rows.length + index + 1,
               message: mutationResult.error || 'Unknown error',
-              data: projectData,
+              data: projectData
             });
           }
         } else {
@@ -226,7 +226,7 @@ export class ProjectImports {
         result.errors.push({
           row: result.totalRecords - rows.length + index + 1,
           message: error.message,
-          data: row,
+          data: row
         });
       }
     });
@@ -258,7 +258,7 @@ export class ProjectImports {
           result.errors.push({
             row: startIndex + index + 1,
             message: 'Missing required fields: name or status',
-            data: projectData,
+            data: projectData
           });
           return;
         }
@@ -272,7 +272,7 @@ export class ProjectImports {
             result.errors.push({
               row: startIndex + index + 1,
               message: mutationResult.error || 'Unknown error',
-              data: projectData,
+              data: projectData
             });
           }
         } else {
@@ -283,7 +283,7 @@ export class ProjectImports {
         result.errors.push({
           row: startIndex + index + 1,
           message: error.message,
-          data: project,
+          data: project
         });
       }
     });
@@ -366,7 +366,7 @@ export class TaskImports {
         skippedRecords: 0,
         errorRecords: 0,
         errors: [],
-        warnings: [],
+        warnings: []
       };
 
       const { headers, rows } = this.parseCSV(csvContent);
@@ -397,7 +397,7 @@ export class TaskImports {
         skippedRecords: 0,
         errorRecords: 1,
         errors: [{ row: 0, message: error.message }],
-        warnings: [],
+        warnings: []
       };
     }
   }
@@ -422,7 +422,7 @@ export class TaskImports {
           result.errors.push({
             row: startIndex + index + 1,
             message: 'Missing required fields: title or project',
-            data: taskData,
+            data: taskData
           });
           return;
         }
@@ -436,7 +436,7 @@ export class TaskImports {
             result.errors.push({
               row: startIndex + index + 1,
               message: mutationResult.error || 'Unknown error',
-              data: taskData,
+              data: taskData
             });
           }
         } else {
@@ -447,7 +447,7 @@ export class TaskImports {
         result.errors.push({
           row: startIndex + index + 1,
           message: error.message,
-          data: row,
+          data: row
         });
       }
     });
@@ -538,7 +538,7 @@ export class ComprehensiveProjectImports {
         skippedRecords: 0,
         errorRecords: 0,
         errors: [],
-        warnings: [],
+        warnings: []
       };
 
       // Import in order: projects first, then tasks
@@ -574,7 +574,7 @@ export class ComprehensiveProjectImports {
         skippedRecords: 0,
         errorRecords: 1,
         errors: [{ row: 0, message: error.message }],
-        warnings: [],
+        warnings: []
       };
     }
   }

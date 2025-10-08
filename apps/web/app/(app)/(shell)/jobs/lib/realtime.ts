@@ -55,9 +55,9 @@ export class JobsRealtimeService {
     const channel = this.supabase.channel(channelName, {
       config: {
         presence: {
-          key: options.userId,
-        },
-      },
+          key: options.userId
+        }
+      }
     });
 
     // Jobs table changes
@@ -200,7 +200,7 @@ export class JobsRealtimeService {
         // Track presence
         await channel.track({
           user_id: options.userId,
-          online_at: new Date().toISOString(),
+          online_at: new Date().toISOString()
         });
 
         options.onConnectionStateChange?.('connected');

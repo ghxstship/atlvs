@@ -1,7 +1,7 @@
 'use client';
 
 import { Building, Star, TrendingUp, TrendingDown, DollarSign, Users, Calendar, BarChart3, Activity, Award, MapPin } from "lucide-react";
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import type { Vendor, VendorStats, VendorAnalytics } from '../types';
 import { formatCurrency, formatDate, getBusinessTypeColor } from '../types';
@@ -19,12 +19,13 @@ export default function VendorDashboardView({
  loading = false,
  stats,
  analytics,
- onVendorClick,
+ onVendorClick
 }: VendorDashboardViewProps) {
  const [recentVendors, setRecentVendors] = useState<Vendor[]>([]);
  const [topPerformers, setTopPerformers] = useState<Vendor[]>([]);
  const [topCategories, setTopCategories] = useState<Array<{ category: string; count: number; avgRate: number }>([]);
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  // Get recent vendors (last 10)
  const recent = [...vendors]
@@ -51,7 +52,7 @@ export default function VendorDashboardView({
  categoryMap.set(vendor.primary_category, {
  count: existing.count + 1,
  totalRate: existing.totalRate + (vendor.hourly_rate || 0),
- vendors: existing.vendors + (vendor.hourly_rate ? 1 : 0),
+ vendors: existing.vendors + (vendor.hourly_rate ? 1 : 0)
  });
  }
  });
@@ -60,11 +61,12 @@ export default function VendorDashboardView({
  .map(([category, data]) => ({ 
  category, 
  count: data.count,
- avgRate: data.vendors > 0 ? data.totalRate / data.vendors : 0,
+ avgRate: data.vendors > 0 ? data.totalRate / data.vendors : 0
  }))
  .sort((a, b) => b.count - a.count)
  .slice(0, 5);
  setTopCategories(categories);
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [vendors]);
 
  if (loading) {
@@ -126,7 +128,7 @@ export default function VendorDashboardView({
  weekAgo.setDate(weekAgo.getDate() - 7);
  return new Date(v.created_at) > weekAgo;
  }).length,
- recentlyUpdated: 0,
+ recentlyUpdated: 0
  };
 
  const currentStats = stats || defaultStats;
@@ -251,7 +253,7 @@ export default function VendorDashboardView({
  </div>
  <div className="flex items-center gap-sm">
  <span className="text-sm font-medium">{currentStats.suspendedVendors}</span>
- <Badge variant="destructive" className="text-xs">
+ <Badge variant="error" className="text-xs">
  {Math.round((currentStats.suspendedVendors / currentStats.totalVendors) * 100)}%
  </Badge>
  </div>
@@ -333,7 +335,7 @@ export default function VendorDashboardView({
  <Calendar className="h-icon-xs w-icon-xs" />
  Recent Vendors
  </h3>
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  View All
  </Button>
  </div>

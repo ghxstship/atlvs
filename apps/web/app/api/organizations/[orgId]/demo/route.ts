@@ -69,7 +69,7 @@ export async function POST(req: NextRequest, { params }: { params: { orgId: stri
           path,
           mime_type: a.contentType,
           size: arrayBuf.byteLength,
-          is_demo: true,
+          is_demo: true
         } as any);
       }
     }

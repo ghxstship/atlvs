@@ -41,7 +41,7 @@ export class FilesApiService {
       .insert({
         ...input,
         organization_id: orgId,
-        created_by: userId,
+        created_by: userId
       })
       .select()
       .single();
@@ -59,7 +59,7 @@ export class FilesApiService {
       .update({
         ...input,
         updated_by: userId,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq('id', id)
       .select()
@@ -77,7 +77,7 @@ export class FilesApiService {
       .from('files')
       .update({
         deleted_at: new Date().toISOString(),
-        deleted_by: userId,
+        deleted_by: userId
       })
       .eq('id', id)
       .select()

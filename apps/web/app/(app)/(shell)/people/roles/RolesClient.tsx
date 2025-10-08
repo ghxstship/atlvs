@@ -1,9 +1,9 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
+import { Card, Button, Input, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Search, Edit, Trash2, Shield, Users } from 'lucide-react';
 
@@ -39,8 +39,10 @@ export default function RolesClient({ orgId }: RolesClientProps) {
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadRoles();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, selectedDepartment, selectedLevel]);
 
   const loadRoles = async () => {
@@ -157,7 +159,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
             <div className="flex flex-col sm:flex-row gap-md flex-1">
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted h-icon-xs w-icon-xs" />
-                <UnifiedInput                   placeholder={t('searchPlaceholder')}
+                <Input                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
@@ -200,11 +202,11 @@ export default function RolesClient({ orgId }: RolesClientProps) {
             <div className="border border-border rounded-lg p-md bg-secondary/50">
               <h3 className="text-body form-label color-foreground mb-sm">No roles found</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-                <UnifiedInput                   placeholder={t('roleName')}
+                <Input                   placeholder={t('roleName')}
                   value={newRole.name}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewRole({...newRole, name: e.target.value})}
                 />
-                <UnifiedInput                   placeholder={t('department')}
+                <Input                   placeholder={t('department')}
                   value={newRole.department}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewRole({...newRole, department: e.target.value})}
                 />

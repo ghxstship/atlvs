@@ -78,7 +78,7 @@ export class ActivationsService {
           total: count || 0,
           page,
           per_page: perPage,
-          total_pages: Math.ceil((count || 0) / perPage),
+          total_pages: Math.ceil((count || 0) / perPage)
         }
       };
     } catch (error) {
@@ -122,7 +122,7 @@ export class ActivationsService {
           ...activationData,
           organization_id: orgId,
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .select(`
           *,
@@ -138,7 +138,7 @@ export class ActivationsService {
       await this.logActivity(orgId, userId, 'activations.create', 'activation', data.id, {
         name: data.name,
         status: data.status,
-        activation_type: data.activation_type,
+        activation_type: data.activation_type
       });
 
       return { data };
@@ -159,7 +159,7 @@ export class ActivationsService {
       // Auto-set dates based on status changes
       const updates: unknown = {
         ...updateData,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       if (updateData.status === 'active' && !updateData.actual_date) {
@@ -187,7 +187,7 @@ export class ActivationsService {
 
       // Log audit trail
       await this.logActivity(orgId, userId, 'activations.update', 'activation', id, {
-        updated_fields: Object.keys(updateData),
+        updated_fields: Object.keys(updateData)
       });
 
       return { data };
@@ -223,7 +223,7 @@ export class ActivationsService {
 
       // Log audit trail
       await this.logActivity(orgId, userId, 'activations.delete', 'activation', id, {
-        name: activation?.name || 'Unknown',
+        name: activation?.name || 'Unknown'
       });
 
       return { data: true };
@@ -268,7 +268,7 @@ export class ActivationsService {
         cancelled: 0,
         totalBudget: 0,
         totalActualCost: 0,
-        avgCompletionTime: 0,
+        avgCompletionTime: 0
       } as ActivationStats);
 
       return { data: stats };
@@ -290,7 +290,7 @@ export class ActivationsService {
           event: '*',
           schema: 'public',
           table: 'project_activations',
-          filter: `organization_id=eq.${orgId}`,
+          filter: `organization_id=eq.${orgId}`
         },
         callback
       )
@@ -324,7 +324,7 @@ export class ActivationsService {
           name: `${original.name} (Copy)`,
           status: 'planning',
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .select(`
           *,
@@ -340,7 +340,7 @@ export class ActivationsService {
       await this.logActivity(orgId, userId, 'activations.duplicate', 'activation', data.id, {
         original_id: id,
         original_name: original.name,
-        new_name: data.name,
+        new_name: data.name
       });
 
       return { data };
@@ -359,7 +359,7 @@ export class ActivationsService {
     try {
       const updates: unknown = {
         status,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       // Auto-set dates based on status
@@ -387,7 +387,7 @@ export class ActivationsService {
       await this.logActivity(orgId, userId, 'activations.bulk_status_update', 'activation', null, {
         activation_ids: activationIds,
         new_status: status,
-        count: activationIds.length,
+        count: activationIds.length
       });
 
       return { data: data || [] };
@@ -413,7 +413,7 @@ export class ActivationsService {
         resource_type: resourceType,
         resource_id: resourceId,
         details,
-        occurred_at: new Date().toISOString(),
+        occurred_at: new Date().toISOString()
       });
     } catch (error) {
       console.warn('Failed to log activity:', error);

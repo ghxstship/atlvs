@@ -49,7 +49,7 @@ export class ProgrammingRealtimeService {
           event: '*',
           schema: 'public',
           table: tableName,
-          filter: `organization_id=eq.${organizationId}`,
+          filter: `organization_id=eq.${organizationId}`
         },
         (payload) => {
           this.handleEntityChange(tableName, payload);
@@ -73,7 +73,7 @@ export class ProgrammingRealtimeService {
       id: payload.new?.id || payload.old?.id,
       data: payload.new || payload.old,
       timestamp: new Date(),
-      user_id: payload.new?.updated_by || payload.new?.created_by || 'system',
+      user_id: payload.new?.updated_by || payload.new?.created_by || 'system'
     };
 
     // Broadcast to all subscribers
@@ -93,9 +93,9 @@ export class ProgrammingRealtimeService {
     const channel = this.supabase.channel(presenceKey, {
       config: {
         presence: {
-          key: this.getCurrentUserId(),
-        },
-      },
+          key: this.getCurrentUserId()
+        }
+      }
     });
 
     // Track presence state changes
@@ -116,7 +116,7 @@ export class ProgrammingRealtimeService {
             user_id: this.getCurrentUserId(),
             online_at: new Date().toISOString(),
             current_view: 'programming',
-            organization_id: organizationId,
+            organization_id: organizationId
           });
         }
       });
@@ -195,7 +195,7 @@ export class ProgrammingRealtimeService {
       id: 'sync',
       data: { onlineUsers, presenceState },
       timestamp: new Date(),
-      user_id: 'system',
+      user_id: 'system'
     };
 
     this.broadcastEvent(presenceEvent);
@@ -211,7 +211,7 @@ export class ProgrammingRealtimeService {
       id: key,
       data: { newPresences },
       timestamp: new Date(),
-      user_id: key,
+      user_id: key
     };
 
     this.broadcastEvent(joinEvent);
@@ -227,7 +227,7 @@ export class ProgrammingRealtimeService {
       id: key,
       data: { leftPresences },
       timestamp: new Date(),
-      user_id: key,
+      user_id: key
     };
 
     this.broadcastEvent(leaveEvent);
@@ -244,7 +244,7 @@ export class ProgrammingRealtimeService {
   }): Promise<void> {
     const presenceData = {
       ...activity,
-      last_activity: activity.last_activity || new Date(),
+      last_activity: activity.last_activity || new Date()
     };
 
     // Update presence across all channels
@@ -277,7 +277,7 @@ export class ProgrammingRealtimeService {
       id: this.getCurrentUserId(),
       data: cursorData,
       timestamp: new Date(),
-      user_id: this.getCurrentUserId(),
+      user_id: this.getCurrentUserId()
     };
 
     this.broadcastEvent(cursorEvent);
@@ -293,7 +293,7 @@ export class ProgrammingRealtimeService {
       id: `${entity}_${recordId}`,
       data: { userId: this.getCurrentUserId(), isTyping },
       timestamp: new Date(),
-      user_id: this.getCurrentUserId(),
+      user_id: this.getCurrentUserId()
     };
 
     this.broadcastEvent(typingEvent);
@@ -408,7 +408,7 @@ export class ProgrammingRealtimeService {
       id: operationId,
       data: progress,
       timestamp: new Date(),
-      user_id: this.getCurrentUserId(),
+      user_id: this.getCurrentUserId()
     };
 
     this.broadcastEvent(progressEvent);
@@ -458,7 +458,7 @@ export class ProgrammingRealtimeService {
       itineraries: 'itineraries',
       lineups: 'lineups',
       spaces: 'spaces',
-      workshops: 'workshops',
+      workshops: 'workshops'
     };
 
     return mapping[tableName] || tableName;

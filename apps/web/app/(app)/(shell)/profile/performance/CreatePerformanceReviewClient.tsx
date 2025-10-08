@@ -26,7 +26,7 @@ const schema = z.object({
   goals_achieved: z.string().optional(),
   future_goals: z.string().optional(),
   review_date: z.string().min(1, 'Review date is required'),
-  next_review_date: z.string().optional(),
+  next_review_date: z.string().optional()
 });
 
 type Values = z.infer<typeof schema>;
@@ -56,9 +56,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
       goals_achieved: '',
       future_goals: '',
       review_date: new Date().toISOString().split('T')[0],
-      next_review_date: '',
+      next_review_date: ''
     },
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   async function onSubmit(values: Values) {
@@ -80,7 +80,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
           teamwork: values.teamwork,
           leadership: values.leadership,
           problem_solving: values.problem_solving,
-          adaptability: values.adaptability,
+          adaptability: values.adaptability
         },
         strengths: values.strengths.split(',').map(s => s.trim()),
         improvement_areas: values.improvement_areas.split(',').map(s => s.trim()),
@@ -88,7 +88,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
         future_goals: values.future_goals ? values.future_goals.split(',').map(s => s.trim()) : [],
         review_date: values.review_date,
         next_review_date: values.next_review_date || null,
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString()
       };
 
       // Log activity

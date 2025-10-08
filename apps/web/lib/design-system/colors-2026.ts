@@ -62,7 +62,7 @@ export const lightTheme = {
     secondary: baseColors.grey[50],
     tertiary: baseColors.grey[100],
     inverse: baseColors.grey[900],
-    overlay: 'rgba(0, 0, 0, 0.5)',
+    overlay: 'rgba(0, 0, 0, 0.5)'
   },
   
   // Text colors
@@ -73,7 +73,7 @@ export const lightTheme = {
     disabled: baseColors.grey[400],
     inverse: baseColors.white,
     link: baseColors.metro.blue,
-    linkHover: baseColors.metro.piccadilly,
+    linkHover: baseColors.metro.piccadilly
   },
   
   // Border colors
@@ -82,7 +82,7 @@ export const lightTheme = {
     secondary: baseColors.grey[300],
     focus: baseColors.metro.blue,
     error: baseColors.metro.red,
-    success: baseColors.metro.green,
+    success: baseColors.metro.green
   },
   
   // Interactive states
@@ -92,7 +92,7 @@ export const lightTheme = {
     primaryActive: baseColors.metro.northern,
     secondary: baseColors.grey[100],
     secondaryHover: baseColors.grey[200],
-    secondaryActive: baseColors.grey[300],
+    secondaryActive: baseColors.grey[300]
   },
   
   // Status colors
@@ -104,7 +104,7 @@ export const lightTheme = {
     error: baseColors.metro.red,
     errorBg: '#FEF2F2',
     info: baseColors.metro.blue,
-    infoBg: '#EFF6FF',
+    infoBg: '#EFF6FF'
   },
   
   // Badge colors - subway line inspired
@@ -112,43 +112,43 @@ export const lightTheme = {
     red: {
       bg: baseColors.metro.red,
       text: baseColors.white,
-      border: baseColors.metro.red,
+      border: baseColors.metro.red
     },
     blue: {
       bg: baseColors.metro.blue,
       text: baseColors.white,
-      border: baseColors.metro.blue,
+      border: baseColors.metro.blue
     },
     green: {
       bg: baseColors.metro.green,
       text: baseColors.white,
-      border: baseColors.metro.green,
+      border: baseColors.metro.green
     },
     orange: {
       bg: baseColors.metro.orange,
       text: baseColors.white,
-      border: baseColors.metro.orange,
+      border: baseColors.metro.orange
     },
     purple: {
       bg: baseColors.metro.purple,
       text: baseColors.white,
-      border: baseColors.metro.purple,
+      border: baseColors.metro.purple
     },
     yellow: {
       bg: baseColors.metro.yellow,
       text: baseColors.grey[900],
-      border: baseColors.metro.yellow,
+      border: baseColors.metro.yellow
     },
     grey: {
       bg: baseColors.grey[100],
       text: baseColors.grey[700],
-      border: baseColors.grey[200],
+      border: baseColors.grey[200]
     },
     black: {
       bg: baseColors.grey[900],
       text: baseColors.white,
-      border: baseColors.grey[900],
-    },
+      border: baseColors.grey[900]
+    }
   }
 } as const;
 
@@ -160,7 +160,7 @@ export const darkTheme = {
     secondary: baseColors.grey[900],
     tertiary: baseColors.grey[800],
     inverse: baseColors.grey[50],
-    overlay: 'rgba(0, 0, 0, 0.8)',
+    overlay: 'rgba(0, 0, 0, 0.8)'
   },
   
   // Text colors
@@ -171,7 +171,7 @@ export const darkTheme = {
     disabled: baseColors.grey[600],
     inverse: baseColors.grey[900],
     link: baseColors.metro.victoria,
-    linkHover: baseColors.metro.tozai,
+    linkHover: baseColors.metro.tozai
   },
   
   // Border colors
@@ -180,7 +180,7 @@ export const darkTheme = {
     secondary: baseColors.grey[700],
     focus: baseColors.metro.victoria,
     error: baseColors.metro.central,
-    success: baseColors.metro.chiyoda,
+    success: baseColors.metro.chiyoda
   },
   
   // Interactive states
@@ -190,7 +190,7 @@ export const darkTheme = {
     primaryActive: baseColors.metro.blue,
     secondary: baseColors.grey[800],
     secondaryHover: baseColors.grey[700],
-    secondaryActive: baseColors.grey[600],
+    secondaryActive: baseColors.grey[600]
   },
   
   // Status colors
@@ -202,7 +202,7 @@ export const darkTheme = {
     error: baseColors.metro.central,
     errorBg: 'rgba(227, 32, 23, 0.1)',
     info: baseColors.metro.victoria,
-    infoBg: 'rgba(0, 152, 212, 0.1)',
+    infoBg: 'rgba(0, 152, 212, 0.1)'
   },
   
   // Badge colors - enhanced for dark mode
@@ -210,43 +210,43 @@ export const darkTheme = {
     red: {
       bg: baseColors.metro.central,
       text: baseColors.white,
-      border: baseColors.metro.central,
+      border: baseColors.metro.central
     },
     blue: {
       bg: baseColors.metro.victoria,
       text: baseColors.white,
-      border: baseColors.metro.victoria,
+      border: baseColors.metro.victoria
     },
     green: {
       bg: baseColors.metro.chiyoda,
       text: baseColors.white,
-      border: baseColors.metro.chiyoda,
+      border: baseColors.metro.chiyoda
     },
     orange: {
       bg: baseColors.metro.ginza,
       text: baseColors.white,
-      border: baseColors.metro.ginza,
+      border: baseColors.metro.ginza
     },
     purple: {
       bg: baseColors.metro.purple,
       text: baseColors.white,
-      border: baseColors.metro.purple,
+      border: baseColors.metro.purple
     },
     yellow: {
       bg: baseColors.metro.yurakucho,
       text: baseColors.grey[900],
-      border: baseColors.metro.yurakucho,
+      border: baseColors.metro.yurakucho
     },
     grey: {
       bg: baseColors.grey[700],
       text: baseColors.grey[100],
-      border: baseColors.grey[600],
+      border: baseColors.grey[600]
     },
     black: {
       bg: baseColors.grey[100],
       text: baseColors.grey[900],
-      border: baseColors.grey[100],
-    },
+      border: baseColors.grey[100]
+    }
   }
 } as const;
 
@@ -260,14 +260,14 @@ export const functionalTokens = {
         text: lightTheme.text.inverse,
         border: lightTheme.interactive.primary,
         hover: lightTheme.interactive.primaryHover,
-        active: lightTheme.interactive.primaryActive,
+        active: lightTheme.interactive.primaryActive
       },
       dark: {
         bg: darkTheme.interactive.primary,
         text: darkTheme.text.inverse,
         border: darkTheme.interactive.primary,
         hover: darkTheme.interactive.primaryHover,
-        active: darkTheme.interactive.primaryActive,
+        active: darkTheme.interactive.primaryActive
       }
     },
     secondary: {
@@ -276,14 +276,14 @@ export const functionalTokens = {
         text: lightTheme.text.primary,
         border: lightTheme.border.primary,
         hover: lightTheme.interactive.secondaryHover,
-        active: lightTheme.interactive.secondaryActive,
+        active: lightTheme.interactive.secondaryActive
       },
       dark: {
         bg: darkTheme.interactive.secondary,
         text: darkTheme.text.primary,
         border: darkTheme.border.primary,
         hover: darkTheme.interactive.secondaryHover,
-        active: darkTheme.interactive.secondaryActive,
+        active: darkTheme.interactive.secondaryActive
       }
     }
   },
@@ -296,14 +296,14 @@ export const functionalTokens = {
         text: lightTheme.text.primary,
         border: lightTheme.border.primary,
         focus: lightTheme.border.focus,
-        placeholder: lightTheme.text.tertiary,
+        placeholder: lightTheme.text.tertiary
       },
       dark: {
         bg: darkTheme.surface.secondary,
         text: darkTheme.text.primary,
         border: darkTheme.border.primary,
         focus: darkTheme.border.focus,
-        placeholder: darkTheme.text.tertiary,
+        placeholder: darkTheme.text.tertiary
       }
     }
   },
@@ -315,14 +315,14 @@ export const functionalTokens = {
       text: lightTheme.text.primary,
       textHover: lightTheme.interactive.primary,
       border: lightTheme.border.primary,
-      active: lightTheme.interactive.secondary,
+      active: lightTheme.interactive.secondary
     },
     dark: {
       bg: darkTheme.surface.primary,
       text: darkTheme.text.primary,
       textHover: darkTheme.interactive.primary,
       border: darkTheme.border.primary,
-      active: darkTheme.interactive.secondary,
+      active: darkTheme.interactive.secondary
     }
   }
 } as const;

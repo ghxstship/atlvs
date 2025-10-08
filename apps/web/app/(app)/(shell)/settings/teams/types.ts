@@ -272,36 +272,36 @@ export const ROLE_CONFIGS: Record<TeamRole, RoleConfig> = {
     label: 'Owner',
     description: 'Full access to all organization features and settings',
     permissions: ['all'],
-    color: 'text-red-600 bg-red-100',
+    color: 'text-red-600 bg-red-100'
   },
   admin: {
     value: 'admin',
     label: 'Administrator',
     description: 'Manage organization settings, members, and most features',
     permissions: ['manage_members', 'manage_settings', 'view_all', 'edit_all'],
-    color: 'text-orange-600 bg-orange-100',
+    color: 'text-orange-600 bg-orange-100'
   },
   manager: {
     value: 'manager',
     label: 'Manager',
     description: 'Manage team members and projects within their scope',
     permissions: ['manage_team', 'view_reports', 'edit_projects'],
-    color: 'text-blue-600 bg-blue-100',
+    color: 'text-blue-600 bg-blue-100'
   },
   member: {
     value: 'member',
     label: 'Member',
     description: 'Standard access to organization features and projects',
     permissions: ['view_projects', 'edit_assigned', 'create_content'],
-    color: 'text-green-600 bg-green-100',
+    color: 'text-green-600 bg-green-100'
   },
   viewer: {
     value: 'viewer',
     label: 'Viewer',
     description: 'Read-only access to organization content',
     permissions: ['view_only'],
-    color: 'text-gray-600 bg-gray-100',
-  },
+    color: 'text-gray-600 bg-gray-100'
+  }
 };
 
 // Bulk Operations

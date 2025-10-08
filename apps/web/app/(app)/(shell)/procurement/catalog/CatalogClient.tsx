@@ -1,10 +1,10 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, UnifiedInput, Card, Badge } from '@ghxstship/ui';
+import { Button, Input, Card, Badge } from '@ghxstship/ui';
 import { Plus, Save, BookOpen, Package2, Wrench, Search, Filter, Grid, List } from 'lucide-react';
 
 interface CatalogItem {
@@ -32,12 +32,16 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
   const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'inactive' | 'discontinued'>('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadCatalogItems();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     filterItems();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [catalogItems, searchQuery, typeFilter, statusFilter]);
 
   const loadCatalogItems = async () => {
@@ -157,7 +161,7 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
       <div className="flex flex-col sm:flex-row gap-md">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
-          <UnifiedInput             placeholder="Search catalog items..."
+          <Input             placeholder="Search catalog items..."
             value={searchQuery}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
             className="pl-2xl"

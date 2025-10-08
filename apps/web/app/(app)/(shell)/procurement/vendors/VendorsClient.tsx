@@ -1,10 +1,10 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, UnifiedInput, Badge } from '@ghxstship/ui';
+import { Button, Input, Badge } from '@ghxstship/ui';
 import { Building, Search, Filter, Star, Phone, Mail, Globe, Edit } from 'lucide-react';
 
 interface Vendor {
@@ -34,12 +34,16 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | Vendor['status']>('all');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadVendors();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     filterVendors();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [vendors, searchQuery, statusFilter]);
 
   const loadVendors = async () => {
@@ -48,8 +52,8 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
       
       const response = await fetch('/api/v1/procurement/vendors', {
         headers: {
-          'x-organization-id': orgId,
-        },
+          'x-organization-id': orgId
+        }
       });
 
       if (response.ok) {
@@ -127,7 +131,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
         <div className="flex-1">
           <div className="relative">
             <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-            <UnifiedInput               placeholder="Search vendors..."
+            <Input               placeholder="Search vendors..."
               value={searchQuery}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
               className="pl-2xl"

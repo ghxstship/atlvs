@@ -41,10 +41,10 @@ const PersonSchema = z.object({
     name: z.string(),
     relationship: z.string(),
     phone: z.string(),
-    email: z.string().email().optional(),
+    email: z.string().email().optional()
   }).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const RoleSchema = z.object({
@@ -62,7 +62,7 @@ const RoleSchema = z.object({
   qualifications: z.array(z.string()).optional(),
   status: z.enum(['active', 'inactive', 'draft']),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const CompetencySchema = z.object({
@@ -75,12 +75,12 @@ const CompetencySchema = z.object({
     level: z.number().int().min(1).max(5),
     name: z.string(),
     description: z.string(),
-    criteria: z.array(z.string()).optional(),
+    criteria: z.array(z.string()).optional()
   })).optional(),
   assessment_method: z.enum(['self_assessment', 'manager_review', 'peer_review', 'test', 'certification']),
   status: z.enum(['active', 'inactive', 'draft']),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const EndorsementSchema = z.object({
@@ -97,7 +97,7 @@ const EndorsementSchema = z.object({
   verified_at: z.date().optional(),
   status: z.enum(['pending', 'approved', 'rejected']),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const AssignmentSchema = z.object({
@@ -115,7 +115,7 @@ const AssignmentSchema = z.object({
   status: z.enum(['pending', 'active', 'completed', 'cancelled']),
   notes: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export const peopleModuleConfig: ModuleConfig = {

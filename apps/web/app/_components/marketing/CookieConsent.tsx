@@ -1,10 +1,9 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
-import { Button } from '@ghxstship/ui';
-import { X, Cookie, Settings } from 'lucide-react';
-import { cn } from '@ghxstship/ui';
+import { useEffect, useState, useCallback } from 'react';
+import { Button, cn } from '@ghxstship/ui';
+import { Cookie, Settings, X } from 'lucide-react';
 
 interface CookiePreferences {
   necessary: boolean;
@@ -20,9 +19,10 @@ export function CookieConsent() {
     necessary: true, // Always required
     analytics: false,
     marketing: false,
-    functional: false,
+    functional: false
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // Check if user has already made a choice
     const consent = localStorage.getItem('cookie-consent');
@@ -31,6 +31,7 @@ export function CookieConsent() {
       const timer = setTimeout(() => setIsVisible(true), 1000);
       return () => clearTimeout(timer);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleAcceptAll = () => {
@@ -38,7 +39,7 @@ export function CookieConsent() {
       necessary: true,
       analytics: true,
       marketing: true,
-      functional: true,
+      functional: true
     };
     
     localStorage.setItem('cookie-consent', JSON.stringify(allAccepted));
@@ -55,7 +56,7 @@ export function CookieConsent() {
       necessary: true,
       analytics: false,
       marketing: false,
-      functional: false,
+      functional: false
     };
     
     localStorage.setItem('cookie-consent', JSON.stringify(onlyNecessary));

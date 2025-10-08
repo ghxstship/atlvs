@@ -1,25 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Calendar,
-  Github,
-  Instagram,
-  MessageCircle,
-  MessageSquare,
-  Trophy,
-  Twitter,
-  Twitch,
-  Users,
-  Youtube,
-} from 'lucide-react';
+import { ArrowRight, Calendar, Github, Instagram, MessageCircle, MessageSquare, Trophy, Twitch, Twitter, Users, Youtube } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -30,8 +18,8 @@ export const metadata: Metadata = {
     title: 'Community - Production Pros Who Actually Help | GHXSTSHIP',
     description:
       "Join 25,000+ production professionals who share real advice, collaborate on projects, and push the industry forward.",
-    url: 'https://ghxstship.com/community',
-  },
+    url: 'https://ghxstship.com/community'
+  }
 };
 
 const communityStats = [
@@ -48,7 +36,7 @@ const communityChannels = [
     members: '15,247 members',
     activity: 'Very active',
     href: 'https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed',
-    icon: MessageSquare,
+    icon: MessageSquare
   },
   {
     name: 'Forums',
@@ -56,7 +44,7 @@ const communityChannels = [
     members: '12,456 members',
     activity: 'Active',
     href: '/community/forums',
-    icon: MessageCircle,
+    icon: MessageCircle
   },
   {
     name: 'Events & Meetups',
@@ -64,7 +52,7 @@ const communityChannels = [
     members: '5,678 attendees',
     activity: 'Weekly',
     href: '/community/events',
-    icon: Calendar,
+    icon: Calendar
   },
 ];
 
@@ -74,42 +62,42 @@ const socialChannels = [
     handle: '@ghxstship',
     followers: '25K followers',
     icon: Twitter,
-    href: 'https://twitter.com/ghxstship',
+    href: 'https://twitter.com/ghxstship'
   },
   {
     name: 'LinkedIn',
     handle: 'GHXSTSHIP',
     followers: '18K followers',
     icon: Users,
-    href: 'https://linkedin.com/company/ghxstship',
+    href: 'https://linkedin.com/company/ghxstship'
   },
   {
     name: 'YouTube',
     handle: '@ghxstship',
     followers: '12K subscribers',
     icon: Youtube,
-    href: 'https://youtube.com/@ghxstship',
+    href: 'https://youtube.com/@ghxstship'
   },
   {
     name: 'GitHub',
     handle: 'ghxstship',
     followers: '8K stars',
     icon: Github,
-    href: 'https://github.com/ghxstship',
+    href: 'https://github.com/ghxstship'
   },
   {
     name: 'Instagram',
     handle: '@ghxstship',
     followers: '10K followers',
     icon: Instagram,
-    href: 'https://instagram.com/ghxstship',
+    href: 'https://instagram.com/ghxstship'
   },
   {
     name: 'Twitch',
     handle: '@ghxstship',
     followers: '5K followers',
     icon: Twitch,
-    href: 'https://twitch.tv/ghxstship',
+    href: 'https://twitch.tv/ghxstship'
   },
 ];
 
@@ -118,19 +106,19 @@ const highlights = [
     title: 'Community Champion',
     description: 'Recognizes members who provide consistent support, insights, and mentorship.',
     icon: Trophy,
-    metric: '156 honorees',
+    metric: '156 honorees'
   },
   {
     title: 'Knowledge Sharer',
     description: 'Celebrates detailed breakdowns, templates, and resources shared with peers.',
     icon: Users,
-    metric: '500+ contributions',
+    metric: '500+ contributions'
   },
   {
     title: 'Event Organizers',
     description: 'Spotlights volunteers who host meetups, workshops, and showcases.',
     icon: Calendar,
-    metric: '45 active hosts',
+    metric: '45 active hosts'
   },
 ];
 
@@ -140,21 +128,21 @@ const upcomingEvents = [
     date: 'Dec 15, 2024',
     time: '2:00 PM ET',
     type: 'Workshop',
-    description: 'Hands-on training for managing multi-location shoots and live events.',
+    description: 'Hands-on training for managing multi-location shoots and live events.'
   },
   {
     title: 'Creative Networking Mixer',
     date: 'Dec 20, 2024',
     time: '6:00 PM ET',
     type: 'Networking',
-    description: 'Meet agency producers, freelance talent, and studio leads building big campaigns.',
+    description: 'Meet agency producers, freelance talent, and studio leads building big campaigns.'
   },
   {
     title: 'ATLVS Feature Deep Dive',
     date: 'Jan 8, 2025',
     time: '1:00 PM ET',
     type: 'Product Session',
-    description: 'Explore the latest production scheduling features and workflow automation.',
+    description: 'Explore the latest production scheduling features and workflow automation.'
   },
 ];
 

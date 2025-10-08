@@ -1,28 +1,18 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  AlertTriangle,
-  ArrowRight,
-  Database,
-  Eye,
-  FileCheck,
-  Lock,
-  Server,
-  Shield,
-  Users,
-} from 'lucide-react';
+import { AlertTriangle, ArrowRight, Database, Eye, FileCheck, Lock, Server, Shield, Users } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Security & Trust | GHXSTSHIP',
-  description: 'See how GHXSTSHIP protects customer data with enterprise-grade security, compliance, and incident response.',
+  description: 'See how GHXSTSHIP protects customer data with enterprise-grade security, compliance, and incident response.'
 };
 
 const securityStats = [
@@ -36,41 +26,41 @@ const securityPillars = [
   {
     title: 'Enterprise-Grade Security',
     description: 'SOC 2 Type II controls, ISO 27001 alignment, and 24/7 monitoring across every environment.',
-    icon: Shield,
+    icon: Shield
   },
   {
     title: 'Defense In Depth',
     description: 'Network segmentation, vulnerability scanning, and hardened infrastructure in every region.',
-    icon: Server,
+    icon: Server
   },
   {
     title: 'Privacy By Design',
     description: 'GDPR, CCPA, and regional privacy programs embedded in product development.',
-    icon: Users,
+    icon: Users
   },
   {
     title: 'Transparent Operations',
     description: 'Detailed audit logging, real-time status page, and incident communications within SLA.',
-    icon: Eye,
+    icon: Eye
   },
 ];
 
 const complianceHighlights = [
   {
     title: 'SOC 2 Type II',
-    description: 'Independently audited controls for security, availability, confidentiality, and processing integrity.',
+    description: 'Independently audited controls for security, availability, confidentiality, and processing integrity.'
   },
   {
     title: 'ISO 27001',
-    description: 'Certified information security management system with annual third-party audits.',
+    description: 'Certified information security management system with annual third-party audits.'
   },
   {
     title: 'GDPR & CCPA',
-    description: 'Global privacy compliance with data processing agreements and regional data residency options.',
+    description: 'Global privacy compliance with data processing agreements and regional data residency options.'
   },
   {
     title: 'Penetration Testing',
-    description: 'Semi-annual third-party penetration tests with remediation SLAs tracked to completion.',
+    description: 'Semi-annual third-party penetration tests with remediation SLAs tracked to completion.'
   },
 ];
 
@@ -78,22 +68,22 @@ const protectionLayers = [
   {
     title: 'Encryption Everywhere',
     description: 'TLS 1.2+ for data in transit and AES-256 for data at rest. Keys are rotated automatically.',
-    icon: Lock,
+    icon: Lock
   },
   {
     title: 'Access Controls',
     description: 'Role-based access, SSO, SCIM provisioning, and mandatory MFA for admin roles.',
-    icon: Users,
+    icon: Users
   },
   {
     title: 'Audit Logging',
     description: 'Immutable logs for user actions, API usage, and configuration changes retained for seven years.',
-    icon: FileCheck,
+    icon: FileCheck
   },
   {
     title: 'Data Lifecycle',
     description: 'Granular retention policies, secure deletion, and customer-managed archive exports.',
-    icon: Database,
+    icon: Database
   },
 ];
 

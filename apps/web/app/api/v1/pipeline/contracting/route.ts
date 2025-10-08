@@ -47,7 +47,7 @@ const CreateContractSchema = z.object({
     comments: z.string().optional(),
     approvedAt: z.string().optional()
   })).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 const UpdateContractSchema = CreateContractSchema.partial().omit({ jobId: true, contractorId: true });
@@ -141,7 +141,7 @@ export async function GET(request: NextRequest) {
       totalValue: contracts?.reduce((sum, c) => sum + (c.value || 0), 0) || 0,
       activeContracts: contracts?.filter(c => c.status === 'active').length || 0,
       pendingApprovals: contracts?.filter(c => c.status === 'pending_approval').length || 0,
-      completedContracts: contracts?.filter(c => c.status === 'completed').length || 0,
+      completedContracts: contracts?.filter(c => c.status === 'completed').length || 0
     };
 
     await supabase.from('audit_logs').insert({

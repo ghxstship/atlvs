@@ -12,7 +12,7 @@ import {
  SelectItem,
  SelectTrigger,
  SelectValue,
- Checkbox,
+ Checkbox
 } from '@ghxstship/ui';
 import type { Endorsement, EndorsementFilters, EndorsementSort } from '../types';
 import {
@@ -23,7 +23,7 @@ import {
  truncateText,
  getVerificationBadgeVariant,
  filterEndorsements,
- sortEndorsements,
+ sortEndorsements
 } from '../types';
 
 interface EndorsementGridViewProps {
@@ -59,7 +59,7 @@ export default function EndorsementGridView({
  onDelete,
  onVerify,
  onToggleFeatured,
- onTogglePublic,
+ onTogglePublic
 }: EndorsementGridViewProps) {
  const [showFilters, setShowFilters] = useState(false);
  const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -74,7 +74,7 @@ export default function EndorsementGridView({
  const handleSort = (field: EndorsementSort['field']) => {
  onSortChange({
  field,
- direction: sort.field === field && sort.direction === 'asc' ? 'desc' : 'asc',
+ direction: sort.field === field && sort.direction === 'asc' ? 'desc' : 'asc'
  });
  };
 

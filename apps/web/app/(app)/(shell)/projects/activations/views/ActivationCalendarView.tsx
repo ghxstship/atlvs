@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo, useState } from 'react';
 import { Badge, Button } from "@ghxstship/ui";
 import { format, parseISO, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, addMonths, subMonths } from "date-fns";
 import type { Activation } from "../ActivationsClient";
@@ -13,7 +13,7 @@ interface ActivationCalendarViewProps {
 
 export default function ActivationCalendarView({
  activations,
- onView,
+ onView
 }: ActivationCalendarViewProps) {
  const [currentMonth, setCurrentMonth] = useState(new Date());
 

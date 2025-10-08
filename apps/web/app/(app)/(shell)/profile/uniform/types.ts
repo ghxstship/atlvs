@@ -172,7 +172,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'pants_size',
@@ -183,7 +183,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'jacket_size',
@@ -202,7 +202,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'dress_size',
@@ -213,7 +213,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'shoe_size',
@@ -224,7 +224,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'hat_size',
@@ -235,7 +235,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   
   // Measurements
@@ -249,7 +249,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'weight_kg',
@@ -261,7 +261,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'chest_cm',
@@ -273,7 +273,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'waist_cm',
@@ -285,7 +285,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'inseam_cm',
@@ -297,7 +297,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   
   // Equipment Preferences
@@ -309,7 +309,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: false,
-    filterable: false,
+    filterable: false
   },
   {
     key: 'special_requirements',
@@ -321,7 +321,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: true,
     sortable: false,
-    filterable: false,
+    filterable: false
   },
   
   // Metadata
@@ -333,7 +333,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'updated_at',
@@ -343,7 +343,7 @@ export const UNIFORM_SIZING_FIELD_CONFIG: FieldConfig[] = [
     visible: true,
     editable: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
 ];
 
@@ -353,7 +353,7 @@ export const VIEW_CONFIG = {
   table: { label: 'Table', icon: 'Table' },
   analytics: { label: 'Analytics', icon: 'BarChart3' },
   kanban: { label: 'Kanban', icon: 'Kanban' },
-  form: { label: 'Form', icon: 'FileText' },
+  form: { label: 'Form', icon: 'FileText' }
 } as const;
 
 export const QUICK_FILTERS = [
@@ -413,7 +413,7 @@ export function createEmptyUniformSizing(): Partial<UniformSizing> {
     waist_cm: undefined,
     inseam_cm: undefined,
     equipment_preferences: {},
-    special_requirements: '',
+    special_requirements: ''
   };
 }
 
@@ -430,10 +430,10 @@ export function createEmptyUniformSizingStats(): UniformSizingStats {
         averageWeight: 0,
         averageBMI: 0,
         heightRange: { min: 0, max: 0 },
-        weightRange: { min: 0, max: 0 },
-      },
+        weightRange: { min: 0, max: 0 }
+      }
     },
-    equipmentPreferences: [],
+    equipmentPreferences: []
   };
 }
 
@@ -442,9 +442,9 @@ export function createEmptyUniformSizingAnalytics(): UniformSizingAnalytics {
     completionTrends: [],
     sizeAnalysis: {
       clothingSizes: [],
-      measurementTrends: [],
+      measurementTrends: []
     },
-    equipmentAnalysis: [],
+    equipmentAnalysis: []
   };
 }
 
@@ -522,7 +522,7 @@ export function getSizeRecommendations(sizing: UniformSizing): Array<{
     recommendations.push({
       category: 'Clothing',
       recommendation: 'Add shirt size for uniform ordering',
-      priority: 'high' as const,
+      priority: 'high' as const
     });
   }
   
@@ -530,7 +530,7 @@ export function getSizeRecommendations(sizing: UniformSizing): Array<{
     recommendations.push({
       category: 'Clothing',
       recommendation: 'Add pants size for uniform ordering',
-      priority: 'high' as const,
+      priority: 'high' as const
     });
   }
   
@@ -538,7 +538,7 @@ export function getSizeRecommendations(sizing: UniformSizing): Array<{
     recommendations.push({
       category: 'Safety',
       recommendation: 'Add shoe size for safety footwear',
-      priority: 'high' as const,
+      priority: 'high' as const
     });
   }
   
@@ -547,7 +547,7 @@ export function getSizeRecommendations(sizing: UniformSizing): Array<{
     recommendations.push({
       category: 'Measurements',
       recommendation: 'Add height and weight for accurate sizing',
-      priority: 'medium' as const,
+      priority: 'medium' as const
     });
   }
   
@@ -557,7 +557,7 @@ export function getSizeRecommendations(sizing: UniformSizing): Array<{
     recommendations.push({
       category: 'Health',
       recommendation: 'Consider health consultation for optimal uniform fit',
-      priority: 'low' as const,
+      priority: 'low' as const
     });
   }
   

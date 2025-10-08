@@ -23,7 +23,7 @@ export default function ProfileOverviewGridView({
  onSelectionChange,
  onEdit,
  onView,
- onStatusChange,
+ onStatusChange
 }: ProfileOverviewGridViewProps) {
  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 

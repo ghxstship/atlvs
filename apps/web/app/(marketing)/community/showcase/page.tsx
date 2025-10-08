@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import { ArrowRight, Calendar, Eye, Heart, Image, Trophy, ExternalLink, Video } from 'lucide-react';
+import { ArrowRight, Calendar, ExternalLink, Eye, Heart, Image, Trophy, Video } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Community Showcase - Featured Projects & Achievements | GHXSTSHIP',
     description: 'Explore amazing community projects, creative achievements, and inspiring work from our 25,000+ creative professionals.',
-    url: 'https://ghxstship.com/community/showcase',
-  },
+    url: 'https://ghxstship.com/community/showcase'
+  }
 };
 
 const featuredProjects = [
@@ -35,7 +35,7 @@ const featuredProjects = [
     technologies: ['Unreal Engine 5', 'Motion Capture', 'LED Volume'],
     budget: '$45M',
     duration: '2 years',
-    team: '85 people',
+    team: '85 people'
   },
   {
     id: 'urban-rhythms',
@@ -51,7 +51,7 @@ const featuredProjects = [
     technologies: ['Interactive Lighting', 'Spatial Audio', 'AR Experiences'],
     budget: '$2.8M',
     duration: '6 months',
-    team: '120 people',
+    team: '120 people'
   },
   {
     id: 'digital-frontier',
@@ -67,7 +67,7 @@ const featuredProjects = [
     technologies: ['WebGL', 'Three.js', 'Interactive Design'],
     budget: '$850K',
     duration: '4 months',
-    team: '25 people',
+    team: '25 people'
   },
 ];
 
@@ -77,28 +77,28 @@ const showcaseCategories = [
     count: 245,
     icon: Video,
     description: 'Award-winning productions and innovative storytelling',
-    featured: 'Stellar Awakening',
+    featured: 'Stellar Awakening'
   },
   {
     name: 'Live Events',
     count: 189,
     icon: Calendar,
     description: 'Spectacular concerts, festivals, and corporate events',
-    featured: 'Urban Rhythms',
+    featured: 'Urban Rhythms'
   },
   {
     name: 'Digital & Interactive',
     count: 167,
     icon: Image,
     description: 'Cutting-edge digital experiences and campaigns',
-    featured: 'Digital Frontier',
+    featured: 'Digital Frontier'
   },
   {
     name: 'Advertising',
     count: 134,
     icon: Eye,
     description: 'Creative campaigns that capture attention',
-    featured: 'Brand Revolution',
+    featured: 'Brand Revolution'
   },
 ];
 

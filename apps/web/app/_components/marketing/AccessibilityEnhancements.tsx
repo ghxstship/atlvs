@@ -1,7 +1,7 @@
 'use client';
 
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 // Accessibility enhancement utilities
 export const AccessibilityEnhancements = () => {
@@ -286,6 +286,7 @@ export const AccessibilityEnhancements = () => {
     return () => {
       observer.disconnect();
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Function to announce messages to screen readers

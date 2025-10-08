@@ -1,31 +1,26 @@
 'use client';
 
-
-import { useEffect, useState } from 'react';
-import { Drawer, type DataRecord } from '@ghxstship/ui';
+import { useEffect, useState, useCallback } from 'react';
+import { CalendarView, DataActions, DataGrid, DataViewProvider, Drawer, KanbanBoard, ListView, StateManagerProvider, ViewSwitcher, type DataRecord } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
-import { createBrowserClient } from '@ghxstship/auth';
+import { peopleService } from './lib/people-service';
 
 export default function PeopleClient({ orgId }: { orgId: string }) {
   const t = useTranslations('people');
-  const sb = createBrowserClient();
   const [loading, setLoading] = useState(false);
   const [peopleData, setPeopleData] = useState<DataRecord[]>([]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadPeopleData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   async function loadPeopleData() {
     setLoading(true);
     try {
-      const { data } = await sb
-        .from('people')
-        .select('*')
-        .eq('organization_id', orgId)
-        .order('last_name', { ascending: true });
-      
-      setPeopleData(data || []);
+      const result = await peopleService.getPeople(orgId, {});
+      setPeopleData((result.items as DataRecord[]) || []);
     } catch (error) {
       console.error('Error loading people data:', error);
     } finally {

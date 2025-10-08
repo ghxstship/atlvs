@@ -76,7 +76,7 @@ export const CreateAssetInputSchema = z.object({
     .min(1, 'MIME type is required'),
 
   checksum: z.string()
-    .optional(),
+    .optional()
 });
 
 // Update file input validation
@@ -114,7 +114,7 @@ export const UpdateAssetInputSchema = z.object({
     .optional(),
 
   status: FileStatusSchema
-    .optional(),
+    .optional()
 });
 
 // File upload validation
@@ -138,7 +138,7 @@ export const FileUploadSchema = z.object({
 
   project_id: z.string()
     .uuid('Invalid project ID')
-    .optional(),
+    .optional()
 });
 
 // Bulk operations validation
@@ -147,7 +147,7 @@ export const BulkFileUpdateSchema = z.object({
     .min(1, 'At least one file must be selected')
     .max(100, 'Maximum 100 files can be updated at once'),
 
-  updates: UpdateAssetInputSchema,
+  updates: UpdateAssetInputSchema
 });
 
 export const BulkFileDeleteSchema = z.object({
@@ -156,7 +156,7 @@ export const BulkFileDeleteSchema = z.object({
     .max(100, 'Maximum 100 files can be deleted at once'),
 
   soft: z.boolean()
-    .default(true),
+    .default(true)
 });
 
 // Folder operations validation
@@ -173,7 +173,7 @@ export const CreateFolderSchema = z.object({
 
   description: z.string()
     .max(500, 'Description must be less than 500 characters')
-    .optional(),
+    .optional()
 });
 
 export const UpdateFolderSchema = z.object({
@@ -190,7 +190,7 @@ export const UpdateFolderSchema = z.object({
 
   description: z.string()
     .max(500, 'Description must be less than 500 characters')
-    .optional(),
+    .optional()
 });
 
 // Search and filter validation
@@ -228,7 +228,7 @@ export const FileSearchSchema = z.object({
 
   offset: z.number()
     .min(0, 'Offset must be non-negative')
-    .default(0),
+    .default(0)
 });
 
 // Import/Export validation
@@ -243,8 +243,8 @@ export const FileImportSchema = z.object({
     update_existing: z.boolean().default(false),
     folder_id: z.string().uuid('Invalid folder ID').optional(),
     category: FileCategorySchema.optional(),
-    access_level: AccessLevelSchema.default('private'),
-  }).optional(),
+    access_level: AccessLevelSchema.default('private')
+  }).optional()
 });
 
 export const FileExportSchema = z.object({
@@ -262,7 +262,7 @@ export const FileExportSchema = z.object({
     .default(false),
 
   include_metadata: z.boolean()
-    .default(true),
+    .default(true)
 });
 
 // Comment validation
@@ -295,7 +295,7 @@ export const FileVersionSchema = z.object({
     .positive('File size must be positive'),
 
   checksum: z.string()
-    .optional(),
+    .optional()
 });
 
 // Access log validation
@@ -315,7 +315,7 @@ export const FileAccessLogSchema = z.object({
     .optional(),
 
   metadata: z.record(z.any())
-    .optional(),
+    .optional()
 });
 
 // Type exports for use in components

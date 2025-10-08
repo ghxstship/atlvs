@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import { AppDrawer, type DrawerFieldConfig } from "@ghxstship/ui";
 
@@ -76,7 +76,7 @@ const calculateRiskScore = (probability: string, impact: string): number => {
  low: 2,
  medium: 3,
  high: 4,
- very_high: 5,
+ very_high: 5
  };
 
  return (weight[probability] ?? 3) * (weight[impact] ?? 3);
@@ -89,7 +89,7 @@ export default function CreateRiskDrawer({
  projectId,
  projects = [],
  users = [],
- onSuccess,
+ onSuccess
 }: CreateRiskDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -97,7 +97,7 @@ export default function CreateRiskDrawer({
  const projectOptions = useMemo(() => {
  const options = projects.map((project) => ({
  label: project.name,
- value: project.id,
+ value: project.id
  }));
 
  if (!projectId) {
@@ -112,7 +112,7 @@ export default function CreateRiskDrawer({
  { label: "Unassigned", value: "" },
  ...users.map((user) => ({
  label: user.full_name || user.email,
- value: user.id,
+ value: user.id
  })),
  ]
 ), [users]);
@@ -123,83 +123,83 @@ export default function CreateRiskDrawer({
  label: "Risk Title",
  type: "text",
  required: true,
- placeholder: "Enter a clear, concise risk title",
+ placeholder: "Enter a clear, concise risk title"
  },
  {
  key: "description",
  label: "Description",
  type: "textarea",
- placeholder: "Describe the risk in detail, including potential consequences",
+ placeholder: "Describe the risk in detail, including potential consequences"
  },
  {
  key: "category",
  label: "Category",
  type: "select",
  required: true,
- options: CATEGORY_OPTIONS,
+ options: CATEGORY_OPTIONS
  },
  {
  key: "probability",
  label: "Probability",
  type: "select",
  required: true,
- options: PROBABILITY_OPTIONS,
+ options: PROBABILITY_OPTIONS
  },
  {
  key: "impact",
  label: "Impact",
  type: "select",
  required: true,
- options: IMPACT_OPTIONS,
+ options: IMPACT_OPTIONS
  },
  {
  key: "status",
  label: "Status",
  type: "select",
- options: STATUS_OPTIONS,
+ options: STATUS_OPTIONS
  },
  {
  key: "project_id",
  label: "Project",
  type: "select",
  required: !projectId,
- options: projectOptions,
+ options: projectOptions
  },
  {
  key: "owner_id",
  label: "Risk Owner",
  type: "select",
- options: ownerOptions,
+ options: ownerOptions
  },
  {
  key: "identified_date",
  label: "Identified Date",
  type: "date",
- required: true,
+ required: true
  },
  {
  key: "review_date",
  label: "Review Date",
  type: "date",
- placeholder: "When should this risk be reviewed?",
+ placeholder: "When should this risk be reviewed?"
  },
  {
  key: "mitigation_plan",
  label: "Mitigation Plan",
  type: "textarea",
- placeholder: "Describe how the risk will be mitigated",
+ placeholder: "Describe how the risk will be mitigated"
  },
  {
  key: "contingency_plan",
  label: "Contingency Plan",
  type: "textarea",
- placeholder: "Describe fallback actions if the risk occurs",
+ placeholder: "Describe fallback actions if the risk occurs"
  },
  {
  key: "tags",
  label: "Tags",
  type: "text",
- placeholder: "Comma separated tags (e.g. schedule, budget)",
+ placeholder: "Comma separated tags (e.g. schedule, budget)"
  },
  ];
 
@@ -244,7 +244,7 @@ export default function CreateRiskDrawer({
  identified_date: identifiedDateIso,
  review_date: reviewDateIso,
  attachments: [] as string[],
- tags,
+ tags
  };
 
  setLoading(true);

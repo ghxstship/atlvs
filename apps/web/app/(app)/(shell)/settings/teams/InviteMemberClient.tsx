@@ -25,7 +25,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
 
   const validEmail = useMemo(() => /.+@.+\..+/.test(email), [email]);
   const emailDomain = useMemo(() => {
-    const m = email.toLowerCase().match(/@([a-z0-9.-]+\.[a-z]{2,})$/i);
+    const m = email.toLowerCase().match(/@([a-z0-9.-]+\.[a-z]{2})$/i);
     return m ? m[1] : '';
   }, [email]);
   const domainRecord = useMemo(() => domains.find((d: any) => d.domain === emailDomain), [domains, emailDomain]);

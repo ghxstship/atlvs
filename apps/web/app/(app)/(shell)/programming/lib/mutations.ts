@@ -13,7 +13,7 @@ import type {
   Space,
   Workshop,
   CreateEventForm,
-  UpdateEventForm,
+  UpdateEventForm
 } from '../types';
 
 export class ProgrammingMutationsService {
@@ -28,7 +28,7 @@ export class ProgrammingMutationsService {
       created_by: userId,
       updated_by: userId,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -45,7 +45,7 @@ export class ProgrammingMutationsService {
     const updatePayload = {
       ...eventData,
       updated_by: userId,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -76,7 +76,7 @@ export class ProgrammingMutationsService {
       .update({
         status,
         updated_by: userId,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq('id', eventId)
       .eq('organization_id', organizationId)
@@ -95,7 +95,7 @@ export class ProgrammingMutationsService {
       created_by: userId,
       updated_by: userId,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -112,7 +112,7 @@ export class ProgrammingMutationsService {
     const updatePayload = {
       ...performanceData,
       updated_by: userId,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -145,7 +145,7 @@ export class ProgrammingMutationsService {
       created_by: userId,
       updated_by: userId,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -162,7 +162,7 @@ export class ProgrammingMutationsService {
     const updatePayload = {
       ...callSheetData,
       updated_by: userId,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -183,7 +183,7 @@ export class ProgrammingMutationsService {
       .update({
         status: 'published',
         updated_by: userId,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq('id', callSheetId)
       .eq('organization_id', organizationId)
@@ -202,7 +202,7 @@ export class ProgrammingMutationsService {
       created_by: userId,
       updated_by: userId,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -219,7 +219,7 @@ export class ProgrammingMutationsService {
     const updatePayload = {
       ...riderData,
       updated_by: userId,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -240,7 +240,7 @@ export class ProgrammingMutationsService {
       .update({
         status: 'active',
         updated_by: userId,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq('id', riderId)
       .eq('organization_id', organizationId)
@@ -259,7 +259,7 @@ export class ProgrammingMutationsService {
       created_by: userId,
       updated_by: userId,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -276,7 +276,7 @@ export class ProgrammingMutationsService {
     const updatePayload = {
       ...itineraryData,
       updated_by: userId,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -299,7 +299,7 @@ export class ProgrammingMutationsService {
       created_by: userId,
       updated_by: userId,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -316,7 +316,7 @@ export class ProgrammingMutationsService {
     const updatePayload = {
       ...lineupData,
       updated_by: userId,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -339,7 +339,7 @@ export class ProgrammingMutationsService {
       created_by: userId,
       updated_by: userId,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -356,7 +356,7 @@ export class ProgrammingMutationsService {
     const updatePayload = {
       ...spaceData,
       updated_by: userId,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -379,7 +379,7 @@ export class ProgrammingMutationsService {
       created_by: userId,
       updated_by: userId,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -396,7 +396,7 @@ export class ProgrammingMutationsService {
     const updatePayload = {
       ...workshopData,
       updated_by: userId,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -416,7 +416,7 @@ export class ProgrammingMutationsService {
     const updatePayload = {
       ...updates,
       updated_by: userId,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data, error } = await this.supabase
@@ -454,7 +454,7 @@ export class ProgrammingMutationsService {
     const performancePromises = performances.map(perf =>
       this.createPerformance({
         ...perf,
-        organization_id: organizationId,
+        organization_id: organizationId
       }, userId)
     );
 
@@ -474,7 +474,7 @@ export class ProgrammingMutationsService {
         changes,
         organization_id: organizationId,
         user_id: userId,
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString()
       });
 
     if (error) throw error;

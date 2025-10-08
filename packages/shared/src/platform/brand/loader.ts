@@ -28,6 +28,9 @@ export class BrandLoader {
         throw new Error(`Failed to load brand registry: ${response.statusText}`);
       }
       this.registry = await response.json();
+      if (!this.registry) {
+        throw new Error('Brand registry loaded but was null');
+      }
       return this.registry;
     } catch (error) {
       console.error('Error loading brand registry:', error);

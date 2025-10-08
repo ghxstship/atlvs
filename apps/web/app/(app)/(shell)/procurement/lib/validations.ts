@@ -10,7 +10,7 @@ const BaseEntitySchema = z.object({
   id: z.string().uuid(),
   organization_id: z.string().uuid(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 // Purchase Order Schemas
@@ -26,7 +26,7 @@ export const PurchaseOrderSchema = BaseEntitySchema.extend({
   approved_by: z.string().uuid().optional(),
   approved_at: z.date().optional(),
   delivery_date: z.date().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 // Vendor Schemas
@@ -40,7 +40,7 @@ export const VendorSchema = BaseEntitySchema.extend({
   website: z.string().url().optional(),
   tax_id: z.string().optional(),
   payment_terms: z.string().optional(),
-  categories: z.array(z.string()).optional(),
+  categories: z.array(z.string()).optional()
 });
 
 // Procurement Request Schemas
@@ -74,7 +74,7 @@ export const ContractSchema = BaseEntitySchema.extend({
   renewal_period_months: z.number().positive().optional(),
   created_by: z.string().uuid(),
   signed_date: z.date().optional(),
-  attachments: z.array(z.string()).optional(),
+  attachments: z.array(z.string()).optional()
 });
 
 // Approval Workflow Schemas
@@ -89,10 +89,10 @@ export const ApprovalWorkflowSchema = BaseEntitySchema.extend({
     step: z.number(),
     status: z.enum(['pending', 'approved', 'rejected']),
     approved_at: z.date().optional(),
-    comments: z.string().optional(),
+    comments: z.string().optional()
   })),
   required_approvals: z.number().min(1),
-  current_approvals: z.number().default(0),
+  current_approvals: z.number().default(0)
 });
 
 // Budget Schemas
@@ -107,7 +107,7 @@ export const BudgetSchema = BaseEntitySchema.extend({
   spent: z.number().default(0),
   status: z.enum(['active', 'inactive', 'expired']),
   project_id: z.string().uuid().optional(),
-  created_by: z.string().uuid(),
+  created_by: z.string().uuid()
 });
 
 // Form validation schemas (for create/update operations)
@@ -119,9 +119,9 @@ export const CreatePurchaseOrderSchema = PurchaseOrderSchema.omit({
   status: true,
   requested_by: true,
   approved_by: true,
-  approved_at: true,
+  approved_at: true
 }).extend({
-  status: z.enum(['draft']).optional().default('draft'),
+  status: z.enum(['draft']).optional().default('draft')
 });
 
 export const UpdatePurchaseOrderSchema = PurchaseOrderSchema.partial()
@@ -129,14 +129,14 @@ export const UpdatePurchaseOrderSchema = PurchaseOrderSchema.partial()
     id: true,
     organization_id: true,
     created_at: true,
-    updated_at: true,
+    updated_at: true
   });
 
 export const CreateVendorSchema = VendorSchema.omit({
   id: true,
   organization_id: true,
   created_at: true,
-  updated_at: true,
+  updated_at: true
 });
 
 export const UpdateVendorSchema = VendorSchema.partial()
@@ -144,7 +144,7 @@ export const UpdateVendorSchema = VendorSchema.partial()
     id: true,
     organization_id: true,
     created_at: true,
-    updated_at: true,
+    updated_at: true
   });
 
 export const CreateProcurementRequestSchema = ProcurementRequestSchema.omit({
@@ -153,9 +153,9 @@ export const CreateProcurementRequestSchema = ProcurementRequestSchema.omit({
   created_at: true,
   updated_at: true,
   requested_by: true,
-  status: true,
+  status: true
 }).extend({
-  status: z.enum(['draft']).optional().default('draft'),
+  status: z.enum(['draft']).optional().default('draft')
 });
 
 export const CreateContractSchema = ContractSchema.omit({
@@ -164,9 +164,9 @@ export const CreateContractSchema = ContractSchema.omit({
   created_at: true,
   updated_at: true,
   created_by: true,
-  status: true,
+  status: true
 }).extend({
-  status: z.enum(['draft']).optional().default('draft'),
+  status: z.enum(['draft']).optional().default('draft')
 });
 
 export const CreateBudgetSchema = BudgetSchema.omit({
@@ -176,17 +176,17 @@ export const CreateBudgetSchema = BudgetSchema.omit({
   updated_at: true,
   created_by: true,
   spent: true,
-  status: true,
+  status: true
 }).extend({
   status: z.enum(['active']).optional().default('active'),
-  spent: z.number().default(0),
+  spent: z.number().default(0)
 });
 
 // Search and filter validation
 export const ProcurementSearchSchema = z.object({
   query: z.string().min(1).max(100),
   entities: z.array(z.enum(['orders', 'vendors', 'requests', 'contracts'])).optional(),
-  limit: z.number().min(1).max(100).default(50),
+  limit: z.number().min(1).max(100).default(50)
 });
 
 export const ProcurementFilterSchema = z.object({
@@ -197,12 +197,12 @@ export const ProcurementFilterSchema = z.object({
   date_to: z.date().optional(),
   amount_min: z.number().optional(),
   amount_max: z.number().optional(),
-  priority: z.array(z.enum(['low', 'medium', 'high', 'urgent'])).optional(),
+  priority: z.array(z.enum(['low', 'medium', 'high', 'urgent'])).optional()
 });
 
 export const ProcurementSortSchema = z.object({
   field: z.enum(['created_at', 'updated_at', 'total_amount', 'title', 'status', 'priority']),
-  direction: z.enum(['asc', 'desc']).default('desc'),
+  direction: z.enum(['asc', 'desc']).default('desc')
 });
 
 // Bulk operation validation
@@ -219,8 +219,8 @@ export const ImportDataSchema = z.object({
   options: z.object({
     skipDuplicates: z.boolean().default(true),
     updateExisting: z.boolean().default(false),
-    validateOnly: z.boolean().default(false),
-  }).optional(),
+    validateOnly: z.boolean().default(false)
+  }).optional()
 });
 
 // Export validation
@@ -229,13 +229,13 @@ export const ExportOptionsSchema = z.object({
   format: z.enum(['csv', 'json', 'xlsx', 'pdf']),
   filters: ProcurementFilterSchema.optional(),
   fields: z.array(z.string()).optional(),
-  includeRelated: z.boolean().default(false),
+  includeRelated: z.boolean().default(false)
 });
 
 // API validation schemas
 export const PaginationSchema = z.object({
   page: z.number().min(1).default(1),
-  pageSize: z.number().min(1).max(100).default(20),
+  pageSize: z.number().min(1).max(100).default(20)
 });
 
 export const ApiQuerySchema = z.object({
@@ -244,7 +244,7 @@ export const ApiQuerySchema = z.object({
   sort: ProcurementSortSchema.optional(),
   search: z.string().optional(),
   includes: z.array(z.string()).optional(),
-  select: z.array(z.string()).optional(),
+  select: z.array(z.string()).optional()
 });
 
 // Validation helper functions

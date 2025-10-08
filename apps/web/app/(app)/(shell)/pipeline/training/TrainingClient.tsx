@@ -1,10 +1,9 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
-import { Card, Badge, Button, UnifiedInput } from '@ghxstship/ui';
-import { DynamicProgressBar } from "../../../../_components/ui"
-import { Users, Calendar, Clock, Award, Search, Filter, BookOpen, Target, CheckCircle, AlertTriangle, User, Plus } from 'lucide-react';
+import { useEffect, useState, useCallback } from 'react';
+import { Badge, Button, Card, Input, Progress } from '@ghxstship/ui';
+import { AlertTriangle, Award, BookOpen, Calendar, CheckCircle, Clock, Filter, Plus, Search, Target, User, Users } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
 
@@ -73,8 +72,10 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
   const [activeTab, setActiveTab] = useState<'programs' | 'sessions' | 'records'>('programs');
   const [showForm, setShowForm] = useState(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadData = async () => {
@@ -179,20 +180,20 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
     }
   };
 
-  const getStatusBadge = (status: string) => {
+  const getBadge = (status: string) => {
     switch (status) {
       case 'completed':
         return <Badge variant="success" className="flex items-center gap-xs"><CheckCircle className="w-3 h-3" />Completed</Badge>;
       case 'in_progress':
         return <Badge variant="warning" className="flex items-center gap-xs"><Clock className="w-3 h-3" />In Progress</Badge>;
       case 'scheduled':
-        return <Badge variant="outline" className="flex items-center gap-xs"><Calendar className="w-3 h-3" />Scheduled</Badge>;
+        return <Badge variant="secondary" className="flex items-center gap-xs"><Calendar className="w-3 h-3" />Scheduled</Badge>;
       case 'expired':
-        return <Badge variant="destructive" className="flex items-center gap-xs"><AlertTriangle className="w-3 h-3" />Expired</Badge>;
+        return <Badge variant="error" className="flex items-center gap-xs"><AlertTriangle className="w-3 h-3" />Expired</Badge>;
       case 'enrolled':
         return <Badge variant="secondary" className="flex items-center gap-xs"><User className="w-3 h-3" />Enrolled</Badge>;
       default:
-        return <Badge variant="outline">{status}</Badge>;
+        return <Badge variant="secondary">{status}</Badge>;
     }
   };
 
@@ -256,7 +257,7 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
                         <div className="flex items-center gap-sm mb-sm">
                           <div className={`w-3 h-3 rounded-full ${getCategoryColor(program.category)}`} />
                           <h3 className="text-body text-heading-4">{program.name}</h3>
-                          {program.required && <Badge variant="destructive">Required</Badge>}
+                          {program.required && <Badge variant="error">Required</Badge>}
                         </div>
                         <p className="text-body-sm color-muted mb-sm">{program.description}</p>
                         <div className="flex items-center gap-md text-body-sm color-muted">
@@ -300,10 +301,10 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
                         </div>
                       </div>
                       <div className="flex flex-col items-end gap-sm">
-                        {getStatusBadge(session.status)}
+                        {getBadge(session.status)}
                         <div className="text-right">
-                          <DynamicProgressBar
-                            percentage={(session.enrolledCount / session.maxParticipants) * 100}
+                          <Progress
+                            value={(session.enrolledCount / session.maxParticipants) * 100}
                             variant="info"
                             size="sm"
                             showLabel={false}
@@ -349,11 +350,11 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
                         </div>
                       </div>
                       <div className="flex flex-col items-end gap-sm">
-                        {getStatusBadge(record.status)}
+                        {getBadge(record.status)}
                         {record.score && (
                           <div className="text-right">
-                            <DynamicProgressBar
-                              percentage={record.score}
+                            <Progress
+                              value={record.score}
                               variant={record.score >= 80 ? 'success' : record.score >= 60 ? 'warning' : 'error'}
                               size="sm"
                               showLabel={false}

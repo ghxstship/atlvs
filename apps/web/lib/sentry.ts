@@ -135,7 +135,7 @@ class SentryService {
     return Sentry.startSpan(
       {
         name,
-        op,
+        op
       },
       async () => {
         const startTime = Date.now();

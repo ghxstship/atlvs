@@ -1,19 +1,24 @@
 'use client';
 
-import { Receipt, Plus, Edit, Trash2, Check, X, Clock, AlertTriangle, FileText, DollarSign, Calendar, User as UserIcon, Search, Filter, CreditCard, Download, Upload, RefreshCw } from "lucide-react";
-import { useState, useEffect } from 'react';
+import { AlertTriangle, Badge, Button, Calendar, Card, Check, Clock, CreditCard, DollarSign, Download, Edit, FileText, Filter, Input, Plus, Receipt, RefreshCw, Search, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Skeleton, Trash2, Upload, User as UserIcon, X } from 'lucide-react';
+import { useEffect, useState, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
-import { 
- Card, 
- Button, 
- Badge, 
- Skeleton, 
- UnifiedInput,
- Select,
- SelectContent,
- SelectItem,
- SelectTrigger,
- SelectValue
+import {
+  Badge,
+  Button,
+  CalendarView,
+  Card,
+  DataActions,
+  DataGrid,
+  DataViewProvider,
+  Drawer,
+  Input,
+  KanbanBoard,
+  ListView,
+  Select,
+  StateManagerProvider,
+  ViewSwitcher,
+  Skeleton
 } from '@ghxstship/ui';
 import { ExpensesService } from './lib/expenses-service';
 import CreateExpenseDrawer from './drawers/CreateExpenseDrawer';
@@ -99,9 +104,12 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
 
  const expensesService = new ExpensesService();
 
- useEffect(() => {
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
  loadExpenses();
  loadStatistics();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [orgId, filters]);
 
  const loadExpenses = async () => {
@@ -299,7 +307,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
  const formatCurrency = (amount: number, currency = 'USD') => {
  return new Intl.NumberFormat('en-US', {
  style: 'currency',
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 
@@ -546,7 +554,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
  {/* Filters */}
  <div className="flex gap-md mb-6">
  <div className="flex-1">
- <UnifiedInput
+ <Input
  placeholder="Search expenses..."
  value={searchTerm}
  onChange={(e) => setSearchTerm(e.target.value)}

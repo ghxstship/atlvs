@@ -72,7 +72,7 @@ class AdvancedAlertingService {
       baselinePeriod: 7, // 7 days
       sensitivity: 'medium',
       autoTuning: true,
-      ...config,
+      ...config
     };
 
     this.initializeDefaultRules();
@@ -103,7 +103,7 @@ class AdvancedAlertingService {
         severity: 'high',
         cooldown: 15,
         enabled: true,
-        description: 'P95 response time exceeds 2 seconds for 5+ minutes',
+        description: 'P95 response time exceeds 2 seconds for 5+ minutes'
       },
       {
         id: 'error_rate_critical',
@@ -115,7 +115,7 @@ class AdvancedAlertingService {
         severity: 'critical',
         cooldown: 10,
         enabled: true,
-        description: 'Error rate exceeds 5% for 2+ minutes',
+        description: 'Error rate exceeds 5% for 2+ minutes'
       },
       {
         id: 'cpu_usage_high',
@@ -127,7 +127,7 @@ class AdvancedAlertingService {
         severity: 'medium',
         cooldown: 30,
         enabled: true,
-        description: 'CPU usage exceeds 80% for 10+ minutes',
+        description: 'CPU usage exceeds 80% for 10+ minutes'
       },
       {
         id: 'memory_usage_critical',
@@ -139,7 +139,7 @@ class AdvancedAlertingService {
         severity: 'critical',
         cooldown: 15,
         enabled: true,
-        description: 'Memory usage exceeds 90% for 5+ minutes',
+        description: 'Memory usage exceeds 90% for 5+ minutes'
       },
       {
         id: 'throughput_drop',
@@ -151,7 +151,7 @@ class AdvancedAlertingService {
         severity: 'high',
         cooldown: 20,
         enabled: true,
-        description: 'Throughput drops below 50% of baseline for 3+ minutes',
+        description: 'Throughput drops below 50% of baseline for 3+ minutes'
       },
     ];
 
@@ -167,7 +167,7 @@ class AdvancedAlertingService {
         severity: 'critical',
         cooldown: 1440, // 24 hours
         enabled: true,
-        description: 'Monthly recurring revenue drops by 10% or more',
+        description: 'Monthly recurring revenue drops by 10% or more'
       },
       {
         id: 'churn_spike',
@@ -179,7 +179,7 @@ class AdvancedAlertingService {
         severity: 'high',
         cooldown: 720, // 12 hours
         enabled: true,
-        description: 'Monthly churn rate exceeds 5%',
+        description: 'Monthly churn rate exceeds 5%'
       },
       {
         id: 'conversion_drop',
@@ -191,7 +191,7 @@ class AdvancedAlertingService {
         severity: 'high',
         cooldown: 360, // 6 hours
         enabled: true,
-        description: 'Checkout conversion rate drops by 15% or more',
+        description: 'Checkout conversion rate drops by 15% or more'
       },
       {
         id: 'dau_drop',
@@ -203,7 +203,7 @@ class AdvancedAlertingService {
         severity: 'critical',
         cooldown: 120, // 2 hours
         enabled: true,
-        description: 'Daily active users drop by 20% or more',
+        description: 'Daily active users drop by 20% or more'
       },
       {
         id: 'runway_critical',
@@ -215,7 +215,7 @@ class AdvancedAlertingService {
         severity: 'critical',
         cooldown: 1440, // 24 hours
         enabled: true,
-        description: 'Runway drops below 6 months',
+        description: 'Runway drops below 6 months'
       },
     ];
   }
@@ -313,7 +313,7 @@ class AdvancedAlertingService {
       threshold: rule.threshold,
       severity: rule.severity,
       triggeredAt: new Date().toISOString(),
-      context,
+      context
     };
 
     this.activeAlerts.set(alertId, alert);
@@ -330,7 +330,7 @@ class AdvancedAlertingService {
         currentValue,
         threshold: rule.threshold,
         ruleId: rule.id,
-        context,
+        context
       }
     );
 
@@ -356,7 +356,7 @@ class AdvancedAlertingService {
       threshold: rule.threshold,
       severity: rule.severity,
       triggeredAt: new Date().toISOString(),
-      context,
+      context
     };
 
     this.activeAlerts.set(alertId, alert);
@@ -373,7 +373,7 @@ class AdvancedAlertingService {
         currentValue,
         threshold: rule.threshold,
         ruleId: rule.id,
-        context,
+        context
       }
     );
 
@@ -524,7 +524,7 @@ class AdvancedAlertingService {
   getRules(): { performance: PerformanceAlertRule[]; business: BusinessAlertRule[] } {
     return {
       performance: this.performanceRules,
-      business: this.businessRules,
+      business: this.businessRules
     };
   }
 
@@ -537,14 +537,14 @@ class AdvancedAlertingService {
         critical: history.filter(a => a.severity === 'critical').length,
         high: history.filter(a => a.severity === 'high').length,
         medium: history.filter(a => a.severity === 'medium').length,
-        low: history.filter(a => a.severity === 'low').length,
+        low: history.filter(a => a.severity === 'low').length
       },
       byType: {
         performance: history.filter(a => a.ruleId.startsWith('perf_')).length,
-        business: history.filter(a => a.ruleId.startsWith('biz_')).length,
+        business: history.filter(a => a.ruleId.startsWith('biz_')).length
       },
       averageResolutionTime: this.calculateAverageResolutionTime(history),
-      mostTriggeredRules: this.getMostTriggeredRules(history),
+      mostTriggeredRules: this.getMostTriggeredRules(history)
     };
   }
 
@@ -584,7 +584,7 @@ export const defaultSmartAlertConfig: SmartAlertConfig = {
   seasonalAdjustment: true,
   baselinePeriod: 7,
   sensitivity: 'medium',
-  autoTuning: true,
+  autoTuning: true
 };
 
 export const advancedAlertingService = new AdvancedAlertingService(defaultSmartAlertConfig);

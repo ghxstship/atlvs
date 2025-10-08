@@ -38,7 +38,7 @@ export default function MarketplaceDetailClient({
   orgId,
   userId,
   listingId,
-  initialListing,
+  initialListing
 }: MarketplaceDetailClientProps) {
   const router = useRouter();
   const [detailDrawerOpen, setDetailDrawerOpen] = useState(false);
@@ -59,11 +59,11 @@ export default function MarketplaceDetailClient({
     if (amount == null) return 'Not specified';
     if (amount === 0) return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency,
+      currency
     }).format(0);
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency,
+      currency
     }).format(amount);
   };
 

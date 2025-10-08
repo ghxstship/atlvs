@@ -30,9 +30,9 @@ async function jsonFetch(input: RequestInfo, init?: RequestInit): Promise<Respon
     ...init,
     headers: {
       'Content-Type': 'application/json',
-      ...(init?.headers ?? {}),
+      ...(init?.headers ?? {})
     },
-    credentials: 'include',
+    credentials: 'include'
   });
 }
 
@@ -102,7 +102,7 @@ export async function fetchAutomationRules(filters: AutomationRuleFilters = {}):
 export async function createAutomationRule(input: CreateAutomationRuleInput): Promise<AutomationRuleSummary> {
   const response = await jsonFetch('/api/v1/settings/automations', {
     method: 'POST',
-    body: JSON.stringify(input),
+    body: JSON.stringify(input)
   });
   const payload = await handleResponse<{ automationRule: AutomationRuleSummary }>(response);
   if (!payload.automationRule) {
@@ -114,7 +114,7 @@ export async function createAutomationRule(input: CreateAutomationRuleInput): Pr
 export async function updateAutomationRule(id: string, input: UpdateAutomationRuleInput): Promise<AutomationRuleSummary> {
   const response = await jsonFetch(`/api/v1/settings/automations?id=${encodeURIComponent(id)}`, {
     method: 'PUT',
-    body: JSON.stringify(input),
+    body: JSON.stringify(input)
   });
   const payload = await handleResponse<{ automationRule: AutomationRuleSummary }>(response);
   if (!payload.automationRule) {
@@ -125,7 +125,7 @@ export async function updateAutomationRule(id: string, input: UpdateAutomationRu
 
 export async function deleteAutomationRule(id: string): Promise<void> {
   const response = await jsonFetch(`/api/v1/settings/automations?id=${encodeURIComponent(id)}`, {
-    method: 'DELETE',
+    method: 'DELETE'
   });
   await handleResponse(response);
 }

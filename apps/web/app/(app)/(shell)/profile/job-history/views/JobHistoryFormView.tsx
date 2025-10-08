@@ -19,7 +19,7 @@ import {
  Label,
  Card,
  Separator,
- useToast,
+ useToast
 } from '@ghxstship/ui';
 import type { 
  JobHistoryEntry, 
@@ -49,7 +49,7 @@ const jobHistorySchema = z.object({
  company_size: z.enum(['startup', 'small', 'medium', 'large', 'enterprise']).optional(),
  industry: z.string().optional(),
  visibility: z.enum(['public', 'organization', 'private']).default('organization'),
- tags: z.array(z.string()).default([]),
+ tags: z.array(z.string()).default([])
 });
 
 type FormData = z.infer<typeof jobHistorySchema>;
@@ -104,7 +104,7 @@ export default function JobHistoryFormView({
  entry,
  onSave,
  onCancel,
- loading = false,
+ loading = false
 }: JobHistoryFormViewProps) {
  const { addToast } = useToast();
  const [newSkill, setNewSkill] = useState('');
@@ -134,7 +134,7 @@ export default function JobHistoryFormView({
  company_size: entry.company_size || undefined,
  industry: entry.industry || '',
  visibility: entry.visibility,
- tags: entry.tags,
+ tags: entry.tags
  } : {
  company_name: '',
  job_title: '',
@@ -154,8 +154,8 @@ export default function JobHistoryFormView({
  reason_for_leaving: '',
  industry: '',
  visibility: 'organization',
- tags: [],
- },
+ tags: []
+ }
  });
 
  const { watch, setValue, getValues } = form;
@@ -215,13 +215,13 @@ export default function JobHistoryFormView({
  addToast({
  title: entry ? 'Job Updated' : 'Job Added',
  description: `Your job history entry has been successfully ${entry ? 'updated' : 'created'}.`,
- type: 'success',
+ type: 'success'
  });
  } catch (error) {
  addToast({
  title: 'Error',
  description: `Failed to ${entry ? 'update' : 'create'} job history entry. Please try again.`,
- type: 'error',
+ type: 'error'
  });
  }
  }, [entry, onSave, addToast]);

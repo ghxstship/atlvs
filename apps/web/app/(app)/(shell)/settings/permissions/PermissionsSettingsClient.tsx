@@ -20,18 +20,18 @@ import {
  Skeleton,
  Textarea,
  Toggle,
- useToastContext,
+ useToastContext
 } from '@ghxstship/ui';
 import {
  createRole,
  deleteRole,
  fetchRoles,
  RoleRecord,
- updateRole,
+ updateRole
 } from '@/lib/services/settingsRolesClient';
 import {
  fetchOrganizationMembers,
- OrganizationMember,
+ OrganizationMember
 } from '@/lib/services/settingsOrganizationClient';
 
 interface PermissionState {
@@ -160,7 +160,7 @@ export default function PermissionsSettingsClient() {
  const payload = {
  name: roleName || DEFAULT_ROLE_NAME,
  description: roleDescription || undefined,
- permissions: exportPermissionState(permissionState),
+ permissions: exportPermissionState(permissionState)
  };
 
  if (editingRole) {

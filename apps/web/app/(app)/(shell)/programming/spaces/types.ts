@@ -300,7 +300,7 @@ export const STATUS_BADGE = {
   cleaning: { label: 'Cleaning', variant: 'info' as const },
   setup: { label: 'Setup', variant: 'warning' as const },
   breakdown: { label: 'Breakdown', variant: 'warning' as const },
-  out_of_service: { label: 'Out of Service', variant: 'destructive' as const },
+  out_of_service: { label: 'Out of Service', variant: 'destructive' as const }
 } as const;
 
 // Access level badge configurations
@@ -311,7 +311,7 @@ export const ACCESS_LEVEL_BADGE = {
   talent_only: { label: 'Talent Only', variant: 'info' as const },
   vip: { label: 'VIP', variant: 'destructive' as const },
   crew_only: { label: 'Crew Only', variant: 'default' as const },
-  private: { label: 'Private', variant: 'destructive' as const },
+  private: { label: 'Private', variant: 'destructive' as const }
 } as const;
 
 // Space kind configurations
@@ -335,7 +335,7 @@ export const SPACE_KIND_BADGE = {
   loading_dock: { label: 'Loading Dock', icon: '🚛' },
   parking: { label: 'Parking', icon: '🅿️' },
   outdoor: { label: 'Outdoor', icon: '🌳' },
-  other: { label: 'Other', icon: '📍' },
+  other: { label: 'Other', icon: '📍' }
 } as const;
 
 // View configuration
@@ -343,7 +343,7 @@ export const VIEW_CONFIG = {
   list: { label: 'List', icon: 'List' },
   grid: { label: 'Grid', icon: 'Grid3X3' },
   timeline: { label: 'Timeline', icon: 'Calendar' },
-  analytics: { label: 'Analytics', icon: 'BarChart3' },
+  analytics: { label: 'Analytics', icon: 'BarChart3' }
 } as const;
 
 // Common amenities list

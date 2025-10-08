@@ -85,7 +85,7 @@ export class ExpensesService implements ExpenseWorkflowActions {
           organization_id: orgId,
           submitted_by: userId,
           status: 'draft',
-          currency: expenseData.currency || 'USD',
+          currency: expenseData.currency || 'USD'
         })
         .select()
         .single();
@@ -307,7 +307,7 @@ export class ExpensesService implements ExpenseWorkflowActions {
   formatCurrency(amount: number, currency = 'USD'): string {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: currency
     }).format(amount);
   }
 
@@ -315,7 +315,7 @@ export class ExpensesService implements ExpenseWorkflowActions {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
-      day: 'numeric',
+      day: 'numeric'
     });
   }
 

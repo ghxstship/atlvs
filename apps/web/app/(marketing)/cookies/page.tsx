@@ -4,55 +4,55 @@ import { MarketingCard, MarketingSection, MarketingSectionHeader } from '../../_
 
 export const metadata: Metadata = {
   title: 'Cookie Policy | GHXSTSHIP',
-  description: 'Understand how GHXSTSHIP uses cookies to improve your experience on ATLVS and OPENDECK.',
+  description: 'Understand how GHXSTSHIP uses cookies to improve your experience on ATLVS and OPENDECK.'
 };
 
 const cookieCategories = [
   {
     title: 'Essential Cookies',
-    description: 'Required for secure login, load balancing, and basic platform navigation. These cannot be disabled.',
+    description: 'Required for secure login, load balancing, and basic platform navigation. These cannot be disabled.'
   },
   {
     title: 'Performance Cookies',
-    description: 'Help us analyze product usage and optimize workflows with aggregated metrics.',
+    description: 'Help us analyze product usage and optimize workflows with aggregated metrics.'
   },
   {
     title: 'Functional Cookies',
-    description: 'Remember your preferences such as language, theme, and saved filters.',
+    description: 'Remember your preferences such as language, theme, and saved filters.'
   },
   {
     title: 'Targeting Cookies',
-    description: 'Support relevant marketing campaigns and partner attribution programs.',
+    description: 'Support relevant marketing campaigns and partner attribution programs.'
   },
 ];
 
 const thirdParties = [
   {
     title: 'Analytics Tools',
-    description: 'Google Analytics, Segment, and similar tools measuring engagement so we can improve your experience.',
+    description: 'Google Analytics, Segment, and similar tools measuring engagement so we can improve your experience.'
   },
   {
     title: 'Advertising Partners',
-    description: 'Platforms that help us provide relevant content and measure campaign performance.',
+    description: 'Platforms that help us provide relevant content and measure campaign performance.'
   },
   {
     title: 'Social Integrations',
-    description: 'Cookies from networks such as LinkedIn or YouTube when you interact with embedded content.',
+    description: 'Cookies from networks such as LinkedIn or YouTube when you interact with embedded content.'
   },
 ];
 
 const managementSteps = [
   {
     title: 'Browser Controls',
-    description: 'Most browsers let you view, delete, or block cookies. Check your browser settings for instructions.',
+    description: 'Most browsers let you view, delete, or block cookies. Check your browser settings for instructions.'
   },
   {
     title: 'Do Not Track',
-    description: 'We honor browser Do Not Track signals for non-essential cookies when detected.',
+    description: 'We honor browser Do Not Track signals for non-essential cookies when detected.'
   },
   {
     title: 'Consent Preferences',
-    description: 'Use the cookie banner to update your preferences at any time. Changes apply immediately.',
+    description: 'Use the cookie banner to update your preferences at any time. Changes apply immediately.'
   },
 ];
 
@@ -60,7 +60,7 @@ export default function CookiePolicyPage() {
   const lastUpdated = new Date('2024-12-15').toLocaleDateString(undefined, {
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
+    day: 'numeric'
   });
 
   return (

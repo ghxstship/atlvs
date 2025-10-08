@@ -1,10 +1,10 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { Activity, AlertCircle, Award, Calendar, CheckCircle, Clock, Edit, ExternalEye, ExternalEye, ExternalLink, Eye, FileText, MapPin, Package, Play, Plus, Search, Settings, Trash2, TrendingUp, Truck, User } from 'lucide-react';
 import { useState } from 'react';
 import { Card, Badge, Button, Checkbox } from '@ghxstship/ui';
 import Link from 'next/link';
 import type { TrackingItem } from '../types';
-import { formatCurrency, formatDate, getStatusColor, getPriorityColor, getPerformanceColor, calculateDeliveryPerformance } from '../types';
+import { formatCurrency, formatDate, getPerformanceColor, calculateDeliveryPerformance } from '../types';
 
 interface TrackingGridViewProps {
  items: TrackingItem[];
@@ -25,7 +25,7 @@ export default function TrackingGridView({
  onItemClick,
  onEditItem,
  onViewItem,
- onTrackPackage,
+ onTrackPackage
 }: TrackingGridViewProps) {
  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
@@ -184,7 +184,7 @@ export default function TrackingGridView({
  {/* Overdue indicator */}
  {overdue && (
  <div className="absolute top-sm right-sm z-10">
- <Badge variant="destructive" className="text-xs">
+ <Badge variant="error" className="text-xs">
  Overdue
  </Badge>
  </div>

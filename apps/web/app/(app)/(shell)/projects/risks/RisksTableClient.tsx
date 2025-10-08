@@ -28,7 +28,7 @@ const schema = z.object({
   probability: z.enum(['very_low', 'low', 'medium', 'high', 'very_high']),
   status: z.enum(['identified', 'assessed', 'mitigated', 'accepted', 'closed']),
   description: z.string().optional(),
-  mitigation: z.string().optional(),
+  mitigation: z.string().optional()
 });
 
 export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; orgId: string }) {

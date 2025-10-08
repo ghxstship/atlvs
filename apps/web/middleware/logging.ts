@@ -21,7 +21,7 @@ export function loggingMiddleware(req: NextRequest) {
     requestId,
     method: req.method,
     path: req.nextUrl.pathname,
-    userAgent: req.headers.get('user-agent') || 'unknown',
+    userAgent: req.headers.get('user-agent') || 'unknown'
   });
 
   // Clone response to add headers
@@ -33,7 +33,7 @@ export function loggingMiddleware(req: NextRequest) {
   logger.info('Request completed', {
     requestId,
     duration,
-    status: response.status,
+    status: response.status
   });
 
   return response;

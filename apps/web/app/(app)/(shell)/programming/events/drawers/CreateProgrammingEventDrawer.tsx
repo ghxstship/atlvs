@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar, Clock, MapPin, Plus, Save, X } from "lucide-react";
-import { useState } from "react";
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -13,7 +13,7 @@ import {
  Label,
  Select,
  Textarea,
- Badge,
+ Badge
 } from "@ghxstship/ui";
 import type { ProgrammingEventProject } from "../types";
 
@@ -44,14 +44,14 @@ const createEventSchema = z.object({
  tags: z.array(z.string()).default([]),
  resources: z.array(z.object({
  name: z.string(),
- quantity: z.number().min(1),
+ quantity: z.number().min(1)
  })).default([]),
  staffing: z.array(z.object({
  role: z.string(),
  user_id: z.string().uuid().optional(),
- notes: z.string().optional(),
+ notes: z.string().optional()
  })).default([]),
- metadata: z.record(z.any()).optional(),
+ metadata: z.record(z.any()).optional()
 });
 
 type CreateEventFormData = z.infer<typeof createEventSchema>;
@@ -71,7 +71,7 @@ export default function CreateProgrammingEventDrawer({
  orgId,
  currentUserId,
  projects,
- onSuccess,
+ onSuccess
 }: CreateProgrammingEventDrawerProps) {
  const handleClose = () => onOpenChange(false);
  const [loading, setLoading] = useState(false);
@@ -85,7 +85,7 @@ export default function CreateProgrammingEventDrawer({
  watch,
  setValue,
  reset,
- formState: { errors },
+ formState: { errors }
  } = useForm<CreateEventFormData>({
  resolver: zodResolver(createEventSchema),
  defaultValues: {
@@ -95,8 +95,8 @@ export default function CreateProgrammingEventDrawer({
  is_all_day: false,
  tags: [],
  resources: [],
- staffing: [],
- },
+ staffing: []
+ }
  });
 
  const watchedTags = watch("tags");
@@ -111,7 +111,7 @@ export default function CreateProgrammingEventDrawer({
  const response = await fetch("/api/v1/programming/events", {
  method: "POST",
  headers: { "Content-Type": "application/json" },
- body: JSON.stringify(data),
+ body: JSON.stringify(data)
  });
 
  if (!response.ok) {

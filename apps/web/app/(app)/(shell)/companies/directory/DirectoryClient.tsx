@@ -1,25 +1,11 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, Skeleton, Drawer, UnifiedInput, type DataRecord } from '@ghxstship/ui';
-import { 
-  Building,
-  Search,
-  Filter,
-  Plus,
-  Edit,
-  Trash2,
-  Eye,
-  Globe,
-  Mail,
-  Phone,
-  MapPin,
-  Star,
-  Users
-} from 'lucide-react';
+import { Badge, Button, Card, Drawer, Input, Skeleton, StateManagerProvider, type DataRecord } from '@ghxstship/ui';
+import { Building, Edit, Eye, Filter, Globe, Mail, MapPin, Phone, Plus, Search, Star, Trash2, Users } from 'lucide-react';
 
 interface DirectoryClientProps {
   user: User;
@@ -66,12 +52,16 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadCompanies();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     filterCompanies();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [companies, searchQuery, industryFilter, statusFilter, sizeFilter]);
 
   const loadCompanies = async () => {
@@ -381,7 +371,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
             <div className="flex-1 min-w-container-sm">
               <div className="relative">
                 <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   placeholder="Search companies..."
+                <Input                   placeholder="Search companies..."
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"

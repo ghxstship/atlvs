@@ -9,7 +9,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@ghxstship/ui';
 import type { ProgrammingEntity } from '../types';
 
@@ -40,7 +40,7 @@ export function ListView<T extends ProgrammingEntity>({
   renderListItem,
   emptyMessage = 'No data available',
   className,
-  showDetails = true,
+  showDetails = true
 }: ListViewProps<T>) {
   const [internalSelectedIds, setInternalSelectedIds] = useState<string[]>(selectedIds);
   const [expandedItems, setExpandedItems] = useState<Set<string>(new Set());

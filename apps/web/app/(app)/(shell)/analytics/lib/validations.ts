@@ -17,7 +17,7 @@ import type {
   DashboardLayout,
   WidgetConfig,
   ReportFormat,
-  ExportFormat,
+  ExportFormat
 } from '../types';
 
 // ============================================================================
@@ -65,8 +65,8 @@ const dashboardLayoutSchema: z.ZodType<DashboardLayout> = z.object({
   responsive: z.record(z.string(), z.object({
     type: z.enum(['grid', 'masonry', 'flex', 'tabs', 'accordion', 'sidebar', 'fullscreen']).optional(),
     columns: z.number().int().min(1).max(12).optional(),
-    gap: z.string().regex(/^[\d.]+(px|rem|em)$/, 'Gap must be a valid CSS unit').optional(),
-  }).optional()).optional(),
+    gap: z.string().regex(/^[\d.]+(px|rem|em)$/, 'Gap must be a valid CSS unit').optional()
+  }).optional()).optional()
 });
 
 /**
@@ -77,7 +77,7 @@ const widgetConfigSchema: z.ZodType<WidgetConfig> = z.object({
   description: z.string().max(500).optional(),
   showHeader: z.boolean(),
   showBorder: z.boolean(),
-  backgroundColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/).optional(),
+  backgroundColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/).optional()
 }).catchall(z.any()); // Allow additional config properties
 
 /**
@@ -90,13 +90,13 @@ const dashboardWidgetSchema = z.object({
     x: z.number().int().min(0),
     y: z.number().int().min(0),
     width: z.number().int().min(1),
-    height: z.number().int().min(1),
+    height: z.number().int().min(1)
   }),
   size: z.object({
     minWidth: z.number().int().min(1),
     minHeight: z.number().int().min(1),
     maxWidth: z.number().int().positive().optional(),
-    maxHeight: z.number().int().positive().optional(),
+    maxHeight: z.number().int().positive().optional()
   }),
   config: widgetConfigSchema,
   data_source: z.object({
@@ -104,14 +104,14 @@ const dashboardWidgetSchema = z.object({
     endpoint: z.string().url().optional(),
     query: z.string().optional(),
     parameters: z.record(z.any()).optional(),
-    realtime: z.boolean().optional(),
+    realtime: z.boolean().optional()
   }),
   refresh_interval: z.number().int().min(5000).max(300000).optional(), // 5s to 5min
   permissions: z.object({
     view: z.array(z.string()),
     edit: z.array(z.string()),
-    delete: z.array(z.string()),
-  }),
+    delete: z.array(z.string())
+  })
 });
 
 /**
@@ -121,7 +121,7 @@ const dashboardPermissionsSchema = z.object({
   view: z.array(z.string()),
   edit: z.array(z.string()),
   delete: z.array(z.string()),
-  share: z.array(z.string()),
+  share: z.array(z.string())
 });
 
 /**
@@ -136,10 +136,10 @@ const dashboardFilterSchema = z.object({
   options: z.array(z.object({
     label: z.string(),
     value: z.any(),
-    group: z.string().optional(),
+    group: z.string().optional()
   })).optional(),
   required: z.boolean(),
-  persistent: z.boolean(),
+  persistent: z.boolean()
 });
 
 /**
@@ -152,7 +152,7 @@ export const createDashboardSchema: z.ZodType<CreateDashboardSchema> = z.object(
   widgets: z.array(dashboardWidgetSchema).max(50, 'Maximum 50 widgets per dashboard'),
   filters: z.array(dashboardFilterSchema).max(20, 'Maximum 20 filters per dashboard'),
   is_template: z.boolean(),
-  is_public: z.boolean(),
+  is_public: z.boolean()
 });
 
 // ============================================================================
@@ -168,7 +168,7 @@ const reportDataSourceSchema = z.object({
   schema: z.string().optional(),
   table: z.string().optional(),
   query: z.string().optional(),
-  parameters: z.record(z.any()).optional(),
+  parameters: z.record(z.any()).optional()
 });
 
 /**
@@ -180,7 +180,7 @@ const reportConditionSchema: z.ZodType<unknown> = z.lazy(() =>
     operator: z.enum(['eq', 'ne', 'gt', 'gte', 'lt', 'lte', 'in', 'nin', 'like', 'ilike']),
     value: z.any(),
     and: z.array(reportConditionSchema).optional(),
-    or: z.array(reportConditionSchema).optional(),
+    or: z.array(reportConditionSchema).optional()
   })
 );
 
@@ -194,14 +194,14 @@ const reportQuerySchema = z.object({
   groupBy: z.array(z.string()).optional(),
   orderBy: z.array(z.object({
     field: z.string(),
-    direction: z.enum(['asc', 'desc']),
+    direction: z.enum(['asc', 'desc'])
   })).optional(),
   limit: z.number().int().min(1).max(10000).optional(),
   joins: z.array(z.object({
     type: z.enum(['inner', 'left', 'right', 'full']),
     table: z.string(),
-    on: reportConditionSchema,
-  })).optional(),
+    on: reportConditionSchema
+  })).optional()
 });
 
 /**
@@ -213,7 +213,7 @@ const reportScheduleSchema = z.object({
   dayOfWeek: z.number().int().min(0).max(6).optional(), // 0-6, Sunday = 0
   dayOfMonth: z.number().int().min(1).max(31).optional(),
   timezone: z.string().min(1), // IANA timezone
-  enabled: z.boolean(),
+  enabled: z.boolean()
 });
 
 /**
@@ -221,7 +221,7 @@ const reportScheduleSchema = z.object({
  */
 const reportFormatSchema: z.ZodType<ReportFormat> = z.object({
   type: z.enum(['pdf', 'excel', 'csv', 'json', 'html']),
-  options: z.record(z.any()).optional(),
+  options: z.record(z.any()).optional()
 });
 
 /**
@@ -232,7 +232,7 @@ const reportPermissionsSchema = z.object({
   edit: z.array(z.string()),
   delete: z.array(z.string()),
   run: z.array(z.string()),
-  schedule: z.array(z.string()),
+  schedule: z.array(z.string())
 });
 
 /**
@@ -246,7 +246,7 @@ export const createReportSchema: z.ZodType<CreateReportSchema> = z.object({
   schedule: reportScheduleSchema.optional(),
   format: reportFormatSchema,
   recipients: z.array(z.string().email('Invalid email format')).max(50).optional(),
-  is_active: z.boolean(),
+  is_active: z.boolean()
 });
 
 // ============================================================================
@@ -259,7 +259,7 @@ export const createReportSchema: z.ZodType<CreateReportSchema> = z.object({
 const exportDataSourceSchema = z.object({
   type: z.enum(['query', 'table', 'view', 'report']),
   source: z.string().min(1),
-  parameters: z.record(z.any()).optional(),
+  parameters: z.record(z.any()).optional()
 });
 
 /**
@@ -268,7 +268,7 @@ const exportDataSourceSchema = z.object({
 const exportFilterSchema = z.object({
   field: z.string().min(1),
   operator: z.string().min(1),
-  value: z.any(),
+  value: z.any()
 });
 
 /**
@@ -280,7 +280,7 @@ const exportScheduleSchema = z.object({
   dayOfWeek: z.number().int().min(0).max(6).optional(),
   dayOfMonth: z.number().int().min(1).max(31).optional(),
   timezone: z.string().min(1),
-  enabled: z.boolean(),
+  enabled: z.boolean()
 });
 
 /**
@@ -291,8 +291,8 @@ const exportFormatSchema: z.ZodType<ExportFormat> = z.object({
   options: z.object({
     delimiter: z.string().max(1).optional(),
     includeHeaders: z.boolean().optional(),
-    compression: z.boolean().optional(),
-  }).catchall(z.any()).optional(),
+    compression: z.boolean().optional()
+  }).catchall(z.any()).optional()
 });
 
 /**
@@ -302,7 +302,7 @@ const exportPermissionsSchema = z.object({
   view: z.array(z.string()),
   create: z.array(z.string()),
   delete: z.array(z.string()),
-  download: z.array(z.string()),
+  download: z.array(z.string())
 });
 
 /**
@@ -314,7 +314,7 @@ export const createExportSchema: z.ZodType<CreateExportSchema> = z.object({
   data_source: exportDataSourceSchema,
   format: exportFormatSchema,
   filters: z.array(exportFilterSchema).max(10, 'Maximum 10 filters per export'),
-  schedule: exportScheduleSchema.optional(),
+  schedule: exportScheduleSchema.optional()
 });
 
 // ============================================================================
@@ -329,7 +329,7 @@ export const paginationSchema = z.object({
   pageSize: z.number().int().min(1).max(100).default(20),
   search: z.string().max(100).optional(),
   sortBy: z.string().optional(),
-  sortOrder: z.enum(['asc', 'desc']).default('desc'),
+  sortOrder: z.enum(['asc', 'desc']).default('desc')
 });
 
 /**
@@ -338,7 +338,7 @@ export const paginationSchema = z.object({
 export const dashboardFiltersSchema = paginationSchema.extend({
   isTemplate: z.boolean().optional(),
   isPublic: z.boolean().optional(),
-  createdBy: userIdSchema.optional(),
+  createdBy: userIdSchema.optional()
 });
 
 /**
@@ -347,7 +347,7 @@ export const dashboardFiltersSchema = paginationSchema.extend({
 export const reportFiltersSchema = paginationSchema.extend({
   isActive: z.boolean().optional(),
   format: z.enum(['pdf', 'excel', 'csv', 'json', 'html']).optional(),
-  createdBy: userIdSchema.optional(),
+  createdBy: userIdSchema.optional()
 });
 
 /**
@@ -356,7 +356,7 @@ export const reportFiltersSchema = paginationSchema.extend({
 export const exportFiltersSchema = paginationSchema.extend({
   status: z.enum(['pending', 'processing', 'completed', 'failed', 'cancelled']).optional(),
   format: z.enum(['csv', 'excel', 'json', 'pdf', 'xml']).optional(),
-  createdBy: userIdSchema.optional(),
+  createdBy: userIdSchema.optional()
 });
 
 // ============================================================================
@@ -369,7 +369,7 @@ export const exportFiltersSchema = paginationSchema.extend({
 export const bulkOperationSchema = z.object({
   ids: z.array(z.string().uuid()).min(1, 'At least one item must be selected').max(100, 'Maximum 100 items per bulk operation'),
   operation: z.enum(['delete', 'update', 'duplicate', 'export']),
-  data: z.record(z.any()).optional(),
+  data: z.record(z.any()).optional()
 });
 
 /**
@@ -377,7 +377,7 @@ export const bulkOperationSchema = z.object({
  */
 export const bulkUpdateSchema = z.object({
   ids: z.array(z.string().uuid()).min(1).max(100),
-  updates: z.record(z.any()),
+  updates: z.record(z.any())
 });
 
 // ============================================================================
@@ -394,10 +394,10 @@ export const analyticsQuerySchema = z.object({
   groupBy: z.array(z.string()).optional(),
   orderBy: z.array(z.object({
     field: z.string(),
-    direction: z.enum(['asc', 'desc']),
+    direction: z.enum(['asc', 'desc'])
   })).optional(),
   limit: z.number().int().min(1).max(10000).default(1000),
-  parameters: z.record(z.any()).optional(),
+  parameters: z.record(z.any()).optional()
 });
 
 /**
@@ -415,13 +415,13 @@ export const timeSeriesQuerySchema = z.object({
       suffix: z.string().optional(),
       decimals: z.number().int().min(0).max(10).optional(),
       currency: z.string().optional(),
-      locale: z.string().optional(),
-    }),
+      locale: z.string().optional()
+    })
   }),
   startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{3})?Z?$/),
   endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{3})?Z?$/),
   interval: z.enum(['hour', 'day', 'week', 'month']),
-  filters: z.record(z.any()).optional(),
+  filters: z.record(z.any()).optional()
 });
 
 // ============================================================================
@@ -468,7 +468,7 @@ export const validateExportSize = (rowCount: number, format: string): boolean =>
     excel: 50000,
     json: 100000,
     pdf: 10000,
-    xml: 50000,
+    xml: 50000
   };
 
   const limit = limits[format as keyof typeof limits];
@@ -560,5 +560,5 @@ export const AnalyticsValidations = {
   validateDateRange,
   sanitizeString,
   validateAndParse,
-  formatValidationErrors,
+  formatValidationErrors
 } as const;

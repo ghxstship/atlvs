@@ -15,7 +15,7 @@ interface ListViewProps {
 
 export const ListView: React.FC<ListViewProps> = ({
   showHeaders = true,
-  sortable = true,
+  sortable = true
 }) => {
   const { data, loading, config } = useATLVS();
 

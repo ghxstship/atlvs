@@ -19,7 +19,7 @@ const schema = z.object({
   endorsement_text: z.string().min(10, 'Endorsement text is required'),
   rating: z.number().min(1).max(5),
   is_public: z.boolean().default(true),
-  date_received: z.string().optional(),
+  date_received: z.string().optional()
 });
 
 type Values = z.infer<typeof schema>;
@@ -42,9 +42,9 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
       endorsement_text: '',
       rating: 5,
       is_public: true,
-      date_received: new Date().toISOString().split('T')[0],
+      date_received: new Date().toISOString().split('T')[0]
     },
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   async function onSubmit(values: Values) {
@@ -65,7 +65,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
         rating: values.rating,
         is_public: values.is_public,
         date_received: values.date_received || new Date().toISOString().split('T')[0],
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString()
       };
 
       // Log activity

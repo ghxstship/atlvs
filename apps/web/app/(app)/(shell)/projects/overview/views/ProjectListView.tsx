@@ -25,14 +25,14 @@ const statusColors = {
  active: 'green',
  on_hold: 'yellow',
  completed: 'gray',
- cancelled: 'red',
+ cancelled: 'red'
 } as const;
 
 const priorityColors = {
  low: 'green',
  medium: 'yellow',
  high: 'orange',
- critical: 'red',
+ critical: 'red'
 } as const;
 
 export default function ProjectListView({
@@ -46,7 +46,7 @@ export default function ProjectListView({
  onSort,
  onView,
  onEdit,
- onDelete,
+ onDelete
 }: ProjectListViewProps) {
  const visibleFields = fieldVisibility.filter(field => field.visible);
 
@@ -91,7 +91,7 @@ export default function ProjectListView({
  {new Intl.NumberFormat('en-US', {
  style: 'currency',
  currency: project.currency || 'USD',
- notation: 'compact',
+ notation: 'compact'
  }).format(project.budget)}
  </div>
  ) : (

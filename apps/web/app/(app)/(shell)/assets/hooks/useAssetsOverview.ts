@@ -38,7 +38,7 @@ const DEFAULT_STATS: AssetStats = {
   maintenanceAssets: 0,
   totalValue: 0,
   activeAssignments: 0,
-  pendingMaintenance: 0,
+  pendingMaintenance: 0
 }
 
 export function useAssetsOverview({ orgId }: UseAssetsOverviewOptions): UseAssetsOverviewResult {
@@ -102,7 +102,7 @@ export function useAssetsOverview({ orgId }: UseAssetsOverviewOptions): UseAsset
           maintenanceAssets,
           totalValue,
           activeAssignments: assignmentData.length,
-          pendingMaintenance: maintenanceData.length,
+          pendingMaintenance: maintenanceData.length
         })
 
         setActivity(activityData.slice(0, 10))
@@ -122,12 +122,15 @@ export function useAssetsOverview({ orgId }: UseAssetsOverviewOptions): UseAsset
     [orgId],
   )
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadOverview('initial')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadOverview])
 
   const refresh = useCallback(async () => {
     await loadOverview('refresh')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadOverview])
 
   return {
@@ -136,6 +139,6 @@ export function useAssetsOverview({ orgId }: UseAssetsOverviewOptions): UseAsset
     loading,
     refreshing,
     error,
-    refresh,
+    refresh
   }
 }

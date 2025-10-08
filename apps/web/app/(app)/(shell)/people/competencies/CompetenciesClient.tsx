@@ -1,9 +1,9 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
+import { Card, Button, Input, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Search, Edit, Trash2, Award } from 'lucide-react';
 
@@ -46,8 +46,10 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadCompetencies();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, selectedCategory]);
 
   const loadCompetencies = async () => {
@@ -154,7 +156,7 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
             <div className="flex flex-col sm:flex-row gap-md flex-1">
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted h-icon-xs w-icon-xs" />
-                <UnifiedInput                   placeholder={t('searchPlaceholder')}
+                <Input                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
@@ -184,11 +186,11 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
             <div className="border border-border rounded-lg p-md bg-secondary/50">
               <h3 className="text-body form-label mb-md">{t('createCompetency')}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-                <UnifiedInput                   placeholder={t('competencyName')}
+                <Input                   placeholder={t('competencyName')}
                   value={newCompetency.name}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCompetency({...newCompetency, name: e.target.value})}
                 />
-                <UnifiedInput                   placeholder={t('category')}
+                <Input                   placeholder={t('category')}
                   value={newCompetency.category}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCompetency({...newCompetency, category: e.target.value})}
                 />
@@ -205,28 +207,28 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
                 <div className="md:col-span-2">
                   <p className="text-body-sm color-muted mt-sm">{t('levelDefinitions')}</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-sm">
-                    <UnifiedInput                       placeholder={t('beginnerLevel')}
+                    <Input                       placeholder={t('beginnerLevel')}
                       value={newCompetency.levelDefinitions.beginner}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCompetency({
                         ...newCompetency,
                         levelDefinitions: {...newCompetency.levelDefinitions, beginner: e.target.value}
                       })}
                     />
-                    <UnifiedInput                       placeholder={t('intermediateLevel')}
+                    <Input                       placeholder={t('intermediateLevel')}
                       value={newCompetency.levelDefinitions.intermediate}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCompetency({
                         ...newCompetency,
                         levelDefinitions: {...newCompetency.levelDefinitions, intermediate: e.target.value}
                       })}
                     />
-                    <UnifiedInput                       placeholder={t('advancedLevel')}
+                    <Input                       placeholder={t('advancedLevel')}
                       value={newCompetency.levelDefinitions.advanced}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCompetency({
                         ...newCompetency,
                         levelDefinitions: {...newCompetency.levelDefinitions, advanced: e.target.value}
                       })}
                     />
-                    <UnifiedInput                       placeholder={t('expertLevel')}
+                    <Input                       placeholder={t('expertLevel')}
                       value={newCompetency.levelDefinitions.expert}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCompetency({
                         ...newCompetency,

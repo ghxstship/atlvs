@@ -20,7 +20,7 @@ const createEventSchema = z.object({
   end_date: z.string().optional(),
   location: z.string().optional(),
   capacity: z.number().min(0).optional(),
-  project_id: z.string().optional(),
+  project_id: z.string().optional()
 });
 
 export default function CreateEventClient({ orgId }: { orgId: string }) {
@@ -43,8 +43,8 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
       end_date: '',
       location: '',
       capacity: undefined,
-      project_id: '',
-    },
+      project_id: ''
+    }
   });
 
   // Load projects when drawer opens
@@ -74,7 +74,7 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
         project_id: data.project_id || null,
         capacity: data.capacity || null,
         created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       const { error: insertError } = await sb

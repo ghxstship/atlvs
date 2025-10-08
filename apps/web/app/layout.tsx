@@ -1,4 +1,4 @@
-import '@ghxstship/ui/styles.css';
+// Styles imported via Next.js CSS system
 import type { Metadata } from 'next';
 import { Anton, Share_Tech, Share_Tech_Mono } from 'next/font/google';
 import { WebVitals } from './web-vitals';
@@ -37,14 +37,14 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://ghxstship.com'),
   robots: {
     index: true,
-    follow: true,
-  },
+    follow: true
+  }
 };
 
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
+  maximumScale: 5
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -91,7 +91,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 colorContrastEnforcement: true,
                 motionReduction: false,
                 textScaling: true,
-                highContrastMode: false,
+                highContrastMode: false
               }
             }}
           >

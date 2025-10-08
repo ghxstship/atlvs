@@ -5,7 +5,7 @@ import type {
   HealthRecord,
   HealthFilters,
   HealthStats,
-  HealthAnalytics,
+  HealthAnalytics
 } from '../types';
 import {
   healthFilterSchema,
@@ -13,7 +13,7 @@ import {
   filterHealthRecords,
   sortHealthRecords,
   getDaysUntilExpiry,
-  getExpiryUrgency,
+  getExpiryUrgency
 } from '../types';
 
 // ============================================================================
@@ -84,7 +84,7 @@ export async function fetchHealthRecords(
 
   return {
     records: data || [],
-    total: count || 0,
+    total: count || 0
   };
 }
 
@@ -131,7 +131,7 @@ export async function fetchHealthStats(
       byType: [],
       bySeverity: [],
       byCategory: [],
-      upcomingReminders: [],
+      upcomingReminders: []
     };
   }
 
@@ -154,7 +154,7 @@ export async function fetchHealthStats(
   });
   const byType = Array.from(typeMap.entries()).map(([type, count]) => ({
     type: type as unknown,
-    count,
+    count
   }));
 
   // Group by severity
@@ -166,7 +166,7 @@ export async function fetchHealthStats(
   });
   const bySeverity = Array.from(severityMap.entries()).map(([severity, count]) => ({
     severity: severity as unknown,
-    count,
+    count
   }));
 
   // Group by category
@@ -178,7 +178,7 @@ export async function fetchHealthStats(
   });
   const byCategory = Array.from(categoryMap.entries()).map(([category, count]) => ({
     category: category as unknown,
-    count,
+    count
   }));
 
   // Upcoming reminders
@@ -186,7 +186,7 @@ export async function fetchHealthStats(
     .filter(r => r.expiry_date && r.reminder_enabled)
     .map(r => ({
       record: r,
-      daysUntilExpiry: getDaysUntilExpiry(r.expiry_date!),
+      daysUntilExpiry: getDaysUntilExpiry(r.expiry_date!)
     }))
     .filter(r => r.daysUntilExpiry >= 0 && r.daysUntilExpiry <= (r.record.reminder_days_before || 30))
     .sort((a, b) => a.daysUntilExpiry - b.daysUntilExpiry)
@@ -200,7 +200,7 @@ export async function fetchHealthStats(
     byType,
     bySeverity,
     byCategory,
-    upcomingReminders,
+    upcomingReminders
   };
 }
 
@@ -229,7 +229,7 @@ export async function fetchHealthAnalytics(
       tagCloud: [],
       healthScore: 0,
       completenessScore: 0,
-      recentActivity: [],
+      recentActivity: []
     };
   }
 
@@ -246,7 +246,7 @@ export async function fetchHealthAnalytics(
     .map(([month, data]) => ({
       month,
       count: data.count,
-      byType: data.byType as unknown,
+      byType: data.byType as unknown
     }))
     .sort((a, b) => a.month.localeCompare(b.month))
     .slice(-12); // Last 12 months
@@ -257,7 +257,7 @@ export async function fetchHealthAnalytics(
     .map(r => ({
       record: r,
       daysUntilExpiry: getDaysUntilExpiry(r.expiry_date!),
-      urgency: getExpiryUrgency(getDaysUntilExpiry(r.expiry_date!)),
+      urgency: getExpiryUrgency(getDaysUntilExpiry(r.expiry_date!))
     }))
     .filter(r => r.daysUntilExpiry <= 90)
     .sort((a, b) => a.daysUntilExpiry - b.daysUntilExpiry);
@@ -284,7 +284,7 @@ export async function fetchHealthAnalytics(
   const total = records.length;
   const categoryBreakdown = Array.from(categoryMap.entries()).map(([category, count]) => ({
     category: category as unknown,
-    percentage: Math.round((count / total) * 100),
+    percentage: Math.round((count / total) * 100)
   }));
 
   // Calculate tag cloud
@@ -299,7 +299,7 @@ export async function fetchHealthAnalytics(
     .map(([tag, frequency]) => ({
       tag,
       frequency,
-      weight: Math.round((frequency / maxFrequency) * 100),
+      weight: Math.round((frequency / maxFrequency) * 100)
     }))
     .sort((a, b) => b.frequency - a.frequency)
     .slice(0, 20);
@@ -337,7 +337,7 @@ export async function fetchHealthAnalytics(
     tagCloud,
     healthScore,
     completenessScore,
-    recentActivity,
+    recentActivity
   };
 }
 
@@ -360,7 +360,7 @@ export async function createHealthRecord(
       user_id: userId,
       ...validated,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .select()
     .single();
@@ -384,7 +384,7 @@ export async function updateHealthRecord(
     .from('health_records')
     .update({
       ...validated,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', recordId)
     .select()
@@ -422,7 +422,7 @@ export async function toggleHealthRecordActive(
     .from('health_records')
     .update({
       is_active: isActive,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', recordId)
     .select()
@@ -447,7 +447,7 @@ export async function updateHealthRecordReminder(
     .update({
       reminder_enabled: reminderEnabled,
       reminder_days_before: reminderDaysBefore || null,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', recordId)
     .select()

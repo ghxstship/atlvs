@@ -14,7 +14,7 @@ export default function GanttView({ orgId }: GanttViewProps) {
   const { data: projectsResponse, isLoading, error } = useQuery({
     queryKey: ['marketplace-projects', orgId],
     queryFn: () => marketplaceService.getProjects(orgId),
-    refetchInterval: 30000,
+    refetchInterval: 30000
   });
 
   const projects = projectsResponse || [];
@@ -52,7 +52,7 @@ export default function GanttView({ orgId }: GanttViewProps) {
         month: current.getMonth(),
         year: current.getFullYear(),
         label: current.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
-        date: new Date(current),
+        date: new Date(current)
       });
       current.setMonth(current.getMonth() + 1);
     }
@@ -71,7 +71,7 @@ export default function GanttView({ orgId }: GanttViewProps) {
 
     return {
       left: `${(startOffset / totalDays) * 100}%`,
-      width: `${Math.max((duration / totalDays) * 100, 2)}%`,
+      width: `${Math.max((duration / totalDays) * 100, 2)}%`
     };
   };
 
@@ -206,7 +206,7 @@ export default function GanttView({ orgId }: GanttViewProps) {
                               style={{
                                 left: position.left,
                                 width: position.width,
-                                minWidth: '60px',
+                                minWidth: '60px'
                               }}
                               title={`${project.title} (${new Date(project.start_date!).toLocaleDateString()} - ${new Date(project.end_date!).toLocaleDateString()})`}
                             >

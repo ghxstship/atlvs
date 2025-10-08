@@ -24,7 +24,7 @@ const CreateJobSchema = z.object({
   experienceLevel: z.enum(['entry', 'mid', 'senior', 'executive']).optional(),
   applicationDeadline: z.string().optional(),
   startDate: z.string().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional()
 });
 
 const UpdateJobSchema = CreateJobSchema.partial();

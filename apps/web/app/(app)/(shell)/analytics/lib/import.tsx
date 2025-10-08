@@ -17,7 +17,7 @@ import type {
   ImportValidation,
   ImportResults,
   ImportError,
-  ImportWarning,
+  ImportWarning
 } from '../types';
 
 // ============================================================================
@@ -166,7 +166,7 @@ class DataValidator {
             row: rowNumber,
             field: map.targetField,
             message: `Required field '${map.targetField}' is missing`,
-            value: sourceValue,
+            value: sourceValue
           });
           hasErrors = true;
           continue;
@@ -183,7 +183,7 @@ class DataValidator {
               row: rowNumber,
               field: map.targetField,
               message: `Transformation failed: ${error.message}`,
-              value: sourceValue,
+              value: sourceValue
             });
             hasErrors = true;
             continue;
@@ -205,14 +205,14 @@ class DataValidator {
                 row: rowNumber,
                 field: rule.field,
                 message,
-                value,
+                value
               });
             } else {
               errors.push({
                 row: rowNumber,
                 field: rule.field,
                 message,
-                value,
+                value
               });
               hasErrors = true;
             }
@@ -318,7 +318,7 @@ class ImportProcessor {
         total: parsedData.length,
         success: importedCount,
         errors,
-        warnings,
+        warnings
       };
 
       await this.updateImportResults(importJob.id, 'completed', results);
@@ -389,7 +389,7 @@ class ImportProcessor {
         ...row,
         organization_id: importJob.organization_id,
         created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       }));
 
       const { error } = await supabase
@@ -422,7 +422,7 @@ class ImportProcessor {
   ): Promise<void> {
     const update: unknown = {
       status,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     if (status === 'completed' || status === 'failed') {
@@ -455,7 +455,7 @@ class ImportProcessor {
       status,
       results,
       updated_at: new Date().toISOString(),
-      completed_at: new Date().toISOString(),
+      completed_at: new Date().toISOString()
     })
       .eq('id', id);
 
@@ -599,7 +599,7 @@ class ImportUtils {
       sourceField: key,
       targetField: key,
       transform: undefined,
-      required: false,
+      required: false
     }));
   }
 
@@ -641,5 +641,5 @@ export const AnalyticsImport = {
 
   // Status and monitoring
   getQueueStatus: BackgroundImportService.getQueueStatus,
-  processScheduledImports: ImportScheduler.processScheduledImports,
+  processScheduledImports: ImportScheduler.processScheduledImports
 } as const;

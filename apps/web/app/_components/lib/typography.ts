@@ -32,7 +32,7 @@ export const typography = {
   bodySmall: 'text-sm text-muted-foreground',
   
   // Special text
-  gradient: 'text-gradient-accent',
+  gradient: 'text-gradient-accent'
 } as const;
 
 // Typography component helpers
@@ -42,5 +42,5 @@ export const TypographyClasses = {
   h3: typography.cardTitle,
   subtitle: typography.heroSubtitle,
   body: typography.bodyMedium,
-  caption: typography.bodySmall,
+  caption: typography.bodySmall
 } as const;

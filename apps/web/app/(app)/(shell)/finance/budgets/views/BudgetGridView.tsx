@@ -22,7 +22,7 @@ export default function BudgetGridView({
  const formatCurrency = (amount: number, currency = 'USD') => {
  return new Intl.NumberFormat('en-US', {
  style: 'currency',
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 
@@ -152,7 +152,7 @@ export default function BudgetGridView({
  {budget.category && (
  <div className="flex items-center cluster-xs">
  <span>Category:</span>
- <Badge variant="outline" className="text-xs">
+ <Badge variant="secondary" className="text-xs">
  {budget.category}
  </Badge>
  </div>

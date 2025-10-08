@@ -1,13 +1,13 @@
 'use client';
 
-import { MapPin, Calendar, Building, Award, ExternalLink, Edit, Trash2, Eye, Clock, DollarSign, GraduationCap, Briefcase, Heart, Star, CheckCircle, Circle, Pause, X } from "lucide-react";
+import { Award, Briefcase, Building, Calendar, CheckCircle, Circle, Clock, DollarSign, Edit, ExternalEdit, ExternalLink, Eye, GraduationCap, Heart, MapPin, Pause, Star, Trash2, X } from 'lucide-react';
 import { useMemo } from 'react';
 import {
  Card,
  Badge,
  Button,
  Avatar,
- AvatarFallback,
+ AvatarFallback
 } from '@ghxstship/ui';
 import type { HistoryEntry, HistoryEntryType, EmploymentType, EducationLevel, ProjectStatus } from '../types';
 
@@ -31,7 +31,7 @@ const getEntryTypeIcon = (type: HistoryEntryType) => {
  volunteer: Heart,
  internship: Briefcase,
  freelance: Briefcase,
- other: Circle,
+ other: Circle
  };
  return iconMap[type] || Circle;
 };
@@ -46,7 +46,7 @@ const getEntryTypeColor = (type: HistoryEntryType) => {
  volunteer: 'red',
  internship: 'cyan',
  freelance: 'pink',
- other: 'gray',
+ other: 'gray'
  };
  return colorMap[type] || 'gray';
 };
@@ -58,7 +58,7 @@ const getEmploymentTypeLabel = (type: EmploymentType) => {
  contract: 'Contract',
  freelance: 'Freelance',
  internship: 'Internship',
- volunteer: 'Volunteer',
+ volunteer: 'Volunteer'
  };
  return labelMap[type] || type;
 };
@@ -72,7 +72,7 @@ const getEducationLevelLabel = (level: EducationLevel) => {
  doctorate: 'Doctorate',
  certificate: 'Certificate',
  bootcamp: 'Bootcamp',
- other: 'Other',
+ other: 'Other'
  };
  return labelMap[level] || level;
 };
@@ -82,7 +82,7 @@ const getProjectStatusIcon = (status: ProjectStatus) => {
  completed: CheckCircle,
  in_progress: Clock,
  on_hold: Pause,
- cancelled: X,
+ cancelled: X
  };
  return iconMap[status] || Circle;
 };
@@ -92,7 +92,7 @@ const getProjectStatusColor = (status: ProjectStatus) => {
  completed: 'green',
  in_progress: 'blue',
  on_hold: 'yellow',
- cancelled: 'red',
+ cancelled: 'red'
  };
  return colorMap[status] || 'gray';
 };
@@ -125,7 +125,7 @@ export default function HistoryCardView({
  onEdit,
  onDelete,
  onView,
- loading = false,
+ loading = false
 }: HistoryCardViewProps) {
  const sortedEntries = useMemo(() => {
  return [...entries].sort((a, b) => {

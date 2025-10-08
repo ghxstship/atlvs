@@ -1,23 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  Accessibility,
-  CheckCircle,
-  ExternalLink,
-  Globe,
-  Headphones,
-  Laptop,
-  Mail,
-  Shield,
-  Users,
-} from 'lucide-react';
+import { Accessibility, CheckCircle, ExternalGlobe, ExternalGlobe, ExternalLink, Globe, Headphones, Laptop, Mail, Shield, Users } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -28,8 +18,8 @@ export const metadata: Metadata = {
     title: 'Accessibility Statement | GHXSTSHIP',
     description:
       'GHXSTSHIP is committed to inclusive design, accessible experiences, and continuous improvement across ATLVS and OPENDECK.',
-    url: 'https://ghxstship.com/accessibility',
-  },
+    url: 'https://ghxstship.com/accessibility'
+  }
 };
 
 const accessibilityStats = [
@@ -43,32 +33,32 @@ const commitmentPillars = [
   {
     title: 'Inclusive By Design',
     description: 'Accessibility requirements are built into our product roadmap, design system, and QA gates.',
-    icon: Accessibility,
+    icon: Accessibility
   },
   {
     title: 'Shared Responsibility',
     description: 'Cross-functional teams receive ongoing training on inclusive design, content standards, and WCAG updates.',
-    icon: Users,
+    icon: Users
   },
   {
     title: 'Continuous Improvement',
     description: 'Internal audits, third-party reviews, and customer feedback loops drive measurable upgrades every quarter.',
-    icon: Shield,
+    icon: Shield
   },
 ];
 
 const complianceStatements = [
   {
     title: 'WCAG 2.2 AA Alignment',
-    body: 'ATLVS and OPENDECK target Web Content Accessibility Guidelines (WCAG 2.2 AA) for all core user journeys and components.',
+    body: 'ATLVS and OPENDECK target Web Content Accessibility Guidelines (WCAG 2.2 AA) for all core user journeys and components.'
   },
   {
     title: 'Global Standards',
-    body: 'We monitor ADA, EN 301 549, AODA, and other regional regulations to ensure compliance for our enterprise customers.',
+    body: 'We monitor ADA, EN 301 549, AODA, and other regional regulations to ensure compliance for our enterprise customers.'
   },
   {
     title: 'Policy Reviews',
-    body: 'Accessibility documentation, support scripts, and partner guidelines are reviewed at least twice per year.',
+    body: 'Accessibility documentation, support scripts, and partner guidelines are reviewed at least twice per year.'
   },
 ];
 
@@ -76,58 +66,58 @@ const testingPractices = [
   {
     title: 'Assistive Technology Labs',
     description: 'Screen readers (JAWS, NVDA, VoiceOver), screen magnifiers, voice control software, and switch devices.',
-    icon: Laptop,
+    icon: Laptop
   },
   {
     title: 'Manual Audits',
     description: 'Keyboard-only testing, color contrast validation, and semantic structure reviews on every major release.',
-    icon: CheckCircle,
+    icon: CheckCircle
   },
   {
     title: 'Automated Scans',
     description: 'CI pipelines run axe-core, Lighthouse, and custom accessibility linting with alerts to responsible teams.',
-    icon: Shield,
+    icon: Shield
   },
 ];
 
 const resourceLinks = [
   {
     name: 'Accessibility User Guide',
-    href: '/help/accessibility-guide',
+    href: '/help/accessibility-guide'
   },
   {
     name: 'Keyboard Shortcuts Reference',
-    href: '/help/keyboard-shortcuts',
+    href: '/help/keyboard-shortcuts'
   },
   {
     name: 'Screen Reader Setup Guide',
-    href: '/help/screen-reader-guide',
+    href: '/help/screen-reader-guide'
   },
 ];
 
 const externalResources = [
   {
     name: 'W3C Web Accessibility Initiative',
-    href: 'https://www.w3.org/WAI/',
+    href: 'https://www.w3.org/WAI/'
   },
   {
     name: 'WebAIM Accessibility Resources',
-    href: 'https://webaim.org/',
+    href: 'https://webaim.org/'
   },
   {
     name: 'ADA.gov Accessibility Guidance',
-    href: 'https://www.ada.gov/',
+    href: 'https://www.ada.gov/'
   },
 ];
 
 const legalRegions = [
   {
     region: 'United States',
-    items: ['Americans with Disabilities Act (ADA)', 'Section 508 of the Rehabilitation Act', '21st Century Communications and Video Accessibility Act'],
+    items: ['Americans with Disabilities Act (ADA)', 'Section 508 of the Rehabilitation Act', '21st Century Communications and Video Accessibility Act']
   },
   {
     region: 'International',
-    items: ['European Accessibility Act (EAA)', 'EN 301 549 European Standard', 'Accessibility for Ontarians with Disabilities Act (AODA)'],
+    items: ['European Accessibility Act (EAA)', 'EN 301 549 European Standard', 'Accessibility for Ontarians with Disabilities Act (AODA)']
   },
 ];
 

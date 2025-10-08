@@ -1,7 +1,7 @@
 'use client';
 
 import { Package2, Wrench, TrendingUp, TrendingDown, DollarSign, ShoppingCart, Users, Calendar, BarChart3, PieChart, Activity } from "lucide-react";
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import type { CatalogItem, CatalogStats, CatalogAnalytics } from '../types';
 import { formatCurrency, formatDate } from '../types';
@@ -19,12 +19,13 @@ export default function CatalogDashboardView({
  loading = false,
  stats,
  analytics,
- onItemClick,
+ onItemClick
 }: CatalogDashboardViewProps) {
  const [recentItems, setRecentItems] = useState<CatalogItem[]>([]);
  const [topCategories, setTopCategories] = useState<Array<{ category: string; count: number; value: number }>([]);
  const [topSuppliers, setTopSuppliers] = useState<Array<{ supplier: string; count: number; value: number }>([]);
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  // Get recent items (last 10)
  const recent = [...items]
@@ -39,7 +40,7 @@ export default function CatalogDashboardView({
  const existing = categoryMap.get(item.category) || { count: 0, value: 0 };
  categoryMap.set(item.category, {
  count: existing.count + 1,
- value: existing.value + (item.price || item.rate || 0),
+ value: existing.value + (item.price || item.rate || 0)
  });
  }
  });
@@ -56,7 +57,7 @@ export default function CatalogDashboardView({
  const existing = supplierMap.get(item.supplier) || { count: 0, value: 0 };
  supplierMap.set(item.supplier, {
  count: existing.count + 1,
- value: existing.value + (item.price || item.rate || 0),
+ value: existing.value + (item.price || item.rate || 0)
  });
  }
  });
@@ -65,6 +66,7 @@ export default function CatalogDashboardView({
  .sort((a, b) => b.count - a.count)
  .slice(0, 5);
  setTopSuppliers(suppliers);
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [items]);
 
  if (loading) {
@@ -123,7 +125,7 @@ export default function CatalogDashboardView({
  weekAgo.setDate(weekAgo.getDate() - 7);
  return new Date(item.created_at) > weekAgo;
  }).length,
- recentlyUpdated: 0,
+ recentlyUpdated: 0
  };
 
  const currentStats = stats || defaultStats;
@@ -234,7 +236,7 @@ export default function CatalogDashboardView({
  </div>
  <div className="flex items-center gap-sm">
  <span className="text-sm font-medium">{currentStats.discontinuedItems}</span>
- <Badge variant="destructive" className="text-xs">
+ <Badge variant="error" className="text-xs">
  {Math.round((currentStats.discontinuedItems / currentStats.totalItems) * 100)}%
  </Badge>
  </div>
@@ -308,7 +310,7 @@ export default function CatalogDashboardView({
  <Calendar className="h-icon-xs w-icon-xs" />
  Recent Items
  </h3>
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  View All
  </Button>
  </div>

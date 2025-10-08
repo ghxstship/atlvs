@@ -11,12 +11,12 @@ const VerifyMFASchema = z.object({
   credentialData: z.custom<AuthenticationResponseJSON>(value => {
     if (!value || typeof value !== 'object') return false;
     return 'id' in value && 'rawId' in value && 'response' in value && 'type' in value;
-  }).optional(),
+  }).optional()
 });
 
 const VerifyBackupCodeSchema = z.object({
   userId: z.string().uuid(),
-  backupCode: z.string().length(8).regex(/^[a-f0-9]{8}$/),
+  backupCode: z.string().length(8).regex(/^[a-f0-9]{8}$/)
 });
 
 // POST /api/auth/mfa/verify - Verify MFA for authentication
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
     const supabase = createServerClient({
       get: (name: string) => request.cookies.get(name)?.value,
       set: () => {},
-      remove: () => {},
+      remove: () => {}
     });
 
     const { data: factor, error: factorError } = await supabase
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
         {
           p_user_id: userId,
           p_factor_id: factorId,
-          p_code: code,
+          p_code: code
         }
       );
       if (totpError) throw totpError;
@@ -79,9 +79,9 @@ export async function POST(request: NextRequest) {
           credentialPublicKey: publicKeyBuffer,
           credentialID: credentialIDBuffer,
           counter: factor.counter ?? 0,
-          transports: credentialData.transports,
+          transports: credentialData.transports
         },
-        requireUserVerification: true,
+        requireUserVerification: true
       });
 
       if (!verification.verified || !verification.authenticationInfo) {
@@ -135,7 +135,7 @@ export async function POST(request: NextRequest) {
         ip_address: request.headers.get('x-forwarded-for') ||
                    request.headers.get('x-real-ip') ||
                    request.ip,
-        user_agent: request.headers.get('user-agent'),
+        user_agent: request.headers.get('user-agent')
       });
 
     if (sessionError) throw sessionError;
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
       sessionToken,
       expiresAt: expiresAt.toISOString(),
       user: { id: userId },
-      membership,
+      membership
     });
 
   } catch (error) {
@@ -174,12 +174,12 @@ export async function PATCH(request: NextRequest) {
     const supabase = createServerClient({
       get: (name: string) => request.cookies.get(name)?.value,
       set: () => {},
-      remove: () => {},
+      remove: () => {}
     });
 
     const { data: matched, error: matchError } = await supabase.rpc('use_mfa_backup_code', {
       p_user_id: userId,
-      p_backup_code: backupCode,
+      p_backup_code: backupCode
     });
 
     if (matchError) throw matchError;
@@ -218,7 +218,7 @@ export async function PATCH(request: NextRequest) {
         ip_address: request.headers.get('x-forwarded-for') ||
                    request.headers.get('x-real-ip') ||
                    request.ip,
-        user_agent: request.headers.get('user-agent'),
+        user_agent: request.headers.get('user-agent')
       });
 
     if (sessionError) throw sessionError;
@@ -228,7 +228,7 @@ export async function PATCH(request: NextRequest) {
       p_user_id: userId,
       p_event_type: 'mfa_backup_code_used',
       p_severity: 'high',
-      p_details: { factor_id: factorId },
+      p_details: { factor_id: factorId }
     });
 
     return NextResponse.json({
@@ -236,7 +236,7 @@ export async function PATCH(request: NextRequest) {
       sessionToken,
       expiresAt: expiresAt.toISOString(),
       user: { id: userId },
-      membership,
+      membership
     });
 
   } catch (error) {

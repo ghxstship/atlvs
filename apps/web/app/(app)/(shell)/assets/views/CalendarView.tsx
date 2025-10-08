@@ -14,26 +14,8 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { Asset, AssetViewState } from '../types';
 import { apiClient } from '../lib/api';
 import { realtimeService } from '../lib/realtime';
-import { Button } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Checkbox } from '@ghxstship/ui';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@ghxstship/ui';
-import {
-  ChevronLeft,
-  ChevronRight,
-  Plus,
-  Calendar as CalendarIcon,
-  Clock,
-  MapPin,
-  User,
-  Settings
-} from 'lucide-react';
+import { Badge, Button, Checkbox, Select } from '@ghxstship/ui';
+import { Calendar as CalendarIcon, CalendarIcon, ChevronLeft, ChevronRight, Clock, MapPin, Plus, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Settings, User } from 'lucide-react';
 
 interface CalendarViewProps {
   viewState: AssetViewState;
@@ -90,6 +72,7 @@ export default function CalendarView({
     } finally {
       setLoading(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewState.filters, viewState.sort, viewState.pagination]);
 
   // Set up realtime subscriptions
@@ -111,10 +94,12 @@ export default function CalendarView({
     ];
 
     return () => unsubscribers.forEach(unsub => unsub());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchAssets]);
 
   React.useEffect(() => {
     fetchAssets();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchAssets]);
 
   // Generate calendar events from assets
@@ -173,6 +158,7 @@ export default function CalendarView({
     }
 
     setCurrentDate(newDate);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentDate, calendarView]);
 
   // Render month view
@@ -270,7 +256,7 @@ export default function CalendarView({
             <div className="flex items-center gap-xs mb-1">
               <div className={`w-3 h-3 rounded-full ${event.color.replace('bg-', 'bg-')}`} />
               <span className="font-medium text-sm">{event.asset.name}</span>
-              <Badge variant="outline" className="text-xs">
+              <Badge variant="secondary" className="text-xs">
                 {event.asset.asset_tag}
               </Badge>
             </div>
@@ -344,7 +330,7 @@ export default function CalendarView({
       <div className="flex items-center justify-between p-md border-b">
         <div className="flex items-center gap-md">
           <Button
-            variant="outline"
+            variant="secondary"
             size="sm"
             onClick={() => navigateCalendar('prev')}
           >
@@ -356,7 +342,7 @@ export default function CalendarView({
           </h2>
 
           <Button
-            variant="outline"
+            variant="secondary"
             size="sm"
             onClick={() => navigateCalendar('next')}
           >
@@ -364,7 +350,7 @@ export default function CalendarView({
           </Button>
 
           <Button
-            variant="outline"
+            variant="secondary"
             size="sm"
             onClick={() => navigateCalendar('today')}
           >
@@ -386,7 +372,7 @@ export default function CalendarView({
             </SelectContent>
           </Select>
 
-          <Button variant="outline" size="sm">
+          <Button variant="secondary" size="sm">
             <Settings className="w-icon-xs h-icon-xs mr-2" />
             Settings
           </Button>

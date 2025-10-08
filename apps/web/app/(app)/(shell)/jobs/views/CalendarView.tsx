@@ -1,5 +1,6 @@
 'use client';
 
+import { Calendar } from 'lucide-react';
 import { Calendar } from '@ghxstship/ui';
 
 export function CalendarView({ data, onEventClick }: any) {

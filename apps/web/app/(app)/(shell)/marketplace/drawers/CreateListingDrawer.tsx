@@ -16,7 +16,7 @@ import {
  SelectValue,
  SelectContent,
  SelectItem,
- Badge,
+ Badge
 } from '@ghxstship/ui';
 import type { UpsertListingDto } from '../types';
 import { Check, Tag } from 'lucide-react';
@@ -49,7 +49,7 @@ const listingSchema = z.object({
  expiresAt: z.string().optional(),
  contactEmail: z.string().email('Invalid email').optional(),
  contactPhone: z.string().optional(),
- preferredContactMethod: z.enum(['email', 'phone', 'platform']).default('platform'),
+ preferredContactMethod: z.enum(['email', 'phone', 'platform']).default('platform')
 });
 
 type ListingFormValues = z.infer<typeof listingSchema>;
@@ -89,7 +89,7 @@ export default function CreateListingDrawer({ open, loading, onClose, onSubmit }
  handleSubmit,
  reset,
  setValue,
- formState: { errors },
+ formState: { errors }
  } = useForm<ListingFormValues>({
  resolver: zodResolver(listingSchema),
  defaultValues: {
@@ -101,8 +101,8 @@ export default function CreateListingDrawer({ open, loading, onClose, onSubmit }
  negotiable: true,
  flexible: true,
  tags: '',
- preferredContactMethod: 'platform',
- },
+ preferredContactMethod: 'platform'
+ }
  });
 
  useEffect(() => {
@@ -137,7 +137,7 @@ export default function CreateListingDrawer({ open, loading, onClose, onSubmit }
  expiresAt: values.expiresAt || undefined,
  contactEmail: values.contactEmail || undefined,
  contactPhone: values.contactPhone || undefined,
- preferredContactMethod: values.preferredContactMethod,
+ preferredContactMethod: values.preferredContactMethod
  };
 
  void onSubmit(dto);
@@ -342,9 +342,12 @@ export default function CreateListingDrawer({ open, loading, onClose, onSubmit }
  </div>
  </div>
  </form>
- ),
+ )
  },
  ]}
  />
  );
 }
+
+// Named export for convenience
+export { CreateListingDrawer };

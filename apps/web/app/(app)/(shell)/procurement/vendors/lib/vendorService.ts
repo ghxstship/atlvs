@@ -15,14 +15,14 @@ import type {
   VendorImportResult,
   VendorActivity,
   VendorMessage,
-  VendorProjectAssignment,
+  VendorProjectAssignment
 } from '../types';
 import {
   vendorSchema,
   vendorContactSchema,
   vendorDocumentSchema,
   vendorPerformanceSchema,
-  vendorFiltersSchema,
+  vendorFiltersSchema
 } from '../types';
 
 export class VendorService {
@@ -146,7 +146,7 @@ export class VendorService {
       return {
         vendors: data || [],
         total,
-        hasMore,
+        hasMore
       };
     } catch (error) {
       console.error('Error fetching vendors:', error);
@@ -203,7 +203,7 @@ export class VendorService {
         vat_number: validatedData.vat_number,
         bio: validatedData.bio,
         status: validatedData.status,
-        availability_status: validatedData.availability_status || 'available',
+        availability_status: validatedData.availability_status || 'available'
       };
 
       const { data, error } = await this.supabase
@@ -217,7 +217,7 @@ export class VendorService {
       // Log activity
       await this.logActivity(organizationId, userId, 'create', 'vendor', data.id, {
         business_name: validatedData.business_name,
-        primary_category: validatedData.primary_category,
+        primary_category: validatedData.primary_category
       });
 
       return data;
@@ -238,7 +238,7 @@ export class VendorService {
       const validatedData = vendorSchema.partial().parse(updates);
       
       const payload: unknown = {
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       // Map validated fields
@@ -260,7 +260,7 @@ export class VendorService {
 
       // Log activity
       await this.logActivity(organizationId, userId, 'update', 'vendor', vendorId, {
-        updates: Object.keys(payload),
+        updates: Object.keys(payload)
       });
 
       return data;
@@ -322,7 +322,7 @@ export class VendorService {
         .from('vendor_contacts')
         .insert({
           vendor_id: vendorId,
-          ...validatedData,
+          ...validatedData
         })
         .select()
         .single();
@@ -365,7 +365,7 @@ export class VendorService {
         .insert({
           vendor_id: vendorId,
           uploaded_by: userId,
-          ...validatedData,
+          ...validatedData
         })
         .select()
         .single();
@@ -408,7 +408,7 @@ export class VendorService {
         .insert({
           vendor_id: vendorId,
           created_by: userId,
-          ...validatedData,
+          ...validatedData
         })
         .select()
         .single();
@@ -462,7 +462,7 @@ export class VendorService {
         action: action.type,
         vendorCount: action.vendorIds.length,
         success,
-        failed,
+        failed
       });
 
       return { success, failed, errors };
@@ -499,7 +499,7 @@ export class VendorService {
         averageHourlyRate: 0,
         topCategories: [],
         recentlyAdded: allVendors.filter(v => new Date(v.created_at) > weekAgo).length,
-        recentlyUpdated: 0,
+        recentlyUpdated: 0
       };
 
       // Calculate averages
@@ -579,7 +579,7 @@ export class VendorService {
           action,
           resource_type: resourceType,
           resource_id: resourceId,
-          details,
+          details
         });
     } catch (error) {
       console.error('Error logging activity:', error);

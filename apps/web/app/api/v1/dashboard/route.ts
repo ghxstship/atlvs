@@ -11,7 +11,7 @@ const createDashboardSchema = z.object({
   layout: z.array(z.any()).default([]),
   settings: z.record(z.any()).default({}),
   is_default: z.boolean().default(false),
-  is_public: z.boolean().default(false),
+  is_public: z.boolean().default(false)
 });
 
 // Dashboard update schema
@@ -27,7 +27,7 @@ const dashboardQuerySchema = z.object({
   is_public: z.coerce.boolean().optional(),
   created_by: z.string().uuid().optional(),
   sort_by: z.enum(['name', 'created_at', 'updated_at']).default('updated_at'),
-  sort_order: z.enum(['asc', 'desc']).default('desc'),
+  sort_order: z.enum(['asc', 'desc']).default('desc')
 });
 
 export async function GET(request: NextRequest) {
@@ -130,8 +130,8 @@ export async function GET(request: NextRequest) {
         page: query.page,
         limit: query.limit,
         total: totalCount || 0,
-        pages: Math.ceil((totalCount || 0) / query.limit),
-      },
+        pages: Math.ceil((totalCount || 0) / query.limit)
+      }
     });
 
   } catch (error) {
@@ -202,7 +202,7 @@ export async function POST(request: NextRequest) {
       .insert({
         ...validatedData,
         organization_id: organizationId,
-        created_by: user.id,
+        created_by: user.id
       })
       .select(`
         *,
@@ -223,10 +223,10 @@ export async function POST(request: NextRequest) {
       action: 'create',
       details: {
         dashboard_name: dashboard.name,
-        dashboard_type: dashboard.type,
+        dashboard_type: dashboard.type
       },
       ip_address: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip'),
-      user_agent: request.headers.get('user-agent'),
+      user_agent: request.headers.get('user-agent')
     });
 
     return NextResponse.json({ data: dashboard }, { status: 201 });
@@ -235,7 +235,7 @@ export async function POST(request: NextRequest) {
     if (error instanceof z.ZodError) {
       return NextResponse.json({
         error: 'Validation failed',
-        details: error.errors,
+        details: error.errors
       }, { status: 400 });
     }
 

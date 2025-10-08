@@ -16,7 +16,7 @@ interface DetailDrawerProps {
 export const DetailDrawer: React.FC<DetailDrawerProps> = ({
   open,
   onClose,
-  data,
+  data
 }) => {
   if (!open) return null;
 

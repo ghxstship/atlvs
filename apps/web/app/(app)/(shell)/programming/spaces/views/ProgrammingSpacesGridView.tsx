@@ -11,7 +11,7 @@ import {
  DropdownMenu,
  DropdownMenuContent,
  DropdownMenuItem,
- DropdownMenuTrigger,
+ DropdownMenuTrigger
 } from '@ghxstship/ui';
 
 import type { ProgrammingSpace } from '../types';
@@ -32,7 +32,7 @@ const STATUS_BADGE_CONFIG = {
  cleaning: { label: 'Cleaning', variant: 'info' as const },
  setup: { label: 'Setup', variant: 'warning' as const },
  breakdown: { label: 'Breakdown', variant: 'warning' as const },
- out_of_service: { label: 'Out of Service', variant: 'destructive' as const },
+ out_of_service: { label: 'Out of Service', variant: 'destructive' as const }
 };
 
 const ACCESS_LEVEL_BADGE_CONFIG = {
@@ -42,7 +42,7 @@ const ACCESS_LEVEL_BADGE_CONFIG = {
  talent_only: { label: 'Talent Only', variant: 'info' as const },
  vip: { label: 'VIP', variant: 'destructive' as const },
  crew_only: { label: 'Crew Only', variant: 'default' as const },
- private: { label: 'Private', variant: 'destructive' as const },
+ private: { label: 'Private', variant: 'destructive' as const }
 };
 
 const SPACE_KIND_CONFIG = {
@@ -65,7 +65,7 @@ const SPACE_KIND_CONFIG = {
  loading_dock: { label: 'Loading Dock', icon: '🚛', color: 'bg-slate-100 text-slate-800' },
  parking: { label: 'Parking', icon: '🅿️', color: 'bg-blue-100 text-blue-800' },
  outdoor: { label: 'Outdoor', icon: '🌳', color: 'bg-green-100 text-green-800' },
- other: { label: 'Other', icon: '📍', color: 'bg-gray-100 text-gray-800' },
+ other: { label: 'Other', icon: '📍', color: 'bg-gray-100 text-gray-800' }
 };
 
 export default function ProgrammingSpacesGridView({
@@ -73,7 +73,7 @@ export default function ProgrammingSpacesGridView({
  loading,
  onEdit,
  onView,
- onDelete,
+ onDelete
 }: ProgrammingSpacesGridViewProps) {
  if (loading) {
  return (

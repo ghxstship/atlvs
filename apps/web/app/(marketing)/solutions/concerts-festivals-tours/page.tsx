@@ -7,13 +7,13 @@ import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Concerts, Festivals & Tours | GHXSTSHIP',
   description:
-    'Coordinate artists, vendors, and global audiences with GHXSTSHIP workflows built for concerts, festivals, and touring productions.',
+    'Coordinate artists, vendors, and global audiences with GHXSTSHIP workflows built for concerts, festivals, and touring productions.'
 };
 
 const heroStats = [
@@ -27,36 +27,36 @@ const lifecyclePhases = [
   {
     title: 'Advance & Booking',
     description: 'Lock routing, hospitality, and technical riders while keeping agents, promoters, and crews aligned.',
-    icon: Calendar,
+    icon: Calendar
   },
   {
     title: 'Show Day Operations',
     description: 'Real-time run-of-show dashboards, crew assignments, and production checklists on every stage.',
-    icon: Music,
+    icon: Music
   },
   {
     title: 'Tour Wrap & Reporting',
     description: 'Consolidate settlements, merch reports, and content delivery with audit-ready documentation.',
-    icon: Share2,
+    icon: Share2
   },
 ];
 
 const productionBenefits = [
   {
     title: 'Artist Logistics',
-    description: 'Manage advancing, backline, travel, and credentials from a single source of truth.',
+    description: 'Manage advancing, backline, travel, and credentials from a single source of truth.'
   },
   {
     title: 'Vendor Coordination',
-    description: 'Track bids, contracts, and onsite schedules for staging, lighting, and broadcast vendors.',
+    description: 'Track bids, contracts, and onsite schedules for staging, lighting, and broadcast vendors.'
   },
   {
     title: 'Risk & Safety Planning',
-    description: 'Incident playbooks, compliance checks, and emergency contacts integrated into every show.',
+    description: 'Incident playbooks, compliance checks, and emergency contacts integrated into every show.'
   },
   {
     title: 'Audience Engagement',
-    description: 'Sync ticketing, content capture, and live-stream metrics to understand fan impact in real time.',
+    description: 'Sync ticketing, content capture, and live-stream metrics to understand fan impact in real time.'
   },
 ];
 
@@ -68,7 +68,7 @@ const caseStudies = [
     result: '50% faster production · 30% lower studio spend · 100% on-time release · Grammy nomination',
     quote:
       'GHXSTSHIP connected studios, producers, and artists like we were all in the same room. We hit every deadline with zero drama.',
-    author: 'Maya Patel, Executive Producer',
+    author: 'Maya Patel, Executive Producer'
   },
   {
     company: 'Electric Nights Festival',
@@ -77,7 +77,7 @@ const caseStudies = [
     result: '99.8% show execution · 40% higher artist satisfaction · 25% fewer technical incidents · 200K attendees',
     quote:
       'Every stage lead used GHXSTSHIP to stay locked. From pyro cues to guest lists, nothing slipped.',
-    author: 'Carlos Rodriguez, Festival Director',
+    author: 'Carlos Rodriguez, Festival Director'
   },
 ];
 

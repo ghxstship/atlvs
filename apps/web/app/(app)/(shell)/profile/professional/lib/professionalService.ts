@@ -5,14 +5,14 @@ import type {
   ProfessionalProfile,
   ProfessionalFilters,
   ProfessionalStats,
-  ProfessionalAnalytics,
+  ProfessionalAnalytics
 } from '../types';
 import {
   professionalFilterSchema,
   professionalUpsertSchema,
   filterProfessionalProfiles,
   sortProfessionalProfiles,
-  calculateProfileCompletion,
+  calculateProfileCompletion
 } from '../types';
 
 // ============================================================================
@@ -94,12 +94,12 @@ export async function fetchProfessionalProfiles(
   const profiles = (data || []).map(profile => ({
     ...profile,
     manager_name: profile.manager?.full_name || null,
-    skills: profile.skills || [],
+    skills: profile.skills || []
   }));
 
   return {
     profiles,
-    total: count || 0,
+    total: count || 0
   };
 }
 
@@ -126,7 +126,7 @@ export async function fetchProfessionalProfileById(
   return {
     ...data,
     manager_name: data.manager?.full_name || null,
-    skills: data.skills || [],
+    skills: data.skills || []
   };
 }
 
@@ -154,7 +154,7 @@ export async function fetchProfessionalStats(
       byStatus: [],
       completionDistribution: [],
       topSkills: [],
-      recentHires: [],
+      recentHires: []
     };
   }
 
@@ -170,13 +170,13 @@ export async function fetchProfessionalStats(
     const existing = employmentTypeMap.get(type) || { count: 0, totalCompletion: 0 };
     employmentTypeMap.set(type, {
       count: existing.count + 1,
-      totalCompletion: existing.totalCompletion + (p.profile_completion_percentage || 0),
+      totalCompletion: existing.totalCompletion + (p.profile_completion_percentage || 0)
     });
   });
   const byEmploymentType = Array.from(employmentTypeMap.entries()).map(([type, data]) => ({
     type: type as unknown,
     count: data.count,
-    averageCompletion: data.totalCompletion / data.count,
+    averageCompletion: data.totalCompletion / data.count
   }));
 
   // Group by department
@@ -186,13 +186,13 @@ export async function fetchProfessionalStats(
     const existing = departmentMap.get(dept) || { count: 0, totalCompletion: 0 };
     departmentMap.set(dept, {
       count: existing.count + 1,
-      totalCompletion: existing.totalCompletion + (p.profile_completion_percentage || 0),
+      totalCompletion: existing.totalCompletion + (p.profile_completion_percentage || 0)
     });
   });
   const byDepartment = Array.from(departmentMap.entries()).map(([department, data]) => ({
     department,
     count: data.count,
-    averageCompletion: data.totalCompletion / data.count,
+    averageCompletion: data.totalCompletion / data.count
   }));
 
   // Group by status
@@ -202,7 +202,7 @@ export async function fetchProfessionalStats(
   });
   const byStatus = Array.from(statusMap.entries()).map(([status, count]) => ({
     status: status as unknown,
-    count,
+    count
   }));
 
   // Completion distribution
@@ -217,7 +217,7 @@ export async function fetchProfessionalStats(
     count: profiles.filter(p => {
       const completion = p.profile_completion_percentage || 0;
       return completion >= range.min && completion <= range.max;
-    }).length,
+    }).length
   }));
 
   // Top skills
@@ -248,7 +248,7 @@ export async function fetchProfessionalStats(
     
     recentHires.push({
       month: date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
-      count,
+      count
     });
   }
 
@@ -261,7 +261,7 @@ export async function fetchProfessionalStats(
     byStatus,
     completionDistribution,
     topSkills,
-    recentHires,
+    recentHires
   };
 }
 
@@ -292,8 +292,8 @@ export async function fetchProfessionalAnalytics(
         averageCompletion: 0,
         highCompletion: 0,
         mediumCompletion: 0,
-        lowCompletion: 0,
-      },
+        lowCompletion: 0
+      }
     };
   }
 
@@ -313,7 +313,7 @@ export async function fetchProfessionalAnalytics(
       period,
       totalProfiles: data.total,
       activeProfiles: data.active,
-      averageCompletion: data.completions.reduce((a, b) => a + b, 0) / data.completions.length,
+      averageCompletion: data.completions.reduce((a, b) => a + b, 0) / data.completions.length
     }))
     .sort((a, b) => a.period.localeCompare(b.period));
 
@@ -335,7 +335,7 @@ export async function fetchProfessionalAnalytics(
       skill,
       frequency: data.frequency,
       trend: 0, // Would need historical data
-      departments: Array.from(data.departments),
+      departments: Array.from(data.departments)
     }))
     .sort((a, b) => b.frequency - a.frequency)
     .slice(0, 20);
@@ -360,7 +360,7 @@ export async function fetchProfessionalAnalytics(
     topSkills: Array.from(data.skills.entries())
       .sort((a, b) => b[1] - a[1])
       .slice(0, 5)
-      .map(([skill]) => skill),
+      .map(([skill]) => skill)
   }));
 
   // Calculate employment type distribution
@@ -380,7 +380,7 @@ export async function fetchProfessionalAnalytics(
     type: type as unknown,
     count: data.count,
     percentage: (data.count / profiles.length) * 100,
-    averageTenure: data.tenures.length > 0 ? data.tenures.reduce((a, b) => a + b, 0) / data.tenures.length : 0,
+    averageTenure: data.tenures.length > 0 ? data.tenures.reduce((a, b) => a + b, 0) / data.tenures.length : 0
   }));
 
   // Calculate hiring trends (last 12 months)
@@ -403,7 +403,7 @@ export async function fetchProfessionalAnalytics(
       month: date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
       hires,
       departures,
-      netGrowth: hires - departures,
+      netGrowth: hires - departures
     });
   }
 
@@ -413,7 +413,7 @@ export async function fetchProfessionalAnalytics(
     averageCompletion: completions.reduce((a, b) => a + b, 0) / completions.length,
     highCompletion: completions.filter(c => c > 80).length,
     mediumCompletion: completions.filter(c => c >= 50 && c <= 80).length,
-    lowCompletion: completions.filter(c => c < 50).length,
+    lowCompletion: completions.filter(c => c < 50).length
   };
 
   return {
@@ -422,7 +422,7 @@ export async function fetchProfessionalAnalytics(
     departmentBreakdown,
     employmentTypeDistribution,
     hiringTrends,
-    completionMetrics,
+    completionMetrics
   };
 }
 
@@ -441,7 +441,7 @@ export async function createProfessionalProfile(
   // Calculate profile completion
   const completion = calculateProfileCompletion({
     ...validated,
-    skills: validated.skills || [],
+    skills: validated.skills || []
   } as unknown);
 
   const { data: profile, error } = await supabase
@@ -451,7 +451,7 @@ export async function createProfessionalProfile(
       organization_id: organizationId,
       ...validated,
       profile_completion_percentage: completion,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .select(`
       *,
@@ -467,7 +467,7 @@ export async function createProfessionalProfile(
   return {
     ...profile,
     manager_name: profile.manager?.full_name || null,
-    skills: profile.skills || [],
+    skills: profile.skills || []
   };
 }
 
@@ -481,7 +481,7 @@ export async function updateProfessionalProfile(
   // Calculate profile completion
   const completion = calculateProfileCompletion({
     ...validated,
-    skills: validated.skills || [],
+    skills: validated.skills || []
   } as unknown);
 
   const { data: profile, error } = await supabase
@@ -489,7 +489,7 @@ export async function updateProfessionalProfile(
     .update({
       ...validated,
       profile_completion_percentage: completion,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', profileId)
     .select(`
@@ -506,7 +506,7 @@ export async function updateProfessionalProfile(
   return {
     ...profile,
     manager_name: profile.manager?.full_name || null,
-    skills: profile.skills || [],
+    skills: profile.skills || []
   };
 }
 
@@ -534,7 +534,7 @@ export async function updateProfileStatus(
     .from('user_profiles')
     .update({
       status,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', profileId)
     .select(`
@@ -551,7 +551,7 @@ export async function updateProfileStatus(
   return {
     ...profile,
     manager_name: profile.manager?.full_name || null,
-    skills: profile.skills || [],
+    skills: profile.skills || []
   };
 }
 
@@ -577,7 +577,7 @@ export async function fetchManagers(
   return (managers || []).map(manager => ({
     id: manager.id,
     name: manager.full_name || manager.email,
-    email: manager.email,
+    email: manager.email
   }));
 }
 

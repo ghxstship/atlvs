@@ -7,7 +7,7 @@ import {
  Card,
  CardContent,
  CardHeader,
- CardTitle,
+ CardTitle
 } from '@ghxstship/ui';
 import { AppDrawer } from '@ghxstship/ui';
 
@@ -36,7 +36,7 @@ const STATUS_BADGE_CONFIG = {
  approved: { label: 'Approved', variant: 'success' as const },
  rejected: { label: 'Rejected', variant: 'destructive' as const },
  fulfilled: { label: 'Fulfilled', variant: 'success' as const },
- cancelled: { label: 'Cancelled', variant: 'secondary' as const },
+ cancelled: { label: 'Cancelled', variant: 'secondary' as const }
 };
 
 const PRIORITY_BADGE_CONFIG = {
@@ -44,7 +44,7 @@ const PRIORITY_BADGE_CONFIG = {
  medium: { label: 'Medium', variant: 'default' as const },
  high: { label: 'High', variant: 'warning' as const },
  critical: { label: 'Critical', variant: 'destructive' as const },
- urgent: { label: 'Urgent', variant: 'destructive' as const },
+ urgent: { label: 'Urgent', variant: 'destructive' as const }
 };
 
 const RIDER_KIND_CONFIG = {
@@ -57,7 +57,7 @@ const RIDER_KIND_CONFIG = {
  accommodation: { label: 'Accommodation', icon: '🏨' },
  production: { label: 'Production', icon: '🎬' },
  artist: { label: 'Artist', icon: '🎤' },
- crew: { label: 'Crew', icon: '👥' },
+ crew: { label: 'Crew', icon: '👥' }
 };
 
 export default function ViewProgrammingRiderDrawer({
@@ -66,7 +66,7 @@ export default function ViewProgrammingRiderDrawer({
  rider,
  users,
  onEdit,
- onDelete,
+ onDelete
 }: ViewProgrammingRiderDrawerProps) {
  const getUserName = (userId: string) => {
  const user = users.find(u => u.id === userId);
@@ -83,14 +83,14 @@ export default function ViewProgrammingRiderDrawer({
  label: 'Edit',
  icon: <Edit className="h-icon-xs w-icon-xs" />,
  variant: 'outline' as const,
- onClick: () => onEdit(),
+ onClick: () => onEdit()
  },
  {
  key: 'delete',
  label: 'Delete',
  icon: <Trash2 className="h-icon-xs w-icon-xs" />,
  variant: 'destructive' as const,
- onClick: () => onDelete(),
+ onClick: () => onDelete()
  },
  ];
 

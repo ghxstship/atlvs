@@ -24,7 +24,7 @@ const createItinerarySchema = z.object({
   currency: z.string().optional(),
   participants_count: z.number().min(0).optional(),
   project_id: z.string().optional(),
-  event_id: z.string().optional(),
+  event_id: z.string().optional()
 });
 
 export default function CreateItineraryClient({ orgId }: { orgId: string }) {
@@ -52,8 +52,8 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
       currency: 'USD',
       participants_count: undefined,
       project_id: '',
-      event_id: '',
-    },
+      event_id: ''
+    }
   });
 
   // Load projects and events when drawer opens
@@ -85,7 +85,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
         total_cost: data.total_cost || null,
         participants_count: data.participants_count || null,
         created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       const { error: insertError } = await sb

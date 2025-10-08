@@ -1,42 +1,99 @@
-'use client';
-
 /**
- * Badge Component - Built on Unified Design System
+ * Badge Component — Status/Label Badge
+ * Small badge for status indicators and labels
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
  */
 
+'use client';
+
 import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '../../lib/utils';
 
-const badgeVariants = cva(
-  'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
-  {
-    variants: {
-      variant: {
-        default: 'border-transparent bg-accent text-accent-foreground hover:bg-accent/80',
-        secondary: 'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        destructive: 'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
-        outline: 'text-foreground',
-        success: 'border-transparent bg-success-100 text-success-800 hover:bg-success-200',
-        warning: 'border-transparent bg-warning-100 text-warning-800 hover:bg-warning-200',
-        info: 'border-transparent bg-info-100 text-info-800 hover:bg-info-200',
-      },
+export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+  /** Badge variant */
+  variant?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info';
+  
+  /** Badge size */
+  size?: 'sm' | 'md' | 'lg';
+  
+  /** Show dot indicator */
+  dot?: boolean;
+}
+
+/**
+ * Badge Component
+ * 
+ * @example
+ * ```tsx
+ * <Badge variant="success">Active</Badge>
+ * <Badge variant="error" dot>Offline</Badge>
+ * ```
+ */
+export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
+  (
+    {
+      variant = 'default',
+      size = 'md',
+      dot = false,
+      children,
+      className = '',
+      ...props
     },
-    defaultVariants: {
-      variant: 'default',
-    },
-  }
-);
-
-export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
-
-export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
-  ({ className, variant, ...props }, ref) => {
+    ref
+  ) => {
+    const baseClasses = `
+      inline-flex items-center gap-1.5
+      font-medium
+      rounded-full
+      transition-colors
+    `;
+    
+    const variantClasses = {
+      default: 'bg-[var(--color-muted)] text-[var(--color-foreground)]',
+      primary: 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)]',
+      secondary: 'bg-[var(--color-secondary)] text-[var(--color-secondary-foreground)]',
+      success: 'bg-[var(--color-success)] text-[var(--color-success-foreground)]',
+      warning: 'bg-[var(--color-warning)] text-[var(--color-warning-foreground)]',
+      error: 'bg-[var(--color-error)] text-[var(--color-error-foreground)]',
+      info: 'bg-[var(--color-info)] text-[var(--color-info-foreground)]',
+    };
+    
+    const sizeClasses = {
+      sm: 'px-2 py-0.5 text-xs',
+      md: 'px-2.5 py-1 text-xs',
+      lg: 'px-3 py-1 text-sm',
+    };
+    
+    const dotSizeClasses = {
+      sm: 'w-1.5 h-1.5',
+      md: 'w-2 h-2',
+      lg: 'w-2 h-2',
+    };
+    
     return (
-      <div ref={ref} className={cn(badgeVariants({ variant }), className)} {...props} />
+      <span
+        ref={ref}
+        className={`
+          ${baseClasses}
+          ${variantClasses[variant]}
+          ${sizeClasses[size]}
+          ${className}
+        `}
+        {...props}
+      >
+        {dot && (
+          <span
+            className={`
+              rounded-full bg-current
+              ${dotSizeClasses[size]}
+            `}
+          />
+        )}
+        {children}
+      </span>
     );
   }
 );
+
 Badge.displayName = 'Badge';

@@ -1,12 +1,12 @@
 "use client";
 
 import { Edit, Eye, Trash2, Clock, MapPin, DollarSign, Calendar, ChevronLeft, ChevronRight, Music } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo, useState } from 'react';
 import {
  Badge,
  Button,
  Card,
- Select,
+ Select
 } from "@ghxstship/ui";
 import type { ProgrammingLineup, LineupSort, LineupProject, LineupEvent } from "../types";
 import { STATUS_BADGE, PERFORMER_TYPE_BADGE } from "../types";
@@ -57,7 +57,7 @@ export default function ProgrammingLineupsScheduleView({
  onSort,
  users,
  projects,
- events,
+ events
 }: ProgrammingLineupsScheduleViewProps) {
  const [selectedDate, setSelectedDate] = useState<string>(() => {
  // Default to today or first event date
@@ -163,7 +163,7 @@ export default function ProgrammingLineupsScheduleView({
  weekday: "long",
  year: "numeric",
  month: "long",
- day: "numeric",
+ day: "numeric"
  });
  };
 
@@ -171,7 +171,7 @@ export default function ProgrammingLineupsScheduleView({
  if (!amount || !currency) return null;
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

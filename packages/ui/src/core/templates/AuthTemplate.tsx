@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Button } from '../../unified/Button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../unified/Card';
+import { Button } from '../../atoms/Button/Button';
+import { Card, CardHeader, CardBody } from '../../molecules/Card/Card';
 import { cn } from '../../lib/utils';
 
 interface AuthTemplateProps {

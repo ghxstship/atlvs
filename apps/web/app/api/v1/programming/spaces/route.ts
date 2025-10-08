@@ -8,7 +8,7 @@ const CreateSpaceSchema = z.object({
   kind: z.enum(['room', 'green_room', 'dressing_room', 'meeting_room', 'classroom', 'other']).default('room'),
   capacity: z.number().int().positive().optional(),
   description: z.string().optional(),
-  location: z.string().optional(),
+  location: z.string().optional()
 });
 
 export async function GET(request: NextRequest) {
@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
 
     const spaceData = {
       ...validatedData,
-      organization_id: membership.organization_id,
+      organization_id: membership.organization_id
     };
 
     const { data: space, error } = await supabase

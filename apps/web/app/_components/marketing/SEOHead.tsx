@@ -37,7 +37,7 @@ const defaultSEO = {
     'enterprise software'
   ],
   image: 'https://ghxstship.com/og-image.jpg',
-  type: 'website' as const,
+  type: 'website' as const
 };
 
 export default function SEOHead({
@@ -52,7 +52,7 @@ export default function SEOHead({
   section,
   tags = [],
   noindex = false,
-  canonical,
+  canonical
 }: SEOHeadProps) {
   const pathname = usePathname();
   const baseUrl = 'https://ghxstship.com';

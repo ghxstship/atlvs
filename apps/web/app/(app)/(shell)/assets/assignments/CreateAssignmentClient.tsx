@@ -4,15 +4,8 @@
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
-import { 
-  UserCheck,
-  Calendar,
-  MapPin,
-  Clock,
-  Save,
-  X
-} from 'lucide-react';
+import { Drawer, Button, Input, Select, Textarea, Card } from '@ghxstship/ui';
+import { Calendar, Clock, MapPin, Save, UserCheck, X } from 'lucide-react';
 
 interface CreateAssignmentClientProps {
   user: User;
@@ -178,7 +171,7 @@ export default function CreateAssignmentClient({
               <label className="block text-body-sm form-label mb-xs">
                 Asset ID *
               </label>
-              <UnifiedInput                 value={formData.assetId}
+              <Input                 value={formData.assetId}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assetId', e.target.value)}
                 placeholder="Enter asset ID"
                 required
@@ -190,7 +183,7 @@ export default function CreateAssignmentClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Assigned To *
                 </label>
-                <UnifiedInput                   value={formData.assignedTo}
+                <Input                   value={formData.assignedTo}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assignedTo', e.target.value)}
                   placeholder="Person receiving assignment"
                   required
@@ -201,7 +194,7 @@ export default function CreateAssignmentClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Assigned By
                 </label>
-                <UnifiedInput                   value={formData.assignedBy}
+                <Input                   value={formData.assignedBy}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assignedBy', e.target.value)}
                   placeholder="Person making assignment"
                 />
@@ -212,7 +205,7 @@ export default function CreateAssignmentClient({
               <label className="block text-body-sm form-label mb-xs">
                 Project ID
               </label>
-              <UnifiedInput                 value={formData.projectId}
+              <Input                 value={formData.projectId}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('projectId', e.target.value)}
                 placeholder="Associated project (optional)"
               />
@@ -234,7 +227,7 @@ export default function CreateAssignmentClient({
                   <Clock className="h-icon-xs w-icon-xs inline mr-xs" />
                   Assignment Date *
                 </label>
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.assignmentDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assignmentDate', e.target.value)}
                   required
@@ -245,7 +238,7 @@ export default function CreateAssignmentClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Expected Return Date
                 </label>
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.returnDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('returnDate', e.target.value)}
                 />
@@ -257,7 +250,7 @@ export default function CreateAssignmentClient({
                 <MapPin className="h-icon-xs w-icon-xs inline mr-xs" />
                 Location
               </label>
-              <UnifiedInput                 value={formData.location}
+              <Input                 value={formData.location}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('location', e.target.value)}
                 placeholder="Assignment location"
               />

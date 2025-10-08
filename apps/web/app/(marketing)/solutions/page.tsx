@@ -1,24 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  BarChart3,
-  Building,
-  Film,
-  Globe,
-  Megaphone,
-  Music,
-  Target,
-  Users,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight, BarChart3, Building, Film, Globe, Megaphone, Music, Target, Users, Zap } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -29,8 +18,8 @@ export const metadata: Metadata = {
     title: 'Industry Solutions | GHXSTSHIP',
     description:
       'Discover how GHXSTSHIP powers film & TV, advertising, live events, and corporate production teams with tailored workflows.',
-    url: 'https://ghxstship.com/solutions',
-  },
+    url: 'https://ghxstship.com/solutions'
+  }
 };
 
 const solutionStats = [
@@ -49,7 +38,7 @@ const industries = [
     description:
       'Crew coordination, asset approvals, and budget tracking built for productions that can’t afford delays.',
     href: '/solutions/film-tv',
-    stats: { projects: '15K+', savings: '45%', satisfaction: '99%', clients: '500+' },
+    stats: { projects: '15K+', savings: '45%', satisfaction: '99%', clients: '500+' }
   },
   {
     id: 'advertising',
@@ -59,7 +48,7 @@ const industries = [
     description:
       'Creative approvals, client collaboration, and media planning in one workflow.',
     href: '/solutions/advertising',
-    stats: { projects: '25K+', savings: '35%', satisfaction: '97%', clients: '750+' },
+    stats: { projects: '25K+', savings: '35%', satisfaction: '97%', clients: '750+' }
   },
   {
     id: 'music-events',
@@ -69,7 +58,7 @@ const industries = [
     description:
       'Vendor management, run-of-show logistics, and real-time monitoring built for live ops.',
     href: '/solutions/music-events',
-    stats: { projects: '8K+', savings: '40%', satisfaction: '98%', clients: '300+' },
+    stats: { projects: '8K+', savings: '40%', satisfaction: '98%', clients: '300+' }
   },
   {
     id: 'corporate',
@@ -79,7 +68,7 @@ const industries = [
     description:
       'Compliance, translations, and distribution workflows designed for global enterprises.',
     href: '/solutions/corporate',
-    stats: { projects: '35K+', savings: '50%', satisfaction: '98%', clients: '1K+' },
+    stats: { projects: '35K+', savings: '50%', satisfaction: '98%', clients: '1K+' }
   },
 ];
 
@@ -87,22 +76,22 @@ const commonFeatures = [
   {
     title: 'Team Collaboration',
     description: 'Real-time chat, shared calendars, and asset reviews keep crews aligned across time zones.',
-    icon: Users,
+    icon: Users
   },
   {
     title: 'Analytics & Forecasting',
     description: 'Dashboards, burn-down charts, and predictive alerts surface bottlenecks before they hit.',
-    icon: BarChart3,
+    icon: BarChart3
   },
   {
     title: 'Automation',
     description: 'Trigger workflows from milestones, auto-assign tasks, and sync with finance tools.',
-    icon: Zap,
+    icon: Zap
   },
   {
     title: 'Global Coordination',
     description: 'Localization, regional compliance, and vendor sourcing support productions worldwide.',
-    icon: Globe,
+    icon: Globe
   },
 ];
 

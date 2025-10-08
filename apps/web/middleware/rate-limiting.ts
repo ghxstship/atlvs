@@ -33,7 +33,7 @@ export function rateLimitingMiddleware(
     // Create new window
     entry = {
       count: 1,
-      resetAt: now + config.windowMs,
+      resetAt: now + config.windowMs
     };
     rateLimitMap.set(clientId, entry);
     return null; // Allow request
@@ -50,7 +50,7 @@ export function rateLimitingMiddleware(
       JSON.stringify({
         error: 'Too many requests',
         message: 'Rate limit exceeded. Please try again later.',
-        retryAfter,
+        retryAfter
       }),
       {
         status: 429,
@@ -59,8 +59,8 @@ export function rateLimitingMiddleware(
           'Retry-After': retryAfter.toString(),
           'X-RateLimit-Limit': config.maxRequests.toString(),
           'X-RateLimit-Remaining': '0',
-          'X-RateLimit-Reset': entry.resetAt.toString(),
-        },
+          'X-RateLimit-Reset': entry.resetAt.toString()
+        }
       }
     );
   }

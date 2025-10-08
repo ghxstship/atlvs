@@ -3,7 +3,7 @@
 import { Badge, Button, Card } from "@ghxstship/ui";
 import type { ProgrammingEvent } from "../types";
 import { EVENT_TYPE_LABEL, STATUS_BADGE } from "../ProgrammingCalendarClient";
-import { Calendar, Edit, Eye, Trash2 } from 'lucide-react';
+import { Calendar, Edit, Eye, Trash2, Pencil } from 'lucide-react';
 
 type ProgrammingCalendarBoardViewProps = {
  events: ProgrammingEvent[];
@@ -28,7 +28,7 @@ export default function ProgrammingCalendarBoardView({
  onSelect,
  onView,
  onEdit,
- onDelete,
+ onDelete
 }: ProgrammingCalendarBoardViewProps) {
  return (
  <div className="flex gap-md overflow-x-auto pb-md">

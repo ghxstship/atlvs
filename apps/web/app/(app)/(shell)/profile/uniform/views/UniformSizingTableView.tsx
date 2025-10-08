@@ -42,7 +42,7 @@ export default function UniformSizingTableView({
  onEdit,
  onView,
  sort,
- onSort,
+ onSort
 }: UniformSizingTableViewProps) {
  const handleSelectAll = (checked: boolean) => {
  onSelectionChange(checked ? sizings.map(s => s.user_id) : []);

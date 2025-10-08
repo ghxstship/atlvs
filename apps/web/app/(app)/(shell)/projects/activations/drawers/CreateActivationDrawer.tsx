@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import { AppDrawer, type DrawerFieldConfig } from "@ghxstship/ui";
 
@@ -17,7 +17,7 @@ export default function CreateActivationDrawer({
  onOpenChange,
  orgId,
  projects = [],
- onSuccess,
+ onSuccess
 }: CreateActivationDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -28,13 +28,13 @@ export default function CreateActivationDrawer({
  label: "Activation Name",
  type: "text",
  required: true,
- placeholder: "Enter activation name",
+ placeholder: "Enter activation name"
  },
  {
  key: "description",
  label: "Description",
  type: "textarea",
- placeholder: "Describe the activation objectives and scope",
+ placeholder: "Describe the activation objectives and scope"
  },
  {
  key: "status",
@@ -46,7 +46,7 @@ export default function CreateActivationDrawer({
  { label: "Active", value: "active" },
  { label: "Completed", value: "completed" },
  { label: "Cancelled", value: "cancelled" },
- ],
+ ]
  },
  {
  key: "activation_type",
@@ -58,7 +58,7 @@ export default function CreateActivationDrawer({
  { label: "Beta", value: "beta" },
  { label: "Pilot", value: "pilot" },
  { label: "Rollout", value: "rollout" },
- ],
+ ]
  },
  {
  key: "project_id",
@@ -67,30 +67,30 @@ export default function CreateActivationDrawer({
  options: [
  { label: "Select a project", value: "" },
  ...projects.map((p) => ({ label: p.name, value: p.id })),
- ],
+ ]
  },
  {
  key: "scheduled_date",
  label: "Scheduled Date",
- type: "date",
+ type: "date"
  },
  {
  key: "location",
  label: "Location",
  type: "text",
- placeholder: "Enter location",
+ placeholder: "Enter location"
  },
  {
  key: "budget",
  label: "Budget",
  type: "currency",
- placeholder: "0.00",
+ placeholder: "0.00"
  },
  {
  key: "notes",
  label: "Notes",
  type: "textarea",
- placeholder: "Add any additional notes or comments",
+ placeholder: "Add any additional notes or comments"
  },
  ];
 
@@ -122,7 +122,7 @@ export default function CreateActivationDrawer({
  success_metrics: {},
  stakeholders: [],
  dependencies: [],
- risks: [],
+ risks: []
  });
 
  if (error) throw error;

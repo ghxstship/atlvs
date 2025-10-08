@@ -7,7 +7,7 @@ import {
  Badge,
  Button,
  Avatar,
- AvatarFallback,
+ AvatarFallback
 } from '@ghxstship/ui';
 import type { JobHistoryEntry, EmploymentType, CompanySize } from '../types';
 
@@ -29,7 +29,7 @@ const getEmploymentTypeColor = (type: EmploymentType) => {
  freelance: 'pink',
  internship: 'cyan',
  temporary: 'orange',
- consultant: 'yellow',
+ consultant: 'yellow'
  };
  return colorMap[type] || 'gray';
 };
@@ -40,7 +40,7 @@ const getCompanySizeLabel = (size: CompanySize) => {
  small: 'Small',
  medium: 'Medium',
  large: 'Large',
- enterprise: 'Enterprise',
+ enterprise: 'Enterprise'
  };
  return labelMap[size] || size;
 };
@@ -51,7 +51,7 @@ const getCompanySizeIcon = (size: CompanySize) => {
  small: '🏢',
  medium: '🏬',
  large: '🏭',
- enterprise: '🌆',
+ enterprise: '🌆'
  };
  return iconMap[size] || '🏢';
 };
@@ -103,7 +103,7 @@ export default function JobHistoryCardView({
  onEdit,
  onDelete,
  onView,
- loading = false,
+ loading = false
 }: JobHistoryCardViewProps) {
  const sortedEntries = useMemo(() => {
  return [...entries].sort((a, b) => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { Button } from '@ghxstship/ui';
 import { NavigationDropdown } from './NavigationDropdown';
@@ -25,12 +25,14 @@ export function MobileMenu({ navigation, activeDropdown, onDropdownChange }: Mob
   const [animatedItems, setAnimatedItems] = useState<boolean[]>([]);
 
   // Stagger animation for menu items
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnimatedItems(navigation.map((_, index) => index < navigation.length));
     }, 50);
     
     return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigation.length]);
 
   return (

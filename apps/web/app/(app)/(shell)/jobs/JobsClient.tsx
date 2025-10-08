@@ -3,7 +3,18 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Drawer, type DataRecord } from '@ghxstship/ui';
+import {
+  Drawer,
+  type DataRecord,
+  StateManagerProvider,
+  DataViewProvider,
+  ViewSwitcher,
+  DataActions,
+  DataGrid,
+  KanbanBoard,
+  CalendarView,
+  ListView
+} from '@ghxstship/ui';
 
 // Mock Supabase client for now
 const sb = {

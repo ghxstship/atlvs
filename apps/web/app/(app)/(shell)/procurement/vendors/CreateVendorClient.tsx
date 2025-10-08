@@ -1,4 +1,5 @@
 'use client';
+import { Button, Drawer, Input } from '@ghxstship/ui';
 
 
 import { useState } from 'react';
@@ -22,7 +23,7 @@ const vendorSchema = z.object({
   payment_terms: z.string().optional(),
   status: z.enum(['active', 'inactive', 'pending']).default('active'),
   rating: z.number().min(1).max(5).optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 type VendorFormData = z.infer<typeof vendorSchema>;
@@ -48,7 +49,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
     resolver: zodResolver(vendorSchema),
     mode: 'onChange',
     defaultValues: {
-      status: 'active',
+      status: 'active'
     }
   });
 
@@ -64,9 +65,9 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-organization-id': orgId,
+          'x-organization-id': orgId
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
@@ -81,7 +82,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
         vendor_id: result.data.id,
         vendor_name: data.name,
         organization_id: orgId,
-        status: data.status,
+        status: data.status
       });
 
       // Log activity
@@ -93,8 +94,8 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
         resource_id: result.data.id,
         details: {
           vendor_name: data.name,
-          status: data.status,
-        },
+          status: data.status
+        }
       });
 
       // Reset form and close drawer
@@ -106,7 +107,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
       console.error('Error creating vendor:', error);
       posthog?.capture('procurement_vendor_creation_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -176,7 +177,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Vendor Name *
               </label>
-              <UnifiedInput                 {...register('name')}
+              <Input                 {...register('name')}
                 placeholder="Enter vendor name"
                 error={errors.name?.message}
               />
@@ -186,7 +187,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Contact Person
               </label>
-              <UnifiedInput                 {...register('contact_person')}
+              <Input                 {...register('contact_person')}
                 placeholder="Primary contact name"
               />
             </div>
@@ -209,7 +210,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Email
               </label>
-              <UnifiedInput                 {...register('email')}
+              <Input                 {...register('email')}
                 type="email"
                 placeholder="vendor@example.com"
                 error={errors.email?.message}
@@ -220,7 +221,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Phone
               </label>
-              <UnifiedInput                 {...register('phone')}
+              <Input                 {...register('phone')}
                 placeholder="+1 (555) 123-4567"
               />
             </div>
@@ -229,7 +230,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Website
               </label>
-              <UnifiedInput                 {...register('website')}
+              <Input                 {...register('website')}
                 placeholder="https://vendor.com"
                 error={errors.website?.message}
               />
@@ -239,7 +240,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Tax ID
               </label>
-              <UnifiedInput                 {...register('tax_id')}
+              <Input                 {...register('tax_id')}
                 placeholder="Tax identification number"
               />
             </div>
@@ -248,7 +249,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Payment Terms
               </label>
-              <UnifiedInput                 {...register('payment_terms')}
+              <Input                 {...register('payment_terms')}
                 placeholder="Net 30, COD, etc."
               />
             </div>
@@ -274,7 +275,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Address
               </label>
-              <Textarea
+              <textarea
                 {...register('address')}
                 placeholder="Full business address"
                 rows={2}
@@ -285,7 +286,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Description
               </label>
-              <Textarea
+              <textarea
                 {...register('description')}
                 placeholder="Brief description of vendor services"
                 rows={2}
@@ -296,7 +297,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Notes
               </label>
-              <Textarea
+              <textarea
                 {...register('notes')}
                 placeholder="Internal notes about this vendor"
                 rows={3}

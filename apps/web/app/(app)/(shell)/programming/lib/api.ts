@@ -22,7 +22,7 @@ import type {
   ExportOptions,
   ImportResult,
   PermissionCheck,
-  PermissionResult,
+  PermissionResult
 } from '../types';
 
 export class ProgrammingApiService {
@@ -91,8 +91,8 @@ export class ProgrammingApiService {
         page: pagination.page,
         limit: pagination.limit,
         total: count || 0,
-        total_pages: Math.ceil((count || 0) / pagination.limit),
-      },
+        total_pages: Math.ceil((count || 0) / pagination.limit)
+      }
     };
   }
 
@@ -115,7 +115,7 @@ export class ProgrammingApiService {
         ...eventData,
         organization_id: organizationId,
         created_by: userId,
-        updated_by: userId,
+        updated_by: userId
       })
       .select()
       .single();
@@ -130,7 +130,7 @@ export class ProgrammingApiService {
       .update({
         ...eventData,
         updated_by: userId,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq('id', eventData.id)
       .eq('organization_id', organizationId)
@@ -171,7 +171,7 @@ export class ProgrammingApiService {
         .update({
           status: data.status,
           updated_by: userId,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .in('id', ids)
         .eq('organization_id', organizationId)
@@ -225,15 +225,15 @@ export class ProgrammingApiService {
         page: pagination.page,
         limit: pagination.limit,
         total: count || 0,
-        total_pages: Math.ceil((count || 0) / pagination.limit),
-      },
+        total_pages: Math.ceil((count || 0) / pagination.limit)
+      }
     };
   }
 
   // Export/Import API
   async exportEvents(options: ExportOptions, organizationId: string): Promise<Blob> {
     const { data, error } = await this.supabase.functions.invoke('export-programming-events', {
-      body: { options, organizationId },
+      body: { options, organizationId }
     });
 
     if (error) throw error;
@@ -248,7 +248,7 @@ export class ProgrammingApiService {
 
   async importEvents(file: File, organizationId: string, userId: string): Promise<ImportResult> {
     const { data, error } = await this.supabase.functions.invoke('import-programming-events', {
-      body: { file: await file.arrayBuffer(), organizationId, userId },
+      body: { file: await file.arrayBuffer(), organizationId, userId }
     });
 
     if (error) throw error;
@@ -262,7 +262,7 @@ export class ProgrammingApiService {
       p_entity: permission.entity,
       p_resource_id: permission.resource_id,
       p_user_id: permission.user_id,
-      p_organization_id: permission.organization_id,
+      p_organization_id: permission.organization_id
     });
 
     if (error) throw error;
@@ -274,7 +274,7 @@ export class ProgrammingApiService {
     const { data, error } = await this.supabase.rpc('get_programming_statistics', {
       p_organization_id: organizationId,
       p_date_from: dateRange?.from?.toISOString(),
-      p_date_to: dateRange?.to?.toISOString(),
+      p_date_to: dateRange?.to?.toISOString()
     });
 
     if (error) throw error;

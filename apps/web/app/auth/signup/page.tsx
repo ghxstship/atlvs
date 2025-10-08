@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Sign Up - Start Your Free Trial | GHXSTSHIP',
     description: 'Create your GHXSTSHIP account and start managing your creative projects with our powerful production management platform.',
-    url: 'https://ghxstship.com/auth/signup',
-  },
+    url: 'https://ghxstship.com/auth/signup'
+  }
 };
 
 

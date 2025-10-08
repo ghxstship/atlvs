@@ -1,5 +1,5 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, Eye, Users, MapPin, Share2, Pencil } from 'lucide-react';
 import { Badge, Button, Card } from '@ghxstship/ui';
 import { format } from 'date-fns';
 import type { CallSheet } from '../lib/callSheetsService';
@@ -19,7 +19,7 @@ const STATUS_VARIANTS: Record<CallSheet['status'], 'secondary' | 'info' | 'warni
  published: 'info',
  distributed: 'warning',
  completed: 'success',
- cancelled: 'destructive',
+ cancelled: 'destructive'
 };
 
 export default function CallSheetsGridView({
@@ -29,7 +29,7 @@ export default function CallSheetsGridView({
  onView,
  onEdit,
  onDelete,
- onDistribute,
+ onDistribute
 }: CallSheetsGridViewProps) {
  if (callSheets.length === 0) {
  return (

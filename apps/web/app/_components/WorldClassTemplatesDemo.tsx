@@ -1,46 +1,11 @@
 'use client';
+import { Avatar, Badge, Button } from '@ghxstship/ui';
 
 import React, { useState, useCallback } from 'react';
-import {
-  BarChart3,
-  Users,
-  Settings,
-  FileText,
-  Calendar,
-  CheckSquare,
-  TrendingUp,
-  Plus,
-  Search,
-  Filter,
-  Edit,
-  Trash2,
-  Star,
-  Share,
-  User,
-  Mail,
-  Phone,
-  MapPin,
-  Building,
-  CreditCard,
-  Bell,
-  HelpCircle,
-  ChevronRight,
-  Home,
-  Briefcase,
-  Shield,
-  Palette
-} from 'lucide-react';
-import { Button } from '@ghxstship/ui/atoms';
-import { Badge } from '@ghxstship/ui/atoms';
-import { Avatar } from '@ghxstship/ui/atoms';
-import { TaskCard, type Task } from '@ghxstship/ui/organisms';
-import { BoardView, type BoardColumn } from '@ghxstship/ui/organisms';
-import { DashboardWidget, type WidgetConfig } from '@ghxstship/ui/organisms';
-import { DashboardLayout } from '@ghxstship/ui/templates';
-import { ListLayout } from '@ghxstship/ui/templates';
-import { DetailLayout } from '@ghxstship/ui/templates';
-import { SettingsLayout } from '@ghxstship/ui/templates';
-import { OnboardingLayout } from '@ghxstship/ui/templates';
+import { BarChart3, Bell, Briefcase, Building, Calendar, CheckSquare, ChevronRight, CreditCard, Download, Edit, FileText, Filter, HelpCircle, Home, Mail, MapPin, Palette, Phone, Plus, Search, Settings, Share, Shield, Star, Trash2, TrendingUp, User, Users } from 'lucide-react';
+import { Avatar, Badge, Button } from '@ghxstship/ui/atoms';
+import { BoardView, DashboardWidget, TaskCard, type BoardColumn, type Task, type WidgetConfig } from '@ghxstship/ui/organisms';
+import { DashboardLayout, DetailLayout, ListLayout, OnboardingLayout, SettingsLayout } from '@ghxstship/ui/templates';
 
 // Complete world-class interface demonstration using all templates
 export default function WorldClassTemplatesDemo() {
@@ -63,7 +28,7 @@ export default function WorldClassTemplatesDemo() {
       project: { id: 'p1', name: 'Q1 Campaign', color: '#3b82f6' },
       subtasks: { total: 5, completed: 3 },
       createdAt: new Date('2024-01-01'),
-      updatedAt: new Date('2024-01-10'),
+      updatedAt: new Date('2024-01-10')
     },
     {
       id: '2',
@@ -75,7 +40,7 @@ export default function WorldClassTemplatesDemo() {
       tags: ['backend', 'security'],
       subtasks: { total: 8, completed: 8 },
       createdAt: new Date('2024-01-05'),
-      updatedAt: new Date('2024-01-11'),
+      updatedAt: new Date('2024-01-11')
     },
   ];
 
@@ -97,8 +62,8 @@ export default function WorldClassTemplatesDemo() {
         value: sampleTasks.length,
         trend: 'up',
         change: 12,
-        changeType: 'percentage',
-      },
+        changeType: 'percentage'
+      }
     },
     {
       id: 'completion-rate',
@@ -113,8 +78,8 @@ export default function WorldClassTemplatesDemo() {
           { label: 'In Progress', value: 8 },
           { label: 'Review', value: 3 },
           { label: 'Done', value: 15 },
-        ],
-      },
+        ]
+      }
     },
     {
       id: 'recent-activity',
@@ -127,8 +92,8 @@ export default function WorldClassTemplatesDemo() {
           { id: '1', user: 'Alice', action: 'completed', item: 'Design review', time: '2 hours ago' },
           { id: '2', user: 'Bob', action: 'started', item: 'API integration', time: '4 hours ago' },
           { id: '3', user: 'Carol', action: 'commented on', item: 'User authentication', time: '6 hours ago' },
-        ],
-      },
+        ]
+      }
     },
   ];
 
@@ -136,33 +101,40 @@ export default function WorldClassTemplatesDemo() {
   const handleTaskClick = useCallback((task: Task) => {
     console.log('Task clicked:', task.title);
     setActiveView('project-detail');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleTaskEdit = useCallback((task: Task) => {
     console.log('Edit task:', task.title);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleTaskDelete = useCallback((task: Task) => {
     console.log('Delete task:', task.title);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleTaskMove = useCallback((taskId: string, fromColumnId: string, toColumnId: string) => {
     console.log('Task moved:', taskId, 'from', fromColumnId, 'to', toColumnId);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleTaskCreate = useCallback((columnId: string) => {
     console.log('Create task in column:', columnId);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSaveSettings = useCallback(async () => {
     console.log('Saving settings...');
     await new Promise(resolve => setTimeout(resolve, 1000));
     console.log('Settings saved!');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCompleteOnboarding = useCallback(() => {
     console.log('Onboarding completed!');
     setActiveView('dashboard');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Settings sections
@@ -182,26 +154,26 @@ export default function WorldClassTemplatesDemo() {
       id: 'welcome',
       title: 'Welcome to ATLVS',
       description: 'Let\'s get you set up with a world-class project management experience.',
-      icon: Home,
+      icon: Home
     },
     {
       id: 'profile',
       title: 'Complete Your Profile',
       description: 'Tell us a bit about yourself to personalize your experience.',
       icon: User,
-      required: true,
+      required: true
     },
     {
       id: 'workspace',
       title: 'Set Up Your Workspace',
       description: 'Create your first project and invite your team.',
-      icon: Briefcase,
+      icon: Briefcase
     },
     {
       id: 'preferences',
       title: 'Customize Your Experience',
       description: 'Configure notifications and preferences to match your workflow.',
-      icon: Settings,
+      icon: Settings
     },
   ];
 
@@ -212,11 +184,11 @@ export default function WorldClassTemplatesDemo() {
       subtitle="Welcome back! Here's what's happening with your projects."
       actions={
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm">
+          <Button variant="secondary" size="sm">
             <Share className="h-4 w-4 mr-2" />
             Share
           </Button>
-          <Button variant="outline" size="sm">
+          <Button variant="secondary" size="sm">
             <Download className="h-4 w-4 mr-2" />
             Export
           </Button>
@@ -295,7 +267,7 @@ export default function WorldClassTemplatesDemo() {
                 <div className="font-medium text-sm">User Authentication</div>
                 <div className="text-xs text-muted-foreground">Due tomorrow</div>
                 <div className="mt-2">
-                  <Badge variant="destructive" className="text-xs">Urgent</Badge>
+                  <Badge variant="error" className="text-xs">Urgent</Badge>
                 </div>
               </div>
             </div>
@@ -330,11 +302,11 @@ export default function WorldClassTemplatesDemo() {
       search={{
         value: '',
         onChange: (value) => console.log('Search:', value),
-        placeholder: 'Search projects...',
+        placeholder: 'Search projects...'
       }}
       filters={{
         activeCount: 2,
-        onClear: () => console.log('Clear filters'),
+        onClear: () => console.log('Clear filters')
       }}
       sort={{
         options: [
@@ -344,14 +316,14 @@ export default function WorldClassTemplatesDemo() {
         ],
         value: 'updated',
         onChange: (value) => console.log('Sort by:', value),
-        direction: 'desc',
+        direction: 'desc'
       }}
       bulkActions={
         <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-lg border">
           <span className="text-sm font-medium">2 projects selected</span>
-          <Button variant="outline" size="sm">Archive</Button>
-          <Button variant="outline" size="sm">Move</Button>
-          <Button variant="destructive" size="sm">Delete</Button>
+          <Button variant="secondary" size="sm">Archive</Button>
+          <Button variant="secondary" size="sm">Move</Button>
+          <Button variant="error" size="sm">Delete</Button>
         </div>
       }
       sidebar={
@@ -421,11 +393,11 @@ export default function WorldClassTemplatesDemo() {
       }
       actions={
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm">
+          <Button variant="secondary" size="sm">
             <Share className="h-4 w-4 mr-2" />
             Share
           </Button>
-          <Button variant="outline" size="sm">
+          <Button variant="secondary" size="sm">
             <Star className="h-4 w-4 mr-2" />
             Favorite
           </Button>
@@ -449,7 +421,7 @@ export default function WorldClassTemplatesDemo() {
           { id: 'activity', label: 'Activity' },
         ],
         activeTab: 'overview',
-        onTabChange: (tabId) => console.log('Switch to tab:', tabId),
+        onTabChange: (tabId) => console.log('Switch to tab:', tabId)
       }}
       metaSidebar={
         <div className="space-y-6">
@@ -559,7 +531,7 @@ export default function WorldClassTemplatesDemo() {
         hasChanges: true,
         onSave: handleSaveSettings,
         onDiscard: () => console.log('Discard changes'),
-        saving: false,
+        saving: false
       }}
     >
       {activeSettingsSection === 'general' && (
@@ -672,13 +644,13 @@ export default function WorldClassTemplatesDemo() {
       progress={{
         showSteps: true,
         showProgressBar: true,
-        showStepNumbers: true,
+        showStepNumbers: true
       }}
       navigation={{
         showPrevious: true,
         showNext: true,
         showSkip: true,
-        nextLabel: currentOnboardingStep === onboardingSteps.length - 1 ? 'Get Started' : 'Continue',
+        nextLabel: currentOnboardingStep === onboardingSteps.length - 1 ? 'Get Started' : 'Continue'
       }}
       showHelp={true}
       helpContent={
@@ -863,7 +835,7 @@ export default function WorldClassTemplatesDemo() {
             </div>
             <div className="flex items-center gap-4">
               <Button
-                variant="outline"
+                variant="secondary"
                 onClick={() => setActiveView('onboarding')}
               >
                 Start Onboarding

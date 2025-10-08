@@ -4,15 +4,8 @@
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, UnifiedInput, Textarea, Select, Card } from '@ghxstship/ui';
-import { 
-  TrendingUp,
-  Calendar,
-  User as UserIcon,
-  DollarSign,
-  Save,
-  X
-} from 'lucide-react';
+import { Drawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
+import { Calendar, DollarSign, Save, TrendingUp, User as UserIcon, X } from 'lucide-react';
 
 interface CreateAdvancingClientProps {
   user: User;
@@ -176,7 +169,7 @@ export default function CreateAdvancingClient({
               <label className="block text-body-sm form-label mb-xs">
                 Asset ID *
               </label>
-              <UnifiedInput                 value={formData.assetId}
+              <Input                 value={formData.assetId}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assetId', e.target.value)}
                 placeholder="Enter asset ID"
                 required
@@ -189,7 +182,7 @@ export default function CreateAdvancingClient({
                   <UserIcon className="h-icon-xs w-icon-xs inline mr-xs" />
                   Advanced To *
                 </label>
-                <UnifiedInput                   value={formData.advancedTo}
+                <Input                   value={formData.advancedTo}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('advancedTo', e.target.value)}
                   placeholder="Person receiving the advance"
                   required
@@ -200,7 +193,7 @@ export default function CreateAdvancingClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Advanced By
                 </label>
-                <UnifiedInput                   value={formData.advancedBy}
+                <Input                   value={formData.advancedBy}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('advancedBy', e.target.value)}
                   placeholder="Person authorizing the advance"
                 />
@@ -222,7 +215,7 @@ export default function CreateAdvancingClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Advance Date *
                 </label>
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.advanceDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('advanceDate', e.target.value)}
                   required
@@ -233,7 +226,7 @@ export default function CreateAdvancingClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Expected Return Date
                 </label>
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.returnDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('returnDate', e.target.value)}
                 />
@@ -294,7 +287,7 @@ export default function CreateAdvancingClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Amount
                 </label>
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   step="0.01"
                   value={formData.amount}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('amount', e.target.value)}

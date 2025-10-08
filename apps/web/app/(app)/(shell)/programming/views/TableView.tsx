@@ -10,13 +10,13 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from '@ghxstship/ui';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@ghxstship/ui';
 import type { ProgrammingEntity, SortOptions } from '../types';
 
@@ -54,7 +54,7 @@ export function TableView<T extends ProgrammingEntity>({
   onView,
   sort,
   emptyMessage = 'No data available',
-  className,
+  className
 }: TableViewProps<T>) {
   const [internalSelectedIds, setInternalSelectedIds] = useState<string[]>(selectedIds);
 
@@ -85,7 +85,7 @@ export function TableView<T extends ProgrammingEntity>({
 
     const newSort: SortOptions = {
       field: columnKey as string,
-      direction: sort?.field === columnKey && sort.direction === 'asc' ? 'desc' : 'asc',
+      direction: sort?.field === columnKey && sort.direction === 'asc' ? 'desc' : 'asc'
     };
 
     onSort(newSort);

@@ -12,7 +12,7 @@ import {
  SelectItem,
  SelectTrigger,
  SelectValue,
- Checkbox,
+ Checkbox
 } from '@ghxstship/ui';
 import type { HealthRecord, HealthFilters, HealthSort } from '../types';
 import {
@@ -26,7 +26,7 @@ import {
  getSeverityColor,
  getRecordTypeIcon,
  filterHealthRecords,
- sortHealthRecords,
+ sortHealthRecords
 } from '../types';
 
 interface HealthTimelineViewProps {
@@ -58,7 +58,7 @@ export default function HealthTimelineView({
  onExport,
  onEdit,
  onDelete,
- onToggleActive,
+ onToggleActive
 }: HealthTimelineViewProps) {
  const [showFilters, setShowFilters] = useState(false);
 
@@ -72,7 +72,7 @@ export default function HealthTimelineView({
  const handleSort = (field: HealthSort['field']) => {
  onSortChange({
  field,
- direction: sort.field === field && sort.direction === 'asc' ? 'desc' : 'asc',
+ direction: sort.field === field && sort.direction === 'asc' ? 'desc' : 'asc'
  });
  };
 

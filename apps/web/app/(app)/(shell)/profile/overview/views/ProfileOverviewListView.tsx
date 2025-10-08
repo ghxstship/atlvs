@@ -23,7 +23,7 @@ export default function ProfileOverviewListView({
  onSelectionChange,
  onEdit,
  onView,
- onStatusChange,
+ onStatusChange
 }: ProfileOverviewListViewProps) {
  const [expandedProfiles, setExpandedProfiles] = useState<Set<string>(new Set());
 

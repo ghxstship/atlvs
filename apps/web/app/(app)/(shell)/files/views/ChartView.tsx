@@ -1,17 +1,8 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import {
-  BarChart3,
-  PieChart,
-  LineChart,
-  TrendingUp,
-  Download,
-  RefreshCw,
-  Calendar,
-  Filter,
-} from 'lucide-react';
-import { Card, Button, Select, Badge } from '@ghxstship/ui';
+import { BarChart3, PieChart, LineChart, TrendingUp, Download, RefreshCw, Calendar, Filter, Pie, BarChart } from 'lucide-react';
+import { Card, Button, Select, Badge, Tooltip } from '@ghxstship/ui';
 import {
   BarChart,
   Bar,
@@ -26,7 +17,7 @@ import {
   LineChart as RechartsLineChart,
   Line,
   Area,
-  AreaChart,
+  AreaChart
 } from 'recharts';
 import type { DigitalAsset } from '../types';
 
@@ -39,7 +30,7 @@ interface ChartViewProps {
 export default function ChartView({
   files,
   onExportChart,
-  formatFileSize,
+  formatFileSize
 }: ChartViewProps) {
   const [chartType, setChartType] = useState<'bar' | 'pie' | 'line' | 'area'>('bar');
   const [metric, setMetric] = useState<'count' | 'size' | 'access' | 'status'>('count');
@@ -96,7 +87,7 @@ export default function ChartView({
           active: 0,
           archived: 0,
           processing: 0,
-          error: 0,
+          error: 0
         };
       }
 
@@ -127,7 +118,7 @@ export default function ChartView({
   const renderChart = () => {
     const commonProps = {
       data: chartData,
-      margin: { top: 20, right: 30, left: 20, bottom: 5 },
+      margin: { top: 20, right: 30, left: 20, bottom: 5 }
     };
 
     switch (chartType) {

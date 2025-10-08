@@ -4,7 +4,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription,
+  DrawerDescription
 } from '@ghxstship/ui';
 import { Button } from '@ghxstship/ui';
 import { Badge } from '@ghxstship/ui';
@@ -41,7 +41,7 @@ export default function BulkDrawer({
   selectedListings,
   open,
   onOpenChange,
-  onComplete,
+  onComplete
 }: BulkDrawerProps) {
   const [selectedAction, setSelectedAction] = useState<BulkAction | null>(null);
   const [statusValue, setStatusValue] = useState<'active' | 'archived'>('active');

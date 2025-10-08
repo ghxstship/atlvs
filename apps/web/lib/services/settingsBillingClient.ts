@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 const JsonResponseSchema = z.object({
-  error: z.string().optional(),
+  error: z.string().optional()
 }).passthrough();
 
 export class SettingsBillingError extends Error {
@@ -32,9 +32,9 @@ async function jsonFetch(input: RequestInfo | URL, init?: RequestInit): Promise<
     ...init,
     headers: {
       'Content-Type': 'application/json',
-      ...(init?.headers ?? {}),
+      ...(init?.headers ?? {})
     },
-    credentials: 'include',
+    credentials: 'include'
   });
 }
 
@@ -103,7 +103,7 @@ const UPDATE_INPUT_SCHEMA = z.object({
   billingEmail: z.string().email().optional(),
   billingAddress: z.record(z.unknown()).optional(),
   paymentMethod: z.record(z.unknown()).optional(),
-  invoiceSettings: z.record(z.unknown()).optional(),
+  invoiceSettings: z.record(z.unknown()).optional()
 });
 
 export async function fetchBillingSettings(): Promise<BillingSettingsResponse> {
@@ -115,7 +115,7 @@ export async function updateBillingSettings(input: UpdateBillingSettingsInput): 
   const payload = UPDATE_INPUT_SCHEMA.parse(input);
   const response = await jsonFetch('/api/v1/settings/billing', {
     method: 'PUT',
-    body: JSON.stringify(payload),
+    body: JSON.stringify(payload)
   });
   return handleResponse<BillingSettingsResponse>(response);
 }

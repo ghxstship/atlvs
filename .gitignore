@@ -87,3 +87,31 @@ supabase/.temp
 
 # Backups directory
 /backups/
+
+# Server PIDs
+*.pid
+
+# Development logs
+dev_output.log
+build-output.log
+server.log
+
+# Test & Build Artifacts
+coverage/
+playwright-report/
+test-results/
+.turbo/
+*.tsbuildinfo
+
+# Backups (never commit)
+*backup*/
+.cleanup-*/
+.deep-cleanup-*/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

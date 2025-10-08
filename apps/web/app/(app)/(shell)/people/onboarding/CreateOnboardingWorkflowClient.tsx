@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, Button, UnifiedInput } from '@ghxstship/ui';
+import { Card, Button, Input } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import type { CreateOnboardingWorkflowData } from './types';
@@ -28,8 +28,10 @@ export default function CreateOnboardingWorkflowClient({ orgId }: CreateOnboardi
  notes: ''
  });
 
- useEffect(() => {
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
  loadData();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [orgId]);
 
  const loadData = async () => {
@@ -136,7 +138,7 @@ export default function CreateOnboardingWorkflowClient({ orgId }: CreateOnboardi
 
  <div>
  <label className="block text-body-sm form-label mb-xs">Start Date *</label>
- <UnifiedInput
+ <Input
  type="date"
  value={formData.start_date}
  onChange={(e) => setFormData(prev => ({ ...prev, start_date: e.target.value }))}
@@ -146,7 +148,7 @@ export default function CreateOnboardingWorkflowClient({ orgId }: CreateOnboardi
 
  <div>
  <label className="block text-body-sm form-label mb-xs">Target Completion Date</label>
- <UnifiedInput
+ <Input
  type="date"
  value={formData.target_completion_date}
  onChange={(e) => setFormData(prev => ({ ...prev, target_completion_date: e.target.value }))}

@@ -1,13 +1,8 @@
 'use client';
 
-import { MessageSquare, Star, ThumbsUp, ThumbsDown, TrendingUp, Users, Filter, Search, Plus, Send, AlertCircle, CheckCircle, Clock, BarChart3 } from "lucide-react";
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Input } from '@ghxstship/ui';
-import { Textarea } from '@ghxstship/ui';
+import { AlertCircle, BarChart3, CheckCircle, Clock, Filter, MessageSquare, Plus, Search, Send, Star, ThumbsDown, ThumbsUp, TrendingUp, Users } from 'lucide-react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
+import { Badge, Button, Card, CardBody, CardContent, CardDescription, CardHeader, CardTitle, Input, Tabs, TabsContent, TabsList, TabsTrigger, Textarea } from '@ghxstship/ui';
 
 interface FeedbackClientProps {
  className?: string;
@@ -60,8 +55,10 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  category: 'general'
  });
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  loadFeedbackData();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [orgId]);
 
  async function loadFeedbackData() {
@@ -355,7 +352,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  <div className="flex items-center space-x-md text-sm text-muted-foreground">
  <span>By {item.submittedBy}</span>
  <span>{new Date(item.submittedAt).toLocaleDateString()}</span>
- <Badge variant="outline" className="capitalize">
+ <Badge variant="secondary" className="capitalize">
  {item.type}
  </Badge>
  </div>
@@ -391,7 +388,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  </div>
  
  <Badge 
- variant="outline" 
+ variant="secondary" 
  className={getSentimentColor(item.sentiment)}
  >
  {item.sentiment}
@@ -581,7 +578,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
 
  <div className="flex justify-end space-x-xs pt-4">
  <Button
- variant="outline"
+ variant="secondary"
  onClick={() => setShowNewFeedbackForm(false)}
  >
  Cancel

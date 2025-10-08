@@ -8,7 +8,7 @@ import {
  Loader,
  Textarea,
  Input,
- useToastContext,
+ useToastContext
 } from '@ghxstship/ui';
 import {
  fetchAutomationRules,
@@ -17,7 +17,7 @@ import {
  deleteAutomationRule,
  type AutomationRuleSummary,
  type AutomationAction,
- type AutomationCondition,
+ type AutomationCondition
 } from '@/lib/services/settingsAutomationsClient';
 
 interface AutomationFormState {
@@ -37,7 +37,7 @@ const emptyForm: AutomationFormState = {
  triggerConfig: '{\n "event": ""\n}',
  conditions: '[]',
  actions: '[\n {\n "type": "",\n "config": {},\n "order": 1\n }\n]',
- isActive: true,
+ isActive: true
 };
 
 function parseJsonOrThrow<T>(value: string, label: string): T {
@@ -98,7 +98,7 @@ export default function AutomationsSettingsClient() {
  triggerConfig: formatJson(rule.triggerConfig),
  conditions: formatJson(rule.conditions ?? []),
  actions: formatJson(rule.actions),
- isActive: rule.isActive,
+ isActive: rule.isActive
  });
  setEditingRuleId(rule.id);
  setShowForm(true);
@@ -157,7 +157,7 @@ export default function AutomationsSettingsClient() {
  triggerConfig,
  conditions,
  actions,
- isActive: form.isActive,
+ isActive: form.isActive
  };
 
  if (isEditing && editingRuleId) {

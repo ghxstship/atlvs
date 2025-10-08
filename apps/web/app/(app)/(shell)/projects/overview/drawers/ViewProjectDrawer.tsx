@@ -10,7 +10,7 @@ import {
  DrawerFooter,
  Button,
  Badge,
- Card,
+ Card
 } from "@ghxstship/ui";
 import { format } from "date-fns";
 import type { Project } from "../types";
@@ -28,14 +28,14 @@ const statusColors = {
  active: 'green',
  on_hold: 'yellow',
  completed: 'gray',
- cancelled: 'red',
+ cancelled: 'red'
 } as const;
 
 const priorityColors = {
  low: 'green',
  medium: 'yellow',
  high: 'orange',
- critical: 'red',
+ critical: 'red'
 } as const;
 
 export default function ViewProjectDrawer({
@@ -43,7 +43,7 @@ export default function ViewProjectDrawer({
  onOpenChange,
  project,
  onEdit,
- onDelete,
+ onDelete
 }: ViewProjectDrawerProps) {
  const handleClose = () => {
  onOpenChange(false);
@@ -120,7 +120,7 @@ export default function ViewProjectDrawer({
  <p className="text-lg font-semibold">
  {new Intl.NumberFormat('en-US', {
  style: 'currency',
- currency: project.currency || 'USD',
+ currency: project.currency || 'USD'
  }).format(project.budget)}
  </p>
  <p className="text-xs text-muted-foreground">

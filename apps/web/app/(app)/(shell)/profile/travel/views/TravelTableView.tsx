@@ -5,7 +5,7 @@ import {
  Card,
  Badge,
  Button,
- Checkbox,
+ Checkbox
 } from '@ghxstship/ui';
 import type { TravelRecord, TravelSort } from '../types';
 import {
@@ -17,7 +17,7 @@ import {
  TRAVEL_STATUS_LABELS,
  VISA_STATUS_LABELS,
  isUpcomingTrip,
- isCurrentTrip,
+ isCurrentTrip
 } from '../types';
 
 interface TravelTableViewProps {
@@ -45,7 +45,7 @@ export default function TravelTableView({
  onView,
  onEdit,
  onDelete,
- loading = false,
+ loading = false
 }: TravelTableViewProps) {
  const allSelected = records.length > 0 && selectedIds.length === records.length;
  const someSelected = selectedIds.length > 0 && selectedIds.length < records.length;

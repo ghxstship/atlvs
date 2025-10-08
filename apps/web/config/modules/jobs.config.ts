@@ -50,7 +50,7 @@ const JobSchema = z.object({
   tags: z.array(z.string()).optional(),
   metadata: z.record(z.any()).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 // Job Assignment Schema
@@ -65,7 +65,7 @@ const JobAssignmentSchema = z.object({
   completed_at: z.date().optional(),
   notes: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 // Job Bid Schema
@@ -81,7 +81,7 @@ const JobBidSchema = z.object({
   submitted_at: z.date(),
   reviewed_at: z.date().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 // Job Contract Schema
@@ -101,7 +101,7 @@ const JobContractSchema = z.object({
   terms_and_conditions: z.string().optional(),
   signed_at: z.date().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export const jobsModuleConfig: ModuleConfig = {

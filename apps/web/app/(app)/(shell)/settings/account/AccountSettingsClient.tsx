@@ -15,7 +15,7 @@ import {
  Loader,
  Input,
  Label,
- useToastContext,
+ useToastContext
 } from '@ghxstship/ui';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 import useSupabaseBrowserClient from '@/app/_hooks/useSupabaseBrowserClient';
@@ -29,7 +29,7 @@ import {
  setupTwoFactor,
  verifyTwoFactor,
  type ApiKeySummary,
- type UserSessionSummary,
+ type UserSessionSummary
 } from '@/lib/services/settingsAccountClient';
 
 interface UserProfile {

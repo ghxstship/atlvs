@@ -5,13 +5,13 @@ import type {
   Endorsement,
   EndorsementFilters,
   EndorsementStats,
-  EndorsementAnalytics,
+  EndorsementAnalytics
 } from '../types';
 import {
   endorsementFilterSchema,
   endorsementUpsertSchema,
   filterEndorsements,
-  sortEndorsements,
+  sortEndorsements
 } from '../types';
 
 // ============================================================================
@@ -81,7 +81,7 @@ export async function fetchEndorsements(
 
   return {
     endorsements: data || [],
-    total: count || 0,
+    total: count || 0
   };
 }
 
@@ -128,7 +128,7 @@ export async function fetchEndorsementStats(
       featuredCount: 0,
       byRelationship: [],
       byRating: [],
-      topSkills: [],
+      topSkills: []
     };
   }
 
@@ -146,7 +146,7 @@ export async function fetchEndorsementStats(
   });
   const byRelationship = Array.from(relationshipMap.entries()).map(([relationship, count]) => ({
     relationship: relationship as unknown,
-    count,
+    count
   }));
 
   // Group by rating
@@ -178,7 +178,7 @@ export async function fetchEndorsementStats(
     featuredCount,
     byRelationship,
     byRating,
-    topSkills,
+    topSkills
   };
 }
 
@@ -205,7 +205,7 @@ export async function fetchEndorsementAnalytics(
       skillCloud: [],
       verificationRate: 0,
       publicRate: 0,
-      recentEndorsements: [],
+      recentEndorsements: []
     };
   }
 
@@ -216,14 +216,14 @@ export async function fetchEndorsementAnalytics(
     const existing = trendMap.get(month) || { count: 0, totalRating: 0 };
     trendMap.set(month, {
       count: existing.count + 1,
-      totalRating: existing.totalRating + e.rating,
+      totalRating: existing.totalRating + e.rating
     });
   });
   const endorsementTrends = Array.from(trendMap.entries())
     .map(([month, data]) => ({
       month,
       count: data.count,
-      averageRating: Math.round((data.totalRating / data.count) * 10) / 10,
+      averageRating: Math.round((data.totalRating / data.count) * 10) / 10
     }))
     .sort((a, b) => a.month.localeCompare(b.month))
     .slice(-12); // Last 12 months
@@ -236,7 +236,7 @@ export async function fetchEndorsementAnalytics(
   const total = endorsements.length;
   const relationshipDistribution = Array.from(relationshipMap.entries()).map(([relationship, count]) => ({
     relationship: relationship as unknown,
-    percentage: Math.round((count / total) * 100),
+    percentage: Math.round((count / total) * 100)
   }));
 
   // Calculate skill cloud
@@ -251,7 +251,7 @@ export async function fetchEndorsementAnalytics(
     .map(([skill, frequency]) => ({
       skill,
       frequency,
-      weight: Math.round((frequency / maxFrequency) * 100),
+      weight: Math.round((frequency / maxFrequency) * 100)
     }))
     .sort((a, b) => b.frequency - a.frequency)
     .slice(0, 30);
@@ -271,7 +271,7 @@ export async function fetchEndorsementAnalytics(
     skillCloud,
     verificationRate,
     publicRate,
-    recentEndorsements,
+    recentEndorsements
   };
 }
 
@@ -295,7 +295,7 @@ export async function createEndorsement(
       ...validated,
       verification_status: 'pending',
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .select()
     .single();
@@ -319,7 +319,7 @@ export async function updateEndorsement(
     .from('endorsements')
     .update({
       ...validated,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', endorsementId)
     .select()
@@ -359,7 +359,7 @@ export async function verifyEndorsement(
       verification_status: 'verified',
       verified_at: new Date().toISOString(),
       verified_by: verifiedBy,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', endorsementId)
     .select()
@@ -384,7 +384,7 @@ export async function rejectEndorsement(
       verification_status: 'rejected',
       verified_at: new Date().toISOString(),
       verified_by: rejectedBy,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', endorsementId)
     .select()
@@ -407,7 +407,7 @@ export async function toggleEndorsementFeatured(
     .from('endorsements')
     .update({
       is_featured: isFeatured,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', endorsementId)
     .select()
@@ -430,7 +430,7 @@ export async function toggleEndorsementPublic(
     .from('endorsements')
     .update({
       is_public: isPublic,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', endorsementId)
     .select()

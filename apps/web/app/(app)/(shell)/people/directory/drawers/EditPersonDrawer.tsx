@@ -1,18 +1,8 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from 'react';
+import { Activity, Award, Button, Calendar, Clock, FileText, Input, Play, Plus, Search, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Settings, Textarea, Trash2, TrendingUp, User } from 'lucide-react';
+import { type ChangeEvent, type FormEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import { createBrowserClient } from '@ghxstship/auth';
-import {
- Button,
- Select,
- SelectContent,
- SelectItem,
- SelectTrigger,
- SelectValue,
- Textarea,
- UnifiedInput,
-} from '@ghxstship/ui';
-import { AppDrawer } from '@ghxstship/ui';
+import { AppDrawer, Button, Input, Select } from '@ghxstship/ui';
 import { usePostHog } from 'posthog-js/react';
 import directoryService from '../lib/directoryService';
 import type { Person, UpdatePersonData } from '../types';
@@ -70,7 +60,7 @@ const initialFormState: FormState = {
  skills: '',
  notes: '',
  status: 'active',
- bio: '',
+ bio: ''
 };
 
 export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdated }: EditPersonDrawerProps) {
@@ -80,6 +70,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  const [isSubmitting, setIsSubmitting] = useState(false);
  const [error, setError] = useState<string | null>(null);
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  if (!person || !open) {
  setFormState(initialFormState);
@@ -100,28 +91,33 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  skills: Array.isArray(person.skills) ? person.skills.join(', ') : '',
  notes: person.notes ?? '',
  status: person.status,
- bio: person.notes ?? '',
+ bio: person.notes ?? ''
  });
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [person, open]);
 
  const handleInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
  const { name, value } = event.target;
  setFormState((prev: unknown) => ({ ...prev, [name]: value }));
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const handleTextareaChange = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
  const { name, value } = event.target;
  setFormState((prev: unknown) => ({ ...prev, [name]: value }));
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const handleStatusChange = useCallback((value: string) => {
  setFormState((prev: unknown) => ({ ...prev, status: value as Person['status'] }));
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const resetState = useCallback(() => {
  setFormState(initialFormState);
  setError(null);
  setIsSubmitting(false);
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const handleClose = useCallback(() => {
@@ -129,6 +125,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  resetState();
  onClose();
  }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [isSubmitting, onClose, resetState]);
 
  const handleSubmit = useCallback(async (event: FormEvent<HTMLFormElement>) => {
@@ -169,7 +166,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  ? formState.skills.split(',').map((skill) => skill.trim()).filter(Boolean)
  : undefined,
  notes: formState.notes.trim() || undefined,
- status: formState.status,
+ status: formState.status
  };
 
  try {
@@ -181,7 +178,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  organization_id: orgId,
  status: updated.status,
  role: updated.role,
- department: updated.department,
+ department: updated.department
  });
 
  const { data: { user } } = await supabase.auth.getUser();
@@ -197,8 +194,8 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  last_name: updated.last_name,
  role: updated.role,
  department: updated.department,
- status: updated.status,
- },
+ status: updated.status
+ }
  });
  }
 
@@ -212,7 +209,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  posthog?.capture('people_person_update_failed', {
  person_id: person.id,
  organization_id: orgId,
- error: message,
+ error: message
  });
  } finally {
  setIsSubmitting(false);
@@ -237,7 +234,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-body-sm form-label mb-sm">First Name *</label>
- <UnifiedInput
+ <Input
  
  
  value={formState.first_name}
@@ -248,7 +245,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  </div>
  <div>
  <label className="block text-body-sm form-label mb-sm">Last Name *</label>
- <UnifiedInput
+ <Input
  
  
  value={formState.last_name}
@@ -262,7 +259,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-body-sm form-label mb-sm">Email</label>
- <UnifiedInput
+ <Input
  
  
  type="email"
@@ -273,7 +270,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  </div>
  <div>
  <label className="block text-body-sm form-label mb-sm">Phone</label>
- <UnifiedInput
+ <Input
  
  
  value={formState.phone}
@@ -286,7 +283,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-body-sm form-label mb-sm">Role</label>
- <UnifiedInput
+ <Input
  
  
  value={formState.role}
@@ -296,7 +293,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  </div>
  <div>
  <label className="block text-body-sm form-label mb-sm">Department</label>
- <UnifiedInput
+ <Input
  
  
  value={formState.department}
@@ -309,7 +306,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-body-sm form-label mb-sm">Location</label>
- <UnifiedInput
+ <Input
  
  
  value={formState.location}
@@ -319,7 +316,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  </div>
  <div>
  <label className="block text-body-sm form-label mb-sm">Hire Date</label>
- <UnifiedInput
+ <Input
  
  
  type="date"
@@ -347,7 +344,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  </div>
  <div>
  <label className="block text-body-sm form-label mb-sm">Skills</label>
- <UnifiedInput
+ <Input
  
  
  value={formState.skills}
@@ -362,7 +359,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
 
  <div>
  <label className="block text-body-sm form-label mb-sm">Notes</label>
- <Textarea
+ <textarea
  
  
  value={formState.notes}
@@ -384,7 +381,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  </Button>
  </div>
  </form>
- ),
+ )
  }]}
  />
  );

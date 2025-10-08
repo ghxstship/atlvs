@@ -9,7 +9,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@ghxstship/ui';
 import type { ProgrammingEntity } from '../types';
 
@@ -47,7 +47,7 @@ export function KanbanView<T extends ProgrammingEntity>({
   onAddItem,
   renderCard,
   emptyMessage = 'No data available',
-  className,
+  className
 }: KanbanViewProps<T>) {
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
   const [draggedOverColumn, setDraggedOverColumn] = useState<string | null>(null);

@@ -1,7 +1,7 @@
 "use client";
 
 import { Grid3x3, Map, List, LayoutGrid, Search, Filter, Download, Upload, MoreVertical, Plus, Edit, Trash2, Eye, Copy, Archive, MapPin, Building, Users, Navigation, Globe, Home, Warehouse, Store, Building2, TreePine, Waves, Mountain, ChevronDown, ArrowUpDown, ArrowUp, ArrowDown, Columns, ExternalLink } from "lucide-react";
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import { createBrowserClient } from "@ghxstship/auth";
 import {
@@ -15,7 +15,7 @@ import {
  TabsList,
  TabsTrigger,
  TabsContent,
- toast,
+ toast
 } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import CreateLocationDrawer from "./CreateLocationDrawer";
@@ -108,7 +108,7 @@ export default function LocationsClient({
  orgId,
  projectId,
  initialLocations = [],
- projects = [],
+ projects = []
 }: LocationsClientProps) {
  const router = useRouter();
  const supabase = createBrowserClient();
@@ -165,7 +165,7 @@ export default function LocationsClient({
  accessibility_features: loc.accessibility_features || [],
  images: loc.images || [],
  floor_plans: loc.floor_plans || [],
- tags: loc.tags || [],
+ tags: loc.tags || []
  }));
  
  setLocations(transformedData);
@@ -192,7 +192,7 @@ export default function LocationsClient({
  event: "*",
  schema: "public",
  table: "locations",
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  (payload) => {
  loadLocations();
@@ -328,7 +328,7 @@ export default function LocationsClient({
  .from("locations")
  .insert({
  ...locationData,
- name: `${location.name} (Copy)`,
+ name: `${location.name} (Copy)`
  })
  .select()
  .single();

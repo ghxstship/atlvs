@@ -21,7 +21,7 @@ import {
  DrawerContent,
  DrawerHeader,
  DrawerTitle,
- DrawerFooter,
+ DrawerFooter
 } from '@ghxstship/ui';
 import { callSheetsService, type CallSheet, type CrewCall, type TalentCall, type EmergencyContact } from '../lib/callSheetsService';
 
@@ -34,7 +34,7 @@ const callSheetSchema = z.object({
  weather: z.string().optional(),
  special_instructions: z.string().optional(),
  project_id: z.string().optional(),
- event_id: z.string().optional(),
+ event_id: z.string().optional()
 });
 
 type CallSheetFormData = z.infer<typeof callSheetSchema>;
@@ -56,7 +56,7 @@ export default function CreateCallSheetDrawer({
  currentUserId,
  projects = [],
  events = [],
- onSuccess,
+ onSuccess
 }: CreateCallSheetDrawerProps) {
  const [loading, setLoading] = useState(false);
  const [activeTab, setActiveTab] = useState<'details' | 'crew' | 'talent' | 'contacts'>('details');
@@ -75,8 +75,8 @@ export default function CreateCallSheetDrawer({
  weather: '',
  special_instructions: '',
  project_id: '',
- event_id: '',
- },
+ event_id: ''
+ }
  });
 
  const onSubmit = async (data: CallSheetFormData) => {
@@ -90,7 +90,7 @@ export default function CreateCallSheetDrawer({
  crew_calls: crewCalls,
  talent_calls: talentCalls,
  emergency_contacts: emergencyContacts,
- status: 'draft',
+ status: 'draft'
  };
 
  await callSheetsService.createCallSheet(orgId, currentUserId, callSheetData);
@@ -116,7 +116,7 @@ export default function CreateCallSheetDrawer({
  person_name: '',
  call_time: '',
  location: '',
- notes: '',
+ notes: ''
  };
  setCrewCalls([...crewCalls, newCrewCall]);
  };
@@ -140,7 +140,7 @@ export default function CreateCallSheetDrawer({
  makeup_time: '',
  wardrobe_time: '',
  location: '',
- notes: '',
+ notes: ''
  };
  setTalentCalls([...talentCalls, newTalentCall]);
  };
@@ -161,7 +161,7 @@ export default function CreateCallSheetDrawer({
  name: '',
  role: '',
  phone: '',
- email: '',
+ email: ''
  };
  setEmergencyContacts([...emergencyContacts, newContact]);
  };

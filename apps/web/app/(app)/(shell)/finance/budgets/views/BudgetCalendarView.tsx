@@ -88,10 +88,10 @@ export default function BudgetCalendarView({ data, isLoading, onRecordClick }: B
           {currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
         </h2>
         <div className="flex items-center gap-sm">
-          <Button variant="outline" size="sm" onClick={() => navigateMonth('prev')}>
+          <Button variant="secondary" size="sm" onClick={() => navigateMonth('prev')}>
             <ChevronLeft className="h-icon-xs w-icon-xs" />
           </Button>
-          <Button variant="outline" size="sm" onClick={() => navigateMonth('next')}>
+          <Button variant="secondary" size="sm" onClick={() => navigateMonth('next')}>
             <ChevronRight className="h-icon-xs w-icon-xs" />
           </Button>
         </div>

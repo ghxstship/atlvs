@@ -9,7 +9,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@ghxstship/ui';
 import type { ProgrammingEntity } from '../types';
 
@@ -36,7 +36,7 @@ export function TimelineView<T extends ProgrammingEntity>({
   showTime = true,
   renderTimelineItem,
   emptyMessage = 'No timeline items to display',
-  className,
+  className
 }: TimelineViewProps<T>) {
   const [expandedItems, setExpandedItems] = useState<Set<string>(new Set());
 
@@ -91,7 +91,7 @@ export function TimelineView<T extends ProgrammingEntity>({
 
       const monthKey = itemDate.toLocaleDateString('en-US', {
         year: 'numeric',
-        month: 'long',
+        month: 'long'
       });
 
       if (!grouped[monthKey]) {

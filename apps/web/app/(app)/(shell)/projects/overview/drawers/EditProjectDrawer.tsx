@@ -1,7 +1,7 @@
 "use client";
 
 import { X, Calendar, DollarSign, MapPin, Tag } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -17,7 +17,7 @@ import {
  Select,
  Label,
  Badge,
- toast,
+ toast
 } from "@ghxstship/ui";
 import { projectsService } from "../lib/projects-service";
 import type { Project, UpdateProjectData } from "../types";
@@ -33,7 +33,7 @@ const updateProjectSchema = z.object({
  ends_at: z.string().optional(),
  location: z.string().optional(),
  tags: z.array(z.string()).optional(),
- notes: z.string().optional(),
+ notes: z.string().optional()
 });
 
 interface EditProjectDrawerProps {
@@ -51,7 +51,7 @@ export default function EditProjectDrawer({
  project,
  orgId,
  userId,
- onSuccess,
+ onSuccess
 }: EditProjectDrawerProps) {
  const [loading, setLoading] = useState(false);
  const [tagInput, setTagInput] = useState("");
@@ -69,8 +69,8 @@ export default function EditProjectDrawer({
  ends_at: project.ends_at ? project.ends_at.split('T')[0] : "",
  location: project.location || "",
  tags: project.tags || [],
- notes: project.notes || "",
- },
+ notes: project.notes || ""
+ }
  });
 
  const { register, handleSubmit, formState: { errors }, watch, setValue, reset } = form;
@@ -89,7 +89,7 @@ export default function EditProjectDrawer({
  ends_at: project.ends_at ? project.ends_at.split('T')[0] : "",
  location: project.location || "",
  tags: project.tags || [],
- notes: project.notes || "",
+ notes: project.notes || ""
  });
  }, [project, reset]);
 

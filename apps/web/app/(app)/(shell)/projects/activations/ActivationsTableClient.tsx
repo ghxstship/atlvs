@@ -31,7 +31,7 @@ const editActivationSchema = z.object({
   completion_date: z.string().optional(),
   budget: z.number().optional(),
   project_id: z.string().optional(),
-  description: z.string().optional(),
+  description: z.string().optional()
 });
 
 type ActivationRow = {
@@ -75,8 +75,8 @@ export default function ActivationsTableClient({
       completion_date: '',
       budget: undefined,
       project_id: '',
-      description: '',
-    },
+      description: ''
+    }
   });
 
   const getStatusColor = (status: string) => {
@@ -111,7 +111,7 @@ export default function ActivationsTableClient({
         completion_date: row.completion_date ? new Date(row.completion_date).toISOString().slice(0, 16) : '',
         budget: row.budget || undefined,
         project_id: row.project?.id || '',
-        description: '',
+        description: ''
       });
 
       // Load comments and activities
@@ -148,7 +148,7 @@ export default function ActivationsTableClient({
         project_id: data.project_id || null,
         activation_date: data.activation_date || null,
         completion_date: data.completion_date || null,
-        budget: data.budget || null,
+        budget: data.budget || null
       };
 
       const { error: updateError } = await sb
@@ -212,7 +212,7 @@ export default function ActivationsTableClient({
     if (!amount) return 'No budget';
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'USD',
+      currency: 'USD'
     }).format(amount);
   };
 

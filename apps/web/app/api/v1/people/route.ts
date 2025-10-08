@@ -24,7 +24,7 @@ const CreatePersonSchema = z.object({
   postalCode: z.string().optional(),
   emergencyContactName: z.string().optional(),
   emergencyContactPhone: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 const UpdatePersonSchema = CreatePersonSchema.partial();

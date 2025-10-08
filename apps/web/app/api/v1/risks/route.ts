@@ -17,7 +17,7 @@ const createRiskSchema = z.object({
   contingency_plan: z.string().optional(),
   identified_date: z.string(),
   review_date: z.string().optional(),
-  closed_date: z.string().optional(),
+  closed_date: z.string().optional()
 });
 
 // GET /api/v1/risks - List all risks for the organization
@@ -108,7 +108,7 @@ export async function GET(request: NextRequest) {
       data: risks,
       count,
       limit,
-      offset,
+      offset
     });
   } catch (error) {
     console.error("Error in GET /api/v1/risks:", error);
@@ -193,7 +193,7 @@ export async function POST(request: NextRequest) {
       low: 2,
       medium: 3,
       high: 4,
-      very_high: 5,
+      very_high: 5
     };
     const riskScore = probMap[data.probability] * probMap[data.impact];
 
@@ -217,7 +217,7 @@ export async function POST(request: NextRequest) {
         review_date: data.review_date || null,
         closed_date: data.closed_date || null,
         created_by: user.id,
-        updated_by: user.id,
+        updated_by: user.id
       })
       .select(`
         *,
@@ -244,8 +244,8 @@ export async function POST(request: NextRequest) {
       details: {
         title: newRisk.title,
         category: newRisk.category,
-        risk_score: newRisk.risk_score,
-      },
+        risk_score: newRisk.risk_score
+      }
     });
 
     return NextResponse.json(newRisk, { status: 201 });

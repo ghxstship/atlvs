@@ -4,13 +4,13 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { FilesService } from '../lib/files-service';
 import type { DigitalAsset, AssetFilters } from '../types';
-import { Download, Eye, Filter } from 'lucide-react';
+import { Download, Eye, Filter, Upload, FileCode, Image, Video, Music } from 'lucide-react';
 
 const mediaTypeIcons = {
  image: Image,
  video: Video,
  audio: Music,
- other: FileCode,
+ other: FileCode
 };
 
 export default function MediaClient() {

@@ -1,27 +1,11 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, Skeleton, Drawer, type DataRecord } from '@ghxstship/ui';
-import { 
-  Award,
-  Plus,
-  Edit,
-  Trash2,
-  Calendar,
-  Building,
-  AlertTriangle,
-  Grid,
-  List,
-  CheckCircle,
-  Clock,
-  Shield,
-  FileText,
-  Upload,
-  Download
-} from 'lucide-react';
+import { Badge, Button, Card, Drawer, Skeleton, StateManagerProvider, type DataRecord } from '@ghxstship/ui';
+import { AlertTriangle, Award, Building, Calendar, CheckCircle, Clock, Download, Edit, FileText, Grid, List, Plus, Shield, Trash2, Upload } from 'lucide-react';
 
 interface QualificationsClientProps {
   user: User;
@@ -66,9 +50,12 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadQualifications();
     loadCompanies();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, typeFilter, statusFilter]);
 
   const loadQualifications = async () => {

@@ -13,7 +13,7 @@ import type {
   Workshop,
   ExportOptions,
   SearchFilters,
-  SortOptions,
+  SortOptions
 } from '../types';
 import { programmingQueries } from './queries';
 
@@ -154,7 +154,7 @@ export class ProgrammingExportService {
       spaces: await this.getAllSpaces(organizationId),
       workshops: await this.getAllWorkshops(organizationId, {}, dateRange),
       generated_at: new Date().toISOString(),
-      organization_id: organizationId,
+      organization_id: organizationId
     };
 
     switch (options.format) {
@@ -385,38 +385,38 @@ export class ProgrammingExportService {
         {
           name: 'Basic Info',
           fields: ['title', 'type', 'status', 'start_date', 'end_date', 'location'],
-          description: 'Essential event information for scheduling',
+          description: 'Essential event information for scheduling'
         },
         {
           name: 'Complete Details',
           fields: ['title', 'description', 'type', 'status', 'start_date', 'end_date', 'location', 'capacity'],
-          description: 'All event details including capacity and descriptions',
+          description: 'All event details including capacity and descriptions'
         },
         {
           name: 'Timeline Only',
           fields: ['title', 'start_date', 'end_date', 'status'],
-          description: 'Just the essential timeline information',
+          description: 'Just the essential timeline information'
         },
       ],
       performances: [
         {
           name: 'Performance Schedule',
           fields: ['title', 'venue', 'date', 'duration', 'status'],
-          description: 'Performance scheduling information',
+          description: 'Performance scheduling information'
         },
         {
           name: 'Complete Performance',
           fields: ['title', 'description', 'venue', 'date', 'duration', 'status'],
-          description: 'All performance details',
+          description: 'All performance details'
         },
       ],
       workshops: [
         {
           name: 'Workshop Overview',
           fields: ['title', 'instructor', 'start_date', 'end_date', 'capacity', 'status'],
-          description: 'Workshop scheduling and capacity information',
+          description: 'Workshop scheduling and capacity information'
         },
-      ],
+      ]
     };
 
     return templates[entity] || [];
@@ -438,7 +438,7 @@ export class ProgrammingExportService {
 
     return {
       valid: errors.length === 0,
-      errors,
+      errors
     };
   }
 }

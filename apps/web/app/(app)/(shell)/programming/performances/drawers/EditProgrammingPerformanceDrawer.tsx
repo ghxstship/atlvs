@@ -1,7 +1,7 @@
 "use client";
 
 import { Plus, X, Calendar, Clock, MapPin, DollarSign, Users, Music, Settings, FileText, Tag } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -17,7 +17,7 @@ import {
  DrawerTitle,
  DrawerFooter,
  Badge,
- Separator,
+ Separator
 } from "@ghxstship/ui";
 import type { ProgrammingPerformance, UpdatePerformanceData, PerformanceProject, PerformanceEvent } from "../types";
 import { 
@@ -68,7 +68,7 @@ const updatePerformanceSchema = z.object({
  audience_target_demographic: z.string().optional(),
  audience_accessibility_notes: z.string().optional(),
  
- tags: z.array(z.string()).optional(),
+ tags: z.array(z.string()).optional()
 });
 
 type FormData = z.infer<typeof updatePerformanceSchema>;
@@ -92,7 +92,7 @@ export default function EditProgrammingPerformanceDrawer({
  currentUserId,
  projects,
  events,
- onSuccess,
+ onSuccess
 }: EditProgrammingPerformanceDrawerProps) {
  const [loading, setLoading] = useState(false);
  const [error, setError] = useState<string | null>(null);
@@ -105,9 +105,9 @@ export default function EditProgrammingPerformanceDrawer({
  watch,
  setValue,
  reset,
- formState: { errors },
+ formState: { errors }
  } = useForm<FormData>({
- resolver: zodResolver(updatePerformanceSchema),
+ resolver: zodResolver(updatePerformanceSchema)
  });
 
  const watchedTags = watch("tags") || [];
@@ -150,7 +150,7 @@ export default function EditProgrammingPerformanceDrawer({
  audience_target_demographic: performance.audience_info.target_demographic || "",
  audience_accessibility_notes: performance.audience_info.accessibility_notes || "",
  
- tags: performance.tags || [],
+ tags: performance.tags || []
  };
 
  reset(formData);
@@ -211,7 +211,7 @@ export default function EditProgrammingPerformanceDrawer({
  price_max: data.ticket_price_max,
  currency: data.ticket_currency,
  sales_url: data.ticket_sales_url || undefined,
- sold_out: data.ticket_sold_out,
+ sold_out: data.ticket_sold_out
  },
  
  technical_requirements: {
@@ -219,31 +219,31 @@ export default function EditProgrammingPerformanceDrawer({
  lighting: data.tech_lighting,
  stage_setup: data.tech_stage_setup,
  equipment_needed: data.tech_equipment_needed,
- crew_requirements: data.tech_crew_requirements,
+ crew_requirements: data.tech_crew_requirements
  },
  
  production_notes: {
  rehearsal_schedule: data.prod_rehearsal_schedule,
  call_time: data.prod_call_time,
  sound_check: data.prod_sound_check,
- special_instructions: data.prod_special_instructions,
+ special_instructions: data.prod_special_instructions
  },
  
  audience_info: {
  expected_attendance: data.audience_expected_attendance,
  target_demographic: data.audience_target_demographic,
- accessibility_notes: data.audience_accessibility_notes,
+ accessibility_notes: data.audience_accessibility_notes
  },
  
- tags: data.tags || [],
+ tags: data.tags || []
  };
 
  const response = await fetch(`/api/v1/programming/performances/${performance.id}`, {
  method: "PATCH",
  headers: {
- "Content-Type": "application/json",
+ "Content-Type": "application/json"
  },
- body: JSON.stringify(payload),
+ body: JSON.stringify(payload)
  });
 
  if (!response.ok) {

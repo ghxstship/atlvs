@@ -29,7 +29,7 @@ export default function SettingsPage() {
           console.log('Settings saved!');
         },
         onDiscard: () => console.log('Discard changes'),
-        saving: false,
+        saving: false
       }}
     >
       {activeSection === 'general' && (

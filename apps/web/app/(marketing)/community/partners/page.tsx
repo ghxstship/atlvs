@@ -7,12 +7,12 @@ import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Community Partners | GHXSTSHIP',
-  description: "Discover our community partners and learn how to become part of the GHXSTSHIP partner ecosystem.",
+  description: "Discover our community partners and learn how to become part of the GHXSTSHIP partner ecosystem."
 };
 
 const partnerStats = [
@@ -27,19 +27,19 @@ const partnerTiers = [
     title: 'Technology Partners',
     description: 'Product and integration leaders extending GHXSTSHIP with automations, data bridges, and AI tooling.',
     icon: Zap,
-    benefits: ['API access', 'Joint product roadmaps', 'Co-marketing campaigns', 'Dedicated technical support'],
+    benefits: ['API access', 'Joint product roadmaps', 'Co-marketing campaigns', 'Dedicated technical support']
   },
   {
     title: 'Solution Partners',
     description: 'Implementation experts guiding enterprises through rollout, change management, and creative ops transformation.',
     icon: Globe,
-    benefits: ['Enablement & certification', 'Lead sharing', 'Preferred pricing', 'Launch playbooks'],
+    benefits: ['Enablement & certification', 'Lead sharing', 'Preferred pricing', 'Launch playbooks']
   },
   {
     title: 'Community Champions',
     description: 'Advocates who activate regional communities, host events, and mentor emerging talent.',
     icon: Star,
-    benefits: ['Early feature access', 'Spotlight opportunities', 'Revenue share programs', 'VIP summit invites'],
+    benefits: ['Early feature access', 'Spotlight opportunities', 'Revenue share programs', 'VIP summit invites']
   },
 ];
 
@@ -53,15 +53,15 @@ const featuredPartners = [
 const engagementSteps = [
   {
     title: '1. Apply',
-    description: 'Share your capabilities, team credentials, and shared customer wins so we can understand the partnership fit.',
+    description: 'Share your capabilities, team credentials, and shared customer wins so we can understand the partnership fit.'
   },
   {
     title: '2. Enable',
-    description: 'Complete technical validation, align on go-to-market strategy, and build a 90-day partner plan together.',
+    description: 'Complete technical validation, align on go-to-market strategy, and build a 90-day partner plan together.'
   },
   {
     title: '3. Launch',
-    description: 'Co-announce, activate regional campaigns, and receive ongoing success reviews with the GHXSTSHIP partner team.',
+    description: 'Co-announce, activate regional campaigns, and receive ongoing success reviews with the GHXSTSHIP partner team.'
   },
 ];
 

@@ -1,13 +1,13 @@
 'use client';
 
-import { Calendar, Building, MapPin, Award, Star, Tag, ExternalLink, DollarSign, Edit, Trash2, Share, Download, Clock, Eye, EyeOff, Briefcase, GraduationCap, Heart, CheckCircle, Circle, Pause, X } from "lucide-react";
+import { Award, Briefcase, Building, Calendar, CheckCircle, Circle, Clock, DollarSign, Download, Edit, ExternalDollarSign, ExternalLink, Eye, EyeOff, GraduationCap, Heart, MapPin, Pause, Share, Star, Tag, Trash2, X } from 'lucide-react';
 import {
  Drawer,
  Button,
  Badge,
  Separator,
  Avatar,
- AvatarFallback,
+ AvatarFallback
 } from '@ghxstship/ui';
 import type { 
  HistoryEntry, 
@@ -36,7 +36,7 @@ const getEntryTypeIcon = (type: HistoryEntryType) => {
  volunteer: Heart,
  internship: Briefcase,
  freelance: Briefcase,
- other: Circle,
+ other: Circle
  };
  return iconMap[type] || Circle;
 };
@@ -51,7 +51,7 @@ const getEntryTypeColor = (type: HistoryEntryType) => {
  volunteer: 'red',
  internship: 'cyan',
  freelance: 'pink',
- other: 'gray',
+ other: 'gray'
  };
  return colorMap[type] || 'gray';
 };
@@ -63,7 +63,7 @@ const getEmploymentTypeLabel = (type: EmploymentType) => {
  contract: 'Contract',
  freelance: 'Freelance',
  internship: 'Internship',
- volunteer: 'Volunteer',
+ volunteer: 'Volunteer'
  };
  return labelMap[type] || type;
 };
@@ -77,7 +77,7 @@ const getEducationLevelLabel = (level: EducationLevel) => {
  doctorate: 'Doctorate',
  certificate: 'Certificate',
  bootcamp: 'Bootcamp',
- other: 'Other',
+ other: 'Other'
  };
  return labelMap[level] || level;
 };
@@ -87,7 +87,7 @@ const getProjectStatusIcon = (status: ProjectStatus) => {
  completed: CheckCircle,
  in_progress: Clock,
  on_hold: Pause,
- cancelled: X,
+ cancelled: X
  };
  return iconMap[status] || Circle;
 };
@@ -97,7 +97,7 @@ const getProjectStatusColor = (status: ProjectStatus) => {
  completed: 'green',
  in_progress: 'blue',
  on_hold: 'yellow',
- cancelled: 'red',
+ cancelled: 'red'
  };
  return colorMap[status] || 'gray';
 };
@@ -106,7 +106,7 @@ const getVisibilityIcon = (visibility: HistoryVisibility) => {
  const iconMap = {
  public: Eye,
  organization: Building,
- private: EyeOff,
+ private: EyeOff
  };
  return iconMap[visibility] || Eye;
 };
@@ -161,7 +161,7 @@ export default function ViewHistoryDrawer({
  onClose,
  onEdit,
  onDelete,
- entry,
+ entry
 }: ViewHistoryDrawerProps) {
  if (!entry) return null;
 
@@ -173,7 +173,7 @@ export default function ViewHistoryDrawer({
  navigator.share({
  title: entry.title,
  text: `${entry.title} at ${entry.organization || 'Organization'}`,
- url: window.location.href,
+ url: window.location.href
  });
  } else {
  navigator.clipboard.writeText(`${entry.title} at ${entry.organization || 'Organization'}`);
@@ -435,7 +435,7 @@ export default function ViewHistoryDrawer({
  month: 'long',
  day: 'numeric',
  hour: '2-digit',
- minute: '2-digit',
+ minute: '2-digit'
  })}
  </div>
  <div>
@@ -445,7 +445,7 @@ export default function ViewHistoryDrawer({
  month: 'long',
  day: 'numeric',
  hour: '2-digit',
- minute: '2-digit',
+ minute: '2-digit'
  })}
  </div>
  </div>

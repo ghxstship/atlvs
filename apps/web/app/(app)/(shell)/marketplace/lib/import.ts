@@ -27,7 +27,7 @@ export class MarketplaceImportService {
       const result = Papa.parse(csvData, {
         header: true,
         skipEmptyLines: true,
-        transformHeader: (header: string) => this.normalizeHeader(header),
+        transformHeader: (header: string) => this.normalizeHeader(header)
       });
 
       if (result.errors.length > 0) {
@@ -121,7 +121,7 @@ export class MarketplaceImportService {
         const result = Papa.parse(data, {
           header: true,
           skipEmptyLines: true,
-          transformHeader: (header: string) => this.normalizeHeader(header),
+          transformHeader: (header: string) => this.normalizeHeader(header)
         });
         listings = result.data as any[];
       } else if (format === 'json' && typeof data === 'string') {
@@ -135,7 +135,7 @@ export class MarketplaceImportService {
         const batch = listings.slice(i, i + batchSize);
         const batchResult = await this.processImportListings(orgId, userId, batch, {
           ...options,
-          startRow: i + 1,
+          startRow: i + 1
         });
 
         imported += batchResult.imported;
@@ -145,7 +145,7 @@ export class MarketplaceImportService {
         onProgress?.({
           completed: Math.min(i + batchSize, listings.length),
           total: listings.length,
-          errors: errors.length,
+          errors: errors.length
         });
       }
 
@@ -153,7 +153,7 @@ export class MarketplaceImportService {
         success: errors.length === 0,
         imported,
         skipped,
-        errors,
+        errors
       };
     }, 'MarketplaceImportService.importBulk');
   }
@@ -177,7 +177,7 @@ export class MarketplaceImportService {
           header: true,
           skipEmptyLines: true,
           preview: maxRows + 1, // +1 for headers
-          transformHeader: (header: string) => this.normalizeHeader(header),
+          transformHeader: (header: string) => this.normalizeHeader(header)
         });
         parsedData = result.data as any[];
         headers = result.meta.fields || [];
@@ -193,7 +193,7 @@ export class MarketplaceImportService {
       return {
         headers,
         preview: parsedData,
-        totalRows: this.getTotalRows(format, data),
+        totalRows: this.getTotalRows(format, data)
       };
     }, 'MarketplaceImportService.previewImport');
   }
@@ -211,8 +211,8 @@ export class MarketplaceImportService {
           type: 'offer',
           category: 'services',
           description: 'High-quality event photography services',
-          status: 'active',
-        },
+          status: 'active'
+        }
       },
       detailed: {
         name: 'Detailed Listing Template',
@@ -230,8 +230,8 @@ export class MarketplaceImportService {
           city: 'New York',
           country: 'USA',
           isRemote: false,
-          featured: true,
-        },
+          featured: true
+        }
       },
       vendor: {
         name: 'Vendor Profile Template',
@@ -247,9 +247,9 @@ export class MarketplaceImportService {
           phone: '+1-555-0123',
           website: 'https://abcphoto.com',
           hourlyRate: 150,
-          currency: 'USD',
-        },
-      },
+          currency: 'USD'
+        }
+      }
     };
   }
 
@@ -276,7 +276,7 @@ export class MarketplaceImportService {
       primaryCategory: ['primaryCategory', 'main_category', 'category'],
       tagline: ['tagline', 'slogan', 'headline'],
       bio: ['bio', 'description', 'about', 'profile'],
-      hourlyRate: ['hourlyRate', 'rate', 'hourly_rate'],
+      hourlyRate: ['hourlyRate', 'rate', 'hourly_rate']
     };
   }
 
@@ -309,7 +309,7 @@ export class MarketplaceImportService {
       const preview = listings.slice(0, 5).map((listing, index) => ({
         row: startRow + index,
         data: this.transformImportData(listing),
-        valid: validateListingData(this.transformImportData(listing)).success,
+        valid: validateListingData(this.transformImportData(listing)).success
       }));
 
       return {
@@ -317,7 +317,7 @@ export class MarketplaceImportService {
         imported: 0,
         skipped: 0,
         errors: [],
-        preview,
+        preview
       };
     }
 
@@ -332,7 +332,7 @@ export class MarketplaceImportService {
         if (!validation.success) {
           errors.push({
             row: rowNumber,
-            error: `Validation failed: ${validation.error.errors.map(e => e.message).join(', ')}`,
+            error: `Validation failed: ${validation.error.errors.map(e => e.message).join(', ')}`
           });
           continue;
         }
@@ -353,7 +353,7 @@ export class MarketplaceImportService {
       } catch (error) {
         errors.push({
           row: rowNumber,
-          error: `Import failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
+          error: `Import failed: ${error instanceof Error ? error.message : 'Unknown error'}`
         });
       }
     }
@@ -362,7 +362,7 @@ export class MarketplaceImportService {
       success: errors.length === 0,
       imported,
       skipped,
-      errors,
+      errors
     };
   }
 

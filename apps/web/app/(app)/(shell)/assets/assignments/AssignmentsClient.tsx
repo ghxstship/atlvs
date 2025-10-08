@@ -1,8 +1,8 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
-import { Card, Button, UnifiedInput, Badge, Drawer } from '@ghxstship/ui';
+import { useState, useCallback, useEffect } from 'react';
+import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, Users, Edit, Trash2, Copy, Calendar, MapPin } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -45,12 +45,16 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
   const [selectedAssignment, setSelectedAssignment] = useState<AssetAssignment | null>(null);
   const [view, setView] = useState<'grid' | 'list' | 'kanban'>('list');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadAssignments();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     filterAssignments();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [assignments, searchQuery, selectedStatus, selectedType]);
 
   const loadAssignments = async () => {
@@ -254,13 +258,13 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
       case 'in_use':
         return <Badge variant="success">In Use</Badge>;
       case 'returned':
-        return <Badge variant="outline">Returned</Badge>;
+        return <Badge variant="secondary">Returned</Badge>;
       case 'overdue':
-        return <Badge variant="destructive">Overdue</Badge>;
+        return <Badge variant="error">Overdue</Badge>;
       case 'damaged':
-        return <Badge variant="destructive">Damaged</Badge>;
+        return <Badge variant="error">Damaged</Badge>;
       default:
-        return <Badge variant="outline">{status}</Badge>;
+        return <Badge variant="secondary">{status}</Badge>;
     }
   };
 
@@ -275,9 +279,9 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
       case 'poor':
         return <Badge variant="warning">Poor</Badge>;
       case 'damaged':
-        return <Badge variant="destructive">Damaged</Badge>;
+        return <Badge variant="error">Damaged</Badge>;
       default:
-        return <Badge variant="outline">{condition}</Badge>;
+        return <Badge variant="secondary">{condition}</Badge>;
     }
   };
 
@@ -288,11 +292,11 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
       case 'crew_member':
         return <Badge variant="secondary">Crew</Badge>;
       case 'vendor':
-        return <Badge variant="outline">Vendor</Badge>;
+        return <Badge variant="secondary">Vendor</Badge>;
       case 'partner':
-        return <Badge variant="outline">Partner</Badge>;
+        return <Badge variant="secondary">Partner</Badge>;
       default:
-        return <Badge variant="outline">{type}</Badge>;
+        return <Badge variant="secondary">{type}</Badge>;
     }
   };
 
@@ -317,7 +321,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
           <p className="text-body-sm color-muted">Track asset assignments and returns</p>
         </div>
         <div className="flex items-center gap-sm">
-          <Button variant="outline" className="flex items-center gap-sm">
+          <Button variant="secondary" className="flex items-center gap-sm">
             <Download className="w-icon-xs h-icon-xs" />
             Export
           </Button>
@@ -335,7 +339,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
             <div className="flex-1 min-w-container-sm">
               <div className="relative">
                 <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted w-icon-xs h-icon-xs" />
-                <UnifiedInput                   placeholder="Search assignments..."
+                <Input                   placeholder="Search assignments..."
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
@@ -404,7 +408,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
                       {assignment.status === 'in_use' && (
                         <Button
                          
-                          variant="outline"
+                          variant="secondary"
                           onClick={() => handleReturnAsset(assignment.id)}
                         >
                           Return
@@ -484,7 +488,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
         <div className="p-lg stack-md">
           <div>
             <label className="block text-body-sm form-label mb-xs">Asset</label>
-            <UnifiedInput               placeholder="Select asset"
+            <Input               placeholder="Select asset"
               defaultValue={selectedAssignment?.assetName}
             />
           </div>
@@ -503,7 +507,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
             </div>
             <div>
               <label className="block text-body-sm form-label mb-xs">Assignee</label>
-              <UnifiedInput                 placeholder="Select assignee"
+              <Input                 placeholder="Select assignee"
                 defaultValue={selectedAssignment?.assigneeName}
               />
             </div>
@@ -511,20 +515,20 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
           <div className="grid grid-cols-2 gap-md">
             <div>
               <label className="block text-body-sm form-label mb-xs">Expected Return Date</label>
-              <UnifiedInput                 type="date"
+              <Input                 type="date"
                 defaultValue={selectedAssignment?.expectedReturnDate?.split('T')[0]}
               />
             </div>
             <div>
               <label className="block text-body-sm form-label mb-xs">Location</label>
-              <UnifiedInput                 placeholder="Assignment location"
+              <Input                 placeholder="Assignment location"
                 defaultValue={selectedAssignment?.location}
               />
             </div>
           </div>
           <div>
             <label className="block text-body-sm form-label mb-xs">Purpose</label>
-            <UnifiedInput               placeholder="Purpose of assignment"
+            <Input               placeholder="Purpose of assignment"
               defaultValue={selectedAssignment?.purpose}
             />
           </div>
@@ -541,7 +545,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
             <Button className="flex-1">
               {selectedAssignment ? 'Update Assignment' : 'Create Assignment'}
             </Button>
-            <Button variant="outline" onClick={() => setShowDrawer(false)}>
+            <Button variant="secondary" onClick={() => setShowDrawer(false)}>
               Cancel
             </Button>
           </div>

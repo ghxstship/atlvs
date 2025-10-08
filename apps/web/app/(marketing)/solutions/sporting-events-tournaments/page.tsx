@@ -7,13 +7,13 @@ import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Sporting Events & Tournaments | GHXSTSHIP',
   description:
-    'Deliver world-class sporting events with GHXSTSHIP’s tournament operations, athlete management, and broadcast coordination tools.',
+    'Deliver world-class sporting events with GHXSTSHIP’s tournament operations, athlete management, and broadcast coordination tools.'
 };
 
 const heroStats = [
@@ -27,41 +27,41 @@ const tournamentPhases = [
   {
     title: 'Planning & Scheduling',
     description: 'Manage venues, brackets, officials, and logistics across multiple divisions and leagues.',
-    icon: Calendar,
+    icon: Calendar
   },
   {
     title: 'Athlete & Team Ops',
     description: 'Coordinate registration, health checks, and credentialing for athletes, coaches, and staff.',
-    icon: Users,
+    icon: Users
   },
   {
     title: 'Live Competition',
     description: 'Monitor live scoring, timing integrations, replay queues, and fan engagement in real time.',
-    icon: Activity,
+    icon: Activity
   },
   {
     title: 'Broadcast & Sponsorship',
     description: 'Deliver broadcast-ready assets, manage sponsorship activations, and report on media impact.',
-    icon: Megaphone,
+    icon: Megaphone
   },
 ];
 
 const operationsHighlights = [
   {
     title: 'Precision Scheduling',
-    description: 'Automate seeding, brackets, and officiating assignments with conflict detection.',
+    description: 'Automate seeding, brackets, and officiating assignments with conflict detection.'
   },
   {
     title: 'Athlete Safety',
-    description: 'Track medical clearances, incident reports, and compliance requirements.',
+    description: 'Track medical clearances, incident reports, and compliance requirements.'
   },
   {
     title: 'Fan Experience',
-    description: 'Sync ticketing, fan zones, and mobile updates to keep audiences engaged.',
+    description: 'Sync ticketing, fan zones, and mobile updates to keep audiences engaged.'
   },
   {
     title: 'Commercial Growth',
-    description: 'Manage sponsor deliverables, merchandising, and hospitality packages with clear visibility.',
+    description: 'Manage sponsor deliverables, merchandising, and hospitality packages with clear visibility.'
   },
 ];
 
@@ -73,7 +73,7 @@ const caseStudies = [
     result: '100% on-time completion · 99.8% bracket accuracy · 2M+ stream viewers · 95% satisfaction',
     quote:
       'GHXSTSHIP turned a logistical maze into a championship showcase. Our teams, officials, and fans felt the difference.',
-    author: 'Michael Rodriguez, Tournament Director',
+    author: 'Michael Rodriguez, Tournament Director'
   },
   {
     company: 'Olympic Trials Swimming',
@@ -82,7 +82,7 @@ const caseStudies = [
     result: '100% timing accuracy · 50+ qualifiers identified · 10M+ broadcast reach · Zero delays',
     quote:
       'The precision of GHXSTSHIP helped us deliver an unforgettable trials meet. Every stakeholder had what they needed.',
-    author: 'Sarah Chen, Competition Manager',
+    author: 'Sarah Chen, Competition Manager'
   },
 ];
 

@@ -133,7 +133,7 @@ export class JobsApiService {
         created_by: searchParams.get('created_by') || undefined,
         due_before: searchParams.get('due_before') || undefined,
         due_after: searchParams.get('due_after') || undefined,
-        search: searchParams.get('search') || undefined,
+        search: searchParams.get('search') || undefined
       };
 
       const jobs = await this.queries.getJobs(filters);

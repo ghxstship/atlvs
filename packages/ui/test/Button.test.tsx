@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Button, ButtonGroup, IconButton, buttonVariants } from '../src/unified/Button';
+import { Button, ButtonGroup, IconButton, buttonVariants } from '../src/atoms/Button/Button';
 
 // Mock React icons for testing
 const MockIcon = () => <svg data-testid="mock-icon" />;

@@ -3,17 +3,18 @@
 import { CreditCard, FileText, DollarSign, Package, RefreshCw, Download, Settings, TrendingUp } from "lucide-react";
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import {
- DataViewProvider,
- StateManagerProvider,
- Button,
- useToastContext,
- Tabs,
- TabsContent,
- TabsList,
- TabsTrigger,
- Card,
- CardContent,
- Badge,
+  DataViewProvider,
+  StateManagerProvider,
+  Button,
+  useToastContext,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Card,
+  CardContent,
+  Badge,
+  ViewSwitcher
 } from '@ghxstship/ui';
 import type { 
  BillingRecord, 
@@ -21,7 +22,7 @@ import type {
  BillingFieldConfig,
  BillingStatistics,
  BillingSearchParams,
- BillingClientProps,
+ BillingClientProps
 } from './types';
 import { billingService } from './lib/billing-service';
 
@@ -195,7 +196,7 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  },
  onExport: (data: unknown, format: unknown) => {
  handleExport(format);
- },
+ }
  }), [currentView, records, searchParams, loadRecords, loadStatistics, handleExport]);
 
  // Event handlers
@@ -203,7 +204,7 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  try {
  const blob = await billingService.exportRecords({
  format,
- includeMetadata: true,
+ includeMetadata: true
  });
 
  const url = URL.createObjectURL(blob);

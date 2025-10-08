@@ -9,7 +9,7 @@ export const runtime = 'nodejs';
 const ActivateContractSchema = z.object({
   activationNotes: z.string().optional(),
   effectiveDate: z.string().optional(),
-  sendNotifications: z.boolean().default(true),
+  sendNotifications: z.boolean().default(true)
 });
 
 async function getAuthenticatedUser() {

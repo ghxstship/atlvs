@@ -17,7 +17,7 @@ type Labels = { name: string; status: string; startsAt: string };
 const projectSchema = z.object({
   name: z.string().min(2, 'Name is required'),
   status: z.string().min(2),
-  starts_at: z.string().nullable().optional(),
+  starts_at: z.string().nullable().optional()
 });
 
 export default function ProjectsTableClient({ rows, orgId, labels }: { rows: ProjectRow[]; orgId: string; labels: Labels }) {

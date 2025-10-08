@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const BaseResponseSchema = z
   .object({
-    error: z.string().optional(),
+    error: z.string().optional()
   })
   .passthrough();
 
@@ -28,9 +28,9 @@ async function jsonFetch(url: string, init?: RequestInit) {
     ...init,
     headers: {
       'Content-Type': 'application/json',
-      ...(init?.headers ?? {}),
+      ...(init?.headers ?? {})
     },
-    credentials: 'include',
+    credentials: 'include'
   });
 }
 
@@ -48,7 +48,7 @@ const OrganizationSchema = z
         city: z.string().nullable().optional(),
         state: z.string().nullable().optional(),
         zipCode: z.string().nullable().optional(),
-        country: z.string().nullable().optional(),
+        country: z.string().nullable().optional()
       })
       .nullable()
       .optional(),
@@ -56,7 +56,7 @@ const OrganizationSchema = z
       .object({
         phone: z.string().nullable().optional(),
         email: z.string().nullable().optional(),
-        supportEmail: z.string().nullable().optional(),
+        supportEmail: z.string().nullable().optional()
       })
       .nullable()
       .optional(),
@@ -64,7 +64,7 @@ const OrganizationSchema = z
       .object({
         logo: z.string().nullable().optional(),
         primaryColor: z.string().nullable().optional(),
-        secondaryColor: z.string().nullable().optional(),
+        secondaryColor: z.string().nullable().optional()
       })
       .nullable()
       .optional(),
@@ -73,7 +73,7 @@ const OrganizationSchema = z
     currency: z.string().nullable().optional(),
     status: z.string().nullable().optional(),
     created_at: z.string().nullable().optional(),
-    updated_at: z.string().nullable().optional(),
+    updated_at: z.string().nullable().optional()
   })
   .passthrough();
 
@@ -82,14 +82,14 @@ export type OrganizationRecord = z.infer<typeof OrganizationSchema>;
 const OrganizationStatsSchema = z.object({
   totalMembers: z.number(),
   totalProjects: z.number(),
-  totalJobs: z.number(),
+  totalJobs: z.number()
 });
 
 export type OrganizationStats = z.infer<typeof OrganizationStatsSchema>;
 
 const OrganizationSettingsResponseSchema = z.object({
   organization: OrganizationSchema,
-  stats: OrganizationStatsSchema,
+  stats: OrganizationStatsSchema
 });
 
 export type OrganizationSettingsResponse = z.infer<typeof OrganizationSettingsResponseSchema>;
@@ -103,13 +103,13 @@ const OrganizationMemberSchema = z.object({
   fullName: z.string().nullable().optional(),
   email: z.string().nullable().optional(),
   avatarUrl: z.string().nullable().optional(),
-  jobTitle: z.string().nullable().optional(),
+  jobTitle: z.string().nullable().optional()
 });
 
 export type OrganizationMember = z.infer<typeof OrganizationMemberSchema>;
 
 const OrganizationMembersResponseSchema = z.object({
-  members: z.array(OrganizationMemberSchema),
+  members: z.array(OrganizationMemberSchema)
 });
 
 export type OrganizationMembersResponse = z.infer<typeof OrganizationMembersResponseSchema>;
@@ -126,26 +126,26 @@ const UpdateOrganizationInputSchema = z.object({
       city: z.string(),
       state: z.string(),
       zipCode: z.string(),
-      country: z.string(),
+      country: z.string()
     })
     .optional(),
   contact: z
     .object({
       phone: z.string().optional(),
       email: z.string().email().optional(),
-      supportEmail: z.string().email().optional(),
+      supportEmail: z.string().email().optional()
     })
     .optional(),
   branding: z
     .object({
       logo: z.string().optional(),
       primaryColor: z.string().optional(),
-      secondaryColor: z.string().optional(),
+      secondaryColor: z.string().optional()
     })
     .optional(),
   timezone: z.string().optional(),
   locale: z.string().optional(),
-  currency: z.string().optional(),
+  currency: z.string().optional()
 });
 
 export type UpdateOrganizationInput = z.infer<typeof UpdateOrganizationInputSchema>;
@@ -160,7 +160,7 @@ export async function updateOrganizationSettings(input: UpdateOrganizationInput)
   const payload = UpdateOrganizationInputSchema.parse(input);
   const response = await jsonFetch('/api/v1/settings/organization', {
     method: 'PUT',
-    body: JSON.stringify(payload),
+    body: JSON.stringify(payload)
   });
   const data = await handleResponse<unknown>(response);
   return z.object({ organization: OrganizationSchema }).parse(data);
@@ -169,7 +169,7 @@ export async function updateOrganizationSettings(input: UpdateOrganizationInput)
 export async function transferOrganizationOwnership(userId: string): Promise<{ success: true; message: string }> {
   const response = await jsonFetch('/api/v1/settings/organization', {
     method: 'DELETE',
-    body: JSON.stringify({ confirm: true, transferTo: userId }),
+    body: JSON.stringify({ confirm: true, transferTo: userId })
   });
   return handleResponse(response);
 }
@@ -177,7 +177,7 @@ export async function transferOrganizationOwnership(userId: string): Promise<{ s
 export async function deactivateOrganization(): Promise<{ success: true; message: string }> {
   const response = await jsonFetch('/api/v1/settings/organization', {
     method: 'DELETE',
-    body: JSON.stringify({ confirm: true }),
+    body: JSON.stringify({ confirm: true })
   });
   return handleResponse(response);
 }

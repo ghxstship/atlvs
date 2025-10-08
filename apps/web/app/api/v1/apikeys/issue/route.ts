@@ -11,7 +11,7 @@ const CreateApiKeySchema = z.object({
   name: z.string().min(1, 'API key name is required'),
   description: z.string().optional(),
   permissions: z.array(z.string()).default([]),
-  expiresAt: z.string().optional(),
+  expiresAt: z.string().optional()
 });
 
 async function getAuthenticatedUser() {

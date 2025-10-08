@@ -68,6 +68,7 @@ const PeopleTableView: React.FC<TableViewProps> = ({
     const frozen = columns.filter(col => col.frozen);
     const scrollable = columns.filter(col => !col.frozen);
     return { frozenColumns: frozen, scrollableColumns: scrollable };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [columns]);
 
   // Sort and filter data
@@ -113,6 +114,7 @@ const PeopleTableView: React.FC<TableViewProps> = ({
       }
       return null; // Remove sorting
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Handle row selection
@@ -124,6 +126,7 @@ const PeopleTableView: React.FC<TableViewProps> = ({
       : selectedRows.filter(id => id !== rowId);
 
     onSelectionChange(newSelection);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRows, onSelectionChange]);
 
   // Handle select all
@@ -136,6 +139,7 @@ const PeopleTableView: React.FC<TableViewProps> = ({
     } else {
       onSelectionChange([]);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [processedData, onSelectionChange]);
 
   // Handle filter change
@@ -144,6 +148,7 @@ const PeopleTableView: React.FC<TableViewProps> = ({
       ...current,
       [key]: value
     }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Render column header

@@ -1,327 +1,152 @@
+/**
+ * Toast Component — Toast Notification
+ * Temporary notification messages
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
+ */
+
+'use client';
+
 import React from 'react';
-import { twMerge } from 'tailwind-merge';
-import clsx from 'clsx';
-import { X, CheckCircle, AlertCircle, Info, AlertTriangle, Loader2 } from 'lucide-react';
-import { Button } from './atomic/Button';
+import { X, CheckCircle2, AlertCircle, Info, AlertTriangle } from 'lucide-react';
 
 export interface ToastProps {
+  /** Toast ID */
   id: string;
+  
+  /** Toast variant */
+  variant?: 'info' | 'success' | 'warning' | 'error';
+  
+  /** Toast title */
   title?: string;
-  description?: string;
-  type?: 'success' | 'error' | 'warning' | 'info' | 'loading';
+  
+  /** Toast message */
+  message: string;
+  
+  /** Duration (ms) */
   duration?: number;
-  persistent?: boolean;
-  action?: {
-    label: string;
-    onClick: () => void;
-  };
-  onClose?: () => void;
+  
+  /** Dismiss handler */
+  onDismiss?: (id: string) => void;
 }
 
-export const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
-  ({ 
-    id,
-    title, 
-    description, 
-    type = 'info', 
-    duration = 5000, 
-    persistent = false,
-    action,
-    onClose 
-  }, ref) => {
-    const [isVisible, setIsVisible] = React.useState(true);
-    const [isExiting, setIsExiting] = React.useState(false);
-
-    const typeConfig = {
-      success: {
-        icon: CheckCircle,
-        className: 'border-success/20 bg-success/10 text-success',
-        iconClassName: 'text-success'
-      },
-      error: {
-        icon: AlertCircle,
-        className: 'border-destructive/20 bg-destructive/10 text-destructive',
-        iconClassName: 'text-destructive'
-      },
-      warning: {
-        icon: AlertTriangle,
-        className: 'border-warning/20 bg-warning/10 text-warning',
-        iconClassName: 'text-warning'
-      },
-      info: {
-        icon: Info,
-        className: 'border-primary/20 bg-accent/10 text-accent',
-        iconClassName: 'text-accent'
-      },
-      loading: {
-        icon: Loader2,
-        className: 'border-border bg-background text-foreground',
-        iconClassName: 'text-accent animate-spin'
-      }
-    };
-
-    const config = typeConfig[type];
-    const Icon = config.icon;
-
-    React.useEffect(() => {
-      if (!persistent && duration > 0 && type !== 'loading') {
-        const timer = setTimeout(() => {
-          handleClose();
-        }, duration);
-
-        return () => clearTimeout(timer);
-      }
-    }, [duration, persistent, type]);
-
-    const handleClose = () => {
-      setIsExiting(true);
-      setTimeout(() => {
-        setIsVisible(false);
-        onClose?.();
-      }, 200);
-    };
-
-    if (!isVisible) return null;
-
-    return (
-      <div
-        ref={ref}
-        className={twMerge(
-          clsx(
-            'relative flex items-start gap-sm p-md rounded-lg border shadow-floating backdrop-blur-sm transition-all duration-200 font-body',
-            config.className,
-            isExiting ? 'animate-out slide-out-to-right-full' : 'animate-in slide-in-from-right-full',
-            'max-w-md w-full'
-          )
-        )}
-        role="alert"
-        aria-live={type === 'error' ? 'assertive' : 'polite'}
-      >
-        {/* Icon */}
-        <div className="shrink-0 mt-0.5">
-          <Icon className={clsx('h-icon-sm w-icon-sm', config.iconClassName)} />
-        </div>
-
-        {/* Content */}
-        <div className="flex-1 min-w-0">
-          {title && (
-            <div className="font-medium text-sm mb-xs">{title}</div>
-          )}
-          {description && (
-            <div className="text-sm opacity-90 leading-relaxed">{description}</div>
-          )}
-          {action && (
-            <button
-              onClick={action.onClick}
-              className="mt-sm text-sm font-medium underline hover:no-underline transition-all"
-            >
-              {action.label}
-            </button>
-          )}
-        </div>
-
-        {/* Close Button */}
-        {!persistent && type !== 'loading' && (
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            onClick={handleClose}
-            className="shrink-0 opacity-70 hover:opacity-100"
-          >
-            <X className="h-icon-xs w-icon-xs" />
-          </Button>
-        )}
-
-        {/* Progress Bar for timed toasts */}
-        {!persistent && duration > 0 && type !== 'loading' && (
-          <div className="absolute bottom-0 left-0 right-0 h-1 bg-muted/20 rounded-b-lg overflow-hidden">
-            <div 
-              className="h-full bg-current opacity-30 transition-all ease-linear"
-              style={{
-                animation: `toast-progress ${duration}ms linear forwards`
-              }}
-            />
-          </div>
-        )}
+/**
+ * Toast Component
+ * 
+ * @example
+ * ```tsx
+ * <Toast
+ *   id="1"
+ *   variant="success"
+ *   message="Changes saved successfully"
+ *   onDismiss={handleDismiss}
+ * />
+ * ```
+ */
+export const Toast: React.FC<ToastProps> = ({
+  id,
+  variant = 'info',
+  title,
+  message,
+  duration = 5000,
+  onDismiss,
+}) => {
+  React.useEffect(() => {
+    if (duration && onDismiss) {
+      const timer = setTimeout(() => {
+        onDismiss(id);
+      }, duration);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [id, duration, onDismiss]);
+  
+  const icons = {
+    info: Info,
+    success: CheckCircle2,
+    warning: AlertTriangle,
+    error: AlertCircle,
+  };
+  
+  const variantClasses = {
+    info: 'bg-[var(--color-info)] text-[var(--color-info-foreground)]',
+    success: 'bg-[var(--color-success)] text-[var(--color-success-foreground)]',
+    warning: 'bg-[var(--color-warning)] text-[var(--color-warning-foreground)]',
+    error: 'bg-[var(--color-error)] text-[var(--color-error-foreground)]',
+  };
+  
+  const Icon = icons[variant];
+  
+  return (
+    <div
+      className={`
+        flex items-start gap-3 p-4
+        rounded-lg shadow-lg
+        ${variantClasses[variant]}
+        animate-in slide-in-from-top-2
+      `}
+    >
+      <Icon className="w-5 h-5 flex-shrink-0 mt-0.5" />
+      
+      <div className="flex-1 min-w-0">
+        {title && <div className="font-semibold mb-1">{title}</div>}
+        <div className="text-sm">{message}</div>
       </div>
-    );
-  }
-);
+      
+      {onDismiss && (
+        <button
+          onClick={() => onDismiss(id)}
+          className="flex-shrink-0 p-1 rounded hover:bg-white/20 transition-colors"
+          aria-label="Dismiss"
+        >
+          <X className="w-4 h-4" />
+        </button>
+      )}
+    </div>
+  );
+};
+
 Toast.displayName = 'Toast';
 
-// Toast Container
+/**
+ * ToastContainer Component
+ * Container for managing multiple toasts
+ */
 export interface ToastContainerProps {
+  /** Position */
+  position?: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+  
+  /** Toasts */
   toasts: ToastProps[];
-  position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center';
-  maxToasts?: number;
-}
-
-export const ToastContainer = React.forwardRef<HTMLDivElement, ToastContainerProps>(
-  ({ toasts, position = 'top-right', maxToasts = 5 }, ref) => {
-    const positionClasses = {
-      'top-right': 'top-4 right-4',
-      'top-left': 'top-4 left-4',
-      'bottom-right': 'bottom-4 right-4',
-      'bottom-left': 'bottom-4 left-4',
-      'top-center': 'top-4 left-1/2 -translate-x-1/2',
-      'bottom-center': 'bottom-4 left-1/2 -translate-x-1/2'
-    };
-
-    const visibleToasts = toasts.slice(0, maxToasts);
-
-    if (visibleToasts.length === 0) return null;
-
-    return (
-      <div
-        ref={ref}
-        className={clsx(
-          'fixed z-50 flex flex-col gap-sm',
-          positionClasses[position]
-        )}
-        aria-live="polite"
-        aria-label="Notifications"
-      >
-        {visibleToasts.map((toast: any) => (
-          <Toast key={toast.id} {...toast} />
-        ))}
-      </div>
-    );
-  }
-);
-ToastContainer.displayName = 'ToastContainer';
-
-// Toast Hook for managing toasts
-export interface ToastState {
-  toasts: ToastProps[];
-}
-
-export interface ToastActions {
-  addToast: (toast: Omit<ToastProps, 'id'>) => string;
-  removeToast: (id: string) => void;
-  clearToasts: () => void;
-  updateToast: (id: string, updates: Partial<ToastProps>) => void;
-}
-
-export const useToast = (): ToastState & ToastActions => {
-  const [toasts, setToasts] = React.useState<ToastProps[]>([]);
-
-  const addToast = React.useCallback((toast: Omit<ToastProps, 'id'>) => {
-    const id = Math.random().toString(36).substr(2, 9);
-    const newToast: ToastProps = {
-      ...toast,
-      id,
-      onClose: () => {
-        removeToast(id);
-        toast.onClose?.();
-      }
-    };
-
-    setToasts(prev => [...prev, newToast]);
-    return id;
-  }, []);
-
-  const removeToast = React.useCallback((id: string) => {
-    setToasts(prev => prev.filter(toast => toast.id !== id));
-  }, []);
-
-  const clearToasts = React.useCallback(() => {
-    setToasts([]);
-  }, []);
-
-  const updateToast = React.useCallback((id: string, updates: Partial<ToastProps>) => {
-    setToasts(prev => prev.map(toast => 
-      toast.id === id ? { ...toast, ...updates } : toast
-    ));
-  }, []);
-
-  return {
-    toasts,
-    addToast,
-    removeToast,
-    clearToasts,
-    updateToast
-  };
-};
-
-// Convenience functions for common toast types
-export const createToastHelpers = (addToast: ToastActions['addToast']) => ({
-  success: (title: string, description?: string, options?: Partial<ToastProps>) =>
-    addToast({ type: 'success', title, description, ...options }),
   
-  error: (title: string, description?: string, options?: Partial<ToastProps>) =>
-    addToast({ type: 'error', title, description, persistent: true, ...options }),
-  
-  warning: (title: string, description?: string, options?: Partial<ToastProps>) =>
-    addToast({ type: 'warning', title, description, ...options }),
-  
-  info: (title: string, description?: string, options?: Partial<ToastProps>) =>
-    addToast({ type: 'info', title, description, ...options }),
-  
-  loading: (title: string, description?: string, options?: Partial<ToastProps>) =>
-    addToast({ type: 'loading', title, description, persistent: true, ...options })
-});
-
-// Toast Provider Context
-export interface ToastContextValue extends ToastState, ToastActions {
-  toast: ReturnType<typeof createToastHelpers>;
+  /** Dismiss handler */
+  onDismiss: (id: string) => void;
 }
 
-export const ToastContext = React.createContext<ToastContextValue | null>(null);
-
-export interface ToastProviderProps {
-  children: React.ReactNode;
-  position?: ToastContainerProps['position'];
-  maxToasts?: number;
-}
-
-export const ToastProvider: React.FC<ToastProviderProps> = ({ 
-  children, 
+export const ToastContainer: React.FC<ToastContainerProps> = ({
   position = 'top-right',
-  maxToasts = 5 
+  toasts,
+  onDismiss,
 }) => {
-  const toastState = useToast();
-  const toast = React.useMemo(
-    () => createToastHelpers(toastState.addToast),
-    [toastState.addToast]
-  );
-
-  const contextValue: ToastContextValue = {
-    ...toastState,
-    toast
+  const positionClasses = {
+    'top-left': 'top-4 left-4',
+    'top-center': 'top-4 left-1/2 -translate-x-1/2',
+    'top-right': 'top-4 right-4',
+    'bottom-left': 'bottom-4 left-4',
+    'bottom-center': 'bottom-4 left-1/2 -translate-x-1/2',
+    'bottom-right': 'bottom-4 right-4',
   };
-
+  
   return (
-    <ToastContext.Provider value={contextValue}>
-      {children}
-      <ToastContainer 
-        toasts={toastState.toasts} 
-        position={position}
-        maxToasts={maxToasts}
-      />
-    </ToastContext.Provider>
+    <div className={`fixed ${positionClasses[position]} z-50 flex flex-col gap-2 pointer-events-none`}>
+      {toasts.map((toast) => (
+        <div key={toast.id} className="pointer-events-auto">
+          <Toast {...toast} onDismiss={onDismiss} />
+        </div>
+      ))}
+    </div>
   );
 };
 
-export const useToastContext = () => {
-  const context = React.useContext(ToastContext);
-  if (!context) {
-    throw new Error('useToastContext must be used within a ToastProvider');
-  }
-  return context;
-};
-
-// CSS Animation for progress bar
-const toastProgressKeyframes = `
-@keyframes toast-progress {
-  from { width: 100%; }
-  to { width: 0%; }
-}
-`;
-
-// Inject CSS if not already present
-if (typeof document !== 'undefined' && !document.getElementById('toast-styles')) {
-  const style = document.createElement('style');
-  style.id = 'toast-styles';
-  style.textContent = toastProgressKeyframes;
-  document.head.appendChild(style);
-}
+ToastContainer.displayName = 'ToastContainer';

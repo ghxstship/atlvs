@@ -8,7 +8,7 @@ export const LISTING_FIELD_CONFIGS: FieldConfig<MarketplaceListing>[] = [
     type: 'text',
     required: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'type',
@@ -21,7 +21,7 @@ export const LISTING_FIELD_CONFIGS: FieldConfig<MarketplaceListing>[] = [
       { label: 'Offer', value: 'offer' },
       { label: 'Request', value: 'request' },
       { label: 'Exchange', value: 'exchange' },
-    ],
+    ]
   },
   {
     key: 'category',
@@ -37,7 +37,7 @@ export const LISTING_FIELD_CONFIGS: FieldConfig<MarketplaceListing>[] = [
       { label: 'Locations', value: 'locations' },
       { label: 'Materials', value: 'materials' },
       { label: 'Other', value: 'other' },
-    ],
+    ]
   },
   {
     key: 'status',
@@ -50,7 +50,7 @@ export const LISTING_FIELD_CONFIGS: FieldConfig<MarketplaceListing>[] = [
       { label: 'Draft', value: 'draft' },
       { label: 'Active', value: 'active' },
       { label: 'Archived', value: 'archived' },
-    ],
+    ]
   },
   {
     key: 'pricing.amount',
@@ -58,7 +58,7 @@ export const LISTING_FIELD_CONFIGS: FieldConfig<MarketplaceListing>[] = [
     type: 'currency',
     required: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'pricing.currency',
@@ -66,7 +66,7 @@ export const LISTING_FIELD_CONFIGS: FieldConfig<MarketplaceListing>[] = [
     type: 'text',
     required: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'location.city',
@@ -74,7 +74,7 @@ export const LISTING_FIELD_CONFIGS: FieldConfig<MarketplaceListing>[] = [
     type: 'text',
     required: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'location.country',
@@ -82,7 +82,7 @@ export const LISTING_FIELD_CONFIGS: FieldConfig<MarketplaceListing>[] = [
     type: 'text',
     required: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'featured',
@@ -90,7 +90,7 @@ export const LISTING_FIELD_CONFIGS: FieldConfig<MarketplaceListing>[] = [
     type: 'boolean',
     required: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'response_count',
@@ -98,7 +98,7 @@ export const LISTING_FIELD_CONFIGS: FieldConfig<MarketplaceListing>[] = [
     type: 'number',
     required: false,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'created_at',
@@ -106,7 +106,7 @@ export const LISTING_FIELD_CONFIGS: FieldConfig<MarketplaceListing>[] = [
     type: 'datetime',
     required: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'updated_at',
@@ -114,6 +114,6 @@ export const LISTING_FIELD_CONFIGS: FieldConfig<MarketplaceListing>[] = [
     type: 'datetime',
     required: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
 ];

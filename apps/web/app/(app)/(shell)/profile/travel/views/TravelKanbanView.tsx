@@ -29,7 +29,7 @@ const KANBAN_COLUMNS = [
  description: 'Upcoming trips',
  color: 'bg-blue-50 border-blue-200',
  headerColor: 'bg-blue-100',
- statusFilter: (record: TravelRecord) => record.status === 'planned',
+ statusFilter: (record: TravelRecord) => record.status === 'planned'
  },
  {
  id: 'confirmed',
@@ -37,7 +37,7 @@ const KANBAN_COLUMNS = [
  description: 'Confirmed bookings',
  color: 'bg-green-50 border-green-200',
  headerColor: 'bg-green-100',
- statusFilter: (record: TravelRecord) => record.status === 'confirmed',
+ statusFilter: (record: TravelRecord) => record.status === 'confirmed'
  },
  {
  id: 'in_progress',
@@ -45,7 +45,7 @@ const KANBAN_COLUMNS = [
  description: 'Currently traveling',
  color: 'bg-yellow-50 border-yellow-200',
  headerColor: 'bg-yellow-100',
- statusFilter: (record: TravelRecord) => record.status === 'in_progress',
+ statusFilter: (record: TravelRecord) => record.status === 'in_progress'
  },
  {
  id: 'completed',
@@ -53,7 +53,7 @@ const KANBAN_COLUMNS = [
  description: 'Finished trips',
  color: 'bg-gray-50 border-gray-200',
  headerColor: 'bg-gray-100',
- statusFilter: (record: TravelRecord) => record.status === 'completed',
+ statusFilter: (record: TravelRecord) => record.status === 'completed'
  },
  {
  id: 'cancelled',
@@ -61,7 +61,7 @@ const KANBAN_COLUMNS = [
  description: 'Cancelled trips',
  color: 'bg-red-50 border-red-200',
  headerColor: 'bg-red-100',
- statusFilter: (record: TravelRecord) => record.status === 'cancelled',
+ statusFilter: (record: TravelRecord) => record.status === 'cancelled'
  },
 ];
 
@@ -72,7 +72,7 @@ export default function TravelKanbanView({
  onView,
  onEdit,
  onDelete,
- loading,
+ loading
 }: TravelKanbanViewProps) {
  const [draggedItem, setDraggedItem] = useState<string | null>(null);
 

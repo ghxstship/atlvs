@@ -20,7 +20,7 @@ import type {
   CreateReportSchema,
   CreateExportSchema,
   AnalyticsQueryResult,
-  PerformanceMetrics,
+  PerformanceMetrics
 } from '../types';
 
 // ============================================================================
@@ -37,21 +37,21 @@ const supabase = createClient(
     auth: {
       autoRefreshToken: true,
       persistSession: true,
-      detectSessionInUrl: true,
+      detectSessionInUrl: true
     },
     realtime: {
       params: {
-        eventsPerSecond: 10,
-      },
+        eventsPerSecond: 10
+      }
     },
     db: {
-      schema: 'public',
+      schema: 'public'
     },
     global: {
       headers: {
-        'x-application-name': 'ghxstship-analytics',
-      },
-    },
+        'x-application-name': 'ghxstship-analytics'
+      }
+    }
   }
 );
 
@@ -72,7 +72,7 @@ class PerformanceTracker {
       renderTime: 0, // Set by UI layer
       dataSize: 0, // Set by response handler
       cacheHit: false, // Set by cache layer
-      timestamp: new Date().toISOString(),
+      timestamp: new Date().toISOString()
     });
   }
 
@@ -104,7 +104,7 @@ const createApiError = (
   code,
   message,
   details,
-  timestamp: new Date().toISOString(),
+  timestamp: new Date().toISOString()
 });
 
 /**
@@ -126,7 +126,7 @@ const handleSupabaseError = (error: unknown): ApiError => {
   }
 
   return createApiError('INTERNAL_ERROR', error?.message || 'An unexpected error occurred', {
-    originalError: error,
+    originalError: error
   });
 };
 
@@ -159,7 +159,7 @@ export class DashboardAPI {
         pageSize = 20,
         search,
         isTemplate,
-        isPublic,
+        isPublic
       } = options;
 
       let query = supabase
@@ -200,7 +200,7 @@ export class DashboardAPI {
         page,
         pageSize,
         hasMore: page < totalPages,
-        totalPages,
+        totalPages
       };
     } catch (error) {
       throw handleSupabaseError(error);
@@ -250,7 +250,7 @@ export class DashboardAPI {
         .insert({
           ...dashboard,
           organization_id: organizationId,
-          created_by: userId,
+          created_by: userId
         })
         .select()
         .single();
@@ -340,7 +340,7 @@ export class DashboardAPI {
         ...original,
         name: newName || `${original.name} (Copy)`,
         is_template: false,
-        created_by: userId,
+        created_by: userId
       };
 
       delete duplicateData.id;
@@ -393,7 +393,7 @@ export class ReportAPI {
         page = 1,
         pageSize = 20,
         search,
-        isActive,
+        isActive
       } = options;
 
       let query = supabase
@@ -430,7 +430,7 @@ export class ReportAPI {
         page,
         pageSize,
         hasMore: page < totalPages,
-        totalPages,
+        totalPages
       };
     } catch (error) {
       throw handleSupabaseError(error);
@@ -480,7 +480,7 @@ export class ReportAPI {
         .insert({
           ...report,
           organization_id: organizationId,
-          created_by: userId,
+          created_by: userId
         })
         .select()
         .single();
@@ -568,9 +568,9 @@ export class ReportAPI {
       const { data, error } = await supabase.rpc('execute_analytics_query', {
         query_config: {
           ...report.query,
-          parameters: { ...report.query.parameters, ...parameters },
+          parameters: { ...report.query.parameters, ...parameters }
         },
-        organization_id: organizationId,
+        organization_id: organizationId
       });
 
       if (error) throw error;
@@ -581,8 +581,8 @@ export class ReportAPI {
           total: data?.length || 0,
           executionTime: 0, // Will be set by track function
           query: JSON.stringify(report.query),
-          parameters,
-        },
+          parameters
+        }
       };
 
       const metric = track();
@@ -624,7 +624,7 @@ export class ExportAPI {
         page = 1,
         pageSize = 20,
         search,
-        status,
+        status
       } = options;
 
       let query = supabase
@@ -661,7 +661,7 @@ export class ExportAPI {
         page,
         pageSize,
         hasMore: page < totalPages,
-        totalPages,
+        totalPages
       };
     } catch (error) {
       throw handleSupabaseError(error);
@@ -712,7 +712,7 @@ export class ExportAPI {
           ...exportJob,
           organization_id: organizationId,
           created_by: userId,
-          status: 'pending',
+          status: 'pending'
         })
         .select()
         .single();
@@ -721,7 +721,7 @@ export class ExportAPI {
 
       // Trigger background export process
       await supabase.functions.invoke('process-analytics-export', {
-        body: { exportId: data.id },
+        body: { exportId: data.id }
       });
 
       const metric = track();
@@ -798,7 +798,7 @@ export class ExportAPI {
         .from('analytics_exports')
         .update({
           status: 'cancelled',
-          completed_at: new Date().toISOString(),
+          completed_at: new Date().toISOString()
         })
         .eq('id', id)
         .eq('organization_id', organizationId)
@@ -855,7 +855,7 @@ export class ExportAPI {
  * Get performance metrics
  */
 export const getPerformanceMetrics = () => ({
-  averageQueryTime: performanceTracker.getAverageQueryTime(),
+  averageQueryTime: performanceTracker.getAverageQueryTime()
 });
 
 /**
@@ -887,5 +887,5 @@ export const AnalyticsAPI = {
   reports: ReportAPI,
   exports: ExportAPI,
   healthCheck,
-  getPerformanceMetrics,
+  getPerformanceMetrics
 } as const;

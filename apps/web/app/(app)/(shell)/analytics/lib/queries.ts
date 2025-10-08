@@ -16,7 +16,7 @@ import type {
   ExportJob,
   AnalyticsQueryResult,
   TimeSeriesPoint,
-  AnalyticsMetric,
+  AnalyticsMetric
 } from '../types';
 
 // ============================================================================
@@ -137,7 +137,7 @@ export class DashboardQueries {
       total: total || 0,
       templates: templates || 0,
       public: public_count || 0,
-      recent: recent || [],
+      recent: recent || []
     };
   }
 
@@ -222,7 +222,7 @@ export class ReportQueries {
       total: total || 0,
       active: active || 0,
       scheduled: scheduled || 0,
-      recent: recent || [],
+      recent: recent || []
     };
   }
 
@@ -274,7 +274,7 @@ export class ExportQueries {
       completed: 0,
       failed: 0,
       processing: 0,
-      totalSize: 0,
+      totalSize: 0
     };
 
     data?.forEach((export_job: ExportJob) => {
@@ -355,7 +355,7 @@ export class AnalyticsDataQueries {
       // Use Supabase RPC for complex queries
       const { data, error } = await supabase.rpc('execute_analytics_query', {
         query_config: queryConfig,
-        organization_id: organizationId,
+        organization_id: organizationId
       });
 
       if (error) throw error;
@@ -366,8 +366,8 @@ export class AnalyticsDataQueries {
           total: data?.length || 0,
           executionTime: 0, // Will be calculated by caller
           query: JSON.stringify(queryConfig),
-          parameters: queryConfig.parameters,
-        },
+          parameters: queryConfig.parameters
+        }
       };
     } catch (error) {
       throw error;
@@ -389,7 +389,7 @@ export class AnalyticsDataQueries {
       organization_id: organizationId,
       start_date: startDate,
       end_date: endDate,
-      interval,
+      interval
     });
 
     if (error) throw error;
@@ -408,7 +408,7 @@ export class AnalyticsDataQueries {
     const { data, error } = await supabase.rpc('get_analytics_aggregates', {
       metrics_config: metrics,
       organization_id: organizationId,
-      filters,
+      filters
     });
 
     if (error) throw error;
@@ -429,7 +429,7 @@ export class AnalyticsDataQueries {
       metric_config: metric,
       organization_id: organizationId,
       result_limit: limit,
-      sort_order: order,
+      sort_order: order
     });
 
     if (error) throw error;
@@ -457,7 +457,7 @@ export class CrossModuleQueries {
       activeProjects: 0,
       totalPeople: 0,
       totalRevenue: 0,
-      monthlyGrowth: 0,
+      monthlyGrowth: 0
     };
   }
 
@@ -533,5 +533,5 @@ export const AnalyticsQueries = {
   exports: ExportQueries,
   data: AnalyticsDataQueries,
   crossModule: CrossModuleQueries,
-  cache: queryCache,
+  cache: queryCache
 } as const;

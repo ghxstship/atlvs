@@ -23,7 +23,7 @@ export function setCSRFToken(response: NextResponse): NextResponse {
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
     maxAge: 60 * 60 * 24, // 24 hours
-    path: '/',
+    path: '/'
   });
 
   // Set token in response header for client access

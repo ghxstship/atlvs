@@ -57,7 +57,7 @@ class MonitoringServicesManager {
       await telemetry.initialize({
         userId: undefined, // Will be set by auth context
         organizationId: undefined,
-        sessionId: this.generateSessionId(),
+        sessionId: this.generateSessionId()
       });
       console.log('✅ Telemetry service initialized');
 
@@ -116,7 +116,7 @@ class MonitoringServicesManager {
           'Critical monitoring services failed to initialize. System visibility may be impaired.',
           {
             error: error instanceof Error ? error.message : 'Unknown error',
-            service: 'monitoring-stack',
+            service: 'monitoring-stack'
           }
         );
       } catch (alertError) {
@@ -185,7 +185,7 @@ class MonitoringServicesManager {
       advancedAlerting: true,
       telemetry: true,
       performance: true,
-      sentry: true,
+      sentry: true
     };
 
     let status: 'healthy' | 'degraded' | 'unhealthy' = 'healthy';
@@ -214,7 +214,7 @@ class MonitoringServicesManager {
     return {
       status,
       services,
-      lastChecked: new Date().toISOString(),
+      lastChecked: new Date().toISOString()
     };
   }
 
@@ -253,7 +253,7 @@ class MonitoringServicesManager {
         'advanced-alerting',
         'incident-response',
         'privacy-compliance',
-      ],
+      ]
     };
   }
 }
@@ -301,5 +301,5 @@ export {
   advancedAlertingService,
   telemetry,
   performanceMonitor,
-  sentryService,
+  sentryService
 };

@@ -1,12 +1,12 @@
 "use client";
 
 import { Edit, Eye, Trash2, ArrowUpDown, ArrowUp, ArrowDown, Clock, MapPin, DollarSign, Phone, Mail, User } from "lucide-react";
-import { Fragment, useState } from "react";
+import { Fragment, useState } from 'react';
 import {
  Badge,
  Button,
  Card,
- Checkbox,
+ Checkbox
 } from "@ghxstship/ui";
 import type { ProgrammingLineup, LineupSort, LineupProject, LineupEvent } from "../types";
 import { STATUS_BADGE, PERFORMER_TYPE_BADGE } from "../types";
@@ -47,7 +47,7 @@ export default function ProgrammingLineupsListView({
  onSort,
  users,
  projects,
- events,
+ events
 }: ProgrammingLineupsListViewProps) {
  const [expandedRows, setExpandedRows] = useState<Set<string>(new Set());
 
@@ -55,7 +55,7 @@ export default function ProgrammingLineupsListView({
  if (sortConfig.field === field) {
  onSort({
  field,
- direction: sortConfig.direction === "asc" ? "desc" : "asc",
+ direction: sortConfig.direction === "asc" ? "desc" : "asc"
  });
  } else {
  onSort({ field, direction: "asc" });
@@ -76,7 +76,7 @@ export default function ProgrammingLineupsListView({
  if (!timeString) return "—";
  return new Date(timeString).toLocaleTimeString("en-US", {
  hour: "2-digit",
- minute: "2-digit",
+ minute: "2-digit"
  });
  };
 
@@ -89,7 +89,7 @@ export default function ProgrammingLineupsListView({
  if (amount == null || !currency) return "—";
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

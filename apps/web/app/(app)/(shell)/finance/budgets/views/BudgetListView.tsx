@@ -22,7 +22,7 @@ export default function BudgetListView({
  const formatCurrency = (amount: number, currency = 'USD') => {
  return new Intl.NumberFormat('en-US', {
  style: 'currency',
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 
@@ -91,7 +91,7 @@ export default function BudgetListView({
  <h4 className="text-body form-label color-foreground truncate">{budget.name}</h4>
  {getStatusBadge(budget.status)}
  {budget.category && (
- <Badge variant="outline" size="sm">
+ <Badge variant="secondary" size="sm">
  <Tag className="h-3 w-3 mr-xs" />
  {budget.category}
  </Badge>

@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, User, Shirt, Edit, Eye } from "lucide-react";
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, User, Shirt, Edit, Eye, CalendarIcon } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { 
  Card, 
@@ -30,7 +30,7 @@ export default function UniformSizingCalendarView({
  selectedIds,
  onSelectionChange,
  onEdit,
- onView,
+ onView
 }: UniformSizingCalendarViewProps) {
  const [currentDate, setCurrentDate] = useState(new Date());
  const [selectedDate, setSelectedDate] = useState<Date | null>(null);

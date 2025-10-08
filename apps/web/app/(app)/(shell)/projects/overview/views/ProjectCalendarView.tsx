@@ -17,13 +17,13 @@ const statusColors = {
  active: 'green',
  on_hold: 'yellow',
  completed: 'gray',
- cancelled: 'red',
+ cancelled: 'red'
 } as const;
 
 export default function ProjectCalendarView({
  projects,
  onView,
- onEdit,
+ onEdit
 }: ProjectCalendarViewProps) {
  const [currentDate, setCurrentDate] = React.useState(new Date());
 
@@ -189,7 +189,7 @@ export default function ProjectCalendarView({
  {new Intl.NumberFormat('en-US', {
  style: 'currency',
  currency: project.currency || 'USD',
- notation: 'compact',
+ notation: 'compact'
  }).format(project.budget)}
  </span>
  </div>

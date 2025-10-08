@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
       value: metric.value,
       rating: metric.rating,
       page: metric.page,
-      timestamp: new Date().toISOString(),
+      timestamp: new Date().toISOString()
     });
 
     // TODO: Send to PostHog, Sentry, or other analytics service

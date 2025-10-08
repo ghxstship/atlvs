@@ -1,10 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Settings, Shield, Users, Bell, Database, Key } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
+import { Bell, Database, Key, Settings, Shield, Users } from 'lucide-react';
+import { Badge, Button, Card, CardBody, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 
 interface DashboardSettingsTabProps {
   dashboard?: unknown;
@@ -160,7 +158,7 @@ export default function DashboardSettingsTab({
                   Permanently delete this dashboard and all its data
                 </p>
               </div>
-              <Button variant="destructive" size="sm">
+              <Button variant="error" size="sm">
                 Delete Dashboard
               </Button>
             </div>
@@ -172,7 +170,7 @@ export default function DashboardSettingsTab({
                   Reset all settings to default values
                 </p>
               </div>
-              <Button variant="outline" size="sm">
+              <Button variant="secondary" size="sm">
                 Reset Settings
               </Button>
             </div>

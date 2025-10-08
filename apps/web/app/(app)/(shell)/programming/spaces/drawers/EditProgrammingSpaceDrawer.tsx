@@ -7,7 +7,7 @@ import type {
  SpaceProject,
  SpaceKind,
  SpaceStatus,
- SpaceAccessLevel,
+ SpaceAccessLevel
 } from '../types';
 
 interface EditProgrammingSpaceDrawerProps {
@@ -98,7 +98,7 @@ export default function EditProgrammingSpaceDrawer({
  orgId,
  currentUserId,
  projects,
- onSuccess,
+ onSuccess
 }: EditProgrammingSpaceDrawerProps) {
  const [loading, setLoading] = useState(false);
 
@@ -119,145 +119,145 @@ export default function EditProgrammingSpaceDrawer({
  options: [
  { label: 'No Project', value: '' },
  ...projects.map((project) => ({ label: project.name, value: project.id })),
- ],
+ ]
  },
  {
  key: 'name',
  label: 'Space Name',
  type: 'text',
- required: true,
+ required: true
  },
  {
  key: 'kind',
  label: 'Space Type',
  type: 'select',
  required: true,
- options: KIND_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: KIND_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'status',
  label: 'Status',
  type: 'select',
- options: STATUS_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: STATUS_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'access_level',
  label: 'Access Level',
  type: 'select',
- options: ACCESS_LEVEL_OPTIONS.map((option) => ({ label: option.label, value: option.value })),
+ options: ACCESS_LEVEL_OPTIONS.map((option) => ({ label: option.label, value: option.value }))
  },
  {
  key: 'description',
  label: 'Description',
- type: 'textarea',
+ type: 'textarea'
  },
  {
  key: 'location',
  label: 'Location',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'building',
  label: 'Building',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'floor',
  label: 'Floor',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'room_number',
  label: 'Room Number',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'capacity',
  label: 'Capacity',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'max_capacity',
  label: 'Max Capacity',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'area_sqft',
  label: 'Area (sq ft)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'is_bookable',
  label: 'Available for Booking',
- type: 'checkbox',
+ type: 'checkbox'
  },
  {
  key: 'hourly_rate',
  label: 'Hourly Rate ($)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'daily_rate',
  label: 'Daily Rate ($)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'setup_time',
  label: 'Setup Time (minutes)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'breakdown_time',
  label: 'Breakdown Time (minutes)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'cleaning_time',
  label: 'Cleaning Time (minutes)',
- type: 'number',
+ type: 'number'
  },
  {
  key: 'contact_person',
  label: 'Contact Person',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'contact_phone',
  label: 'Contact Phone',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'contact_email',
  label: 'Contact Email',
- type: 'email',
+ type: 'email'
  },
  ...AMENITY_FIELDS.map(({ key, label }) => ({
  key,
  label,
- type: 'checkbox' as const,
+ type: 'checkbox' as const
  })),
  {
  key: 'tags',
  label: 'Tags',
- type: 'text',
+ type: 'text'
  },
  {
  key: 'equipment_provided',
  label: 'Equipment Provided',
  type: 'textarea',
- placeholder: 'List equipment provided, one per line',
+ placeholder: 'List equipment provided, one per line'
  },
  {
  key: 'equipment_allowed',
  label: 'Equipment Allowed',
  type: 'textarea',
- placeholder: 'List equipment allowed, one per line',
+ placeholder: 'List equipment allowed, one per line'
  },
  {
  key: 'equipment_prohibited',
  label: 'Equipment Prohibited',
  type: 'textarea',
- placeholder: 'List equipment prohibited, one per line',
+ placeholder: 'List equipment prohibited, one per line'
  },
  ];
 
@@ -289,7 +289,7 @@ export default function EditProgrammingSpaceDrawer({
  equipment_provided: space.equipment_provided?.join('\n') || '',
  equipment_allowed: space.equipment_allowed?.join('\n') || '',
  equipment_prohibited: space.equipment_prohibited?.join('\n') || '',
- ...initialAmenities,
+ ...initialAmenities
  };
 
  const handleSubmit = async (data: Record<string, unknown>) => {
@@ -350,13 +350,13 @@ export default function EditProgrammingSpaceDrawer({
  .map((item) => item.trim())
  .filter(Boolean)
  : undefined,
- tags,
+ tags
  };
 
  const response = await fetch(`/api/v1/programming/spaces/${space.id}`, {
  method: 'PATCH',
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify(payload),
+ body: JSON.stringify(payload)
  });
 
  if (!response.ok) {

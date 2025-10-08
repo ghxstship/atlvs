@@ -20,7 +20,7 @@ const CreateResourceSchema = z.object({
   mimeType: z.string().optional(),
   version: z.string().default('1.0.0'),
   expiryDate: z.string().optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 const UpdateResourceSchema = CreateResourceSchema.partial();

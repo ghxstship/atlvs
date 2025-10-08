@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState } from 'react';
 import { Card, Button } from "@ghxstship/ui";
 import type { ProjectFile } from "../FilesClient";
 import { Download, Eye, Trash2, X } from 'lucide-react';
@@ -16,7 +16,7 @@ export default function FileImageView({
  files,
  onView,
  onDownload,
- onDelete,
+ onDelete
 }: FileImageViewProps) {
  const [selectedImage, setSelectedImage] = useState<ProjectFile | null>(null);
  const [hoveredId, setHoveredId] = useState<string | null>(null);

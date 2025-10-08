@@ -1,7 +1,7 @@
 "use client";
 
 import { Target, Calendar, AlertCircle } from "lucide-react";
-import { useState } from "react";
+import { useState } from 'react';
 import { useRouter } from "next/navigation";
 import { createBrowserClient } from "@ghxstship/auth";
 import {
@@ -10,7 +10,7 @@ import {
  Input,
  Select,
  Textarea,
- toast,
+ toast
 } from "@ghxstship/ui";
 import { format } from "date-fns";
 
@@ -35,7 +35,7 @@ export default function CreateMilestoneDrawer({
  orgId,
  projectId,
  projects,
- onSuccess,
+ onSuccess
 }: CreateMilestoneDrawerProps) {
  const router = useRouter();
  const supabase = createBrowserClient();
@@ -47,7 +47,7 @@ export default function CreateMilestoneDrawer({
  title: "",
  description: "",
  due_date: "",
- progress: 0,
+ progress: 0
  });
 
  const [errors, setErrors] = useState<Record<string, string>({});
@@ -101,7 +101,7 @@ export default function CreateMilestoneDrawer({
  due_date: formData.due_date,
  status,
  progress: formData.progress,
- completed_at: formData.progress === 100 ? new Date().toISOString() : null,
+ completed_at: formData.progress === 100 ? new Date().toISOString() : null
  })
  .select()
  .single();
@@ -116,7 +116,7 @@ export default function CreateMilestoneDrawer({
  title: "",
  description: "",
  due_date: "",
- progress: 0,
+ progress: 0
  });
  setErrors({});
  
@@ -137,7 +137,7 @@ export default function CreateMilestoneDrawer({
  title: "",
  description: "",
  due_date: "",
- progress: 0,
+ progress: 0
  });
  setErrors({});
  onOpenChange(false);

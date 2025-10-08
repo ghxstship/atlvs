@@ -21,7 +21,7 @@ import {
  DrawerContent,
  DrawerHeader,
  DrawerTitle,
- DrawerFooter,
+ DrawerFooter
 } from '@ghxstship/ui';
 import { callSheetsService, type CallSheet, type CrewCall, type TalentCall, type EmergencyContact } from '../lib/callSheetsService';
 
@@ -35,7 +35,7 @@ const callSheetSchema = z.object({
  special_instructions: z.string().optional(),
  project_id: z.string().optional(),
  event_id: z.string().optional(),
- status: z.enum(['draft', 'published', 'distributed', 'completed', 'cancelled']).optional(),
+ status: z.enum(['draft', 'published', 'distributed', 'completed', 'cancelled']).optional()
 });
 
 type CallSheetFormData = z.infer<typeof callSheetSchema>;
@@ -57,7 +57,7 @@ export default function EditCallSheetDrawer({
  currentUserId,
  projects = [],
  events = [],
- onSuccess,
+ onSuccess
 }: EditCallSheetDrawerProps) {
  const [loading, setLoading] = useState(false);
  const [activeTab, setActiveTab] = useState<'details' | 'crew' | 'talent' | 'contacts'>('details');
@@ -77,8 +77,8 @@ export default function EditCallSheetDrawer({
  special_instructions: callSheet.special_instructions || '',
  project_id: callSheet.project_id || '',
  event_id: callSheet.event_id || '',
- status: callSheet.status,
- },
+ status: callSheet.status
+ }
  });
 
  useEffect(() => {
@@ -93,7 +93,7 @@ export default function EditCallSheetDrawer({
  special_instructions: callSheet.special_instructions || '',
  project_id: callSheet.project_id || '',
  event_id: callSheet.event_id || '',
- status: callSheet.status,
+ status: callSheet.status
  });
  setCrewCalls(callSheet.crew_calls || []);
  setTalentCalls(callSheet.talent_calls || []);
@@ -111,7 +111,7 @@ export default function EditCallSheetDrawer({
  event_id: data.event_id || null,
  crew_calls: crewCalls,
  talent_calls: talentCalls,
- emergency_contacts: emergencyContacts,
+ emergency_contacts: emergencyContacts
  };
 
  await callSheetsService.updateCallSheet(callSheet.id, currentUserId, callSheetData);
@@ -133,7 +133,7 @@ export default function EditCallSheetDrawer({
  person_name: '',
  call_time: '',
  location: '',
- notes: '',
+ notes: ''
  };
  setCrewCalls([...crewCalls, newCrewCall]);
  };
@@ -157,7 +157,7 @@ export default function EditCallSheetDrawer({
  makeup_time: '',
  wardrobe_time: '',
  location: '',
- notes: '',
+ notes: ''
  };
  setTalentCalls([...talentCalls, newTalentCall]);
  };
@@ -178,7 +178,7 @@ export default function EditCallSheetDrawer({
  name: '',
  role: '',
  phone: '',
- email: '',
+ email: ''
  };
  setEmergencyContacts([...emergencyContacts, newContact]);
  };

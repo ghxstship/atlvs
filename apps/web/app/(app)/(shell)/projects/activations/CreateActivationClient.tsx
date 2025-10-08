@@ -16,7 +16,7 @@ const createActivationSchema = z.object({
   activation_date: z.string().optional(),
   budget: z.number().optional(),
   project_id: z.string().optional(),
-  description: z.string().optional(),
+  description: z.string().optional()
 });
 
 export default function CreateActivationClient({ 
@@ -40,8 +40,8 @@ export default function CreateActivationClient({
       activation_date: '',
       budget: undefined,
       project_id: '',
-      description: '',
-    },
+      description: ''
+    }
   });
 
   const onSubmit = async (data: z.infer<typeof createActivationSchema>) => {
@@ -55,7 +55,7 @@ export default function CreateActivationClient({
         project_id: data.project_id || null,
         activation_date: data.activation_date || null,
         budget: data.budget || null,
-        status: 'planning',
+        status: 'planning'
       };
 
       const { error: insertError } = await sb

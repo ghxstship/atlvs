@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo } from 'react';
 import { Badge, Button, Card } from "@ghxstship/ui";
 import { format, parseISO, isAfter, isBefore, isToday, startOfDay, endOfDay, addDays, startOfWeek, endOfWeek, startOfMonth, endOfMonth } from "date-fns";
 import type { ProgrammingEvent } from "../types";
 import { EVENT_TYPE_LABEL, STATUS_BADGE } from "../ProgrammingCalendarClient";
-import { Calendar, Edit, Eye, Users } from 'lucide-react';
+import { Calendar, Edit, Eye, Users, MapPin, Clock } from 'lucide-react';
 
 type ProgrammingCalendarTimelineViewProps = {
  events: ProgrammingEvent[];
@@ -22,7 +22,7 @@ type TimeGroup = {
 export default function ProgrammingCalendarTimelineView({
  events,
  onView,
- onEdit,
+ onEdit
 }: ProgrammingCalendarTimelineViewProps) {
  const timeGroups = useMemo(() => {
  const now = new Date();

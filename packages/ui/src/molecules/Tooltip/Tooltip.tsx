@@ -1,194 +1,119 @@
+/**
+ * Tooltip Component — Hover Tooltip
+ * Display contextual information on hover
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
+ */
+
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import { cn } from '../../system';
+import React from 'react';
 
 export interface TooltipProps {
+  /** Tooltip content */
   content: React.ReactNode;
-  children: React.ReactNode;
-  placement?: 'top' | 'bottom' | 'left' | 'right';
-  variant?: 'default' | 'dark' | 'light' | 'error' | 'warning' | 'success';
-  size?: 'sm' | 'md' | 'lg';
+  
+  /** Position */
+  position?: 'top' | 'bottom' | 'left' | 'right';
+  
+  /** Delay before showing (ms) */
   delay?: number;
-  disabled?: boolean;
-  arrow?: boolean;
-  className?: string;
-  maxWidth?: number;
+  
+  /** Children (trigger element) */
+  children: React.ReactNode;
 }
 
-const tooltipVariants = {
-  variant: {
-    default: 'bg-popover text-popover-foreground border-border',
-    dark: 'bg-foreground text-background border-border',
-    light: 'bg-background text-foreground border-border shadow-floating',
-    error: 'bg-destructive text-destructive-foreground border-destructive',
-    warning: 'bg-warning text-warning-foreground border-warning',
-    success: 'bg-success text-success-foreground border-success',
-  },
-  size: {
-    sm: 'px-sm py-xs text-xs',
-    md: 'px-sm py-sm text-sm',
-    lg: 'px-md py-sm text-base',
-  },
-};
-
-export function Tooltip({
+/**
+ * Tooltip Component
+ * 
+ * @example
+ * ```tsx
+ * <Tooltip content="Click to copy">
+ *   <Button>Copy</Button>
+ * </Tooltip>
+ * ```
+ */
+export const Tooltip: React.FC<TooltipProps> = ({
   content,
+  position = 'top',
+  delay = 200,
   children,
-  placement = 'top',
-  variant = 'default',
-  size = 'md',
-  delay = 500,
-  disabled = false,
-  arrow = true,
-  className = '',
-  maxWidth = 200,
-}: TooltipProps) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const triggerRef = useRef<HTMLDivElement>(null);
-  const tooltipRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout>();
-
-  const showTooltip = () => {
-    if (disabled) return;
-    
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    
+}) => {
+  const [visible, setVisible] = React.useState(false);
+  const timeoutRef = React.useRef<NodeJS.Timeout>();
+  
+  const handleMouseEnter = () => {
     timeoutRef.current = setTimeout(() => {
-      setIsVisible(true);
-      updatePosition();
+      setVisible(true);
     }, delay);
   };
-
-  const hideTooltip = () => {
+  
+  const handleMouseLeave = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-    setIsVisible(false);
+    setVisible(false);
   };
-
-  const updatePosition = () => {
-    if (!triggerRef.current || !tooltipRef.current) return;
-
-    const triggerRect = triggerRef.current.getBoundingClientRect();
-    const tooltipRect = tooltipRef.current.getBoundingClientRect();
-    const viewport = {
-      width: window.innerWidth,
-      height: window.innerHeight,
-    };
-
-    let x = 0;
-    let y = 0;
-
-    switch (placement) {
-      case 'top':
-        x = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
-        y = triggerRect.top - tooltipRect.height - 8;
-        break;
-      case 'bottom':
-        x = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
-        y = triggerRect.bottom + 8;
-        break;
-      case 'left':
-        x = triggerRect.left - tooltipRect.width - 8;
-        y = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
-        break;
-      case 'right':
-        x = triggerRect.right + 8;
-        y = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
-        break;
-    }
-
-    // Adjust for viewport boundaries
-    if (x < 8) x = 8;
-    if (x + tooltipRect.width > viewport.width - 8) {
-      x = viewport.width - tooltipRect.width - 8;
-    }
-    if (y < 8) y = 8;
-    if (y + tooltipRect.height > viewport.height - 8) {
-      y = viewport.height - tooltipRect.height - 8;
-    }
-
-    setPosition({ x, y });
-  };
-
-  useEffect(() => {
-    if (isVisible) {
-      updatePosition();
-      
-      const handleResize = () => updatePosition();
-      const handleScroll = () => updatePosition();
-      
-      window.addEventListener('resize', handleResize);
-      window.addEventListener('scroll', handleScroll, true);
-      
-      return () => {
-        window.removeEventListener('resize', handleResize);
-        window.removeEventListener('scroll', handleScroll, true);
-      };
-    }
-  }, [isVisible]);
-
-  useEffect(() => {
+  
+  React.useEffect(() => {
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
     };
   }, []);
-
-  const tooltipClasses = cn(
-    'fixed z-50 rounded-md border font-medium pointer-events-none',
-    'transition-all duration-200 ease-out',
-    'animate-in fade-in-0 zoom-in-95',
-    tooltipVariants.variant[variant],
-    tooltipVariants.size[size],
-    className
-  );
-
-  const arrowClasses = cn(
-    'absolute w-2 h-2 rotate-45 border',
-    tooltipVariants.variant[variant],
-    placement === 'top' && 'top-full left-1/2 -translate-x-1/2 -translate-y-1/2 border-b-0 border-r-0',
-    placement === 'bottom' && 'bottom-full left-1/2 -translate-x-1/2 translate-y-1/2 border-t-0 border-l-0',
-    placement === 'left' && 'right-full top-1/2 translate-x-1/2 -translate-y-1/2 border-l-0 border-b-0',
-    placement === 'right' && 'left-full top-1/2 -translate-x-1/2 -translate-y-1/2 border-r-0 border-t-0'
-  );
-
+  
+  const positionClasses = {
+    top: 'bottom-full left-1/2 -translate-x-1/2 mb-2',
+    bottom: 'top-full left-1/2 -translate-x-1/2 mt-2',
+    left: 'right-full top-1/2 -translate-y-1/2 mr-2',
+    right: 'left-full top-1/2 -translate-y-1/2 ml-2',
+  };
+  
+  const arrowClasses = {
+    top: 'top-full left-1/2 -translate-x-1/2 border-t-[var(--color-foreground)] border-x-transparent border-b-transparent',
+    bottom: 'bottom-full left-1/2 -translate-x-1/2 border-b-[var(--color-foreground)] border-x-transparent border-t-transparent',
+    left: 'left-full top-1/2 -translate-y-1/2 border-l-[var(--color-foreground)] border-y-transparent border-r-transparent',
+    right: 'right-full top-1/2 -translate-y-1/2 border-r-[var(--color-foreground)] border-y-transparent border-l-transparent',
+  };
+  
   return (
-    <>
-      <div
-        ref={triggerRef}
-        onMouseEnter={showTooltip}
-        onMouseLeave={hideTooltip}
-        onFocus={showTooltip}
-        onBlur={hideTooltip}
-        className="inline-block"
-      >
-        {children}
-      </div>
-
-      {isVisible && typeof document !== 'undefined' && createPortal(
+    <div
+      className="relative inline-block"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {children}
+      
+      {visible && (
         <div
-          ref={tooltipRef}
-          className={tooltipClasses}
-          style={{
-            left: position.x,
-            top: position.y,
-            maxWidth,
-          }}
           role="tooltip"
-          aria-hidden={!isVisible}
+          className={`
+            absolute z-50
+            ${positionClasses[position]}
+            px-2 py-1
+            rounded
+            bg-[var(--color-foreground)]
+            text-[var(--color-background)]
+            text-xs
+            whitespace-nowrap
+            pointer-events-none
+            animate-in fade-in-0 zoom-in-95
+          `}
         >
           {content}
-          {arrow && <div className={arrowClasses} />}
-        </div>,
-        document.body
+          <div
+            className={`
+              absolute w-0 h-0
+              border-4
+              ${arrowClasses[position]}
+            `}
+          />
+        </div>
       )}
-    </>
+    </div>
   );
-}
+};
+
+Tooltip.displayName = 'Tooltip';

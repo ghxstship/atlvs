@@ -4,7 +4,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@ghxstship/ui';
 import {
   Grid,
@@ -49,14 +49,14 @@ const viewConfig = {
   timeline: { label: 'Timeline', icon: Clock, description: 'Chronological timeline' },
   chart: { label: 'Charts', icon: BarChart3, description: 'Data visualizations' },
   gantt: { label: 'Gantt', icon: GitBranch, description: 'Project timeline' },
-  form: { label: 'Form', icon: FileText, description: 'Form-based editing' },
+  form: { label: 'Form', icon: FileText, description: 'Form-based editing' }
 };
 
 export default function ViewSwitcher({
   currentView,
   availableViews = ['table', 'card', 'list', 'kanban', 'calendar', 'gallery', 'timeline', 'chart', 'gantt', 'form'],
   onViewChange,
-  compact = false,
+  compact = false
 }: ViewSwitcherProps) {
   const currentConfig = viewConfig[currentView];
   const CurrentIcon = currentConfig.icon;

@@ -14,7 +14,7 @@ import {
   Edit,
   Download,
   Trash2,
-  Share,
+  Share
 } from 'lucide-react';
 import { Card, Button, Badge, DropdownMenu, Progress } from '@ghxstship/ui';
 import {
@@ -24,7 +24,7 @@ import {
   startOfWeek,
   endOfWeek,
   eachDayOfInterval,
-  isWithinInterval,
+  isWithinInterval
 } from 'date-fns';
 import type { DigitalAsset } from '../types';
 
@@ -59,7 +59,7 @@ export default function GanttView({
   onDelete,
   onShare,
   formatFileSize,
-  getCategoryIcon,
+  getCategoryIcon
 }: GanttViewProps) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [zoom, setZoom] = useState<'day' | 'week' | 'month'>('week');
@@ -79,7 +79,7 @@ export default function GanttView({
       dependencies: [], // Could be populated from project relationships
       category: file.category,
       status: file.status,
-      assignee: file.created_by,
+      assignee: file.created_by
     }));
   }, [files]);
 
@@ -154,7 +154,7 @@ export default function GanttView({
       report: 'bg-orange-500',
       template: 'bg-cyan-500',
       policy: 'bg-red-500',
-      other: 'bg-gray-500',
+      other: 'bg-gray-500'
     };
     return colors[category as keyof typeof colors] || colors.other;
   };
@@ -370,7 +370,7 @@ export default function GanttView({
                     style={{
                       left: position.left,
                       width: position.width,
-                      top: '4px',
+                      top: '4px'
                     }}
                     onClick={() => setSelectedTask(task.id)}
                     title={`${task.name} (${format(task.start, 'MMM d')} - ${format(task.end, 'MMM d')})`}

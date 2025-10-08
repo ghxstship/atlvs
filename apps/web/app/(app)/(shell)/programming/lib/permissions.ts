@@ -5,7 +5,7 @@
 import { createClient } from '@/lib/supabase/server';
 import type {
   PermissionCheck,
-  PermissionResult,
+  PermissionResult
 } from '../types';
 
 export class ProgrammingPermissionsService {
@@ -17,7 +17,7 @@ export class ProgrammingPermissionsService {
     contributor: ['read', 'create', 'update'],
     manager: ['read', 'create', 'update', 'delete'],
     admin: ['read', 'create', 'update', 'delete', 'export', 'import'],
-    owner: ['read', 'create', 'update', 'delete', 'export', 'import'],
+    owner: ['read', 'create', 'update', 'delete', 'export', 'import']
   } as const;
 
   // Entity-specific permissions
@@ -27,57 +27,57 @@ export class ProgrammingPermissionsService {
       contributor: ['read', 'create', 'update'],
       manager: ['read', 'create', 'update', 'delete'],
       admin: ['read', 'create', 'update', 'delete', 'export', 'import'],
-      owner: ['read', 'create', 'update', 'delete', 'export', 'import'],
+      owner: ['read', 'create', 'update', 'delete', 'export', 'import']
     },
     performances: {
       viewer: ['read'],
       contributor: ['read', 'create', 'update'],
       manager: ['read', 'create', 'update', 'delete'],
       admin: ['read', 'create', 'update', 'delete', 'export', 'import'],
-      owner: ['read', 'create', 'update', 'delete', 'export', 'import'],
+      owner: ['read', 'create', 'update', 'delete', 'export', 'import']
     },
     'call-sheets': {
       viewer: ['read'],
       contributor: ['read', 'create', 'update'],
       manager: ['read', 'create', 'update', 'delete'],
       admin: ['read', 'create', 'update', 'delete', 'export', 'import'],
-      owner: ['read', 'create', 'update', 'delete', 'export', 'import'],
+      owner: ['read', 'create', 'update', 'delete', 'export', 'import']
     },
     riders: {
       viewer: ['read'],
       contributor: ['read', 'create', 'update'],
       manager: ['read', 'create', 'update', 'delete'],
       admin: ['read', 'create', 'update', 'delete', 'export', 'import'],
-      owner: ['read', 'create', 'update', 'delete', 'export', 'import'],
+      owner: ['read', 'create', 'update', 'delete', 'export', 'import']
     },
     itineraries: {
       viewer: ['read'],
       contributor: ['read', 'create', 'update'],
       manager: ['read', 'create', 'update', 'delete'],
       admin: ['read', 'create', 'update', 'delete', 'export', 'import'],
-      owner: ['read', 'create', 'update', 'delete', 'export', 'import'],
+      owner: ['read', 'create', 'update', 'delete', 'export', 'import']
     },
     lineups: {
       viewer: ['read'],
       contributor: ['read', 'create', 'update'],
       manager: ['read', 'create', 'update', 'delete'],
       admin: ['read', 'create', 'update', 'delete', 'export', 'import'],
-      owner: ['read', 'create', 'update', 'delete', 'export', 'import'],
+      owner: ['read', 'create', 'update', 'delete', 'export', 'import']
     },
     spaces: {
       viewer: ['read'],
       contributor: ['read', 'create', 'update'],
       manager: ['read', 'create', 'update', 'delete'],
       admin: ['read', 'create', 'update', 'delete', 'export', 'import'],
-      owner: ['read', 'create', 'update', 'delete', 'export', 'import'],
+      owner: ['read', 'create', 'update', 'delete', 'export', 'import']
     },
     workshops: {
       viewer: ['read'],
       contributor: ['read', 'create', 'update'],
       manager: ['read', 'create', 'update', 'delete'],
       admin: ['read', 'create', 'update', 'delete', 'export', 'import'],
-      owner: ['read', 'create', 'update', 'delete', 'export', 'import'],
-    },
+      owner: ['read', 'create', 'update', 'delete', 'export', 'import']
+    }
   } as const;
 
   /**
@@ -91,7 +91,7 @@ export class ProgrammingPermissionsService {
       if (!userRole) {
         return {
           allowed: false,
-          reason: 'User is not a member of this organization',
+          reason: 'User is not a member of this organization'
         };
       }
 
@@ -101,7 +101,7 @@ export class ProgrammingPermissionsService {
       if (!entityPermissions) {
         return {
           allowed: false,
-          reason: 'Unknown entity type',
+          reason: 'Unknown entity type'
         };
       }
 
@@ -110,7 +110,7 @@ export class ProgrammingPermissionsService {
       if (!rolePermissions) {
         return {
           allowed: false,
-          reason: 'Invalid user role',
+          reason: 'Invalid user role'
         };
       }
 
@@ -120,7 +120,7 @@ export class ProgrammingPermissionsService {
         return {
           allowed: false,
           reason: `Role '${userRole}' does not have '${permission.action}' permission for '${permission.entity}'`,
-          required_role: this.getRequiredRoles(permission.entity, permission.action),
+          required_role: this.getRequiredRoles(permission.entity, permission.action)
         };
       }
 
@@ -144,7 +144,7 @@ export class ProgrammingPermissionsService {
       console.error('Permission check error:', error);
       return {
         allowed: false,
-        reason: 'Permission check failed due to system error',
+        reason: 'Permission check failed due to system error'
       };
     }
   }
@@ -209,7 +209,7 @@ export class ProgrammingPermissionsService {
           if (!['admin', 'owner', 'manager'].includes(userRole || '')) {
             return {
               allowed: false,
-              reason: 'Only the creator or managers can perform this action',
+              reason: 'Only the creator or managers can perform this action'
             };
           }
         }
@@ -234,7 +234,7 @@ export class ProgrammingPermissionsService {
       itineraries: 'itineraries',
       lineups: 'lineups',
       spaces: 'spaces',
-      workshops: 'workshops',
+      workshops: 'workshops'
     };
 
     return tableMap[entity] || null;
@@ -325,7 +325,7 @@ export class ProgrammingPermissionsService {
         start_date: { read: true, write: ['contributor', 'manager', 'admin', 'owner'].includes(role) },
         end_date: { read: true, write: ['contributor', 'manager', 'admin', 'owner'].includes(role) },
         location: { read: true, write: ['contributor', 'manager', 'admin', 'owner'].includes(role) },
-        capacity: { read: true, write: ['manager', 'admin', 'owner'].includes(role) },
+        capacity: { read: true, write: ['manager', 'admin', 'owner'].includes(role) }
       },
       performances: {
         title: { read: true, write: ['contributor', 'manager', 'admin', 'owner'].includes(role) },
@@ -333,7 +333,7 @@ export class ProgrammingPermissionsService {
         venue: { read: true, write: ['contributor', 'manager', 'admin', 'owner'].includes(role) },
         date: { read: true, write: ['contributor', 'manager', 'admin', 'owner'].includes(role) },
         duration: { read: true, write: ['contributor', 'manager', 'admin', 'owner'].includes(role) },
-        status: { read: true, write: ['manager', 'admin', 'owner'].includes(role) },
+        status: { read: true, write: ['manager', 'admin', 'owner'].includes(role) }
       },
       // Add similar field permissions for other entities...
     };
@@ -403,7 +403,7 @@ export class ProgrammingPermissionsService {
         user_id: item.user_id,
         role: item.role,
         name: item.users?.name || '',
-        email: item.users?.email || '',
+        email: item.users?.email || ''
       }));
     } catch {
       return [];

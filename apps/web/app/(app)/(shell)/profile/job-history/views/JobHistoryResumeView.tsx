@@ -6,7 +6,7 @@ import {
  Card,
  Badge,
  Button,
- Separator,
+ Separator
 } from '@ghxstship/ui';
 import type { JobHistoryEntry, EmploymentType, CompanySize } from '../types';
 
@@ -32,7 +32,7 @@ const getEmploymentTypeLabel = (type: EmploymentType) => {
  freelance: 'Freelance',
  internship: 'Internship',
  temporary: 'Temporary',
- consultant: 'Consultant',
+ consultant: 'Consultant'
  };
  return labelMap[type] || type;
 };
@@ -43,7 +43,7 @@ const getCompanySizeLabel = (size: CompanySize) => {
  small: 'Small Company',
  medium: 'Medium Company',
  large: 'Large Company',
- enterprise: 'Enterprise',
+ enterprise: 'Enterprise'
  };
  return labelMap[size] || size;
 };
@@ -72,7 +72,7 @@ const formatDateRange = (startDate: string, endDate?: string | null, isCurrent?:
 export default function JobHistoryResumeView({
  entries,
  userProfile,
- loading = false,
+ loading = false
 }: JobHistoryResumeViewProps) {
  const sortedEntries = useMemo(() => {
  return [...entries].sort((a, b) => {
@@ -128,7 +128,7 @@ export default function JobHistoryResumeView({
  navigator.share({
  title: `${userProfile?.full_name || 'Professional'} Resume`,
  text: 'Check out my professional resume',
- url: window.location.href,
+ url: window.location.href
  });
  } else {
  navigator.clipboard.writeText(window.location.href);

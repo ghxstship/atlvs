@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
   Switch,
-  Separator,
+  Separator
 } from '@ghxstship/ui';
 
 interface NotificationsSettingsProps {

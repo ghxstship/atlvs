@@ -25,9 +25,9 @@ const updateInspectionSchema = z.object({
     category: z.string(),
     item: z.string(),
     status: z.enum(["pass", "fail", "na", "pending"]),
-    notes: z.string().optional().nullable(),
+    notes: z.string().optional().nullable()
   })).optional(),
-  attachments: z.array(z.string()).optional(),
+  attachments: z.array(z.string()).optional()
 });
 
 // GET /api/v1/inspections/[id] - Get single inspection
@@ -177,7 +177,7 @@ export async function PATCH(
       .update({
         ...updates,
         updated_at: new Date().toISOString(),
-        updated_by: user.id,
+        updated_by: user.id
       })
       .eq("id", params.id)
       .select(`
@@ -199,7 +199,7 @@ export async function PATCH(
       action: "update",
       resource_type: "inspection",
       resource_id: inspection.id,
-      details: { updates },
+      details: { updates }
     });
 
     return NextResponse.json(inspection);
@@ -272,8 +272,8 @@ export async function DELETE(
       resource_type: "inspection",
       resource_id: params.id,
       details: {
-        title: existingInspection.title,
-      },
+        title: existingInspection.title
+      }
     });
 
     return NextResponse.json({ message: "Inspection deleted successfully" });

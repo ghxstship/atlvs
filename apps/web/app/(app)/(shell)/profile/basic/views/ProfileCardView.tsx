@@ -6,7 +6,7 @@ import {
  Avatar, 
  Badge, 
  Button,
- Skeleton,
+ Skeleton
 } from '@ghxstship/ui';
 import type { UserProfile } from '../types';
 
@@ -25,7 +25,7 @@ export default function ProfileCardView({
  onEdit,
  onView,
  onExport,
- compact = false,
+ compact = false
 }: ProfileCardViewProps) {
  if (loading) {
  return (

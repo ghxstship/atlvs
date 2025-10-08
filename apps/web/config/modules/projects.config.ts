@@ -37,7 +37,7 @@ const ProjectSchema = z.object({
   tags: z.array(z.string()).optional(),
   metadata: z.record(z.any()).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const TaskSchema = z.object({
@@ -54,7 +54,7 @@ const TaskSchema = z.object({
   dependencies: z.array(z.string().uuid()).optional(),
   tags: z.array(z.string()).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const FileSchema = z.object({
@@ -69,7 +69,7 @@ const FileSchema = z.object({
   description: z.string().optional(),
   version: z.number().default(1),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const LocationSchema = z.object({
@@ -90,7 +90,7 @@ const LocationSchema = z.object({
   contact_email: z.string().email().optional(),
   notes: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const RiskSchema = z.object({
@@ -107,7 +107,7 @@ const RiskSchema = z.object({
   identified_date: z.date(),
   review_date: z.date().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export const projectsModuleConfig: ModuleConfig = {

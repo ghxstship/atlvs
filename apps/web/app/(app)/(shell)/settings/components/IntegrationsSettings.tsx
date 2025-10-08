@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Plug, ExternalLink, CheckCircle, AlertCircle, Settings as SettingsIcon, Webhook, Key, Shield } from "lucide-react";
+import { AlertCircle, CheckCircle, ExternalCheckCircle, ExternalLink, Key, Plug, Settings as SettingsIcon, Shield, Webhook } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import {
   Card,
@@ -20,7 +20,7 @@ import {
   Switch,
   Separator,
   Alert,
-  AlertDescription,
+  AlertDescription
 } from '@ghxstship/ui';
 
 interface IntegrationsSettingsProps {

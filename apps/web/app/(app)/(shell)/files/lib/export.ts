@@ -108,7 +108,7 @@ export class FilesExportService {
     // Get files data
     const { data: files } = await filesQueriesService.getFilesWithStats(orgId, {
       filters: params.filters,
-      limit: 10000,
+      limit: 10000
     });
 
     // Filter by IDs if specified
@@ -150,7 +150,7 @@ export class FilesExportService {
     // Get files data
     const { data: files } = await filesQueriesService.getFilesWithStats(orgId, {
       filters: params.filters,
-      limit: 10000,
+      limit: 10000
     });
 
     // Filter by IDs if specified
@@ -167,7 +167,7 @@ export class FilesExportService {
         total_files: exportFiles.length,
         filters: params.filters || {},
         include_versions: params.include_versions || false,
-        include_metadata: params.include_metadata || true,
+        include_metadata: params.include_metadata || true
       },
       files: exportFiles.map(file => ({
         id: file.id,
@@ -188,9 +188,9 @@ export class FilesExportService {
         ...(params.include_versions && {
           versions_count: file.versions?.[0]?.count || 0,
           downloads_count: file.downloads?.[0]?.count || 0,
-          access_logs_count: file.access_logs?.[0]?.count || 0,
-        }),
-      })),
+          access_logs_count: file.access_logs?.[0]?.count || 0
+        })
+      }))
     };
 
     return JSON.stringify(exportData, null, 2);
@@ -379,7 +379,7 @@ export class FilesExportService {
     return {
       status: 'completed',
       progress: 100,
-      downloadUrl: `/api/files/exports/${jobId}/download`,
+      downloadUrl: `/api/files/exports/${jobId}/download`
     };
   }
 }

@@ -11,7 +11,7 @@ const UpdateApiKeySchema = z.object({
   description: z.string().optional(),
   permissions: z.array(z.string()).optional(),
   expiresAt: z.string().optional(),
-  isActive: z.boolean().optional(),
+  isActive: z.boolean().optional()
 });
 
 async function getAuthenticatedUser() {

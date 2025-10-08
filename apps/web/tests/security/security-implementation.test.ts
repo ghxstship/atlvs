@@ -11,8 +11,8 @@ const mockSupabase = {
     mfa: {
       listFactors: vi.fn(),
       verify: vi.fn(),
-      challenge: vi.fn(),
-    },
+      challenge: vi.fn()
+    }
   },
   from: vi.fn(() => ({
     select: vi.fn(() => ({
@@ -20,28 +20,28 @@ const mockSupabase = {
         eq: vi.fn(() => ({
           single: vi.fn(),
           order: vi.fn(() => ({
-            range: vi.fn(),
-          })),
-        })),
+            range: vi.fn()
+          }))
+        }))
       })),
       insert: vi.fn(() => ({
         select: vi.fn(() => ({
-          single: vi.fn(),
-        })),
+          single: vi.fn()
+        }))
       })),
       update: vi.fn(() => ({
         eq: vi.fn(() => ({
           select: vi.fn(() => ({
-            single: vi.fn(),
-          })),
-        })),
+            single: vi.fn()
+          }))
+        }))
       })),
       delete: vi.fn(() => ({
-        eq: vi.fn(),
-      })),
+        eq: vi.fn()
+      }))
     })),
-    rpc: vi.fn(),
-  })),
+    rpc: vi.fn()
+  }))
 };
 
 describe('Security Implementation Tests', () => {
@@ -63,7 +63,7 @@ describe('Security Implementation Tests', () => {
       it('should create session tokens with proper expiration', async () => {
         const mockRequest = {
           cookies: { get: vi.fn() },
-          headers: { get: vi.fn() },
+          headers: { get: vi.fn() }
         };
 
         // Mock session creation
@@ -75,12 +75,12 @@ describe('Security Implementation Tests', () => {
                   id: 'session-123',
                   session_token: 'token-123',
                   refresh_token: 'refresh-123',
-                  expires_at: new Date(Date.now() + 15 * 60 * 1000),
+                  expires_at: new Date(Date.now() + 15 * 60 * 1000)
                 },
-                error: null,
-              }),
-            })),
-          })),
+                error: null
+              })
+            }))
+          }))
         });
 
         const sessionData = await (authService as any).createUserSession(
@@ -108,11 +108,11 @@ describe('Security Implementation Tests', () => {
                       refresh_token: 'valid-refresh',
                       created_at: new Date(Date.now() - 20 * 60 * 1000), // 20 minutes ago
                     },
-                    error: null,
-                  }),
-                })),
-              })),
-            })),
+                    error: null
+                  })
+                }))
+              }))
+            }))
           })
           // Mock refresh token validation
           .mockReturnValueOnce({
@@ -122,13 +122,13 @@ describe('Security Implementation Tests', () => {
                   single: vi.fn().mockResolvedValue({
                     data: {
                       refresh_token: 'valid-refresh',
-                      created_at: new Date(),
+                      created_at: new Date()
                     },
-                    error: null,
-                  }),
-                })),
-              })),
-            })),
+                    error: null
+                  })
+                }))
+              }))
+            }))
           })
           // Mock session update
           .mockReturnValueOnce({
@@ -137,11 +137,11 @@ describe('Security Implementation Tests', () => {
                 select: vi.fn(() => ({
                   single: vi.fn().mockResolvedValue({
                     data: { session_token: 'new-token' },
-                    error: null,
-                  }),
-                })),
-              })),
-            })),
+                    error: null
+                  })
+                }))
+              }))
+            }))
           });
 
         const sessionData = await authService.validateSession('expired-token');
@@ -154,7 +154,7 @@ describe('Security Implementation Tests', () => {
     describe('Role-Based Access Control', () => {
       it('should enforce role-based route access', () => {
         const mockRequest = {
-          nextUrl: { pathname: '/api/v1/finance' },
+          nextUrl: { pathname: '/api/v1/finance' }
         };
 
         // Test member access to finance routes (should be denied)
@@ -178,7 +178,7 @@ describe('Security Implementation Tests', () => {
 
       it('should allow owner full access', () => {
         const mockRequest = {
-          nextUrl: { pathname: '/api/v1/audit_logs' },
+          nextUrl: { pathname: '/api/v1/audit_logs' }
         };
 
         const hasAccess = (authService as any).checkRBAC(
@@ -201,13 +201,13 @@ describe('Security Implementation Tests', () => {
                 data: {
                   memberships: [{
                     organization: { security_settings: {} },
-                    role: 'admin',
-                  }],
+                    role: 'admin'
+                  }]
                 },
-                error: null,
-              }),
-            })),
-          })),
+                error: null
+              })
+            }))
+          }))
         });
 
         const requiresMFA = await (authService as any).isMFARequired('user-123', 'admin', {});
@@ -219,7 +219,7 @@ describe('Security Implementation Tests', () => {
         // Mock MFA verification
         mockSupabase.auth.mfa.verify.mockResolvedValue({
           data: { user: { id: 'user-123' } },
-          error: null,
+          error: null
         });
 
         // Mock user lookup
@@ -232,13 +232,13 @@ describe('Security Implementation Tests', () => {
                     memberships: [{
                       organization_id: 'org-123',
                       organization: { id: 'org-123', name: 'Test Org' },
-                      role: 'admin',
-                    }],
+                      role: 'admin'
+                    }]
                   },
-                  error: null,
-                }),
-              })),
-            })),
+                  error: null
+                })
+              }))
+            }))
           })
           // Mock session creation
           .mockReturnValueOnce({
@@ -246,15 +246,15 @@ describe('Security Implementation Tests', () => {
               select: vi.fn(() => ({
                 single: vi.fn().mockResolvedValue({
                   data: { session_token: 'mfa-session-token' },
-                  error: null,
-                }),
-              })),
-            })),
+                  error: null
+                })
+              }))
+            }))
           });
 
         const mockRequest = {
           cookies: { get: vi.fn() },
-          headers: { get: vi.fn() },
+          headers: { get: vi.fn() }
         };
 
         const result = await authService.completeMFAAuthentication(
@@ -277,25 +277,25 @@ describe('Security Implementation Tests', () => {
               eq: vi.fn(() => ({
                 single: vi.fn().mockResolvedValue({
                   data: { id: 'user-123', failed_login_attempts: 2 },
-                  error: null,
-                }),
-              })),
-            })),
+                  error: null
+                })
+              }))
+            }))
           })
           // Mock user update
           .mockReturnValueOnce({
             update: vi.fn(() => ({
               eq: vi.fn(() => ({
                 select: vi.fn(() => ({
-                  single: vi.fn(),
-                })),
-              })),
-            })),
+                  single: vi.fn()
+                }))
+              }))
+            }))
           });
 
         const mockRequest = {
           cookies: { get: vi.fn() },
-          headers: { get: vi.fn().mockReturnValue('127.0.0.1') },
+          headers: { get: vi.fn().mockReturnValue('127.0.0.1') }
         };
 
         await (authService as any).handleFailedLogin('test@example.com', '127.0.0.1', mockRequest as any);
@@ -311,25 +311,25 @@ describe('Security Implementation Tests', () => {
               eq: vi.fn(() => ({
                 single: vi.fn().mockResolvedValue({
                   data: { id: 'user-123', failed_login_attempts: 4 },
-                  error: null,
-                }),
-              })),
-            })),
+                  error: null
+                })
+              }))
+            }))
           })
           // Mock user update
           .mockReturnValueOnce({
             update: vi.fn(() => ({
               eq: vi.fn(() => ({
                 select: vi.fn(() => ({
-                  single: vi.fn(),
-                })),
-              })),
-            })),
+                  single: vi.fn()
+                }))
+              }))
+            }))
           });
 
         const mockRequest = {
           cookies: { get: vi.fn() },
-          headers: { get: vi.fn().mockReturnValue('127.0.0.1') },
+          headers: { get: vi.fn().mockReturnValue('127.0.0.1') }
         };
 
         await (authService as any).handleFailedLogin('test@example.com', '127.0.0.1', mockRequest as any);
@@ -357,11 +357,11 @@ describe('Security Implementation Tests', () => {
 
         const mockRequest = {
           cookies: {
-            get: vi.fn((name) => name === 'csrf-token' ? { value: token } : undefined),
+            get: vi.fn((name) => name === 'csrf-token' ? { value: token } : undefined)
           },
           headers: {
-            get: vi.fn((name) => name === 'x-csrf-token' ? token : undefined),
-          },
+            get: vi.fn((name) => name === 'x-csrf-token' ? token : undefined)
+          }
         };
 
         const isValid = validateCSRFToken(mockRequest as any);
@@ -374,11 +374,11 @@ describe('Security Implementation Tests', () => {
 
         const mockRequest = {
           cookies: {
-            get: vi.fn(() => ({ value: token1 })),
+            get: vi.fn(() => ({ value: token1 }))
           },
           headers: {
-            get: vi.fn(() => token2),
-          },
+            get: vi.fn(() => token2)
+          }
         };
 
         const isValid = validateCSRFToken(mockRequest as any);
@@ -407,7 +407,7 @@ describe('Security Implementation Tests', () => {
           p_details: { email: 'test@example.com' },
           p_ip_address: '127.0.0.1',
           p_user_agent: 'Mozilla/5.0...',
-          p_session_id: undefined,
+          p_session_id: undefined
         });
       });
 
@@ -431,7 +431,7 @@ describe('Security Implementation Tests', () => {
           p_details: { attempts: 5, ipAddress: '127.0.0.1' },
           p_ip_address: '127.0.0.1',
           p_user_agent: 'Mozilla/5.0...',
-          p_session_id: undefined,
+          p_session_id: undefined
         });
       });
     });
@@ -447,11 +447,11 @@ describe('Security Implementation Tests', () => {
               eq: vi.fn(() => ({
                 single: vi.fn().mockResolvedValue({
                   data: { classification_level: 'restricted' },
-                  error: null,
-                }),
-              })),
-            })),
-          })),
+                  error: null
+                })
+              }))
+            }))
+          }))
         });
 
         // This would test the check_field_access function

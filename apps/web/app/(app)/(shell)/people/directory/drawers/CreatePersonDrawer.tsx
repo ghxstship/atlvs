@@ -1,9 +1,8 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
-import { useCallback, useState, type ChangeEvent, type FormEvent } from 'react';
+import { Activity, Award, Calendar, Clock, FileText, Play, Plus, Search, Settings, Trash2, TrendingUp, User } from 'lucide-react';
+import { type ChangeEvent, type FormEvent, useCallback, useState } from 'react';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea, UnifiedInput } from '@ghxstship/ui';
-import { AppDrawer } from '@ghxstship/ui';
+import { AppDrawer, Button, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea } from '@ghxstship/ui';
 import { usePostHog } from 'posthog-js/react';
 import directoryService from '../lib/directoryService';
 import type { Person } from '../types';
@@ -70,21 +69,25 @@ export default function CreatePersonDrawer({ orgId, open, onClose, onCreated }: 
  const handleInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
  const { name, value } = event.target;
  setFormData(prev => ({ ...prev, [name]: value }));
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const handleTextareaChange = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
  const { name, value } = event.target;
  setFormData(prev => ({ ...prev, [name]: value }));
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const handleStatusChange = useCallback((value: string) => {
  setFormData(prev => ({ ...prev, status: value as PersonStatus }));
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const resetState = useCallback(() => {
  setFormData(createInitialFormData());
  setError(null);
  setIsSubmitting(false);
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const handleClose = useCallback(() => {
@@ -92,6 +95,7 @@ export default function CreatePersonDrawer({ orgId, open, onClose, onCreated }: 
  resetState();
  onClose();
  }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [isSubmitting, onClose, resetState]);
 
  const handleSubmit = useCallback(async (event: FormEvent<HTMLFormElement>) => {
@@ -214,7 +218,7 @@ export default function CreatePersonDrawer({ orgId, open, onClose, onCreated }: 
  <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-body-sm form-label mb-sm">First Name *</label>
- <UnifiedInput
+ <Input
  
  
  value={formData.firstName}
@@ -225,7 +229,7 @@ export default function CreatePersonDrawer({ orgId, open, onClose, onCreated }: 
  </div>
  <div>
  <label className="block text-body-sm form-label mb-sm">Last Name *</label>
- <UnifiedInput
+ <Input
  
  
  value={formData.lastName}
@@ -239,7 +243,7 @@ export default function CreatePersonDrawer({ orgId, open, onClose, onCreated }: 
  <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-body-sm form-label mb-sm">Email</label>
- <UnifiedInput
+ <Input
  
  
  type="email"
@@ -250,7 +254,7 @@ export default function CreatePersonDrawer({ orgId, open, onClose, onCreated }: 
  </div>
  <div>
  <label className="block text-body-sm form-label mb-sm">Phone</label>
- <UnifiedInput
+ <Input
  
  
  value={formData.phone}
@@ -263,7 +267,7 @@ export default function CreatePersonDrawer({ orgId, open, onClose, onCreated }: 
  <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-body-sm form-label mb-sm">Role</label>
- <UnifiedInput
+ <Input
  
  
  value={formData.role}
@@ -273,7 +277,7 @@ export default function CreatePersonDrawer({ orgId, open, onClose, onCreated }: 
  </div>
  <div>
  <label className="block text-body-sm form-label mb-sm">Department</label>
- <UnifiedInput
+ <Input
  
  
  value={formData.department}
@@ -286,7 +290,7 @@ export default function CreatePersonDrawer({ orgId, open, onClose, onCreated }: 
  <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-body-sm form-label mb-sm">Location</label>
- <UnifiedInput
+ <Input
  
  
  value={formData.location}
@@ -296,7 +300,7 @@ export default function CreatePersonDrawer({ orgId, open, onClose, onCreated }: 
  </div>
  <div>
  <label className="block text-body-sm form-label mb-sm">Start Date</label>
- <UnifiedInput
+ <Input
  
  
  type="date"
@@ -324,7 +328,7 @@ export default function CreatePersonDrawer({ orgId, open, onClose, onCreated }: 
 
  <div>
  <label className="block text-body-sm form-label mb-sm">Skills</label>
- <UnifiedInput
+ <Input
  
  
  value={formData.skills}

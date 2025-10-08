@@ -22,7 +22,7 @@ export function MarketingPageClient() {
       <section className="py-xsxl bg-secondary/20">
         <div className="container mx-auto px-lg px-md">
           <div className="text-center mb-xl">
-            <Badge variant="outline" className="mb-sm">
+            <Badge variant="secondary" className="mb-sm">
               Our Products
             </Badge>
             <h2 className={`mb-md ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -70,7 +70,7 @@ export function MarketingPageClient() {
             </div>
             <div className="flex justify-center md:justify-end">
               <Link href="/products/opendeck">
-                <Button variant="outline" className="group transition-all duration-200 hover:scale-105">
+                <Button variant="secondary" className="group transition-all duration-200 hover:scale-105">
                   Explore OPENDECK
                   <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>

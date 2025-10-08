@@ -6,8 +6,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Pricing - GHXSTSHIP',
     description: 'Choose the perfect plan for your creative production needs.',
-    url: 'https://ghxstship.com/pricing',
-  },
+    url: 'https://ghxstship.com/pricing'
+  }
 };
 
 // Product Schema for SEO

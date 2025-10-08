@@ -8,7 +8,7 @@ import {
  CardHeader,
  Badge,
  Button,
- Skeleton,
+ Skeleton
 } from '@ghxstship/ui';
 import type { SettingsKanbanViewProps, SettingRecord, SettingCategory } from '../types';
 
@@ -17,63 +17,63 @@ const CATEGORY_CONFIG = {
  title: 'Organization',
  color: 'bg-blue-50 border-blue-200',
  headerColor: 'bg-blue-100 text-blue-800',
- icon: SettingsIcon,
+ icon: SettingsIcon
  },
  security: {
  title: 'Security',
  color: 'bg-red-50 border-red-200',
  headerColor: 'bg-red-100 text-red-800',
- icon: Lock,
+ icon: Lock
  },
  notifications: {
  title: 'Notifications',
  color: 'bg-green-50 border-green-200',
  headerColor: 'bg-green-100 text-green-800',
- icon: SettingsIcon,
+ icon: SettingsIcon
  },
  integrations: {
  title: 'Integrations',
  color: 'bg-purple-50 border-purple-200',
  headerColor: 'bg-purple-100 text-purple-800',
- icon: SettingsIcon,
+ icon: SettingsIcon
  },
  billing: {
  title: 'Billing',
  color: 'bg-yellow-50 border-yellow-200',
  headerColor: 'bg-yellow-100 text-yellow-800',
- icon: SettingsIcon,
+ icon: SettingsIcon
  },
  permissions: {
  title: 'Permissions',
  color: 'bg-red-50 border-red-200',
  headerColor: 'bg-red-100 text-red-800',
- icon: Lock,
+ icon: Lock
  },
  automations: {
  title: 'Automations',
  color: 'bg-indigo-50 border-indigo-200',
  headerColor: 'bg-indigo-100 text-indigo-800',
- icon: SettingsIcon,
+ icon: SettingsIcon
  },
  compliance: {
  title: 'Compliance',
  color: 'bg-gray-50 border-gray-200',
  headerColor: 'bg-gray-100 text-gray-800',
- icon: Lock,
+ icon: Lock
  },
  backup: {
  title: 'Backup',
  color: 'bg-teal-50 border-teal-200',
  headerColor: 'bg-teal-100 text-teal-800',
- icon: SettingsIcon,
- },
+ icon: SettingsIcon
+ }
 };
 
 export default function SettingsKanbanView({
  settings,
  loading,
  onEdit,
- onMove,
+ onMove
 }: SettingsKanbanViewProps) {
  const [draggedSetting, setDraggedSetting] = useState<SettingRecord | null>(null);
 
@@ -88,7 +88,7 @@ export default function SettingsKanbanView({
  permissions: [],
  automations: [],
  compliance: [],
- backup: [],
+ backup: []
  };
 
  settings.forEach(setting => {

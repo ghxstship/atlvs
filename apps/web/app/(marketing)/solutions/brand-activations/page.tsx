@@ -1,30 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Briefcase,
-  Calendar,
-  Figma,
-  Globe,
-  Megaphone,
-  Palette,
-  Play,
-  Share2,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight, Briefcase, Calendar, Figma, Globe, Megaphone, Palette, Play, Share2, Zap } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Brand Activations | GHXSTSHIP',
   description:
-    'Design, launch, and measure experiential marketing programs with GHXSTSHIP’s activation workflows.',
+    'Design, launch, and measure experiential marketing programs with GHXSTSHIP’s activation workflows.'
 };
 
 const heroStats = [
@@ -38,36 +27,36 @@ const activationPhases = [
   {
     title: 'Concept & Creative',
     description: 'Brief intake, ideation boards, and client approvals built for fast-moving activation teams.',
-    icon: Palette,
+    icon: Palette
   },
   {
     title: 'Production & Logistics',
     description: 'Vendor sourcing, fabrication timelines, and run-of-show planning coordinated in one source of truth.',
-    icon: Calendar,
+    icon: Calendar
   },
   {
     title: 'Launch & Measure',
     description: 'On-site staff tools, lead capture integrations, and performance dashboards in real time.',
-    icon: Share2,
+    icon: Share2
   },
 ];
 
 const activationBenefits = [
   {
     title: 'Faster Campaign Delivery',
-    description: 'Cut revision cycles and condense launch timelines with collaborative asset reviews.',
+    description: 'Cut revision cycles and condense launch timelines with collaborative asset reviews.'
   },
   {
     title: 'Integrated Vendor Network',
-    description: 'Track fabrication bids, contracts, and invoices with automated approvals.',
+    description: 'Track fabrication bids, contracts, and invoices with automated approvals.'
   },
   {
     title: 'Omni-Channel Reporting',
-    description: 'Connect experiential KPIs to digital lift with unified analytics and ROI dashboards.',
+    description: 'Connect experiential KPIs to digital lift with unified analytics and ROI dashboards.'
   },
   {
     title: 'Client Visibility',
-    description: 'Provide stakeholders with status hubs and live activation updates that keep everyone aligned.',
+    description: 'Provide stakeholders with status hubs and live activation updates that keep everyone aligned.'
   },
 ];
 
@@ -79,7 +68,7 @@ const caseStudies = [
     result: '40% faster delivery · 60% fewer revisions · 300% ROI lift · 98% client satisfaction',
     quote:
       'We scaled from 5 to 15 campaigns without hiring a single extra producer. GHXSTSHIP keeps everything tight and on-brand.',
-    author: 'Marcus Rodriguez, Executive Creative Director',
+    author: 'Marcus Rodriguez, Executive Creative Director'
   },
   {
     company: 'Digital Dynamics',
@@ -88,7 +77,7 @@ const caseStudies = [
     result: '50% faster creative production · 35% cost savings · 25% higher engagement',
     quote:
       'Our activations used to be a spreadsheet nightmare. Now every vendor, timeline, and asset lives in one place.',
-    author: 'Sarah Chen, Account Director',
+    author: 'Sarah Chen, Account Director'
   },
 ];
 

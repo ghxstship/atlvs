@@ -1,10 +1,11 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
+import Image from "next/image";
 import { createClient } from '@/lib/supabase/client';
 import { Star, ThumbsUp, Award, MessageSquare, Plus, User } from 'lucide-react';
-import { useToast } from '@ghxstship/ui';
+import { Badge, Button, Card, CardContent, CardHeader, useToast } from '@ghxstship/ui';
 
 interface Endorsement {
   id: string;
@@ -30,7 +31,7 @@ export default function EndorsementsClient() {
     relationship: '',
     message: '',
     rating: 5,
-    is_public: true,
+    is_public: true
   });
   const { addToast } = useToast();
   const supabase = createClient();
@@ -42,8 +43,10 @@ export default function EndorsementsClient() {
     'Strategy', 'Innovation', 'Mentoring', 'Negotiation', 'Presentation', 'Writing'
   ];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchEndorsements();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchEndorsements = async () => {
@@ -84,7 +87,7 @@ export default function EndorsementsClient() {
           to_user_email: newEndorsement.to_user_email,
           relationship: newEndorsement.relationship,
           message: newEndorsement.message,
-          requested_skills: selectedSkills,
+          requested_skills: selectedSkills
         });
 
       if (error) throw error;
@@ -101,7 +104,7 @@ export default function EndorsementsClient() {
         relationship: '',
         message: '',
         rating: 5,
-        is_public: true,
+        is_public: true
       });
       setSelectedSkills([]);
     } catch (error) {
@@ -251,7 +254,7 @@ export default function EndorsementsClient() {
             </div>
             <div>
               <label className="text-body-sm form-label">Message (Optional)</label>
-              <Textarea
+              <textarea
                 value={newEndorsement.message}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewEndorsement({ ...newEndorsement, message: e.target.value })}
                 placeholder="Add a personal message to your endorsement request..."
@@ -259,7 +262,7 @@ export default function EndorsementsClient() {
               />
             </div>
             <div className="flex justify-end gap-sm">
-              <Button variant="outline" onClick={() => setShowAddForm(false)}>
+              <Button variant="secondary" onClick={() => setShowAddForm(false)}>
                 Cancel
               </Button>
               <Button onClick={handleRequestEndorsement}>
@@ -290,11 +293,14 @@ export default function EndorsementsClient() {
                   <div className="flex items-start gap-md">
                     <div className="w-icon-2xl h-icon-2xl rounded-full bg-accent/10 flex items-center justify-center">
                       {endorsement.from_user_avatar ? (
-                        <img
-                          src={endorsement.from_user_avatar}
-                          alt={endorsement.from_user_name}
-                          className="w-full h-full rounded-full object-cover"
-                        />
+                        <>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={endorsement.from_user_avatar}
+                            alt={endorsement.from_user_name}
+                            className="w-full h-full rounded-full object-cover"
+                          />
+                        </>
                       ) : (
                         <User className="w-icon-md h-icon-md color-accent" />
                       )}
@@ -324,7 +330,7 @@ export default function EndorsementsClient() {
                     <p className="text-body-sm form-label mb-sm">Endorsed Skills</p>
                     <div className="flex flex-wrap gap-sm">
                       {endorsement.skills.map((skill, index) => (
-                        <Badge key={index} variant="outline">
+                        <Badge key={index} variant="secondary">
                           {skill}
                         </Badge>
                       ))}

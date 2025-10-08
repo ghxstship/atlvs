@@ -231,7 +231,7 @@ export const STATUS_BADGE = {
   approved: { label: 'Approved', variant: 'success' as const },
   rejected: { label: 'Rejected', variant: 'destructive' as const },
   fulfilled: { label: 'Fulfilled', variant: 'success' as const },
-  cancelled: { label: 'Cancelled', variant: 'secondary' as const },
+  cancelled: { label: 'Cancelled', variant: 'secondary' as const }
 } as const;
 
 // Priority badge configurations
@@ -240,7 +240,7 @@ export const PRIORITY_BADGE = {
   medium: { label: 'Medium', variant: 'default' as const },
   high: { label: 'High', variant: 'warning' as const },
   critical: { label: 'Critical', variant: 'destructive' as const },
-  urgent: { label: 'Urgent', variant: 'destructive' as const },
+  urgent: { label: 'Urgent', variant: 'destructive' as const }
 } as const;
 
 // Rider kind configurations
@@ -254,7 +254,7 @@ export const RIDER_KIND_BADGE = {
   accommodation: { label: 'Accommodation', icon: '🏨' },
   production: { label: 'Production', icon: '🎬' },
   artist: { label: 'Artist', icon: '🎤' },
-  crew: { label: 'Crew', icon: '👥' },
+  crew: { label: 'Crew', icon: '👥' }
 } as const;
 
 // View configuration
@@ -262,7 +262,7 @@ export const VIEW_CONFIG = {
   list: { label: 'List', icon: 'List' },
   grid: { label: 'Grid', icon: 'Grid3X3' },
   timeline: { label: 'Timeline', icon: 'Calendar' },
-  analytics: { label: 'Analytics', icon: 'BarChart3' },
+  analytics: { label: 'Analytics', icon: 'BarChart3' }
 } as const;
 
 // Common equipment options for technical riders

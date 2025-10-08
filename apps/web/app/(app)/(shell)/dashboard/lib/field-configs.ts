@@ -8,7 +8,7 @@ export const dashboardFields = [
     sortable: true,
     searchable: true,
     required: true,
-    width: 200,
+    width: 200
   },
   {
     key: 'type',
@@ -21,7 +21,7 @@ export const dashboardFields = [
       { label: 'System', value: 'system' },
       { label: 'Custom', value: 'custom' },
       { label: 'Template', value: 'template' },
-    ],
+    ]
   },
   {
     key: 'access_level',
@@ -35,13 +35,13 @@ export const dashboardFields = [
       { label: 'Private', value: 'private' },
       { label: 'Team', value: 'team' },
       { label: 'Organization', value: 'organization' },
-    ],
+    ]
   },
   {
     key: 'created_at',
     label: 'Created',
     type: 'date',
     sortable: true,
-    width: 140,
+    width: 140
   },
 ];

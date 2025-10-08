@@ -1,13 +1,13 @@
 "use client";
 
-import { Eye, Edit, Navigation, MapPin, Building, Users, Phone, Mail, Clock, Car, Train, Wifi, Coffee, Monitor, Accessibility, DollarSign, Calendar, Tag, Image, FileText, ExternalLink, Share2 } from "lucide-react";
+import { Accessibility, Building, Calendar, Car, Clock, Coffee, DollarSign, Edit, ExternalShare2, Eye, FileText, Image, Mail, MapPin, Monitor, Navigation, Phone, Share2, Tag, Train, Users, Wifi } from 'lucide-react';
 import {
  Button,
  Badge,
  Tabs,
  TabsList,
  TabsTrigger,
- TabsContent,
+ TabsContent
 } from "@ghxstship/ui";
 import { AppDrawer } from "@ghxstship/ui";
 import { format, parseISO, formatDistanceToNow } from "date-fns";
@@ -33,7 +33,7 @@ export default function ViewLocationDrawer({
  onNavigate,
  getTypeIcon,
  getAvailabilityBadgeVariant,
- getTypeBadgeVariant,
+ getTypeBadgeVariant
 }: ViewLocationDrawerProps) {
  const TypeIcon = getTypeIcon(location.type || "other");
 
@@ -212,7 +212,7 @@ export default function ViewLocationDrawer({
  </Badge>
  )}
  </div>
- ),
+ )
  },
  {
  key: "amenities",
@@ -291,7 +291,7 @@ export default function ViewLocationDrawer({
  </div>
  )}
  </div>
- ),
+ )
  },
  {
  key: "contact",
@@ -387,7 +387,7 @@ export default function ViewLocationDrawer({
  </div>
  </div>
  </div>
- ),
+ )
  },
  {
  key: "floorplans",
@@ -416,7 +416,7 @@ export default function ViewLocationDrawer({
  </div>
  )}
  </div>
- ),
+ )
  },
  ];
 
@@ -432,7 +432,7 @@ export default function ViewLocationDrawer({
  key: "navigate",
  label: "Navigate",
  icon: <Navigation className="h-icon-xs w-icon-xs" />,
- onClick: onNavigate,
+ onClick: onNavigate
  },
  {
  key: "share",
@@ -442,13 +442,13 @@ export default function ViewLocationDrawer({
  const text = `${location.name}\n${location.address || ""}, ${location.city || ""}, ${location.state || ""}`;
  await navigator.clipboard.writeText(text);
  // Toast would show "Location copied to clipboard"
- },
+ }
  },
  {
  key: "edit",
  label: "Edit",
  icon: <Edit className="h-icon-xs w-icon-xs" />,
- onClick: onEdit,
+ onClick: onEdit
  },
  ]}
  />

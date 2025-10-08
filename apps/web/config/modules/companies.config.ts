@@ -42,7 +42,7 @@ const CompanySchema = z.object({
   rating: z.number().min(1).max(5).optional(),
   notes: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const ContactSchema = z.object({
@@ -61,7 +61,7 @@ const ContactSchema = z.object({
   notes: z.string().optional(),
   status: z.enum(['active', 'inactive', 'left_company']),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const AddressSchema = z.object({
@@ -81,7 +81,7 @@ const AddressSchema = z.object({
   is_billing: z.boolean().default(false),
   is_shipping: z.boolean().default(false),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const ContractSchema = z.object({
@@ -105,7 +105,7 @@ const ContractSchema = z.object({
   signed_by_client: z.boolean().default(false),
   signed_date: z.date().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const OpportunitySchema = z.object({
@@ -125,7 +125,7 @@ const OpportunitySchema = z.object({
   next_action_date: z.date().optional(),
   tags: z.array(z.string()).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export const companiesModuleConfig: ModuleConfig = {

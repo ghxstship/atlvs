@@ -41,7 +41,7 @@ const CreateContractSchema = z.object({
     userId: z.string(),
     role: z.string(),
     signedAt: z.string().optional()
-  })).optional(),
+  })).optional()
 });
 
 const UpdateContractSchema = CreateContractSchema.partial();

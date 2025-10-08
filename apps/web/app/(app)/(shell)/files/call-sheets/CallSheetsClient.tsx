@@ -1,7 +1,7 @@
 "use client";
 
 
-import { CheckCircle, Clock, FileText, Plus, Users, Calendar as CalendarIcon } from "lucide-react";
+import { CheckCircle, Clock, FileText, Plus, Users, Calendar as CalendarIcon, CalendarIcon } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createBrowserClient } from '@ghxstship/auth';
 import {
@@ -15,7 +15,7 @@ import {
  ListView,
  StateManagerProvider,
  ViewSwitcher,
- type DataRecord,
+ type DataRecord
 } from '@ghxstship/ui';
 import type { DataViewConfig, FieldConfig, FilterConfig, SortConfig } from '@ghxstship/ui/src/components/DataViews/types';
 import { AppDrawer } from '@ghxstship/ui';
@@ -126,7 +126,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
  location: callSheet.details?.location || 'TBD',
  status: callSheet.status || 'draft',
  details: callSheet.details ?? null,
- ...callSheet,
+ ...callSheet
  }));
  
  setData(transformedData);

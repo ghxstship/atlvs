@@ -8,7 +8,7 @@ import {
  CardContent,
  CardHeader,
  CardTitle,
- Progress,
+ Progress
 } from '@ghxstship/ui';
 
 import { STATUS_COLORS, PRIORITY_COLORS, CHART_COLORS } from '@ghxstship/config/tokens/chart-colors';
@@ -30,12 +30,12 @@ const KIND_COLORS = {
  accommodation: CHART_COLORS.pink,
  production: CHART_COLORS.indigo,
  artist: CHART_COLORS.teal,
- crew: CHART_COLORS.muted,
+ crew: CHART_COLORS.muted
 };
 
 export default function ProgrammingRidersAnalyticsView({
  riders,
- loading,
+ loading
 }: ProgrammingRidersAnalyticsViewProps) {
  const analytics = useMemo((): RiderAnalytics => {
  const totalRiders = riders.length;
@@ -142,7 +142,7 @@ export default function ProgrammingRidersAnalyticsView({
  ridersByStatus: ridersByStatus.sort((a, b) => b.count - a.count),
  ridersByPriority: ridersByPriority.sort((a, b) => b.count - a.count),
  monthlyTrends: monthlyTrends.sort((a, b) => new Date(a.month).getTime() - new Date(b.month).getTime()),
- topEvents,
+ topEvents
  };
  }, [riders]);
 

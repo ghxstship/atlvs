@@ -7,7 +7,7 @@ import {
   RotateCcw,
   Tag,
   Eye,
-  EyeOff,
+  EyeOff
 } from 'lucide-react';
 import {
   Button,
@@ -18,7 +18,7 @@ import {
   SelectValue,
   SelectContent,
   SelectItem,
-  Badge,
+  Badge
 } from '@ghxstship/ui';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -30,7 +30,7 @@ const editFileSchema = z.object({
   description: z.string().max(1000, 'Description must be less than 1000 characters').optional(),
   category: z.enum(['document', 'image', 'video', 'audio', 'drawing', 'specification', 'report', 'template', 'policy', 'other']),
   access_level: z.enum(['public', 'team', 'restricted', 'private']),
-  tags: z.array(z.string()).max(20, 'Maximum 20 tags allowed').optional(),
+  tags: z.array(z.string()).max(20, 'Maximum 20 tags allowed').optional()
 });
 
 type EditFileForm = z.infer<typeof editFileSchema>;
@@ -52,7 +52,7 @@ export default function EditDrawer({
   onSave,
   formatFileSize,
   getCategoryIcon,
-  getAccessIcon,
+  getAccessIcon
 }: EditDrawerProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [tagInput, setTagInput] = useState('');
@@ -64,7 +64,7 @@ export default function EditDrawer({
     watch,
     setValue,
     reset,
-    formState: { errors, isDirty },
+    formState: { errors, isDirty }
   } = useForm<EditFileForm>({
     resolver: zodResolver(editFileSchema),
     defaultValues: {
@@ -72,8 +72,8 @@ export default function EditDrawer({
       description: '',
       category: 'other',
       access_level: 'private',
-      tags: [],
-    },
+      tags: []
+    }
   });
 
   const watchedTags = watch('tags') || [];
@@ -85,7 +85,7 @@ export default function EditDrawer({
         description: file.description || '',
         category: file.category as EditFileForm['category'],
         access_level: file.access_level as EditFileForm['access_level'],
-        tags: file.tags || [],
+        tags: file.tags || []
       });
       setTagInput('');
     }

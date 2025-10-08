@@ -1,25 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Briefcase,
-  Calendar,
-  Coffee,
-  DollarSign,
-  Globe,
-  GraduationCap,
-  Heart,
-  MapPin,
-  Users,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight, Briefcase, Calendar, CheckCircle, Coffee, DollarSign, Globe, GraduationCap, Heart, MapPin, Users, Zap } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -30,8 +18,8 @@ export const metadata: Metadata = {
     title: 'Careers - Join Our Mission | GHXSTSHIP',
     description:
       'Join GHXSTSHIP and help build the future of creative production management. Explore open positions, culture, and benefits.',
-    url: 'https://ghxstship.com/careers',
-  },
+    url: 'https://ghxstship.com/careers'
+  }
 };
 
 const heroStats = [
@@ -52,7 +40,7 @@ const openPositions = [
       'Lead engineering strategy, scale product delivery, and partner with design to ship resilient production tools at enterprise scale.',
     requirements: ['10+ years engineering leadership', 'Experience scaling SaaS platforms', 'Hands-on approach to architecture and DevOps'],
     salary: '$250k - $350k',
-    posted: '1 day ago',
+    posted: '1 day ago'
   },
   {
     id: 'vp-marketing',
@@ -64,7 +52,7 @@ const openPositions = [
       'Build a storytelling engine that positions ATLVS and OPENDECK as the industry standard. Drive GTM, demand gen, and brand narrative.',
     requirements: ['8+ years B2B SaaS marketing leadership', 'Demand-gen and brand experience', 'Ability to craft technical narratives'],
     salary: '$200k - $280k',
-    posted: '3 days ago',
+    posted: '3 days ago'
   },
   {
     id: 'customer-success-manager',
@@ -76,7 +64,7 @@ const openPositions = [
       'Partner with studios and enterprise clients to drive adoption, resolve blockers, and deliver measurable ROI.',
     requirements: ['3+ years customer success', 'Experience with creative or production software', 'Strong communication and facilitation'],
     salary: '$90k - $120k',
-    posted: '1 week ago',
+    posted: '1 week ago'
   },
   {
     id: 'product-manager',
@@ -88,7 +76,7 @@ const openPositions = [
       'Own discovery and delivery for the production planning roadmap, collaborating with customers, design, and engineering.',
     requirements: ['4+ years product management', 'B2B SaaS background', 'Experience with production or operations tools'],
     salary: '$140k - $180k',
-    posted: '5 days ago',
+    posted: '5 days ago'
   },
   {
     id: 'project-director',
@@ -100,7 +88,7 @@ const openPositions = [
       'Lead multi-market activations for enterprise clients, ensuring productions go live on time and on budget.',
     requirements: ['7+ years project leadership', 'Creative industry experience', 'Expertise orchestrating cross-functional teams'],
     salary: '$130k - $170k',
-    posted: '4 days ago',
+    posted: '4 days ago'
   },
 ];
 
@@ -108,32 +96,32 @@ const benefits = [
   {
     title: 'Healthcare Coverage',
     description: 'Medical, dental, and vision plans with global telehealth and mental health support.',
-    icon: Heart,
+    icon: Heart
   },
   {
     title: 'Flexible Work',
     description: 'Remote-first culture, flexible hours, and team hubs in key creative cities.',
-    icon: Globe,
+    icon: Globe
   },
   {
     title: 'Professional Growth',
     description: 'Annual learning stipend, mentorship programs, and rotational leadership tracks.',
-    icon: GraduationCap,
+    icon: GraduationCap
   },
   {
     title: 'Financial Wellness',
     description: 'Competitive compensation, 401(k) match, equity grants, and performance bonuses.',
-    icon: DollarSign,
+    icon: DollarSign
   },
   {
     title: 'Recharge & Support',
     description: 'Unlimited PTO, company shutdown weeks, and wellness stipends.',
-    icon: Coffee,
+    icon: Coffee
   },
   {
     title: 'Give Back',
     description: 'Paid volunteer days and donation matching for causes you champion.',
-    icon: Heart,
+    icon: Heart
   },
 ];
 
@@ -141,32 +129,32 @@ const departments = [
   {
     name: 'Engineering',
     description: 'Build resilient infrastructure, AI copilots, and production tooling used worldwide.',
-    openings: 12,
+    openings: 12
   },
   {
     name: 'Product & Design',
     description: 'Shape the GHXSTSHIP experience end-to-end with research-driven roadmaps and beautiful, accessible interfaces.',
-    openings: 8,
+    openings: 8
   },
   {
     name: 'Sales & Marketing',
     description: 'Grow the platform with strategic partnerships, campaigns, and enterprise relationships.',
-    openings: 9,
+    openings: 9
   },
   {
     name: 'Customer Success',
     description: 'Partner with customers to drive adoption, training, and measurable business impact.',
-    openings: 6,
+    openings: 6
   },
   {
     name: 'Operations & Finance',
     description: 'Keep GHXSTSHIP running efficiently with data-informed decisions and operational excellence.',
-    openings: 5,
+    openings: 5
   },
   {
     name: 'People & Culture',
     description: 'Recruit, develop, and support talent across every discipline and geography.',
-    openings: 4,
+    openings: 4
   },
 ];
 
@@ -174,22 +162,22 @@ const hiringProcess = [
   {
     step: '01',
     title: 'Apply',
-    description: 'Share your experience, portfolio, and why you’re excited to build with GHXSTSHIP.',
+    description: 'Share your experience, portfolio, and why you’re excited to build with GHXSTSHIP.'
   },
   {
     step: '02',
     title: 'Meet The Team',
-    description: 'Connect with talent partners and hiring managers to explore mutual fit.',
+    description: 'Connect with talent partners and hiring managers to explore mutual fit.'
   },
   {
     step: '03',
     title: 'Collaborative Sessions',
-    description: 'Solve relevant scenarios, pair with future teammates, and outline your impact plan.',
+    description: 'Solve relevant scenarios, pair with future teammates, and outline your impact plan.'
   },
   {
     step: '04',
     title: 'Join The Crew',
-    description: 'Review offer details, discuss ramp-up, and start your first mission.',
+    description: 'Review offer details, discuss ramp-up, and start your first mission.'
   },
 ];
 

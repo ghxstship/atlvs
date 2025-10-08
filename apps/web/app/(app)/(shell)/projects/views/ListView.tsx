@@ -42,7 +42,7 @@ export default function ListView({
   onSelectionChange,
   loading = false,
   emptyMessage = "No data available",
-  className = "",
+  className = ""
 }: ListViewProps) {
   const handleItemSelect = (itemId: string, checked: boolean, event: React.MouseEvent) => {
     event.stopPropagation();

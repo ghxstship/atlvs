@@ -12,13 +12,13 @@ const procedureTypeIcons = {
  checklist: CheckSquare,
  guideline: FileText,
  protocol: FileText,
- other: FileText,
+ other: FileText
 };
 
 const difficultyColors = {
  beginner: 'success',
  intermediate: 'warning',
- advanced: 'destructive',
+ advanced: 'destructive'
 };
 
 export default function ProceduresClient() {

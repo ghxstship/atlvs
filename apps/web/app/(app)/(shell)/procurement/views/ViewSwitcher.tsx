@@ -18,7 +18,9 @@ import {
   FileText,
   Settings,
   Image
-} from 'lucide-react';
+} from 'lucide-react';import { Button } from '@ghxstship/ui';
+import { Button } from '@ghxstship/ui';
+
 
 const viewIcons: Record<string, React.ComponentType<any>> = {
   grid: Grid3x3,
@@ -31,7 +33,7 @@ const viewIcons: Record<string, React.ComponentType<any>> = {
   form: FileText,
   table: List,
   chart: BarChart3,
-  gantt: Settings,
+  gantt: Settings
 };
 
 const viewLabels: Record<string, string> = {
@@ -45,7 +47,7 @@ const viewLabels: Record<string, string> = {
   form: 'Form',
   table: 'Table',
   chart: 'Chart',
-  gantt: 'Gantt',
+  gantt: 'Gantt'
 };
 
 interface ViewSwitcherProps {

@@ -12,7 +12,7 @@ import {
  SelectContent,
  SelectItem,
  SelectTrigger,
- SelectValue,
+ SelectValue
 } from '@ghxstship/ui';
 import type { EmergencyContact, EmergencyContactFilters } from '../types';
 import { formatPhone, formatAddress } from '../types';
@@ -34,7 +34,7 @@ interface EmergencyRosterViewProps {
 const verificationVariant: Record<string, { label: string; variant: 'default' | 'secondary' | 'destructive' }> = {
  verified: { label: 'Verified', variant: 'default' },
  pending: { label: 'Pending', variant: 'secondary' },
- unverified: { label: 'Unverified', variant: 'destructive' },
+ unverified: { label: 'Unverified', variant: 'destructive' }
 };
 
 export default function EmergencyRosterView({
@@ -48,7 +48,7 @@ export default function EmergencyRosterView({
  onExport,
  onEdit,
  onDelete,
- onVerify,
+ onVerify
 }: EmergencyRosterViewProps) {
  const allSelected = contacts.length > 0 && contacts.every(contact => selectedIds.includes(contact.id));
  const someSelected = contacts.some(contact => selectedIds.includes(contact.id));

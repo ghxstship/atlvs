@@ -1,7 +1,8 @@
 'use client';
+import { Button, Drawer, Input } from '@ghxstship/ui';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -18,7 +19,7 @@ const manningSlotSchema = z.object({
   skillRequirements: z.string().optional(),
   priority: z.enum(['low', 'medium', 'high', 'critical']).default('medium'),
   startDate: z.string().optional(),
-  endDate: z.string().optional(),
+  endDate: z.string().optional()
 });
 
 type ManningSlotFormData = z.infer<typeof manningSlotSchema>;
@@ -52,14 +53,16 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
     mode: 'onChange',
     defaultValues: {
       priority: 'medium',
-      requiredCount: 1,
+      requiredCount: 1
     }
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isOpen) {
       loadProjects();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, orgId]);
 
   const loadProjects = async () => {
@@ -89,9 +92,9 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
@@ -108,7 +111,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
         role: data.role,
         required_count: data.requiredCount,
         priority: data.priority,
-        organization_id: orgId,
+        organization_id: orgId
       });
 
       // Log activity
@@ -122,8 +125,8 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
           project_id: data.projectId,
           role: data.role,
           required_count: data.requiredCount,
-          priority: data.priority,
-        },
+          priority: data.priority
+        }
       });
 
       // Reset form and close drawer
@@ -135,7 +138,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
       console.error('Error creating manning slot:', error);
       posthog?.capture('pipeline_manning_slot_creation_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -226,7 +229,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   Role *
                 </label>
-                <UnifiedInput                   {...register('role')}
+                <Input                   {...register('role')}
                   placeholder="e.g., Production Manager, Rigger, etc."
                   error={errors.role?.message}
                 />
@@ -236,7 +239,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   Required Count *
                 </label>
-                <UnifiedInput                   {...register('requiredCount', { valueAsNumber: true })}
+                <Input                   {...register('requiredCount', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   placeholder="1"
@@ -265,7 +268,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   Start Date
                 </label>
-                <UnifiedInput                   {...register('startDate')}
+                <Input                   {...register('startDate')}
                   type="date"
                 />
               </div>
@@ -274,7 +277,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   End Date
                 </label>
-                <UnifiedInput                   {...register('endDate')}
+                <Input                   {...register('endDate')}
                   type="date"
                 />
               </div>
@@ -284,7 +287,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
               <label className="block text-body-sm form-label mb-sm">
                 Description
               </label>
-              <Textarea
+              <textarea
                 {...register('description')}
                 placeholder="Brief description of the role and responsibilities"
                 rows={3}
@@ -295,7 +298,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
               <label className="block text-body-sm form-label mb-sm">
                 Skill Requirements
               </label>
-              <Textarea
+              <textarea
                 {...register('skillRequirements')}
                 placeholder="Required skills, certifications, experience, etc."
                 rows={3}

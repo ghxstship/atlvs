@@ -1,24 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  BookOpen,
-  Briefcase,
-  Calendar,
-  ClipboardCheck,
-  FileText,
-  GraduationCap,
-  Lightbulb,
-  Users,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight, BookOpen, Briefcase, Calendar, ClipboardCheck, FileText, GraduationCap, Lightbulb, Users, Zap } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -29,8 +18,8 @@ export const metadata: Metadata = {
     title: 'Resource Library | GHXSTSHIP',
     description:
       'Guides, templates, case studies, and playbooks to help creative teams ship production work with GHXSTSHIP.',
-    url: 'https://ghxstship.com/resources',
-  },
+    url: 'https://ghxstship.com/resources'
+  }
 };
 
 const resourceStats = [
@@ -45,37 +34,37 @@ const resourceCategories = [
     title: 'Playbooks',
     description: 'Step-by-step guides covering production workflows, crew ops, and budget management.',
     count: 42,
-    icon: ClipboardCheck,
+    icon: ClipboardCheck
   },
   {
     title: 'Templates',
     description: 'Ready-to-use spreadsheets, call sheets, and planning documents tailored for ATLVS.',
     count: 56,
-    icon: FileText,
+    icon: FileText
   },
   {
     title: 'Webinars',
     description: 'Monthly sessions with industry experts and GHXSTSHIP strategists.',
     count: 18,
-    icon: GraduationCap,
+    icon: GraduationCap
   },
   {
     title: 'Case Studies',
     description: 'Deep dives into productions using GHXSTSHIP to deliver at scale.',
     count: 24,
-    icon: Briefcase,
+    icon: Briefcase
   },
   {
     title: 'Product Updates',
     description: 'Release notes, roadmap previews, and platform changelog summaries.',
     count: 20,
-    icon: Lightbulb,
+    icon: Lightbulb
   },
   {
     title: 'Events',
     description: 'Summits, partner showcases, and office hours—live and on-demand.',
     count: 15,
-    icon: Calendar,
+    icon: Calendar
   },
 ];
 
@@ -85,21 +74,21 @@ const featuredResources = [
     category: 'Playbook',
     description: 'A 60-page blueprint for structuring enterprise production teams with automation and analytics.',
     readTime: '45 min read',
-    type: 'Premium',
+    type: 'Premium'
   },
   {
     title: 'OPENDECK Talent Pipeline Template',
     category: 'Template',
     description: 'Build and track creator rosters, availability, and contract status in one dynamic sheet.',
     readTime: 'Google Sheet',
-    type: 'Download',
+    type: 'Download'
   },
   {
     title: 'Live Ops With GHXSTSHIP & Meridian Studios',
     category: 'Webinar',
     description: 'Hear how Meridian delivered a multi-market campaign with 30% faster turnaround.',
     readTime: '30 min video',
-    type: 'On-Demand',
+    type: 'On-Demand'
   },
 ];
 
@@ -107,17 +96,17 @@ const learningTracks = [
   {
     title: 'New To GHXSTSHIP',
     description: 'Ramp up in under a week with onboarding checklists, role-based tutorials, and go-live templates.',
-    icon: BookOpen,
+    icon: BookOpen
   },
   {
     title: 'Scaling Operations',
     description: 'Advanced automation, resource planning, and KPI dashboards for production leads.',
-    icon: Users,
+    icon: Users
   },
   {
     title: 'Executive Insights',
     description: 'Board-ready reporting packs, ROI calculators, and compliance briefs for leadership.',
-    icon: Briefcase,
+    icon: Briefcase
   },
 ];
 

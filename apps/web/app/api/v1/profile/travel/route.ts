@@ -10,7 +10,7 @@ import {
   createTravelRecord,
   updateTravelRecord,
   deleteTravelRecord,
-  updateTravelStatus,
+  updateTravelStatus
 } from '@/app/(app)/(shell)/profile/travel/lib/travelService';
 
 async function getSupabase() {
@@ -21,7 +21,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
       expenses_max: searchParams.get('expenses_max') ? parseFloat(searchParams.get('expenses_max')!) : undefined,
       duration_min: searchParams.get('duration_min') ? parseInt(searchParams.get('duration_min')!) : undefined,
       duration_max: searchParams.get('duration_max') ? parseInt(searchParams.get('duration_max')!) : undefined,
-      has_visa: searchParams.get('has_visa') === 'true' ? true : undefined,
+      has_visa: searchParams.get('has_visa') === 'true' ? true : undefined
     };
 
     const validatedFilters = travelFilterSchema.parse(filters);
@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       ...result,
-      stats,
+      stats
     });
   } catch (error) {
     console.error('Error in GET /api/v1/profile/travel:', error);

@@ -32,7 +32,7 @@ const viewIcons = {
   timeline: Timeline,
   chart: BarChart,
   gantt: Gantt,
-  form: FileText,
+  form: FileText
 };
 
 const viewLabels = {
@@ -45,14 +45,14 @@ const viewLabels = {
   timeline: 'Timeline',
   chart: 'Charts',
   gantt: 'Gantt',
-  form: 'Form',
+  form: 'Form'
 };
 
 export default function ViewSwitcher({
   currentView,
   availableViews,
   onViewChange,
-  className = '',
+  className = ''
 }: ViewSwitcherProps) {
   return (
     <div className={`flex items-center space-x-xs ${className}`}>

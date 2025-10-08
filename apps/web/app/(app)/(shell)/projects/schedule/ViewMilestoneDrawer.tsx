@@ -35,7 +35,7 @@ export default function ViewMilestoneDrawer({
  open,
  onOpenChange,
  milestone,
- onEdit,
+ onEdit
 }: ViewMilestoneDrawerProps) {
  // Calculate days until due
  const getDaysUntil = () => {

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Calendar, Users, BarChart3, Shield, CheckCircle, Play, Zap, Clock, FileText, Settings, MessageSquare } from 'lucide-react';
+import { ArrowRight, BarChart3, Calendar, CheckCircle, Clock, FileText, MessageSquare, Play, Settings, Shield, Users, Zap } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
 import { MarketingSection } from '../../../_components/marketing';
 
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ATLVS - Production Management That Actually Works | GHXSTSHIP',
     description: 'Stop drowning in spreadsheets and Slack chaos. ATLVS helps you manage productions like a pro without the mental breakdown.',
-    url: 'https://ghxstship.com/products/atlvs',
-  },
+    url: 'https://ghxstship.com/products/atlvs'
+  }
 };
 
 const features = [
@@ -20,49 +20,49 @@ const features = [
     icon: Calendar,
     title: 'Project Management',
     description: 'End-to-end project lifecycle management with Gantt charts, milestones, dependencies, and automated scheduling.',
-    benefits: ['Visual project timelines', 'Resource allocation', 'Dependency tracking', 'Milestone management'],
+    benefits: ['Visual project timelines', 'Resource allocation', 'Dependency tracking', 'Milestone management']
   },
   {
     icon: Users,
     title: 'Team Collaboration',
     description: 'Real-time communication, file sharing, collaborative workspaces, and integrated video conferencing.',
-    benefits: ['Real-time messaging', 'File version control', 'Collaborative editing', 'Video meetings'],
+    benefits: ['Real-time messaging', 'File version control', 'Collaborative editing', 'Video meetings']
   },
   {
     icon: BarChart3,
     title: 'Analytics & Reporting',
     description: 'AI-powered insights, custom dashboards, predictive analytics, and comprehensive reporting tools.',
-    benefits: ['Custom dashboards', 'Predictive insights', 'Performance metrics', 'Export capabilities'],
+    benefits: ['Custom dashboards', 'Predictive insights', 'Performance metrics', 'Export capabilities']
   },
   {
     icon: Shield,
     title: 'Enterprise Security',
     description: 'SOC 2 compliance, advanced permissions, audit trails, and enterprise-grade data protection.',
-    benefits: ['SOC 2 certified', 'Role-based access', 'Audit logging', 'Data encryption'],
+    benefits: ['SOC 2 certified', 'Role-based access', 'Audit logging', 'Data encryption']
   },
   {
     icon: Clock,
     title: 'Time Tracking',
     description: 'Accurate time logging, automated timesheets, billing integration, and productivity analytics.',
-    benefits: ['Automatic tracking', 'Billing integration', 'Productivity insights', 'Mobile time entry'],
+    benefits: ['Automatic tracking', 'Billing integration', 'Productivity insights', 'Mobile time entry']
   },
   {
     icon: FileText,
     title: 'Document Management',
     description: 'Version control, approval workflows, secure file sharing, and collaborative document editing.',
-    benefits: ['Version history', 'Approval workflows', 'Secure sharing', 'Real-time editing'],
+    benefits: ['Version history', 'Approval workflows', 'Secure sharing', 'Real-time editing']
   },
   {
     icon: Settings,
     title: 'Custom Workflows',
     description: 'Build and automate processes tailored to your specific needs with our visual workflow builder.',
-    benefits: ['Visual builder', 'Automation rules', 'Custom triggers', 'Integration hooks'],
+    benefits: ['Visual builder', 'Automation rules', 'Custom triggers', 'Integration hooks']
   },
   {
     icon: MessageSquare,
     title: 'Communication Hub',
     description: 'Centralized communication with threaded discussions, @mentions, and notification management.',
-    benefits: ['Threaded discussions', 'Smart notifications', '@mention system', 'Communication history'],
+    benefits: ['Threaded discussions', 'Smart notifications', '@mention system', 'Communication history']
   },
 ];
 
@@ -70,17 +70,17 @@ const useCases = [
   {
     title: 'Film & TV Production',
     description: 'Manage complex multi-location shoots, coordinate large crews, and track production schedules.',
-    stats: { projects: '15K+', savings: '45%', satisfaction: '99%' },
+    stats: { projects: '15K+', savings: '45%', satisfaction: '99%' }
   },
   {
     title: 'Advertising Campaigns',
     description: 'Streamline creative workflows, manage client approvals, and deliver campaigns on time.',
-    stats: { projects: '25K+', savings: '35%', satisfaction: '97%' },
+    stats: { projects: '25K+', savings: '35%', satisfaction: '97%' }
   },
   {
     title: 'Corporate Content',
     description: 'Coordinate internal communications, training materials, and brand content production.',
-    stats: { projects: '35K+', savings: '50%', satisfaction: '98%' },
+    stats: { projects: '35K+', savings: '50%', satisfaction: '98%' }
   },
 ];
 
@@ -89,13 +89,13 @@ const testimonials = [
     quote: "ATLVS saved my sanity on our last production. Finally, a tool that actually helps instead of creating more work.",
     author: "Sarah Chen",
     role: "VP of Production, Meridian Studios",
-    project: "The Last Frontier",
+    project: "The Last Frontier"
   },
   {
     quote: "No more chasing people down for updates or wondering if we're on budget. ATLVS just works, which is honestly refreshing.",
     author: "Marcus Rodriguez",
     role: "Creative Director, Apex Advertising",
-    project: "Global Brand Campaign",
+    project: "Global Brand Campaign"
   },
 ];
 

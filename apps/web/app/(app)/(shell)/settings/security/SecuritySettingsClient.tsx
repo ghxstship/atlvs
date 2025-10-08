@@ -20,7 +20,7 @@ import {
  Skeleton,
  Textarea,
  Toggle,
- useToastContext,
+ useToastContext
 } from '@ghxstship/ui';
 import {
  fetchSecuritySettings,
@@ -32,7 +32,7 @@ import {
  SecuritySettings,
  SecuritySettingsResponse,
  SecuritySessionRecord,
- updateSecuritySettings,
+ updateSecuritySettings
 } from '@/lib/services/settingsSecurityClient';
 
 type MfaMethod = (typeof MFA_METHOD_OPTIONS)[number]['value'];
@@ -54,8 +54,8 @@ const PASSWORD_POLICY_PRESETS = [
  requireNumbers: true,
  requireSpecialChars: true,
  maxAge: 90,
- preventReuse: 5,
- },
+ preventReuse: 5
+ }
  },
  {
  name: 'Moderate',
@@ -67,8 +67,8 @@ const PASSWORD_POLICY_PRESETS = [
  requireNumbers: true,
  requireSpecialChars: false,
  maxAge: 180,
- preventReuse: 3,
- },
+ preventReuse: 3
+ }
  },
  {
  name: 'Basic',
@@ -80,8 +80,8 @@ const PASSWORD_POLICY_PRESETS = [
  requireNumbers: true,
  requireSpecialChars: false,
  maxAge: 365,
- preventReuse: 2,
- },
+ preventReuse: 2
+ }
  },
 ];
 
@@ -101,32 +101,32 @@ function ensureSecuritySettings(data?: SecuritySettings): SecuritySettings {
  requireNumbers: data?.passwordPolicy?.requireNumbers ?? true,
  requireSpecialChars: data?.passwordPolicy?.requireSpecialChars ?? true,
  maxAge: data?.passwordPolicy?.maxAge ?? 90,
- preventReuse: data?.passwordPolicy?.preventReuse ?? 5,
+ preventReuse: data?.passwordPolicy?.preventReuse ?? 5
  },
  sessionSettings: {
  maxSessionDuration: data?.sessionSettings?.maxSessionDuration ?? 28800,
  idleTimeout: data?.sessionSettings?.idleTimeout ?? 1800,
  requireReauth: data?.sessionSettings?.requireReauth ?? true,
- maxConcurrentSessions: data?.sessionSettings?.maxConcurrentSessions ?? 3,
+ maxConcurrentSessions: data?.sessionSettings?.maxConcurrentSessions ?? 3
  },
  mfaSettings: {
  required: data?.mfaSettings?.required ?? false,
  allowedMethods: (data?.mfaSettings?.allowedMethods ?? ['totp', 'email']) as MfaMethod[],
- gracePeriod: data?.mfaSettings?.gracePeriod ?? 7,
+ gracePeriod: data?.mfaSettings?.gracePeriod ?? 7
  },
  accessControl: {
  ipWhitelist: data?.accessControl?.ipWhitelist ?? [],
  allowedDomains: data?.accessControl?.allowedDomains ?? [],
  blockSuspiciousActivity: data?.accessControl?.blockSuspiciousActivity ?? true,
  maxFailedAttempts: data?.accessControl?.maxFailedAttempts ?? 5,
- lockoutDuration: data?.accessControl?.lockoutDuration ?? 900,
+ lockoutDuration: data?.accessControl?.lockoutDuration ?? 900
  },
  auditSettings: {
  logAllActions: data?.auditSettings?.logAllActions ?? true,
  retentionPeriod: data?.auditSettings?.retentionPeriod ?? 365,
  alertOnSensitiveActions: data?.auditSettings?.alertOnSensitiveActions ?? true,
- exportEnabled: data?.auditSettings?.exportEnabled ?? true,
- },
+ exportEnabled: data?.auditSettings?.exportEnabled ?? true
+ }
  };
 }
 
@@ -169,8 +169,8 @@ export default function SecuritySettingsClient() {
  ...prev,
  passwordPolicy: {
  ...prev.passwordPolicy,
- ...preset.policy,
- },
+ ...preset.policy
+ }
  }));
  }, []);
 
@@ -179,8 +179,8 @@ export default function SecuritySettingsClient() {
  ...prev,
  [path]: {
  ...(prev[path] as Record<string, unknown>),
- [key]: value,
- },
+ [key]: value
+ }
  }));
  }, []);
 
@@ -189,8 +189,8 @@ export default function SecuritySettingsClient() {
  ...prev,
  [path]: {
  ...(prev[path] as Record<string, unknown>),
- [key]: value,
- },
+ [key]: value
+ }
  }));
  }, []);
 
@@ -199,8 +199,8 @@ export default function SecuritySettingsClient() {
  ...prev,
  [path]: {
  ...(prev[path] as Record<string, unknown>),
- [key]: value,
- },
+ [key]: value
+ }
  }));
  }, []);
 
@@ -531,8 +531,8 @@ export default function SecuritySettingsClient() {
  ...prev,
  mfaSettings: {
  ...prev.mfaSettings,
- allowedMethods: nextMethods,
- },
+ allowedMethods: nextMethods
+ }
  };
  });
  }}

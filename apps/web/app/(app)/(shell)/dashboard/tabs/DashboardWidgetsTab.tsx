@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import { BarChart3, Settings, Plus, Grid } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
+import { BarChart3, Grid, Plus, Settings } from 'lucide-react';
+import { Button, Card, CardBody, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 
 interface DashboardWidgetsTabProps {
   dashboard?: unknown;

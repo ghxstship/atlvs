@@ -30,7 +30,7 @@ const editInspectionSchema = z.object({
   scheduled_at: z.string().optional(),
   inspector_name: z.string().optional(),
   project_id: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 type InspectionRow = {
@@ -75,8 +75,8 @@ export default function InspectionsTableClient({
       scheduled_at: '',
       inspector_name: '',
       project_id: '',
-      notes: '',
-    },
+      notes: ''
+    }
   });
 
   const getStatusColor = (status: string) => {
@@ -118,7 +118,7 @@ export default function InspectionsTableClient({
         scheduled_at: row.scheduled_at ? new Date(row.scheduled_at).toISOString().slice(0, 16) : '',
         inspector_name: row.inspector_name || '',
         project_id: row.project?.id || '',
-        notes: '',
+        notes: ''
       });
 
       // Load comments and activities
@@ -153,7 +153,7 @@ export default function InspectionsTableClient({
       const updateData = {
         ...data,
         project_id: data.project_id || null,
-        scheduled_at: data.scheduled_at || null,
+        scheduled_at: data.scheduled_at || null
       };
 
       const { error: updateError } = await sb

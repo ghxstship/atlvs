@@ -136,7 +136,7 @@ export class DashboardApiClient {
   private interceptors = {
     request: [] as Array<(req: ApiRequest) => ApiRequest | Promise<ApiRequest>>,
     response: [] as Array<(res: ApiResponse) => ApiResponse | Promise<ApiResponse>>,
-    error: [] as Array<(error: IApiError) => IApiError | Promise<IApiError>>,
+    error: [] as Array<(error: IApiError) => IApiError | Promise<IApiError>>
   };
 
   constructor() {

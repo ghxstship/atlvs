@@ -1,6 +1,7 @@
 'use client';
 
 
+import { CalendarIcon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -179,7 +180,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
   const formatBudget = (min?: number, max?: number, currency: string = 'USD') => {
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: currency
     });
     
     if (!min && !max) return 'Budget not specified';

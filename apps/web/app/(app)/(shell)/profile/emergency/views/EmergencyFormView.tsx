@@ -13,14 +13,14 @@ import {
  SelectContent,
  SelectItem,
  Checkbox,
- Badge,
+ Badge
 } from '@ghxstship/ui';
 import type { EmergencyContact, EmergencyContactFormData, FieldConfig } from '../types';
 import {
  CONTACT_FIELD_CONFIG,
  EmergencyAvailability,
  EmergencyPriority,
- EmergencyVerificationStatus,
+ EmergencyVerificationStatus
 } from '../types';
 
 interface EmergencyFormViewProps {
@@ -39,7 +39,7 @@ const sectionOrder = ['Identity', 'Contact Details', 'Availability', 'Status', '
 const selectValues: Record<string, { value: string; label: string }[]> = {
  priority_level: CONTACT_FIELD_CONFIG.find(field => field.key === 'priority_level')?.options ?? [],
  verification_status: CONTACT_FIELD_CONFIG.find(field => field.key === 'verification_status')?.options ?? [],
- availability: CONTACT_FIELD_CONFIG.find(field => field.key === 'availability')?.options ?? [],
+ availability: CONTACT_FIELD_CONFIG.find(field => field.key === 'availability')?.options ?? []
 };
 
 function renderField(
@@ -145,7 +145,7 @@ export default function EmergencyFormView({
  saving,
  onFieldChange,
  onSave,
- onVerify,
+ onVerify
 }: EmergencyFormViewProps) {
  const sections = useMemo(() => {
  return CONTACT_FIELD_CONFIG.reduce<Record<string, FieldConfig[]>((acc, field) => {

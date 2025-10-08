@@ -11,7 +11,7 @@ import {
   updateHistoryEntry,
   deleteHistoryEntry,
   toggleHistoryEntryCurrent,
-  updateHistoryEntryVisibility,
+  updateHistoryEntryVisibility
 } from '@/app/(app)/(shell)/profile/history/lib/historyService';
 import type { HistoryFilters } from '@/app/(app)/(shell)/profile/history/types';
 
@@ -23,7 +23,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
       is_current: (searchParams.get('is_current') ?? 'all') as HistoryFilters['is_current'],
       date_from: searchParams.get('date_from') ?? undefined,
       date_to: searchParams.get('date_to') ?? undefined,
-      has_achievements: searchParams.get('has_achievements') === 'true',
+      has_achievements: searchParams.get('has_achievements') === 'true'
     };
 
     const validatedFilters = historyFilterSchema.parse(filtersInput);
@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       ...result,
-      stats,
+      stats
     });
   } catch (error) {
     console.error('Error in GET /api/v1/profile/history:', error);

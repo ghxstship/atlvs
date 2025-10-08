@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
+import { Card, Button, Input, Badge } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { AssignmentService } from './lib/assignmentService';
@@ -47,10 +47,13 @@ export default function CreateAssignmentClient({ orgId }: CreateAssignmentClient
  } catch (error) {
  console.error('Error loading projects:', error);
  }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [orgId, sb]);
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  loadProjects();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [loadProjects]);
 
  const handleSubmit = async (e: React.FormEvent) => {
@@ -118,7 +121,7 @@ export default function CreateAssignmentClient({ orgId }: CreateAssignmentClient
 
  <div>
  <label className="block text-body-sm form-label mb-xs">Role *</label>
- <UnifiedInput
+ <Input
  type="text"
  value={formData.role}
  onChange={(e) => setFormData(prev => ({ ...prev, role: e.target.value }))}
@@ -129,7 +132,7 @@ export default function CreateAssignmentClient({ orgId }: CreateAssignmentClient
 
  <div>
  <label className="block text-body-sm form-label mb-xs">Department</label>
- <UnifiedInput
+ <Input
  type="text"
  value={formData.department}
  onChange={(e) => setFormData(prev => ({ ...prev, department: e.target.value }))}
@@ -139,7 +142,7 @@ export default function CreateAssignmentClient({ orgId }: CreateAssignmentClient
 
  <div>
  <label className="block text-body-sm form-label mb-xs">Required Count *</label>
- <UnifiedInput
+ <Input
  type="number"
  min="1"
  value={formData.required_count}
@@ -150,7 +153,7 @@ export default function CreateAssignmentClient({ orgId }: CreateAssignmentClient
 
  <div>
  <label className="block text-body-sm form-label mb-xs">Hourly Rate</label>
- <UnifiedInput
+ <Input
  type="number"
  step="0.01"
  value={formData.hourly_rate || ''}
@@ -163,7 +166,7 @@ export default function CreateAssignmentClient({ orgId }: CreateAssignmentClient
  <div>
  <label className="block text-body-sm form-label mb-xs">Skills Required</label>
  <div className="flex gap-sm mb-sm">
- <UnifiedInput
+ <Input
  type="text"
  value={newSkill}
  onChange={(e) => setNewSkill(e.target.value)}

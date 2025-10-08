@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
       role,
       organizationName,
       inviterName,
-      invitedBy: session.user.id,
+      invitedBy: session.user.id
     });
 
     // You could integrate with email services like:
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
         <a href="${process.env.NEXT_PUBLIC_APP_URL}/auth/signup?invite=${encodeURIComponent(email)}&org=${encodeURIComponent(organizationName)}">
           Accept Invitation
         </a>
-      `,
+      `
     };
 
     return NextResponse.json({ 

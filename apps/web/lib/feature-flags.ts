@@ -53,36 +53,36 @@ const FEATURE_FLAGS: Record<FeatureFlag, FeatureFlagConfig> = {
     enabled: false, // Not yet migrated
   },
   'unified-jobs': {
-    enabled: false,
+    enabled: false
   },
   'unified-assets': {
     enabled: true,
-    rolloutPercentage: 100,
+    rolloutPercentage: 100
   },
   'unified-procurement': {
-    enabled: false,
+    enabled: false
   },
   'unified-programming': {
-    enabled: false,
+    enabled: false
   },
   'unified-marketplace': {
-    enabled: false,
+    enabled: false
   },
   'unified-settings': {
-    enabled: false,
+    enabled: false
   },
   'unified-profile': {
-    enabled: false,
+    enabled: false
   },
   'unified-dashboard': {
-    enabled: false,
+    enabled: false
   },
   'unified-analytics': {
-    enabled: false,
+    enabled: false
   },
   'unified-files': {
-    enabled: false,
-  },
+    enabled: false
+  }
 };
 
 /**
@@ -235,7 +235,7 @@ export function overrideFeatureFlag(flag: FeatureFlag, config: Partial<FeatureFl
   
   FEATURE_FLAGS[flag] = {
     ...FEATURE_FLAGS[flag],
-    ...config,
+    ...config
   };
 }
 
@@ -257,7 +257,7 @@ export async function updateFeatureFlag(
   // In production, make API call to update feature flag service
   FEATURE_FLAGS[flag] = {
     ...FEATURE_FLAGS[flag],
-    ...config,
+    ...config
   };
   
   // Trigger re-render of components using this flag

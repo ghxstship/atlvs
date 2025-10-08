@@ -97,7 +97,7 @@ export const createPipelineStageSchema = z.object({
   name: z.string().min(1, 'Stage name is required').max(100),
   order: z.number().int().min(0),
   color: z.string().regex(/^#[0-9A-F]{6}$/i, 'Invalid color format'),
-  probability: z.number().min(0).max(100),
+  probability: z.number().min(0).max(100)
 });
 
 export const updatePipelineStageSchema = createPipelineStageSchema.partial();
@@ -117,7 +117,7 @@ export const createPipelineOpportunitySchema = z.object({
   deal_size: z.enum(DEAL_SIZES).default('medium'),
   source: z.string().max(100).optional().nullable(),
   tags: z.array(z.string()).default([]),
-  custom_fields: z.record(z.any()).default({}),
+  custom_fields: z.record(z.any()).default({})
 });
 
 export const updatePipelineOpportunitySchema = createPipelineOpportunitySchema.partial();
@@ -128,7 +128,7 @@ export const createPipelineActivitySchema = z.object({
   title: z.string().min(1).max(200),
   description: z.string().max(2000).optional().nullable(),
   completed: z.boolean().default(false),
-  due_date: z.string().datetime().optional().nullable(),
+  due_date: z.string().datetime().optional().nullable()
 });
 
 export const updatePipelineActivitySchema = createPipelineActivitySchema.partial();
@@ -165,7 +165,7 @@ export const PIPELINE_OPPORTUNITY_FIELDS: PipelineFieldConfig[] = [
     type: 'text',
     required: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'value',
@@ -173,14 +173,14 @@ export const PIPELINE_OPPORTUNITY_FIELDS: PipelineFieldConfig[] = [
     type: 'currency',
     required: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'probability',
     label: 'Win Probability',
     type: 'number',
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'expected_close_date',
@@ -188,7 +188,7 @@ export const PIPELINE_OPPORTUNITY_FIELDS: PipelineFieldConfig[] = [
     type: 'date',
     required: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'status',
@@ -196,7 +196,7 @@ export const PIPELINE_OPPORTUNITY_FIELDS: PipelineFieldConfig[] = [
     type: 'select',
     sortable: true,
     filterable: true,
-    options: OPPORTUNITY_STATUS.map(s => ({ value: s, label: s.replace('_', ' ').toUpperCase() })),
+    options: OPPORTUNITY_STATUS.map(s => ({ value: s, label: s.replace('_', ' ').toUpperCase() }))
   },
   {
     key: 'deal_size',
@@ -204,7 +204,7 @@ export const PIPELINE_OPPORTUNITY_FIELDS: PipelineFieldConfig[] = [
     type: 'select',
     sortable: true,
     filterable: true,
-    options: DEAL_SIZES.map(s => ({ value: s, label: s.charAt(0).toUpperCase() + s.slice(1) })),
+    options: DEAL_SIZES.map(s => ({ value: s, label: s.charAt(0).toUpperCase() + s.slice(1) }))
   },
   {
     key: 'assigned_to',
@@ -212,14 +212,14 @@ export const PIPELINE_OPPORTUNITY_FIELDS: PipelineFieldConfig[] = [
     type: 'user',
     required: true,
     sortable: true,
-    filterable: true,
+    filterable: true
   },
   {
     key: 'company_id',
     label: 'Company',
     type: 'company',
     sortable: true,
-    filterable: true,
+    filterable: true
   },
 ];
 

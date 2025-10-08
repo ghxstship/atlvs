@@ -2,23 +2,8 @@ import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  Button,
-  Input,
-  Textarea,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerDescription,
-  DrawerFooter,
-  toast,
-} from '@ghxstship/ui';
+import { Button, Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea, toast } from 'lucide-react';
+import { Button, Drawer, Input, Select } from '@ghxstship/ui';
 import { DirectoryService } from '../lib/directory-service';
 import type { CreateCompanyForm } from '../types';
 
@@ -36,7 +21,7 @@ const createCompanySchema = z.object({
   postal_code: z.string().optional(),
   size: z.enum(['startup', 'small', 'medium', 'large', 'enterprise']).optional(),
   founded_year: z.number().min(1800).max(new Date().getFullYear()).optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 const INDUSTRY_OPTIONS: ReadonlyArray<{ value: string; label: string }> = [
@@ -75,7 +60,7 @@ export default function CreateCompanyDrawer({
   open,
   onClose,
   orgId,
-  onSuccess,
+  onSuccess
 }: CreateCompanyDrawerProps) {
   const [loading, setLoading] = useState(false);
   const directoryService = useMemo(() => new DirectoryService(), []);
@@ -96,8 +81,8 @@ export default function CreateCompanyDrawer({
       postal_code: '',
       size: undefined,
       founded_year: undefined,
-      notes: '',
-    },
+      notes: ''
+    }
   });
 
   const industryValue = form.watch('industry') ?? '';
@@ -151,7 +136,7 @@ export default function CreateCompanyDrawer({
 
             <div>
               <label className="block text-sm font-medium mb-2">Description</label>
-              <Textarea
+              <textarea
                 {...form.register('description')}
                 placeholder="Brief description of the company"
                 rows={3}
@@ -268,7 +253,7 @@ export default function CreateCompanyDrawer({
 
           <section>
             <label className="block text-sm font-medium mb-2">Notes</label>
-            <Textarea
+            <textarea
               {...form.register('notes')}
               placeholder="Additional notes about the company"
               rows={3}

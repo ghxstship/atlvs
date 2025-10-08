@@ -1,13 +1,8 @@
 'use client';
 
-import { Eye, CheckCircle, XCircle, Clock, AlertTriangle, User, Calendar } from "lucide-react";
+import { AlertTriangle, Badge, Button, Calendar, Card, CheckCircle, Checkbox, Clock, Eye, User, XCircle } from 'lucide-react';
 import { useState } from 'react';
-import { 
- Card, 
- Badge, 
- Button,
- Checkbox
-} from '@ghxstship/ui';
+import { Badge, Button, Card, Checkbox } from '@ghxstship/ui';
 import type { ApprovalStep } from '../types';
 
 interface ApprovalGridViewProps {
@@ -97,10 +92,10 @@ export default function ApprovalGridView({
  {selectedApprovals.length} approval{selectedApprovals.length !== 1 ? 's' : ''} selected
  </span>
  <div className="flex gap-sm">
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  Approve Selected
  </Button>
- <Button variant="outline" size="sm">
+ <Button variant="secondary" size="sm">
  Reject Selected
  </Button>
  </div>

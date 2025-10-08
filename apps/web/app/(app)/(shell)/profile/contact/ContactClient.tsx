@@ -9,7 +9,7 @@ import {
  TabsList,
  TabsTrigger,
  TabsContent,
- Badge,
+ Badge
 } from '@ghxstship/ui';
 import type { 
  ContactInfo,
@@ -18,7 +18,7 @@ import type {
  ContactStats,
  ContactAnalytics,
  ViewType,
- ContactFormData,
+ ContactFormData
 } from './types';
 import {
  VIEW_CONFIG,
@@ -26,7 +26,7 @@ import {
  createEmptyContact,
  createEmptyContactStats,
  createEmptyContactAnalytics,
- validateContactForm,
+ validateContactForm
 } from './types';
 import ContactFormView from './views/ContactFormView';
 import ContactCardView from './views/ContactCardView';
@@ -38,12 +38,12 @@ const DEFAULT_FILTERS: ContactFilters = {
  search: '',
  verification_status: 'all',
  preferred_contact_method: 'all',
- has_emergency_contact: false,
+ has_emergency_contact: false
 };
 
 const DEFAULT_SORT: ContactSort = {
  field: 'phone_primary',
- direction: 'asc',
+ direction: 'asc'
 };
 
 interface ContactClientProps {
@@ -100,7 +100,7 @@ export default function ContactClient({ orgId, userId }: ContactClientProps) {
  timezone: data.timezone || '',
  preferred_contact_method: data.preferred_contact_method || 'email',
  do_not_contact: data.do_not_contact || false,
- contact_notes: data.contact_notes || '',
+ contact_notes: data.contact_notes || ''
  });
  } catch (error) {
  console.error('Error fetching contact:', error);
@@ -171,7 +171,7 @@ export default function ContactClient({ orgId, userId }: ContactClientProps) {
  const handleFieldChange = useCallback((field: keyof ContactFormData, value: unknown) => {
  setFormData(prev => ({
  ...prev,
- [field]: value,
+ [field]: value
  }));
  setFormErrors(prev => {
  if (!prev[field]) return prev;
@@ -193,7 +193,7 @@ export default function ContactClient({ orgId, userId }: ContactClientProps) {
  const response = await fetch(`/api/v1/profile/contact?user_id=${userId}`, {
  method: 'PUT',
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify(formData),
+ body: JSON.stringify(formData)
  });
 
  if (!response.ok) throw new Error('Failed to save contact');
@@ -213,7 +213,7 @@ export default function ContactClient({ orgId, userId }: ContactClientProps) {
  const handleVerify = useCallback(async () => {
  try {
  const response = await fetch(`/api/v1/profile/contact?user_id=${userId}&action=verify`, {
- method: 'POST',
+ method: 'POST'
  });
  if (!response.ok) throw new Error('Failed to verify contact');
  await Promise.all([
@@ -254,7 +254,7 @@ export default function ContactClient({ orgId, userId }: ContactClientProps) {
  timezone: contact.timezone || '',
  preferred_contact_method: contact.preferred_contact_method || 'email',
  do_not_contact: contact.do_not_contact || false,
- contact_notes: contact.contact_notes || '',
+ contact_notes: contact.contact_notes || ''
  });
  }, []);
 
@@ -276,7 +276,7 @@ export default function ContactClient({ orgId, userId }: ContactClientProps) {
  card: CreditCard,
  list: List,
  map: Map,
- analytics: BarChart3,
+ analytics: BarChart3
  }), []);
 
  const selectedContact = selectedContactId

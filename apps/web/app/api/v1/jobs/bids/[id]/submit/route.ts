@@ -14,7 +14,7 @@ const SubmitBidSchema = z.object({
     url: z.string().url(),
     type: z.string(),
     size: z.number()
-  })).optional(),
+  })).optional()
 });
 
 async function getAuthenticatedUser() {

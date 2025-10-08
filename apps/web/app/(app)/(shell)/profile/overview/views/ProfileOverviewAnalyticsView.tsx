@@ -25,7 +25,7 @@ export default function ProfileOverviewAnalyticsView({
  recentActivity,
  loading = false,
  onRefresh,
- onPeriodChange,
+ onPeriodChange
 }: ProfileOverviewAnalyticsViewProps) {
  const [selectedPeriod, setSelectedPeriod] = useState<'7d' | '30d' | '90d' | '1y'>('30d');
 
@@ -45,7 +45,7 @@ export default function ProfileOverviewAnalyticsView({
  travel_info_updated: Calendar,
  uniform_sizing_updated: Users,
  performance_review_completed: BarChart3,
- endorsement_received: TrendingUp,
+ endorsement_received: TrendingUp
  };
  
  const IconComponent = icons[activityType as keyof typeof icons] || Activity;
@@ -63,7 +63,7 @@ export default function ProfileOverviewAnalyticsView({
  travel_info_updated: 'color-secondary',
  uniform_sizing_updated: 'color-muted',
  performance_review_completed: 'color-accent',
- endorsement_received: 'color-success',
+ endorsement_received: 'color-success'
  };
  
  return colors[activityType as keyof typeof colors] || 'color-muted';

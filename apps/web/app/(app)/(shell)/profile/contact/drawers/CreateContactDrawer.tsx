@@ -23,7 +23,7 @@ import {
 const formSchema = z.object({
  name: z.string().min(1, 'Name is required'),
  description: z.string().optional(),
- status: z.enum(['active', 'inactive', 'pending']).default('active'),
+ status: z.enum(['active', 'inactive', 'pending']).default('active')
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -68,7 +68,7 @@ export default function CreateDrawer({
  await onSave(data);
  toast({
  title: 'Success',
- description: `Record ${mode === 'create' ? 'created' : 'updated'} successfully`,
+ description: `Record ${mode === 'create' ? 'created' : 'updated'} successfully`
  });
  reset();
  onClose();
@@ -76,7 +76,7 @@ export default function CreateDrawer({
  toast({
  title: 'Error',
  description: `Failed to ${mode} record`,
- variant: 'destructive',
+ variant: 'destructive'
  });
  } finally {
  setLoading(false);

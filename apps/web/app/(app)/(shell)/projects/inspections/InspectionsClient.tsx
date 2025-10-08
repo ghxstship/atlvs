@@ -1,7 +1,7 @@
 "use client";
 
 import { Grid3x3, LayoutGrid, Calendar, List, Search, Filter, Download, Upload, MoreVertical, Plus, Edit, Trash2, Eye, Copy, Archive, CheckCircle, XCircle, Clock, AlertTriangle, ClipboardCheck, Shield, Award, TrendingUp, FileCheck, MapPin, User, CalendarCheck, FileText, ChevronDown, ArrowUpDown, ArrowUp, ArrowDown, Columns } from "lucide-react";
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import { createBrowserClient } from "@ghxstship/auth";
 import {
@@ -15,7 +15,7 @@ import {
  TabsList,
  TabsTrigger,
  TabsContent,
- toast,
+ toast
 } from "@ghxstship/ui";
 import { format, parseISO, isAfter, isBefore, isToday, addDays } from "date-fns";
 import CreateInspectionDrawer from "./CreateInspectionDrawer";
@@ -109,7 +109,7 @@ export default function InspectionsClient({
  projectId,
  initialInspections = [],
  projects = [],
- inspectors = [],
+ inspectors = []
 }: InspectionsClientProps) {
  const router = useRouter();
  const supabase = createBrowserClient();
@@ -203,7 +203,7 @@ export default function InspectionsClient({
  event: "*",
  schema: "public",
  table: "project_inspections",
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  (payload) => {
  loadInspections();
@@ -283,7 +283,7 @@ export default function InspectionsClient({
  in_progress: [],
  completed: [],
  failed: [],
- cancelled: [],
+ cancelled: []
  };
 
  sortedInspections.forEach((inspection) => {
@@ -355,7 +355,7 @@ export default function InspectionsClient({
  ...inspectionData,
  title: `${inspection.title} (Copy)`,
  status: "scheduled",
- scheduled_date: addDays(new Date(), 7).toISOString(),
+ scheduled_date: addDays(new Date(), 7).toISOString()
  })
  .select()
  .single();

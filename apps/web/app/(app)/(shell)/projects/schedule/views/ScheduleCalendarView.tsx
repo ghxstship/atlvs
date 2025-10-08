@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar, Clock, Target, ListTodo, AlertCircle, CheckCircle, Users, MoreVertical } from "lucide-react";
-import { useMemo } from "react";
+import { useMemo } from 'react';
 import { Badge, Card } from "@ghxstship/ui";
 import { 
  format, 
@@ -13,7 +13,7 @@ import {
  isSameMonth,
  isSameDay,
  isToday,
- parseISO,
+ parseISO
 } from "date-fns";
 
 interface ScheduleItem {
@@ -48,7 +48,7 @@ export default function ScheduleCalendarView({
  items,
  currentDate,
  calendarView,
- onItemClick,
+ onItemClick
 }: ScheduleCalendarViewProps) {
  // Get calendar days based on view
  const calendarDays = useMemo(() => {

@@ -51,14 +51,14 @@ async function checkDatabase(): Promise<ServiceStatus> {
     return {
       status: 'operational',
       responseTime: Date.now() - startTime,
-      lastChecked: new Date().toISOString(),
+      lastChecked: new Date().toISOString()
     };
   } catch (error) {
     return {
       status: 'outage',
       responseTime: Date.now() - startTime,
       error: error instanceof Error ? error.message : 'Database check failed',
-      lastChecked: new Date().toISOString(),
+      lastChecked: new Date().toISOString()
     };
   }
 }
@@ -72,14 +72,14 @@ async function checkRedis(): Promise<ServiceStatus> {
     return {
       status: 'operational',
       responseTime: Date.now() - startTime,
-      lastChecked: new Date().toISOString(),
+      lastChecked: new Date().toISOString()
     };
   } catch (error) {
     return {
       status: 'degraded',
       responseTime: Date.now() - startTime,
       error: error instanceof Error ? error.message : 'Redis check failed',
-      lastChecked: new Date().toISOString(),
+      lastChecked: new Date().toISOString()
     };
   }
 }
@@ -94,21 +94,21 @@ async function checkStripe(): Promise<ServiceStatus> {
       return {
         status: 'degraded',
         error: 'Stripe API key not configured',
-        lastChecked: new Date().toISOString(),
+        lastChecked: new Date().toISOString()
       };
     }
 
     return {
       status: 'operational',
       responseTime: Date.now() - startTime,
-      lastChecked: new Date().toISOString(),
+      lastChecked: new Date().toISOString()
     };
   } catch (error) {
     return {
       status: 'degraded',
       responseTime: Date.now() - startTime,
       error: error instanceof Error ? error.message : 'Stripe check failed',
-      lastChecked: new Date().toISOString(),
+      lastChecked: new Date().toISOString()
     };
   }
 }
@@ -122,14 +122,14 @@ async function checkStorage(): Promise<ServiceStatus> {
     return {
       status: 'operational',
       responseTime: Date.now() - startTime,
-      lastChecked: new Date().toISOString(),
+      lastChecked: new Date().toISOString()
     };
   } catch (error) {
     return {
       status: 'degraded',
       responseTime: Date.now() - startTime,
       error: error instanceof Error ? error.message : 'Storage check failed',
-      lastChecked: new Date().toISOString(),
+      lastChecked: new Date().toISOString()
     };
   }
 }
@@ -178,13 +178,13 @@ export async function GET(request: NextRequest): Promise<NextResponse<HealthStat
       database: databaseStatus,
       redis: redisStatus,
       stripe: stripeStatus,
-      storage: storageStatus,
+      storage: storageStatus
     };
 
     const overallStatus = calculateOverallStatus(services);
     const metrics = {
       ...getSystemMetrics(),
-      responseTime: Date.now() - startTime,
+      responseTime: Date.now() - startTime
     };
 
     const healthStatus: HealthStatus = {
@@ -192,7 +192,7 @@ export async function GET(request: NextRequest): Promise<NextResponse<HealthStat
       timestamp: new Date().toISOString(),
       uptime: process.uptime(),
       services,
-      metrics,
+      metrics
     };
 
     // Return appropriate HTTP status code
@@ -203,8 +203,8 @@ export async function GET(request: NextRequest): Promise<NextResponse<HealthStat
       status: httpStatus,
       headers: {
         'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     });
 
   } catch (error) {
@@ -214,21 +214,21 @@ export async function GET(request: NextRequest): Promise<NextResponse<HealthStat
       timestamp: new Date().toISOString(),
       uptime: process.uptime(),
       services: {
-        database: { status: 'outage', error: 'Health check failed', lastChecked: new Date().toISOString() },
+        database: { status: 'outage', error: 'Health check failed', lastChecked: new Date().toISOString() }
       },
       metrics: {
         responseTime: Date.now() - startTime,
         memoryUsage: 0,
-        activeConnections: 0,
-      },
+        activeConnections: 0
+      }
     };
 
     return NextResponse.json(errorHealthStatus, {
       status: 503,
       headers: {
         'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     });
   }
 }

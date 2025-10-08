@@ -18,19 +18,19 @@ export const marketplaceListingSchema = z.object({
     amount: z.number().min(0, 'Amount must be positive').optional(),
     currency: z.string().length(3, 'Currency must be 3 characters').optional(),
     negotiable: z.boolean().default(false),
-    paymentTerms: z.string().max(500, 'Payment terms must be less than 500 characters').optional(),
+    paymentTerms: z.string().max(500, 'Payment terms must be less than 500 characters').optional()
   }).optional(),
   location: z.object({
     city: z.string().max(100, 'City must be less than 100 characters').optional(),
     state: z.string().max(100, 'State must be less than 100 characters').optional(),
     country: z.string().max(100, 'Country must be less than 100 characters').optional(),
-    isRemote: z.boolean().default(false),
+    isRemote: z.boolean().default(false)
   }).optional(),
   availability: z.object({
     startDate: z.string().datetime('Invalid start date').optional(),
     endDate: z.string().datetime('Invalid end date').optional(),
     flexible: z.boolean().default(false),
-    immediateAvailable: z.boolean().default(false),
+    immediateAvailable: z.boolean().default(false)
   }).optional(),
   requirements: z.array(z.string().max(500, 'Each requirement must be less than 500 characters')).max(20, 'Maximum 20 requirements').optional(),
   tags: z.array(z.string().max(50, 'Each tag must be less than 50 characters')).max(10, 'Maximum 10 tags').optional(),
@@ -38,7 +38,7 @@ export const marketplaceListingSchema = z.object({
   expiresAt: z.string().datetime('Invalid expiration date').optional(),
   contactEmail: z.string().email('Invalid email address').optional(),
   contactPhone: z.string().max(20, 'Phone number must be less than 20 characters').optional(),
-  preferredContactMethod: z.enum(['email', 'phone', 'platform']).default('platform'),
+  preferredContactMethod: z.enum(['email', 'phone', 'platform']).default('platform')
 });
 
 // Create listing schema (extends base)
@@ -51,7 +51,7 @@ export const createListingSchema = marketplaceListingSchema.extend({
   }),
   category: z.enum(['equipment', 'services', 'talent', 'locations', 'materials', 'other'], {
     errorMap: () => ({ message: 'Invalid category selected' })
-  }),
+  })
 });
 
 // Update listing schema (all fields optional)
@@ -80,7 +80,7 @@ export const vendorProfileSchema = z.object({
   skills: z.array(z.string().max(100, 'Each skill must be less than 100 characters')).max(50, 'Maximum 50 skills').optional(),
   certifications: z.array(z.any()).max(20, 'Maximum 20 certifications').optional(),
   availabilityStatus: z.enum(['available', 'busy', 'unavailable']).default('available'),
-  responseTime: z.string().max(50, 'Response time must be less than 50 characters').optional(),
+  responseTime: z.string().max(50, 'Response time must be less than 50 characters').optional()
 });
 
 // Project schema
@@ -98,7 +98,7 @@ export const marketplaceProjectSchema = z.object({
   locationType: z.enum(['remote', 'onsite', 'hybrid']).optional(),
   visibility: z.enum(['public', 'private', 'invite_only']).default('public'),
   startDate: z.string().datetime('Invalid start date').optional(),
-  endDate: z.string().datetime('Invalid end date').optional(),
+  endDate: z.string().datetime('Invalid end date').optional()
 });
 
 // Proposal schema
@@ -106,7 +106,7 @@ export const marketplaceProposalSchema = z.object({
   amount: z.number().min(0, 'Amount must be positive').optional(),
   currency: z.string().length(3, 'Currency must be 3 characters').default('USD'),
   timeline: z.string().max(500, 'Timeline must be less than 500 characters').optional(),
-  message: z.string().min(10, 'Message must be at least 10 characters').max(5000, 'Message must be less than 5000 characters'),
+  message: z.string().min(10, 'Message must be at least 10 characters').max(5000, 'Message must be less than 5000 characters')
 });
 
 // Search and filter schemas
@@ -119,17 +119,17 @@ export const listingFiltersSchema = z.object({
   search: z.string().max(200, 'Search query must be less than 200 characters').optional(),
   featured: z.boolean().optional(),
   showMine: z.boolean().optional(),
-  active: z.boolean().optional(),
+  active: z.boolean().optional()
 });
 
 // Bulk operation schemas
 export const bulkUpdateListingsSchema = z.object({
   ids: z.array(z.string().uuid('Invalid listing ID')).min(1, 'At least one listing must be selected').max(100, 'Maximum 100 listings per bulk operation'),
-  updates: updateListingSchema,
+  updates: updateListingSchema
 });
 
 export const bulkDeleteListingsSchema = z.object({
-  ids: z.array(z.string().uuid('Invalid listing ID')).min(1, 'At least one listing must be selected').max(100, 'Maximum 100 listings per bulk operation'),
+  ids: z.array(z.string().uuid('Invalid listing ID')).min(1, 'At least one listing must be selected').max(100, 'Maximum 100 listings per bulk operation')
 });
 
 // Import/Export schemas
@@ -139,15 +139,15 @@ export const importListingsSchema = z.object({
   options: z.object({
     skipDuplicates: z.boolean().default(true),
     updateExisting: z.boolean().default(false),
-    validateOnly: z.boolean().default(false),
-  }).optional(),
+    validateOnly: z.boolean().default(false)
+  }).optional()
 });
 
 export const exportListingsSchema = z.object({
   format: z.enum(['csv', 'json', 'excel', 'pdf']),
   filters: listingFiltersSchema.optional(),
   fields: z.array(z.string()).min(1, 'At least one field must be selected').optional(),
-  includeMetadata: z.boolean().default(true),
+  includeMetadata: z.boolean().default(true)
 });
 
 // Validation helper functions

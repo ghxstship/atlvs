@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, CardHeader, CardTitle, CardContent, Button, Alert, Badge } from '@ghxstship/ui';
-import { ArrowLeft, Edit, ArrowUpDown, Calendar, CreditCard, Building, FileText } from 'lucide-react';
+import { Alert, Badge, Button, Card, CardBody, CardContent, CardHeader } from '@ghxstship/ui';
+import { ArrowLeft, Edit, ArrowUpDown, Calendar, CreditCard, Building, FileText , CardBody} from 'lucide-react';
 import { User } from '@supabase/supabase-js';
 import ViewTransactionDrawer from '../drawers/ViewTransactionDrawer';
 import EditTransactionDrawer from '../drawers/EditTransactionDrawer';
@@ -30,7 +30,7 @@ export default function TransactionDetailClient({ transaction, user, orgId }: Tr
  const transactionService = new TransactionService();
  await transactionService.updateTransaction(transaction.id, {
  ...data,
- updated_by: user.id,
+ updated_by: user.id
  });
 
  setSuccess(true);

@@ -10,7 +10,7 @@ import {
  formatDate,
  formatDateShort,
  getDaysUntilExpiry,
- getRecordTypeIcon,
+ getRecordTypeIcon
 } from '../types';
 
 interface HealthAnalyticsViewProps {
@@ -24,7 +24,7 @@ export default function HealthAnalyticsView({
  stats,
  analytics,
  loading,
- analyticsLoading,
+ analyticsLoading
 }: HealthAnalyticsViewProps) {
  if (loading || analyticsLoading) {
  return (

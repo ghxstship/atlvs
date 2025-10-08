@@ -28,7 +28,7 @@ export default function UniformSizingAnalyticsView({
  stats,
  analytics,
  recentActivity,
- loading,
+ loading
 }: UniformSizingAnalyticsViewProps) {
  const [selectedPeriod, setSelectedPeriod] = useState('30d');
 

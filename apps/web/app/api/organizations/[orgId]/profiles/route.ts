@@ -26,7 +26,7 @@ const createProfileSchema = z.object({
   skills: z.array(z.string()).optional(),
   bio: z.string().optional(),
   linkedin_url: z.string().url().optional(),
-  website_url: z.string().url().optional(),
+  website_url: z.string().url().optional()
 });
 
 export async function GET(

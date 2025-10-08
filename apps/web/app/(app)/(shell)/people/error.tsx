@@ -1,46 +1,31 @@
 'use client';
 
 import { useEffect } from 'react';
-import { AlertTriangle, RefreshCw } from 'lucide-react';
 import * as Sentry from '@sentry/nextjs';
+import { ErrorPage } from '@ghxstship/ui';
 
 export default function Error({
   error,
-  reset,
+  reset
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     Sentry.captureException(error);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-content-lg p-lg text-center">
-      <AlertTriangle className="h-icon-2xl w-icon-2xl text-red-500 mb-4" />
-      <h2 className="text-xl font-semibold text-gray-900 mb-2">
-        People Error
-      </h2>
-      <p className="text-gray-600 mb-6 max-w-md">
-        Unable to load team member information. This has been logged.
-      </p>
-      <button
-        onClick={reset}
-        className="inline-flex items-center px-md py-xs bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-      >
-        <RefreshCw className="h-icon-xs w-icon-xs mr-2" />
-        Reload Team
-      </button>
-      {process.env.NODE_ENV === 'development' && (
-        <details className="mt-4 text-left">
-          <summary className="cursor-pointer text-sm text-gray-500">
-            Technical Details
-          </summary>
-          <pre className="mt-2 text-xs bg-gray-100 p-xs rounded overflow-auto">
-            {error.message}
-          </pre>
-        </details>
-      )}
-    </div>
+    <ErrorPage
+      code="Error"
+      title="People Error"
+      message="Unable to load team member information. This has been logged."
+      action={{
+        label: 'Reload Team',
+        onClick: reset
+      }}
+    />
   );
 }

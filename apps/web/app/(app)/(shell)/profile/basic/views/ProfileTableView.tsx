@@ -7,7 +7,7 @@ import {
  Avatar, 
  Badge, 
  Button,
- Skeleton,
+ Skeleton
 } from '@ghxstship/ui';
 import type { UserProfile, ProfileSort } from '../types';
 
@@ -34,7 +34,7 @@ export default function ProfileTableView({
  onEdit,
  onView,
  onExport,
- currentSort,
+ currentSort
 }: ProfileTableViewProps) {
  const allSelected = profiles.length > 0 && profiles.every(profile => selectedItems.includes(profile.id));
  const someSelected = profiles.some(profile => selectedItems.includes(profile.id));

@@ -6,7 +6,7 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 function extractDomain(email: string): string | null {
-  const m = String(email).toLowerCase().match(/@([a-z0-9.-]+\.[a-z]{2,})$/i);
+  const m = String(email).toLowerCase().match(/@([a-z0-9.-]+\.[a-z]{2})$/i);
   return m ? m[1] : null;
 }
 
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest, { params }: { params: { orgId: stri
       return c ? { name: c.name, value: c.value } : undefined;
     },
     set: (name: string, value: string, options) => cookieStore.set(name, value, options),
-    remove: (name: string) => cookieStore.delete(name),
+    remove: (name: string) => cookieStore.delete(name)
   });
 
   const { data: { user } } = await supabase.auth.getUser();

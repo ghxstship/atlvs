@@ -1,36 +1,10 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
-import { Card, Badge, Button } from '@ghxstship/ui';
-import { getStatusColor, StatusBadge } from "../../../../_components/ui"
+import { useEffect, useState, useCallback } from 'react';
+import { Badge, Button, Card, getStatusColor } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Plus,
-  Edit3,
-  Trash2,
-  Play,
-  Pause,
-  Download,
-  Share2,
-  Copy,
-  Calendar,
-  Clock,
-  FileText,
-  Filter,
-  Search,
-  MoreVertical,
-  Eye,
-  Settings,
-  BarChart3,
-  PieChart,
-  LineChart,
-  Table,
-  Users,
-  DollarSign,
-  TrendingUp,
-  Activity
-} from 'lucide-react';
+import { Activity, BarChart3, Calendar, Clock, Copy, DollarSign, Download, Edit3, Eye, FileText, Filter, LineChart, MoreVertical, Pause, PieChart, Play, Plus, Search, Settings, Share2, Table, Trash2, TrendingUp, Users } from 'lucide-react';
 import CreateReportClient from './CreateReportClient';
 
 interface ReportField {
@@ -89,8 +63,10 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadReports();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizationId]);
 
   const loadReports = async () => {
@@ -441,7 +417,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
                     <p className="text-body-sm color-muted mt-xs">{report.description}</p>
                   </div>
                 </div>
-                <StatusBadge status={report.status} />
+                <Badge status={report.status} />
               </div>
               
               <div className="stack-sm mb-md">
@@ -463,7 +439,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
                 {report.schedule?.enabled && (
                   <div className="flex items-center justify-between text-body-sm">
                     <span className="color-muted">Schedule:</span>
-                      <Badge variant="outline">
+                      <Badge variant="secondary">
                         {report.schedule.frequency}
                       </Badge>
                     </div>
@@ -604,7 +580,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
               <div className="flex items-center justify-end cluster-sm mt-lg">
                 <Button
                   type="button"
-                  variant="outline"
+                  variant="secondary"
                   onClick={() => setShowCreateForm(false)}
                 >
                   Cancel

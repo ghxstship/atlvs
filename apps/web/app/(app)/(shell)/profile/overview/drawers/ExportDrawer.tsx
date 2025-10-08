@@ -23,7 +23,7 @@ import {
  Checkbox,
  RadioGroup,
  RadioGroupItem,
- Label,
+ Label
 } from '@ghxstship/ui';
 import type { ProfileOverview } from '../types';
 import { EXPORT_FORMATS, PROFILE_OVERVIEW_FIELD_CONFIG } from '../types';
@@ -32,7 +32,7 @@ const exportSchema = z.object({
  format: z.enum(['csv', 'xlsx', 'json', 'pdf']),
  scope: z.enum(['selected', 'filtered', 'all']),
  fields: z.array(z.string()).min(1, 'Select at least one field to export'),
- includeMetadata: z.boolean().default(false),
+ includeMetadata: z.boolean().default(false)
 });
 
 type ExportFormData = z.infer<typeof exportSchema>;
@@ -52,7 +52,7 @@ export default function ExportDrawer({
  selectedProfiles,
  totalProfiles,
  onExport,
- loading = false,
+ loading = false
 }: ExportDrawerProps) {
  const [selectedFields, setSelectedFields] = useState<string[]>([
  'full_name',
@@ -69,8 +69,8 @@ export default function ExportDrawer({
  format: 'csv',
  scope: selectedProfiles.length > 0 ? 'selected' : 'all',
  fields: selectedFields,
- includeMetadata: false,
- },
+ includeMetadata: false
+ }
  });
 
  const watchedScope = form.watch('scope');
@@ -80,7 +80,7 @@ export default function ExportDrawer({
  try {
  const exportConfig = {
  ...data,
- profileIds: data.scope === 'selected' ? selectedProfiles.map(p => p.id) : undefined,
+ profileIds: data.scope === 'selected' ? selectedProfiles.map(p => p.id) : undefined
  };
  await onExport(exportConfig);
  onClose();
@@ -114,7 +114,7 @@ export default function ExportDrawer({
  csv: FileText,
  xlsx: FileSpreadsheet,
  json: FileJson,
- pdf: File,
+ pdf: File
  };
  const IconComponent = icons[format as keyof typeof icons] || File;
  return <IconComponent className="h-icon-xs w-icon-xs" />;

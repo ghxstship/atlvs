@@ -1,8 +1,8 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
-import { Card, Button, UnifiedInput, Badge, Drawer } from '@ghxstship/ui';
+import { useState, useCallback, useEffect } from 'react';
+import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, MapPin, Edit, Trash2, Copy, QrCode, Scan, Activity } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -48,12 +48,16 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
   const [selectedTracking, setSelectedTracking] = useState<AssetTracking | null>(null);
   const [view, setView] = useState<'grid' | 'list' | 'kanban'>('grid');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadTrackingData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     filterData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trackingData, searchQuery, selectedStatus, selectedMethod]);
 
   const loadTrackingData = async () => {
@@ -242,16 +246,16 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
       case 'maintenance':
         return <Badge variant="warning">Maintenance</Badge>;
       case 'offline':
-        return <Badge variant="destructive">Offline</Badge>;
+        return <Badge variant="error">Offline</Badge>;
       default:
-        return <Badge variant="outline">{status}</Badge>;
+        return <Badge variant="secondary">{status}</Badge>;
     }
   };
 
   const getMethodBadge = (method: AssetTracking['trackingMethod']) => {
     switch (method) {
       case 'manual':
-        return <Badge variant="outline">Manual</Badge>;
+        return <Badge variant="secondary">Manual</Badge>;
       case 'barcode':
         return <Badge variant="secondary">Barcode</Badge>;
       case 'qr_code':
@@ -261,7 +265,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
       case 'gps':
         return <Badge variant="success">GPS</Badge>;
       default:
-        return <Badge variant="outline">{method}</Badge>;
+        return <Badge variant="secondary">{method}</Badge>;
     }
   };
 
@@ -300,11 +304,11 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
           <p className="text-body-sm color-muted">Real-time asset location and status monitoring</p>
         </div>
         <div className="flex items-center gap-sm">
-          <Button variant="outline" onClick={handleScanBarcode} className="flex items-center gap-sm">
+          <Button variant="secondary" onClick={handleScanBarcode} className="flex items-center gap-sm">
             <Scan className="w-icon-xs h-icon-xs" />
             Scan
           </Button>
-          <Button variant="outline" className="flex items-center gap-sm">
+          <Button variant="secondary" className="flex items-center gap-sm">
             <Download className="w-icon-xs h-icon-xs" />
             Export
           </Button>
@@ -318,7 +322,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
             <div className="flex-1 min-w-container-sm">
               <div className="relative">
                 <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted w-icon-xs h-icon-xs" />
-                <UnifiedInput                   placeholder="Search assets..."
+                <Input                   placeholder="Search assets..."
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
@@ -461,7 +465,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
                 <div className="flex gap-sm mt-md">
                   <Button
                    
-                    variant="outline"
+                    variant="secondary"
                     onClick={() => handleUpdateLocation(tracking)}
                     className="flex-1"
                   >
@@ -485,14 +489,14 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
         <div className="p-lg stack-md">
           <div>
             <label className="block text-body-sm form-label mb-xs">Asset</label>
-            <UnifiedInput               value={selectedTracking?.assetName || ''}
+            <Input               value={selectedTracking?.assetName || ''}
               disabled
                className="bg-secondary"
             />
           </div>
           <div>
             <label className="block text-body-sm form-label mb-xs">Current Location</label>
-            <UnifiedInput               placeholder="Enter new location"
+            <Input               placeholder="Enter new location"
               defaultValue={selectedTracking?.currentLocation}
             />
           </div>
@@ -522,7 +526,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
             <Button className="flex-1">
               Update Location
             </Button>
-            <Button variant="outline" onClick={() => setShowDrawer(false)}>
+            <Button variant="secondary" onClick={() => setShowDrawer(false)}>
               Cancel
             </Button>
           </div>

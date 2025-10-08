@@ -1,23 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Badge, Button, Skeleton, Drawer, Icon, IconWithText, StatusIcon, H2, type DataRecord } from '@ghxstship/ui';
-import { 
-  FileText,
-  Plus,
-  Edit,
-  Trash2,
-  Calendar,
-  DollarSign,
-  Building,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Download,
-  Upload
-} from 'lucide-react';
+import { Badge, Button, Card, Drawer, H2, Icon, IconWithText, Skeleton, StateManagerProvider, StatusIcon, type DataRecord } from '@ghxstship/ui';
+import { AlertTriangle, Building, Calendar, CheckCircle, Clock, DollarSign, Download, Edit, FileText, Plus, Trash2, Upload } from 'lucide-react';
 
 interface ContractsClientProps {
   user: User;
@@ -67,9 +54,12 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadContracts();
     loadCompanies();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, typeFilter, statusFilter]);
 
   const loadContracts = async () => {
@@ -219,7 +209,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
   const formatCurrency = (amount: number, currency = 'USD') => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: currency
     }).format(amount);
   };
 

@@ -10,7 +10,7 @@ export const COMPANY_FIELD_CONFIGS: FieldConfig[] = [
     searchable: true,
     sortable: true,
     filterable: true,
-    width: 200,
+    width: 200
   },
   {
     key: 'industry',
@@ -32,7 +32,7 @@ export const COMPANY_FIELD_CONFIGS: FieldConfig[] = [
     searchable: true,
     sortable: true,
     filterable: true,
-    width: 150,
+    width: 150
   },
   {
     key: 'status',
@@ -47,7 +47,7 @@ export const COMPANY_FIELD_CONFIGS: FieldConfig[] = [
     required: true,
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'size',
@@ -62,7 +62,7 @@ export const COMPANY_FIELD_CONFIGS: FieldConfig[] = [
     ],
     sortable: true,
     filterable: true,
-    width: 140,
+    width: 140
   },
   {
     key: 'website',
@@ -70,7 +70,7 @@ export const COMPANY_FIELD_CONFIGS: FieldConfig[] = [
     type: 'url',
     searchable: true,
     sortable: true,
-    width: 180,
+    width: 180
   },
   {
     key: 'email',
@@ -78,7 +78,7 @@ export const COMPANY_FIELD_CONFIGS: FieldConfig[] = [
     type: 'email',
     searchable: true,
     sortable: true,
-    width: 180,
+    width: 180
   },
   {
     key: 'phone',
@@ -86,7 +86,7 @@ export const COMPANY_FIELD_CONFIGS: FieldConfig[] = [
     type: 'phone',
     searchable: true,
     sortable: true,
-    width: 140,
+    width: 140
   },
   {
     key: 'city',
@@ -95,7 +95,7 @@ export const COMPANY_FIELD_CONFIGS: FieldConfig[] = [
     searchable: true,
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'country',
@@ -104,7 +104,7 @@ export const COMPANY_FIELD_CONFIGS: FieldConfig[] = [
     searchable: true,
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'founded_year',
@@ -112,7 +112,7 @@ export const COMPANY_FIELD_CONFIGS: FieldConfig[] = [
     type: 'number',
     sortable: true,
     filterable: true,
-    width: 100,
+    width: 100
   },
   {
     key: 'created_at',
@@ -120,7 +120,7 @@ export const COMPANY_FIELD_CONFIGS: FieldConfig[] = [
     type: 'datetime',
     sortable: true,
     filterable: true,
-    width: 140,
+    width: 140
   },
 ];
 
@@ -133,7 +133,7 @@ export const CONTRACT_FIELD_CONFIGS: FieldConfig[] = [
     required: true,
     searchable: true,
     sortable: true,
-    width: 200,
+    width: 200
   },
   {
     key: 'company_name',
@@ -142,7 +142,7 @@ export const CONTRACT_FIELD_CONFIGS: FieldConfig[] = [
     searchable: true,
     sortable: true,
     filterable: true,
-    width: 180,
+    width: 180
   },
   {
     key: 'type',
@@ -159,7 +159,7 @@ export const CONTRACT_FIELD_CONFIGS: FieldConfig[] = [
     required: true,
     sortable: true,
     filterable: true,
-    width: 160,
+    width: 160
   },
   {
     key: 'status',
@@ -176,7 +176,7 @@ export const CONTRACT_FIELD_CONFIGS: FieldConfig[] = [
     required: true,
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'value',
@@ -184,7 +184,7 @@ export const CONTRACT_FIELD_CONFIGS: FieldConfig[] = [
     type: 'currency',
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'start_date',
@@ -192,7 +192,7 @@ export const CONTRACT_FIELD_CONFIGS: FieldConfig[] = [
     type: 'date',
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'end_date',
@@ -200,7 +200,7 @@ export const CONTRACT_FIELD_CONFIGS: FieldConfig[] = [
     type: 'date',
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'auto_renew',
@@ -208,7 +208,7 @@ export const CONTRACT_FIELD_CONFIGS: FieldConfig[] = [
     type: 'boolean',
     sortable: true,
     filterable: true,
-    width: 100,
+    width: 100
   },
   {
     key: 'created_at',
@@ -216,7 +216,7 @@ export const CONTRACT_FIELD_CONFIGS: FieldConfig[] = [
     type: 'datetime',
     sortable: true,
     filterable: true,
-    width: 140,
+    width: 140
   },
 ];
 
@@ -229,7 +229,7 @@ export const QUALIFICATION_FIELD_CONFIGS: FieldConfig[] = [
     required: true,
     searchable: true,
     sortable: true,
-    width: 200,
+    width: 200
   },
   {
     key: 'company_name',
@@ -238,7 +238,7 @@ export const QUALIFICATION_FIELD_CONFIGS: FieldConfig[] = [
     searchable: true,
     sortable: true,
     filterable: true,
-    width: 180,
+    width: 180
   },
   {
     key: 'type',
@@ -255,7 +255,7 @@ export const QUALIFICATION_FIELD_CONFIGS: FieldConfig[] = [
     required: true,
     sortable: true,
     filterable: true,
-    width: 140,
+    width: 140
   },
   {
     key: 'verification_status',
@@ -270,7 +270,7 @@ export const QUALIFICATION_FIELD_CONFIGS: FieldConfig[] = [
     required: true,
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'issuing_authority',
@@ -279,7 +279,7 @@ export const QUALIFICATION_FIELD_CONFIGS: FieldConfig[] = [
     searchable: true,
     sortable: true,
     filterable: true,
-    width: 160,
+    width: 160
   },
   {
     key: 'certificate_number',
@@ -287,7 +287,7 @@ export const QUALIFICATION_FIELD_CONFIGS: FieldConfig[] = [
     type: 'text',
     searchable: true,
     sortable: true,
-    width: 140,
+    width: 140
   },
   {
     key: 'issue_date',
@@ -295,7 +295,7 @@ export const QUALIFICATION_FIELD_CONFIGS: FieldConfig[] = [
     type: 'date',
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'expiry_date',
@@ -303,7 +303,7 @@ export const QUALIFICATION_FIELD_CONFIGS: FieldConfig[] = [
     type: 'date',
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'verification_date',
@@ -311,7 +311,7 @@ export const QUALIFICATION_FIELD_CONFIGS: FieldConfig[] = [
     type: 'date',
     sortable: true,
     filterable: true,
-    width: 130,
+    width: 130
   },
   {
     key: 'created_at',
@@ -319,7 +319,7 @@ export const QUALIFICATION_FIELD_CONFIGS: FieldConfig[] = [
     type: 'datetime',
     sortable: true,
     filterable: true,
-    width: 140,
+    width: 140
   },
 ];
 
@@ -332,7 +332,7 @@ export const RATING_FIELD_CONFIGS: FieldConfig[] = [
     searchable: true,
     sortable: true,
     filterable: true,
-    width: 180,
+    width: 180
   },
   {
     key: 'rating',
@@ -341,7 +341,7 @@ export const RATING_FIELD_CONFIGS: FieldConfig[] = [
     required: true,
     sortable: true,
     filterable: true,
-    width: 100,
+    width: 100
   },
   {
     key: 'category',
@@ -358,7 +358,7 @@ export const RATING_FIELD_CONFIGS: FieldConfig[] = [
     required: true,
     sortable: true,
     filterable: true,
-    width: 140,
+    width: 140
   },
   {
     key: 'recommendation',
@@ -373,7 +373,7 @@ export const RATING_FIELD_CONFIGS: FieldConfig[] = [
     required: true,
     sortable: true,
     filterable: true,
-    width: 160,
+    width: 160
   },
   {
     key: 'rater_name',
@@ -381,14 +381,14 @@ export const RATING_FIELD_CONFIGS: FieldConfig[] = [
     type: 'text',
     searchable: true,
     sortable: true,
-    width: 140,
+    width: 140
   },
   {
     key: 'review',
     label: 'Review',
     type: 'textarea',
     searchable: true,
-    width: 200,
+    width: 200
   },
   {
     key: 'is_public',
@@ -396,7 +396,7 @@ export const RATING_FIELD_CONFIGS: FieldConfig[] = [
     type: 'boolean',
     sortable: true,
     filterable: true,
-    width: 80,
+    width: 80
   },
   {
     key: 'created_at',
@@ -404,7 +404,7 @@ export const RATING_FIELD_CONFIGS: FieldConfig[] = [
     type: 'datetime',
     sortable: true,
     filterable: true,
-    width: 140,
+    width: 140
   },
 ];
 
@@ -417,7 +417,7 @@ export const CONTACT_FIELD_CONFIGS: FieldConfig[] = [
     required: true,
     searchable: true,
     sortable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'last_name',
@@ -426,7 +426,7 @@ export const CONTACT_FIELD_CONFIGS: FieldConfig[] = [
     required: true,
     searchable: true,
     sortable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'title',
@@ -434,7 +434,7 @@ export const CONTACT_FIELD_CONFIGS: FieldConfig[] = [
     type: 'text',
     searchable: true,
     sortable: true,
-    width: 140,
+    width: 140
   },
   {
     key: 'email',
@@ -442,7 +442,7 @@ export const CONTACT_FIELD_CONFIGS: FieldConfig[] = [
     type: 'email',
     searchable: true,
     sortable: true,
-    width: 180,
+    width: 180
   },
   {
     key: 'phone',
@@ -450,7 +450,7 @@ export const CONTACT_FIELD_CONFIGS: FieldConfig[] = [
     type: 'phone',
     searchable: true,
     sortable: true,
-    width: 140,
+    width: 140
   },
   {
     key: 'department',
@@ -459,7 +459,7 @@ export const CONTACT_FIELD_CONFIGS: FieldConfig[] = [
     searchable: true,
     sortable: true,
     filterable: true,
-    width: 140,
+    width: 140
   },
   {
     key: 'is_primary',
@@ -467,7 +467,7 @@ export const CONTACT_FIELD_CONFIGS: FieldConfig[] = [
     type: 'boolean',
     sortable: true,
     filterable: true,
-    width: 80,
+    width: 80
   },
   {
     key: 'created_at',
@@ -475,7 +475,7 @@ export const CONTACT_FIELD_CONFIGS: FieldConfig[] = [
     type: 'datetime',
     sortable: true,
     filterable: true,
-    width: 140,
+    width: 140
   },
 ];
 
@@ -495,7 +495,7 @@ export const EXPORT_FIELD_MAPPINGS = {
     country: 'Country',
     postal_code: 'Postal Code',
     founded_year: 'Founded Year',
-    created_at: 'Created Date',
+    created_at: 'Created Date'
   },
   contracts: {
     title: 'Contract Title',
@@ -507,7 +507,7 @@ export const EXPORT_FIELD_MAPPINGS = {
     start_date: 'Start Date',
     end_date: 'End Date',
     auto_renew: 'Auto Renew',
-    created_at: 'Created Date',
+    created_at: 'Created Date'
   },
   qualifications: {
     name: 'Qualification Name',
@@ -519,7 +519,7 @@ export const EXPORT_FIELD_MAPPINGS = {
     issue_date: 'Issue Date',
     expiry_date: 'Expiry Date',
     verification_date: 'Verification Date',
-    created_at: 'Created Date',
+    created_at: 'Created Date'
   },
   ratings: {
     company_name: 'Company',
@@ -529,6 +529,6 @@ export const EXPORT_FIELD_MAPPINGS = {
     rater_name: 'Rated By',
     review: 'Review',
     is_public: 'Public',
-    created_at: 'Created Date',
-  },
+    created_at: 'Created Date'
+  }
 };

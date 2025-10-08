@@ -1,6 +1,6 @@
 'use client';
 
-import { Calendar, User, FileText, Shield, Bell, Edit, ExternalLink, AlertTriangle, CheckCircle, Clock, Activity } from "lucide-react";
+import { Activity, AlertTriangle, Bell, Calendar, CheckCircle, Clock, Edit, ExternalAlertTriangle, ExternalLink, FileText, Shield, User } from 'lucide-react';
 import { Card, Button, Badge } from '@ghxstship/ui';
 import type { HealthRecord } from '../types';
 import {
@@ -13,7 +13,7 @@ import {
  getExpiryUrgency,
  getSeverityColor,
  getRecordTypeIcon,
- getPrivacyBadgeVariant,
+ getPrivacyBadgeVariant
 } from '../types';
 
 interface HealthCardViewProps {
@@ -25,7 +25,7 @@ interface HealthCardViewProps {
 export default function HealthCardView({
  record,
  loading,
- onEdit,
+ onEdit
 }: HealthCardViewProps) {
  if (loading) {
  return (

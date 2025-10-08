@@ -1,15 +1,10 @@
 'use client';
 
-import { X, Plus, Trash2, Save, Send } from "lucide-react";
-import React, { useState, useEffect } from 'react';
-import { useForm, useFieldArray } from 'react-hook-form';
+import { Plus, Save, Send, Trash2, X } from 'lucide-react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
+import { useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from '@ghxstship/ui';
-import { Input } from '@ghxstship/ui';
-import { Textarea } from '@ghxstship/ui';
-import { Select } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { toast } from '@ghxstship/ui';
+import { Badge, Button, Input, Select, Textarea, toast } from '@ghxstship/ui';
 import { RequestsService } from './lib/requestsService';
 import { CreateProcurementRequestSchema, type CreateProcurementRequest, type ProcurementRequestItem } from './types';
 
@@ -75,11 +70,13 @@ export function CreateRequestClient({
  const watchedItems = form.watch('items');
 
  // Calculate total estimated cost
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  const total = watchedItems?.reduce((sum, item) => {
  return sum + (item.estimated_total_price || 0);
  }, 0) || 0;
  form.setValue('estimated_total', total);
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [watchedItems, form]);
 
  // Handle item price calculation
@@ -293,7 +290,7 @@ export function CreateRequestClient({
  <div className="space-y-lg">
  <div className="flex items-center justify-between">
  <h3 className="text-lg font-medium">Request Items</h3>
- <Button type="button" variant="outline" onClick={addItem}>
+ <Button type="button" variant="secondary" onClick={addItem}>
  <Plus className="h-icon-xs w-icon-xs mr-2" />
  Add Item
  </Button>
@@ -516,7 +513,7 @@ export function CreateRequestClient({
  {currentStep > 1 && (
  <Button
  type="button"
- variant="outline"
+ variant="secondary"
  onClick={() => setCurrentStep(currentStep - 1)}
  >
  Previous
@@ -536,7 +533,7 @@ export function CreateRequestClient({
  <>
  <Button
  type="button"
- variant="outline"
+ variant="secondary"
  onClick={handleSaveDraft}
  disabled={loading}
  className="flex items-center gap-xs"

@@ -3,7 +3,7 @@
 
 import { ThemeProvider } from 'next-themes';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 // import { PostHogProvider } from '@ghxstship/analytics';
 import { telemetry } from '@/lib/telemetry';
 import { sentry } from '@/lib/sentry';
@@ -11,6 +11,7 @@ import { sentry } from '@/lib/sentry';
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // Initialize Sentry
     const sentryDsn = process.env.NEXT_PUBLIC_SENTRY_DSN;
@@ -30,6 +31,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       pathname: window.location.pathname,
       referrer: document.referrer
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

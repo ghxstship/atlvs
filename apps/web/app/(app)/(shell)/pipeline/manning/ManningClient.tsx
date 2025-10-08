@@ -1,8 +1,8 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
-import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
+import { useState, useCallback, useEffect } from 'react';
+import { Card, Button, Input, Badge } from '@ghxstship/ui';
 import { Plus, Users, UserCheck, AlertCircle } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -35,14 +35,18 @@ export default function ManningClient({ orgId }: ManningClientProps) {
     requiredCount: 1
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadProjects();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (selectedProject) {
       loadManningSlots(selectedProject);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedProject]);
 
   const loadProjects = async () => {
@@ -114,7 +118,7 @@ export default function ManningClient({ orgId }: ManningClientProps) {
     } else if (percentage >= 50) {
       return <Badge variant="warning" className="flex items-center gap-xs"><Users className="w-3 h-3" />Partially Staffed</Badge>;
     } else {
-      return <Badge variant="destructive" className="flex items-center gap-xs"><AlertCircle className="w-3 h-3" />Understaffed</Badge>;
+      return <Badge variant="error" className="flex items-center gap-xs"><AlertCircle className="w-3 h-3" />Understaffed</Badge>;
     }
   };
 
@@ -174,7 +178,7 @@ export default function ManningClient({ orgId }: ManningClientProps) {
               </div>
               <div>
                 <label className="block text-body-sm form-label mb-xs">Role</label>
-                <UnifiedInput                   type="text"
+                <Input                   type="text"
                   value={formData.role}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, role: e.target.value }))}
                   placeholder="e.g., Camera Operator, Sound Engineer"
@@ -183,7 +187,7 @@ export default function ManningClient({ orgId }: ManningClientProps) {
               </div>
               <div>
                 <label className="block text-body-sm form-label mb-xs">Required Count</label>
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   min="1"
                   value={formData.requiredCount}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, requiredCount: parseInt(e.target.value) }))}
@@ -192,7 +196,7 @@ export default function ManningClient({ orgId }: ManningClientProps) {
               </div>
               <div className="flex gap-sm">
                 <Button type="submit">Create Slot</Button>
-                <Button type="button" variant="outline" onClick={() => setShowForm(false)}>
+                <Button type="button" variant="secondary" onClick={() => setShowForm(false)}>
                   Cancel
                 </Button>
               </div>

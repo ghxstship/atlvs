@@ -8,7 +8,7 @@ export async function GET() {
   return new Response(favicon, {
     headers: {
       'Content-Type': 'image/x-icon',
-      'Cache-Control': 'public, max-age=31536000, immutable',
-    },
+      'Cache-Control': 'public, max-age=31536000, immutable'
+    }
   });
 }

@@ -1,11 +1,11 @@
 'use client';
 
-import { Award, Calendar, ExternalLink, Edit, Trash2, Eye, Download, ArrowUpDown, AlertTriangle, CheckCircle, Clock } from "lucide-react";
+import { AlertTriangle, ArrowUpDown, Award, Calendar, CheckCircle, Clock, Download, Edit, ExternalEdit, ExternalLink, Eye, Trash2 } from 'lucide-react';
 import { 
  Card, 
  Badge, 
  Button,
- Skeleton,
+ Skeleton
 } from '@ghxstship/ui';
 import type { Certification, CertificationSort } from '../types';
 import { getCertificationStatus } from '../types';
@@ -35,7 +35,7 @@ export default function CertificationTableView({
  onView,
  onDelete,
  onExport,
- currentSort,
+ currentSort
 }: CertificationTableViewProps) {
  const allSelected = certifications.length > 0 && certifications.every(cert => selectedItems.includes(cert.id));
  const someSelected = certifications.some(cert => selectedItems.includes(cert.id));

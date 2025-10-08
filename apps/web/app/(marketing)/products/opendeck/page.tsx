@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, ShoppingBag, Briefcase, Globe, Zap, CheckCircle, Play, Users, Star, Award, Search, Filter } from 'lucide-react';
+import { ArrowRight, Award, Briefcase, CheckCircle, Filter, Globe, Play, Search, ShoppingBag, Star, Users, Zap } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
 import { MarketingSection } from '../../../_components/marketing';
 
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'OPENDECK - Find Talent That Actually Shows Up | GHXSTSHIP',
     description: 'Stop getting ghosted by freelancers. OPENDECK connects you with verified crew and vendors who actually answer their phones.',
-    url: 'https://ghxstship.com/products/opendeck',
-  },
+    url: 'https://ghxstship.com/products/opendeck'
+  }
 };
 
 const features = [
@@ -20,49 +20,49 @@ const features = [
     icon: ShoppingBag,
     title: 'Talent That Shows Up',
     description: 'Find verified crew who actually answer their phones and show up when they say they will. No more last-minute "sorry, can\'t make it" texts.',
-    benefits: ['Background verified', 'Real portfolio reviews', 'Actual skill tests', 'Honest rating system'],
+    benefits: ['Background verified', 'Real portfolio reviews', 'Actual skill tests', 'Honest rating system']
   },
   {
     icon: Briefcase,
     title: 'Assets That Work',
     description: 'Pre-made templates and assets that don\'t look like they were designed in 2003. Curated by people who actually use this stuff.',
-    benefits: ['Actually good templates', 'Usable stock assets', 'Real-world tutorials', 'Tools that don\'t suck'],
+    benefits: ['Actually good templates', 'Usable stock assets', 'Real-world tutorials', 'Tools that don\'t suck']
   },
   {
     icon: Globe,
     title: 'Worldwide Talent Pool',
     description: 'Access crew and vendors across 50+ countries. Perfect for when your local options are booked or overpriced.',
-    benefits: ['50+ countries covered', 'Multi-language support', 'Local market knowledge', 'Time zone flexibility'],
+    benefits: ['50+ countries covered', 'Multi-language support', 'Local market knowledge', 'Time zone flexibility']
   },
   {
     icon: Zap,
     title: 'Smart Matching',
     description: 'AI that actually helps match you with people who fit your budget, timeline, and won\'t drive you crazy.',
-    benefits: ['Budget-aware matching', 'Skill compatibility', 'Real availability', 'Personality fit'],
+    benefits: ['Budget-aware matching', 'Skill compatibility', 'Real availability', 'Personality fit']
   },
   {
     icon: Search,
     title: 'Advanced Search',
     description: 'Powerful search and filtering tools to find exactly what you need, when you need it.',
-    benefits: ['Smart filters', 'Saved searches', 'Real-time results', 'Custom criteria'],
+    benefits: ['Smart filters', 'Saved searches', 'Real-time results', 'Custom criteria']
   },
   {
     icon: Star,
     title: 'Actually Vetted Talent',
     description: 'We check portfolios, references, and backgrounds so you don\'t have to. No more hiring disasters.',
-    benefits: ['Real background checks', 'Portfolio verification', 'Honest client reviews', 'Reliability scores'],
+    benefits: ['Real background checks', 'Portfolio verification', 'Honest client reviews', 'Reliability scores']
   },
   {
     icon: Award,
     title: 'Reputation That Matters',
     description: 'Build your rep with real projects and honest feedback. No fake reviews or inflated ratings.',
-    benefits: ['Earned achievements', 'Real reputation scores', 'Featured work', 'Verified success stories'],
+    benefits: ['Earned achievements', 'Real reputation scores', 'Featured work', 'Verified success stories']
   },
   {
     icon: Filter,
     title: 'Recommendations That Help',
     description: 'Get suggestions based on what you actually need, not what someone\'s trying to sell you.',
-    benefits: ['Relevant recommendations', 'Actually trending content', 'Useful collections', 'Smart suggestions'],
+    benefits: ['Relevant recommendations', 'Actually trending content', 'Useful collections', 'Smart suggestions']
   },
 ];
 
@@ -71,19 +71,19 @@ const categories = [
     title: 'Verified Professionals',
     count: '25K+',
     description: 'Crew who actually know what they\'re doing and show up on time',
-    examples: ['Film Directors', 'Graphic Designers', 'Copywriters', 'Photographers', 'Animators'],
+    examples: ['Film Directors', 'Graphic Designers', 'Copywriters', 'Photographers', 'Animators']
   },
   {
     title: 'Useful Resources',
     count: '100K+',
     description: 'Templates and assets that don\'t look like everyone else\'s',
-    examples: ['Design Templates', 'Stock Photos', 'Video Assets', 'Audio Libraries', 'Tutorials'],
+    examples: ['Design Templates', 'Stock Photos', 'Video Assets', 'Audio Libraries', 'Tutorials']
   },
   {
     title: 'Real Opportunities',
     count: '50K+',
     description: 'Actual paying gigs, not \'exposure\' opportunities',
-    examples: ['Film Projects', 'Brand Campaigns', 'Web Design', 'Content Creation', 'Events'],
+    examples: ['Film Projects', 'Brand Campaigns', 'Web Design', 'Content Creation', 'Events']
   },
 ];
 
@@ -93,14 +93,14 @@ const testimonials = [
     author: "Marcus Rodriguez",
     role: "Creative Director, Apex Advertising",
     project: "Global Brand Campaign",
-    rating: 5,
+    rating: 5
   },
   {
     quote: "No more getting ghosted by crew or dealing with flaky vendors. OPENDECK's vetting process actually works.",
     author: "Lisa Thompson",
     role: "Executive Producer, Pinnacle Media",
     project: "Documentary Series",
-    rating: 5,
+    rating: 5
   },
 ];
 
@@ -110,21 +110,21 @@ const successStories = [
     challenge: 'Finding specialized creative talent for global campaigns',
     solution: 'Used OPENDECK to connect with verified professionals worldwide',
     result: '90% reduction in hiring time, 300% ROI increase',
-    industry: 'Advertising',
+    industry: 'Advertising'
   },
   {
     title: 'Meridian Studios',
     challenge: 'Scaling creative team for multiple concurrent projects',
     solution: 'Leveraged OPENDECK marketplace for on-demand talent',
     result: '50% faster project delivery, 40% cost savings',
-    industry: 'Film & TV',
+    industry: 'Film & TV'
   },
   {
     title: 'Harmony Events',
     challenge: 'Finding local creative talent for international events',
     solution: 'Connected with local professionals through OPENDECK network',
     result: '99.8% event success rate, 60% cost reduction',
-    industry: 'Events',
+    industry: 'Events'
   },
 ];
 

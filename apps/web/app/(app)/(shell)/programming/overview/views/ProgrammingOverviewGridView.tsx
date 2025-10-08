@@ -1,6 +1,6 @@
 'use client';
 
-import { Calendar, Users, Building, Music, FileText, Clock, MapPin, DollarSign, TrendingUp, ArrowRight, MoreHorizontal } from "lucide-react";
+import { ArrowRight, Building, Calendar, Clock, DollarSign, FileText, MapPin, MoreHorizontal, Music, TrendingUp, Users } from 'lucide-react';
 import { Badge, Button, Card, Skeleton } from '@ghxstship/ui';
 import Link from 'next/link';
 import type { ProgrammingOverviewData } from '../types';
@@ -12,7 +12,7 @@ interface ProgrammingOverviewGridViewProps {
 
 export default function ProgrammingOverviewGridView({
  data,
- loading,
+ loading
 }: ProgrammingOverviewGridViewProps) {
  if (loading) {
  return (
@@ -163,7 +163,7 @@ export default function ProgrammingOverviewGridView({
  <div
  className="bg-primary h-1 rounded-full transition-all"
  style={{
- width: `${Math.min(100, (workshop.participants_count / workshop.max_participants) * 100)}%`,
+ width: `${Math.min(100, (workshop.participants_count / workshop.max_participants) * 100)}%`
  }}
  />
  </div>
@@ -237,7 +237,7 @@ export default function ProgrammingOverviewGridView({
  <div
  className="bg-blue-500 h-1 rounded-full transition-all"
  style={{
- width: `${Math.min(100, (space.current_occupancy / space.capacity) * 100)}%`,
+ width: `${Math.min(100, (space.current_occupancy / space.capacity) * 100)}%`
  }}
  />
  </div>

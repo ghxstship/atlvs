@@ -33,19 +33,19 @@ export class ProjectsApiClient {
         console.error('API Error:', error);
         return {
           error: error.message || 'An error occurred',
-          success: false,
+          success: false
         };
       }
 
       return {
         data: data || undefined,
-        success: true,
+        success: true
       };
     } catch (error: unknown) {
       console.error('Request failed:', error);
       return {
         error: error.message || 'Request failed',
-        success: false,
+        success: false
       };
     }
   }
@@ -119,8 +119,8 @@ export class ProjectsApiClient {
           page: params.page || 1,
           per_page: limit,
           total: count || 0,
-          total_pages: Math.ceil((count || 0) / limit),
-        },
+          total_pages: Math.ceil((count || 0) / limit)
+        }
       };
     });
   }
@@ -155,7 +155,7 @@ export class ProjectsApiClient {
         ...projectData,
         organization_id: orgId,
         created_at: now,
-        updated_at: now,
+        updated_at: now
       };
 
       const { data, error } = await this.supabase
@@ -182,7 +182,7 @@ export class ProjectsApiClient {
         .from('projects')
         .update({
           ...updates,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', projectId)
         .select(`
@@ -206,7 +206,7 @@ export class ProjectsApiClient {
         .from('projects')
         .update({
           status: 'cancelled',
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', projectId);
 
@@ -281,8 +281,8 @@ export class ProjectsApiClient {
           page: params.page || 1,
           per_page: limit,
           total: count || 0,
-          total_pages: Math.ceil((count || 0) / limit),
-        },
+          total_pages: Math.ceil((count || 0) / limit)
+        }
       };
     });
   }
@@ -308,7 +308,7 @@ export class ProjectsApiClient {
         organization_id: orgId,
         position: nextPosition,
         created_at: now,
-        updated_at: now,
+        updated_at: now
       };
 
       const { data, error } = await this.supabase
@@ -337,7 +337,7 @@ export class ProjectsApiClient {
           .from('project_tasks')
           .update({
             position,
-            updated_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
           })
           .eq('id', id)
       );
@@ -365,7 +365,7 @@ export class ProjectsApiClient {
         ...fileData,
         organization_id: orgId,
         created_at: now,
-        updated_at: now,
+        updated_at: now
       };
 
       const { data, error } = await this.supabase
@@ -437,8 +437,8 @@ export class ProjectsApiClient {
           page: params.page || 1,
           per_page: limit,
           total: count || 0,
-          total_pages: Math.ceil((count || 0) / limit),
-        },
+          total_pages: Math.ceil((count || 0) / limit)
+        }
       };
     });
   }
@@ -493,8 +493,8 @@ export class ProjectsApiClient {
           page: params.page || 1,
           per_page: limit,
           total: count || 0,
-          total_pages: Math.ceil((count || 0) / limit),
-        },
+          total_pages: Math.ceil((count || 0) / limit)
+        }
       };
     });
   }
@@ -548,8 +548,8 @@ export class ProjectsApiClient {
           page: params.page || 1,
           per_page: limit,
           total: count || 0,
-          total_pages: Math.ceil((count || 0) / limit),
-        },
+          total_pages: Math.ceil((count || 0) / limit)
+        }
       };
     });
   }
@@ -596,8 +596,8 @@ export class ProjectsApiClient {
           page: params.page || 1,
           per_page: limit,
           total: count || 0,
-          total_pages: Math.ceil((count || 0) / limit),
-        },
+          total_pages: Math.ceil((count || 0) / limit)
+        }
       };
     });
   }
@@ -652,8 +652,8 @@ export class ProjectsApiClient {
           page: params.page || 1,
           per_page: limit,
           total: count || 0,
-          total_pages: Math.ceil((count || 0) / limit),
-        },
+          total_pages: Math.ceil((count || 0) / limit)
+        }
       };
     });
   }
@@ -674,7 +674,7 @@ export class ProjectsApiClient {
             .from('projects')
             .update({
               ...updates,
-              updated_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
             })
             .eq('id', id)
         )
@@ -686,7 +686,7 @@ export class ProjectsApiClient {
         .map(result => result.reason);
 
       return {
-        data: { updated, errors },
+        data: { updated, errors }
       };
     });
   }
@@ -705,7 +705,7 @@ export class ProjectsApiClient {
             .from('project_tasks')
             .update({
               ...updates,
-              updated_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
             })
             .eq('id', id)
         )
@@ -717,7 +717,7 @@ export class ProjectsApiClient {
         .map(result => result.reason);
 
       return {
-        data: { updated, errors },
+        data: { updated, errors }
       };
     });
   }
@@ -733,7 +733,7 @@ export class ProjectsApiClient {
             .from('projects')
             .update({
               status: 'cancelled',
-              updated_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
             })
             .eq('id', id)
         )
@@ -745,7 +745,7 @@ export class ProjectsApiClient {
         .map(result => result.reason);
 
       return {
-        data: { deleted, errors },
+        data: { deleted, errors }
       };
     });
   }

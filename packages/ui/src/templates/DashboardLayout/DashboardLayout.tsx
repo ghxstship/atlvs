@@ -1,36 +1,146 @@
 /**
- * DashboardLayout Template - Level 4
- * Grid layout for dashboard widgets
+ * DashboardLayout Template
+ * Layout template for dashboard pages
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
  */
 
-import React, { ReactNode } from 'react';
-import { cn } from '../../lib/utils';
+'use client';
+
+import React from 'react';
+import { RefreshCw, Download, Settings } from 'lucide-react';
+import { Button } from '../../atoms/Button/Button';
 
 export interface DashboardLayoutProps {
-  children: ReactNode;
-  columns?: 1 | 2 | 3 | 4;
-  className?: string;
+  /** Page title */
+  title: string;
+  
+  /** Page subtitle */
+  subtitle?: string;
+  
+  /** Show refresh button */
+  showRefresh?: boolean;
+  
+  /** Show export button */
+  showExport?: boolean;
+  
+  /** Show settings button */
+  showSettings?: boolean;
+  
+  /** Refresh handler */
+  onRefresh?: () => void;
+  
+  /** Export handler */
+  onExport?: () => void;
+  
+  /** Settings handler */
+  onSettings?: () => void;
+  
+  /** Sidebar content */
+  sidebar?: React.ReactNode;
+  
+  /** Right panel content */
+  rightPanel?: React.ReactNode;
+  
+  /** Main content */
+  children: React.ReactNode;
 }
 
+/**
+ * DashboardLayout Component
+ */
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
+  title,
+  subtitle,
+  showRefresh = false,
+  showExport = false,
+  showSettings = false,
+  onRefresh,
+  onExport,
+  onSettings,
+  sidebar,
+  rightPanel,
   children,
-  columns = 3,
-  className,
 }) => {
   return (
-    <div
-      className={cn(
-        'grid gap-6',
-        {
-          'grid-cols-1': columns === 1,
-          'grid-cols-1 md:grid-cols-2': columns === 2,
-          'grid-cols-1 md:grid-cols-2 lg:grid-cols-3': columns === 3,
-          'grid-cols-1 md:grid-cols-2 lg:grid-cols-4': columns === 4,
-        },
-        className
-      )}
-    >
-      {children}
+    <div className="min-h-screen bg-[var(--color-background)]">
+      {/* Header */}
+      <div className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold text-[var(--color-foreground)]">{title}</h1>
+              {subtitle && (
+                <p className="text-sm text-[var(--color-foreground-secondary)] mt-1">{subtitle}</p>
+              )}
+            </div>
+            
+            <div className="flex items-center gap-2">
+              {showRefresh && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  icon={RefreshCw}
+                  onClick={onRefresh}
+                >
+                  Refresh
+                </Button>
+              )}
+              {showExport && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  icon={Download}
+                  onClick={onExport}
+                >
+                  Export
+                </Button>
+              )}
+              {showSettings && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  icon={Settings}
+                  onClick={onSettings}
+                >
+                  Settings
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Content */}
+      <div className="container mx-auto px-6 py-6">
+        <div className="flex gap-6">
+          {/* Sidebar */}
+          {sidebar && (
+            <aside className="w-64 flex-shrink-0">
+              <div className="sticky top-6">
+                {sidebar}
+              </div>
+            </aside>
+          )}
+          
+          {/* Main Content */}
+          <main className="flex-1 min-w-0">
+            {children}
+          </main>
+          
+          {/* Right Panel */}
+          {rightPanel && (
+            <aside className="w-80 flex-shrink-0">
+              <div className="sticky top-6">
+                {rightPanel}
+              </div>
+            </aside>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
+
+DashboardLayout.displayName = 'DashboardLayout';

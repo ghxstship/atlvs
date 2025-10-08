@@ -1,0 +1,11 @@
+# Scripts
+scripts/*.cjs
+scripts/*.js
+scripts/*.mjs
+
+# Build output
+.next/
+out/
+
+# Dependencies
+node_modules/

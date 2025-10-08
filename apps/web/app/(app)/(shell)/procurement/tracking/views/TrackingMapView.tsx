@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { Card, Badge, Button, Checkbox } from '@ghxstship/ui';
 import type { TrackingItem } from '../types';
-import { formatCurrency, formatDate, getStatusColor, getPriorityColor } from '../types';
-import { Check, Edit, Eye, Filter, X } from 'lucide-react';
+import { formatCurrency, formatDate } from '../types';
+import { Check, Edit, Eye, Filter, MapPin, Maximize2, Minimize2, Navigation, Truck, X } from 'lucide-react';
 
 interface TrackingMapViewProps {
  items: TrackingItem[];
@@ -33,7 +33,7 @@ export default function TrackingMapView({
  onSelectionChange,
  onItemClick,
  onEditItem,
- onViewItem,
+ onViewItem
 }: TrackingMapViewProps) {
  const [selectedMarker, setSelectedMarker] = useState<MapMarker | null>(null);
  const [mapExpanded, setMapExpanded] = useState(false);
@@ -56,7 +56,7 @@ export default function TrackingMapView({
  'OH': { lat: 40.3736, lng: -82.7755 },
  'GA': { lat: 33.76, lng: -84.39 },
  'NC': { lat: 35.771, lng: -78.638 },
- 'MI': { lat: 43.3266, lng: -84.5361 },
+ 'MI': { lat: 43.3266, lng: -84.5361 }
  };
 
  const baseCoord = stateCoords[address.state] || { lat: 39.8283, lng: -98.5795 };
@@ -65,7 +65,7 @@ export default function TrackingMapView({
  const offset = type === 'origin' ? -0.5 : 0.5;
  return {
  lat: baseCoord.lat + (Math.random() - 0.5) * 2 + offset,
- lng: baseCoord.lng + (Math.random() - 0.5) * 4 + offset,
+ lng: baseCoord.lng + (Math.random() - 0.5) * 4 + offset
  };
  };
 
@@ -81,7 +81,7 @@ export default function TrackingMapView({
  type: 'origin',
  item,
  title: `Origin: ${item.order_number}`,
- description: `${item.origin_address.city}, ${item.origin_address.state}`,
+ description: `${item.origin_address.city}, ${item.origin_address.state}`
  });
  }
 
@@ -94,7 +94,7 @@ export default function TrackingMapView({
  type: 'destination',
  item,
  title: `Destination: ${item.order_number}`,
- description: `${item.destination_address.city}, ${item.destination_address.state}`,
+ description: `${item.destination_address.city}, ${item.destination_address.state}`
  });
  }
 
@@ -160,9 +160,7 @@ export default function TrackingMapView({
  <div className="flex items-center gap-md">
  <Checkbox
  checked={selectedItems.length === items.length && items.length > 0}
- onCheckedChange={handleSelectAll}
- aria-
- />
+ onCheckedChange={handleSelectAll} />
  <span className="text-sm text-gray-600">
  {selectedItems.length > 0 ? `${selectedItems.length} selected` : `${filteredMarkers.length} locations`}
  </span>
@@ -170,7 +168,7 @@ export default function TrackingMapView({
 
  <div className="flex items-center gap-xs">
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => setShowFilters(!showFilters)}
  className="flex items-center gap-xs"
@@ -179,7 +177,7 @@ export default function TrackingMapView({
  Filters
  </Button>
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => setMapExpanded(!mapExpanded)}
  className="flex items-center gap-xs"
@@ -233,7 +231,7 @@ export default function TrackingMapView({
  className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform"
  style={{
  left: `${((marker.lng + 180) / 360) * 100}%`,
- top: `${((90 - marker.lat) / 180) * 100}%`,
+ top: `${((90 - marker.lat) / 180) * 100}%`
  }}
  onClick={() => setSelectedMarker(marker)}
  >
@@ -270,7 +268,7 @@ export default function TrackingMapView({
  top: `${y1}%`,
  width: `${length}%`,
  transformOrigin: '0 0',
- transform: `rotate(${angle}deg)`,
+ transform: `rotate(${angle}deg)`
  }}
  />
  );
@@ -278,13 +276,13 @@ export default function TrackingMapView({
 
  {/* Map Controls */}
  <div className="absolute top-md right-4 flex flex-col gap-xs">
- <Button variant="outline" size="sm" className="w-icon-xl h-icon-xl p-0">
+ <Button variant="secondary" size="sm" className="w-icon-xl h-icon-xl p-0">
  +
  </Button>
- <Button variant="outline" size="sm" className="w-icon-xl h-icon-xl p-0">
+ <Button variant="secondary" size="sm" className="w-icon-xl h-icon-xl p-0">
  −
  </Button>
- <Button variant="outline" size="sm" className="w-icon-xl h-icon-xl p-0">
+ <Button variant="secondary" size="sm" className="w-icon-xl h-icon-xl p-0">
  <Navigation className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
@@ -349,7 +347,7 @@ export default function TrackingMapView({
  <div className="flex gap-xs pt-2">
  {onViewItem && (
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => onViewItem(selectedMarker.item)}
  className="flex items-center gap-xs"
@@ -360,7 +358,7 @@ export default function TrackingMapView({
  )}
  {onEditItem && (
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={() => onEditItem(selectedMarker.item)}
  className="flex items-center gap-xs"

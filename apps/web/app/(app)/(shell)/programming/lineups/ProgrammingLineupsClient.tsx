@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar, Clock, Download, Filter, Grid3X3, List, MoreHorizontal, Plus, Search, Trash2, Upload } from "lucide-react";
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import {
  Button,
@@ -12,7 +12,7 @@ import {
  TabsTrigger,
  TabsContent,
  Badge,
- EmptyState,
+ EmptyState
 } from "@ghxstship/ui";
 import type {
  ProgrammingLineup,
@@ -22,7 +22,7 @@ import type {
  LineupProject,
  LineupEvent,
  LineupStatus,
- PerformerType,
+ PerformerType
 } from "./types";
 import { STATUS_BADGE, PERFORMER_TYPE_BADGE, VIEW_CONFIG } from "./types";
 
@@ -59,7 +59,7 @@ export default function ProgrammingLineupsClient({
  initialLineups,
  projects,
  events,
- users,
+ users
 }: ProgrammingLineupsClientProps) {
  const supabase = useMemo(() => createBrowserClient(), []);
 
@@ -75,7 +75,7 @@ export default function ProgrammingLineupsClient({
  const [searchTerm, setSearchTerm] = useState("");
  const [sortConfig, setSortConfig] = useState<LineupSort>({
  field: "set_time",
- direction: "asc",
+ direction: "asc"
  });
 
  // Drawer state
@@ -94,7 +94,7 @@ export default function ProgrammingLineupsClient({
  event: "*",
  schema: "public",
  table: "programming_lineups",
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  (payload) => {
  if (payload.eventType === "INSERT") {
@@ -193,7 +193,7 @@ export default function ProgrammingLineupsClient({
 
  try {
  const response = await fetch(`/api/v1/programming/lineups/${lineup.id}`, {
- method: "DELETE",
+ method: "DELETE"
  });
 
  if (!response.ok) {
@@ -275,7 +275,7 @@ export default function ProgrammingLineupsClient({
  onSort: setSortConfig,
  users,
  projects,
- events,
+ events
  };
 
  return (
@@ -312,7 +312,7 @@ export default function ProgrammingLineupsClient({
  onValueChange={(value) =>
  setFilters((prev: unknown) => ({
  ...prev,
- status: value ? (value as LineupStatus) : undefined,
+ status: value ? (value as LineupStatus) : undefined
  }))
  }
  >
@@ -329,7 +329,7 @@ export default function ProgrammingLineupsClient({
  onValueChange={(value) =>
  setFilters((prev: unknown) => ({
  ...prev,
- performer_type: value ? (value as PerformerType) : undefined,
+ performer_type: value ? (value as PerformerType) : undefined
  }))
  }
  >
@@ -445,7 +445,7 @@ export default function ProgrammingLineupsClient({
  primaryAction={{
  label: "Add Performer",
  onClick: handleCreateLineup,
- icon: <Plus className="h-icon-xs w-icon-xs" />, 
+ icon: <Plus className="h-icon-xs w-icon-xs" /> 
  }}
  />
  )}

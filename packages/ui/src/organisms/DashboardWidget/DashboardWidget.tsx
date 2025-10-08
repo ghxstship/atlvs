@@ -1,86 +1,139 @@
+/**
+ * DashboardWidget Component
+ * Widget component for dashboard displays
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
+ */
+
 'use client';
 
-import { MoreVertical, TrendingUp, TrendingDown } from 'lucide-react';
-import { Button } from '../../components/atomic/Button';
-import { Badge } from '../../components/Badge';
+import React from 'react';
+import { MoreVertical } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+import { Card } from '../../molecules/Card/Card';
 
 export interface DashboardWidgetProps {
+  /** Widget title */
   title: string;
-  value: string | number;
-  subtitle?: string;
+  
+  /** Widget value/metric */
+  value?: string | number;
+  
+  /** Widget description */
+  description?: string;
+  
+  /** Icon */
+  icon?: LucideIcon;
+  
+  /** Trend indicator */
   trend?: {
     value: number;
-    direction: 'up' | 'down';
+    label?: string;
   };
-  icon?: React.ReactNode;
-  onAction?: () => void;
-  className?: string;
+  
+  /** Action menu */
+  onMenuClick?: () => void;
+  
+  /** Widget content */
   children?: React.ReactNode;
+  
+  /** Loading state */
+  loading?: boolean;
 }
 
-export function DashboardWidget({
+/**
+ * DashboardWidget Component
+ */
+export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
   title,
   value,
-  subtitle,
+  description,
+  icon: Icon,
   trend,
-  icon,
-  onAction,
-  className = '',
+  onMenuClick,
   children,
-}: DashboardWidgetProps) {
+  loading = false,
+}) => {
   return (
-    <div className={`bg-card border rounded-lg p-6 ${className}`}>
+    <Card className="relative">
+      {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
-          {icon && (
-            <div className="p-2 bg-primary/10 rounded-lg">
-              {icon}
+          {Icon && (
+            <div className="p-2 rounded-lg bg-[var(--color-primary)]/10">
+              <Icon className="w-5 h-5 text-[var(--color-primary)]" />
             </div>
           )}
           <div>
-            <h3 className="text-sm font-medium text-muted-foreground">{title}</h3>
+            <h3 className="text-sm font-medium text-[var(--color-foreground-secondary)]">
+              {title}
+            </h3>
           </div>
         </div>
-        {onAction && (
-          <Button
-            variant="ghost"
-            size="sm"
-            className="h-6 w-6 p-0"
-            onClick={onAction}
+        
+        {onMenuClick && (
+          <button
+            onClick={onMenuClick}
+            className="p-1 rounded hover:bg-[var(--color-muted)] transition-colors"
           >
-            <MoreVertical className="h-4 w-4" />
-          </Button>
+            <MoreVertical className="w-4 h-4 text-[var(--color-foreground-secondary)]" />
+          </button>
         )}
       </div>
-
-      <div className="space-y-2">
-        <div className="flex items-end gap-2">
-          <span className="text-3xl font-bold">{value}</span>
-          {trend && (
-            <Badge
-              variant={trend.direction === 'up' ? 'default' : 'destructive'}
-              className="mb-1"
-            >
-              {trend.direction === 'up' ? (
-                <TrendingUp className="h-3 w-3 mr-1" />
-              ) : (
-                <TrendingDown className="h-3 w-3 mr-1" />
-              )}
-              {Math.abs(trend.value)}%
-            </Badge>
+      
+      {/* Content */}
+      {loading ? (
+        <div className="animate-pulse">
+          <div className="h-8 bg-[var(--color-muted)] rounded w-24 mb-2" />
+          <div className="h-4 bg-[var(--color-muted)] rounded w-32" />
+        </div>
+      ) : (
+        <>
+          {value !== undefined && (
+            <div className="mb-2">
+              <div className="text-3xl font-bold text-[var(--color-foreground)]">
+                {value}
+              </div>
+            </div>
           )}
-        </div>
-
-        {subtitle && (
-          <p className="text-sm text-muted-foreground">{subtitle}</p>
-        )}
-      </div>
-
-      {children && (
-        <div className="mt-4 pt-4 border-t">
-          {children}
-        </div>
+          
+          {(description || trend) && (
+            <div className="flex items-center gap-2 text-sm">
+              {trend && (
+                <span
+                  className={
+                    trend.value >= 0
+                      ? 'text-[var(--color-success)]'
+                      : 'text-[var(--color-error)]'
+                  }
+                >
+                  {trend.value >= 0 ? '+' : ''}
+                  {trend.value}%
+                </span>
+              )}
+              {description && (
+                <span className="text-[var(--color-foreground-secondary)]">
+                  {description}
+                </span>
+              )}
+              {trend?.label && (
+                <span className="text-[var(--color-foreground-muted)]">
+                  {trend.label}
+                </span>
+              )}
+            </div>
+          )}
+          
+          {children && (
+            <div className="mt-4">
+              {children}
+            </div>
+          )}
+        </>
       )}
-    </div>
+    </Card>
   );
-}
+};
+
+DashboardWidget.displayName = 'DashboardWidget';

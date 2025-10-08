@@ -1,17 +1,8 @@
 'use client';
 
 import React from 'react';
-import {
-  Drawer,
-  Button,
-  Badge,
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent
-} from '@ghxstship/ui';
-import { DollarSign, Calendar, User, Building, FileText, Edit } from 'lucide-react';
-import type { DataRecord } from '@ghxstship/ui';
+import { Badge, Building, Button, Calendar, Card, CardContent, CardHeader, CardTitle, DollarSign, Drawer, Edit, FileText, User } from 'lucide-react';
+import { Badge, Button, Card, CardContent, CardHeader, CardTitle, Drawer } from '@ghxstship/ui';
 
 interface ViewRevenueDrawerProps {
   isOpen: boolean;
@@ -43,7 +34,7 @@ export default function ViewRevenueDrawer({
             </Badge>
           </div>
           {onEdit && (
-            <Button onClick={onEdit} variant="outline">
+            <Button onClick={onEdit} variant="secondary">
               <Edit className="h-icon-xs w-icon-xs mr-xs" />
               Edit
             </Button>
@@ -69,7 +60,7 @@ export default function ViewRevenueDrawer({
 
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">Category</span>
-                <Badge variant="outline">{revenue.category}</Badge>
+                <Badge variant="secondary">{revenue.category}</Badge>
               </div>
 
               {revenue.invoice_number && (
@@ -182,7 +173,7 @@ export default function ViewRevenueDrawer({
 
         {/* Actions */}
         <div className="flex items-center justify-end gap-md pt-lg border-t">
-          <Button onClick={onClose} variant="outline">
+          <Button onClick={onClose} variant="secondary">
             Close
           </Button>
           {onEdit && (

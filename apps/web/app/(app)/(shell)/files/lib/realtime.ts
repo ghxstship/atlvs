@@ -63,7 +63,7 @@ export class FilesRealtimeService {
           event: options.event || '*',
           schema: 'public',
           table: 'files',
-          filter: options.filter || `organization_id=eq.${orgId}`,
+          filter: options.filter || `organization_id=eq.${orgId}`
         },
         callback
       )
@@ -97,7 +97,7 @@ export class FilesRealtimeService {
           table: 'file_folders',
           filter: options.folderId
             ? `id=eq.${options.folderId}`
-            : `organization_id=eq.${orgId}`,
+            : `organization_id=eq.${orgId}`
         },
         callback
       )
@@ -128,7 +128,7 @@ export class FilesRealtimeService {
           table: 'file_access_logs',
           filter: fileId
             ? `file_id=eq.${fileId}`
-            : `organization_id=eq.${orgId}`,
+            : `organization_id=eq.${orgId}`
         },
         callback
       )
@@ -163,7 +163,7 @@ export class FilesRealtimeService {
         if (status === 'SUBSCRIBED') {
           await channel.track({
             user_id: userId,
-            online_at: new Date().toISOString(),
+            online_at: new Date().toISOString()
           });
         }
       });
@@ -194,7 +194,7 @@ export class FilesRealtimeService {
           await channel.track({
             user_id: userId,
             file_id: fileId,
-            viewing_at: new Date().toISOString(),
+            viewing_at: new Date().toISOString()
           });
         }
       });
@@ -229,8 +229,8 @@ export class FilesRealtimeService {
             payload: {
               user_id: userId,
               file_id: fileId,
-              ...state,
-            },
+              ...state
+            }
           });
         }
       });
@@ -242,8 +242,8 @@ export class FilesRealtimeService {
         payload: {
           user_id: userId,
           file_id: fileId,
-          ...state,
-        },
+          ...state
+        }
       });
     }
   }
@@ -386,8 +386,8 @@ export class FilesRealtimeService {
               user_id: userId,
               file_id: fileId,
               is_typing: isTyping,
-              timestamp: new Date().toISOString(),
-            },
+              timestamp: new Date().toISOString()
+            }
           });
         }
       });
@@ -400,8 +400,8 @@ export class FilesRealtimeService {
           user_id: userId,
           file_id: fileId,
           is_typing: isTyping,
-          timestamp: new Date().toISOString(),
-        },
+          timestamp: new Date().toISOString()
+        }
       });
     }
   }

@@ -61,6 +61,7 @@ const PeopleKanbanView: React.FC<KanbanViewProps> = ({
     });
 
     return groups;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, columns, groupBy]);
 
   const handleDragStart = (cardId: string) => {

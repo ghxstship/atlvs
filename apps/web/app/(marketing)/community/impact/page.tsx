@@ -1,24 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Calendar,
-  Clock,
-  DollarSign,
-  Globe,
-  Heart,
-  Target,
-  TrendingUp,
-  Users,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight, Calendar, Clock, DollarSign, Globe, Heart, Target, TrendingUp, Users, Zap } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -29,8 +18,8 @@ export const metadata: Metadata = {
     title: 'Community Impact - Making a Difference Together | GHXSTSHIP',
     description:
       'See how our community of 25,000+ creative professionals is driving positive change, creating opportunities, and building the future of creative industries.',
-    url: 'https://ghxstship.com/community/impact',
-  },
+    url: 'https://ghxstship.com/community/impact'
+  }
 };
 
 const impactMetrics = [
@@ -39,28 +28,28 @@ const impactMetrics = [
     value: '$2.8B',
     description: 'Total project value created through community collaborations',
     icon: DollarSign,
-    trend: '+24% YoY',
+    trend: '+24% YoY'
   },
   {
     title: 'Jobs Created',
     value: '15,400',
     description: 'New positions generated for creative professionals worldwide',
     icon: Users,
-    trend: '+18% YoY',
+    trend: '+18% YoY'
   },
   {
     title: 'Global Reach',
     value: '120+',
     description: 'Countries where community members delivered projects',
     icon: Globe,
-    trend: '+12% YoY',
+    trend: '+12% YoY'
   },
   {
     title: 'Hours Saved',
     value: '890K',
     description: 'Collective hours saved through shared workflows & tooling',
     icon: Clock,
-    trend: '+31% YoY',
+    trend: '+31% YoY'
   },
 ];
 
@@ -72,7 +61,7 @@ const impactStories = [
     author: 'Maria Gonzalez',
     location: 'Buenos Aires, Argentina',
     impact: '$3.2M economic impact',
-    category: 'Career Growth',
+    category: 'Career Growth'
   },
   {
     title: 'Mentorship that Launches Careers',
@@ -81,7 +70,7 @@ const impactStories = [
     author: 'David Park',
     location: 'Seoul, South Korea',
     impact: '234 careers launched',
-    category: 'Education',
+    category: 'Education'
   },
   {
     title: 'Sustainable Production Standards',
@@ -90,7 +79,7 @@ const impactStories = [
     author: 'Environmental Working Group',
     location: 'Global Initiative',
     impact: '40% emissions reduction',
-    category: 'Sustainability',
+    category: 'Sustainability'
   },
 ];
 
@@ -101,7 +90,7 @@ const communityInitiatives = [
     participants: '1,247 participants',
     success: '78% placement rate',
     icon: Users,
-    status: 'Active',
+    status: 'Active'
   },
   {
     title: 'Green Production Standards',
@@ -109,7 +98,7 @@ const communityInitiatives = [
     participants: '3,456 members',
     success: '150+ certified projects',
     icon: Target,
-    status: 'Active',
+    status: 'Active'
   },
   {
     title: 'Global Collaboration Network',
@@ -117,7 +106,7 @@ const communityInitiatives = [
     participants: '8,932 creatives',
     success: '47 countries represented',
     icon: Globe,
-    status: 'Active',
+    status: 'Active'
   },
   {
     title: 'Innovation Lab',
@@ -125,7 +114,7 @@ const communityInitiatives = [
     participants: '567 innovators',
     success: '23 patents filed',
     icon: Zap,
-    status: 'Beta',
+    status: 'Beta'
   },
 ];
 

@@ -11,7 +11,7 @@ import {
  DropdownMenu,
  DropdownMenuContent,
  DropdownMenuItem,
- DropdownMenuTrigger,
+ DropdownMenuTrigger
 } from '@ghxstship/ui';
 
 import type { ProgrammingWorkshop } from '../types';
@@ -32,7 +32,7 @@ const STATUS_BADGE_CONFIG = {
  in_progress: { label: 'In Progress', variant: 'info' as const },
  completed: { label: 'Completed', variant: 'success' as const },
  cancelled: { label: 'Cancelled', variant: 'destructive' as const },
- postponed: { label: 'Postponed', variant: 'warning' as const },
+ postponed: { label: 'Postponed', variant: 'warning' as const }
 };
 
 const SKILL_LEVEL_BADGE_CONFIG = {
@@ -40,7 +40,7 @@ const SKILL_LEVEL_BADGE_CONFIG = {
  intermediate: { label: 'Intermediate', variant: 'warning' as const },
  advanced: { label: 'Advanced', variant: 'destructive' as const },
  expert: { label: 'Expert', variant: 'destructive' as const },
- all_levels: { label: 'All Levels', variant: 'default' as const },
+ all_levels: { label: 'All Levels', variant: 'default' as const }
 };
 
 const CATEGORY_CONFIG = {
@@ -53,13 +53,13 @@ const CATEGORY_CONFIG = {
  marketing: { label: 'Marketing', icon: '📢', color: 'bg-green-100 text-green-800' },
  finance: { label: 'Finance', icon: '💰', color: 'bg-emerald-100 text-emerald-800' },
  legal: { label: 'Legal', icon: '⚖️', color: 'bg-slate-100 text-slate-800' },
- other: { label: 'Other', icon: '📚', color: 'bg-gray-100 text-gray-800' },
+ other: { label: 'Other', icon: '📚', color: 'bg-gray-100 text-gray-800' }
 };
 
 const FORMAT_CONFIG = {
  in_person: { label: 'In Person', variant: 'success' as const, icon: '🏢' },
  virtual: { label: 'Virtual', variant: 'info' as const, icon: '💻' },
- hybrid: { label: 'Hybrid', variant: 'warning' as const, icon: '🔄' },
+ hybrid: { label: 'Hybrid', variant: 'warning' as const, icon: '🔄' }
 };
 
 export default function ProgrammingWorkshopsGridView({
@@ -67,7 +67,7 @@ export default function ProgrammingWorkshopsGridView({
  loading,
  onEdit,
  onView,
- onDelete,
+ onDelete
 }: ProgrammingWorkshopsGridViewProps) {
  if (loading) {
  return (

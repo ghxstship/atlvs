@@ -3,6 +3,7 @@
 import React, { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
+import { tryCatch, Result, reportError } from '../utils/error-handling';
 
 // 2026 Enhancement System - Micro-animations, AI Personalization, Dynamic Theming
 // Future-ready enhancements for cinematic aesthetics and intelligent adaptation
@@ -399,9 +400,9 @@ const enhancedButtonVariants = cva(
         ],
       },
       size: {
-        sm: 'h-icon-lg px-sm text-sm',
-        md: 'h-icon-xl px-md text-sm',
-        lg: 'h-icon-2xl px-lg text-base',
+        sm: 'h-8 px-sm text-sm',
+        md: 'h-10 px-md text-sm',
+        lg: 'h-12 px-lg text-base',
       },
       animation: {
         none: '',
@@ -481,7 +482,7 @@ export const a11yEnhancements = {
   keyboardFocus: 'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded',
   
   // Touch targets
-  touchTarget: 'min-h-icon-xl min-w-icon-xl',
+  touchTarget: 'min-h-[44px] min-w-[44px]',
 };
 
 // =============================================================================

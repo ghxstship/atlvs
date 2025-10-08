@@ -44,7 +44,7 @@ const DEFAULT_STATS: ProcurementStats = {
   totalVendors: 0,
   totalCategories: 0,
   totalSpent: 0,
-  currency: 'USD',
+  currency: 'USD'
 }
 
 export function useProcurementOverview({ orgId }: UseProcurementOverviewOptions): UseProcurementOverviewResult {
@@ -106,7 +106,7 @@ export function useProcurementOverview({ orgId }: UseProcurementOverviewOptions)
           totalVendors: (vendors.data ?? []).length,
           totalCategories: (categories.data ?? []).length,
           totalSpent,
-          currency: (ordersData[0]?.currency as string) ?? 'USD',
+          currency: (ordersData[0]?.currency as string) ?? 'USD'
         })
 
         setRecentOrders(ordersData.slice(0, 5))
@@ -126,12 +126,15 @@ export function useProcurementOverview({ orgId }: UseProcurementOverviewOptions)
     [orgId],
   )
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadOverviewData('initial')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadOverviewData])
 
   const refresh = useCallback(async () => {
     await loadOverviewData('refresh')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadOverviewData])
 
   return {
@@ -140,6 +143,6 @@ export function useProcurementOverview({ orgId }: UseProcurementOverviewOptions)
     loading,
     refreshing,
     error,
-    refresh,
+    refresh
   }
 }

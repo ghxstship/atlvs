@@ -40,7 +40,7 @@ export default function InspectionListView({
  onStatusChange,
  getTypeBadgeVariant,
  getStatusBadgeVariant,
- getScoreColor,
+ getScoreColor
 }: InspectionListViewProps) {
  const visibleFields = fieldVisibility.filter((f) => f.visible);
 

@@ -20,7 +20,7 @@ const createLocationSchema = z.object({
   type: z.enum(['venue', 'office', 'warehouse', 'studio', 'outdoor', 'virtual', 'other']),
   capacity: z.number().optional(),
   project_id: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 export default function CreateLocationClient({ orgId }: { orgId: string }) {
@@ -43,8 +43,8 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
       type: 'venue',
       capacity: undefined,
       project_id: '',
-      notes: '',
-    },
+      notes: ''
+    }
   });
 
   // Load projects when drawer opens
@@ -72,7 +72,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
         ...data,
         organization_id: orgId,
         project_id: data.project_id || null,
-        capacity: data.capacity || null,
+        capacity: data.capacity || null
       };
 
       const { error: insertError } = await sb

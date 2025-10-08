@@ -7,13 +7,13 @@ import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
   title: 'Hospitality & Travel | GHXSTSHIP',
   description:
-    'Craft luxury guest journeys, experiential stays, and premium travel programs with GHXSTSHIP’s hospitality workflows.',
+    'Craft luxury guest journeys, experiential stays, and premium travel programs with GHXSTSHIP’s hospitality workflows.'
 };
 
 const heroStats = [
@@ -27,41 +27,41 @@ const experiencePillars = [
   {
     title: 'Personalized Stays',
     description: 'Capture preferences, tailor amenities, and manage bespoke itineraries for every guest.',
-    icon: ConciergeBell,
+    icon: ConciergeBell
   },
   {
     title: 'Global Coordination',
     description: 'Align property teams, destination partners, and transportation providers across time zones.',
-    icon: Globe2,
+    icon: Globe2
   },
   {
     title: 'Experiential Programming',
     description: 'Curate excursions, wellness sessions, and private events with vendor-ready runbooks.',
-    icon: Compass,
+    icon: Compass
   },
   {
     title: 'Onsite Operations',
     description: 'Real-time dashboards for check-ins, housekeeping, and guest relations keep service seamless.',
-    icon: Building2,
+    icon: Building2
   },
 ];
 
 const hospitalityBenefits = [
   {
     title: 'Guest Relationship Intelligence',
-    description: 'Surface loyalty data, milestones, and sentiment for personalized surprise-and-delight moments.',
+    description: 'Surface loyalty data, milestones, and sentiment for personalized surprise-and-delight moments.'
   },
   {
     title: 'Premium Vendor Network',
-    description: 'Track master service agreements, availability, and ratings for chefs, guides, and chauffeurs.',
+    description: 'Track master service agreements, availability, and ratings for chefs, guides, and chauffeurs.'
   },
   {
     title: 'Revenue Optimization',
-    description: 'Automate upsell offers, inventory holds, and billing flows tied to guest itineraries.',
+    description: 'Automate upsell offers, inventory holds, and billing flows tied to guest itineraries.'
   },
   {
     title: 'Compliance & Safety',
-    description: 'Manage regulatory requirements, insurance documentation, and emergency protocols.',
+    description: 'Manage regulatory requirements, insurance documentation, and emergency protocols.'
   },
 ];
 
@@ -73,7 +73,7 @@ const caseStudies = [
     result: '35% faster itinerary planning · 30% increase in ancillary revenue · 97% guest satisfaction · 100% service recovery tracking',
     quote:
       'Every department—from concierge to culinary—worked in harmony. GHXSTSHIP helped us elevate every stay.',
-    author: 'Elena Marques, VP of Guest Experience',
+    author: 'Elena Marques, VP of Guest Experience'
   },
   {
     company: 'Voyage Private Travel',
@@ -82,7 +82,7 @@ const caseStudies = [
     result: '50% fewer operational escalations · 25% improvement in traveler retention · 40% faster vendor confirmations',
     quote:
       'Our travel designers finally share one cockpit. GHXSTSHIP keeps itineraries, vendors, and guests perfectly aligned.',
-    author: 'Marcus Lee, Managing Director',
+    author: 'Marcus Lee, Managing Director'
   },
 ];
 

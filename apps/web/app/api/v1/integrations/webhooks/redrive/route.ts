@@ -9,7 +9,7 @@ export const runtime = 'nodejs';
 const RedriveWebhookSchema = z.object({
   webhookId: z.string().uuid('Invalid webhook ID'),
   eventIds: z.array(z.string().uuid()).optional(),
-  maxRetries: z.number().min(1).max(10).default(3),
+  maxRetries: z.number().min(1).max(10).default(3)
 });
 
 async function getAuthenticatedUser() {

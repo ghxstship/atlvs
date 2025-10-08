@@ -1,7 +1,8 @@
 'use client';
+import { Button, Drawer, Input } from '@ghxstship/ui';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -18,7 +19,7 @@ const trackingUpdateSchema = z.object({
   expected_delivery: z.string().optional(),
   actual_delivery: z.string().optional(),
   shipping_notes: z.string().optional(),
-  delivery_address: z.string().optional(),
+  delivery_address: z.string().optional()
 });
 
 type TrackingUpdateFormData = z.infer<typeof trackingUpdateSchema>;
@@ -53,16 +54,18 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
     resolver: zodResolver(trackingUpdateSchema),
     mode: 'onChange',
     defaultValues: {
-      status: 'shipped',
+      status: 'shipped'
     }
   });
 
   const selectedStatus = watch('status');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isOpen) {
       loadAvailableOrders();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, orgId]);
 
   const loadAvailableOrders = async () => {
@@ -99,7 +102,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
           actual_delivery: data.actual_delivery || null,
           shipping_notes: data.shipping_notes || null,
           delivery_address: data.delivery_address || null,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', data.order_id)
         .eq('organization_id', orgId);
@@ -112,7 +115,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
         tracking_number: data.tracking_number,
         carrier: data.shipping_carrier,
         status: data.status,
-        organization_id: orgId,
+        organization_id: orgId
       });
 
       // Log activity
@@ -125,8 +128,8 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
         details: {
           tracking_number: data.tracking_number,
           carrier: data.shipping_carrier,
-          status: data.status,
-        },
+          status: data.status
+        }
       });
 
       // Reset form and close drawer
@@ -138,7 +141,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
       console.error('Error updating tracking:', error);
       posthog?.capture('procurement_tracking_update_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -229,7 +232,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Tracking Number *
                 </label>
-                <UnifiedInput                   {...register('tracking_number')}
+                <Input                   {...register('tracking_number')}
                   placeholder="1Z999AA1234567890"
                   error={errors.tracking_number?.message}
                 />
@@ -239,7 +242,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Shipping Carrier *
                 </label>
-                <UnifiedInput                   {...register('shipping_carrier')}
+                <Input                   {...register('shipping_carrier')}
                   placeholder="UPS, FedEx, DHL, etc."
                   error={errors.shipping_carrier?.message}
                 />
@@ -265,7 +268,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Expected Delivery
                 </label>
-                <UnifiedInput                   {...register('expected_delivery')}
+                <Input                   {...register('expected_delivery')}
                   type="date"
                 />
               </div>
@@ -275,7 +278,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
                   <label className="block text-body-sm form-label mb-sm">
                     Actual Delivery
                   </label>
-                  <UnifiedInput                     {...register('actual_delivery')}
+                  <Input                     {...register('actual_delivery')}
                     type="date"
                   />
                 </div>
@@ -286,7 +289,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Delivery Address
               </label>
-              <Textarea
+              <textarea
                 {...register('delivery_address')}
                 placeholder="Full delivery address"
                 rows={2}
@@ -297,7 +300,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Shipping Notes
               </label>
-              <Textarea
+              <textarea
                 {...register('shipping_notes')}
                 placeholder="Special delivery instructions, delays, etc."
                 rows={3}

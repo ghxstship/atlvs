@@ -1,9 +1,0 @@
-{
-  "name": "@ghxstship/data-view",
-  "version": "0.0.1",
-  "type": "module",
-  "main": "src/index.ts",
-  "dependencies": {
-    "react": "^19.2.0"
-  }
-}

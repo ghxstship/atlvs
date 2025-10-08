@@ -1,12 +1,12 @@
 'use client';
 
-import { MapPin, Calendar, Building, Award, ExternalLink, Download, Printer, Share, GraduationCap, Briefcase, Heart, Star, Phone, Mail, Globe, DollarSign } from "lucide-react";
+import { Award, Briefcase, Building, Calendar, DollarSign, Download, ExternalDownload, ExternalLink, Globe, GraduationCap, Heart, Mail, MapPin, Phone, Printer, Share, Star } from 'lucide-react';
 import { useMemo } from 'react';
 import {
  Card,
  Badge,
  Button,
- Separator,
+ Separator
 } from '@ghxstship/ui';
 import type { HistoryEntry, HistoryEntryType } from '../types';
 
@@ -34,7 +34,7 @@ const getEntryTypeIcon = (type: HistoryEntryType) => {
  volunteer: Heart,
  internship: Briefcase,
  freelance: Briefcase,
- other: Briefcase,
+ other: Briefcase
  };
  return iconMap[type] || Briefcase;
 };
@@ -93,7 +93,7 @@ const getSectionTitle = (type: HistoryEntryType) => {
  volunteer: 'Volunteer Experience',
  internship: 'Internships',
  freelance: 'Freelance Work',
- other: 'Other Experience',
+ other: 'Other Experience'
  };
  return titleMap[type] || 'Experience';
 };
@@ -108,7 +108,7 @@ const getSectionOrder = (type: HistoryEntryType) => {
  project: 6,
  achievement: 7,
  volunteer: 8,
- other: 9,
+ other: 9
  };
  return orderMap[type] || 10;
 };
@@ -116,7 +116,7 @@ const getSectionOrder = (type: HistoryEntryType) => {
 export default function HistoryResumeView({
  entries,
  userProfile,
- loading = false,
+ loading = false
 }: HistoryResumeViewProps) {
  const groupedEntries = useMemo(() => {
  const groups = groupEntriesByType(entries);
@@ -170,7 +170,7 @@ export default function HistoryResumeView({
  navigator.share({
  title: `${userProfile?.full_name || 'Professional'} Resume`,
  text: 'Check out my professional resume',
- url: window.location.href,
+ url: window.location.href
  });
  } else {
  navigator.clipboard.writeText(window.location.href);

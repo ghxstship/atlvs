@@ -1,24 +1,11 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, Skeleton, Drawer, type DataRecord } from '@ghxstship/ui';
-import { 
-  DollarSign,
-  Plus,
-  Edit,
-  LayoutGrid,
-  List,
-  Trash2,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  TrendingUp,
-  TrendingDown
-} from 'lucide-react';
-import { BudgetUtilizationBar } from "../../../../_components/ui"
+import { Badge, Button, Card, Drawer, Progress, Skeleton, type DataRecord } from '@ghxstship/ui';
+import { AlertTriangle, CheckCircle, Clock, DollarSign, Edit, LayoutGrid, List, Plus, Trash2, TrendingDown, TrendingUp } from 'lucide-react';
 
 interface BudgetsClientProps {
   user: User;
@@ -58,11 +45,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
 
   const supabase = createBrowserClient();
 
-  useEffect(() => {
-    loadBudgets();
-  }, [orgId]);
-
-  const loadBudgets = async () => {
+  const loadBudgets = useCallback(async () => {
     try {
       setLoading(true);
       const { data, error } = await supabase
@@ -78,7 +61,14 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
     } finally {
       setLoading(false);
     }
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [orgId, supabase]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    loadBudgets();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loadBudgets]);
 
   const handleCreateBudget = () => {
     setSelectedBudget(null);
@@ -123,7 +113,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
           .insert({
             ...budgetData,
             organization_id: orgId,
-            created_by: user.id,
+            created_by: user.id
           });
 
         if (error) throw error;
@@ -147,7 +137,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
   const formatCurrency = (amount: number, currency = 'USD') => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: currency
     }).format(amount);
   };
 
@@ -165,7 +155,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
     return { color: 'color-success', label: 'Under Budget' };
   };
 
-  const fieldConfigs: FieldConfig[] = [
+  const fieldConfigs = [
     {
       key: 'name',
       label: 'Budget Name',
@@ -237,7 +227,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
     }
   ];
 
-  const dataViewConfig: DataViewConfig = {
+  const dataViewConfig = {
     id: 'budgets',
     name: 'Budgets',
     viewType: 'grid',
@@ -283,8 +273,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
   }
 
   return (
-    <StateManagerProvider>
-      <div className="stack-lg">
+    <div className="stack-lg">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
@@ -406,9 +395,9 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                         <span className="color-foreground/70">Utilization</span>
                         <span className={`form-label ${status.color}`}>{utilization.toFixed(1)}%</span>
                       </div>
-                      <BudgetUtilizationBar
-                        utilized={budget.spent || 0}
-                        total={budget.amount}
+                      <Progress
+                        value={utilization}
+                        variant={utilization > 90 ? 'error' : utilization > 75 ? 'warning' : 'primary'}
                       />
                     </div>
                     
@@ -528,7 +517,6 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
           </div>
         </Drawer>
       </div>
-    </StateManagerProvider>
   );
 }
 

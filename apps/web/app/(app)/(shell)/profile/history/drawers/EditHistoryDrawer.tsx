@@ -1,6 +1,6 @@
 'use client';
 
-import { Plus, X, Calendar, Building, MapPin, Award, Star, Tag, ExternalLink, DollarSign } from "lucide-react";
+import { Plus, X, Calendar, Building, MapPin, Award, Star, Tag, ExternalDollarSign } from "lucide-react";
 import { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -19,7 +19,7 @@ import {
  Badge,
  Label,
  Separator,
- useToast,
+ useToast
 } from '@ghxstship/ui';
 import type { 
  HistoryEntry, 
@@ -49,7 +49,7 @@ const historyEntrySchema = z.object({
  grade_gpa: z.string().optional(),
  project_status: z.enum(['completed', 'in_progress', 'on_hold', 'cancelled']).optional(),
  visibility: z.enum(['public', 'organization', 'private']).default('organization'),
- tags: z.array(z.string()).default([]),
+ tags: z.array(z.string()).default([])
 });
 
 type FormData = z.infer<typeof historyEntrySchema>;
@@ -112,7 +112,7 @@ export default function EditHistoryDrawer({
  onClose,
  onSave,
  entry,
- loading = false,
+ loading = false
 }: EditHistoryDrawerProps) {
  const { addToast } = useToast();
  const [newSkill, setNewSkill] = useState('');
@@ -137,8 +137,8 @@ export default function EditHistoryDrawer({
  salary_range: '',
  grade_gpa: '',
  visibility: 'organization',
- tags: [],
- },
+ tags: []
+ }
  });
 
  const { watch, setValue, getValues, reset } = form;
@@ -170,7 +170,7 @@ export default function EditHistoryDrawer({
  grade_gpa: entry.grade_gpa || '',
  project_status: entry.project_status,
  visibility: entry.visibility,
- tags: entry.tags,
+ tags: entry.tags
  });
  }
  }, [entry, reset]);
@@ -216,14 +216,14 @@ export default function EditHistoryDrawer({
  addToast({
  title: 'History Entry Updated',
  description: 'Your history entry has been successfully updated.',
- type: 'success',
+ type: 'success'
  });
  onClose();
  } catch (error) {
  addToast({
  title: 'Error',
  description: 'Failed to update history entry. Please try again.',
- type: 'error',
+ type: 'error'
  });
  }
  }, [entry, onSave, addToast, onClose]);

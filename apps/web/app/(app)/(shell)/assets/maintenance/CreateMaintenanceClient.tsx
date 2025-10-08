@@ -4,15 +4,8 @@
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
-import { 
-  Wrench,
-  Calendar,
-  AlertTriangle,
-  DollarSign,
-  Save,
-  X
-} from 'lucide-react';
+import { Drawer, Button, Input, Select, Textarea, Card } from '@ghxstship/ui';
+import { AlertTriangle, Calendar, DollarSign, Save, Wrench, X } from 'lucide-react';
 
 interface CreateMaintenanceClientProps {
   user: User;
@@ -198,7 +191,7 @@ export default function CreateMaintenanceClient({
               <label className="block text-body-sm form-label mb-xs">
                 Asset ID *
               </label>
-              <UnifiedInput                 value={formData.assetId}
+              <Input                 value={formData.assetId}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assetId', e.target.value)}
                 placeholder="Enter asset ID"
                 required
@@ -271,7 +264,7 @@ export default function CreateMaintenanceClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Scheduled Date
                 </label>
-                <UnifiedInput                   type="datetime-local"
+                <Input                   type="datetime-local"
                   value={formData.scheduledDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('scheduledDate', e.target.value)}
                 />
@@ -281,7 +274,7 @@ export default function CreateMaintenanceClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Completed Date
                 </label>
-                <UnifiedInput                   type="datetime-local"
+                <Input                   type="datetime-local"
                   value={formData.completedDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('completedDate', e.target.value)}
                 />
@@ -292,7 +285,7 @@ export default function CreateMaintenanceClient({
               <label className="block text-body-sm form-label mb-xs">
                 Assigned To
               </label>
-              <UnifiedInput                 value={formData.assignedTo}
+              <Input                 value={formData.assignedTo}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assignedTo', e.target.value)}
                 placeholder="Person or team assigned to maintenance"
               />
@@ -325,7 +318,7 @@ export default function CreateMaintenanceClient({
               <label className="block text-body-sm form-label mb-xs">
                 Vendor/Service Provider
               </label>
-              <UnifiedInput                 value={formData.vendor}
+              <Input                 value={formData.vendor}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('vendor', e.target.value)}
                 placeholder="External vendor or service provider"
               />
@@ -346,7 +339,7 @@ export default function CreateMaintenanceClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Estimated/Actual Cost
                 </label>
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   step="0.01"
                   value={formData.cost}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('cost', e.target.value)}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import { AppDrawer, type DrawerFieldConfig } from "@ghxstship/ui";
 import { Check } from 'lucide-react';
@@ -39,7 +39,7 @@ export default function CreateInspectionDrawer({
  projectId,
  projects = [],
  inspectors = [],
- onSuccess,
+ onSuccess
 }: CreateInspectionDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -47,7 +47,7 @@ export default function CreateInspectionDrawer({
  // Get current user for default inspector
  const getCurrentUserId = async () => {
  const {
- data: { user },
+ data: { user }
  } = await supabase.auth.getUser();
  return user?.id ?? null;
  };
@@ -55,7 +55,7 @@ export default function CreateInspectionDrawer({
  const projectOptions = useMemo(() => {
  const options = projects.map((project): { label: string; value: string } => ({
  label: project.name,
- value: project.id,
+ value: project.id
  }));
 
  return [{ label: "Select a project", value: "" }, ...options];
@@ -65,7 +65,7 @@ export default function CreateInspectionDrawer({
  [{ label: "Select an inspector", value: "" },
  ...inspectors.map((inspector): { label: string; value: string } => ({
  label: inspector.full_name || inspector.email,
- value: inspector.id,
+ value: inspector.id
  }))]
 ), [inspectors]);
 
@@ -75,46 +75,46 @@ export default function CreateInspectionDrawer({
  label: "Inspection Title",
  type: "text",
  required: true,
- placeholder: "Enter inspection title",
+ placeholder: "Enter inspection title"
  },
  {
  key: "description",
  label: "Description",
  type: "textarea",
- placeholder: "Describe the inspection scope and objectives",
+ placeholder: "Describe the inspection scope and objectives"
  },
  {
  key: "type",
  label: "Inspection Type",
  type: "select",
  required: true,
- options: INSPECTION_TYPE_OPTIONS,
+ options: INSPECTION_TYPE_OPTIONS
  },
  {
  key: "project_id",
  label: "Project",
  type: "select",
  required: projectId ? false : true,
- options: projectOptions,
+ options: projectOptions
  },
  {
  key: "scheduled_date",
  label: "Scheduled Date",
  type: "date",
- required: true,
+ required: true
  },
  {
  key: "inspector_id",
  label: "Inspector",
  type: "select",
  required: true,
- options: inspectorOptions,
+ options: inspectorOptions
  },
  {
  key: "location",
  label: "Location",
  type: "text",
- placeholder: "Enter inspection location",
+ placeholder: "Enter inspection location"
  },
  {
  key: "checklist_template",
@@ -126,17 +126,17 @@ export default function CreateInspectionDrawer({
  { label: "Quality Checklist", value: "quality" },
  { label: "Compliance Checklist", value: "compliance" },
  { label: "Final Inspection", value: "final" },
- ],
+ ]
  },
  {
  key: "follow_up_required",
  label: "Follow-up Required",
- type: "checkbox",
+ type: "checkbox"
  },
  {
  key: "follow_up_date",
  label: "Follow-up Date",
- type: "date",
+ type: "date"
  },
  ];
 
@@ -194,7 +194,7 @@ export default function CreateInspectionDrawer({
  score: null,
  findings: null,
  recommendations: null,
- attachments: [] as string[],
+ attachments: [] as string[]
  };
 
  setLoading(true);
@@ -204,7 +204,7 @@ export default function CreateInspectionDrawer({
 
  const { error } = await supabase.from("project_inspections").insert({
  ...payload,
- inspector_id: inspectorId,
+ inspector_id: inspectorId
  });
 
  if (error) {
@@ -259,7 +259,7 @@ export default function CreateInspectionDrawer({
  { category: "Documentation", item: "Warranties and manuals delivered" },
  { category: "Cleanup", item: "Site cleaned and restored" },
  { category: "Cleanup", item: "Waste properly disposed" },
- ],
+ ]
  };
 
  const items = templates[template] || [];
@@ -268,7 +268,7 @@ export default function CreateInspectionDrawer({
  category: item.category,
  item: item.item,
  status: "pending",
- notes: null,
+ notes: null
  }));
  };
 

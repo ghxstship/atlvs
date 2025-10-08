@@ -4,7 +4,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription,
+  DrawerDescription
 } from '@ghxstship/ui';
 import { Button } from '@ghxstship/ui';
 import { Input } from '@ghxstship/ui';
@@ -27,13 +27,13 @@ export default function CreateDrawer({
   orgId,
   open,
   onOpenChange,
-  onCreate,
+  onCreate
 }: CreateDrawerProps) {
   const [formData, setFormData] = useState<Partial<UpsertListingDto>({
     type: 'offer',
     category: 'services',
     status: 'draft',
-    featured: false,
+    featured: false
   });
   const [isCreating, setIsCreating] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -48,8 +48,8 @@ export default function CreateDrawer({
       ...prev,
       [parent]: {
         ...prev[parent],
-        [field]: value,
-      },
+        [field]: value
+      }
     }));
     setError(null);
   };
@@ -82,7 +82,7 @@ export default function CreateDrawer({
         type: 'offer',
         category: 'services',
         status: 'draft',
-        featured: false,
+        featured: false
       });
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to create listing');
@@ -96,7 +96,7 @@ export default function CreateDrawer({
       type: 'offer',
       category: 'services',
       status: 'draft',
-      featured: false,
+      featured: false
     });
     setError(null);
     onOpenChange(false);

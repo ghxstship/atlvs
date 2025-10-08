@@ -30,7 +30,7 @@ interface ProcurementClientProps {
 export default function ProcurementClientUnified({
  user,
  orgId,
- translations = {},
+ translations = {}
 }: ProcurementClientProps) {
  const moduleUser: ModuleUser = {
   id: user.id,
@@ -44,7 +44,7 @@ export default function ProcurementClientUnified({
   role: typeof user.user_metadata?.role === 'string'
    ? user.user_metadata.role
    : undefined,
-  metadata: user.user_metadata ?? {},
+  metadata: user.user_metadata ?? {}
  };
 
  return (

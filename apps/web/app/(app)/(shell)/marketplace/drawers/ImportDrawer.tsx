@@ -4,7 +4,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription,
+  DrawerDescription
 } from '@ghxstship/ui';
 import { Button } from '@ghxstship/ui';
 import { Input } from '@ghxstship/ui';
@@ -13,15 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Checkbox } from '@ghxstship/ui';
 import { Separator } from '@ghxstship/ui';
 import { Badge } from '@ghxstship/ui';
-import {
-  Upload,
-  Download,
-  FileText,
-  CheckCircle,
-  AlertCircle,
-  X,
-  Loader2
-} from 'lucide-react';
+import { Upload, Download, FileText, CheckCircle, AlertCircle, X, Loader2, File } from 'lucide-react';
 import { marketplaceService } from '../lib/marketplace-service';
 import type { ListingFilters } from '../types';
 
@@ -36,14 +28,14 @@ export default function ImportDrawer({
   orgId,
   open,
   onOpenChange,
-  onImportComplete,
+  onImportComplete
 }: ImportDrawerProps) {
   const [file, setFile] = useState<File | null>(null);
   const [format, setFormat] = useState<'csv' | 'json' | 'excel'>('csv');
   const [options, setOptions] = useState({
     skipDuplicates: true,
     updateExisting: false,
-    validateOnly: false,
+    validateOnly: false
   });
   const [isImporting, setIsImporting] = useState(false);
   const [results, setResults] = useState<(null);
@@ -84,7 +76,7 @@ export default function ImportDrawer({
         success: false,
         imported: 0,
         skipped: 0,
-        errors: [error instanceof Error ? error.message : 'Import failed'],
+        errors: [error instanceof Error ? error.message : 'Import failed']
       });
     } finally {
       setIsImporting(false);

@@ -1,12 +1,12 @@
 'use client';
 
-import { User, Calendar, Building, MapPin, MoreHorizontal, Eye, Edit, Trash2, ExternalLink, Award } from "lucide-react";
+import { Building, Calendar, Edit, ExternalAward, ExternalLink, Eye, MapPin, MoreHorizontal, Trash2, User } from 'lucide-react';
 import { useState } from 'react';
 import {
  Card,
  Badge,
  Button,
- Checkbox,
+ Checkbox
 } from '@ghxstship/ui';
 import type { ProfessionalProfile } from '../types';
 import {
@@ -15,7 +15,7 @@ import {
  getStatusBadgeVariant,
  getCompletionColor,
  EMPLOYMENT_TYPE_LABELS,
- PROFILE_STATUS_LABELS,
+ PROFILE_STATUS_LABELS
 } from '../types';
 
 interface ProfessionalListViewProps {
@@ -37,7 +37,7 @@ export default function ProfessionalListView({
  onView,
  onEdit,
  onDelete,
- loading = false,
+ loading = false
 }: ProfessionalListViewProps) {
  const [expandedIds, setExpandedIds] = useState<Set<string>(new Set());
 

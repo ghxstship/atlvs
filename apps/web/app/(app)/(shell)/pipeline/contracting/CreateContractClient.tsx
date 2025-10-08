@@ -1,7 +1,8 @@
 'use client';
+import { Button, Drawer, Input } from '@ghxstship/ui';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -33,7 +34,7 @@ const contractSchema = z.object({
   exclusivity: z.boolean().default(false),
   terminationNotice: z.number().default(14),
   autoRenewal: z.boolean().default(false),
-  renewalPeriod: z.number().optional(),
+  renewalPeriod: z.number().optional()
 });
 
 type ContractFormData = z.infer<typeof contractSchema>;
@@ -67,7 +68,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
       confidentiality: true,
       exclusivity: false,
       terminationNotice: 14,
-      autoRenewal: false,
+      autoRenewal: false
     }
   });
 
@@ -85,9 +86,9 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-org-id': orgId,
+          'x-org-id': orgId
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       });
 
       if (!response.ok) {
@@ -105,7 +106,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
         rate_type: data.rateType,
         remote: data.remote,
         confidentiality: data.confidentiality,
-        organization_id: orgId,
+        organization_id: orgId
       });
 
       // Log activity
@@ -120,8 +121,8 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
           contractor_name: data.contractorName,
           type: data.type,
           rate_type: data.rateType,
-          remote: data.remote,
-        },
+          remote: data.remote
+        }
       });
 
       // Reset form and close drawer
@@ -133,7 +134,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
       console.error('Error creating contract:', error);
       posthog?.capture('pipeline_contract_creation_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
-        organization_id: orgId,
+        organization_id: orgId
       });
     } finally {
       setIsSubmitting(false);
@@ -203,7 +204,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Contract Title *
               </label>
-              <UnifiedInput                 {...register('title')}
+              <Input                 {...register('title')}
                 placeholder="e.g., Production Assistant Contract, Technical Consultant Agreement"
                 error={errors.title?.message}
               />
@@ -214,7 +215,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Contractor Name *
                 </label>
-                <UnifiedInput                   {...register('contractorName')}
+                <Input                   {...register('contractorName')}
                   placeholder="Full legal name"
                   error={errors.contractorName?.message}
                 />
@@ -224,7 +225,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Email Address *
                 </label>
-                <UnifiedInput                   {...register('contractorEmail')}
+                <Input                   {...register('contractorEmail')}
                   type="email"
                   placeholder="contractor@example.com"
                   error={errors.contractorEmail?.message}
@@ -237,7 +238,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Phone Number
                 </label>
-                <UnifiedInput                   {...register('contractorPhone')}
+                <Input                   {...register('contractorPhone')}
                   placeholder="+1 (555) 123-4567"
                 />
               </div>
@@ -246,7 +247,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Company (if applicable)
                 </label>
-                <UnifiedInput                   {...register('contractorCompany')}
+                <Input                   {...register('contractorCompany')}
                   placeholder="Company name"
                 />
               </div>
@@ -273,7 +274,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Start Date *
                 </label>
-                <UnifiedInput                   {...register('startDate')}
+                <Input                   {...register('startDate')}
                   type="date"
                   error={errors.startDate?.message}
                 />
@@ -283,7 +284,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   End Date
                 </label>
-                <UnifiedInput                   {...register('endDate')}
+                <Input                   {...register('endDate')}
                   type="date"
                 />
               </div>
@@ -294,7 +295,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Rate *
                 </label>
-                <UnifiedInput                   {...register('rate', { valueAsNumber: true })}
+                <Input                   {...register('rate', { valueAsNumber: true })}
                   type="number"
                   min="0"
                   step="0.01"
@@ -323,7 +324,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Max Hours (if applicable)
                 </label>
-                <UnifiedInput                   {...register('maxHours', { valueAsNumber: true })}
+                <Input                   {...register('maxHours', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   placeholder="40"
@@ -335,7 +336,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Location
               </label>
-              <UnifiedInput                 {...register('location')}
+              <Input                 {...register('location')}
                 placeholder="Work location or address"
               />
             </div>
@@ -344,7 +345,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Scope of Work *
               </label>
-              <Textarea
+              <textarea
                 {...register('scope')}
                 placeholder="Detailed description of work to be performed"
                 rows={4}
@@ -356,7 +357,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Deliverables
               </label>
-              <Textarea
+              <textarea
                 {...register('deliverables')}
                 placeholder="Expected deliverables and milestones"
                 rows={3}
@@ -367,7 +368,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Requirements
               </label>
-              <Textarea
+              <textarea
                 {...register('requirements')}
                 placeholder="Skills, certifications, or equipment requirements"
                 rows={2}
@@ -378,7 +379,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Payment Terms
               </label>
-              <Textarea
+              <textarea
                 {...register('paymentTerms')}
                 placeholder="Payment schedule, invoicing requirements, etc."
                 rows={2}
@@ -390,7 +391,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Termination Notice (days)
                 </label>
-                <UnifiedInput                   {...register('terminationNotice', { valueAsNumber: true })}
+                <Input                   {...register('terminationNotice', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   placeholder="14"
@@ -403,7 +404,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                     <label className="block text-body-sm form-label mb-sm">
                       Renewal Period (months)
                     </label>
-                    <UnifiedInput                       {...register('renewalPeriod', { valueAsNumber: true })}
+                    <Input                       {...register('renewalPeriod', { valueAsNumber: true })}
                       type="number"
                       min="1"
                       placeholder="12"

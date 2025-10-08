@@ -12,7 +12,7 @@ import {
   Trash2,
   Share,
   MoreHorizontal,
-  GitBranch,
+  GitBranch
 } from 'lucide-react';
 import { Card, Button, Badge, DropdownMenu, Select } from '@ghxstship/ui';
 import { format, isSameDay, startOfDay, endOfDay } from 'date-fns';
@@ -37,7 +37,7 @@ export default function TimelineView({
   onDelete,
   onShare,
   formatFileSize,
-  getCategoryIcon,
+  getCategoryIcon
 }: TimelineViewProps) {
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
   const [groupBy, setGroupBy] = useState<'day' | 'week' | 'month'>('day');
@@ -108,7 +108,7 @@ export default function TimelineView({
         return {
           label,
           icon: Calendar,
-          color: isToday ? 'text-blue-600' : 'text-gray-900',
+          color: isToday ? 'text-blue-600' : 'text-gray-900'
         };
 
       case 'week':
@@ -119,7 +119,7 @@ export default function TimelineView({
         return {
           label: `${format(weekStart, 'MMM d')} - ${format(weekEnd, 'MMM d, yyyy')}`,
           icon: Calendar,
-          color: 'text-gray-900',
+          color: 'text-gray-900'
         };
 
       case 'month':
@@ -127,14 +127,14 @@ export default function TimelineView({
         return {
           label: format(monthDate, 'MMMM yyyy'),
           icon: Calendar,
-          color: 'text-gray-900',
+          color: 'text-gray-900'
         };
 
       default:
         return {
           label: groupKey,
           icon: Calendar,
-          color: 'text-gray-900',
+          color: 'text-gray-900'
         };
     }
   };

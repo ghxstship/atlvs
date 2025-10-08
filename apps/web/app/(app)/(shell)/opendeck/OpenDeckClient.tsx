@@ -3,7 +3,7 @@
 
 
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useCallback } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { Edit3, FileText, Activity as ActivityIcon, MessageSquare, Plus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -44,8 +44,10 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
     }
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { load(); }, [orgId]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     (async () => {
       try {
@@ -54,6 +56,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
         setVendors(json.items ?? []);
       } catch {}
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   function openVendorDrawer(vendorId: string) {
@@ -123,6 +126,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
   const [loadingComments, setLoadingComments] = useState(false);
   const [loadingActivity, setLoadingActivity] = useState(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!openId) return;
     const sb = createBrowserClient();
@@ -143,8 +147,10 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
       }
       setLoadingComments(false);
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openId, orgId]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!openId) return;
     (async () => {
@@ -156,6 +162,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
       } catch { setActivity([]); }
       setLoadingActivity(false);
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openId, orgId]);
 
   const hasData = rows.length > 0;

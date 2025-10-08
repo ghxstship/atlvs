@@ -18,7 +18,7 @@ async function getAuthenticatedUser() {
     },
     remove: (name: string, options: unknown) => {
       cookieStore.delete(name);
-    },
+    }
   });
 
   const { data: { user }, error } = await supabase.auth.getUser();

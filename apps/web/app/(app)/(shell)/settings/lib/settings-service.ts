@@ -13,7 +13,7 @@ import type {
   SettingsAuditLog,
   SettingsExportOptions,
   SettingsImportResult,
-  SettingsFilterOptions,
+  SettingsFilterOptions
 } from '../types';
 
 class SettingsService {
@@ -110,7 +110,7 @@ class SettingsService {
         ...data,
         organization_id: membership.organization_id,
         created_by: user.id,
-        updated_by: user.id,
+        updated_by: user.id
       };
 
       const { data: newSetting, error } = await this.supabase
@@ -146,7 +146,7 @@ class SettingsService {
       const updateData = {
         ...data,
         updated_by: user.id,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       const { data: updatedSetting, error } = await this.supabase
@@ -290,7 +290,7 @@ class SettingsService {
         settingsByCategory,
         publicSettings: publicSettings || 0,
         editableSettings: editableSettings || 0,
-        recentlyUpdated: recentlyUpdated || 0,
+        recentlyUpdated: recentlyUpdated || 0
       };
     } catch (error) {
       console.error('Error fetching statistics:', error);
@@ -346,12 +346,12 @@ class SettingsService {
         categories: Object.entries(categoryCount).map(([value, count]) => ({
           value: value as unknown,
           label: value.charAt(0).toUpperCase() + value.slice(1),
-          count,
+          count
         })),
         types: Object.entries(typeCount).map(([value, count]) => ({
           value: value as unknown,
           label: value.charAt(0).toUpperCase() + value.slice(1),
-          count,
+          count
         })),
         publicOptions: [
           { value: true, label: 'Public', count: publicCount },
@@ -360,7 +360,7 @@ class SettingsService {
         editableOptions: [
           { value: true, label: 'Editable', count: editableCount },
           { value: false, label: 'Read-only', count: readonlyCount },
-        ],
+        ]
       };
     } catch (error) {
       console.error('Error fetching filter options:', error);
@@ -395,7 +395,7 @@ class SettingsService {
             }));
 
         return new Blob([JSON.stringify(exportData, null, 2)], {
-          type: 'application/json',
+          type: 'application/json'
         });
       } else if (options.format === 'csv') {
         const headers = options.includeMetadata
@@ -462,7 +462,7 @@ class SettingsService {
 
       return data?.map(log => ({
         ...log,
-        user_name: log.user?.name || log.user?.email || 'Unknown User',
+        user_name: log.user?.name || log.user?.email || 'Unknown User'
       })) || [];
     } catch (error) {
       console.error('Error fetching audit logs:', error);
@@ -489,7 +489,7 @@ class SettingsService {
           old_value: oldValue,
           new_value: newValue,
           user_id: userId,
-          timestamp: new Date().toISOString(),
+          timestamp: new Date().toISOString()
         }]);
     } catch (error) {
       console.error('Error logging audit event:', error);
@@ -511,7 +511,7 @@ class SettingsService {
       is_public: String(data.is_public),
       is_editable: String(data.is_editable),
       created_at: data.created_at,
-      updated_at: data.updated_at,
+      updated_at: data.updated_at
     };
   }
 }

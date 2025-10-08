@@ -5,13 +5,13 @@ import type {
   PerformanceReview,
   PerformanceFilters,
   PerformanceStats,
-  PerformanceAnalytics,
+  PerformanceAnalytics
 } from '../types';
 import {
   performanceFilterSchema,
   performanceUpsertSchema,
   filterPerformanceReviews,
-  sortPerformanceReviews,
+  sortPerformanceReviews
 } from '../types';
 
 // ============================================================================
@@ -89,7 +89,7 @@ export async function fetchPerformanceReviews(
 
   return {
     reviews: data || [],
-    total: count || 0,
+    total: count || 0
   };
 }
 
@@ -140,10 +140,10 @@ export async function fetchPerformanceStats(
         total: 0,
         completed: 0,
         inProgress: 0,
-        notStarted: 0,
+        notStarted: 0
       },
       topStrengths: [],
-      developmentAreas: [],
+      developmentAreas: []
     };
   }
 
@@ -159,13 +159,13 @@ export async function fetchPerformanceStats(
     const existing = typeMap.get(r.review_type) || { count: 0, totalRating: 0 };
     typeMap.set(r.review_type, {
       count: existing.count + 1,
-      totalRating: existing.totalRating + r.overall_rating,
+      totalRating: existing.totalRating + r.overall_rating
     });
   });
   const byType = Array.from(typeMap.entries()).map(([type, data]) => ({
     type: type as unknown,
     count: data.count,
-    averageRating: data.totalRating / data.count,
+    averageRating: data.totalRating / data.count
   }));
 
   // Group by status
@@ -175,7 +175,7 @@ export async function fetchPerformanceStats(
   });
   const byStatus = Array.from(statusMap.entries()).map(([status, count]) => ({
     status: status as unknown,
-    count,
+    count
   }));
 
   // Rating distribution
@@ -186,7 +186,7 @@ export async function fetchPerformanceStats(
   });
   const ratingDistribution = Array.from(ratingMap.entries()).map(([rating, count]) => ({
     rating,
-    count,
+    count
   }));
 
   // Goal completion stats
@@ -195,7 +195,7 @@ export async function fetchPerformanceStats(
     total: allGoals.length,
     completed: allGoals.filter(g => g.status === 'completed').length,
     inProgress: allGoals.filter(g => g.status === 'in_progress').length,
-    notStarted: allGoals.filter(g => g.status === 'not_started').length,
+    notStarted: allGoals.filter(g => g.status === 'not_started').length
   };
 
   // Top strengths
@@ -232,7 +232,7 @@ export async function fetchPerformanceStats(
     ratingDistribution,
     goalCompletion,
     topStrengths,
-    developmentAreas,
+    developmentAreas
   };
 }
 
@@ -263,8 +263,8 @@ export async function fetchPerformanceAnalytics(
         organizationAverage: 0,
         industryAverage: 0,
         userRating: 0,
-        percentile: 0,
-      },
+        percentile: 0
+      }
     };
   }
 
@@ -283,7 +283,7 @@ export async function fetchPerformanceAnalytics(
       period,
       averageRating: data.ratings.reduce((a, b) => a + b, 0) / data.ratings.length,
       reviewCount: data.ratings.length,
-      promotions: data.promotions,
+      promotions: data.promotions
     }))
     .sort((a, b) => a.period.localeCompare(b.period));
 
@@ -303,7 +303,7 @@ export async function fetchPerformanceAnalytics(
     category: category as unknown,
     totalGoals: data.total,
     completedGoals: data.completed,
-    averageProgress: data.progress.reduce((a, b) => a + b, 0) / data.progress.length,
+    averageProgress: data.progress.reduce((a, b) => a + b, 0) / data.progress.length
   }));
 
   // Calculate competency breakdown
@@ -316,17 +316,17 @@ export async function fetchPerformanceAnalytics(
     {
       competency: 'Leadership',
       averageRating: reviews.reduce((sum, r) => sum + (r.leadership_rating || 0), 0) / reviews.length,
-      improvementTrend: 0,
+      improvementTrend: 0
     },
     {
       competency: 'Communication',
       averageRating: reviews.reduce((sum, r) => sum + (r.communication_rating || 0), 0) / reviews.length,
-      improvementTrend: 0,
+      improvementTrend: 0
     },
     {
       competency: 'Technical Skills',
       averageRating: reviews.reduce((sum, r) => sum + (r.technical_rating || 0), 0) / reviews.length,
-      improvementTrend: 0,
+      improvementTrend: 0
     },
   ].filter(c => c.averageRating > 0);
 
@@ -345,7 +345,7 @@ export async function fetchPerformanceAnalytics(
     reviewer,
     reviewCount: data.count,
     averageRating: data.ratings.reduce((a, b) => a + b, 0) / data.ratings.length,
-    consistency: calculateConsistency(data.ratings),
+    consistency: calculateConsistency(data.ratings)
   }));
 
   // Calculate career progression
@@ -353,7 +353,7 @@ export async function fetchPerformanceAnalytics(
     year: new Date(review.review_period_start).getFullYear(),
     rating: review.overall_rating,
     promotion: review.promotion_recommended,
-    salaryAdjustment: review.salary_adjustment,
+    salaryAdjustment: review.salary_adjustment
   }));
 
   // Calculate benchmark comparison
@@ -362,7 +362,7 @@ export async function fetchPerformanceAnalytics(
     organizationAverage,
     industryAverage: 3.2, // Mock data - would come from external source
     userRating: organizationAverage,
-    percentile: calculatePercentile(organizationAverage, reviews.map(r => r.overall_rating)),
+    percentile: calculatePercentile(organizationAverage, reviews.map(r => r.overall_rating))
   };
 
   return {
@@ -371,7 +371,7 @@ export async function fetchPerformanceAnalytics(
     competencyBreakdown,
     reviewerInsights,
     careerProgression,
-    benchmarkComparison,
+    benchmarkComparison
   };
 }
 
@@ -394,7 +394,7 @@ export async function createPerformanceReview(
       user_id: userId,
       ...validated,
       created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .select()
     .single();
@@ -418,7 +418,7 @@ export async function updatePerformanceReview(
     .from('user_performance_reviews')
     .update({
       ...validated,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', reviewId)
     .select()
@@ -456,7 +456,7 @@ export async function updateReviewStatus(
     .from('user_performance_reviews')
     .update({
       status,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', reviewId)
     .select()
@@ -479,7 +479,7 @@ export async function updateReviewVisibility(
     .from('user_performance_reviews')
     .update({
       visibility,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', reviewId)
     .select()

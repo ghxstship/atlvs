@@ -159,14 +159,14 @@ export const ACTIVITY_TYPE_CONFIG = {
     icon: 'ThumbsUp', 
     color: 'bg-emerald-100 text-emerald-800',
     description: 'Professional endorsement was received'
-  },
+  }
 } as const;
 
 export const VIEW_CONFIG = {
   list: { label: 'List', icon: 'List' },
   timeline: { label: 'Timeline', icon: 'Clock' },
   calendar: { label: 'Calendar', icon: 'Calendar' },
-  analytics: { label: 'Analytics', icon: 'BarChart3' },
+  analytics: { label: 'Analytics', icon: 'BarChart3' }
 } as const;
 
 export const QUICK_FILTERS = [
@@ -191,8 +191,8 @@ export function createEmptyActivityStats(): ActivityStats {
       profileUpdates: 0,
       certificationsAdded: 0,
       reviewsCompleted: 0,
-      lastActivity: '',
-    },
+      lastActivity: ''
+    }
   };
 }
 
@@ -201,6 +201,6 @@ export function createEmptyActivityAnalytics(): ActivityAnalytics {
     dailyActivity: [],
     typeDistribution: [],
     userActivity: [],
-    timePatterns: [],
+    timePatterns: []
   };
 }

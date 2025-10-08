@@ -13,7 +13,7 @@ import {
  Play,
  Trash2,
  RefreshCw,
- Download,
+ Download
 } from "lucide-react";
 import { useState, useEffect, useCallback } from 'react';
 import { Button, useToastContext } from '@ghxstship/ui';
@@ -23,7 +23,7 @@ import type {
  SettingsStatistics,
  SettingsSearchParams,
  SettingCategory,
- SettingsFormData,
+ SettingsFormData
 } from './types';
 import { settingsService } from './lib/settings-service';
 import SettingsGridView from './views/SettingsGridView';
@@ -39,7 +39,7 @@ const fieldConfig: SettingsFieldConfig[] = [
  type: 'text',
  width: 100,
  sortable: true,
- filterable: false,
+ filterable: false
  },
  {
  key: 'name',
@@ -48,7 +48,7 @@ const fieldConfig: SettingsFieldConfig[] = [
  width: 200,
  sortable: true,
  filterable: true,
- required: true,
+ required: true
  },
  {
  key: 'category',
@@ -67,7 +67,7 @@ const fieldConfig: SettingsFieldConfig[] = [
  { value: 'automations', label: 'Automations' },
  { value: 'compliance', label: 'Compliance' },
  { value: 'backup', label: 'Backup' },
- ],
+ ]
  },
  {
  key: 'value',
@@ -75,7 +75,7 @@ const fieldConfig: SettingsFieldConfig[] = [
  type: 'text',
  width: 250,
  sortable: true,
- filterable: true,
+ filterable: true
  },
  {
  key: 'description',
@@ -83,7 +83,7 @@ const fieldConfig: SettingsFieldConfig[] = [
  type: 'textarea',
  width: 300,
  sortable: false,
- filterable: true,
+ filterable: true
  },
  {
  key: 'type',
@@ -98,7 +98,7 @@ const fieldConfig: SettingsFieldConfig[] = [
  { value: 'boolean', label: 'Boolean' },
  { value: 'json', label: 'JSON' },
  { value: 'array', label: 'Array' },
- ],
+ ]
  },
  {
  key: 'is_public',
@@ -110,7 +110,7 @@ const fieldConfig: SettingsFieldConfig[] = [
  options: [
  { value: 'true', label: 'Yes' },
  { value: 'false', label: 'No' },
- ],
+ ]
  },
  {
  key: 'is_editable',
@@ -122,7 +122,7 @@ const fieldConfig: SettingsFieldConfig[] = [
  options: [
  { value: 'true', label: 'Yes' },
  { value: 'false', label: 'No' },
- ],
+ ]
  },
  {
  key: 'created_at',
@@ -130,7 +130,7 @@ const fieldConfig: SettingsFieldConfig[] = [
  type: 'date',
  width: 150,
  sortable: true,
- filterable: true,
+ filterable: true
  },
  {
  key: 'updated_at',
@@ -138,7 +138,7 @@ const fieldConfig: SettingsFieldConfig[] = [
  type: 'date',
  width: 150,
  sortable: true,
- filterable: true,
+ filterable: true
  },
 ];
 
@@ -261,7 +261,7 @@ export default function CreateSettingsClient({ orgId, userId }: CreateSettingsCl
  const blob = await settingsService.exportSettings({
  format,
  includeMetadata: true,
- categories: searchParams.category ? [searchParams.category] : undefined,
+ categories: searchParams.category ? [searchParams.category] : undefined
  });
 
  const url = URL.createObjectURL(blob);
@@ -294,7 +294,7 @@ export default function CreateSettingsClient({ orgId, userId }: CreateSettingsCl
  const handleCategoryFilter = (value: SettingCategory | 'all') => {
  const params = {
  ...searchParams,
- category: value === 'all' ? undefined : value,
+ category: value === 'all' ? undefined : value
  };
  setSearchParams(params);
  void loadSettings(params);

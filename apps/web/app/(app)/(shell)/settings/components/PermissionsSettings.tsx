@@ -26,7 +26,7 @@ import {
   Switch,
   Separator,
   Alert,
-  AlertDescription,
+  AlertDescription
 } from '@ghxstship/ui';
 
 interface PermissionsSettingsProps {

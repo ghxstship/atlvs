@@ -1,13 +1,8 @@
 'use client';
 
-import { Receipt, MoreHorizontal, Edit, Trash2, Eye, Check, X, Clock, DollarSign, Calendar, User, ExternalLink } from "lucide-react";
+import { Badge, Button, Calendar, Card, Check, Clock, DollarSign, Dropdown, Edit, ExternalEye, Eye, MoreHorizontal, Receipt, Trash2, User, X } from 'lucide-react';
 import { useState } from 'react';
-import { 
- Card, 
- Badge, 
- Button,
- Dropdown
-} from '@ghxstship/ui';
+import { Badge, Button, Card } from '@ghxstship/ui';
 import { ExpensesService } from '../lib/expenses-service';
 import type { Expense } from '../types';
 
@@ -197,12 +192,12 @@ export default function ExpenseGridView({
  {expense.tags && expense.tags.length > 0 && (
  <div className="flex flex-wrap gap-xs">
  {expense.tags.slice(0, 3).map((tag) => (
- <Badge key={tag} variant="outline" className="text-xs">
+ <Badge key={tag} variant="secondary" className="text-xs">
  {tag}
  </Badge>
  ))}
  {expense.tags.length > 3 && (
- <Badge variant="outline" className="text-xs">
+ <Badge variant="secondary" className="text-xs">
  +{expense.tags.length - 3} more
  </Badge>
  )}

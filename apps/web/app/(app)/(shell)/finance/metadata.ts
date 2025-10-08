@@ -11,12 +11,12 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: t('title') || 'Financial Management',
       description: t('description') || 'Manage budgets, expenses, invoices, and financial reporting for GHXSTSHIP',
-      type: 'website',
+      type: 'website'
     },
     twitter: {
       card: 'summary_large_image',
       title: t('title') || 'Financial Management',
-      description: t('description') || 'Manage budgets, expenses, invoices, and financial reporting for GHXSTSHIP',
-    },
+      description: t('description') || 'Manage budgets, expenses, invoices, and financial reporting for GHXSTSHIP'
+    }
   };
 }

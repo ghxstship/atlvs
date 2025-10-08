@@ -27,7 +27,7 @@ const iconMap = {
  Plane,
  Shirt,
  Star,
- ThumbsUp,
+ ThumbsUp
 };
 
 export default function ActivityListView({
@@ -36,7 +36,7 @@ export default function ActivityListView({
  selectedItems,
  onSelectItem,
  onSelectAll,
- onViewActivity,
+ onViewActivity
 }: ActivityListViewProps) {
  const allSelected = activities.length > 0 && activities.every(activity => selectedItems.includes(activity.id));
  const someSelected = activities.some(activity => selectedItems.includes(activity.id));

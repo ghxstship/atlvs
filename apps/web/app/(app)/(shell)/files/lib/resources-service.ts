@@ -3,7 +3,7 @@ import type {
   DigitalAsset,
   CreateAssetData,
   UpdateAssetData,
-  ResourceFilters,
+  ResourceFilters
 } from '../types';
 
 export class ResourcesService {

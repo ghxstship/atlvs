@@ -22,7 +22,7 @@ export const ProjectSchema = z.object({
   notes: z.string().max(10000, 'Notes must be less than 10000 characters').optional(),
   created_at: z.string().datetime(),
   updated_at: z.string().datetime(),
-  created_by: z.string().uuid(),
+  created_by: z.string().uuid()
 });
 
 export const CreateProjectSchema = z.object({
@@ -38,7 +38,7 @@ export const CreateProjectSchema = z.object({
   manager_id: z.string().uuid().optional(),
   location: z.string().max(500, 'Location must be less than 500 characters').optional(),
   tags: z.array(z.string().max(50)).max(20, 'Maximum 20 tags allowed').optional(),
-  notes: z.string().max(10000, 'Notes must be less than 10000 characters').optional(),
+  notes: z.string().max(10000, 'Notes must be less than 10000 characters').optional()
 });
 
 export const UpdateProjectSchema = CreateProjectSchema.partial();
@@ -70,7 +70,7 @@ export const ProjectTaskSchema = z.object({
   created_at: z.string().datetime(),
   updated_at: z.string().datetime(),
   created_by: z.string().uuid().optional(),
-  updated_by: z.string().uuid().optional(),
+  updated_by: z.string().uuid().optional()
 });
 
 export const CreateTaskSchema = z.object({
@@ -88,7 +88,7 @@ export const CreateTaskSchema = z.object({
   due_date: z.string().datetime().optional(),
   tags: z.array(z.string().max(50)).max(10, 'Maximum 10 tags allowed').optional(),
   dependencies: z.array(z.string().uuid()).max(20, 'Maximum 20 dependencies allowed').optional(),
-  attachments: z.array(z.string().url()).max(50, 'Maximum 50 attachments allowed').optional(),
+  attachments: z.array(z.string().url()).max(50, 'Maximum 50 attachments allowed').optional()
 });
 
 export const UpdateTaskSchema = CreateTaskSchema.partial();
@@ -114,7 +114,7 @@ export const ProjectFileSchema = z.object({
   access_level: AccessLevelSchema.default('team'),
   download_count: z.number().min(0).default(0),
   created_at: z.string().datetime(),
-  updated_at: z.string().datetime(),
+  updated_at: z.string().datetime()
 });
 
 export const CreateFileSchema = z.object({
@@ -127,7 +127,7 @@ export const CreateFileSchema = z.object({
   category: FileCategorySchema,
   version: z.string().max(50).default('1.0'),
   tags: z.array(z.string().max(50)).max(20, 'Maximum 20 tags allowed').optional(),
-  access_level: AccessLevelSchema.default('team'),
+  access_level: AccessLevelSchema.default('team')
 });
 
 // Activation Validation Schemas
@@ -154,7 +154,7 @@ export const ProjectActivationSchema = z.object({
   notes: z.string().max(10000).optional(),
   created_at: z.string().datetime(),
   updated_at: z.string().datetime(),
-  organization_id: z.string().uuid(),
+  organization_id: z.string().uuid()
 });
 
 export const CreateActivationSchema = z.object({
@@ -170,7 +170,7 @@ export const CreateActivationSchema = z.object({
   stakeholders: z.array(z.string()).max(50).optional(),
   dependencies: z.array(z.string()).max(50).optional(),
   risks: z.array(z.string()).max(50).optional(),
-  notes: z.string().max(10000).optional(),
+  notes: z.string().max(10000).optional()
 });
 
 export const UpdateActivationSchema = CreateActivationSchema.partial();
@@ -198,7 +198,7 @@ export const ProjectRiskSchema = z.object({
   review_date: z.string().datetime().optional(),
   created_at: z.string().datetime(),
   updated_at: z.string().datetime(),
-  created_by: z.string().uuid(),
+  created_by: z.string().uuid()
 });
 
 export const CreateRiskSchema = z.object({
@@ -212,7 +212,7 @@ export const CreateRiskSchema = z.object({
   owner_id: z.string().uuid().optional(),
   mitigation_plan: z.string().max(5000).optional(),
   contingency_plan: z.string().max(5000).optional(),
-  review_date: z.string().datetime().optional(),
+  review_date: z.string().datetime().optional()
 });
 
 export const UpdateRiskSchema = CreateRiskSchema.partial();
@@ -230,7 +230,7 @@ export const InspectionChecklistItemSchema = z.object({
   required: z.boolean().default(true),
   status: ChecklistStatusSchema,
   notes: z.string().max(1000).optional(),
-  photos: z.array(z.string().url()).max(10).optional(),
+  photos: z.array(z.string().url()).max(10).optional()
 });
 
 export const ProjectInspectionSchema = z.object({
@@ -254,7 +254,7 @@ export const ProjectInspectionSchema = z.object({
   passed: z.boolean(),
   created_at: z.string().datetime(),
   updated_at: z.string().datetime(),
-  created_by: z.string().uuid(),
+  created_by: z.string().uuid()
 });
 
 export const CreateInspectionSchema = z.object({
@@ -270,7 +270,7 @@ export const CreateInspectionSchema = z.object({
   findings: z.string().max(10000).optional(),
   recommendations: z.string().max(10000).optional(),
   photos: z.array(z.string().url()).max(20).optional(),
-  documents: z.array(z.string().url()).max(20).optional(),
+  documents: z.array(z.string().url()).max(20).optional()
 });
 
 export const UpdateInspectionSchema = CreateInspectionSchema.partial();
@@ -301,7 +301,7 @@ export const ProjectLocationSchema = z.object({
   is_active: z.boolean().default(true),
   created_at: z.string().datetime(),
   updated_at: z.string().datetime(),
-  created_by: z.string().uuid(),
+  created_by: z.string().uuid()
 });
 
 export const CreateLocationSchema = z.object({
@@ -321,7 +321,7 @@ export const CreateLocationSchema = z.object({
   contact_name: z.string().max(255).optional(),
   contact_phone: z.string().max(50).optional(),
   contact_email: z.string().email().optional(),
-  notes: z.string().max(2000).optional(),
+  notes: z.string().max(2000).optional()
 });
 
 export const UpdateLocationSchema = CreateLocationSchema.partial();
@@ -346,7 +346,7 @@ export const ProjectMilestoneSchema = z.object({
   notes: z.string().max(5000).optional(),
   created_at: z.string().datetime(),
   updated_at: z.string().datetime(),
-  created_by: z.string().uuid(),
+  created_by: z.string().uuid()
 });
 
 export const CreateMilestoneSchema = z.object({
@@ -360,7 +360,7 @@ export const CreateMilestoneSchema = z.object({
   dependencies: z.array(z.string().uuid()).max(20).optional(),
   deliverables: z.array(z.string()).max(50).optional(),
   success_criteria: z.string().max(2000).optional(),
-  notes: z.string().max(5000).optional(),
+  notes: z.string().max(5000).optional()
 });
 
 export const UpdateMilestoneSchema = CreateMilestoneSchema.partial();
@@ -372,12 +372,12 @@ export const SortDirectionSchema = z.enum(['asc', 'desc']);
 export const FilterConfigSchema = z.object({
   field: z.string(),
   operator: FilterOperatorSchema,
-  value: z.any(),
+  value: z.any()
 });
 
 export const SortConfigSchema = z.object({
   field: z.string(),
-  direction: SortDirectionSchema,
+  direction: SortDirectionSchema
 });
 
 export const ProjectFiltersSchema = z.object({
@@ -388,13 +388,13 @@ export const ProjectFiltersSchema = z.object({
   tags: z.array(z.string()).optional(),
   date_range: z.object({
     start: z.string().datetime().optional(),
-    end: z.string().datetime().optional(),
+    end: z.string().datetime().optional()
   }).optional(),
   budget_range: z.object({
     min: z.number().min(0).optional(),
-    max: z.number().min(0).optional(),
+    max: z.number().min(0).optional()
   }).optional(),
-  search: z.string().optional(),
+  search: z.string().optional()
 });
 
 // Export all schemas for use in service layer

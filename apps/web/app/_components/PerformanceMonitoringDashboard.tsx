@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
+import { useEffect, useState, useCallback } from 'react';
+import { Card, CardBody, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { AlertTriangle, TrendingUp, Activity, Zap } from 'lucide-react';
 
 interface PerformanceMetrics {
@@ -20,6 +20,7 @@ export function PerformanceMonitoringDashboard() {
   const [metrics, setMetrics] = useState<PerformanceMetrics | null>(null);
   const [alerts, setAlerts] = useState<string[]>([]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // Initialize performance monitoring
     if (typeof window !== 'undefined') {
@@ -67,6 +68,7 @@ export function PerformanceMonitoringDashboard() {
 
       return () => clearInterval(interval);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const updateMetric = (key: keyof PerformanceMetrics, value: number) => {

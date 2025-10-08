@@ -1,11 +1,11 @@
 'use client';
 
-import { Award, Calendar, ExternalLink, Edit, Trash2, Eye, Download, AlertTriangle, CheckCircle, Clock } from "lucide-react";
+import { AlertTriangle, Award, Calendar, CheckCircle, Clock, Download, Edit, ExternalEdit, ExternalLink, Eye, Trash2 } from 'lucide-react';
 import { 
  Card, 
  Badge, 
  Button,
- Skeleton,
+ Skeleton
 } from '@ghxstship/ui';
 import type { Certification } from '../types';
 import { getCertificationStatus } from '../types';
@@ -29,7 +29,7 @@ export default function CertificationGridView({
  onEdit,
  onView,
  onDelete,
- onExport,
+ onExport
 }: CertificationGridViewProps) {
  const getStatusIcon = (certification: Certification) => {
  const status = getCertificationStatus(certification);

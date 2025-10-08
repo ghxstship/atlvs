@@ -8,7 +8,7 @@ const CreateRiderSchema = z.object({
   kind: z.enum(['technical', 'hospitality', 'stage_plot']).default('technical'),
   details: z.record(z.any()).optional(),
   requirements: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 export async function GET(request: NextRequest) {
@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
 
     const riderData = {
       ...validatedData,
-      organization_id: membership.organization_id,
+      organization_id: membership.organization_id
     };
 
     const { data: rider, error } = await supabase

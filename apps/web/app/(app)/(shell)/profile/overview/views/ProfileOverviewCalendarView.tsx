@@ -32,7 +32,7 @@ export default function ProfileOverviewCalendarView({
  onSelectionChange,
  onEdit,
  onView,
- onStatusChange,
+ onStatusChange
 }: ProfileOverviewCalendarViewProps) {
  const [currentDate, setCurrentDate] = useState(new Date());
  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -54,7 +54,7 @@ export default function ProfileOverviewCalendarView({
  date: createdDate,
  type: 'created',
  title: 'Profile Created',
- description: `${profile.full_name} joined the organization`,
+ description: `${profile.full_name} joined the organization`
  });
  }
 
@@ -67,7 +67,7 @@ export default function ProfileOverviewCalendarView({
  date: updatedDate,
  type: 'updated',
  title: 'Profile Updated',
- description: `${profile.full_name} updated their profile`,
+ description: `${profile.full_name} updated their profile`
  });
  }
 
@@ -81,7 +81,7 @@ export default function ProfileOverviewCalendarView({
  date: loginDate,
  type: 'login',
  title: 'Last Login',
- description: `${profile.full_name} last logged in`,
+ description: `${profile.full_name} last logged in`
  });
  }
  }
@@ -96,7 +96,7 @@ export default function ProfileOverviewCalendarView({
  date: certDate,
  type: 'certification',
  title: 'Certification Added',
- description: `${profile.full_name} added a new certification`,
+ description: `${profile.full_name} added a new certification`
  });
  }
  }
@@ -113,7 +113,7 @@ export default function ProfileOverviewCalendarView({
  date: anniversaryDate,
  type: 'anniversary',
  title: 'Work Anniversary',
- description: `${profile.full_name} - ${yearsOfService} year${yearsOfService !== 1 ? 's' : ''} of service`,
+ description: `${profile.full_name} - ${yearsOfService} year${yearsOfService !== 1 ? 's' : ''} of service`
  });
  }
  }
@@ -153,7 +153,7 @@ export default function ProfileOverviewCalendarView({
  updated: 'bg-accent text-accent-foreground',
  login: 'bg-info text-info-foreground',
  certification: 'bg-warning text-warning-foreground',
- anniversary: 'bg-primary text-primary-foreground',
+ anniversary: 'bg-primary text-primary-foreground'
  };
  return colors[type] || 'bg-secondary text-secondary-foreground';
  };
@@ -164,7 +164,7 @@ export default function ProfileOverviewCalendarView({
  updated: User,
  login: Calendar,
  certification: Award,
- anniversary: Briefcase,
+ anniversary: Briefcase
  };
  const IconComponent = icons[type] || User;
  return <IconComponent className="h-3 w-3" />;
@@ -209,7 +209,7 @@ export default function ProfileOverviewCalendarView({
  calendarDays.push({
  date: new Date(prevMonth.getFullYear(), prevMonth.getMonth(), day),
  isCurrentMonth: false,
- isToday: false,
+ isToday: false
  });
  }
 
@@ -219,7 +219,7 @@ export default function ProfileOverviewCalendarView({
  calendarDays.push({
  date,
  isCurrentMonth: true,
- isToday: isCurrentMonth && day === today.getDate(),
+ isToday: isCurrentMonth && day === today.getDate()
  });
  }
 
@@ -230,7 +230,7 @@ export default function ProfileOverviewCalendarView({
  calendarDays.push({
  date,
  isCurrentMonth: false,
- isToday: false,
+ isToday: false
  });
  }
 

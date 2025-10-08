@@ -3,7 +3,7 @@ import MonitoringDashboard from '../../../_components/enterprise/monitoring-dash
 
 export const metadata: Metadata = {
   title: 'System Monitoring | Enterprise Dashboard',
-  description: 'Real-time system health, performance metrics, and capacity planning',
+  description: 'Real-time system health, performance metrics, and capacity planning'
 };
 
 export default function MonitoringPage() {

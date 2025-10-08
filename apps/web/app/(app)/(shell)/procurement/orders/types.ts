@@ -328,7 +328,7 @@ export const orderSchema = z.object({
     postal_code: z.string(),
     country: z.string(),
     contact_name: z.string().optional(),
-    contact_phone: z.string().optional(),
+    contact_phone: z.string().optional()
   }).optional(),
   billing_address: z.object({
     street: z.string(),
@@ -337,7 +337,7 @@ export const orderSchema = z.object({
     postal_code: z.string(),
     country: z.string(),
     contact_name: z.string().optional(),
-    contact_phone: z.string().optional(),
+    contact_phone: z.string().optional()
   }).optional(),
   payment_terms: z.string().optional(),
   payment_method: z.string().optional(),
@@ -345,7 +345,7 @@ export const orderSchema = z.object({
   approval_required: z.boolean().default(false),
   tracking_number: z.string().optional(),
   carrier: z.string().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional()
 });
 
 export const orderItemSchema = z.object({
@@ -359,7 +359,7 @@ export const orderItemSchema = z.object({
   unit_price: z.number().min(0, 'Unit price must be non-negative'),
   unit: z.string().optional(),
   specifications: z.string().optional(),
-  notes: z.string().optional(),
+  notes: z.string().optional()
 });
 
 export const orderFiltersSchema = z.object({
@@ -374,26 +374,26 @@ export const orderFiltersSchema = z.object({
   approved_by: z.string().uuid().optional(),
   amount_range: z.object({
     min: z.number().min(0).optional(),
-    max: z.number().min(0).optional(),
+    max: z.number().min(0).optional()
   }).optional(),
   date_range: z.object({
     start: z.string().optional(),
-    end: z.string().optional(),
+    end: z.string().optional()
   }).optional(),
   delivery_date_range: z.object({
     start: z.string().optional(),
-    end: z.string().optional(),
+    end: z.string().optional()
   }).optional(),
   tags: z.array(z.string()).optional(),
   approval_required: z.boolean().optional(),
-  has_attachments: z.boolean().optional(),
+  has_attachments: z.boolean().optional()
 });
 
 // Utility functions
 export const formatCurrency = (amount: number, currency: string = 'USD'): string => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: currency,
+    currency: currency
   }).format(amount);
 };
 
@@ -401,7 +401,7 @@ export const formatDate = (date: string): string => {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
-    day: 'numeric',
+    day: 'numeric'
   });
 };
 
@@ -411,7 +411,7 @@ export const formatDateTime = (date: string): string => {
     month: 'short',
     day: 'numeric',
     hour: '2-digit',
-    minute: '2-digit',
+    minute: '2-digit'
   });
 };
 
@@ -483,7 +483,7 @@ export const getOrderStatusFlow = (currentStatus: ProcurementOrder['status']): P
     received: ['delivered'],
     delivered: [],
     cancelled: [],
-    rejected: ['draft', 'pending'],
+    rejected: ['draft', 'pending']
   };
   
   return statusFlow[currentStatus] || [];
@@ -500,7 +500,7 @@ export const defaultOrderFields: OrderFieldConfig[] = [
     sortable: true,
     filterable: true,
     searchable: true,
-    width: 150,
+    width: 150
   },
   {
     key: 'vendor_name',
@@ -511,7 +511,7 @@ export const defaultOrderFields: OrderFieldConfig[] = [
     sortable: true,
     filterable: true,
     searchable: true,
-    width: 200,
+    width: 200
   },
   {
     key: 'status',
@@ -532,7 +532,7 @@ export const defaultOrderFields: OrderFieldConfig[] = [
       { value: 'delivered', label: 'Delivered' },
       { value: 'cancelled', label: 'Cancelled' },
       { value: 'rejected', label: 'Rejected' },
-    ],
+    ]
   },
   {
     key: 'priority',
@@ -548,7 +548,7 @@ export const defaultOrderFields: OrderFieldConfig[] = [
       { value: 'medium', label: 'Medium' },
       { value: 'high', label: 'High' },
       { value: 'urgent', label: 'Urgent' },
-    ],
+    ]
   },
   {
     key: 'total_amount',
@@ -557,7 +557,7 @@ export const defaultOrderFields: OrderFieldConfig[] = [
     visible: true,
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'payment_status',
@@ -573,7 +573,7 @@ export const defaultOrderFields: OrderFieldConfig[] = [
       { value: 'partially_paid', label: 'Partially Paid' },
       { value: 'overdue', label: 'Overdue' },
       { value: 'cancelled', label: 'Cancelled' },
-    ],
+    ]
   },
   {
     key: 'order_date',
@@ -582,7 +582,7 @@ export const defaultOrderFields: OrderFieldConfig[] = [
     visible: true,
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
   {
     key: 'expected_delivery',
@@ -591,7 +591,7 @@ export const defaultOrderFields: OrderFieldConfig[] = [
     visible: true,
     sortable: true,
     filterable: true,
-    width: 140,
+    width: 140
   },
   {
     key: 'created_at',
@@ -600,6 +600,6 @@ export const defaultOrderFields: OrderFieldConfig[] = [
     visible: true,
     sortable: true,
     filterable: true,
-    width: 120,
+    width: 120
   },
 ];

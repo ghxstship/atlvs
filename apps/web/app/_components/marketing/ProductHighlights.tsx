@@ -2,8 +2,8 @@
 
 
 import Link from 'next/link';
-import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Calendar, Users, BarChart3, ShoppingBag, Briefcase, Zap, Shield, Globe } from 'lucide-react';
+import { Badge, Button, Card, CardBody, CardContent } from '@ghxstship/ui';
+import { ArrowRight, BarChart3, Briefcase, Calendar, Globe, Shield, ShoppingBag, Users, Zap } from 'lucide-react';
 
 const products = [
   {
@@ -23,7 +23,7 @@ const products = [
       { label: 'Time Saved', value: '40%' },
     ],
     gradient: 'from-primary to-secondary',
-    href: '/products/atlvs',
+    href: '/products/atlvs'
   },
   {
     id: 'opendeck',
@@ -42,7 +42,7 @@ const products = [
       { label: 'Success Rate', value: '94%' },
     ],
     gradient: 'from-secondary to-accent',
-    href: '/products/opendeck',
+    href: '/products/opendeck'
   },
 ];
 
@@ -52,7 +52,7 @@ export function ProductHighlights() {
       <div className="container mx-auto px-lg">
         {/* Section Header */}
         <div className="text-center mb-xl">
-          <Badge variant="outline" className="mb-sm">
+          <Badge variant="secondary" className="mb-sm">
             Our Products
           </Badge>
           <h2 className="font-title text-heading-2 lg:text-display text-heading-3 mb-md">
@@ -124,7 +124,7 @@ export function ProductHighlights() {
                     </Button>
                   </a>
                   <Link href="/auth/signup">
-                    <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                    <Button variant="secondary" size="lg" className="w-full sm:w-auto">
                       Try Free
                     </Button>
                   </Link>
@@ -158,7 +158,7 @@ export function ProductHighlights() {
               
               <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Link href="/products/compare">
-                  <Button variant="outline" size="lg">
+                  <Button variant="secondary" size="lg">
                     Compare Products
                   </Button>
                 </Link>

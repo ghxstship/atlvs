@@ -1,4 +1,5 @@
 'use client';
+import { Button, Card, Drawer, Input, Select } from '@ghxstship/ui';
 
 
 import { useState } from 'react';
@@ -171,7 +172,7 @@ export default function CreateInvoiceClient({
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: formData.currency,
+      currency: formData.currency
     }).format(amount);
   };
 
@@ -206,7 +207,7 @@ export default function CreateInvoiceClient({
               <label className="block text-body-sm form-label color-foreground mb-sm">
                 Invoice Number *
               </label>
-              <UnifiedInput                 value={formData.invoiceNumber}
+              <Input                 value={formData.invoiceNumber}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, invoiceNumber: e.target.value }))}
                 placeholder="INV-001"
                 required
@@ -234,7 +235,7 @@ export default function CreateInvoiceClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Invoice Description
             </label>
-            <UnifiedInput               value={formData.description}
+            <Input               value={formData.description}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Brief description of services or products"
             />
@@ -247,7 +248,7 @@ export default function CreateInvoiceClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.issuedDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, issuedDate: e.target.value }))}
                   className="pl-2xl"
@@ -262,7 +263,7 @@ export default function CreateInvoiceClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.dueDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, dueDate: e.target.value }))}
                   className="pl-2xl"
@@ -291,7 +292,7 @@ export default function CreateInvoiceClient({
                     <label className="block text-body-sm form-label color-foreground mb-sm">
                       Description
                     </label>
-                    <UnifiedInput                       value={item.description}
+                    <Input                       value={item.description}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateLineItem(item.id, 'description', e.target.value)}
                       placeholder="Item description"
                     />
@@ -301,7 +302,7 @@ export default function CreateInvoiceClient({
                     <label className="block text-body-sm form-label color-foreground mb-sm">
                       Quantity
                     </label>
-                    <UnifiedInput                       type="number"
+                    <Input                       type="number"
                       value={item.quantity}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateLineItem(item.id, 'quantity', parseFloat(e.target.value) || 0)}
                       min="0"
@@ -313,7 +314,7 @@ export default function CreateInvoiceClient({
                     <label className="block text-body-sm form-label color-foreground mb-sm">
                       Unit Price
                     </label>
-                    <UnifiedInput                       type="number"
+                    <Input                       type="number"
                       value={item.unitPrice}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateLineItem(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
                       min="0"
@@ -366,7 +367,7 @@ export default function CreateInvoiceClient({
                 </label>
                 <div className="relative">
                   <DollarSign className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                  <UnifiedInput                     type="number"
+                  <Input                     type="number"
                     value={formData.taxAmount}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, taxAmount: parseFloat(e.target.value) || 0 }))}
                     placeholder="0.00"
@@ -383,7 +384,7 @@ export default function CreateInvoiceClient({
                 </label>
                 <div className="relative">
                   <DollarSign className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
-                  <UnifiedInput                     type="number"
+                  <Input                     type="number"
                     value={formData.discountAmount}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, discountAmount: parseFloat(e.target.value) || 0 }))}
                     placeholder="0.00"
@@ -407,7 +408,7 @@ export default function CreateInvoiceClient({
           <label className="block text-body-sm form-label color-foreground mb-sm">
             Notes
           </label>
-          <Textarea
+          <textarea
             value={formData.notes}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
             placeholder="Payment terms, additional notes, or special instructions..."

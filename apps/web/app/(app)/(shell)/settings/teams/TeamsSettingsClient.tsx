@@ -18,7 +18,7 @@ import {
  SelectValue,
  Skeleton,
  Textarea,
- useToastContext,
+ useToastContext
 } from '@ghxstship/ui';
 import {
  addExistingMember,
@@ -30,7 +30,7 @@ import {
  resendInvite,
  revokeInvite,
  SeatUsage,
- TeamsSettingsResponse,
+ TeamsSettingsResponse
 } from '@/lib/services/settingsTeamsClient';
 
 const ROLE_OPTIONS = [
@@ -56,7 +56,7 @@ function parseEmailList(text: string): string[] {
 }
 
 function extractDomain(email: string): string | null {
- const match = email.toLowerCase().match(/@([a-z0-9.-]+\.[a-z]{2,})$/i);
+ const match = email.toLowerCase().match(/@([a-z0-9.-]+\.[a-z]{2})$/i);
  return match ? match[1] : null;
 }
 

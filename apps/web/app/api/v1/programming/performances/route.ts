@@ -27,28 +27,28 @@ const createPerformanceSchema = z.object({
     price_max: z.number().min(0).optional(),
     currency: z.string().length(3).optional(),
     sales_url: z.string().url().optional(),
-    sold_out: z.boolean().optional(),
+    sold_out: z.boolean().optional()
   }).optional(),
   technical_requirements: z.object({
     sound_system: z.string().optional(),
     lighting: z.string().optional(),
     stage_setup: z.string().optional(),
     equipment_needed: z.array(z.string()).optional(),
-    crew_requirements: z.string().optional(),
+    crew_requirements: z.string().optional()
   }).optional(),
   production_notes: z.object({
     rehearsal_schedule: z.string().optional(),
     call_time: z.string().datetime().optional(),
     sound_check: z.string().datetime().optional(),
-    special_instructions: z.string().optional(),
+    special_instructions: z.string().optional()
   }).optional(),
   audience_info: z.object({
     expected_attendance: z.number().int().min(0).optional(),
     target_demographic: z.string().optional(),
-    accessibility_notes: z.string().optional(),
+    accessibility_notes: z.string().optional()
   }).optional(),
   tags: z.array(z.string().max(32)).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 const filterSchema = z.object({
@@ -61,7 +61,7 @@ const filterSchema = z.object({
   start_date: z.string().datetime().optional(),
   end_date: z.string().datetime().optional(),
   limit: z.coerce.number().int().min(1).max(100).default(50),
-  offset: z.coerce.number().int().min(0).default(0),
+  offset: z.coerce.number().int().min(0).default(0)
 });
 
 async function getSupabase() {
@@ -72,7 +72,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -218,7 +218,7 @@ export async function POST(request: NextRequest) {
       tags: data.tags ?? [],
       metadata: data.metadata ?? {},
       created_by: user!.id,
-      updated_by: user!.id,
+      updated_by: user!.id
     };
 
     const { data: performance, error: insertError } = await supabase
@@ -239,8 +239,8 @@ export async function POST(request: NextRequest) {
       details: {
         name: performance.name,
         performance_type: performance.performance_type,
-        event_id: performance.event_id,
-      },
+        event_id: performance.event_id
+      }
     });
 
     return NextResponse.json(performance, { status: 201 });

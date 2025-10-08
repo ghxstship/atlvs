@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { createServerClient, createServiceRoleClient } from '@ghxstship/auth';
 import Stripe from 'stripe';
-import { rateLimitRequest } from '../../../_components/lib/rate-limit';
+import { rateLimitRequest } from '../../../../lib/rate-limit';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
       const cust = await stripe.customers.create({
         email: (u as any).email || undefined,
         name: (u as any).full_name || undefined,
-        metadata: customerMetadata,
+        metadata: customerMetadata
       });
       customerId = cust.id;
       await admin.from('users').update({ stripe_customer_id: customerId }).eq('id', (u as any).id);
@@ -103,7 +103,7 @@ export async function POST(req: NextRequest) {
     line_items: [{ price: priceId, quantity }],
     success_url: `${APP_URL}/settings/billing?success=1`,
     cancel_url: `${APP_URL}/settings/billing?canceled=1`,
-    metadata: { ...customerMetadata, ...metadata },
+    metadata: { ...customerMetadata, ...metadata }
   });
 
   return NextResponse.json({ id: session.id, url: session.url });

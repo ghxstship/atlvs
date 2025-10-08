@@ -26,7 +26,7 @@ export function MFAVerify({ factors, onVerified, onCancel }: MFAVerifyProps) {
 
       // Use Supabase MFA challenge flow
       const { data: challenge, error: challengeError } = await supabase.auth.mfa.challenge({
-        factorId: selectedFactor,
+        factorId: selectedFactor
       });
 
       if (challengeError) throw challengeError;
@@ -34,7 +34,7 @@ export function MFAVerify({ factors, onVerified, onCancel }: MFAVerifyProps) {
       const { data, error } = await supabase.auth.mfa.verify({
         factorId: selectedFactor,
         code: verificationCode,
-        challengeId: challenge.id,
+        challengeId: challenge.id
       });
 
       if (error) throw error;

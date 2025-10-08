@@ -5,6 +5,7 @@
  */
 
 import React, { useEffect, useState, useCallback, useRef } from 'react';
+import { AlertTriangle, BarChart3, Minimize2 } from 'lucide-react';
 // import { createClient } from '@supabase/supabase-js';
 
 // =============================================================================
@@ -482,37 +483,37 @@ export class DatabaseIntegrationValidator {
   private validateCriticalRequirements(status: DatabaseIntegrationStatus): void {
     // Must be connected to Supabase
     if (!status.isConnected) {
-      status.issues.push('❌ Not connected to Supabase database');
+      status.issues.push('[ERROR] Not connected to Supabase database');
     }
 
     // Must not use mock data in production
     if (status.dataSource === 'mock' && process.env.NODE_ENV === 'production') {
-      status.issues.push('❌ Mock data detected in production environment');
+      status.issues.push('[ERROR] Mock data detected in production environment');
     }
 
     // Must have proper error handling
     if (!status.errorHandling) {
-      status.issues.push('⚠️ Missing error handling for database operations');
+      status.issues.push('[WARNING] Missing error handling for database operations');
     }
 
     // Must have loading states
     if (!status.loadingStates) {
-      status.issues.push('⚠️ Missing loading states for async operations');
+      status.issues.push('[WARNING] Missing loading states for async operations');
     }
 
     // Must have empty states
     if (!status.emptyStates) {
-      status.issues.push('⚠️ Missing empty state handling');
+      status.issues.push('[WARNING] Missing empty state handling');
     }
 
     // Should have realtime for certain components
     if (status.component.includes('Dashboard') && !status.realtime) {
-      status.issues.push('⚠️ Dashboard should have realtime updates');
+      status.issues.push('[WARNING] Dashboard should have realtime updates');
     }
 
     // Should have pagination for lists
     if (status.component.includes('List') && !status.pagination) {
-      status.issues.push('⚠️ List components should have pagination');
+      status.issues.push('[WARNING] List components should have pagination');
     }
   }
 
@@ -531,7 +532,7 @@ export class DatabaseIntegrationValidator {
         
         // Collect critical issues
         status.issues.forEach(issue => {
-          if (issue.startsWith('❌')) {
+          if (issue.startsWith('[ERROR]')) {
             criticalIssues.push(`${componentName}: ${issue}`);
           }
         });
@@ -602,7 +603,7 @@ export class DatabaseIntegrationValidator {
       ? (connectedComponents / totalComponents) * 100 
       : 0;
     const criticalIssues = Array.from(this.validationResults.values())
-      .reduce((sum, s) => sum + s.issues.filter(i => i.startsWith('❌')).length, 0);
+      .reduce((sum, s) => sum + s.issues.filter(i => i.startsWith('[ERROR]')).length, 0);
 
     return {
       components: this.validationResults,
@@ -729,7 +730,7 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
   return (
     <div
       className={`fixed ${positionClasses[position]} z-[9998] bg-popover/95 text-popover-foreground rounded-lg shadow-popover backdrop-blur-sm transition-all duration-300 ${
-        isMinimized ? 'w-auto' : 'w-modal-md'
+        isMinimized ? 'w-auto' : 'w-[420px]'
       }`}
     >
       <div className="p-sm border-b border-border/50 flex justify-between items-center bg-gradient-to-r from-primary/20 to-secondary/20">
@@ -741,7 +742,7 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
           onClick={() => setIsMinimized(!isMinimized)}
           className="text-xs px-sm py-xs rounded hover:bg-muted/50"
         >
-          {isMinimized ? '📊' : '➖'}
+          {isMinimized ? <BarChart3 className="w-4 h-4" /> : <Minimize2 className="w-4 h-4" />}
         </button>
       </div>
 
@@ -794,14 +795,14 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
                 <button
                   key={module}
                   onClick={() => setSelectedModule(isSelected ? null : module)}
-                  className={`px-sm py-xs text-small rounded whitespace-nowrap transition-all ${
+                  className={`px-sm py-xs text-[10px] rounded whitespace-nowrap transition-all ${
                     isSelected 
                       ? 'bg-accent/30 text-accent' 
                       : 'bg-foreground/5 hover:bg-muted/50'
                   }`}
                 >
                   <div>{module}</div>
-                  <div className={`text-tiny ${
+                  <div className={`text-[var(--spacing-2)] ${
                     coverage === 100 ? 'text-success' : 
                     coverage > 50 ? 'text-warning' : 'text-destructive'
                   }`}>
@@ -814,21 +815,21 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
 
           {/* Selected Module Details */}
           {selectedModule && report.modules.get(selectedModule) && (
-            <div className="bg-foreground/5 rounded p-sm max-h-container-xs overflow-y-auto">
+            <div className="bg-foreground/5 rounded p-sm max-h-48 overflow-y-auto">
               <h4 className="text-xs font-semibold mb-sm">{selectedModule} Module</h4>
               {report.modules.get(selectedModule).criticalIssues.length > 0 && (
                 <div className="mb-sm">
-                  <div className="text-small text-destructive font-semibold mb-xs">Critical Issues:</div>
+                  <div className="text-[10px] text-destructive font-semibold mb-xs">Critical Issues:</div>
                   {report.modules.get(selectedModule).criticalIssues.map((issue: string, i: number) => (
-                    <div key={i} className="text-xs text-destructive/80 mb-xs">• {issue}</div>
+                    <div key={i} className="text-[9px] text-destructive/80 mb-xs">• {issue}</div>
                   ))}
                 </div>
               )}
               {report.modules.get(selectedModule).recommendations.length > 0 && (
                 <div>
-                  <div className="text-small text-warning font-semibold mb-xs">Recommendations:</div>
+                  <div className="text-[10px] text-warning font-semibold mb-xs">Recommendations:</div>
                   {report.modules.get(selectedModule).recommendations.map((rec: string, i: number) => (
-                    <div key={i} className="text-xs text-warning/80 mb-xs">• {rec}</div>
+                    <div key={i} className="text-[9px] text-warning/80 mb-xs">• {rec}</div>
                   ))}
                 </div>
               )}
@@ -837,9 +838,10 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
 
           {/* Critical Issues Summary */}
           {report.summary.criticalIssues > 0 && !selectedModule && (
-            <div className="bg-destructive/10 border border-destructive/30 rounded p-sm text-small">
-              <div className="text-destructive font-semibold mb-xs">
-                ⚠️ {report.summary.criticalIssues} Critical Issues Found
+            <div className="bg-destructive/10 border border-destructive/30 rounded p-sm text-[10px]">
+              <div className="text-destructive font-semibold mb-xs flex items-center gap-xs">
+                <AlertTriangle className="w-3 h-3" />
+                {report.summary.criticalIssues} Critical Issues Found
               </div>
               <div className="text-destructive/80">
                 Components using mock data or missing Supabase integration

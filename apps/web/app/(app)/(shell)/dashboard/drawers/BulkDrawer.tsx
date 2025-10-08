@@ -1,44 +1,8 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import {
-  X,
-  CheckSquare,
-  Square,
-  Loader2,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Trash2,
-  Edit,
-  Copy,
-  Archive,
-  Download,
-  Upload,
-  Settings,
-  ChevronDown,
-  ChevronRight
-} from 'lucide-react';
-import { Button } from '@ghxstship/ui';
-import { Checkbox } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Progress } from '@ghxstship/ui';
-import { Separator } from '@ghxstship/ui';
-import { ScrollArea } from '@ghxstship/ui';
-import { Label } from '@ghxstship/ui';
-import { Input } from '@ghxstship/ui';
-import { Textarea } from '@ghxstship/ui';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ghxstship/ui';
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from '@ghxstship/ui';
+import React, { useState, useCallback, useState, useMemo } from 'react';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertTriangle, Archive, CheckCircle, CheckSquare, ChevronDown, ChevronRight, Clock, Copy, Download, Edit, Loader2, Settings, Square, Trash2, Upload, X } from 'lucide-react';
+import { Badge, Button, Checkbox, Input, Label, Progress, ScrollArea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator, Textarea } from '@ghxstship/ui';
 import { cn } from '@ghxstship/ui/lib/utils';
 
 // Bulk Operation Types
@@ -144,6 +108,7 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
       setProgress(0);
       setShowConfirmDialog(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   // Handle operation selection

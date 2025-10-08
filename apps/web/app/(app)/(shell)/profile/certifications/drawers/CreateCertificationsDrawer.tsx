@@ -21,13 +21,13 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-  useToastContext,
+  useToastContext
 } from '@ghxstship/ui';
 
 const formSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   description: z.string().optional(),
-  status: z.enum(['active', 'inactive', 'pending']).default('active'),
+  status: z.enum(['active', 'inactive', 'pending']).default('active')
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -45,7 +45,7 @@ export default function CreateDrawer({
   onClose,
   onSave,
   mode = 'create',
-  initialData,
+  initialData
 }: CreateDrawerProps) {
   const { toast } = useToastContext();
   const [loading, setLoading] = useState(false);
@@ -53,12 +53,12 @@ export default function CreateDrawer({
   const defaultValues: FormData = {
     name: '',
     description: '',
-    status: 'active',
+    status: 'active'
   };
 
   const { register, handleSubmit, reset, setValue, watch } = useForm<FormData>({
     resolver: zodResolver(formSchema),
-    defaultValues: { ...defaultValues, ...initialData },
+    defaultValues: { ...defaultValues, ...initialData }
   });
 
   const handleClose = () => {

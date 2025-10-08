@@ -18,7 +18,7 @@ const createCallSheetSchema = z.object({
  location: z.string().optional(),
  status: z.enum(['draft', 'sent', 'confirmed', 'cancelled']),
  notes: z.string().optional(),
- event_id: z.string().min(1, 'Event is required'),
+ event_id: z.string().min(1, 'Event is required')
 });
 
 export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
@@ -39,8 +39,8 @@ export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
  location: '',
  status: 'draft',
  notes: '',
- event_id: '',
- },
+ event_id: ''
+ }
  });
 
  // Load events when drawer opens
@@ -68,7 +68,7 @@ export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
  ...data,
  organization_id: orgId,
  created_at: new Date().toISOString(),
- updated_at: new Date().toISOString(),
+ updated_at: new Date().toISOString()
  };
 
  const { error: insertError } = await sb

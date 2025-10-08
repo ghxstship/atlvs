@@ -1,10 +1,10 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { Activity, AlertCircle, ArrowUpDown, Award, Calendar, CheckCircle, Clock, Edit, ExternalEye, ExternalEye, ExternalLink, Eye, FileText, MapPin, Package, Play, Plus, Search, Settings, Trash2, TrendingUp, Truck, User } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, Badge, Button, Checkbox } from '@ghxstship/ui';
 import Link from 'next/link';
 import type { TrackingItem, TrackingSort } from '../types';
-import { formatCurrency, formatDate, getStatusColor, getPriorityColor, getPerformanceColor, calculateDeliveryPerformance } from '../types';
+import { formatCurrency, formatDate, getPerformanceColor, calculateDeliveryPerformance } from '../types';
 
 interface TrackingTableViewProps {
  items: TrackingItem[];
@@ -45,7 +45,7 @@ export default function TrackingTableView({
  onTrackPackage,
  sort,
  onSortChange,
- visibleFields = defaultVisibleFields,
+ visibleFields = defaultVisibleFields
 }: TrackingTableViewProps) {
  const [hoveredRow, setHoveredRow] = useState<string | null>(null);
 
@@ -225,7 +225,7 @@ export default function TrackingTableView({
  destination: 'Destination',
  priority: 'Priority',
  total_value: 'Value',
- performance: 'Performance',
+ performance: 'Performance'
  };
 
  if (loading) {
@@ -246,9 +246,7 @@ export default function TrackingTableView({
  <TableHead className="w-icon-2xl">
  <Checkbox
  checked={selectedItems.length === items.length && items.length > 0}
- onCheckedChange={handleSelectAll}
- aria-
- />
+ onCheckedChange={handleSelectAll} />
  </TableHead>
  {visibleFields.map((field) => (
  <TableHead 

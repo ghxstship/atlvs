@@ -18,7 +18,7 @@ import type {
   TeamExportOptions,
   TeamFilterOptions,
   BulkOperation,
-  BulkOperationResult,
+  BulkOperationResult
 } from '../types';
 
 class TeamsService {
@@ -67,7 +67,7 @@ class TeamsService {
         joined_at: member.joined_at,
         last_active: member.last_active,
         created_at: member.created_at,
-        updated_at: member.updated_at,
+        updated_at: member.updated_at
       })) || [];
     } catch (error) {
       console.error('Error fetching members:', error);
@@ -111,7 +111,7 @@ class TeamsService {
         expires_at: invite.expires_at,
         accepted_at: invite.accepted_at,
         created_at: invite.created_at,
-        updated_at: invite.updated_at,
+        updated_at: invite.updated_at
       })) || [];
     } catch (error) {
       console.error('Error fetching invites:', error);
@@ -171,7 +171,7 @@ class TeamsService {
           expires_at: expiresAt.toISOString(),
           message: data.message,
           department: data.department,
-          title: data.title,
+          title: data.title
         }])
         .select()
         .single();
@@ -181,12 +181,12 @@ class TeamsService {
       // Log the invitation
       await this.logAuditEvent('member_invite', {
         email: data.email,
-        role: data.role,
+        role: data.role
       }, user.id, membership.organization_id);
 
       return {
         ...newInvite,
-        invited_by_name: user.email || 'Unknown',
+        invited_by_name: user.email || 'Unknown'
       };
     } catch (error) {
       console.error('Error inviting member:', error);
@@ -198,21 +198,21 @@ class TeamsService {
     const results: BulkOperationResult = {
       success: 0,
       failed: 0,
-      errors: [],
+      errors: []
     };
 
     for (const invite of data.invites) {
       try {
         await this.inviteMember({
           ...invite,
-          message: data.message,
+          message: data.message
         });
         results.success++;
       } catch (error) {
         results.failed++;
         results.errors.push({
           memberId: invite.email,
-          error: error instanceof Error ? error.message : 'Unknown error',
+          error: error instanceof Error ? error.message : 'Unknown error'
         });
       }
     }
@@ -233,7 +233,7 @@ class TeamsService {
         .from('invitations')
         .update({
           expires_at: expiresAt.toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', inviteId);
 
@@ -256,7 +256,7 @@ class TeamsService {
         .from('invitations')
         .update({
           status: 'cancelled',
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', inviteId);
 
@@ -279,7 +279,7 @@ class TeamsService {
         .from('memberships')
         .update({
           ...data,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .eq('id', memberId)
         .select(`
@@ -293,7 +293,7 @@ class TeamsService {
       // Log the update
       await this.logAuditEvent('member_update', {
         memberId,
-        changes: data,
+        changes: data
       }, user.id);
 
       return {
@@ -311,7 +311,7 @@ class TeamsService {
         joined_at: updatedMember.joined_at,
         last_active: updatedMember.last_active,
         created_at: updatedMember.created_at,
-        updated_at: updatedMember.updated_at,
+        updated_at: updatedMember.updated_at
       };
     } catch (error) {
       console.error('Error updating member:', error);
@@ -341,7 +341,7 @@ class TeamsService {
       // Log the removal
       await this.logAuditEvent('member_remove', {
         memberId,
-        email: member?.email,
+        email: member?.email
       }, user.id);
     } catch (error) {
       console.error('Error removing member:', error);
@@ -374,7 +374,7 @@ class TeamsService {
           category: 'members',
           created_at: member.created_at,
           updated_at: member.updated_at,
-          metadata: member,
+          metadata: member
         });
       });
 
@@ -391,7 +391,7 @@ class TeamsService {
           category: 'invitations',
           created_at: invite.created_at,
           updated_at: invite.updated_at,
-          metadata: invite,
+          metadata: invite
         });
       });
 
@@ -479,7 +479,7 @@ class TeamsService {
         membersByRole: membersByRole as unknown,
         membersByStatus: membersByStatus as unknown,
         recentJoins,
-        averageResponseTime: Math.round(averageResponseTime),
+        averageResponseTime: Math.round(averageResponseTime)
       };
     } catch (error) {
       console.error('Error fetching statistics:', error);
@@ -494,7 +494,7 @@ class TeamsService {
     const results: BulkOperationResult = {
       success: 0,
       failed: 0,
-      errors: [],
+      errors: []
     };
 
     for (const memberId of operation.memberIds) {
@@ -524,7 +524,7 @@ class TeamsService {
         results.failed++;
         results.errors.push({
           memberId,
-          error: error instanceof Error ? error.message : 'Unknown error',
+          error: error instanceof Error ? error.message : 'Unknown error'
         });
       }
     }
@@ -547,7 +547,7 @@ class TeamsService {
             }));
 
         return new Blob([JSON.stringify(exportData, null, 2)], {
-          type: 'application/json',
+          type: 'application/json'
         });
       } else if (options.format === 'csv') {
         const headers = options.includeMetadata
@@ -617,7 +617,7 @@ class TeamsService {
 
       return data?.map(log => ({
         ...log,
-        performed_by_name: log.performed_by_user?.name || log.performed_by_user?.email || 'Unknown',
+        performed_by_name: log.performed_by_user?.name || log.performed_by_user?.email || 'Unknown'
       })) || [];
     } catch (error) {
       console.error('Error fetching audit logs:', error);
@@ -654,7 +654,7 @@ class TeamsService {
           action,
           details,
           performed_by: userId,
-          created_at: new Date().toISOString(),
+          created_at: new Date().toISOString()
         }]);
     } catch (error) {
       console.error('Error logging audit event:', error);

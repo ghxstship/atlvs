@@ -56,7 +56,7 @@ const createWorkshopSchema = z.object({
   gallery_images: z.array(z.string().url()).optional(),
   promotional_video: z.string().url().optional().nullable(),
   tags: z.array(z.string().max(32)).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 const filterSchema = z.object({
@@ -77,7 +77,7 @@ const filterSchema = z.object({
   certification_available: z.boolean().optional(),
   tags: z.array(z.string()).optional(),
   limit: z.coerce.number().int().min(1).max(100).default(50),
-  offset: z.coerce.number().int().min(0).default(0),
+  offset: z.coerce.number().int().min(0).default(0)
 });
 
 async function getSupabase() {
@@ -88,7 +88,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -289,7 +289,7 @@ export async function POST(request: NextRequest) {
       tags: data.tags ?? [],
       metadata: data.metadata ?? {},
       created_by: user!.id,
-      updated_by: user!.id,
+      updated_by: user!.id
     };
 
     const { data: workshop, error: insertError } = await supabase
@@ -310,8 +310,8 @@ export async function POST(request: NextRequest) {
       details: {
         title: workshop.title,
         category: workshop.category,
-        start_date: workshop.start_date,
-      },
+        start_date: workshop.start_date
+      }
     });
 
     return NextResponse.json(workshop, { status: 201 });

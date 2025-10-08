@@ -1,20 +1,6 @@
 'use client';
 
-import {
-  Zap,
-  Shield,
-  Globe,
-  BarChart3,
-  Users,
-  Calendar,
-  MessageSquare,
-  FileText,
-  Settings,
-  Smartphone,
-  Clock,
-  Award,
-} from 'lucide-react';
-
+import { Award, BarChart3, Calendar, Clock, FileText, Globe, MessageSquare, Settings, Shield, Smartphone, Users, Zap } from 'lucide-react';
 import { MarketingSection, MarketingSectionHeader, MarketingCard } from './layout/Section';
 
 type AccentTone = 'primary' | 'success' | 'warning';
@@ -33,84 +19,84 @@ const featureCards: Array<{
     description: 'Predict outcomes, prioritize work, and surface blockers with real-time machine learning.',
     category: 'Intelligence',
     highlight: 'AI-Powered',
-    accent: 'warning',
+    accent: 'warning'
   },
   {
     icon: Shield,
     title: 'Enterprise Security',
     description: 'SOC 2 Type II controls, encryption at rest, and advanced role-based permissions.',
     category: 'Security',
-    accent: 'success',
+    accent: 'success'
   },
   {
     icon: Globe,
     title: 'Global Collaboration',
     description: 'Coordinate studios worldwide with localized interfaces and synchronous reviews.',
     category: 'Collaboration',
-    accent: 'primary',
+    accent: 'primary'
   },
   {
     icon: BarChart3,
     title: 'Advanced Analytics',
     description: 'Visualize financials, capacity, and throughput with adaptive dashboards.',
     category: 'Analytics',
-    accent: 'warning',
+    accent: 'warning'
   },
   {
     icon: Users,
     title: 'Team Management',
     description: 'Automate onboarding, track performance, and celebrate milestones effortlessly.',
     category: 'Management',
-    accent: 'primary',
+    accent: 'primary'
   },
   {
     icon: Calendar,
     title: 'Smart Scheduling',
     description: 'Resolve conflicts instantly and keep every department marching in lockstep.',
     category: 'Planning',
-    accent: 'warning',
+    accent: 'warning'
   },
   {
     icon: MessageSquare,
     title: 'Real-time Communication',
     description: 'Spin up collaborative rooms with annotations, approvals, and async summaries.',
     category: 'Communication',
-    accent: 'primary',
+    accent: 'primary'
   },
   {
     icon: FileText,
     title: 'Document Management',
     description: 'Secure versioning, approvals, and distribution with complete audit trails.',
     category: 'Documents',
-    accent: 'success',
+    accent: 'success'
   },
   {
     icon: Settings,
     title: 'Custom Workflows',
     description: 'Drag-and-drop builder for bespoke pipelines, automations, and SLA trackers.',
     category: 'Automation',
-    accent: 'primary',
+    accent: 'primary'
   },
   {
     icon: Smartphone,
     title: 'Mobile First',
     description: 'Native iOS and Android experiences with offline sync and push approvals.',
     category: 'Mobile',
-    accent: 'success',
+    accent: 'success'
   },
   {
     icon: Clock,
     title: 'Time Tracking',
     description: 'Auto-generate timesheets from activity data and integrate with billing.',
     category: 'Productivity',
-    accent: 'warning',
+    accent: 'warning'
   },
   {
     icon: Award,
     title: 'Quality Assurance',
     description: 'Embed review gates, QC checklists, and corrective workflows into every handoff.',
     category: 'Quality',
-    accent: 'success',
+    accent: 'success'
   },
 ];
 
@@ -130,7 +116,7 @@ const highlightCards: Array<{
       { label: '99.9% Uptime SLA', tone: 'success' },
       { label: '24/7 Expert Support', tone: 'accent' },
     ],
-    accent: 'success',
+    accent: 'success'
   },
   {
     icon: Zap,
@@ -141,7 +127,7 @@ const highlightCards: Array<{
       { label: 'Smart Recommendations', tone: 'warning' },
       { label: 'Automated Workflows', tone: 'accent' },
     ],
-    accent: 'warning',
+    accent: 'warning'
   },
   {
     icon: Globe,
@@ -152,7 +138,7 @@ const highlightCards: Array<{
       { label: 'Multi-language Support', tone: 'accent' },
       { label: 'Global CDN', tone: 'primary' },
     ],
-    accent: 'primary',
+    accent: 'primary'
   },
 ];
 

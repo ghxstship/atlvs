@@ -20,11 +20,11 @@ export default function uprocurementPage() {
       search={{
         value: '',
         onChange: (value) => console.log('Search:', value),
-        placeholder: 'Search uprocurement...',
+        placeholder: 'Search uprocurement...'
       }}
       filters={{
         activeCount: 0,
-        onClear: () => console.log('Clear filters'),
+        onClear: () => console.log('Clear filters')
       }}
       sidebar={
         <div className="space-y-6">

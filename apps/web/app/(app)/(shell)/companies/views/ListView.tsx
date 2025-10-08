@@ -4,31 +4,10 @@
  */
 
 'use client';
+import { Avatar } from '@ghxstship/ui';
+import { Avatar, Box, Business, Chip, Collapse, Delete, Divider, Edit, ExpandLess, ExpandMore, IconButton, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, MoreVert, Typography, Visibility } from 'lucide-react';
 
-import { useState, useMemo } from 'react';
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  ListItemSecondaryAction,
-  Avatar,
-  IconButton,
-  Typography,
-  Box,
-  Chip,
-  Collapse,
-  Divider,
-} from '@mui/material';
-import {
-  ExpandMore,
-  ExpandLess,
-  Edit,
-  Delete,
-  Visibility,
-  MoreVert,
-  Business,
-} from '@mui/icons-material';
+import { useMemo, useState } from 'react';
 import type { Company } from '../types';
 
 interface ListViewProps {
@@ -46,7 +25,7 @@ export default function ListView({
   onDelete,
   onView,
   density = 'comfortable',
-  showDetails = true,
+  showDetails = true
 }: ListViewProps) {
   const [expandedItems, setExpandedItems] = useState<Set<string>(new Set());
 
@@ -99,8 +78,8 @@ export default function ListView({
                 minHeight: getItemHeight(),
                 py: getSpacing(),
                 '&:hover': {
-                  bgcolor: 'action.hover',
-                },
+                  bgcolor: 'action.hover'
+                }
               }}
             >
               <ListItemAvatar>

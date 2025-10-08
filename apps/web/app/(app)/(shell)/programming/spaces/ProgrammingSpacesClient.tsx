@@ -16,7 +16,7 @@ import {
  Tabs,
  TabsContent,
  TabsList,
- TabsTrigger,
+ TabsTrigger
 } from '@ghxstship/ui';
 
 import type {
@@ -27,7 +27,7 @@ import type {
  SpaceKind,
  SpaceStatus,
  SpaceAccessLevel,
- SpaceProject,
+ SpaceProject
 } from './types';
 
 // Import view components
@@ -61,7 +61,7 @@ export default function ProgrammingSpacesClient({
  currentUserId,
  initialSpaces,
  projects,
- users,
+ users
 }: ProgrammingSpacesClientProps) {
  const supabase = useMemo(() => createBrowserClient(), []);
 
@@ -90,7 +90,7 @@ export default function ProgrammingSpacesClient({
  event: '*',
  schema: 'public',
  table: 'programming_spaces',
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  (payload) => {
  if (payload.eventType === 'INSERT') {
@@ -214,7 +214,7 @@ export default function ProgrammingSpacesClient({
  const handleDeleteSpace = async (spaceId: string) => {
  try {
  const response = await fetch(`/api/v1/programming/spaces/${spaceId}`, {
- method: 'DELETE',
+ method: 'DELETE'
  });
 
  if (!response.ok) throw new Error('Failed to delete space');
@@ -244,7 +244,7 @@ export default function ProgrammingSpacesClient({
  fetch(`/api/v1/programming/spaces/${id}`, {
  method: 'PATCH',
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify({ status: 'available' }),
+ body: JSON.stringify({ status: 'available' })
  })
  )
  );
@@ -256,7 +256,7 @@ export default function ProgrammingSpacesClient({
  fetch(`/api/v1/programming/spaces/${id}`, {
  method: 'PATCH',
  headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify({ status: 'maintenance' }),
+ body: JSON.stringify({ status: 'maintenance' })
  })
  )
  );
@@ -311,7 +311,7 @@ export default function ProgrammingSpacesClient({
  list: List,
  grid: Grid3X3,
  timeline: Clock,
- analytics: BarChart3,
+ analytics: BarChart3
  };
 
  return (

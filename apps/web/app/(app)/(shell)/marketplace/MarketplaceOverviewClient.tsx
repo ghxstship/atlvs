@@ -52,7 +52,7 @@ export default function MarketplaceOverviewClient({
   const { data: dashboardStats, isLoading: dashboardLoading } = useQuery({
     queryKey: ['marketplace-dashboard', orgId, userId, userRole],
     queryFn: () => marketplaceService.getDashboardStats(orgId, userId, userRole),
-    enabled: !!orgId && !!userId,
+    enabled: !!orgId && !!userId
   });
 
   const tabs = [

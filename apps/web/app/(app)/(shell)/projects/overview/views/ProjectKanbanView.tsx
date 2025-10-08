@@ -28,7 +28,7 @@ const priorityColors = {
  low: 'green',
  medium: 'yellow',
  high: 'orange',
- critical: 'red',
+ critical: 'red'
 } as const;
 
 export default function ProjectKanbanView({
@@ -38,7 +38,7 @@ export default function ProjectKanbanView({
  onView,
  onEdit,
  onDelete,
- onStatusChange,
+ onStatusChange
 }: ProjectKanbanViewProps) {
  const projectsByStatus = React.useMemo(() => {
  return columns.reduce((acc, column) => {
@@ -50,7 +50,7 @@ export default function ProjectKanbanView({
  const handleDragStart = (e: React.DragEvent, project: Project) => {
  e.dataTransfer.setData('text/plain', JSON.stringify({
  projectId: project.id,
- sourceStatus: project.status,
+ sourceStatus: project.status
  }));
  };
 
@@ -150,7 +150,7 @@ export default function ProjectKanbanView({
  {new Intl.NumberFormat('en-US', {
  style: 'currency',
  currency: project.currency || 'USD',
- notation: 'compact',
+ notation: 'compact'
  }).format(project.budget)}
  </span>
  </div>

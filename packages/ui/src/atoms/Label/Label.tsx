@@ -1,42 +1,65 @@
-import * as React from 'react';
-import { cn } from '../../lib/utils';
+/**
+ * Label Component — Form Label
+ * Accessible form label component
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
+ */
+
+'use client';
+
+import React from 'react';
 
 export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
-  hint?: string;
-  error?: string;
-  requiredIndicator?: boolean;
+  /** Required indicator */
+  required?: boolean;
+  
+  /** Size */
+  size?: 'sm' | 'md' | 'lg';
 }
 
+/**
+ * Label Component
+ * 
+ * @example
+ * ```tsx
+ * <Label htmlFor="email">Email</Label>
+ * <Label required>Password</Label>
+ * ```
+ */
 export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
   (
-    { className, children, hint, error, requiredIndicator = false, ...props },
+    {
+      required = false,
+      size = 'md',
+      className = '',
+      children,
+      ...props
+    },
     ref
   ) => {
+    const sizeClasses = {
+      sm: 'text-xs',
+      md: 'text-sm',
+      lg: 'text-base',
+    };
+    
     return (
-      <div className={cn('space-y-1', error && 'text-destructive')}>
-        <label
-          ref={ref}
-          className={cn(
-            'block text-sm font-medium leading-5 text-foreground',
-            error && 'text-destructive',
-            className
-          )}
-          {...props}
-        >
-          <span className="inline-flex items-center gap-1">
-            {children}
-            {requiredIndicator && <span className="text-destructive">*</span>}
-          </span>
-        </label>
-        {hint && !error && (
-          <p className="text-xs text-muted-foreground">{hint}</p>
-        )}
-        {error && <p className="text-xs text-destructive">{error}</p>}
-      </div>
+      <label
+        ref={ref}
+        className={`
+          block font-medium
+          text-[var(--color-foreground)]
+          ${sizeClasses[size]}
+          ${className}
+        `}
+        {...props}
+      >
+        {children}
+        {required && <span className="text-[var(--color-error)] ml-1">*</span>}
+      </label>
     );
   }
 );
 
 Label.displayName = 'Label';
-
-export default Label;

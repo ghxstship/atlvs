@@ -13,7 +13,7 @@ export enum RealtimeEventType {
   UPDATE = 'UPDATE',
   DELETE = 'DELETE',
   PRESENCE_JOIN = 'presence_join',
-  PRESENCE_LEAVE = 'presence_leave',
+  PRESENCE_LEAVE = 'presence_leave'
 }
 
 // Subscription options
@@ -21,7 +21,7 @@ const SubscriptionOptionsSchema = z.object({
   entity: z.enum(['orders', 'vendors', 'requests', 'contracts', 'budgets']),
   eventTypes: z.array(z.nativeEnum(RealtimeEventType)).default([RealtimeEventType.INSERT, RealtimeEventType.UPDATE, RealtimeEventType.DELETE]),
   filters: z.record(z.any()).optional(),
-  includePresence: z.boolean().default(false),
+  includePresence: z.boolean().default(false)
 });
 
 export type SubscriptionOptions = z.infer<typeof SubscriptionOptionsSchema>;
@@ -82,7 +82,7 @@ export class ProcurementRealtimeService {
       userName,
       avatar,
       status: 'online',
-      lastSeen: new Date(),
+      lastSeen: new Date()
     };
   }
 
@@ -93,9 +93,9 @@ export class ProcurementRealtimeService {
     this.presenceChannel = this.supabase.channel(`procurement_presence_${this.orgId}`, {
       config: {
         presence: {
-          key: this.userId,
-        },
-      },
+          key: this.userId
+        }
+      }
     });
 
     // Track presence
@@ -134,9 +134,9 @@ export class ProcurementRealtimeService {
             event: eventType,
             schema: 'public',
             table: this.getTableName(options.entity),
-            filter: this.buildRealtimeFilter(options.filters),
-          })),
-      },
+            filter: this.buildRealtimeFilter(options.filters)
+          }))
+      }
     });
 
     // Handle database changes
@@ -146,7 +146,7 @@ export class ProcurementRealtimeService {
         entity: options.entity,
         old: payload.old,
         new: payload.new,
-        timestamp: new Date(),
+        timestamp: new Date()
       };
 
       callback(eventPayload);
@@ -163,7 +163,7 @@ export class ProcurementRealtimeService {
       unsubscribe: () => {
         channel.unsubscribe();
         this.activeSubscriptions.delete(subscriptionId);
-      },
+      }
     };
 
     this.activeSubscriptions.set(subscriptionId, subscription);
@@ -203,7 +203,7 @@ export class ProcurementRealtimeService {
     this.presenceState = {
       ...this.presenceState,
       ...updates,
-      lastSeen: new Date(),
+      lastSeen: new Date()
     };
 
     if (this.presenceChannel) {
@@ -250,8 +250,8 @@ export class ProcurementRealtimeService {
       payload: {
         ...payload,
         userId: this.userId,
-        timestamp: new Date().toISOString(),
-      },
+        timestamp: new Date().toISOString()
+      }
     });
   }
 
@@ -266,14 +266,14 @@ export class ProcurementRealtimeService {
     // Update presence to show current activity
     this.updatePresence({
       currentEntity: entity,
-      currentRecordId: recordId,
+      currentRecordId: recordId
     });
 
     // Subscribe to changes for this specific record
     return this.subscribe(
       {
         entity: entity as any,
-        filters: { id: recordId },
+        filters: { id: recordId }
       },
       callback
     );
@@ -324,7 +324,7 @@ export class ProcurementRealtimeService {
       vendors: 'vendors',
       requests: 'procurement_requests',
       contracts: 'contracts',
-      budgets: 'budgets',
+      budgets: 'budgets'
     };
 
     return tableMap[entity] || entity;
@@ -375,7 +375,7 @@ export class ProcurementRealtimeService {
       activeUsers,
       activeSubscriptions: this.activeSubscriptions.size,
       currentEntity: this.presenceState.currentEntity,
-      currentRecordId: this.presenceState.currentRecordId,
+      currentRecordId: this.presenceState.currentRecordId
     };
   }
 }

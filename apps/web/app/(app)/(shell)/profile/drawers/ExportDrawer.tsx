@@ -15,7 +15,7 @@ import {
  Label,
  Checkbox,
  Input,
- useToast,
+ useToast
 } from '@ghxstship/ui';
 
 import type { UserProfile, ExportConfig, FieldConfig } from '../types';
@@ -25,25 +25,25 @@ const EXPORT_FORMATS = [
  value: 'csv',
  label: 'CSV (Comma Separated Values)',
  description: 'Compatible with Excel and Google Sheets',
- icon: <Table className="h-icon-xs w-icon-xs" />,
+ icon: <Table className="h-icon-xs w-icon-xs" />
  },
  {
  value: 'json',
  label: 'JSON (JavaScript Object Notation)',
  description: 'Structured data format for developers',
- icon: <Database className="h-icon-xs w-icon-xs" />,
+ icon: <Database className="h-icon-xs w-icon-xs" />
  },
  {
  value: 'excel',
  label: 'Excel Workbook (.xlsx)',
  description: 'Native Microsoft Excel format',
- icon: <FileSpreadsheet className="h-icon-xs w-icon-xs" />,
+ icon: <FileSpreadsheet className="h-icon-xs w-icon-xs" />
  },
  {
  value: 'pdf',
  label: 'PDF Report',
  description: 'Formatted report for printing or sharing',
- icon: <FileText className="h-icon-xs w-icon-xs" />,
+ icon: <FileText className="h-icon-xs w-icon-xs" />
  },
 ];
 
@@ -121,7 +121,7 @@ export default function ExportDrawer({
  toast({
  title: 'No Fields Selected',
  description: 'Please select at least one field to export',
- variant: 'destructive',
+ variant: 'destructive'
  });
  return;
  }
@@ -130,7 +130,7 @@ export default function ExportDrawer({
  format,
  fields: selectedFieldKeys,
  includeHeaders,
- filename: filename || `profiles-export-${new Date().toISOString().split('T')[0]}`,
+ filename: filename || `profiles-export-${new Date().toISOString().split('T')[0]}`
  };
 
  try {
@@ -138,14 +138,14 @@ export default function ExportDrawer({
  await onExport(config);
  toast({
  title: 'Export Started',
- description: 'Your export is being prepared and will download shortly',
+ description: 'Your export is being prepared and will download shortly'
  });
  onClose();
  } catch (error) {
  toast({
  title: 'Export Failed',
  description: 'There was an error preparing your export',
- variant: 'destructive',
+ variant: 'destructive'
  });
  } finally {
  setLoading(false);

@@ -7,7 +7,7 @@ import {
  Badge,
  Separator,
  Avatar,
- AvatarFallback,
+ AvatarFallback
 } from '@ghxstship/ui';
 import type { 
  JobHistoryEntry, 
@@ -32,7 +32,7 @@ const getEmploymentTypeColor = (type: EmploymentType) => {
  freelance: 'pink',
  internship: 'cyan',
  temporary: 'orange',
- consultant: 'yellow',
+ consultant: 'yellow'
  };
  return colorMap[type] || 'gray';
 };
@@ -45,7 +45,7 @@ const getEmploymentTypeLabel = (type: EmploymentType) => {
  freelance: 'Freelance',
  internship: 'Internship',
  temporary: 'Temporary',
- consultant: 'Consultant',
+ consultant: 'Consultant'
  };
  return labelMap[type] || type;
 };
@@ -56,7 +56,7 @@ const getCompanySizeLabel = (size: CompanySize) => {
  small: 'Small Company (11-50)',
  medium: 'Medium Company (51-200)',
  large: 'Large Company (201-1000)',
- enterprise: 'Enterprise (1000+)',
+ enterprise: 'Enterprise (1000+)'
  };
  return labelMap[size] || size;
 };
@@ -65,7 +65,7 @@ const getVisibilityIcon = (visibility: JobVisibility) => {
  const iconMap = {
  public: Eye,
  organization: Building,
- private: EyeOff,
+ private: EyeOff
  };
  return iconMap[visibility] || Eye;
 };
@@ -120,7 +120,7 @@ export default function ViewJobHistoryDrawer({
  onClose,
  onEdit,
  onDelete,
- entry,
+ entry
 }: ViewJobHistoryDrawerProps) {
  if (!entry) return null;
 
@@ -131,7 +131,7 @@ export default function ViewJobHistoryDrawer({
  navigator.share({
  title: `${entry.job_title} at ${entry.company_name}`,
  text: `${entry.job_title} at ${entry.company_name}`,
- url: window.location.href,
+ url: window.location.href
  });
  } else {
  navigator.clipboard.writeText(`${entry.job_title} at ${entry.company_name}`);
@@ -386,7 +386,7 @@ export default function ViewJobHistoryDrawer({
  month: 'long',
  day: 'numeric',
  hour: '2-digit',
- minute: '2-digit',
+ minute: '2-digit'
  })}
  </div>
  <div>
@@ -396,7 +396,7 @@ export default function ViewJobHistoryDrawer({
  month: 'long',
  day: 'numeric',
  hour: '2-digit',
- minute: '2-digit',
+ minute: '2-digit'
  })}
  </div>
  </div>

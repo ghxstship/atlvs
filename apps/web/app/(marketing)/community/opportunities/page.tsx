@@ -1,25 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import {
-  ArrowRight,
-  Award,
-  Calendar,
-  Globe,
-  GraduationCap,
-  Heart,
-  Lightbulb,
-  MessageCircle,
-  Target,
-  Users,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight, Award, Calendar, Globe, GraduationCap, Heart, Lightbulb, MessageCircle, Target, Users, Zap } from 'lucide-react';
 
 import {
   MarketingCard,
   MarketingSection,
   MarketingSectionHeader,
-  MarketingStatGrid,
+  MarketingStatGrid
 } from '../../../_components/marketing';
 
 export const metadata: Metadata = {
@@ -30,8 +18,8 @@ export const metadata: Metadata = {
     title: 'Community Opportunities - Get Involved & Grow | GHXSTSHIP',
     description:
       'Discover opportunities to collaborate, learn, and grow with our community of 25,000+ creative professionals. Find mentorship, projects, events, and more.',
-    url: 'https://ghxstship.com/community/opportunities',
-  },
+    url: 'https://ghxstship.com/community/opportunities'
+  }
 };
 
 const opportunityStats = [
@@ -47,28 +35,28 @@ const opportunityCategories = [
     description: 'Mentorship, apprenticeships, and leadership programs to accelerate your growth.',
     icon: GraduationCap,
     total: '156 openings',
-    spotlight: 'Creative Mentorship Program',
+    spotlight: 'Creative Mentorship Program'
   },
   {
     title: 'Project Collaboration',
     description: 'Join productions seeking producers, crew, strategists, and creative partners.',
     icon: Users,
     total: '89 teams hiring',
-    spotlight: 'Innovation Lab Contributor',
+    spotlight: 'Innovation Lab Contributor'
   },
   {
     title: 'Events & Networking',
     description: 'Host or attend field-leading workshops, showcases, and regional meetups.',
     icon: Calendar,
     total: '34 events live',
-    spotlight: 'Community Event Organizer',
+    spotlight: 'Community Event Organizer'
   },
   {
     title: 'Leadership & Recognition',
     description: 'Shape the community, create educational content, and earn professional visibility.',
     icon: Award,
     total: '23 active roles',
-    spotlight: 'Content Creator Program',
+    spotlight: 'Content Creator Program'
   },
 ];
 
@@ -85,7 +73,7 @@ const featuredOpportunities = [
     benefits: ['Personalized guidance', 'Industry insights', 'Network expansion', 'Career acceleration'],
     icon: GraduationCap,
     status: 'Open',
-    deadline: 'Rolling',
+    deadline: 'Rolling'
   },
   {
     id: 'innovation-lab',
@@ -99,7 +87,7 @@ const featuredOpportunities = [
     benefits: ['Emerging tech access', 'Publication potential', 'Patent pathways', 'Stipend available'],
     icon: Lightbulb,
     status: 'Applications Open',
-    deadline: 'Dec 31, 2024',
+    deadline: 'Dec 31, 2024'
   },
   {
     id: 'community-events',
@@ -113,7 +101,7 @@ const featuredOpportunities = [
     benefits: ['Leadership experience', 'Production resources', 'Budget support', 'Local partnerships'],
     icon: Calendar,
     status: 'Open',
-    deadline: 'Rolling',
+    deadline: 'Rolling'
   },
   {
     id: 'content-creation',
@@ -127,7 +115,7 @@ const featuredOpportunities = [
     benefits: ['Platform amplification', 'Editorial support', 'Community recognition', 'Revenue sharing'],
     icon: MessageCircle,
     status: 'Open',
-    deadline: 'Rolling',
+    deadline: 'Rolling'
   },
 ];
 
@@ -137,21 +125,21 @@ const successStories = [
     role: 'Producer · Mentor',
     story:
       'Transitioned from mentee to mentor, launching 12 careers and leading multi-region collaboration tracks.',
-    impact: '12 careers launched',
+    impact: '12 careers launched'
   },
   {
     name: 'Sarah Rodriguez',
     role: 'Innovation Lab Fellow',
     story:
       'Led volumetric capture research, secured $2M in funding, and published two patents with GHXSTSHIP teams.',
-    impact: '$2M in grants · 2 patents',
+    impact: '$2M in grants · 2 patents'
   },
   {
     name: 'Marcus Johnson',
     role: 'Community Event Champion',
     story:
       'Built a network of 200+ creatives, facilitated 47 collaborations, and helped produce 23 new jobs regionally.',
-    impact: '47 collaborations · 23 jobs',
+    impact: '47 collaborations · 23 jobs'
   },
 ];
 
@@ -160,25 +148,25 @@ const gettingStartedSteps = [
     step: 1,
     title: 'Create Your Profile',
     description: 'Showcase your experience, goals, and availability so opportunities can find you.',
-    icon: Users,
+    icon: Users
   },
   {
     step: 2,
     title: 'Join the Conversation',
     description: 'Introduce yourself in our community hubs and start building trusted connections.',
-    icon: MessageCircle,
+    icon: MessageCircle
   },
   {
     step: 3,
     title: 'Explore Open Roles',
     description: 'Filter by commitment, skill focus, or geography to find perfect-fit opportunities.',
-    icon: Target,
+    icon: Target
   },
   {
     step: 4,
     title: 'Make Your Move',
     description: 'Apply, co-create, and track your progress with curated support from GHXSTSHIP.',
-    icon: Heart,
+    icon: Heart
   },
 ];
 

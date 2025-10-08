@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar, Target, ListTodo, Clock, AlertCircle, CheckCircle, Users, ChevronRight } from "lucide-react";
-import { useMemo } from "react";
+import { useMemo } from 'react';
 import { Badge, Card, Progress } from "@ghxstship/ui";
 import { 
  format, 
@@ -10,7 +10,7 @@ import {
  isAfter,
  isBefore,
  startOfDay,
- endOfDay,
+ endOfDay
 } from "date-fns";
 
 interface ScheduleItem {
@@ -41,7 +41,7 @@ interface ScheduleTimelineViewProps {
 
 export default function ScheduleTimelineView({
  items,
- onItemClick,
+ onItemClick
 }: ScheduleTimelineViewProps) {
  // Group items by month
  const itemsByMonth = useMemo(() => {
@@ -156,7 +156,7 @@ export default function ScheduleTimelineView({
                     borderColor: item.color || "hsl(var(--color-muted))",
                     backgroundColor: item.status === "completed" || item.status === "done" 
                       ? item.color || "hsl(var(--color-muted))" 
-                      : "hsl(var(--color-background))",
+                      : "hsl(var(--color-background))"
                   }}
  />
  {!isLast && (

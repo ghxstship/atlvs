@@ -3,7 +3,7 @@
 import { Card, Badge, Button, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import type { Activation } from "../ActivationsClient";
-import { Calendar, Check, CheckCircle, Copy, Edit, Eye, Play, Trash2 } from 'lucide-react';
+import { Calendar, Check, CheckCircle, Copy, Edit, Eye, Play, Trash2, MoreVertical, MapPin, Clock, DollarSign, Building } from 'lucide-react';
 
 interface ActivationGridViewProps {
  activations: Activation[];
@@ -24,7 +24,7 @@ export default function ActivationGridView({
  onEdit,
  onDelete,
  onDuplicate,
- onStatusChange,
+ onStatusChange
 }: ActivationGridViewProps) {
  const getStatusBadgeVariant = (status: string) => {
  switch (status) {

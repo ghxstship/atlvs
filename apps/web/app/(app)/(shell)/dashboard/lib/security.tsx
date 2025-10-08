@@ -259,11 +259,9 @@ export class TenantIsolationService {
 
   // Ensure tenant isolation for queries
   async applyTenantFilter(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     query: any,
     context: SecurityContext,
     table: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): Promise<any> {
     // Apply organization filter
     query = query.eq('organization_id', context.orgId);
@@ -545,7 +543,6 @@ export class AuditService {
     resourceId: string,
     context: SecurityContext,
     limit = 50
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): Promise<any[]> {
     // Only admins and owners can view audit trails
     if (!['owner', 'admin'].some(role => context.roles.includes(role))) {
@@ -585,7 +582,6 @@ export class SecurityService {
 
     const userRole = await permissionService.getUserRole(userId, orgId);
     const roles: string[] = userRole ? [userRole] : [];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const permissions = await permissionService.getUserPermissions({ userId, orgId } as any);
 
     return {
@@ -654,7 +650,6 @@ export class SecurityService {
       results.jwt = !!(tokens.accessToken && !this.jwtManager.isTokenExpired(tokens.accessToken));
 
       // Check permissions
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       results.permissions = !!(await permissionService.getUserPermissions({ userId: 'test', orgId: 'test' } as any));
 
       // Check tenant isolation
@@ -679,7 +674,6 @@ export const withSecurity = <P extends object>(
   Component: React.ComponentType<P>,
   requiredPermissions?: string[]
 ) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const SecurityWrapper = React.forwardRef<any, P>((props, _ref) => {
     const [hasAccess, setHasAccess] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(true);
@@ -703,6 +697,7 @@ export const withSecurity = <P extends object>(
       };
 
       checkAccess();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if (isLoading) {

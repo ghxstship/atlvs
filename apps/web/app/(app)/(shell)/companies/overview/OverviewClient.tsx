@@ -1,32 +1,23 @@
 "use client"
 
-import { useState, useEffect, useCallback, useMemo } from "react"
-import { useRouter } from "next/navigation"
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import type { SupabaseClient } from "@supabase/supabase-js"
-import { User } from "@supabase/supabase-js"
-import { createBrowserClient } from "@ghxstship/auth"
+import { User } from '@supabase/supabase-js';
+import { createBrowserClient } from '@ghxstship/auth';
+import { AlertTriangle, Award, Badge, Building, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Clock, Eye, FileText, Grid, Plus, Star, Users } from 'lucide-react';
 import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
   Badge,
   Button,
-} from "@ghxstship/ui"
-import { Skeleton } from "@ghxstship/ui/components/atomic/Skeleton"
-import { Stack, HStack, Grid } from "@ghxstship/ui/components/layouts"
-import {
-  AlertTriangle,
-  Award,
-  Building,
-  Clock,
-  Eye,
-  FileText,
-  Plus,
-  Star,
-  Users,
-} from "lucide-react"
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  Skeleton
+} from '@ghxstship/ui';
+import { Skeleton } from '@ghxstship/ui/components/atomic/Skeleton';
+import { Grid, HStack, Stack } from '@ghxstship/ui/components/layouts';
 
 interface OverviewClientProps {
   user: User
@@ -166,7 +157,7 @@ const useCompaniesOverview = (supabase: SupabaseClient, orgId: string) => {
             }).length ?? 0,
           averageRating:
             ratings.data?.length ? ratings.data.reduce((sum, rating) => sum + toNumber(rating.rating), 0) / ratings.data.length : 0,
-          totalRatings: ratings.data?.length ?? 0,
+          totalRatings: ratings.data?.length ?? 0
         }
 
         setStats(companyStats)
@@ -178,7 +169,7 @@ const useCompaniesOverview = (supabase: SupabaseClient, orgId: string) => {
             companyName: "Stellar Construction Co.",
             description: "New company added to directory",
             timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
-            user: "John Doe",
+            user: "John Doe"
           },
           {
             id: "2",
@@ -186,7 +177,7 @@ const useCompaniesOverview = (supabase: SupabaseClient, orgId: string) => {
             companyName: "TechFlow Solutions",
             description: "Master Service Agreement signed",
             timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
-            user: "Jane Smith",
+            user: "Jane Smith"
           },
           {
             id: "3",
@@ -194,7 +185,7 @@ const useCompaniesOverview = (supabase: SupabaseClient, orgId: string) => {
             companyName: "Global Logistics Inc.",
             description: "ISO 9001 certification verified",
             timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),
-            user: "Mike Johnson",
+            user: "Mike Johnson"
           },
         ])
 
@@ -217,8 +208,10 @@ const useCompaniesOverview = (supabase: SupabaseClient, orgId: string) => {
     [supabase, orgId],
   )
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadOverviewData("initial")
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadOverviewData])
 
   return {
@@ -228,7 +221,7 @@ const useCompaniesOverview = (supabase: SupabaseClient, orgId: string) => {
     recentActivity,
     topRatedCompanies,
     error,
-    refresh: () => loadOverviewData("refresh"),
+    refresh: () => loadOverviewData("refresh")
   }
 }
 
@@ -284,7 +277,7 @@ export default function OverviewClient({ user: _user, orgId, translations }: Ove
           <p className="text-body-sm text-muted-foreground">{translations.subtitle}</p>
         </Stack>
         <HStack spacing="sm">
-          <Button variant="outline" onClick={() => router.push("/companies/directory")}>
+          <Button variant="secondary" onClick={() => router.push("/companies/directory")}>
             <HStack spacing="xs" align="center">
               <Eye className="h-icon-xs w-icon-xs" />
               <span>{translations.viewDirectory ?? "View Directory"}</span>
@@ -460,7 +453,7 @@ export default function OverviewClient({ user: _user, orgId, translations }: Ove
                 </HStack>
               ))}
             </Stack>
-            <Button variant="outline" className="mt-lg" onClick={() => router.push("/companies/activity")}
+            <Button variant="secondary" className="mt-lg" onClick={() => router.push("/companies/activity")}
             >
               {translations.viewAllActivityLabel ?? "View All"}
             </Button>
@@ -494,7 +487,7 @@ export default function OverviewClient({ user: _user, orgId, translations }: Ove
                 </HStack>
               ))}
             </Stack>
-            <Button variant="outline" className="mt-lg" onClick={() => router.push("/companies/ratings")}
+            <Button variant="secondary" className="mt-lg" onClick={() => router.push("/companies/ratings")}
             >
               {translations.viewAllRatingsLabel ?? "View All Ratings"}
             </Button>
@@ -511,7 +504,7 @@ export default function OverviewClient({ user: _user, orgId, translations }: Ove
         </CardHeader>
         <CardContent>
           <Grid cols={2} responsive={{ md: 4 }} spacing="md">
-            <Button variant="outline" className="h-component-lg flex-col" onClick={() => router.push("/companies")}
+            <Button variant="secondary" className="h-component-lg flex-col" onClick={() => router.push("/companies")}
             >
               <Building className="h-icon-md w-icon-md" />
               <span className="text-sm">
@@ -519,7 +512,7 @@ export default function OverviewClient({ user: _user, orgId, translations }: Ove
               </span>
             </Button>
             <Button
-              variant="outline"
+              variant="secondary"
               className="h-component-lg flex-col"
               onClick={() => router.push("/companies/contracts")}
             >
@@ -529,7 +522,7 @@ export default function OverviewClient({ user: _user, orgId, translations }: Ove
               </span>
             </Button>
             <Button
-              variant="outline"
+              variant="secondary"
               className="h-component-lg flex-col"
               onClick={() => router.push("/companies/qualifications")}
             >
@@ -539,7 +532,7 @@ export default function OverviewClient({ user: _user, orgId, translations }: Ove
               </span>
             </Button>
             <Button
-              variant="outline"
+              variant="secondary"
               className="h-component-lg flex-col"
               onClick={() => router.push("/companies/ratings")}
             >

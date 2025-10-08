@@ -11,7 +11,7 @@ const experiments = {
     activeVariant: 'control',
     status: 'active' as const,
     startDate: '2025-09-30',
-    endDate: '2025-10-30',
+    endDate: '2025-10-30'
   },
   cta_button_test: {
     id: 'cta_button_test',
@@ -21,7 +21,7 @@ const experiments = {
     activeVariant: 'control',
     status: 'active' as const,
     startDate: '2025-09-30',
-    endDate: '2025-10-30',
+    endDate: '2025-10-30'
   },
   pricing_layout_test: {
     id: 'pricing_layout_test',
@@ -31,7 +31,7 @@ const experiments = {
     activeVariant: 'control',
     status: 'active' as const,
     startDate: '2025-09-30',
-    endDate: '2025-11-30',
+    endDate: '2025-11-30'
   },
   signup_flow_test: {
     id: 'signup_flow_test',
@@ -39,8 +39,8 @@ const experiments = {
     description: 'Testing different signup flow variations',
     variants: ['control', 'variant_a'],
     activeVariant: 'control',
-    status: 'draft' as const,
-  },
+    status: 'draft' as const
+  }
 };
 
 export async function GET() {
@@ -51,8 +51,8 @@ export async function GET() {
 
   return NextResponse.json(activeExperiments, {
     headers: {
-      'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120',
-    },
+      'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120'
+    }
   });
 }
 

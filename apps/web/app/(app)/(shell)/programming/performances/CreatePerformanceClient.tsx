@@ -23,7 +23,7 @@ const createPerformanceSchema = z.object({
   stage: z.string().optional(),
   ticket_price: z.number().min(0).optional(),
   currency: z.string().optional(),
-  project_id: z.string().optional(),
+  project_id: z.string().optional()
 });
 
 export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
@@ -49,8 +49,8 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
       stage: '',
       ticket_price: undefined,
       currency: 'USD',
-      project_id: '',
-    },
+      project_id: ''
+    }
   });
 
   // Load projects when drawer opens
@@ -82,7 +82,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
         capacity: data.capacity || null,
         ticket_price: data.ticket_price || null,
         created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       const { error: insertError } = await sb

@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar, Clock, MapPin, Users, AlertCircle, Tag, Plus, X } from "lucide-react";
-import { useState } from "react";
+import { useState } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import {
  AppDrawer,
@@ -9,7 +9,7 @@ import {
  Input,
  Select,
  Textarea,
- toast,
+ toast
 } from "@ghxstship/ui";
 import type { ProgrammingEventProject } from "../types";
 
@@ -28,7 +28,7 @@ export default function CreateProgrammingEventDrawer({
  orgId,
  currentUserId,
  projects,
- onSuccess,
+ onSuccess
 }: CreateProgrammingEventDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -49,7 +49,7 @@ export default function CreateProgrammingEventDrawer({
  timezone: "UTC",
  is_all_day: false,
  broadcast_url: "",
- tags: [] as string[],
+ tags: [] as string[]
  });
 
  const [errors, setErrors] = useState<Record<string, string>({});
@@ -87,7 +87,7 @@ export default function CreateProgrammingEventDrawer({
  if (tag && !formData.tags.includes(tag)) {
  setFormData({
  ...formData,
- tags: [...formData.tags, tag],
+ tags: [...formData.tags, tag]
  });
  setTagInput("");
  }
@@ -97,7 +97,7 @@ export default function CreateProgrammingEventDrawer({
  const handleRemoveTag = (tag: string) => {
  setFormData({
  ...formData,
- tags: formData.tags.filter(t => t !== tag),
+ tags: formData.tags.filter(t => t !== tag)
  });
  };
 
@@ -128,8 +128,8 @@ export default function CreateProgrammingEventDrawer({
  tags: formData.tags,
  resources: [],
  staffing: [],
- metadata: {},
- }),
+ metadata: {}
+ })
  });
 
  if (!response.ok) {
@@ -155,7 +155,7 @@ export default function CreateProgrammingEventDrawer({
  timezone: "UTC",
  is_all_day: false,
  broadcast_url: "",
- tags: [],
+ tags: []
  });
  setTagInput("");
  setErrors({});
@@ -187,7 +187,7 @@ export default function CreateProgrammingEventDrawer({
  timezone: "UTC",
  is_all_day: false,
  broadcast_url: "",
- tags: [],
+ tags: []
  });
  setTagInput("");
  setErrors({});

@@ -10,7 +10,7 @@ import { z } from 'zod';
 export enum ImportFormat {
   CSV = 'csv',
   JSON = 'json',
-  XLSX = 'xlsx',
+  XLSX = 'xlsx'
 }
 
 // Import options schema
@@ -22,7 +22,7 @@ const ImportOptionsSchema = z.object({
   updateExisting: z.boolean().default(false),
   validateOnly: z.boolean().default(false),
   batchSize: z.number().min(1).max(100).default(50),
-  onProgress: z.function().optional(),
+  onProgress: z.function().optional()
 });
 
 export type ImportOptions = z.infer<typeof ImportOptionsSchema>;
@@ -33,7 +33,7 @@ export enum ImportStatus {
   VALIDATING = 'validating',
   PROCESSING = 'processing',
   COMPLETED = 'completed',
-  FAILED = 'failed',
+  FAILED = 'failed'
 }
 
 // Import result
@@ -109,7 +109,7 @@ export class ProcurementImportService {
         failedRecords: 0,
         skippedRecords: 0,
         errors: [],
-        warnings: [],
+        warnings: []
       };
 
       // Parse and validate data
@@ -163,9 +163,9 @@ export class ProcurementImportService {
         errors: [{
           row: 0,
           message: error.message || 'Import failed',
-          code: 'IMPORT_FAILED',
+          code: 'IMPORT_FAILED'
         }],
-        warnings: [],
+        warnings: []
       };
     }
   }
@@ -244,13 +244,13 @@ export class ProcurementImportService {
           if (skipDuplicates) {
             warnings.push({
               row: rowNumber,
-              message: duplicateCheck.message,
+              message: duplicateCheck.message
             });
           } else if (!updateExisting) {
             errors.push({
               row: rowNumber,
               message: duplicateCheck.message,
-              code: 'DUPLICATE_RECORD',
+              code: 'DUPLICATE_RECORD'
             });
           }
         }
@@ -293,7 +293,7 @@ export class ProcurementImportService {
       return {
         row: rowNumber,
         message: error.message,
-        code: 'VALIDATION_ERROR',
+        code: 'VALIDATION_ERROR'
       };
     }
   }
@@ -378,7 +378,7 @@ export class ProcurementImportService {
 
     return {
       isDuplicate,
-      message: isDuplicate ? `Duplicate record found (existing ID: ${data[0].id})` : '',
+      message: isDuplicate ? `Duplicate record found (existing ID: ${data[0].id})` : ''
     };
   }
 
@@ -410,7 +410,7 @@ export class ProcurementImportService {
           field: 'vendor_name',
           value: row.vendor_name,
           message: `Vendor "${row.vendor_name}" not found`,
-          code: 'VENDOR_NOT_FOUND',
+          code: 'VENDOR_NOT_FOUND'
         });
       }
     }
@@ -422,7 +422,7 @@ export class ProcurementImportService {
         field: 'total_amount',
         value: row.total_amount,
         message: 'Total amount cannot be negative',
-        code: 'INVALID_AMOUNT',
+        code: 'INVALID_AMOUNT'
       });
     }
 
@@ -435,7 +435,7 @@ export class ProcurementImportService {
           field: 'delivery_date',
           value: row.delivery_date,
           message: 'Invalid delivery date format',
-          code: 'INVALID_DATE',
+          code: 'INVALID_DATE'
         });
       }
     }
@@ -463,7 +463,7 @@ export class ProcurementImportService {
       successful: 0,
       failed: 0,
       skipped: 0,
-      errors: [] as ImportError[],
+      errors: [] as ImportError[]
     };
 
     for (let i = 0; i < batch.length; i++) {
@@ -485,7 +485,7 @@ export class ProcurementImportService {
         const { data, error } = await this.supabase
           .from(table)
           .upsert(preparedData, {
-            onConflict: updateExisting ? this.getConflictColumns(entity) : undefined,
+            onConflict: updateExisting ? this.getConflictColumns(entity) : undefined
           })
           .select()
           .single();
@@ -502,7 +502,7 @@ export class ProcurementImportService {
         result.errors.push({
           row: rowNumber,
           message: error.message || 'Import failed',
-          code: 'IMPORT_ERROR',
+          code: 'IMPORT_ERROR'
         });
       }
 
@@ -518,7 +518,7 @@ export class ProcurementImportService {
   private prepareDataForImport(entity: string, row: unknown): unknown {
     const baseData = {
       organization_id: this.orgId,
-      ...row,
+      ...row
     };
 
     // Add user references and timestamps
@@ -529,14 +529,14 @@ export class ProcurementImportService {
           requested_by: this.userId,
           status: row.status || 'draft',
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         };
       case 'vendors':
         return {
           ...baseData,
           status: row.status || 'active',
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         };
       case 'requests':
         return {
@@ -544,7 +544,7 @@ export class ProcurementImportService {
           requested_by: this.userId,
           status: row.status || 'draft',
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         };
       case 'contracts':
         return {
@@ -552,7 +552,7 @@ export class ProcurementImportService {
           created_by: this.userId,
           status: row.status || 'draft',
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         };
       case 'budgets':
         return {
@@ -561,7 +561,7 @@ export class ProcurementImportService {
           status: row.status || 'active',
           spent: row.spent || 0,
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         };
       default:
         return baseData;
@@ -595,7 +595,7 @@ export class ProcurementImportService {
       vendors: 'vendors',
       requests: 'procurement_requests',
       contracts: 'contracts',
-      budgets: 'budgets',
+      budgets: 'budgets'
     };
 
     return tableMap[entity] || entity;
@@ -614,7 +614,7 @@ export class ProcurementImportService {
           operation: action as any,
           user_id: this.userId,
           organization_id: this.orgId,
-          timestamp: new Date().toISOString(),
+          timestamp: new Date().toISOString()
         });
     } catch (error) {
       // Don't fail import if logging fails
@@ -662,7 +662,7 @@ export function generateImportTemplate(entity: string): unknown[] {
         vendor_name: 'Office Depot',
         total_amount: 1500.00,
         currency: 'USD',
-        delivery_date: '2025-12-01',
+        delivery_date: '2025-12-01'
       }];
     case 'vendors':
       return [{
@@ -671,7 +671,7 @@ export function generateImportTemplate(entity: string): unknown[] {
         contact_phone: '+1-555-0123',
         address: '123 Main St, City, State 12345',
         status: 'active',
-        rating: 4.5,
+        rating: 4.5
       }];
     default:
       return [];

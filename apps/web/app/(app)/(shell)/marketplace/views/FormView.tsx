@@ -22,7 +22,7 @@ export default function FormView({
   orgId,
   filters = {},
   onListingCreate,
-  onListingUpdate,
+  onListingUpdate
 }: FormViewProps) {
   const [selectedListing, setSelectedListing] = useState<MarketplaceListing | null>(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -30,13 +30,13 @@ export default function FormView({
     type: 'offer',
     category: 'services',
     status: 'draft',
-    featured: false,
+    featured: false
   });
 
   // Fetch listings for selection
   const { data: listingsResponse, isLoading } = useQuery({
     queryKey: ['marketplace-listings', orgId, filters],
-    queryFn: () => marketplaceService.getListings(orgId, filters),
+    queryFn: () => marketplaceService.getListings(orgId, filters)
   });
 
   const listings = listingsResponse?.listings || [];
@@ -53,7 +53,7 @@ export default function FormView({
       type: 'offer',
       category: 'services',
       status: 'draft',
-      featured: false,
+      featured: false
     });
     setIsEditing(true);
   };
@@ -94,8 +94,8 @@ export default function FormView({
       ...prev,
       [parent]: {
         ...prev[parent],
-        [field]: value,
-      },
+        [field]: value
+      }
     }));
   };
 

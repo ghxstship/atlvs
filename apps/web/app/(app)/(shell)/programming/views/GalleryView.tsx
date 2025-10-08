@@ -10,13 +10,13 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@ghxstship/ui';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from '@ghxstship/ui';
 import type { ProgrammingEntity } from '../types';
 
@@ -51,7 +51,7 @@ export function ImageView<T extends ProgrammingEntity>({
   renderImageItem,
   emptyMessage = 'No items to display',
   className,
-  columns = 4,
+  columns = 4
 }: ImageViewProps<T>) {
   const [internalSelectedIds, setInternalSelectedIds] = useState<string[]>(selectedIds);
   const [lightboxOpen, setLightboxOpen] = useState(false);

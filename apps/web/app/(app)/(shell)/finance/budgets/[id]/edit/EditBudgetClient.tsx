@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, CardHeader, CardTitle, CardContent, Button, Alert } from '@ghxstship/ui';
+import { Alert, Button, Card, CardBody, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { ArrowLeft, DollarSign } from 'lucide-react';
 import { User } from '@supabase/supabase-js';
 import EditBudgetDrawer from '../../drawers/EditBudgetDrawer';
@@ -35,13 +35,13 @@ const STATUS_MAP: Record<string, UpdateBudgetData['status']> = {
   cancelled: 'cancelled',
   inactive: 'draft',
   exceeded: 'active',
-  on_hold: 'draft',
+  on_hold: 'draft'
 };
 
 export default function EditBudgetClient({
   budget,
   user: _user,
-  orgId: _orgId,
+  orgId: _orgId
 }: EditBudgetClientProps) {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -63,7 +63,7 @@ export default function EditBudgetClient({
         category: data.category,
         status: STATUS_MAP[data.status] ?? 'active',
         description: data.notes,
-        project_id: data.project_id,
+        project_id: data.project_id
       };
 
       await budgetsService.updateBudget(payload);

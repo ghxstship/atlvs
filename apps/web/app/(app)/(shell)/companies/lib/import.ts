@@ -66,7 +66,7 @@ export class CompaniesImportService {
       org_id: orgId,
       user_id: userId,
       import_data: data,
-      import_options: options,
+      import_options: options
     });
 
     if (error) throw error;
@@ -90,7 +90,7 @@ export class CompaniesImportService {
       status: data.status,
       result: data.result,
       createdAt: new Date(data.created_at),
-      completedAt: data.completed_at ? new Date(data.completed_at) : undefined,
+      completedAt: data.completed_at ? new Date(data.completed_at) : undefined
     };
   }
 
@@ -115,7 +115,7 @@ export class CompaniesImportService {
         updatedRows: 0,
         skippedRows: data.length,
         errors: validation.errors.map(error => ({ row: error.row, message: error.message })),
-        warnings: [],
+        warnings: []
       };
     }
 
@@ -138,7 +138,7 @@ export class CompaniesImportService {
     const allowedTypes = {
       csv: ['text/csv', 'application/csv'],
       xlsx: ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'],
-      json: ['application/json'],
+      json: ['application/json']
     };
 
     if (!allowedTypes[format].includes(file.type)) {
@@ -258,7 +258,7 @@ export class CompaniesImportService {
           errors.push({
             row: rowNumber,
             field: error.path.join('.'),
-            message: error.message,
+            message: error.message
           });
         });
       }
@@ -286,7 +286,7 @@ export class CompaniesImportService {
             await this.supabase.from('companies').insert({
               ...row,
               organization_id: orgId,
-              created_by: userId,
+              created_by: userId
             });
             created++;
             break;
@@ -316,7 +316,7 @@ export class CompaniesImportService {
               await this.supabase.from('companies').insert({
                 ...row,
                 organization_id: orgId,
-                created_by: userId,
+                created_by: userId
               });
               created++;
             }
@@ -336,7 +336,7 @@ export class CompaniesImportService {
       updatedRows: updated,
       skippedRows: skipped,
       errors,
-      warnings: [],
+      warnings: []
     };
   }
 
@@ -355,8 +355,8 @@ export class CompaniesImportService {
           industry: 'Technology',
           email: 'contact@acme.com',
           phone: '+1-555-0123',
-          website: 'https://acme.com',
-        },
+          website: 'https://acme.com'
+        }
       },
       {
         id: 'detailed',
@@ -376,8 +376,8 @@ export class CompaniesImportService {
           zip_code: '94105',
           country: 'USA',
           size: 'medium',
-          founded_year: 2018,
-        },
+          founded_year: 2018
+        }
       },
     ];
   }

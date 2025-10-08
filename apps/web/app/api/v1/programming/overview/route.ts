@@ -5,7 +5,7 @@ import { createServerClient } from '@ghxstship/auth';
 import {
   overviewFilterSchema,
   fetchProgrammingOverviewData,
-  fetchProgrammingOverviewAnalytics,
+  fetchProgrammingOverviewAnalytics
 } from '@/app/(app)/(shell)/programming/overview/lib/overviewService';
 
 export const dynamic = 'force-dynamic';
@@ -18,7 +18,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
     const overviewData = await fetchProgrammingOverviewData(supabase, orgId, filters);
     const analytics = await fetchProgrammingOverviewAnalytics(supabase, orgId, {
       period: '30d',
-      granularity: 'day',
+      granularity: 'day'
     });
 
     return NextResponse.json({ ...overviewData, analytics });

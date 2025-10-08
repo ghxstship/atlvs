@@ -3,7 +3,7 @@ import type {
   CompanyContract,
   ContractFilters,
   ContractStats,
-  CreateContractForm,
+  CreateContractForm
 } from '../types';
 
 export class ContractsService extends CompaniesService {
@@ -75,7 +75,7 @@ export class ContractsService extends CompaniesService {
       count: count || 0,
       page,
       limit,
-      total_pages: Math.ceil((count || 0) / limit),
+      total_pages: Math.ceil((count || 0) / limit)
     };
   }
 
@@ -105,7 +105,7 @@ export class ContractsService extends CompaniesService {
       averageValue: 0,
       renewalRate: 0,
       contractsByType: {},
-      contractsByStatus: {},
+      contractsByStatus: {}
     };
 
     // Calculate average value
@@ -144,7 +144,7 @@ export class ContractsService extends CompaniesService {
       .update({
         ...renewalData,
         status: 'active',
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq('id', id)
       .eq('organization_id', orgId)
@@ -162,7 +162,7 @@ export class ContractsService extends CompaniesService {
       .update({
         status: 'terminated',
         notes: reason ? `Terminated: ${reason}` : 'Contract terminated',
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       })
       .eq('id', id)
       .eq('organization_id', orgId)

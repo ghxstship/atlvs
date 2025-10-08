@@ -54,7 +54,7 @@ export default function ProfileOverviewKanbanView({
  onSelectionChange,
  onEdit,
  onView,
- onStatusChange,
+ onStatusChange
 }: ProfileOverviewKanbanViewProps) {
  const [draggedProfile, setDraggedProfile] = useState<ProfileOverview | null>(null);
 

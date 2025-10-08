@@ -1,10 +1,10 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Heart, Activity, Pill, AlertCircle, Save, Plus, X, Edit2, Trash2 } from 'lucide-react';
-import { useToast } from '@ghxstship/ui';
+import { Badge, Button, Card, CardContent, CardHeader, Input, Select, useToast } from '@ghxstship/ui';
 
 interface HealthInfo {
   id: string;
@@ -42,13 +42,15 @@ export default function HealthInfoClient() {
     name: '',
     dosage: '',
     frequency: '',
-    reason: '',
+    reason: ''
   });
   const { addToast } = useToast();
   const supabase = createClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchHealthInfo();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchHealthInfo = async () => {
@@ -72,7 +74,7 @@ export default function HealthInfoClient() {
           allergies: [],
           medications: [],
           medical_conditions: [],
-          dietary_restrictions: [],
+          dietary_restrictions: []
         });
         setIsEditing(true);
       }
@@ -81,7 +83,7 @@ export default function HealthInfoClient() {
       addToast({
         type: 'error',
         title: 'Error',
-        description: 'Failed to load health information',
+        description: 'Failed to load health information'
       });
     } finally {
       setLoading(false);
@@ -96,7 +98,7 @@ export default function HealthInfoClient() {
       const dataToSave = {
         ...formData,
         user_id: user.id,
-        last_updated: new Date().toISOString(),
+        last_updated: new Date().toISOString()
       };
 
       if (healthInfo?.id) {
@@ -118,7 +120,7 @@ export default function HealthInfoClient() {
       addToast({
         type: 'success',
         title: 'Success',
-        description: 'Health information saved successfully',
+        description: 'Health information saved successfully'
       });
       
       setIsEditing(false);
@@ -128,7 +130,7 @@ export default function HealthInfoClient() {
       addToast({
         type: 'error',
         title: 'Error',
-        description: 'Failed to save health information',
+        description: 'Failed to save health information'
       });
     }
   };
@@ -137,7 +139,7 @@ export default function HealthInfoClient() {
     if (newAllergy.trim()) {
       setFormData({
         ...formData,
-        allergies: [...(formData.allergies || []), newAllergy.trim()],
+        allergies: [...(formData.allergies || []), newAllergy.trim()]
       });
       setNewAllergy('');
     }
@@ -153,7 +155,7 @@ export default function HealthInfoClient() {
     if (newCondition.trim()) {
       setFormData({
         ...formData,
-        medical_conditions: [...(formData.medical_conditions || []), newCondition.trim()],
+        medical_conditions: [...(formData.medical_conditions || []), newCondition.trim()]
       });
       setNewCondition('');
     }
@@ -169,7 +171,7 @@ export default function HealthInfoClient() {
     if (newRestriction.trim()) {
       setFormData({
         ...formData,
-        dietary_restrictions: [...(formData.dietary_restrictions || []), newRestriction.trim()],
+        dietary_restrictions: [...(formData.dietary_restrictions || []), newRestriction.trim()]
       });
       setNewRestriction('');
     }
@@ -185,7 +187,7 @@ export default function HealthInfoClient() {
     if (newMedication.name && newMedication.dosage && newMedication.frequency) {
       setFormData({
         ...formData,
-        medications: [...(formData.medications || []), newMedication],
+        medications: [...(formData.medications || []), newMedication]
       });
       setNewMedication({ name: '', dosage: '', frequency: '', reason: '' });
     }
@@ -252,13 +254,13 @@ export default function HealthInfoClient() {
               <option value="O-">O-</option>
             </Select>
             </div>
-            <UnifiedInput               label="Height"
+            <Input               label="Height"
               value={formData.height || ''}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, height: e.target.value })}
               placeholder="e.g., 5'10&quot; or 178cm"
               disabled={!isEditing}
             />
-            <UnifiedInput               label="Weight"
+            <Input               label="Weight"
               value={formData.weight || ''}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, weight: e.target.value })}
               placeholder="e.g., 165 lbs or 75kg"
@@ -280,7 +282,7 @@ export default function HealthInfoClient() {
           <div className="stack-sm">
             <div className="flex flex-wrap gap-sm">
               {(formData.allergies || []).map((allergy, index) => (
-                <Badge key={index} variant="destructive">
+                <Badge key={index} variant="error">
                   {allergy}
                   {isEditing && (
                     <button
@@ -295,7 +297,7 @@ export default function HealthInfoClient() {
             </div>
             {isEditing && (
               <div className="flex gap-sm">
-                <UnifiedInput                   value={newAllergy}
+                <Input                   value={newAllergy}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewAllergy(e.target.value)}
                   placeholder="Add allergy..."
                   onKeyPress={(e: any) => e.key === 'Enter' && addAllergy()}
@@ -346,19 +348,19 @@ export default function HealthInfoClient() {
             {isEditing && (
               <div className="stack-sm p-sm border rounded-lg">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-sm">
-                  <UnifiedInput                     placeholder="Medication name"
+                  <Input                     placeholder="Medication name"
                     value={newMedication.name}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewMedication({ ...newMedication, name: e.target.value })}
                   />
-                  <UnifiedInput                     placeholder="Dosage"
+                  <Input                     placeholder="Dosage"
                     value={newMedication.dosage}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewMedication({ ...newMedication, dosage: e.target.value })}
                   />
-                  <UnifiedInput                     placeholder="Frequency"
+                  <Input                     placeholder="Frequency"
                     value={newMedication.frequency}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewMedication({ ...newMedication, frequency: e.target.value })}
                   />
-                  <UnifiedInput                     placeholder="Reason (optional)"
+                  <Input                     placeholder="Reason (optional)"
                     value={newMedication.reason}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewMedication({ ...newMedication, reason: e.target.value })}
                   />
@@ -385,7 +387,7 @@ export default function HealthInfoClient() {
           <div className="stack-sm">
             <div className="flex flex-wrap gap-sm">
               {(formData.medical_conditions || []).map((condition, index) => (
-                <Badge key={index} variant="outline">
+                <Badge key={index} variant="secondary">
                   {condition}
                   {isEditing && (
                     <button
@@ -400,7 +402,7 @@ export default function HealthInfoClient() {
             </div>
             {isEditing && (
               <div className="flex gap-sm">
-                <UnifiedInput                   value={newCondition}
+                <Input                   value={newCondition}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCondition(e.target.value)}
                   placeholder="Add medical condition..."
                   onKeyPress={(e: any) => e.key === 'Enter' && addCondition()}
@@ -438,7 +440,7 @@ export default function HealthInfoClient() {
             </div>
             {isEditing && (
               <div className="flex gap-sm">
-                <UnifiedInput                   value={newRestriction}
+                <Input                   value={newRestriction}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewRestriction(e.target.value)}
                   placeholder="Add dietary restriction..."
                   onKeyPress={(e: any) => e.key === 'Enter' && addRestriction()}
@@ -459,22 +461,22 @@ export default function HealthInfoClient() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-            <UnifiedInput               label="Insurance Provider"
+            <Input               label="Insurance Provider"
               value={formData.insurance_provider || ''}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, insurance_provider: e.target.value })}
               disabled={!isEditing}
             />
-            <UnifiedInput               label="Policy Number"
+            <Input               label="Policy Number"
               value={formData.insurance_policy_number || ''}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, insurance_policy_number: e.target.value })}
               disabled={!isEditing}
             />
-            <UnifiedInput               label="Primary Physician"
+            <Input               label="Primary Physician"
               value={formData.physician_name || ''}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, physician_name: e.target.value })}
               disabled={!isEditing}
             />
-            <UnifiedInput               label="Physician Phone"
+            <Input               label="Physician Phone"
               type="tel"
               value={formData.physician_phone || ''}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, physician_phone: e.target.value })}
@@ -490,7 +492,7 @@ export default function HealthInfoClient() {
           <h3 className="text-body text-heading-4">Emergency Notes</h3>
         </CardHeader>
         <CardContent>
-          <Textarea
+          <textarea
             value={formData.emergency_notes || ''}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, emergency_notes: e.target.value })}
             placeholder="Any additional information for emergency responders..."
@@ -503,7 +505,7 @@ export default function HealthInfoClient() {
       {isEditing && (
         <div className="flex justify-end cluster-sm">
           <Button
-            variant="outline"
+            variant="secondary"
             onClick={() => {
               setIsEditing(false);
               setFormData(healthInfo || {});

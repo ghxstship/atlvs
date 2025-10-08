@@ -10,7 +10,7 @@ interface PlanSelectionStepProps {
   onNext: () => void;
   onBack: () => void;
   updateData: (data: any) => void;
-  data;
+  data: any;
 }
 
 const plans = [
@@ -32,7 +32,7 @@ const plans = [
       'Mobile app access'
     ],
     popular: false,
-    trialDays: 14,
+    trialDays: 14
   },
   {
     id: 'pro',
@@ -54,7 +54,7 @@ const plans = [
       'Custom project templates'
     ],
     popular: false,
-    trialDays: 14,
+    trialDays: 14
   },
   {
     id: 'team',
@@ -78,7 +78,7 @@ const plans = [
       'Team performance insights'
     ],
     popular: true,
-    trialDays: 14,
+    trialDays: 14
   },
   {
     id: 'fleet',
@@ -104,7 +104,7 @@ const plans = [
       'Dedicated account manager'
     ],
     popular: false,
-    trialDays: 14,
+    trialDays: 14
   },
 ];
 
@@ -125,7 +125,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
     updateData({
       selectedPlan,
       billingCycle,
-      planData: selectedPlanData,
+      planData: selectedPlanData
     });
 
     // Simulate API call
@@ -260,7 +260,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
                 </div>
 
                 <ul className="stack-sm mb-lg">
-                  {plan.features.map((feature, index) => (
+                  {plan.features.map((feature: any, index: number) => (
                     <li key={index} className="flex items-start cluster-sm">
                       <Check className="h-icon-xs w-icon-xs color-success mt-0.5 flex-shrink-0" />
                       <span className="text-body-sm color-foreground">{feature}</span>
@@ -283,7 +283,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
 
       {/* Action Buttons */}
       <div className="brand-ghostship flex justify-between pt-lg">
-        <Button variant="outline" onClick={onBack}>
+        <Button variant="secondary" onClick={onBack}>
           <ArrowLeft className="mr-sm h-icon-xs w-icon-xs" />
           Back
         </Button>

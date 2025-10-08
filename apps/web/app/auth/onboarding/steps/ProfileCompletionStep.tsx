@@ -1,18 +1,19 @@
 "use client";
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Card, CardContent, Button, Avatar } from '@ghxstship/ui';
-import { User, Briefcase, MapPin, ArrowRight, ArrowLeft, Camera } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Briefcase, Camera, MapPin, User } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
 import { createBrowserClient } from '@supabase/ssr';
 
 
 interface ProfileCompletionStepProps {
-  user;
+  user: any;
   onNext: () => void;
   onBack: () => void;
   updateData: (data: any) => void;
-  data;
+  data: any;
 }
 
 const industries = [
@@ -90,7 +91,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
         .getPublicUrl(filePath);
 
       setProfile((prev: any) => ({ ...prev, avatar: publicUrl }));
-    } catch (err) {
+    } catch (err: any) {
       setError('Failed to upload avatar');
     }
   };
@@ -112,7 +113,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
           location: profile.location,
           bio: profile.bio,
           avatar_url: profile.avatar,
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         });
 
       if (profileError) throw profileError;
@@ -122,7 +123,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
         data: {
           job_title: profile.jobTitle,
           industry: profile.industry,
-          avatar_url: profile.avatar,
+          avatar_url: profile.avatar
         }
       });
 
@@ -130,8 +131,8 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
 
       updateData({ profile });
       onNext();
-    } catch (err) {
-      setError(err.message || 'Failed to update profile');
+    } catch (err: any) {
+      setError(err?.message || "An error occurred" || 'Failed to update profile');
     } finally {
       setLoading(false);
     }
@@ -156,10 +157,11 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
               <div className="brand-ghostship relative inline-block">
                 <div className="brand-ghostship w-component-lg h-component-lg bg-secondary rounded-full flex items-center justify-center overflow-hidden">
                   {profile.avatar ? (
-                    <img 
+                    <Image 
                       src={profile.avatar} 
                       alt="Avatar" 
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                     />
                   ) : (
                     <User className="h-icon-2xl w-icon-2xl color-muted" />
@@ -223,7 +225,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                 <select
                   className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                   value={profile.industry}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('industry', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleInputChange('industry', e.target.value)}
                 >
                   <option value="">Select industry</option>
                   {industries.map(industry => (
@@ -242,7 +244,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                 <select
                   className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                   value={profile.role}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('role', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleInputChange('role', e.target.value)}
                 >
                   <option value="">Select role</option>
                   {roles.map(role => (
@@ -261,7 +263,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                 <select
                   className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                   value={profile.teamSize}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('teamSize', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleInputChange('teamSize', e.target.value)}
                 >
                   <option value="">Select team size</option>
                   {teamSizes.map(size => (
@@ -282,7 +284,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                   placeholder="Tell us a bit about yourself and what you do..."
                   rows={4}
                   value={profile.bio}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('bio', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleInputChange('bio', e.target.value)}
                 />
                 <p className="text-body-sm color-muted mt-xs">
                   This will be visible to your team members

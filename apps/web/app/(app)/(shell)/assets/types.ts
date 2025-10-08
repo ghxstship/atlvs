@@ -67,7 +67,7 @@ export const AssetSchema = z.object({
   image_urls: z.array(z.string().url()).optional(),
   specifications: z.record(z.any()).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export type Asset = z.infer<typeof AssetSchema>;
@@ -92,14 +92,14 @@ export const LocationSchema = z.object({
   address: z.string().optional(),
   coordinates: z.object({
     latitude: z.number(),
-    longitude: z.number(),
+    longitude: z.number()
   }).optional(),
   capacity: z.number().int().positive().optional(),
   manager_id: z.string().uuid().optional(),
   description: z.string().optional(),
   is_active: z.boolean().default(true),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export type Location = z.infer<typeof LocationSchema>;
@@ -146,13 +146,13 @@ export const MaintenanceSchema = z.object({
   parts_used: z.array(z.object({
     part_name: z.string(),
     quantity: z.number().int().positive(),
-    cost: z.number().positive().optional(),
+    cost: z.number().positive().optional()
   })).optional(),
   notes: z.string().optional(),
   attachments: z.array(z.string().url()).optional(),
   next_maintenance_date: z.date().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export type Maintenance = z.infer<typeof MaintenanceSchema>;
@@ -181,7 +181,7 @@ export const AssignmentSchema = z.object({
   condition_at_return: AssetCondition.optional(),
   notes: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export type Assignment = z.infer<typeof AssignmentSchema>;
@@ -210,7 +210,7 @@ export const AuditSchema = z.object({
   completion_percentage: z.number().min(0).max(100).optional(),
   notes: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 export type Audit = z.infer<typeof AuditSchema>;

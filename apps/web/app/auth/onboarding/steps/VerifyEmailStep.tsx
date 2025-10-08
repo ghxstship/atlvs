@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Card, CardContent, Button } from '@ghxstship/ui';
 import { Mail, CheckCircle, RefreshCw } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
@@ -26,10 +26,12 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (user?.email_confirmed_at) {
       setIsVerified(true);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const resendVerification = async () => {
@@ -39,7 +41,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
     try {
       const { error } = await supabase.auth.resend({
         type: 'signup',
-        email: user.email,
+        email: user.email
       });
       
       if (error) throw error;
@@ -59,6 +61,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isVerified) {
       const timer = setTimeout(() => {
@@ -66,6 +69,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
       }, 2000);
       return () => clearTimeout(timer);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isVerified, onNext]);
 
   return (
@@ -89,7 +93,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
           ) : (
             <div className="brand-ghostship stack-md">
               <p className="text-body color-muted">
-                We've sent a verification link to:
+                We&apos;ve sent a verification link to:
               </p>
               <p className="text-heading-4 text-heading-4 color-foreground">
                 {user?.email}
@@ -109,12 +113,12 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
              
             >
               <RefreshCw className="mr-sm h-icon-xs w-icon-xs" />
-              I've Verified My Email
+              I&apos;ve Verified My Email
             </Button>
             
             <div className="brand-ghostship text-center">
               <p className="text-body-sm color-muted mb-sm">
-                Didn't receive the email?
+                Didn&apos;t receive the email?
               </p>
               <Button
                 variant="outline"

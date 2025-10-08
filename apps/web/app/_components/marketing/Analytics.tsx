@@ -35,7 +35,7 @@ export const trackEvent = (action: string, category: string, label?: string, val
   gtag('event', action, {
     event_category: category,
     event_label: label,
-    value: value,
+    value: value
   });
 };
 
@@ -43,7 +43,7 @@ export const trackConversion = (conversionId: string, value?: number, currency =
   gtag('event', 'conversion', {
     send_to: conversionId,
     value: value,
-    currency: currency,
+    currency: currency
   });
 };
 
@@ -52,7 +52,7 @@ export const trackPurchase = (transactionId: string, value: number, currency = '
     transaction_id: transactionId,
     value: value,
     currency: currency,
-    items: items,
+    items: items
   });
 };
 
@@ -83,7 +83,7 @@ export const trackCustomEvent = (eventName: string, properties: Record<string, a
   // Google Analytics
   gtag('event', eventName, {
     custom_parameter: true,
-    ...properties,
+    ...properties
   });
 
   // Facebook Pixel
@@ -100,7 +100,7 @@ export const trackPageView = (url: string, title?: string) => {
   // Google Analytics
   gtag('config', GA_MEASUREMENT_ID, {
     page_title: title,
-    page_location: url,
+    page_location: url
   });
 
   // Facebook Pixel
@@ -109,7 +109,7 @@ export const trackPageView = (url: string, title?: string) => {
   // Custom tracking
   trackCustomEvent('page_view', {
     page_url: url,
-    page_title: title,
+    page_title: title
   });
 };
 
@@ -174,7 +174,7 @@ export const trackBusinessEvents = {
   ctaClicked: (ctaText: string, location: string, destination?: string) => {
     trackEvent('cta_click', 'engagement', `${ctaText}_${location}`);
     trackCustomEvent('cta_clicked', { cta_text: ctaText, location, destination });
-  },
+  }
 };
 
 // Analytics Component
@@ -182,10 +182,12 @@ export default function Analytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // Track page views on route changes
     const url = `${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
     trackPageView(url);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, searchParams]);
 
   useEffect(() => {
@@ -204,7 +206,7 @@ export default function Analytics() {
         window.gtag('js', new Date());
         window.gtag('config', GA_MEASUREMENT_ID, {
           page_title: document.title,
-          page_location: window.location.href,
+          page_location: window.location.href
         });
       };
     }
@@ -262,6 +264,7 @@ export default function Analytics() {
 
     window.addEventListener('scroll', trackScrollDepth);
     return () => window.removeEventListener('scroll', trackScrollDepth);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;
@@ -275,7 +278,7 @@ export const useAnalytics = () => {
     trackPurchase,
     trackCustomEvent,
     trackPageView,
-    trackBusinessEvents,
+    trackBusinessEvents
   };
 };
 

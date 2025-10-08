@@ -1,9 +1,9 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { Activity, Award, Building, Calendar, Clock, Edit, Eye, FileText, Mail, Phone, Play, Plus, Search, Settings, Star, Trash2, TrendingUp, User } from 'lucide-react';
 import { useState } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import type { Vendor } from '../types';
-import { formatCurrency, formatDate, getStatusColor, getBusinessTypeColor } from '../types';
+import { formatCurrency, formatDate, getBusinessTypeColor } from '../types';
 
 interface VendorKanbanViewProps {
  vendors: Vendor[];
@@ -33,7 +33,7 @@ export default function VendorKanbanView({
  onEditVendor,
  onDeleteVendor,
  onViewVendor,
- onStatusChange,
+ onStatusChange
 }: VendorKanbanViewProps) {
  const [draggedVendor, setDraggedVendor] = useState<Vendor | null>(null);
 

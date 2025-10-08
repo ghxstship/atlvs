@@ -3,17 +3,18 @@
 import { Users, UserPlus, Mail, Shield, RefreshCw, Download, Settings } from "lucide-react";
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import {
- DataViewProvider,
- StateManagerProvider,
- Button,
- useToastContext,
- Tabs,
- TabsContent,
- TabsList,
- TabsTrigger,
- Card,
- CardContent,
- Badge,
+  DataViewProvider,
+  StateManagerProvider,
+  Button,
+  useToastContext,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Card,
+  CardContent,
+  Badge,
+  ViewSwitcher
 } from '@ghxstship/ui';
 import type { 
  TeamRecord, 
@@ -22,7 +23,7 @@ import type {
  TeamStatistics,
  TeamSearchParams,
  TeamsClientProps,
- ROLE_CONFIGS,
+ ROLE_CONFIGS
 } from './types';
 import { teamsService } from './lib/teams-service';
 
@@ -197,7 +198,7 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  },
  onExport: (data: unknown, format: unknown) => {
  handleExport(format);
- },
+ }
  }), [currentView, records, searchParams, loadRecords, loadStatistics, handleExport]);
 
  // Event handlers
@@ -205,7 +206,7 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  try {
  const blob = await teamsService.exportRecords({
  format,
- includeMetadata: true,
+ includeMetadata: true
  });
 
  const url = URL.createObjectURL(blob);

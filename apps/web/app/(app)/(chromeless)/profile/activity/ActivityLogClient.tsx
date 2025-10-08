@@ -1,9 +1,9 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Card, CardContent, Badge } from '@ghxstship/ui';
+import { Badge, Card, CardBody, CardContent } from '@ghxstship/ui';
 import { Activity, Clock, User, FileText, Settings, Award, Calendar, TrendingUp } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 
@@ -24,7 +24,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   achievement: <Award className="w-icon-xs h-icon-xs" />,
   schedule: <Calendar className="w-icon-xs h-icon-xs" />,
   performance: <TrendingUp className="w-icon-xs h-icon-xs" />,
-  default: <Activity className="w-icon-xs h-icon-xs" />,
+  default: <Activity className="w-icon-xs h-icon-xs" />
 };
 
 const categoryColors: Record<string, string> = {
@@ -34,7 +34,7 @@ const categoryColors: Record<string, string> = {
   achievement: 'bg-warning/10 color-warning',
   schedule: 'bg-success/10 color-success',
   performance: 'bg-warning/10 color-warning',
-  default: 'bg-secondary color-muted',
+  default: 'bg-secondary color-muted'
 };
 
 export default function ActivityLogClient() {
@@ -43,8 +43,10 @@ export default function ActivityLogClient() {
   const [filter, setFilter] = useState<string>('all');
   const supabase = createClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchActivities();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   const fetchActivities = async () => {
@@ -228,7 +230,7 @@ export default function ActivityLogClient() {
                             </div>
                           )}
                         </div>
-                        <Badge variant="outline">
+                        <Badge variant="secondary">
                           {activity.category}
                         </Badge>
                       </div>

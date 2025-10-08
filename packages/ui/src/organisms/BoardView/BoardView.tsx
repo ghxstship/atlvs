@@ -1,67 +1,156 @@
+/**
+ * BoardView Component
+ * Kanban-style board view
+ * 
+ * @package @ghxstship/ui
+ * @version 2.0.0
+ */
+
 'use client';
 
-import { Plus } from 'lucide-react';
-import { Button } from '../../components/atomic/Button';
-import { TaskCard, type Task } from '../TaskCard';
+import React from 'react';
+import { Plus, MoreVertical } from 'lucide-react';
+import { Card } from '../../molecules/Card/Card';
+import { Button } from '../../atoms/Button/Button';
 
-export interface BoardColumn {
+export interface Task {
   id: string;
   title: string;
+  description?: string;
+  assignee?: string;
+  priority?: 'low' | 'medium' | 'high';
+  dueDate?: string;
+}
+
+export interface Column {
+  id: string;
+  title: string;
+  status: string;
+  color: string;
   tasks: Task[];
 }
 
 export interface BoardViewProps {
-  columns: BoardColumn[];
+  /** Board columns */
+  columns: Column[];
+  
+  /** Task click handler */
   onTaskClick?: (task: Task) => void;
-  onTaskMove?: (taskId: string, fromColumn: string, toColumn: string) => void;
-  onAddTask?: (columnId: string) => void;
-  className?: string;
+  
+  /** Task edit handler */
+  onTaskEdit?: (task: Task) => void;
+  
+  /** Task delete handler */
+  onTaskDelete?: (task: Task) => void;
+  
+  /** Task create handler */
+  onTaskCreate?: (columnId: string) => void;
 }
 
-export function BoardView({
+/**
+ * BoardView Component
+ */
+export const BoardView: React.FC<BoardViewProps> = ({
   columns,
   onTaskClick,
-  onTaskMove: _onTaskMove,
-  onAddTask,
-  className = '',
-}: BoardViewProps) {
+  onTaskEdit,
+  onTaskDelete,
+  onTaskCreate,
+}) => {
   return (
-    <div className={`flex gap-4 overflow-x-auto pb-4 ${className}`}>
+    <div className="flex gap-4 overflow-x-auto pb-4">
       {columns.map((column) => (
         <div
           key={column.id}
-          className="flex-shrink-0 w-80 bg-muted/50 rounded-lg p-4"
+          className="flex-shrink-0 w-80"
         >
+          {/* Column Header */}
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold flex items-center gap-2">
-              {column.title}
-              <span className="text-xs text-muted-foreground bg-background rounded-full px-2 py-0.5">
+            <div className="flex items-center gap-2">
+              <div
+                className="w-3 h-3 rounded-full"
+                style={{ backgroundColor: column.color }}
+              />
+              <h3 className="font-semibold text-[var(--color-foreground)]">
+                {column.title}
+              </h3>
+              <span className="text-sm text-[var(--color-foreground-secondary)]">
                 {column.tasks.length}
               </span>
-            </h3>
-            {onAddTask && (
+            </div>
+            
+            {onTaskCreate && (
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-6 w-6 p-0"
-                onClick={() => onAddTask(column.id)}
-              >
-                <Plus className="h-4 w-4" />
-              </Button>
+                icon={Plus}
+                onClick={() => onTaskCreate(column.id)}
+              />
             )}
           </div>
-
+          
+          {/* Tasks */}
           <div className="space-y-3">
-            {column.tasks.map((task) => (
-              <TaskCard
-                key={task.id}
-                task={task}
-                onClick={onTaskClick}
-              />
-            ))}
+            {column.tasks.length === 0 ? (
+              <div className="text-center py-8 text-[var(--color-foreground-secondary)] text-sm">
+                No tasks
+              </div>
+            ) : (
+              column.tasks.map((task) => (
+                <Card
+                  key={task.id}
+                  className="cursor-pointer hover:shadow-md transition-shadow"
+                  onClick={() => onTaskClick?.(task)}
+                >
+                  <div className="flex items-start justify-between mb-2">
+                    <h4 className="font-medium text-[var(--color-foreground)]">
+                      {task.title}
+                    </h4>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onTaskEdit?.(task);
+                      }}
+                      className="p-1 rounded hover:bg-[var(--color-muted)] transition-colors"
+                    >
+                      <MoreVertical className="w-4 h-4 text-[var(--color-foreground-secondary)]" />
+                    </button>
+                  </div>
+                  
+                  {task.description && (
+                    <p className="text-sm text-[var(--color-foreground-secondary)] mb-3">
+                      {task.description}
+                    </p>
+                  )}
+                  
+                  <div className="flex items-center justify-between text-xs">
+                    {task.assignee && (
+                      <span className="text-[var(--color-foreground-secondary)]">
+                        {task.assignee}
+                      </span>
+                    )}
+                    {task.priority && (
+                      <span
+                        className={`px-2 py-1 rounded ${
+                          task.priority === 'high'
+                            ? 'bg-[var(--color-error)]/10 text-[var(--color-error)]'
+                            : task.priority === 'medium'
+                            ? 'bg-[var(--color-warning)]/10 text-[var(--color-warning)]'
+                            : 'bg-[var(--color-muted)] text-[var(--color-foreground-secondary)]'
+                        }`}
+                      >
+                        {task.priority}
+                      </span>
+                    )}
+                  </div>
+                </Card>
+              ))
+            )}
           </div>
         </div>
       ))}
     </div>
   );
-}
+};
+
+BoardView.displayName = 'BoardView';

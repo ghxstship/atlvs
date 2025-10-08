@@ -1,9 +1,9 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { Activity, Award, Calendar, ChevronDown, ChevronRight, Clock, Edit, Eye, FileText, MoreHorizontal, Package2, Play, Plus, Search, Settings, Trash2, TrendingUp, User } from 'lucide-react';
 import { useState } from 'react';
 import { Card, Badge, Button, Checkbox } from '@ghxstship/ui';
 import type { CatalogItem } from '../types';
-import { formatCurrency, formatDate, getStatusColor } from '../types';
+import { formatCurrency, formatDate } from '../types';
 
 interface CatalogListViewProps {
  items: CatalogItem[];
@@ -24,7 +24,7 @@ export default function CatalogListView({
  onItemClick,
  onEditItem,
  onDeleteItem,
- onViewItem,
+ onViewItem
 }: CatalogListViewProps) {
  const [expandedItems, setExpandedItems] = useState<Set<string>(new Set());
 

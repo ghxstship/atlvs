@@ -11,7 +11,7 @@ import {
   Grid3X3,
   List,
   Search,
-  Filter,
+  Filter
 } from 'lucide-react';
 import { Card, Button, Input, Badge, DropdownMenu, Checkbox } from '@ghxstship/ui';
 import type { DigitalAsset } from '../types';
@@ -39,7 +39,7 @@ export default function ImageView({
   onShare,
   onBulkAction,
   formatFileSize,
-  getCategoryIcon,
+  getCategoryIcon
 }: ImageViewProps) {
   const [layout, setLayout] = useState<'grid' | 'masonry'>('masonry');
   const [searchQuery, setSearchQuery] = useState('');

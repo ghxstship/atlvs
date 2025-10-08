@@ -287,5 +287,5 @@ export type {
   ApiResponse,
   PaginatedResponse,
   CreateProjectData,
-  UpdateProjectData,
+  UpdateProjectData
 };

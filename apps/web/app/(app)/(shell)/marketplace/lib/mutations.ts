@@ -77,7 +77,7 @@ export class MarketplaceMutationService {
     const projectData = {
       ...data,
       organization_id: orgId,
-      client_id: userId,
+      client_id: userId
     };
 
     const { data: project, error } = await this.supabase
@@ -119,7 +119,7 @@ export class MarketplaceMutationService {
       ...data,
       user_id: userId,
       organization_id: orgId,
-      status: 'pending' as const,
+      status: 'pending' as const
     };
 
     const { data: profile, error } = await this.supabase
@@ -168,7 +168,7 @@ export class MarketplaceMutationService {
       project_id: projectId,
       organization_id: orgId,
       vendor_id: userId,
-      status: 'submitted' as const,
+      status: 'submitted' as const
     };
 
     const { data: proposal, error } = await this.supabase

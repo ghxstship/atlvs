@@ -56,7 +56,7 @@ const updateWorkshopSchema = z.object({
   gallery_images: z.array(z.string().url()).optional(),
   promotional_video: z.string().url().optional().nullable(),
   tags: z.array(z.string().max(32)).optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.any()).optional()
 });
 
 async function getSupabase() {
@@ -67,7 +67,7 @@ async function getSupabase() {
 async function requireAuth() {
   const supabase = await getSupabase();
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   if (!user) {
@@ -197,7 +197,7 @@ export async function PATCH(
     const updatePayload = {
       ...data,
       updated_by: user!.id,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
 
     const { data: workshop, error: updateError } = await supabase
@@ -220,8 +220,8 @@ export async function PATCH(
       details: {
         title: workshop.title,
         category: workshop.category,
-        changes: Object.keys(data),
-      },
+        changes: Object.keys(data)
+      }
     });
 
     return NextResponse.json(workshop);
@@ -281,8 +281,8 @@ export async function DELETE(
       details: {
         title: existingWorkshop.title,
         category: existingWorkshop.category,
-        start_date: existingWorkshop.start_date,
-      },
+        start_date: existingWorkshop.start_date
+      }
     });
 
     return NextResponse.json({ success: true });

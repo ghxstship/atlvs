@@ -9,7 +9,7 @@ import {
   CheckCircle,
   AlertCircle,
   Calendar,
-  Filter,
+  Filter
 } from 'lucide-react';
 import { Button, Select, Checkbox, Badge, Progress, Separator } from '@ghxstship/ui';
 import { filesExportService } from '../lib/export';
@@ -32,7 +32,7 @@ export default function ExportDrawer({
   onExportComplete,
   orgId,
   userId,
-  availableFiles,
+  availableFiles
 }: ExportDrawerProps) {
   const [selectedFormat, setSelectedFormat] = useState<ExportFormat>('csv');
   const [exportOptions, setExportOptions] = useState({
@@ -43,8 +43,8 @@ export default function ExportDrawer({
     filters: {
       category: '',
       access_level: '',
-      status: '',
-    },
+      status: ''
+    }
   });
   const [isExporting, setIsExporting] = useState(false);
   const [exportProgress, setExportProgress] = useState(0);
@@ -69,10 +69,10 @@ export default function ExportDrawer({
         filters: {
           category: exportOptions.filters.category || undefined,
           access_level: exportOptions.filters.access_level || undefined,
-          status: exportOptions.filters.status || undefined,
+          status: exportOptions.filters.status || undefined
         },
         include_versions: exportOptions.include_versions,
-        include_metadata: exportOptions.include_metadata,
+        include_metadata: exportOptions.include_metadata
       };
 
       // Simulate progress
@@ -108,8 +108,8 @@ export default function ExportDrawer({
       filters: {
         category: '',
         access_level: '',
-        status: '',
-      },
+        status: ''
+      }
     });
     setExportResults(null);
     setExportJobId(null);
@@ -244,7 +244,7 @@ export default function ExportDrawer({
                       onCheckedChange={(checked) => {
                         setExportOptions(prev => ({
                           ...prev,
-                          selected_files: checked ? availableFiles.map(f => f.id) : [],
+                          selected_files: checked ? availableFiles.map(f => f.id) : []
                         }));
                       }}
                     />
@@ -260,7 +260,7 @@ export default function ExportDrawer({
                       value={exportOptions.filters.category}
                       onValueChange={(value) => setExportOptions(prev => ({
                         ...prev,
-                        filters: { ...prev.filters, category: value },
+                        filters: { ...prev.filters, category: value }
                       }))}
                     >
                       <Select.Trigger>
@@ -279,7 +279,7 @@ export default function ExportDrawer({
                       value={exportOptions.filters.access_level}
                       onValueChange={(value) => setExportOptions(prev => ({
                         ...prev,
-                        filters: { ...prev.filters, access_level: value },
+                        filters: { ...prev.filters, access_level: value }
                       }))}
                     >
                       <Select.Trigger>
@@ -297,7 +297,7 @@ export default function ExportDrawer({
                       value={exportOptions.filters.status}
                       onValueChange={(value) => setExportOptions(prev => ({
                         ...prev,
-                        filters: { ...prev.filters, status: value },
+                        filters: { ...prev.filters, status: value }
                       }))}
                     >
                       <Select.Trigger>
@@ -328,7 +328,7 @@ export default function ExportDrawer({
                       checked={exportOptions.include_metadata}
                       onCheckedChange={(checked) => setExportOptions(prev => ({
                         ...prev,
-                        include_metadata: checked || false,
+                        include_metadata: checked || false
                       }))}
                     />
                     <label htmlFor="include-metadata" className="text-sm">
@@ -342,7 +342,7 @@ export default function ExportDrawer({
                       checked={exportOptions.include_versions}
                       onCheckedChange={(checked) => setExportOptions(prev => ({
                         ...prev,
-                        include_versions: checked || false,
+                        include_versions: checked || false
                       }))}
                     />
                     <label htmlFor="include-versions" className="text-sm">

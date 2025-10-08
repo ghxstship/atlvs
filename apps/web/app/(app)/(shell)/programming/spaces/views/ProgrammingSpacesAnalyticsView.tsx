@@ -8,7 +8,7 @@ import {
  CardContent,
  CardHeader,
  CardTitle,
- Progress,
+ Progress
 } from '@ghxstship/ui';
 
 import { STATUS_COLORS, ACCESS_LEVEL_COLORS, KIND_COLORS } from '@ghxstship/config/tokens/chart-colors';
@@ -21,7 +21,7 @@ interface ProgrammingSpacesAnalyticsViewProps {
 
 export default function ProgrammingSpacesAnalyticsView({
  spaces,
- loading,
+ loading
 }: ProgrammingSpacesAnalyticsViewProps) {
  const analytics = useMemo((): SpaceAnalytics => {
  const totalSpaces = spaces.length;
@@ -111,7 +111,7 @@ export default function ProgrammingSpacesAnalyticsView({
  return {
  date: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
  bookings: Math.floor(Math.random() * totalSpaces * 0.7),
- utilization: Math.floor(Math.random() * 80 + 20),
+ utilization: Math.floor(Math.random() * 80 + 20)
  };
  });
 
@@ -121,7 +121,7 @@ export default function ProgrammingSpacesAnalyticsView({
  .map(space => ({
  space: space.name,
  bookings: Math.floor(Math.random() * 50 + 10),
- utilization: Math.floor(Math.random() * 80 + 20),
+ utilization: Math.floor(Math.random() * 80 + 20)
  }))
  .sort((a, b) => b.bookings - a.bookings);
 
@@ -131,7 +131,7 @@ export default function ProgrammingSpacesAnalyticsView({
  .slice(0, 5)
  .map(space => ({
  space: space.name,
- revenue: Math.floor(Math.random() * 5000 + 1000),
+ revenue: Math.floor(Math.random() * 5000 + 1000)
  }))
  .sort((a, b) => b.revenue - a.revenue);
 
@@ -151,7 +151,7 @@ export default function ProgrammingSpacesAnalyticsView({
  spacesByFloor,
  bookingTrends,
  popularSpaces,
- revenueBySpace,
+ revenueBySpace
  };
  }, [spaces]);
 

@@ -6,11 +6,11 @@ import type {
   EmergencyContactAnalytics,
   EmergencyPriority,
   EmergencyAvailability,
-  EmergencyContactFormData,
+  EmergencyContactFormData
 } from '../types';
 import {
   createEmptyStats,
-  createEmptyAnalytics,
+  createEmptyAnalytics
 } from '../types';
 
 export const emergencyFilterSchema = zod.object({
@@ -20,7 +20,7 @@ export const emergencyFilterSchema = zod.object({
   is_primary: zod.enum(['all', 'primary', 'backup']).optional(),
   availability: zod.enum(['all', '24_7', 'business_hours', 'night_only', 'weekends', 'on_call']).optional(),
   limit: zod.number().min(1).max(100).default(50),
-  offset: zod.number().min(0).default(0),
+  offset: zod.number().min(0).default(0)
 });
 
 export const emergencyUpsertSchema = zod.object({
@@ -40,7 +40,7 @@ export const emergencyUpsertSchema = zod.object({
   priority_level: zod.enum(['critical', 'high', 'medium', 'low']),
   availability: zod.enum(['24_7', 'business_hours', 'night_only', 'weekends', 'on_call']).optional().nullable(),
   response_time_minutes: zod.number().min(0).max(1440).optional().nullable(),
-  verification_status: zod.enum(['verified', 'pending', 'unverified']).default('pending'),
+  verification_status: zod.enum(['verified', 'pending', 'unverified']).default('pending')
 });
 
 type SupabaseClient = ReturnType<typeof import('@ghxstship/auth').createServerClient>;
@@ -98,7 +98,7 @@ export async function fetchEmergencyContacts(
 
   return {
     contacts: data ?? [],
-    total: count ?? 0,
+    total: count ?? 0
   };
 }
 
@@ -134,7 +134,7 @@ export async function createEmergencyContact(
     .insert({
       ...payload,
       user_id: userId,
-      organization_id: orgId,
+      organization_id: orgId
     })
     .select()
     .single();
@@ -158,7 +158,7 @@ export async function updateEmergencyContact(
     .from('emergency_contacts')
     .update({
       ...payload,
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', contactId)
     .eq('organization_id', orgId)
@@ -205,7 +205,7 @@ export async function verifyEmergencyContact(
     .update({
       verification_status: 'verified',
       last_verified: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     })
     .eq('id', contactId)
     .eq('organization_id', orgId)
@@ -248,7 +248,7 @@ export async function fetchEmergencyStats(
     return {
       priority,
       count,
-      percentage: totalContacts > 0 ? (count / totalContacts) * 100 : 0,
+      percentage: totalContacts > 0 ? (count / totalContacts) * 100 : 0
     };
   });
 
@@ -266,7 +266,7 @@ export async function fetchEmergencyStats(
       if (!contact.response_time_minutes) return false;
       const value = contact.response_time_minutes;
       return value >= range[0] && value <= range[1];
-    }).length,
+    }).length
   }));
 
   const availabilities: EmergencyAvailability[] = ['24_7', 'business_hours', 'night_only', 'weekends', 'on_call'];
@@ -275,7 +275,7 @@ export async function fetchEmergencyStats(
     return {
       availability,
       count,
-      percentage: totalContacts > 0 ? (count / totalContacts) * 100 : 0,
+      percentage: totalContacts > 0 ? (count / totalContacts) * 100 : 0
     };
   });
 
@@ -286,7 +286,7 @@ export async function fetchEmergencyStats(
     verifiedContacts,
     byPriority,
     responseTimeDistribution,
-    availabilityBreakdown,
+    availabilityBreakdown
   };
 }
 
@@ -325,7 +325,7 @@ export async function fetchEmergencyAnalytics(
     .map(contact => ({
       date: contact.updated_at.split('T')[0],
       updates: 1,
-      verifications: contact.last_verified ? 1 : 0,
+      verifications: contact.last_verified ? 1 : 0
     }))
     .reduce<Record<string, { updates: number; verifications: number }>((acc, current) => {
       if (!acc[current.date]) {
@@ -344,7 +344,7 @@ export async function fetchEmergencyAnalytics(
   const priorityLevels: EmergencyPriority[] = ['critical', 'high', 'medium', 'low'];
   const priorityTrends = priorityLevels.map(priority => ({
     priority,
-    count: data.filter(contact => contact.priority_level === priority).length,
+    count: data.filter(contact => contact.priority_level === priority).length
   }));
 
   return {
@@ -353,7 +353,7 @@ export async function fetchEmergencyAnalytics(
     primaryCoverage,
     averageResponseTime,
     recentUpdates: recentUpdatesArray,
-    priorityTrends,
+    priorityTrends
   };
 }
 
@@ -414,7 +414,7 @@ async function logEmergencyActivity(
       activity_description: `Emergency contact ${activityType}`,
       metadata: {
         contact_id: contactId,
-        payload,
-      },
+        payload
+      }
     });
 }

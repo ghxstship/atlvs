@@ -13,7 +13,7 @@ interface ActivityCalendarViewProps {
 
 export default function ActivityCalendarView({
  activities,
- loading,
+ loading
 }: ActivityCalendarViewProps) {
  const [currentDate, setCurrentDate] = useState(new Date());
 
@@ -66,9 +66,9 @@ export default function ActivityCalendarView({
  days,
  activitiesByDate,
  currentMonth: month,
- currentYear: year,
+ currentYear: year
  },
- monthActivities,
+ monthActivities
  };
  }, [activities, currentDate]);
 

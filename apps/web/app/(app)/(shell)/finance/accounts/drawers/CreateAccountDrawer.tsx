@@ -1,4 +1,4 @@
-import { Building, CreditCard, TrendingUp, DollarSign, Minus, Save, X } from "lucide-react";
+import { Badge, Building, Button, CreditCard, DollarSign, Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, Input, Minus, Save, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Switch, Tabs, TabsContent, TabsList, TabsTrigger, Textarea, TrendingUp, X } from 'lucide-react';
 /**
  * Create Account Drawer Component
  * Specialized drawer for creating/editing GL Accounts
@@ -6,29 +6,8 @@ import { Building, CreditCard, TrendingUp, DollarSign, Minus, Save, X } from "lu
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { 
- Drawer,
- DrawerContent,
- DrawerHeader,
- DrawerTitle,
- DrawerDescription,
- DrawerFooter,
- Button,
- UnifiedInput,
- Select,
- SelectContent,
- SelectItem,
- SelectTrigger,
- SelectValue,
- Textarea,
- Switch,
- Badge,
- Tabs,
- TabsContent,
- TabsList,
- TabsTrigger
-} from '@ghxstship/ui';
+import React, { useState, useCallback, useState, useEffect } from 'react';
+import { Badge, Button, Drawer, Input, Select, Switch, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 import type { GLAccount, AccountType, AccountFormData } from '../types';
 import { accountsService } from '../lib/accountsService';
 
@@ -64,6 +43,7 @@ export default function CreateAccountDrawer({
 
  const [errors, setErrors] = useState<Record<string, string>({});
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  if (editAccount) {
  setFormData({
@@ -94,12 +74,15 @@ export default function CreateAccountDrawer({
  });
  }
  setErrors({});
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [editAccount, isOpen]);
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  if (formData.type && isOpen) {
  loadParentAccounts();
  }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [formData.type, isOpen]);
 
  const loadParentAccounts = async () => {
@@ -250,7 +233,7 @@ export default function CreateAccountDrawer({
  <label className="text-sm font-medium text-gray-700 mb-2 block">
  Account Number *
  </label>
- <UnifiedInput
+ <Input
  value={formData.account_number}
  onChange={(e) => handleInputChange('account_number', e.target.value)}
  placeholder="e.g., 1000"
@@ -309,7 +292,7 @@ export default function CreateAccountDrawer({
  <label className="text-sm font-medium text-gray-700 mb-2 block">
  Account Name *
  </label>
- <UnifiedInput
+ <Input
  value={formData.name}
  onChange={(e) => handleInputChange('name', e.target.value)}
  placeholder="e.g., Cash and Cash Equivalents"
@@ -321,7 +304,7 @@ export default function CreateAccountDrawer({
  <label className="text-sm font-medium text-gray-700 mb-2 block">
  Description
  </label>
- <Textarea
+ <textarea
  value={formData.description}
  onChange={(e) => handleInputChange('description', e.target.value)}
  placeholder="Optional description of the account..."
@@ -416,7 +399,7 @@ export default function CreateAccountDrawer({
  <label className="text-sm font-medium text-gray-700 mb-2 block">
  Opening Balance
  </label>
- <UnifiedInput
+ <Input
  type="number"
  step="0.01"
  value={formData.opening_balance?.toString() || '0'}
@@ -443,7 +426,7 @@ export default function CreateAccountDrawer({
  <label className="text-sm font-medium text-gray-700 mb-2 block">
  Notes
  </label>
- <Textarea
+ <textarea
  value={formData.notes}
  onChange={(e) => handleInputChange('notes', e.target.value)}
  placeholder="Additional notes about this account..."

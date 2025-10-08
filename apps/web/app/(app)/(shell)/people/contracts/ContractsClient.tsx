@@ -1,12 +1,9 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
-import { useEffect, useState, useCallback, useMemo } from 'react';
-import { type DataRecord } from '@ghxstship/ui';
-import { DataViewProvider, StateManagerProvider, ViewSwitcher, DataActions, DataGrid, KanbanBoard, CalendarView, ListView, TimelineView, GalleryView } from '@ghxstship/ui';
-import { type FieldConfig, type DataViewConfig } from '@ghxstship/ui';
+import { Activity, Award, Calendar, Clock, FileText, Play, Plus, Search, Settings, Trash2, TrendingUp, User } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { AppDrawer, CalendarView, DataActions, DataGrid, DataViewProvider, GalleryView, KanbanBoard, ListView, StateManagerProvider, TimelineView, ViewSwitcher, type DataRecord, type DataViewConfig, type FieldConfig } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { AppDrawer } from '@ghxstship/ui';
 
 interface Contract extends DataRecord {
  id: string;
@@ -45,6 +42,7 @@ export default function ContractsClient({ orgId }: ContractsClientProps) {
  const [loading, setLoading] = useState(false);
  const [contractsData, setContractsData] = useState<Contract[]>([]);
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  loadContractsData();
  
@@ -67,6 +65,7 @@ export default function ContractsClient({ orgId }: ContractsClientProps) {
  return () => {
  subscription.unsubscribe();
  };
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [orgId]);
 
  const loadContractsData = useCallback(async () => {
@@ -323,6 +322,7 @@ export default function ContractsClient({ orgId }: ContractsClientProps) {
  } catch (error) {
  console.error('Import error:', error);
  }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [orgId, sb, loadContractsData]);
 
  // ATLVS DataViews configuration

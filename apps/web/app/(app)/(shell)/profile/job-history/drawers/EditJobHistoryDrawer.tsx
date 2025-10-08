@@ -19,7 +19,7 @@ import {
  Badge,
  Label,
  Separator,
- useToast,
+ useToast
 } from '@ghxstship/ui';
 import type { 
  JobHistoryEntry, 
@@ -49,7 +49,7 @@ const jobHistorySchema = z.object({
  company_size: z.enum(['startup', 'small', 'medium', 'large', 'enterprise']).optional(),
  industry: z.string().optional(),
  visibility: z.enum(['public', 'organization', 'private']).default('organization'),
- tags: z.array(z.string()).default([]),
+ tags: z.array(z.string()).default([])
 });
 
 type FormData = z.infer<typeof jobHistorySchema>;
@@ -106,7 +106,7 @@ export default function EditJobHistoryDrawer({
  onClose,
  onSave,
  entry,
- loading = false,
+ loading = false
 }: EditJobHistoryDrawerProps) {
  const { addToast } = useToast();
  const [newSkill, setNewSkill] = useState('');
@@ -135,8 +135,8 @@ export default function EditJobHistoryDrawer({
  reason_for_leaving: '',
  industry: '',
  visibility: 'organization',
- tags: [],
- },
+ tags: []
+ }
  });
 
  const { watch, setValue, getValues, reset } = form;
@@ -169,7 +169,7 @@ export default function EditJobHistoryDrawer({
  company_size: entry.company_size || undefined,
  industry: entry.industry || '',
  visibility: entry.visibility,
- tags: entry.tags,
+ tags: entry.tags
  });
  }
  }, [entry, reset]);
@@ -226,14 +226,14 @@ export default function EditJobHistoryDrawer({
  addToast({
  title: 'Job History Updated',
  description: 'Your job history entry has been successfully updated.',
- type: 'success',
+ type: 'success'
  });
  onClose();
  } catch (error) {
  addToast({
  title: 'Error',
  description: 'Failed to update job history entry. Please try again.',
- type: 'error',
+ type: 'error'
  });
  }
  }, [entry, onSave, addToast, onClose]);

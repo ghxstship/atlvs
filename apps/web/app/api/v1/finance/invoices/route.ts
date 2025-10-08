@@ -25,8 +25,8 @@ const CreateInvoiceSchema = z.object({
     description: z.string(),
     quantity: z.number().positive(),
     unitPrice: z.number().min(0),
-    amount: z.number().min(0),
-  })).optional(),
+    amount: z.number().min(0)
+  })).optional()
 });
 
 const UpdateInvoiceSchema = CreateInvoiceSchema.partial();

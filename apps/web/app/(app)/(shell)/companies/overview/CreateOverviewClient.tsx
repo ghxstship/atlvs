@@ -1,18 +1,11 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
-import { 
-  Building,
-  Target,
-  Calendar,
-  Users,
-  Save,
-  X
-} from 'lucide-react';
+import { Drawer, Button, Input, Select, Textarea, Card } from '@ghxstship/ui';
+import { Building, Calendar, Save, Target, Users, X } from 'lucide-react';
 
 interface CreateOverviewClientProps {
   user: User;
@@ -80,11 +73,13 @@ export default function CreateOverviewClient({
 
   const supabase = createBrowserClient();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isOpen) {
       loadCompanies();
       loadTeamMembers();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, orgId]);
 
   const loadCompanies = async () => {
@@ -237,7 +232,7 @@ export default function CreateOverviewClient({
               <label className="block text-body-sm form-label mb-xs">
                 Title *
               </label>
-              <UnifiedInput                 value={formData.title}
+              <Input                 value={formData.title}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('title', e.target.value)}
                 placeholder="Enter item title"
                 required
@@ -339,7 +334,7 @@ export default function CreateOverviewClient({
                 <Calendar className="h-icon-xs w-icon-xs inline mr-xs" />
                 Due Date (Optional)
               </label>
-              <UnifiedInput                 type="date"
+              <Input                 type="date"
                 value={formData.dueDate}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('dueDate', e.target.value)}
               />

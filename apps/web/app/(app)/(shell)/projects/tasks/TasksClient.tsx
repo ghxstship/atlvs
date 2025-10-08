@@ -1,7 +1,7 @@
 "use client";
 
 import { ListTodo, LayoutGrid, Calendar, Activity, Search, Filter, Download, Upload, Plus, Edit, Trash2, Eye, Copy, Clock, CheckCircle, AlertCircle, Users, MoreVertical, ArrowUpDown, ChevronDown, Tag, TrendingUp, AlertTriangle, Briefcase, Target } from "lucide-react";
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import { createBrowserClient } from "@ghxstship/auth";
 import {
@@ -16,7 +16,7 @@ import {
  DropdownMenuContent,
  DropdownMenuItem,
  DropdownMenuTrigger,
- toast,
+ toast
 } from "@ghxstship/ui";
 import { format, parseISO, differenceInDays, isOverdue, startOfWeek, endOfWeek } from "date-fns";
 import CreateTaskDrawer from "./drawers/CreateTaskDrawer";
@@ -95,7 +95,7 @@ export default function TasksClient({
  projectId,
  initialTasks = [],
  projects = [],
- users = [],
+ users = []
 }: TasksClientProps) {
  const router = useRouter();
  const supabase = createBrowserClient();
@@ -182,7 +182,7 @@ export default function TasksClient({
  event: "*",
  schema: "public",
  table: "project_tasks",
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  () => {
  loadTasks();
@@ -263,7 +263,7 @@ export default function TasksClient({
  critical: 0,
  high: 0,
  unassigned: 0,
- withSubtasks: 0,
+ withSubtasks: 0
  };
 
  const today = new Date();
@@ -335,7 +335,7 @@ export default function TasksClient({
  assignee_id: task.assignee_id,
  estimated_hours: task.estimated_hours,
  tags: task.tags,
- position: task.position + 1,
+ position: task.position + 1
  })
  .select()
  .single();

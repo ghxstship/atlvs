@@ -1,13 +1,11 @@
 'use client';
 
 
-import { useState } from 'react'
-import { Button } from '@ghxstship/ui'
-import { Badge } from '@ghxstship/ui'
-import { Card } from '@ghxstship/ui'
-import { Users, Crown, Shield, Settings, Edit, Eye, Loader2 } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
-import { useRouter } from 'next/navigation'
+import { useState } from 'react';
+import { Badge, Button, Card } from '@ghxstship/ui';
+import { Crown, Edit, Eye, Loader2, Settings, Shield, Users } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
+import { useRouter } from 'next/navigation';
 
 interface DemoUser {
   type: string

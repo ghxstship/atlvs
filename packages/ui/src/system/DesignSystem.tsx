@@ -6,28 +6,28 @@ import React, { createContext, useContext, ReactNode } from 'react';
 // Unified spacing, typography, colors, and layout system
 
 export const DESIGN_TOKENS = {
-  // Spacing Scale (8px base unit for perfect alignment)
+  // Spacing Scale (var(--spacing-2) base unit for perfect alignment)
   spacing: {
     '0': '0',
     'px': '1px',
     '0.5': '0.125rem', // 2px
-    '1': '0.25rem',    // 4px
+    '1': '0.25rem',    // var(--spacing-1)
     '1.5': '0.375rem', // 6px
-    '2': '0.5rem',     // 8px
+    '2': '0.5rem',     // var(--spacing-2)
     '2.5': '0.625rem', // 10px
-    '3': '0.75rem',    // 12px
+    '3': '0.75rem',    // var(--spacing-3)
     '3.5': '0.875rem', // 14px
-    '4': '1rem',       // 16px
-    '5': '1.25rem',    // 20px
-    '6': '1.5rem',     // 24px
+    '4': '1rem',       // var(--spacing-4)
+    '5': '1.25rem',    // var(--spacing-5)
+    '6': '1.5rem',     // var(--spacing-6)
     '7': '1.75rem',    // 28px
-    '8': '2rem',       // 32px
+    '8': '2rem',       // var(--spacing-8)
     '9': '2.25rem',    // 36px
-    '10': '2.5rem',    // 40px
+    '10': '2.5rem',    // var(--spacing-10)
     '11': '2.75rem',   // 44px
-    '12': '3rem',      // 48px
+    '12': '3rem',      // var(--spacing-12)
     '14': '3.5rem',    // 56px
-    '16': '4rem',      // 64px
+    '16': '4rem',      // var(--spacing-16)
     '20': '5rem',      // 80px
     '24': '6rem',      // 96px
     '28': '7rem',      // 112px
@@ -53,15 +53,15 @@ export const DESIGN_TOKENS = {
       mono: ['Share Tech Mono', 'Consolas', 'monospace'],
     },
     fontSize: {
-      'xs': ['0.75rem', { lineHeight: '1rem' }],      // 12px
+      'xs': ['0.75rem', { lineHeight: '1rem' }],      // var(--spacing-3)
       'sm': ['0.875rem', { lineHeight: '1.25rem' }],  // 14px
-      'base': ['1rem', { lineHeight: '1.5rem' }],     // 16px
+      'base': ['1rem', { lineHeight: '1.5rem' }],     // var(--spacing-4)
       'lg': ['1.125rem', { lineHeight: '1.75rem' }],  // 18px
-      'xl': ['1.25rem', { lineHeight: '1.75rem' }],   // 20px
-      '2xl': ['1.5rem', { lineHeight: '2rem' }],      // 24px
+      'xl': ['1.25rem', { lineHeight: '1.75rem' }],   // var(--spacing-5)
+      '2xl': ['1.5rem', { lineHeight: '2rem' }],      // var(--spacing-6)
       '3xl': ['1.875rem', { lineHeight: '2.25rem' }], // 30px
       '4xl': ['2.25rem', { lineHeight: '2.5rem' }],   // 36px
-      '5xl': ['3rem', { lineHeight: '1' }],           // 48px
+      '5xl': ['3rem', { lineHeight: '1' }],           // var(--spacing-12)
       '6xl': ['3.75rem', { lineHeight: '1' }],        // 60px
       '7xl': ['4.5rem', { lineHeight: '1' }],         // 72px
       '8xl': ['6rem', { lineHeight: '1' }],           // 96px
@@ -84,51 +84,51 @@ export const DESIGN_TOKENS = {
   colors: {
     // Brand Colors
     brand: {
-      50: '#f0f9ff',
-      100: '#e0f2fe',
-      200: '#bae6fd',
-      300: '#7dd3fc',
-      400: '#38bdf8',
-      500: '#0ea5e9',
-      600: '#0284c7',
-      700: '#0369a1',
-      800: '#075985',
-      900: '#0c4a6e',
-      950: '#082f49',
+      50: 'var(--primary)',
+      100: 'var(--primary)',
+      200: 'var(--primary)',
+      300: 'var(--primary)',
+      400: 'var(--primary)',
+      500: 'var(--primary)',
+      600: 'var(--primary)',
+      700: 'var(--primary)',
+      800: 'var(--primary)',
+      900: 'var(--primary)',
+      950: 'var(--primary)',
     },
     // Semantic Colors
     success: {
-      50: '#f0fdf4',
-      500: '#22c55e',
-      600: '#16a34a',
-      700: '#15803d',
+      50: 'var(--primary)',
+      500: 'var(--primary)',
+      600: 'var(--primary)',
+      700: 'var(--primary)',
     },
     warning: {
-      50: '#fffbeb',
-      500: '#f59e0b',
-      600: '#d97706',
-      700: '#b45309',
+      50: 'var(--background)beb',
+      500: 'var(--primary)',
+      600: 'var(--primary)',
+      700: 'var(--primary)',
     },
     error: {
-      50: '#fef2f2',
-      500: '#ef4444',
-      600: '#dc2626',
-      700: '#b91c1c',
+      50: 'var(--primary)',
+      500: 'var(--primary)',
+      600: 'var(--primary)',
+      700: 'var(--primary)',
     },
     // Neutral Scale
     neutral: {
-      0: '#ffffff',
-      50: '#fafafa',
-      100: '#f5f5f5',
-      200: '#e5e5e5',
-      300: '#d4d4d4',
-      400: '#a3a3a3',
-      500: '#737373',
-      600: '#525252',
-      700: '#404040',
-      800: '#262626',
-      900: '#171717',
-      950: '#0a0a0a',
+      0: 'var(--background)',
+      50: 'var(--primary)',
+      100: 'var(--primary)',
+      200: 'var(--primary)',
+      300: 'var(--primary)',
+      400: 'var(--primary)',
+      500: 'var(--primary)',
+      600: 'var(--primary)',
+      700: 'var(--primary)',
+      800: 'var(--primary)',
+      900: 'var(--primary)',
+      950: 'var(--primary)',
     },
   },
 
@@ -136,24 +136,24 @@ export const DESIGN_TOKENS = {
   borderRadius: {
     none: '0',
     sm: '0.125rem',   // 2px
-    DEFAULT: '0.25rem', // 4px
+    DEFAULT: '0.25rem', // var(--spacing-1)
     md: '0.375rem',   // 6px
-    lg: '0.5rem',     // 8px
-    xl: '0.75rem',    // 12px
-    '2xl': '1rem',    // 16px
-    '3xl': '1.5rem',  // 24px
+    lg: '0.5rem',     // var(--spacing-2)
+    xl: '0.75rem',    // var(--spacing-3)
+    '2xl': '1rem',    // var(--spacing-4)
+    '3xl': '1.5rem',  // var(--spacing-6)
     full: '9999px',
   },
 
   // Shadow Scale
   boxShadow: {
-    sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-    DEFAULT: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-    md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-    lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-    xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-    '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
-    inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+    sm: '0 1px 2px 0 hsl(var(--color-foreground) / 0.05)',
+    DEFAULT: '0 1px 3px 0 hsl(var(--color-foreground) / 0.1), 0 1px 2px -1px hsl(var(--color-foreground) / 0.1)',
+    md: '0 var(--spacing-1) 6px -1px hsl(var(--color-foreground) / 0.1), 0 2px var(--spacing-1) -2px hsl(var(--color-foreground) / 0.1)',
+    lg: '0 10px 15px -3px hsl(var(--color-foreground) / 0.1), 0 var(--spacing-1) 6px -4px hsl(var(--color-foreground) / 0.1)',
+    xl: '0 var(--spacing-5) 25px -5px hsl(var(--color-foreground) / 0.1), 0 var(--spacing-2) 10px -6px hsl(var(--color-foreground) / 0.1)',
+    '2xl': '0 25px 50px -12px hsl(var(--color-foreground) / 0.25)',
+    inner: 'inset 0 2px var(--spacing-1) 0 hsl(var(--color-foreground) / 0.05)',
   },
 
   // Animation & Transitions

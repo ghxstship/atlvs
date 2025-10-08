@@ -22,7 +22,7 @@ const CreateComplianceSchema = z.object({
     name: z.string(),
     met: z.boolean(),
     notes: z.string().optional()
-  })).optional(),
+  })).optional()
 });
 
 const UpdateComplianceSchema = CreateComplianceSchema.partial();

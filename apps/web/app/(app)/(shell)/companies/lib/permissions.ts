@@ -88,7 +88,7 @@ export class CompaniesPermissionsService {
       status: permissions.canUpdate || isOwner, // Only creator or admin can change status
       contracts: permissions.canManageContracts,
       qualifications: permissions.canManageQualifications,
-      ratings: permissions.canUpdate,
+      ratings: permissions.canUpdate
     };
   }
 
@@ -101,7 +101,7 @@ export class CompaniesPermissionsService {
       company_contracts: `organization_id = '${orgId}'`,
       company_qualifications: `organization_id = '${orgId}'`,
       company_ratings: `organization_id = '${orgId}'`,
-      company_contacts: `organization_id = '${orgId}'`,
+      company_contacts: `organization_id = '${orgId}'`
     };
   }
 
@@ -135,7 +135,7 @@ export class CompaniesPermissionsService {
       qualifications: permissions.canManageQualifications ? 'write' : permissions.canRead ? 'read' : 'none',
       ratings: permissions.canUpdate ? 'write' : permissions.canRead ? 'read' : 'none',
       analytics: permissions.canViewAnalytics ? 'read' : 'none',
-      exports: permissions.canExport ? 'read' : 'none',
+      exports: permissions.canExport ? 'read' : 'none'
     };
   }
 
@@ -149,7 +149,7 @@ export class CompaniesPermissionsService {
       canManageQualifications: false,
       canManageRatings: false,
       canViewAnalytics: false,
-      canExport: false,
+      canExport: false
     };
   }
 
@@ -163,7 +163,7 @@ export class CompaniesPermissionsService {
       canManageQualifications: true,
       canManageRatings: true,
       canViewAnalytics: true,
-      canExport: true,
+      canExport: true
     };
   }
 
@@ -177,7 +177,7 @@ export class CompaniesPermissionsService {
       canManageQualifications: true,
       canManageRatings: true,
       canViewAnalytics: true,
-      canExport: true,
+      canExport: true
     };
   }
 
@@ -191,7 +191,7 @@ export class CompaniesPermissionsService {
       canManageQualifications: true,
       canManageRatings: true,
       canViewAnalytics: true,
-      canExport: true,
+      canExport: true
     };
   }
 
@@ -205,7 +205,7 @@ export class CompaniesPermissionsService {
       canManageQualifications: false,
       canManageRatings: true,
       canViewAnalytics: false,
-      canExport: true,
+      canExport: true
     };
   }
 
@@ -219,7 +219,7 @@ export class CompaniesPermissionsService {
       canManageQualifications: false,
       canManageRatings: false,
       canViewAnalytics: false,
-      canExport: false,
+      canExport: false
     };
   }
 

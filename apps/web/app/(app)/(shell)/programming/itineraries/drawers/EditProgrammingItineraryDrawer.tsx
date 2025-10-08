@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar, Clock, MapPin, Plus, Save, X, DollarSign, Users } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -13,7 +13,7 @@ import {
  Label,
  Select,
  Textarea,
- Badge,
+ Badge
 } from "@ghxstship/ui";
 import type { ProgrammingItinerary, ItineraryProject, ItineraryEvent } from "../types";
 import { TYPE_BADGE, TRANSPORTATION_TYPE_LABEL, CURRENCY_OPTIONS } from "../types";
@@ -56,7 +56,7 @@ const editItinerarySchema = z.object({
  cost: z.number().optional()
  })).optional(),
  tags: z.array(z.string()).optional(),
- metadata: z.record(z.any()).optional(),
+ metadata: z.record(z.any()).optional()
 });
 
 type EditItineraryFormData = z.infer<typeof editItinerarySchema>;
@@ -80,7 +80,7 @@ export default function EditProgrammingItineraryDrawer({
  currentUserId,
  projects,
  events,
- onSuccess,
+ onSuccess
 }: EditProgrammingItineraryDrawerProps) {
  const handleClose = () => onOpenChange(false);
  const [loading, setLoading] = useState(false);
@@ -95,9 +95,9 @@ export default function EditProgrammingItineraryDrawer({
  watch,
  setValue,
  reset,
- formState: { errors },
+ formState: { errors }
  } = useForm<EditItineraryFormData>({
- resolver: zodResolver(editItinerarySchema),
+ resolver: zodResolver(editItinerarySchema)
  });
 
  const watchedTags = watch("tags");
@@ -126,7 +126,7 @@ export default function EditProgrammingItineraryDrawer({
  accommodations: itinerary.accommodations || [],
  transportation: itinerary.transportation || [],
  tags: itinerary.tags || [],
- metadata: itinerary.metadata || {},
+ metadata: itinerary.metadata || {}
  });
  }
  }, [itinerary, open, reset]);
@@ -138,7 +138,7 @@ export default function EditProgrammingItineraryDrawer({
  const response = await fetch(`/api/v1/programming/itineraries/${itinerary.id}`, {
  method: "PATCH",
  headers: { "Content-Type": "application/json" },
- body: JSON.stringify(data),
+ body: JSON.stringify(data)
  });
 
  if (!response.ok) {

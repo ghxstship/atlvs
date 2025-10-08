@@ -14,9 +14,8 @@ import { useRouter } from 'next/navigation';
 import { Asset } from '../types';
 import { apiClient } from '../lib/api';
 import CreateDrawer from '../../drawers/CreateDrawer';
-import { Button } from '@ghxstship/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { ArrowLeft, Save, Loader2, AlertTriangle } from 'lucide-react';
+import { Button, Card, CardBody, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
+import { AlertTriangle, ArrowLeft, Loader2, Save } from 'lucide-react';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 import type { User as UIUser } from '@ghxstship/ui/config/types';
 
@@ -44,7 +43,7 @@ export default function EditAssetClient({
     name: user.user_metadata?.full_name || user.user_metadata?.name,
     avatar: user.user_metadata?.avatar_url,
     role: 'user',
-    metadata: user.user_metadata as Record<string, unknown>,
+    metadata: user.user_metadata as Record<string, unknown>
   };
 
   // Handle successful asset update
@@ -54,6 +53,7 @@ export default function EditAssetClient({
     // Close drawer and redirect to asset detail
     setIsDrawerOpen(false);
     router.push(`/assets/${updatedAsset.id}`);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
   // Handle drawer close with unsaved changes check
@@ -67,11 +67,13 @@ export default function EditAssetClient({
     setTimeout(() => {
       router.push(`/assets/${initialAsset.id}`);
     }, 300);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasUnsavedChanges, initialAsset.id, router]);
 
   // Handle form change tracking
   const handleFormChange = useCallback((hasChanges: boolean) => {
     setHasUnsavedChanges(hasChanges);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

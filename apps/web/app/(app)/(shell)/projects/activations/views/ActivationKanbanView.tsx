@@ -1,10 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo } from 'react';
 import { Card, Badge, Button, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import type { Activation } from "../ActivationsClient";
-import { Check, CheckCircle, Edit, Eye, Play, Trash2, X } from 'lucide-react';
+import { Check, CheckCircle, Edit, Eye, Play, Trash2, X, AlertCircle, MoreVertical, Clock } from 'lucide-react';
 
 interface ActivationKanbanViewProps {
  activations: Activation[];
@@ -23,7 +23,7 @@ export default function ActivationKanbanView({
  onView,
  onEdit,
  onDelete,
- onStatusChange,
+ onStatusChange
 }: ActivationKanbanViewProps) {
  // Group activations by status
  const groupedActivations = useMemo(() => {
@@ -32,7 +32,7 @@ export default function ActivationKanbanView({
  ready: [],
  active: [],
  completed: [],
- cancelled: [],
+ cancelled: []
  };
 
  activations.forEach((activation) => {

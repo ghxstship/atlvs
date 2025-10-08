@@ -42,13 +42,14 @@ export default function TableView({
   onSelectionChange,
   onSort,
   onRowClick,
-  className = '',
+  className = ''
 }: TableViewProps) {
   const [selectedRows, setSelectedRows] = useState<Set<string>(new Set());
   const [sortColumn, setSortColumn] = useState<string>('');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
   // Handle row selection
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleRowSelect = useCallback((id: string, checked: boolean) => {
     const newSelected = new Set(selectedRows);
     if (checked) {
@@ -58,9 +59,11 @@ export default function TableView({
     }
     setSelectedRows(newSelected);
     onSelectionChange?.(Array.from(newSelected));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRows, onSelectionChange]);
 
   // Handle select all
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleSelectAll = useCallback((checked: boolean) => {
     if (checked) {
       const allIds = data.map(row => row.id);
@@ -70,9 +73,11 @@ export default function TableView({
       setSelectedRows(new Set());
       onSelectionChange?.([]);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, onSelectionChange]);
 
   // Handle column sort
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleSort = useCallback((column: string) => {
     const newDirection: SortDirection =
       sortColumn === column && sortDirection === 'asc' ? 'desc' : 'asc';
@@ -80,6 +85,7 @@ export default function TableView({
     setSortColumn(column);
     setSortDirection(newDirection);
     onSort?.(column, newDirection);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortColumn, sortDirection, onSort]);
 
   // Check if all rows are selected

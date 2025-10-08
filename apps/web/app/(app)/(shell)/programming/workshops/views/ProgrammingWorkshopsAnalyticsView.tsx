@@ -8,7 +8,7 @@ import {
  CardContent,
  CardHeader,
  CardTitle,
- Progress,
+ Progress
 } from '@ghxstship/ui';
 
 import { STATUS_COLORS, CHART_COLORS } from '@ghxstship/config/tokens/chart-colors';
@@ -30,7 +30,7 @@ const CATEGORY_COLORS = {
  marketing: CHART_COLORS.success,
  finance: CHART_COLORS.success,
  legal: CHART_COLORS.muted,
- other: CHART_COLORS.muted,
+ other: CHART_COLORS.muted
 };
 
 const SKILL_LEVEL_COLORS = {
@@ -38,18 +38,18 @@ const SKILL_LEVEL_COLORS = {
  intermediate: CHART_COLORS.warning,
  advanced: CHART_COLORS.error,
  expert: CHART_COLORS.error,
- all_levels: CHART_COLORS.muted,
+ all_levels: CHART_COLORS.muted
 };
 
 const FORMAT_COLORS = {
  in_person: CHART_COLORS.success,
  virtual: CHART_COLORS.info,
- hybrid: CHART_COLORS.warning,
+ hybrid: CHART_COLORS.warning
 };
 
 export default function ProgrammingWorkshopsAnalyticsView({
  workshops,
- loading,
+ loading
 }: ProgrammingWorkshopsAnalyticsViewProps) {
  const analytics = useMemo((): WorkshopAnalytics => {
  const totalWorkshops = workshops.length;
@@ -126,7 +126,7 @@ export default function ProgrammingWorkshopsAnalyticsView({
  month: date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
  workshops: monthWorkshops,
  participants: monthWorkshops * Math.floor(averageParticipants),
- revenue: monthWorkshops * (totalRevenue / totalWorkshops || 0),
+ revenue: monthWorkshops * (totalRevenue / totalWorkshops || 0)
  };
  });
 
@@ -169,7 +169,7 @@ export default function ProgrammingWorkshopsAnalyticsView({
  .map(workshop => ({
  workshop: workshop.title,
  revenue: (workshop.price || 0) * workshop.current_participants,
- participants: workshop.current_participants,
+ participants: workshop.current_participants
  }))
  .sort((a, b) => b.revenue - a.revenue)
  .slice(0, 5);
@@ -190,7 +190,7 @@ export default function ProgrammingWorkshopsAnalyticsView({
  monthlyTrends,
  topInstructors,
  popularCategories,
- revenueByWorkshop,
+ revenueByWorkshop
  };
  }, [workshops]);
 

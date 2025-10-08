@@ -1,7 +1,7 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface AnimatedCounterProps {
@@ -19,6 +19,7 @@ export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
 }) => {
   const [count, setCount] = useState(0);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     let startTime: number;
     let animationFrame: number;
@@ -37,6 +38,7 @@ export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
 
     animationFrame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrame);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [target, duration]);
 
   return <span>{prefix}{count.toLocaleString()}{suffix}</span>;

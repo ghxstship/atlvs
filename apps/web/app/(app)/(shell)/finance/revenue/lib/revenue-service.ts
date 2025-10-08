@@ -89,7 +89,7 @@ export class RevenueService implements RevenueWorkflowActions {
           created_by: userId,
           status: 'projected',
           currency: revenueData.currency || 'USD',
-          net_amount: netAmount,
+          net_amount: netAmount
         })
         .select()
         .single();
@@ -334,7 +334,7 @@ export class RevenueService implements RevenueWorkflowActions {
   formatCurrency(amount: number, currency = 'USD'): string {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency: currency
     }).format(amount);
   }
 
@@ -342,7 +342,7 @@ export class RevenueService implements RevenueWorkflowActions {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
-      day: 'numeric',
+      day: 'numeric'
     });
   }
 

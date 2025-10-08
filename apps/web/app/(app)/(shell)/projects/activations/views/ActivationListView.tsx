@@ -3,7 +3,7 @@
 import { Badge, Button, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import type { Activation } from "../ActivationsClient";
-import { ArrowDown, ArrowUp, ArrowUpDown, Check, Copy, Edit, Eye, Trash2 } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpDown, Check, Copy, Edit, Eye, Trash2, MoreVertical } from 'lucide-react';
 
 interface ActivationListViewProps {
  activations: Activation[];
@@ -34,7 +34,7 @@ export default function ActivationListView({
  onEdit,
  onDelete,
  onDuplicate,
- onStatusChange,
+ onStatusChange
 }: ActivationListViewProps) {
  const visibleFields = fieldVisibility.filter((f) => f.visible);
 

@@ -14,7 +14,7 @@ import {
   Music,
   File,
   Calendar,
-  Clock,
+  Clock
 } from 'lucide-react';
 import { Card, Button, Checkbox, DropdownMenu, Badge } from '@ghxstship/ui';
 import type { DigitalAsset } from '../types';
@@ -48,7 +48,7 @@ export default function CardView({
   onBulkAction,
   formatFileSize,
   getCategoryIcon,
-  getAccessIcon,
+  getAccessIcon
 }: CardViewProps) {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [itemsPerRow, setItemsPerRow] = useState(4);
@@ -65,7 +65,7 @@ export default function CardView({
       report: 'border-orange-200 bg-orange-50',
       template: 'border-cyan-200 bg-cyan-50',
       policy: 'border-red-200 bg-red-50',
-      other: 'border-gray-200 bg-gray-50',
+      other: 'border-gray-200 bg-gray-50'
     };
     return styles[category as keyof typeof styles] || styles.other;
   };

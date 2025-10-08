@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 import {
  Card,
  Badge,
- Progress,
+ Progress
 } from '@ghxstship/ui';
 import type { HistoryEntry, HistoryEntryType } from '../types';
 
@@ -39,7 +39,7 @@ const getEntryTypeIcon = (type: HistoryEntryType) => {
  volunteer: Heart,
  internship: Briefcase,
  freelance: Briefcase,
- other: Activity,
+ other: Activity
  };
  return iconMap[type] || Activity;
 };
@@ -54,7 +54,7 @@ const getEntryTypeColor = (type: HistoryEntryType) => {
  volunteer: 'red',
  internship: 'cyan',
  freelance: 'pink',
- other: 'gray',
+ other: 'gray'
  };
  return colorMap[type] || 'gray';
 };
@@ -69,7 +69,7 @@ const calculateDurationInMonths = (startDate: string, endDate?: string | null, i
 
 export default function HistoryAnalyticsView({
  entries,
- loading = false,
+ loading = false
 }: HistoryAnalyticsViewProps) {
  const analytics = useMemo((): AnalyticsData => {
  if (entries.length === 0) {
@@ -85,7 +85,7 @@ export default function HistoryAnalyticsView({
  topOrganizations: {},
  locationDistribution: {},
  completionRate: 0,
- growthTrend: 'stable',
+ growthTrend: 'stable'
  };
  }
 
@@ -176,7 +176,7 @@ export default function HistoryAnalyticsView({
  topOrganizations,
  locationDistribution,
  completionRate,
- growthTrend,
+ growthTrend
  };
  }, [entries]);
 

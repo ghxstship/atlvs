@@ -23,7 +23,7 @@ const createWorkshopSchema = z.object({
   instructor: z.string().optional(),
   price: z.number().min(0).optional(),
   currency: z.string().optional(),
-  project_id: z.string().optional(),
+  project_id: z.string().optional()
 });
 
 export default function CreateWorkshopClient({ orgId }: { orgId: string }) {
@@ -49,8 +49,8 @@ export default function CreateWorkshopClient({ orgId }: { orgId: string }) {
       instructor: '',
       price: undefined,
       currency: 'USD',
-      project_id: '',
-    },
+      project_id: ''
+    }
   });
 
   // Load projects when drawer opens
@@ -82,7 +82,7 @@ export default function CreateWorkshopClient({ orgId }: { orgId: string }) {
         capacity: data.capacity || null,
         price: data.price || null,
         created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       };
 
       const { error: insertError } = await sb

@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { createServerClient, createServiceRoleClient } from '@ghxstship/auth';
-import { rateLimitRequest } from '../../../../../_components/lib/rate-limit';
+import { rateLimitRequest } from '../../../../../../lib/rate-limit';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -22,11 +22,11 @@ async function getAuthenticatedContext(): Promise<AuthenticatedContext> {
       return c ? { name: c.name, value: c.value } : undefined;
     },
     set: (name: string, value: string, options) => cookieStore.set(name, value, options),
-    remove: (name: string) => cookieStore.delete(name),
+    remove: (name: string) => cookieStore.delete(name)
   });
 
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
   if (!user) {
     throw new Error('Unauthorized');
@@ -47,7 +47,7 @@ async function getAuthenticatedContext(): Promise<AuthenticatedContext> {
     user,
     orgId: (membership as unknown).organization_id,
     role: (membership as unknown).role,
-    admin: createServiceRoleClient(),
+    admin: createServiceRoleClient()
   };
 }
 
@@ -87,7 +87,7 @@ export async function GET(request: NextRequest) {
       fullName: row.users?.full_name ?? null,
       email: row.users?.email ?? null,
       avatarUrl: row.users?.avatar_url ?? null,
-      jobTitle: row.users?.job_title ?? null,
+      jobTitle: row.users?.job_title ?? null
     }));
 
     await admin.from('audit_logs').insert({
@@ -97,7 +97,7 @@ export async function GET(request: NextRequest) {
       resource_type: 'organization',
       resource_id: orgId,
       details: { count: members.length },
-      occurred_at: new Date().toISOString(),
+      occurred_at: new Date().toISOString()
     });
 
     return NextResponse.json({ members });

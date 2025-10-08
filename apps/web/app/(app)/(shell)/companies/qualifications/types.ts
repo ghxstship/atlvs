@@ -40,5 +40,5 @@ export interface QualificationFormData {
 // Re-export from parent types
 export type {
   CompanyQualification,
-  CreateQualificationForm,
+  CreateQualificationForm
 } from '../types';

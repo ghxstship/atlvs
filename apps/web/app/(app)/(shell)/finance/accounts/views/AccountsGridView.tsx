@@ -1,4 +1,4 @@
-import { Building, CreditCard, TrendingUp, DollarSign, Minus } from "lucide-react";
+import { Building, CreditCard, DollarSign, Minus, TrendingUp } from 'lucide-react';
 /**
  * Accounts Grid View Component
  * Specialized grid view for GL Accounts with accounting-specific features
@@ -7,8 +7,7 @@ import { Building, CreditCard, TrendingUp, DollarSign, Minus } from "lucide-reac
 'use client';
 
 import React from 'react';
-import { DataGrid } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
+import { Badge, DataGrid } from '@ghxstship/ui';
 import type { GLAccount, AccountType } from '../types';
 
 interface AccountsGridViewProps {
@@ -48,7 +47,7 @@ export default function AccountsGridView({
  const formatCurrency = (amount: number, currency = 'USD') => {
  return new Intl.NumberFormat('en-US', {
  style: 'currency',
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

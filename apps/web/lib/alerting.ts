@@ -1,3 +1,4 @@
+import { Alert } from '@ghxstship/ui';
 /**
  * Enterprise Alerting System
  * Comprehensive alerting for critical issues, performance, security, and business metrics
@@ -136,7 +137,7 @@ class AlertingService {
       message,
       context,
       timestamp: new Date().toISOString(),
-      resolved: false,
+      resolved: false
     };
 
     // Check if this alert should be triggered based on rules
@@ -266,14 +267,14 @@ class AlertingService {
         fields: [
           { title: 'Type', value: alert.type, short: true },
           { title: 'Time', value: new Date(alert.timestamp).toLocaleString(), short: true },
-        ],
-      }],
+        ]
+      }]
     };
 
     const response = await fetch(config.webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(payload)
     });
 
     if (!response.ok) {
@@ -295,14 +296,14 @@ class AlertingService {
         component: alert.type,
         group: alert.context.organizationId || 'system',
         class: alert.type,
-        custom_details: alert.context,
-      },
+        custom_details: alert.context
+      }
     };
 
     const response = await fetch('https://events.pagerduty.com/v2/enqueue', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(payload)
     });
 
     if (!response.ok) {
@@ -317,9 +318,9 @@ class AlertingService {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        ...config.headers,
+        ...config.headers
       },
-      body: JSON.stringify(alert),
+      body: JSON.stringify(alert)
     });
 
     if (!response.ok) {
@@ -338,7 +339,7 @@ class AlertingService {
     const resolutionAlert: Alert = {
       ...alert,
       title: `✅ RESOLVED: ${alert.title}`,
-      message: `Alert has been resolved`,
+      message: `Alert has been resolved`
     };
 
     await this.sendNotifications(resolutionAlert);
@@ -401,23 +402,23 @@ export const defaultAlertConfig: AlertConfig = {
       enabled: true,
       config: {
         to: ['alerts@ghxstship.com', 'engineering@ghxstship.com'],
-        from: 'alerts@ghxstship.com',
-      },
+        from: 'alerts@ghxstship.com'
+      }
     },
     {
       type: 'slack',
       enabled: true,
       config: {
         webhookUrl: process.env.SLACK_ALERTS_WEBHOOK_URL || '',
-        channel: '#alerts',
-      },
+        channel: '#alerts'
+      }
     },
     {
       type: 'pagerduty',
       enabled: true,
       config: {
-        integrationKey: process.env.PAGERDUTY_INTEGRATION_KEY || '',
-      },
+        integrationKey: process.env.PAGERDUTY_INTEGRATION_KEY || ''
+      }
     },
   ],
   rules: [
@@ -428,7 +429,7 @@ export const defaultAlertConfig: AlertConfig = {
       severity: 'critical',
       condition: { metric: 'uptime', operator: 'lt', threshold: 99.9 },
       cooldownMinutes: 10,
-      enabled: true,
+      enabled: true
     },
     {
       id: 'error-rate-high',
@@ -437,7 +438,7 @@ export const defaultAlertConfig: AlertConfig = {
       severity: 'high',
       condition: { metric: 'error_rate', operator: 'gt', threshold: 5 },
       cooldownMinutes: 15,
-      enabled: true,
+      enabled: true
     },
     {
       id: 'performance-degradation',
@@ -446,7 +447,7 @@ export const defaultAlertConfig: AlertConfig = {
       severity: 'medium',
       condition: { metric: 'response_time', operator: 'gt', threshold: 5000 },
       cooldownMinutes: 30,
-      enabled: true,
+      enabled: true
     },
     {
       id: 'security-incident',
@@ -455,7 +456,7 @@ export const defaultAlertConfig: AlertConfig = {
       severity: 'critical',
       condition: { metric: 'security_events', operator: 'gt', threshold: 0 },
       cooldownMinutes: 5,
-      enabled: true,
+      enabled: true
     },
   ],
   escalation: {
@@ -465,7 +466,7 @@ export const defaultAlertConfig: AlertConfig = {
         level: 1,
         delayMinutes: 0,
         channels: [{ type: 'slack', enabled: true, config: {} }],
-        recipients: ['on-call-engineer'],
+        recipients: ['on-call-engineer']
       },
       {
         level: 2,
@@ -474,7 +475,7 @@ export const defaultAlertConfig: AlertConfig = {
           { type: 'email', enabled: true, config: {} },
           { type: 'pagerduty', enabled: true, config: {} },
         ],
-        recipients: ['engineering-lead', 'devops-team'],
+        recipients: ['engineering-lead', 'devops-team']
       },
       {
         level: 3,
@@ -483,10 +484,10 @@ export const defaultAlertConfig: AlertConfig = {
           { type: 'email', enabled: true, config: {} },
           { type: 'sms', enabled: true, config: {} },
         ],
-        recipients: ['cto', 'ceo'],
+        recipients: ['cto', 'ceo']
       },
-    ],
-  },
+    ]
+  }
 };
 
 export const alertingService = new AlertingService(defaultAlertConfig);

@@ -5,7 +5,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription,
+  DrawerDescription
 } from '@ghxstship/ui';
 import { Badge } from '@ghxstship/ui';
 import { Separator } from '@ghxstship/ui';
@@ -51,7 +51,7 @@ const actionIcons = {
   feature: { icon: Star, color: 'text-yellow-500' },
   view: { icon: Eye, color: 'text-gray-500' },
   export: { icon: History, color: 'text-purple-500' },
-  import: { icon: Plus, color: 'text-indigo-500' },
+  import: { icon: Plus, color: 'text-indigo-500' }
 };
 
 const actionLabels = {
@@ -62,14 +62,14 @@ const actionLabels = {
   feature: 'Featured Status Changed',
   view: 'Viewed',
   export: 'Exported',
-  import: 'Imported',
+  import: 'Imported'
 };
 
 export default function HistoryDrawer({
   orgId,
   listingId,
   open,
-  onOpenChange,
+  onOpenChange
 }: HistoryDrawerProps) {
   // Fetch audit history
   const { data: history, isLoading, error } = useQuery({
@@ -87,7 +87,7 @@ export default function HistoryDrawer({
               user_name: 'John Doe',
               timestamp: new Date(Date.now() - 1000 * 60 * 30).toISOString(),
               details: { field: 'status', oldValue: 'draft', newValue: 'active' },
-              ip_address: '192.168.1.100',
+              ip_address: '192.168.1.100'
             },
             {
               id: '2',
@@ -96,7 +96,7 @@ export default function HistoryDrawer({
               user_name: 'John Doe',
               timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
               details: { title: 'Professional Photography Services' },
-              ip_address: '192.168.1.100',
+              ip_address: '192.168.1.100'
             },
             {
               id: '3',
@@ -105,13 +105,13 @@ export default function HistoryDrawer({
               user_name: 'Jane Smith',
               timestamp: new Date(Date.now() - 1000 * 60 * 60 * 4).toISOString(),
               details: { duration: 120 },
-              ip_address: '192.168.1.101',
+              ip_address: '192.168.1.101'
             },
           ]);
         }, 500);
       });
     },
-    enabled: open,
+    enabled: open
   });
 
   const formatTimestamp = (timestamp: string) => {

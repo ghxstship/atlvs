@@ -20,7 +20,7 @@ const CreateWebAuthnSchema = z.object({
   challengeResponse: z.custom<RegistrationResponseJSON>(value => {
     if (!value || typeof value !== 'object') return false;
     return 'id' in value && 'rawId' in value && 'response' in value && 'type' in value;
-  }, { message: 'Invalid WebAuthn response payload' }),
+  }, { message: 'Invalid WebAuthn response payload' })
 });
 
 function getWebAuthnConfig(): WebAuthnConfig {
@@ -34,7 +34,7 @@ function getWebAuthnConfig(): WebAuthnConfig {
     rpName: process.env.NEXT_PUBLIC_APP_NAME || 'GHXSTSHIP',
     rpID,
     origin,
-    timeout: 60_000,
+    timeout: 60_000
   };
 }
 
@@ -48,10 +48,10 @@ function buildRegistrationOptions(opts: Partial<GenerateRegistrationOptionsOpts>
     authenticatorSelection: {
       authenticatorAttachment: 'cross-platform',
       requireResidentKey: false,
-      userVerification: 'preferred',
+      userVerification: 'preferred'
     },
     supportedAlgorithmIDs: [-7, -257],
-    ...opts,
+    ...opts
   } as GenerateRegistrationOptionsOpts;
 }
 
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
         return cookie ? { name: cookie.name, value: cookie.value } : undefined;
       },
       set: () => {},
-      remove: () => {},
+      remove: () => {}
     });
 
     const { data: { user } } = await supabase.auth.getUser();
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
       userID: new TextEncoder().encode(user.id),
       userName: user.email || user.id,
       userDisplayName: user.email || user.id,
-      attestationType: 'none',
+      attestationType: 'none'
     }));
 
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
@@ -93,16 +93,16 @@ export async function POST(request: NextRequest) {
           challenge: registrationOptions.challenge as string,
           rpId: config.rpID,
           origin: config.origin,
-          options: registrationOptions,
+          options: registrationOptions
         },
-        expires_at: expiresAt.toISOString(),
+        expires_at: expiresAt.toISOString()
       });
 
     if (challengeError) throw challengeError;
 
     return NextResponse.json({
       options: registrationOptions,
-      expiresAt: expiresAt.toISOString(),
+      expiresAt: expiresAt.toISOString()
     });
 
   } catch (error) {
@@ -134,7 +134,7 @@ export async function PUT(request: NextRequest) {
         return cookie ? { name: cookie.name, value: cookie.value } : undefined;
       },
       set: () => {},
-      remove: () => {},
+      remove: () => {}
     });
 
     const { data: { user } } = await supabase.auth.getUser();
@@ -171,7 +171,7 @@ export async function PUT(request: NextRequest) {
       expectedChallenge: challengeData.challenge,
       expectedOrigin: challengeData.origin,
       expectedRPID: challengeData.rpId,
-      requireUserVerification: true,
+      requireUserVerification: true
     });
 
     if (!verification.verified || !verification.registrationInfo) {
@@ -204,7 +204,7 @@ export async function PUT(request: NextRequest) {
         p_credential_id: credentialId,
         p_public_key: publicKey,
         p_is_backed_up: credentialBackedUp,
-        p_counter: counter,
+        p_counter: counter
       }
     );
 
@@ -220,7 +220,7 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({
       factorId,
       backupCodes, // Only shown once for security
-      message: 'WebAuthn factor created successfully',
+      message: 'WebAuthn factor created successfully'
     });
 
   } catch (error) {

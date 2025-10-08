@@ -48,7 +48,7 @@ const uniformSizingSchema = z.object({
  equipment_preferences: z.record(z.string()).optional(),
  
  // Additional info
- notes: z.string().optional(),
+ notes: z.string().optional()
 });
 
 type UniformSizingFormData = z.infer<typeof uniformSizingSchema>;
@@ -66,7 +66,7 @@ export default function CreateEditUniformSizingDrawer({
  onClose,
  mode,
  sizing,
- onSave,
+ onSave
 }: CreateEditUniformSizingDrawerProps) {
  const {
  register,
@@ -78,8 +78,8 @@ export default function CreateEditUniformSizingDrawer({
  } = useForm<UniformSizingFormData>({
  resolver: zodResolver(uniformSizingSchema),
  defaultValues: {
- equipment_preferences: {},
- },
+ equipment_preferences: {}
+ }
  });
 
  const watchedHeight = watch('height');
@@ -110,14 +110,14 @@ export default function CreateEditUniformSizingDrawer({
  hat_size: sizing.hat_size || '',
  glove_size: sizing.glove_size || '',
  equipment_preferences: sizing.equipment_preferences || {},
- notes: sizing.notes || '',
+ notes: sizing.notes || ''
  });
  } else {
  reset({
  user_id: '',
  first_name: '',
  last_name: '',
- equipment_preferences: {},
+ equipment_preferences: {}
  });
  }
  }, [sizing, reset]);
@@ -191,7 +191,7 @@ export default function CreateEditUniformSizingDrawer({
  </div>
  </div>
  </div>
- ),
+ )
  },
  {
  key: 'measurements',
@@ -303,7 +303,7 @@ export default function CreateEditUniformSizingDrawer({
  </div>
  </div>
  </div>
- ),
+ )
  },
  {
  key: 'clothing',
@@ -382,7 +382,7 @@ export default function CreateEditUniformSizingDrawer({
  const current = watch('equipment_preferences') || {};
  setValue('equipment_preferences', {
  ...current,
- [equipment]: e.target.value,
+ [equipment]: e.target.value
  });
  }}
  value={watch('equipment_preferences')?.[equipment] || ''}
@@ -403,7 +403,7 @@ export default function CreateEditUniformSizingDrawer({
  />
  </div>
  </div>
- ),
+ )
  },
  ];
 

@@ -15,12 +15,12 @@ interface TimelineViewProps {
 export default function TimelineView({
   orgId,
   filters = {},
-  onListingSelect,
+  onListingSelect
 }: TimelineViewProps) {
   const { data: listingsResponse, isLoading, error } = useQuery({
     queryKey: ['marketplace-listings', orgId, filters],
     queryFn: () => marketplaceService.getListings(orgId, filters),
-    refetchInterval: 30000,
+    refetchInterval: 30000
   });
 
   const listings = listingsResponse?.listings || [];
@@ -35,7 +35,7 @@ export default function TimelineView({
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency,
-      minimumFractionDigits: 0,
+      minimumFractionDigits: 0
     }).format(amount);
   };
 

@@ -1,12 +1,12 @@
 "use client";
 
 import { MapPin, Edit, Eye, Trash2, Search, Filter, Users, DollarSign, Calendar, Navigation } from "lucide-react";
-import { useState, useMemo } from "react";
+import { useState, useMemo } from 'react';
 import {
  Badge,
  Button,
  Card,
- Input,
+ Input
 } from "@ghxstship/ui";
 import type { ProgrammingItinerary, ItinerarySort } from "../types";
 import { STATUS_BADGE, TYPE_BADGE, TRANSPORTATION_TYPE_LABEL } from "../types";
@@ -49,7 +49,7 @@ export default function ProgrammingItinerariesMapView({
  onDelete,
  sortConfig,
  onSort,
- users,
+ users
 }: ProgrammingItinerariesMapViewProps) {
  const [searchLocation, setSearchLocation] = useState("");
  const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
@@ -97,7 +97,7 @@ export default function ProgrammingItinerariesMapView({
  if (!amount || !currency) return null;
  return new Intl.NumberFormat("en-US", {
  style: "currency",
- currency: currency,
+ currency: currency
  }).format(amount);
  };
 

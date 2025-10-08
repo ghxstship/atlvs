@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import { AppDrawer, type DrawerFieldConfig } from "@ghxstship/ui";
 import type { Inspection } from "./InspectionsClient";
@@ -53,7 +53,7 @@ export default function EditInspectionDrawer({
  inspection,
  projects = [],
  inspectors = [],
- onSuccess,
+ onSuccess
 }: EditInspectionDrawerProps) {
  const supabase = createBrowserClient();
  const [loading, setLoading] = useState(false);
@@ -62,7 +62,7 @@ export default function EditInspectionDrawer({
  [{ label: "No project", value: "" },
  ...projects.map((project): { label: string; value: string } => ({
  label: project.name,
- value: project.id,
+ value: project.id
  }))]
 ), [projects]);
 
@@ -70,7 +70,7 @@ export default function EditInspectionDrawer({
  [{ label: "Select an inspector", value: "" },
  ...inspectors.map((inspector): { label: string; value: string } => ({
  label: inspector.full_name || inspector.email,
- value: inspector.id,
+ value: inspector.id
  }))]
 ), [inspectors]);
 
@@ -80,90 +80,90 @@ export default function EditInspectionDrawer({
  label: "Inspection Title",
  type: "text",
  required: true,
- placeholder: "Enter inspection title",
+ placeholder: "Enter inspection title"
  },
  {
  key: "description",
  label: "Description",
  type: "textarea",
- placeholder: "Describe the inspection scope and objectives",
+ placeholder: "Describe the inspection scope and objectives"
  },
  {
  key: "type",
  label: "Inspection Type",
  type: "select",
  required: true,
- options: INSPECTION_TYPES,
+ options: INSPECTION_TYPES
  },
  {
  key: "status",
  label: "Status",
  type: "select",
  required: true,
- options: INSPECTION_STATUSES,
+ options: INSPECTION_STATUSES
  },
  {
  key: "project_id",
  label: "Project",
  type: "select",
- options: projectOptions,
+ options: projectOptions
  },
  {
  key: "scheduled_date",
  label: "Scheduled Date",
  type: "date",
- required: true,
+ required: true
  },
  {
  key: "completed_date",
  label: "Completed Date",
- type: "date",
+ type: "date"
  },
  {
  key: "inspector_id",
  label: "Inspector",
  type: "select",
  required: true,
- options: inspectorOptions,
+ options: inspectorOptions
  },
  {
  key: "location",
  label: "Location",
  type: "text",
- placeholder: "Enter inspection location",
+ placeholder: "Enter inspection location"
  },
  {
  key: "score",
  label: "Score (0-100)",
  type: "number",
- placeholder: "Enter score",
+ placeholder: "Enter score"
  },
  {
  key: "is_passed",
  label: "Inspection Passed",
- type: "checkbox",
+ type: "checkbox"
  },
  {
  key: "findings",
  label: "Findings",
  type: "textarea",
- placeholder: "Document inspection findings",
+ placeholder: "Document inspection findings"
  },
  {
  key: "recommendations",
  label: "Recommendations",
  type: "textarea",
- placeholder: "Provide recommendations",
+ placeholder: "Provide recommendations"
  },
  {
  key: "follow_up_required",
  label: "Follow-up Required",
- type: "checkbox",
+ type: "checkbox"
  },
  {
  key: "follow_up_date",
  label: "Follow-up Date",
- type: "date",
+ type: "date"
  },
  ];
 
@@ -215,7 +215,7 @@ export default function EditInspectionDrawer({
  recommendations: typeof data.recommendations === "string" && data.recommendations.trim().length > 0 ? data.recommendations.trim() : null,
  follow_up_required: followUpRequired,
  follow_up_date: followUpDateIso,
- updated_at: new Date().toISOString(),
+ updated_at: new Date().toISOString()
  };
 
  setLoading(true);
@@ -257,7 +257,7 @@ export default function EditInspectionDrawer({
  findings: inspection.findings ?? "",
  recommendations: inspection.recommendations ?? "",
  follow_up_required: Boolean(inspection.follow_up_required),
- follow_up_date: toDateInputValue(inspection.follow_up_date ?? null),
+ follow_up_date: toDateInputValue(inspection.follow_up_date ?? null)
  };
 
  return (

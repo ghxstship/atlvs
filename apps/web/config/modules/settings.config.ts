@@ -47,7 +47,7 @@ const OrganizationSettingsSchema = z.object({
     thursday: z.object({ start: z.string(), end: z.string(), enabled: z.boolean() }),
     friday: z.object({ start: z.string(), end: z.string(), enabled: z.boolean() }),
     saturday: z.object({ start: z.string(), end: z.string(), enabled: z.boolean() }),
-    sunday: z.object({ start: z.string(), end: z.string(), enabled: z.boolean() }),
+    sunday: z.object({ start: z.string(), end: z.string(), enabled: z.boolean() })
   }).optional(),
   contact_info: z.object({
     email: z.string().email().optional(),
@@ -56,11 +56,11 @@ const OrganizationSettingsSchema = z.object({
     city: z.string().optional(),
     state: z.string().optional(),
     postal_code: z.string().optional(),
-    country: z.string().optional(),
+    country: z.string().optional()
   }).optional(),
   features: z.record(z.boolean()).optional(),
   custom_fields: z.record(z.any()).optional(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const UserRoleSchema = z.object({
@@ -73,12 +73,12 @@ const UserRoleSchema = z.object({
   permissions: z.array(z.object({
     resource: z.string(),
     actions: z.array(z.string()),
-    conditions: z.record(z.any()).optional(),
+    conditions: z.record(z.any()).optional()
   })),
   inherits_from: z.string().uuid().optional(),
   color: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const NotificationSettingsSchema = z.object({
@@ -93,11 +93,11 @@ const NotificationSettingsSchema = z.object({
     enabled: z.boolean().default(false),
     start: z.string(),
     end: z.string(),
-    timezone: z.string(),
+    timezone: z.string()
   }).optional(),
   filters: z.record(z.any()).optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const IntegrationSchema = z.object({
@@ -114,14 +114,14 @@ const IntegrationSchema = z.object({
   scopes: z.array(z.string()).optional(),
   rate_limit: z.object({
     requests_per_minute: z.number().int().positive(),
-    requests_per_hour: z.number().int().positive(),
+    requests_per_hour: z.number().int().positive()
   }).optional(),
   last_sync: z.date().optional(),
   sync_frequency: z.enum(['manual', 'real_time', 'hourly', 'daily', 'weekly']).default('manual'),
   error_count: z.number().int().default(0),
   last_error: z.string().optional(),
   created_at: z.date(),
-  updated_at: z.date(),
+  updated_at: z.date()
 });
 
 const AuditLogSchema = z.object({
@@ -137,7 +137,7 @@ const AuditLogSchema = z.object({
   session_id: z.string().optional(),
   severity: z.enum(['low', 'medium', 'high', 'critical']).default('medium'),
   status: z.enum(['success', 'failure', 'warning']).default('success'),
-  timestamp: z.date(),
+  timestamp: z.date()
 });
 
 export const settingsModuleConfig: ModuleConfig = {

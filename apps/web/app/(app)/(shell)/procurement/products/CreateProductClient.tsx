@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Drawer, UnifiedInput, Select, Textarea } from '@ghxstship/ui';
+import { Button, Drawer, Input, Select, Textarea } from '@ghxstship/ui';
 import { Plus, Save, Package } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
@@ -148,7 +148,7 @@ export default function CreateProductClient({ orgId, onProductCreated }: CreateP
           <div className="stack-md">
             <div className="stack-sm">
               <label htmlFor="name" className="block text-body-sm form-label color-foreground">Product Name *</label>
-              <UnifiedInput                 id="name"
+              <Input                 id="name"
                 {...form.register('name')}
                 placeholder="Enter product name"
                 className={form.formState.errors.name ? 'border-destructive' : ''}
@@ -184,7 +184,7 @@ export default function CreateProductClient({ orgId, onProductCreated }: CreateP
 
               <div className="stack-sm">
                 <label htmlFor="price" className="block text-body-sm form-label color-foreground">Price *</label>
-                <UnifiedInput                   id="price"
+                <Input                   id="price"
                   type="number"
                   step="0.01"
                   {...form.register('price', { valueAsNumber: true })}
@@ -212,7 +212,7 @@ export default function CreateProductClient({ orgId, onProductCreated }: CreateP
             <div className="grid grid-cols-2 gap-md">
               <div className="stack-sm">
                 <label htmlFor="sku" className="block text-body-sm form-label color-foreground">SKU</label>
-                <UnifiedInput                   id="sku"
+                <Input                   id="sku"
                   {...form.register('sku')}
                   placeholder="Enter SKU"
                 />
@@ -220,7 +220,7 @@ export default function CreateProductClient({ orgId, onProductCreated }: CreateP
 
               <div className="stack-sm">
                 <label htmlFor="supplier" className="block text-body-sm form-label color-foreground">Supplier</label>
-                <UnifiedInput                   id="supplier"
+                <Input                   id="supplier"
                   {...form.register('supplier')}
                   placeholder="Enter supplier name"
                 />

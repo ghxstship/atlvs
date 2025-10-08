@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Drawer, Button, Card, CardContent } from '@ghxstship/ui';
+import { Button, Card, CardBody, CardContent, Drawer } from '@ghxstship/ui';
 
 interface HistoryInvoiceDrawerProps {
   isOpen: boolean;

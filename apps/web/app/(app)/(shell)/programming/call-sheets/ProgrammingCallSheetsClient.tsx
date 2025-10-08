@@ -1,7 +1,7 @@
 "use client";
 
 import { FileText, Plus, RefreshCcw } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import {
  Badge,
@@ -15,7 +15,7 @@ import {
  StateManagerProvider,
  ViewSwitcher,
  Drawer,
- type DataRecord,
+ type DataRecord
 } from "@ghxstship/ui";
 import type { DataViewConfig, FieldConfig, FilterConfig, SortConfig } from "@ghxstship/ui/src/components/DataViews/types";
 
@@ -51,35 +51,35 @@ export default function ProgrammingCallSheetsClient({ orgId, userId, userEmail }
  label: "Title",
  type: "text",
  sortable: true,
- filterable: true,
+ filterable: true
  },
  {
  key: "description",
  label: "Description",
  type: "text",
  sortable: false,
- filterable: true,
+ filterable: true
  },
  {
  key: "event_date",
  label: "Event Date",
  type: "date",
  sortable: true,
- filterable: true,
+ filterable: true
  },
  {
  key: "call_time",
  label: "Call Time",
  type: "text",
  sortable: true,
- filterable: false,
+ filterable: false
  },
  {
  key: "location",
  label: "Location",
  type: "text",
  sortable: true,
- filterable: true,
+ filterable: true
  },
  {
  key: "status",
@@ -92,14 +92,14 @@ export default function ProgrammingCallSheetsClient({ orgId, userId, userEmail }
  { value: "published", label: "Published" },
  { value: "distributed", label: "Distributed" },
  { value: "completed", label: "Completed" },
- ],
+ ]
  },
  {
  key: "created_at",
  label: "Created",
  type: "date",
  sortable: true,
- filterable: false,
+ filterable: false
  },
  ];
 
@@ -137,7 +137,7 @@ export default function ProgrammingCallSheetsClient({ orgId, userId, userEmail }
  event: '*',
  schema: 'public',
  table: 'call_sheets',
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  () => loadData(),
  )
@@ -165,7 +165,7 @@ export default function ProgrammingCallSheetsClient({ orgId, userId, userEmail }
  onExport: (records: DataRecord[], format: string) => {
  },
  onImport: (records: DataRecord[]) => {
- },
+ }
  };
 
  return (

@@ -3,7 +3,7 @@
 import React from 'react';
 import { Card, Button } from '@ghxstship/ui';
 import type { BaseWidgetProps } from '../types';
-import { BarChart3, Download, LineChart, PieChart } from 'lucide-react';
+import { BarChart3, Download, LineChart, Maximize2, PieChart } from 'lucide-react';
 
 interface EnhancedChartWidgetProps extends BaseWidgetProps {
  onExpand?: () => void;

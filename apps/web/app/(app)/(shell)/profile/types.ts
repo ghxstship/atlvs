@@ -382,7 +382,7 @@ export const createEmptyProfile = (): Partial<UserProfile> => ({
   last_name: '',
   email: '',
   status: 'pending',
-  completion_percentage: 0,
+  completion_percentage: 0
 });
 
 export const createEmptyProfileStats = (): ProfileStats => ({
@@ -391,7 +391,7 @@ export const createEmptyProfileStats = (): ProfileStats => ({
   inactive: 0,
   pending: 0,
   completion_average: 0,
-  recent_updates: 0,
+  recent_updates: 0
 });
 
 export const createEmptyProfileAnalytics = (): ProfileAnalytics => ({
@@ -399,7 +399,7 @@ export const createEmptyProfileAnalytics = (): ProfileAnalytics => ({
   growth_rate: 0,
   completion_trend: [],
   department_distribution: [],
-  recent_activity: [],
+  recent_activity: []
 });
 
 // Validation schemas (for use with zod or similar)
@@ -408,7 +408,7 @@ export const PROFILE_VALIDATION_RULES = {
   email: { required: true, format: 'email' },
   phone: { format: 'phone', optional: true },
   employee_id: { unique: true, optional: true },
-  completion_percentage: { min: 0, max: 100 },
+  completion_percentage: { min: 0, max: 100 }
 } as const;
 
 // Constants

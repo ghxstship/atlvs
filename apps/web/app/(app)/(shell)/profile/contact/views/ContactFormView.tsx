@@ -14,7 +14,7 @@ import {
  SelectTrigger,
  SelectValue,
  Checkbox,
- Badge,
+ Badge
 } from '@ghxstship/ui';
 import type { ContactInfo, ContactFormData, FieldConfig } from '../types';
 import { CONTACT_FIELD_CONFIG, COUNTRIES, TIMEZONES, formatPhoneNumber } from '../types';
@@ -40,20 +40,20 @@ export default function ContactFormView({
  onFieldChange,
  onSave,
  onVerify,
- fieldVisibility = {},
+ fieldVisibility = {}
 }: ContactFormViewProps) {
  const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({
  'Phone Information': true,
  'Primary Address': true,
  'Billing Address': false,
  'Emergency Contact': true,
- 'Additional Information': false,
+ 'Additional Information': false
  });
 
  const toggleSection = (section: string) => {
  setExpandedSections((prev: { [key: string]: boolean }) => ({
  ...prev,
- [section]: !prev[section],
+ [section]: !prev[section]
  }));
  };
 

@@ -3,7 +3,7 @@
 import { Badge, Button, Card } from "@ghxstship/ui";
 import type { CallSheet } from "../types";
 import { STATUS_BADGE, CALL_TYPE_LABEL } from "../ProgrammingCallSheetsClient";
-import { Calendar, Edit, Eye, Trash2 } from 'lucide-react';
+import { Calendar, Edit, Eye, Trash2, MapPin, Clock, Pencil } from 'lucide-react';
 
 type CallSheetsBoardViewProps = {
  callSheets: CallSheet[];
@@ -28,7 +28,7 @@ export default function CallSheetsBoardView({
  onSelect,
  onView,
  onEdit,
- onDelete,
+ onDelete
 }: CallSheetsBoardViewProps) {
  return (
  <div className="flex gap-md overflow-x-auto pb-md">

@@ -1,11 +1,11 @@
 "use client";
 
-import { Calendar, Clock, Edit, MapPin, Trash2, Users, ExternalLink, Settings, Tag, Package, UserCheck } from "lucide-react";
+import { Calendar, Clock, Edit, ExternalLink, ExternalSettings, MapPin, Package, Settings, Tag, Trash2, UserCheck, Users } from 'lucide-react';
 import {
  Badge,
  Button,
  Card,
- Modal,
+ Modal
 } from "@ghxstship/ui";
 import type { ProgrammingEvent } from "../types";
 import { STATUS_BADGE, EVENT_TYPE_LABEL } from "../ProgrammingEventsClient";
@@ -25,7 +25,7 @@ export default function ViewProgrammingEventDrawer({
  event,
  onEdit,
  onDelete,
- users,
+ users
 }: ViewProgrammingEventDrawerProps) {
  const handleClose = () => onOpenChange(false);
  const statusConfig = STATUS_BADGE[event.status];
@@ -35,7 +35,7 @@ export default function ViewProgrammingEventDrawer({
  return {
  date: date.toLocaleDateString(),
  time: date.toLocaleTimeString(),
- full: date.toLocaleString(),
+ full: date.toLocaleString()
  };
  };
 

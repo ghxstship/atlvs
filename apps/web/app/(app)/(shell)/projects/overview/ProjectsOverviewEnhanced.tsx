@@ -1,7 +1,7 @@
 "use client";
 
 import { FolderOpen, PlayCircle, PauseCircle, CheckCircle2, XCircle, Clock, DollarSign, Users, TrendingUp, AlertTriangle, Calendar, Target, Activity, Briefcase, Settings, Plus, FileText, BarChart3, Shield, Zap, Package, GitBranch, Layers } from "lucide-react";
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useRouter } from "next/navigation";
 import { createBrowserClient } from "@ghxstship/auth";
 import { Button, Card, Badge, toast } from "@ghxstship/ui";
@@ -10,7 +10,7 @@ import EnterpriseOverview, {
  type StatusItem,
  type ActivityItem,
  type QuickAction,
- type OverviewSection,
+ type OverviewSection
 } from "@/app/_components/shared/EnterpriseOverview";
 import { format, parseISO, isBefore, differenceInDays } from "date-fns";
 
@@ -158,7 +158,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  totalRisks: risks?.length || 0,
  highRisks: risks?.filter(r => r.impact === "high" || r.impact === "critical").length || 0,
  totalTeamMembers: allTeamMembers.size,
- activeClients: activeClients.size,
+ activeClients: activeClients.size
  });
 
  // Set recent projects
@@ -191,9 +191,9 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  timestamp: a.created_at,
  type: a.action as unknown,
  user: a.user ? {
- name: a.user.full_name || a.user.email,
+ name: a.user.full_name || a.user.email
  } : undefined,
- onClick: () => router.push(`/projects/${a.resource_id}`),
+ onClick: () => router.push(`/projects/${a.resource_id}`)
  }))
  );
  }
@@ -219,7 +219,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  event: "*",
  schema: "public",
  table: "projects",
- filter: `organization_id=eq.${orgId}`,
+ filter: `organization_id=eq.${orgId}`
  },
  () => {
  loadOverviewData();
@@ -245,7 +245,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  icon: FolderOpen,
  iconColor: "text-primary",
  trend: stats.total > 0 ? "up" : "neutral",
- onClick: () => router.push("/projects"),
+ onClick: () => router.push("/projects")
  },
  {
  id: "project-health",
@@ -256,7 +256,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  iconColor: stats.atRisk > 0 ? "text-warning" : "text-success",
  change: stats.active > 0 ? Math.round((stats.healthy / stats.active) * 100) : 0,
  changeLabel: "health score",
- onClick: () => router.push("/projects?filter=health"),
+ onClick: () => router.push("/projects?filter=health")
  },
  {
  id: "total-budget",
@@ -270,7 +270,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  ? Math.round((stats.totalSpent / stats.totalBudget) * 100)
  : 0,
  changeLabel: "budget utilized",
- onClick: () => router.push("/projects?view=budget"),
+ onClick: () => router.push("/projects?view=budget")
  },
  {
  id: "completion-rate",
@@ -280,7 +280,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  icon: Target,
  iconColor: "text-info",
  trend: stats.averageProgress > 50 ? "up" : "down",
- onClick: () => router.push("/projects/tasks"),
+ onClick: () => router.push("/projects/tasks")
  },
  ];
  }, [stats, router]);
@@ -296,7 +296,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  count: stats.planning,
  color: "hsl(var(--color-muted))",
  icon: Clock,
- onClick: () => router.push("/projects?status=planning"),
+ onClick: () => router.push("/projects?status=planning")
  },
  {
  id: "active",
@@ -304,7 +304,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  count: stats.active,
  color: "hsl(var(--color-success))",
  icon: PlayCircle,
- onClick: () => router.push("/projects?status=active"),
+ onClick: () => router.push("/projects?status=active")
  },
  {
  id: "on-hold",
@@ -312,7 +312,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  count: stats.onHold,
  color: "hsl(var(--color-warning))",
  icon: PauseCircle,
- onClick: () => router.push("/projects?status=on_hold"),
+ onClick: () => router.push("/projects?status=on_hold")
  },
  {
  id: "completed",
@@ -320,7 +320,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  count: stats.completed,
  color: "hsl(var(--color-primary))",
  icon: CheckCircle2,
- onClick: () => router.push("/projects?status=completed"),
+ onClick: () => router.push("/projects?status=completed")
  },
  {
  id: "cancelled",
@@ -328,7 +328,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  count: stats.cancelled,
  color: "hsl(var(--color-destructive))",
  icon: XCircle,
- onClick: () => router.push("/projects?status=cancelled"),
+ onClick: () => router.push("/projects?status=cancelled")
  },
 ];
 }, [stats, router]);
@@ -340,37 +340,37 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  label: "New Project",
  icon: Plus,
  onClick: () => router.push("/projects?action=create"),
- variant: "default",
+ variant: "default"
  },
  {
  id: "view-tasks",
  label: "View Tasks",
  icon: CheckCircle2,
- onClick: () => router.push("/projects/tasks"),
+ onClick: () => router.push("/projects/tasks")
  },
  {
  id: "milestones",
  label: "Milestones",
  icon: Target,
- onClick: () => router.push("/projects/milestones"),
+ onClick: () => router.push("/projects/milestones")
  },
  {
  id: "risks",
  label: "Risks",
  icon: AlertTriangle,
- onClick: () => router.push("/projects/risks"),
+ onClick: () => router.push("/projects/risks")
  },
  {
  id: "reports",
  label: "Reports",
  icon: BarChart3,
- onClick: () => router.push("/projects/reports"),
+ onClick: () => router.push("/projects/reports")
  },
  {
  id: "settings",
  label: "Settings",
  icon: Settings,
- onClick: () => router.push("/projects/settings"),
+ onClick: () => router.push("/projects/settings")
  },
  ];
 
@@ -437,7 +437,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  </div>
  ))}
  </div>
- ),
+ )
  });
  }
 
@@ -475,7 +475,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  </div>
  ))}
  </div>
- ),
+ )
  });
  }
 
@@ -513,7 +513,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  </div>
  ))}
  </div>
- ),
+ )
  });
  }
 
@@ -553,7 +553,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  Seed Demo Data
  </Button>
  </div>
- ),
+ )
  }}
  />
  );
