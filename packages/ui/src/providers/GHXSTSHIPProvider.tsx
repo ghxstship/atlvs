@@ -8,7 +8,8 @@
 import React from 'react';
 import { ThemeProvider } from '../core/theme/ThemeProvider';
 import { AccessibilityProvider } from '../accessibility/AccessibilityProvider';
-import type { BrandTier } from '../core/theme/theme.types';
+import type { BrandTier, ThemeMode } from '../core/theme/theme.types';
+import type { AccessibilityConfig } from '../accessibility/AccessibilityProvider';
 
 export interface GHXSTSHIPProviderProps {
   children: React.ReactNode;
@@ -17,16 +18,7 @@ export interface GHXSTSHIPProviderProps {
     defaultTheme?: 'light' | 'dark' | 'system';
   };
   accessibility?: {
-    defaultConfig?: {
-      announcements?: boolean;
-      focusManagement?: boolean;
-      keyboardNavigation?: boolean;
-      screenReaderOptimizations?: boolean;
-      colorContrastEnforcement?: boolean;
-      motionReduction?: boolean;
-      textScaling?: boolean;
-      highContrastMode?: boolean;
-    };
+    defaultConfig?: Partial<AccessibilityConfig>;
   };
 }
 
@@ -40,20 +32,18 @@ export function GHXSTSHIPProvider({
 
   // Map brand to tier for ThemeProvider
   const brandTier: BrandTier = defaultBrand === 'ghxstship' ? 'default' : 'enterprise';
+  
+  // Map 'system' to 'auto' for ThemeMode
+  const themeMode: ThemeMode = defaultTheme === 'system' ? 'auto' : defaultTheme as ThemeMode;
 
   return (
     <ThemeProvider
-      defaultMode={defaultTheme}
-      defaultTier={brandTier}
+      defaultMode={themeMode}
+      defaultBrandTier={brandTier}
       enableTransitions
       storageKey="ghxstship-theme"
     >
-      <AccessibilityProvider
-        announcements={defaultConfig.announcements}
-        focusManagement={defaultConfig.focusManagement}
-        keyboardNavigation={defaultConfig.keyboardNavigation}
-        screenReaderOptimizations={defaultConfig.screenReaderOptimizations}
-      >
+      <AccessibilityProvider defaultConfig={defaultConfig}>
         {children}
       </AccessibilityProvider>
     </ThemeProvider>

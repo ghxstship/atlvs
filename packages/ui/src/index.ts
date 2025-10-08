@@ -12,7 +12,45 @@
 
 // Design Tokens & Theme
 export * from './core/tokens';
-export * from './core/theme';
+// Theme exports - ThemeMode conflict resolved by using the theme version
+export {
+  ThemeProvider,
+  useTheme as useThemeContext,
+  withTheme,
+  type ThemeProviderProps,
+  type ThemeMode,
+  type BrandTier,
+  type BrandColors,
+  type ThemeConfig,
+  type ThemeContextValue,
+  type ThemePreset,
+  type CSSVariableMap,
+  type ThemeChangeEvent,
+  themePresets,
+  defaultBrandColors,
+  enterpriseBrandColors,
+  creativeBrandColors,
+  partnerBrandColors,
+  getThemePreset,
+  getBrandColorsByTier,
+  listThemePresets,
+  getPresetsByTier,
+  getSystemTheme,
+  resolveThemeMode,
+  generateCSSVariables,
+  applyCSSVariables,
+  applyThemeClass,
+  getStoredTheme,
+  saveThemeToStorage,
+  watchSystemTheme,
+  enableThemeTransitions,
+  disableThemeTransitions,
+  prefersHighContrast,
+  getOptimalTheme,
+  isValidThemeMode,
+  generateThemeMetaTags,
+  applyThemeMetaTags,
+} from './core/theme';
 
 // ========================================
 // LAYOUT SYSTEM
@@ -24,6 +62,7 @@ export * from './layout';
 // DATA VIEWS
 // ========================================
 
+// Export views with canonical types (ViewType, FieldConfig, etc.)
 export * from './views';
 
 // ========================================
@@ -36,8 +75,63 @@ export * from './atoms';
 // Molecules - Composite components
 export * from './molecules';
 
-// Organisms - Complex components
-export * from './organisms';
+// Organisms - Complex components (excluding conflicting types from views)
+export {
+  DataTable,
+  Form,
+  Navigation,
+  Timeline,
+  SearchBar,
+  FileManager,
+  TreeView,
+  Stepper,
+  NotificationCenter,
+  CodeBlock,
+  ImageGallery,
+  Stats,
+  DashboardWidget,
+  BoardView,
+  DataViewProvider,
+  useDataView,
+  ViewSwitcher,
+  useViewSwitcher,
+  DataActions,
+} from './organisms';
+// Note: ViewType, FieldConfig, FilterConfig, SortConfig from views/types.ts (canonical)
+// Note: DashboardWidget component from organisms (not type from views)
+export type {
+  DataTableProps,
+  Column,
+  FormProps,
+  FormField,
+  NavigationProps,
+  NavItem,
+  TimelineProps,
+  TimelineItem,
+  SearchBarProps,
+  SearchResult,
+  FileManagerProps,
+  FileItem,
+  TreeViewProps,
+  TreeNode,
+  StepperProps,
+  Step,
+  NotificationCenterProps,
+  Notification,
+  CodeBlockProps,
+  ImageGalleryProps,
+  GalleryImage,
+  StatsProps,
+  Stat,
+  DashboardWidgetProps,
+  BoardViewProps,
+  Task,
+  DataViewProviderProps,
+  DataViewConfig,
+  DataViewContextValue,
+  ViewSwitcherProps,
+  DataActionsProps,
+} from './organisms';
 
 // Templates - Page templates
 export * from './templates';
@@ -64,7 +158,7 @@ export {
   DESIGN_TOKENS,
   SEMANTIC_TOKENS,
   getToken,
-  generateCSSVariables,
+  generateCSSVariables as generateUnifiedCSSVariables,
 } from './tokens/unified-design-tokens';
 
 export {

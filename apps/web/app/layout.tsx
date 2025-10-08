@@ -1,4 +1,6 @@
-// Styles imported via Next.js CSS system
+// Import global styles
+import './globals.css';
+
 import type { Metadata } from 'next';
 import { Anton, Share_Tech, Share_Tech_Mono } from 'next/font/google';
 import { WebVitals } from './web-vitals';
