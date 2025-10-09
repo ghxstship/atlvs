@@ -7,6 +7,7 @@ import { WebVitals } from './web-vitals';
 import { GHXSTSHIPProvider } from '@ghxstship/ui';
 import { BrandProvider } from '@ghxstship/shared/platform/brand/context';
 import { generateThemeCSS, generateFontImports } from '@ghxstship/shared/platform/brand/theme-generator';
+import { getFallbackBrandConfig } from '@ghxstship/shared/platform/brand/server';
 
 // Force dynamic rendering to avoid cookies() error during build
 export const dynamic = 'force-dynamic';
@@ -60,72 +61,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     brandConfig = await loadBrandConfig(activeBrandId);
   } catch (error) {
     console.error('Error loading brand configuration:', error);
-    // Use minimal fallback - the loadBrandConfig should have already returned a fallback
-    // but if that fails too, create a basic config here
-    brandConfig = {
-      version: '1.0.0',
-      brand: {
-        id: 'ghxstship',
-        name: 'GHXSTSHIP',
-        slug: 'ghxstship',
-        description: 'Platform',
-        tagline: 'The Future of Management',
-        website: 'https://ghxstship.com',
-        support: {
-          email: 'support@ghxstship.com',
-          phone: '',
-          website: 'https://ghxstship.com/support'
-        },
-        legal: {
-          company: 'GHXSTSHIP LLC',
-          address: '',
-          termsUrl: '/terms',
-          privacyUrl: '/privacy'
-        }
-      },
-      theme: {
-        mode: 'system',
-        colors: {
-          brand: {
-            primary: 'hsl(142, 76%, 36%)',
-            secondary: 'hsl(142, 76%, 46%)',
-            accent: 'hsl(142, 76%, 56%)'
-          },
-          ui: {},
-          semantic: {}
-        },
-        typography: {},
-        spacing: {},
-        borderRadius: {},
-        shadows: {}
-      },
-      assets: {
-        logos: {
-          primary: '/logo.svg',
-          icon: '/icon.svg',
-          wordmark: '/wordmark.svg'
-        },
-        favicon: '/favicon.ico',
-        images: {
-          hero: '/hero.jpg',
-          auth: '/auth.jpg',
-          placeholder: '/placeholder.jpg'
-        }
-      },
-      content: {
-        tagline: 'The Future of Management',
-        description: 'Platform',
-        callToAction: 'Get Started'
-      },
-      features: {
-        modules: {}
-      },
-      seo: {
-        title: 'GHXSTSHIP',
-        description: 'Platform',
-        keywords: []
-      }
-    } as any;
+    brandConfig = getFallbackBrandConfig();
   }
   
   // Generate theme CSS from brand configuration
