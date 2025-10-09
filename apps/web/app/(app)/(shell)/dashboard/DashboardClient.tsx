@@ -830,7 +830,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                   onChange={(event) =>
                     setWidgetDraft((prev) => ({
                       ...(prev ?? createDefaultDraft()),
-                      type: event.target.e.target.value as DashboardWidget['type']
+                      type: event.target.value as DashboardWidget['type']
                     }))
                   }
                 >

@@ -1,46 +1,35 @@
 'use client';
 
 import React from 'react';
-import { DashboardLayout } from '@ghxstship/ui/templates';
-import { DashboardWidget } from '@ghxstship/ui/organisms';
+import { Card, Badge } from '@ghxstship/ui';
+import { Bell, CheckCircle, AlertCircle } from 'lucide-react';
 
-export default function DashboardPage() {
-  // TODO: Implement dashboard content using DashboardLayout
-  // This is a placeholder - actual implementation needed
+export default function NotificationsSlot() {
+  const notifications = [
+    { id: 1, type: 'success', message: 'Project Alpha completed', time: '2h ago' },
+    { id: 2, type: 'info', message: 'New team member added', time: '4h ago' },
+    { id: 3, type: 'warning', message: 'Budget threshold reached', time: '6h ago' }
+  ];
 
   return (
-    <DashboardLayout
-      title="Dashboard"
-      subtitle="Welcome to your workspace"
-      showRefresh={true}
-      showExport={true}
-      showSettings={true}
-      sidebar={
-        <div className="space-y-4">
-          <div>
-            <h3 className="font-medium mb-2">Quick Actions</h3>
-            <div className="space-y-2">
-              {/* TODO: Add quick actions */}
+    <Card className="p-md">
+      <div className="flex items-center justify-between mb-md">
+        <h3 className="text-body form-label">Notifications</h3>
+        <Bell className="h-icon-xs w-icon-xs color-muted" />
+      </div>
+      <div className="space-y-sm">
+        {notifications.map(notification => (
+          <div key={notification.id} className="flex items-start gap-sm p-sm rounded-md bg-secondary/50">
+            {notification.type === 'success' && <CheckCircle className="h-4 w-4 text-success flex-shrink-0 mt-xs" />}
+            {notification.type === 'warning' && <AlertCircle className="h-4 w-4 text-warning flex-shrink-0 mt-xs" />}
+            {notification.type === 'info' && <Bell className="h-4 w-4 text-info flex-shrink-0 mt-xs" />}
+            <div className="flex-1 min-w-0">
+              <p className="text-body-sm">{notification.message}</p>
+              <p className="text-body-sm color-muted">{notification.time}</p>
             </div>
           </div>
-        </div>
-      }
-      rightPanel={
-        <div className="space-y-6">
-          <div>
-            <h3 className="font-medium mb-4">Recent Activity</h3>
-            {/* TODO: Add activity feed */}
-          </div>
-        </div>
-      }
-    >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* TODO: Add dashboard widgets */}
-        <div className="bg-muted/50 rounded-lg p-6">
-          <h3 className="font-medium mb-2">Widget Placeholder</h3>
-          <p className="text-muted-foreground">Dashboard content coming soon</p>
-        </div>
+        ))}
       </div>
-    </DashboardLayout>
+    </Card>
   );
 }

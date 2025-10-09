@@ -1,46 +1,33 @@
 'use client';
 
 import React from 'react';
-import { DashboardLayout } from '@ghxstship/ui/templates';
-import { DashboardWidget } from '@ghxstship/ui/organisms';
+import { Card } from '@ghxstship/ui';
+import { BarChart3, TrendingUp } from 'lucide-react';
 
-export default function DashboardPage() {
-  // TODO: Implement dashboard content using DashboardLayout
-  // This is a placeholder - actual implementation needed
-
+export default function AnalyticsSlot() {
   return (
-    <DashboardLayout
-      title="Dashboard"
-      subtitle="Welcome to your workspace"
-      showRefresh={true}
-      showExport={true}
-      showSettings={true}
-      sidebar={
-        <div className="space-y-4">
-          <div>
-            <h3 className="font-medium mb-2">Quick Actions</h3>
-            <div className="space-y-2">
-              {/* TODO: Add quick actions */}
-            </div>
+    <Card className="p-md">
+      <h3 className="text-body form-label mb-md">Analytics</h3>
+      <div className="space-y-sm">
+        <div className="flex items-center justify-between">
+          <span className="text-body-sm color-muted">Page Views</span>
+          <div className="flex items-center gap-xs">
+            <TrendingUp className="h-3 w-3 text-success" />
+            <span className="text-body-sm form-label">45,230</span>
           </div>
         </div>
-      }
-      rightPanel={
-        <div className="space-y-6">
-          <div>
-            <h3 className="font-medium mb-4">Recent Activity</h3>
-            {/* TODO: Add activity feed */}
+        <div className="flex items-center justify-between">
+          <span className="text-body-sm color-muted">Visitors</span>
+          <div className="flex items-center gap-xs">
+            <BarChart3 className="h-3 w-3" />
+            <span className="text-body-sm form-label">12,450</span>
           </div>
         </div>
-      }
-    >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* TODO: Add dashboard widgets */}
-        <div className="bg-muted/50 rounded-lg p-6">
-          <h3 className="font-medium mb-2">Widget Placeholder</h3>
-          <p className="text-muted-foreground">Dashboard content coming soon</p>
+        <div className="flex items-center justify-between">
+          <span className="text-body-sm color-muted">Conversion</span>
+          <span className="text-body-sm form-label">3.2%</span>
         </div>
       </div>
-    </DashboardLayout>
+    </Card>
   );
 }
