@@ -109,12 +109,12 @@ export function OnboardingFlow() {
 
   return (
     <div className="min-h-screen brand-ghostship bg-gradient-subtle">
-      <div className="container mx-auto px-md py-mdxl">
+      <div className="container mx-auto px-md py-xl">
         {/* Header */}
         <div className="text-center mb-3xl">
           <Link href={"/home" as Route} className="inline-flex items-center gap-sm mb-2xl">
-            <span className="text-heading-1 lg:text-display uppercase">
-              GHXSTSHIP
+            <span className="text-heading-1 lg:text-display uppercase font-display">
+              ATLVS
             </span>
           </Link>
           
@@ -126,16 +126,15 @@ export function OnboardingFlow() {
             </div>
             <Progress
               value={(getCurrentStepNumber() / getTotalSteps()) * 100}
-              variant="default"
+              variant="primary"
               size="sm"
               showLabel={false}
-              animated={true}
             />
           </div>
         </div>
 
         {/* Step Content */}
-        <div className="max-w-2xl mx-auto">
+        <div className={`mx-auto ${currentStep === 'plan-selection' ? 'max-w-7xl' : 'max-w-2xl'}`}>
           {currentStep === 'verify-email' && (
             <VerifyEmailStep
               user={user}

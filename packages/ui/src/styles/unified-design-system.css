@@ -11,45 +11,46 @@
    ========================================== */
 
 :root {
-  /* Colors - Light Theme - Base defaults (can be overridden by brand theme) */
-  --color-background: 0 0% 100%;
-  --color-foreground: 222 47% 11%;
+  /* Colors - Light Theme - Neutral Slate Base (can be overridden by brand theme) */
+  /* Using true neutral slate palette for better visual consistency */
+  --color-background: 0 0% 100%; /* Pure white #FFFFFF */
+  --color-foreground: 222.2 84% 4.9%; /* Slate-950 #020617 - Deep neutral */
   --color-card: 0 0% 100%;
-  --color-card-foreground: 222 47% 11%;
+  --color-card-foreground: 222.2 84% 4.9%;
   --color-popover: 0 0% 100%;
-  --color-popover-foreground: 222 47% 11%;
-  --color-primary: 158 64% 52%;
+  --color-popover-foreground: 222.2 84% 4.9%;
+  --color-primary: 221.2 83.2% 53.3%; /* Blue-500 #3B82F6 - Default primary */
   --color-primary-foreground: 0 0% 100%;
-  --color-accent: 158 64% 52%;
+  --color-accent: 192.9 82.3% 31%; /* Cyan-600 #0891B2 - Default accent */
   --color-accent-foreground: 0 0% 100%;
-  --color-secondary: 210 40% 96%;
-  --color-secondary-foreground: 222 47% 11%;
-  --color-muted: 210 40% 96%;
-  --color-muted-foreground: 215 16% 47%;
-  --color-destructive: 0 84% 60%;
+  --color-secondary: 210 40% 96.1%; /* Slate-100 #F1F5F9 - Subtle neutral */
+  --color-secondary-foreground: 222.2 47.4% 11.2%; /* Slate-900 #0F172A */
+  --color-muted: 210 40% 96.1%; /* Slate-100 */
+  --color-muted-foreground: 215.4 16.3% 46.9%; /* Slate-500 #64748B */
+  --color-destructive: 0 84.2% 60.2%; /* Red-500 #EF4444 */
   --color-destructive-foreground: 0 0% 100%;
-  --color-success: 142 76% 36%;
+  --color-success: 142.1 76.2% 36.3%; /* Green-600 #16A34A */
   --color-success-foreground: 0 0% 100%;
-  --color-warning: 43 96% 56%;
-  --color-warning-foreground: 0 0% 100%;
-  --color-info: 217 91% 60%;
+  --color-warning: 45.4 93.4% 47.5%; /* Yellow-500 #EAB308 */
+  --color-warning-foreground: 222.2 47.4% 11.2%; /* Slate-900 for contrast */
+  --color-info: 217.2 91.2% 59.8%; /* Blue-500 #3B82F6 */
   --color-info-foreground: 0 0% 100%;
-  --color-border: 214 32% 91%;
-  --color-input: 214 32% 91%;
-  --color-ring: 158 64% 52%;
-  --color-shadow: 222 47% 11%;
+  --color-border: 214.3 31.8% 91.4%; /* Slate-200 #E2E8F0 - True neutral border */
+  --color-input: 214.3 31.8% 91.4%;
+  --color-ring: 221.2 83.2% 53.3%; /* Matches primary */
+  --color-shadow: 222.2 84% 4.9%; /* Slate-950 */
 
-  /* Semantic Surface System */
+  /* Semantic Surface System - Neutral Slate Based */
   --surface-base: var(--color-card);
-  --surface-subtle: 0 0% 100%;
-  --surface-muted: 210 40% 98%;
-  --surface-emphasis: 214 32% 94%;
+  --surface-subtle: 210 40% 98%; /* Slate-50 #F8FAFC */
+  --surface-muted: 210 40% 96.1%; /* Slate-100 #F1F5F9 */
+  --surface-emphasis: 214.3 31.8% 91.4%; /* Slate-200 #E2E8F0 */
   --surface-overlay: 0 0% 100%;
 
-  /* Semantic Border System */
-  --border-subtle: 214 32% 91%;
-  --border-strong: 215 16% 47%;
-  --border-muted: 210 28% 90%;
+  /* Semantic Border System - True Neutrals */
+  --border-subtle: 214.3 31.8% 91.4%; /* Slate-200 */
+  --border-strong: 215.4 16.3% 46.9%; /* Slate-500 */
+  --border-muted: 217.2 32.6% 89.8%; /* Slate-100/200 blend */
 
   /* Brand Accent Tokens (Contextual) */
   --accent-opendeck: 195 100% 50%; /* Blue var(--accent) */
@@ -192,36 +193,41 @@
 }
 
 /* ==========================================
-   2026/2027 DARK THEME - Enhanced
+   2026/2027 DARK THEME - Neutral Slate Enhanced
    ========================================== */
 [data-theme="dark"],
 .dark {
-  --color-background: 222 47% 11%;
-  --color-foreground: 210 40% 98%;
-  --color-card: 222 47% 15%;
+  /* True neutral slate palette for dark mode */
+  --color-background: 222.2 84% 4.9%; /* Slate-950 #020617 */
+  --color-foreground: 210 40% 98%; /* Slate-50 #F8FAFC */
+  --color-card: 222.2 47.4% 11.2%; /* Slate-900 #0F172A */
   --color-card-foreground: 210 40% 98%;
-  --color-popover: 222 47% 15%;
+  --color-popover: 222.2 47.4% 11.2%;
   --color-popover-foreground: 210 40% 98%;
-  --color-muted: 217 33% 17%;
-  --color-muted-foreground: 215 20% 65%;
-  --color-border: 217 33% 17%;
-  --color-input: 217 33% 17%;
-  --color-secondary: 217 33% 17%;
+  --color-muted: 215.4 16.3% 25.9%; /* Slate-800 #1E293B */
+  --color-muted-foreground: 217.9 10.6% 64.9%; /* Slate-400 #94A3B8 */
+  --color-border: 215 25% 26.7%; /* Slate-700 #334155 */
+  --color-input: 215 25% 26.7%;
+  --color-secondary: 215.4 16.3% 25.9%; /* Slate-800 */
   --color-secondary-foreground: 210 40% 98%;
-  --color-primary: 158 64% 48%;
-  --color-primary-foreground: 222 47% 11%;
-  --color-accent: 158 64% 48%;
-  --color-accent-foreground: 222 47% 11%;
-  --color-ring: 158 64% 48%;
+  --color-primary: 217.2 91.2% 59.8%; /* Blue-400 #60A5FA - Lighter for dark */
+  --color-primary-foreground: 222.2 84% 4.9%;
+  --color-accent: 188.7 85.3% 39.2%; /* Cyan-500 #06B6D4 */
+  --color-accent-foreground: 222.2 84% 4.9%;
+  --color-ring: 217.2 91.2% 59.8%;
   --color-shadow: 0 0% 0%;
-  --surface-base: 222 47% 15%;
-  --surface-subtle: 222 47% 11%;
-  --surface-muted: 217 33% 17%;
-  --surface-emphasis: 210 40% 22%;
-  --surface-overlay: 222 47% 20%;
-  --border-subtle: 217 33% 22%;
-  --border-strong: 210 40% 85%;
-  --border-muted: 217 33% 19%;
+  
+  /* Semantic Surface System - Neutral Slate Based */
+  --surface-base: 222.2 47.4% 11.2%; /* Slate-900 */
+  --surface-subtle: 222.2 84% 4.9%; /* Slate-950 */
+  --surface-muted: 215.4 16.3% 25.9%; /* Slate-800 */
+  --surface-emphasis: 215 25% 26.7%; /* Slate-700 */
+  --surface-overlay: 222.2 47.4% 15%;
+  
+  /* Semantic Border System - True Neutrals */
+  --border-subtle: 215 25% 26.7%; /* Slate-700 */
+  --border-strong: 215.4 16.3% 46.9%; /* Slate-500 */
+  --border-muted: 217.9 10.6% 21.6%; /* Slate-800/700 blend */
   
   /* Enhanced shadow system for dark theme */
   --shadow-color: 0 0% 0%;
@@ -232,20 +238,20 @@
   --elevation-modal: 0 20px 25px hsl(0 0% 0% / 0.9), 0 8px 10px hsl(0 0% 0% / 0.8);
 }
 
-/* Auto Dark Theme Support */
+/* Auto Dark Theme Support - Neutral Slate */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: 222 47% 11%;
-    --color-foreground: 210 40% 98%;
-    --color-card: 222 47% 15%;
+    --color-background: 222.2 84% 4.9%; /* Slate-950 */
+    --color-foreground: 210 40% 98%; /* Slate-50 */
+    --color-card: 222.2 47.4% 11.2%; /* Slate-900 */
     --color-card-foreground: 210 40% 98%;
-    --color-popover: 222 47% 15%;
+    --color-popover: 222.2 47.4% 11.2%;
     --color-popover-foreground: 210 40% 98%;
-    --color-muted: 217 33% 17%;
-    --color-muted-foreground: 215 20% 65%;
-    --color-border: 217 33% 17%;
-    --color-input: 217 33% 17%;
-    --color-secondary: 217 33% 17%;
+    --color-muted: 215.4 16.3% 25.9%; /* Slate-800 */
+    --color-muted-foreground: 217.9 10.6% 64.9%; /* Slate-400 */
+    --color-border: 215 25% 26.7%; /* Slate-700 */
+    --color-input: 215 25% 26.7%;
+    --color-secondary: 215.4 16.3% 25.9%; /* Slate-800 */
     --color-secondary-foreground: 210 40% 98%;
     --shadow-color: 0 0% 0%;
   }

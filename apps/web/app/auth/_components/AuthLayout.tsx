@@ -30,7 +30,7 @@ export function AuthLayout({
         <header className="py-xl">
           <div className="mx-auto w-full max-w-md px-md text-center">
             <Link href="/" className="inline-flex items-center justify-center">
-              <span className="text-heading-3 font-semibold tracking-tight text-gradient-accent">GHXSTSHIP</span>
+              <span className="text-heading-3 font-semibold tracking-tight text-gradient-accent">ATLVS</span>
             </Link>
           </div>
         </header>

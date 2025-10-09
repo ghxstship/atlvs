@@ -52,24 +52,61 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
           throw new Error('Organization name is required');
         }
 
-        // Create organization
+        // Get or create user profile in public.users table
+        let publicUserId = user.id;
+        
+        // Check if user exists in public.users
+        const { data: existingUser } = await supabase
+          .from('users')
+          .select('id')
+          .eq('auth_id', user.id)
+          .single();
+
+        if (existingUser) {
+          publicUserId = existingUser.id;
+        } else {
+          // Create user profile if it doesn't exist
+          const { data: newUser, error: userError } = await supabase
+            .from('users')
+            .insert({
+              auth_id: user.id,
+              full_name: user.user_metadata?.full_name || user.email?.split('@')[0],
+            })
+            .select('id')
+            .single();
+
+          if (userError) throw userError;
+          publicUserId = newUser.id;
+        }
+
+        // Create organization (without created_by since column may not exist yet)
         const { data: org, error: orgError } = await supabase
           .from('organizations')
           .insert({
             name: orgName.trim(),
-            slug: orgSlug,
-            created_by: user.id
+            slug: orgSlug
           })
           .select()
           .single();
 
         if (orgError) throw orgError;
 
+        // Try to update with created_by if column exists (will fail silently if not)
+        try {
+          await supabase
+            .from('organizations')
+            .update({ created_by: publicUserId })
+            .eq('id', org.id);
+        } catch (err) {
+          // Ignore error if created_by column doesn't exist
+          console.warn('Could not set created_by on organization:', err);
+        }
+
         // Create membership for the user as owner
         const { error: membershipError } = await supabase
           .from('memberships')
           .insert({
-            user_id: user.id,
+            user_id: publicUserId,
             organization_id: org.id,
             role: 'owner',
             status: 'active'
@@ -90,6 +127,31 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
           throw new Error('Invite code is required');
         }
 
+        // Get or create user profile in public.users table
+        let publicUserId = user.id;
+        
+        const { data: existingUser } = await supabase
+          .from('users')
+          .select('id')
+          .eq('auth_id', user.id)
+          .single();
+
+        if (existingUser) {
+          publicUserId = existingUser.id;
+        } else {
+          const { data: newUser, error: userError } = await supabase
+            .from('users')
+            .insert({
+              auth_id: user.id,
+              full_name: user.user_metadata?.full_name || user.email?.split('@')[0],
+            })
+            .select('id')
+            .single();
+
+          if (userError) throw userError;
+          publicUserId = newUser.id;
+        }
+
         // Find organization by invite code
         const { data: org, error: orgError } = await supabase
           .from('organizations')
@@ -105,7 +167,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
         const { error: membershipError } = await supabase
           .from('memberships')
           .insert({
-            user_id: user.id,
+            user_id: publicUserId,
             organization_id: org.id,
             role: 'team_member',
             status: 'active'
@@ -132,8 +194,8 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
 
   return (
     <div className="brand-ghostship stack-xl">
-      <div className="brand-ghostship text-center">
-        <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-md`}>
+      <div className="brand-ghostship text-center mb-xl">
+        <h1 className={`${anton.className} uppercase text-heading-2 mb-md`}>
           ORGANIZATION SETUP
         </h1>
         <p className="text-body color-muted max-w-2xl mx-auto">
@@ -150,7 +212,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
           >
             <CardContent className="p-xl text-center">
               <Building className="h-icon-2xl w-icon-2xl color-accent mx-auto mb-md" />
-              <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>
+              <h3 className={`${anton.className} uppercase text-heading-4 mb-sm`}>
                 CREATE ORGANIZATION
               </h3>
               <p className="color-muted mb-lg">
@@ -170,7 +232,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
           >
             <CardContent className="p-xl text-center">
               <Users className="h-icon-2xl w-icon-2xl color-accent mx-auto mb-md" />
-              <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>
+              <h3 className={`${anton.className} uppercase text-heading-4 mb-sm`}>
                 JOIN ORGANIZATION
               </h3>
               <p className="color-muted mb-lg">
@@ -190,7 +252,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
               <div className="brand-ghostship stack-lg">
                 <div className="brand-ghostship text-center mb-lg">
                   <Building className="h-icon-2xl w-icon-2xl color-accent mx-auto mb-md" />
-                  <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-sm`}>
+                  <h2 className={`${anton.className} uppercase text-heading-3 mb-sm`}>
                     CREATE YOUR ORGANIZATION
                   </h2>
                   <p className="color-muted">
@@ -218,7 +280,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                   </label>
                   <div className="brand-ghostship flex">
                     <span className="inline-flex items-center  px-md rounded-l-lg border border-r-0 border-border bg-secondary color-muted text-body-sm">
-                      ghxstship.com/
+                      atlvs.app/
                     </span>
                     <input
                       type="text"
@@ -238,7 +300,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
               <div className="brand-ghostship stack-lg">
                 <div className="brand-ghostship text-center mb-lg">
                   <Users className="h-icon-2xl w-icon-2xl color-accent mx-auto mb-md" />
-                  <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-sm`}>
+                  <h2 className={`${anton.className} uppercase text-heading-3 mb-sm`}>
                     JOIN ORGANIZATION
                   </h2>
                   <p className="color-muted">

@@ -165,8 +165,8 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
 
   return (
     <div className="brand-ghostship stack-xl">
-      <div className="brand-ghostship text-center">
-        <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-md`}>
+      <div className="brand-ghostship text-center mb-xl">
+        <h1 className={`${anton.className} uppercase text-heading-2 mb-md`}>
           CHOOSE YOUR PLAN
         </h1>
         <p className="text-body color-muted max-w-2xl mx-auto">
@@ -230,7 +230,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
               <CardContent className="p-lg">
                 <div className="brand-ghostship text-center mb-lg">
                   <Icon className="h-icon-lg w-icon-lg color-accent mx-auto mb-sm" />
-                  <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>
+                  <h3 className={`${anton.className} uppercase text-heading-4 mb-sm`}>
                     {plan.name}
                   </h3>
                   <p className="text-body-sm color-muted mb-md">
@@ -238,11 +238,11 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
                   </p>
                   
                   <div className="brand-ghostship mb-sm">
-                    <span className="text-heading-2 text-heading-3 color-foreground">
+                    <span className="text-heading-3 color-foreground font-display">
                       {getPrice(plan)}
                     </span>
                     {plan.price && (
-                      <span className="color-muted">
+                      <span className="color-muted text-body">
                         /{billingCycle === 'annual' ? 'month' : 'month'}
                       </span>
                     )}

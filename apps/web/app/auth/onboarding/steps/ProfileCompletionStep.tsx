@@ -140,12 +140,12 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
 
   return (
     <div className="brand-ghostship stack-xl">
-      <div className="brand-ghostship text-center">
-        <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-md`}>
+      <div className="brand-ghostship text-center mb-xl">
+        <h1 className={`${anton.className} uppercase text-heading-2 mb-md`}>
           COMPLETE YOUR PROFILE
         </h1>
         <p className="text-body color-muted max-w-2xl mx-auto">
-          Help your team get to know you better and personalize your GHXSTSHIP experience.
+          Help your team get to know you better and personalize your ATLVS experience.
         </p>
       </div>
 

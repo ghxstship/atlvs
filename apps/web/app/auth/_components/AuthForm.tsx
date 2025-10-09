@@ -74,19 +74,19 @@ export function AuthInput({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className="pr-12"
+          className={isPassword ? "pr-14" : ""}
         />
         {isPassword && onTogglePassword && (
           <button
             type="button"
             aria-label={showPassword ? 'Hide password' : 'Show password'}
-            className="absolute inset-y-0 right-0 flex items-center pr-md text-muted-foreground transition hover:text-foreground"
+            className="absolute inset-y-0 right-0 flex items-center px-lg text-muted-foreground transition hover:text-foreground"
             onClick={onTogglePassword}
           >
             {showPassword ? (
-              <EyeOff className="h-icon-xs w-icon-xs" />
+              <EyeOff className="h-4 w-4" />
             ) : (
-              <Eye className="h-icon-xs w-icon-xs" />
+              <Eye className="h-4 w-4" />
             )}
           </button>
         )}

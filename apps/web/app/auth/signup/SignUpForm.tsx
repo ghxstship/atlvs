@@ -108,7 +108,7 @@ export function SignUpForm() {
           onTogglePassword={() => setShowPassword(!showPassword)}
         />
         
-        <div className="brand-ghostship flex items-start gap-sm">
+        <div className="brand-ghostship flex items-center gap-sm">
           <input
             type="checkbox"
             id="terms"

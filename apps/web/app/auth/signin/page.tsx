@@ -87,7 +87,7 @@ export default function SignInPage() {
 
       <div className="mt-lg text-center">
         <AuthText>
-          New to GHXSTSHIP?{' '}
+          New to ATLVS?{' '}
           <AuthLink href="/auth/signup">Create an account</AuthLink>
         </AuthText>
       </div>

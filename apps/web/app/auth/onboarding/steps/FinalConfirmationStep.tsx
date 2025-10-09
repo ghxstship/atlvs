@@ -111,8 +111,8 @@ export function FinalConfirmationStep({ user, data, onComplete }: FinalConfirmat
           <div className="brand-ghostship w-component-lg h-component-lg bg-success/10 rounded-full flex items-center justify-center mx-auto mb-md">
             <CheckCircle className="h-icon-2xl w-icon-2xl color-success" />
           </div>
-          <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-md`}>
-            WELCOME TO GHXSTSHIP!
+          <h1 className={`${anton.className} uppercase text-heading-2 mb-md`}>
+            WELCOME TO ATLVS!
           </h1>
           <p className="text-body color-muted max-w-2xl mx-auto">
             Your account is ready! You&apos;re all set to start creating amazing projects with your team.
@@ -125,7 +125,7 @@ export function FinalConfirmationStep({ user, data, onComplete }: FinalConfirmat
         <CardContent className="p-xl">
           <div className="brand-ghostship text-center mb-lg">
             <Sparkles className="h-icon-lg w-icon-lg color-accent mx-auto mb-sm" />
-            <h2 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>
+            <h2 className={`${anton.className} uppercase text-heading-4 mb-sm`}>
               SETUP COMPLETE
             </h2>
             <p className="color-muted">
@@ -155,7 +155,7 @@ export function FinalConfirmationStep({ user, data, onComplete }: FinalConfirmat
       {/* Next Steps */}
       <Card>
         <CardContent className="p-lg">
-          <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-md`}>
+          <h3 className={`${anton.className} uppercase text-heading-4 mb-md`}>
             WHAT&apos;S NEXT?
           </h3>
           <div className="brand-ghostship grid md:grid-cols-2 gap-md">
@@ -192,7 +192,7 @@ export function FinalConfirmationStep({ user, data, onComplete }: FinalConfirmat
         <Card className="border-primary/20 bg-accent/5">
           <CardContent className="p-lg">
             <div className="brand-ghostship text-center">
-              <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-sm color-accent`}>
+              <h3 className={`${anton.className} uppercase text-heading-4 mb-sm color-accent`}>
                 FREE TRIAL ACTIVE
               </h3>
               <p className="color-muted mb-md">

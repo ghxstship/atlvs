@@ -112,7 +112,7 @@ export default function VerifyEmailPage() {
         )}
         
         <AuthText className="text-center">
-          Click the link in your email to verify your account and continue to GHXSTSHIP.
+          Click the link in your email to verify your account and continue to ATLVS.
         </AuthText>
         
         <AuthText className="text-center">

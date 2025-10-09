@@ -82,7 +82,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
             <Mail className="h-component-md w-component-md color-accent mx-auto mb-md" />
           )}
           
-          <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-md`}>
+          <h1 className={`${anton.className} uppercase text-heading-2 mb-md`}>
             {isVerified ? 'EMAIL VERIFIED!' : 'VERIFY YOUR EMAIL'}
           </h1>
           
@@ -95,7 +95,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
               <p className="text-body color-muted">
                 We&apos;ve sent a verification link to:
               </p>
-              <p className="text-heading-4 text-heading-4 color-foreground">
+              <p className="text-heading-4 color-foreground font-body">
                 {user?.email}
               </p>
               <p className="color-muted">

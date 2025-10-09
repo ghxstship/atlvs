@@ -1,8 +1,8 @@
-# GHXSTSHIP Authentication System
+# ATLVS Authentication System
 
 ## 🎯 Overview
 
-The authentication system has been completely refactored to use the GHXSTSHIP global design system (`globals.css`) for consistent, optimized, and maintainable auth pages.
+The authentication system has been completely refactored to use the GHXSTSHIP global design system (`globals.css`) for consistent, optimized, and maintainable auth pages. ATLVS is the authenticated application powered by GHXSTSHIP.
 
 ## 🏗️ Architecture
 
@@ -11,7 +11,7 @@ The authentication system has been completely refactored to use the GHXSTSHIP gl
 #### `AuthLayout.tsx`
 - **Purpose**: Unified layout wrapper for all auth pages
 - **Features**: 
-  - Consistent header with GHXSTSHIP branding
+  - Consistent header with ATLVS branding
   - Responsive card-based content area
   - Optional trust indicators and footer
   - Design system integration with semantic classes
@@ -188,4 +188,4 @@ export default function MyAuthPage() {
 
 ---
 
-*This authentication system serves as a reference implementation for the GHXSTSHIP design system, demonstrating best practices for component composition, semantic styling, and user experience design.*
+*This authentication system for ATLVS serves as a reference implementation for the GHXSTSHIP design system, demonstrating best practices for component composition, semantic styling, and user experience design.*

@@ -48,7 +48,7 @@ export default function SignUpPage() {
 
   return (
     <AuthLayout
-      title="Join GHXSTSHIP"
+      title="Join ATLVS"
       subtitle="Create your account to start managing productions"
       badge="CREATE ACCOUNT"
       showFooter={true}

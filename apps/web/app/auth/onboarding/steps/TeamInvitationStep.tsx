@@ -131,8 +131,8 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
 
   return (
     <div className="brand-ghostship stack-xl">
-      <div className="brand-ghostship text-center">
-        <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-md`}>
+      <div className="brand-ghostship text-center mb-xl">
+        <h1 className={`${anton.className} uppercase text-heading-2 mb-md`}>
           INVITE YOUR TEAM
         </h1>
         <p className="text-body color-muted max-w-2xl mx-auto">
@@ -150,7 +150,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
             <div className="brand-ghostship stack-md">
               <div className="brand-ghostship flex items-center cluster-sm mb-md">
                 <UserPlus className="h-icon-sm w-icon-sm color-accent" />
-                <h3 className={`${anton.className} uppercase text-body text-heading-3`}>
+                <h3 className={`${anton.className} uppercase text-heading-4`}>
                   ADD TEAM MEMBERS
                 </h3>
               </div>
@@ -206,7 +206,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
             {/* Invited Members List */}
             {invites.length > 0 && (
               <div className="brand-ghostship stack-md">
-                <h4 className={`${anton.className} uppercase text-md text-heading-3`}>
+                <h4 className={`${anton.className} uppercase text-heading-4`}>
                   PENDING INVITATIONS ({invites.length})
                 </h4>
                 
@@ -274,7 +274,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
       {/* Role Descriptions */}
       <Card>
         <CardContent className="p-lg">
-          <h4 className={`${anton.className} uppercase text-md text-heading-3 mb-md`}>
+          <h4 className={`${anton.className} uppercase text-heading-4 mb-md`}>
             ROLE PERMISSIONS
           </h4>
           <div className="brand-ghostship grid md:grid-cols-3 gap-md">
