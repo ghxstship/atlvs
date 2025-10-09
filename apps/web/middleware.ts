@@ -4,12 +4,13 @@ import type { Database } from '@/types/database';
 
 // Middleware with robust guards to prevent runtime errors on undefined pathname
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  try {
+    const { pathname } = request.nextUrl;
 
-  // Fallback to default handling if pathname is unavailable for any reason
-  if (!pathname) {
-    return NextResponse.next();
-  }
+    // Fallback to default handling if pathname is unavailable for any reason
+    if (!pathname) {
+      return NextResponse.next();
+    }
 
   // Skip framework/static assets explicitly to avoid hitting auth logic
   if (
@@ -127,6 +128,11 @@ export async function middleware(request: NextRequest) {
   }
 
   return response;
+  } catch (error) {
+    console.error('Middleware error:', error);
+    // Return a basic response to prevent 500 errors
+    return NextResponse.next();
+  }
 }
 
 export const config = {

@@ -8,19 +8,9 @@ import type { BrandConfiguration } from './types';
 import fs from 'fs';
 import path from 'path';
 
-import defaultBrand from '@branding/config/default.brand.json';
-import ghxstshipBrand from '@branding/config/ghxstship.brand.json';
-import atlvsBrand from '@branding/config/atlvs.brand.json';
-import opendeckBrand from '@branding/config/opendeck.brand.json';
-import whitelabelBrand from '@branding/config/whitelabel.brand.json';
-
-const bundledBrandConfigs: Record<string, BrandConfiguration> = {
-  default: defaultBrand,
-  ghxstship: ghxstshipBrand,
-  atlvs: atlvsBrand,
-  opendeck: opendeckBrand,
-  whitelabel: whitelabelBrand,
-};
+// Brand configs will be loaded from filesystem instead of static imports
+// to avoid build/runtime issues with JSON imports
+const bundledBrandConfigs: Record<string, BrandConfiguration> = {};
 
 /**
  * Load bundled brand configs synchronously from file system
@@ -186,9 +176,104 @@ async function readBrandConfig(brandId: string): Promise<BrandConfiguration> {
     }
   }
 
-  // Last resort: return ghxstship bundled config
-  console.error(`Failed to locate brand config for ${brandId}, using ghxstship as fallback`);
-  return bundledBrandConfigs.ghxstship || bundledBrandConfigs.default;
+  // Last resort: create a minimal fallback config
+  console.error(`Failed to locate brand config for ${brandId}, using minimal fallback`);
+  return {
+    version: '1.0.0',
+    brand: {
+      id: 'ghxstship',
+      name: 'GHXSTSHIP',
+      slug: 'ghxstship',
+      description: 'Default brand configuration',
+      tagline: 'The Future of Management',
+      website: 'https://ghxstship.com',
+      support: {
+        email: 'support@ghxstship.com',
+        phone: '',
+        website: 'https://ghxstship.com/support'
+      },
+      legal: {
+        company: 'GHXSTSHIP LLC',
+        address: '',
+        termsUrl: '/terms',
+        privacyUrl: '/privacy'
+      }
+    },
+    theme: {
+      colors: {
+        brand: {
+          primary: 'hsl(142, 76%, 36%)',
+          secondary: 'hsl(142, 76%, 46%)',
+          accent: 'hsl(142, 76%, 56%)'
+        },
+        ui: {
+          background: 'hsl(0, 0%, 100%)',
+          foreground: 'hsl(0, 0%, 3.9%)',
+          card: 'hsl(0, 0%, 100%)',
+          'card-foreground': 'hsl(0, 0%, 3.9%)',
+          popover: 'hsl(0, 0%, 100%)',
+          'popover-foreground': 'hsl(0, 0%, 3.9%)',
+          muted: 'hsl(0, 0%, 96.1%)',
+          'muted-foreground': 'hsl(0, 0%, 45.1%)',
+          border: 'hsl(0, 0%, 89.8%)',
+          input: 'hsl(0, 0%, 89.8%)',
+          ring: 'hsl(142, 76%, 36%)'
+        },
+        semantic: {
+          success: 'hsl(142, 76%, 36%)',
+          warning: 'hsl(48, 96%, 53%)',
+          error: 'hsl(0, 84%, 60%)',
+          info: 'hsl(199, 89%, 48%)'
+        }
+      },
+      typography: {
+        fontFamily: {
+          heading: 'ANTON, Impact, sans-serif',
+          body: 'Share Tech, Arial, sans-serif',
+          mono: 'Share Tech Mono, Courier New, monospace'
+        },
+        fontSize: {
+          xs: '0.75rem',
+          sm: '0.875rem',
+          base: '1rem',
+          lg: '1.125rem',
+          xl: '1.25rem',
+          '2xl': '1.5rem',
+          '3xl': '1.875rem',
+          '4xl': '2.25rem'
+        }
+      },
+      spacing: {},
+      borderRadius: {},
+      shadows: {}
+    },
+    assets: {
+      logos: {
+        primary: '/logo.svg',
+        icon: '/icon.svg',
+        wordmark: '/wordmark.svg'
+      },
+      favicon: '/favicon.ico',
+      images: {
+        hero: '/hero.jpg',
+        auth: '/auth.jpg',
+        placeholder: '/placeholder.jpg'
+      }
+    },
+    content: {
+      tagline: 'The Future of Management',
+      description: 'Default description',
+      callToAction: 'Get Started'
+    },
+    features: {
+      modules: {}
+    },
+    seo: {
+      title: 'GHXSTSHIP',
+      description: 'Default description',
+      keywords: []
+    }
+  } as unknown as BrandConfiguration;
 }
 
 export async function loadBrandConfig(brandId: string): Promise<BrandConfiguration> {
