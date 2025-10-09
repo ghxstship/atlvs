@@ -6,7 +6,14 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Plus, Loader2, AlertCircle } from 'lucide-react';import { Button, UnifiedInput, Select, Textarea, Drawer } from '@ghxstship/ui';
+import { Plus, Loader2, AlertCircle } from 'lucide-react';import {
+  Button,
+  Drawer,
+  Input,
+  Select,
+  Textarea,
+  UnifiedInput
+} from "@ghxstship/ui";
 import { Button, Select, Textarea, Drawer } from '@ghxstship/ui';
 
 import { usePostHog } from 'posthog-js/react';
@@ -194,7 +201,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
               <label htmlFor="title" className="block text-body-sm form-label color-foreground mb-sm">
                 Title *
               </label>
-              <UnifiedInput                 id="title"
+              <Input                 id="title"
                 {...register('title')}
                 placeholder="Enter RFP title"
                
@@ -247,7 +254,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 <label htmlFor="budget" className="block text-body-sm form-label color-foreground mb-sm">
                   Budget
                 </label>
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   step="0.01"
                   min="0"
                   {...register('budget', { valueAsNumber: true })}
@@ -274,7 +281,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
               <label htmlFor="projectId" className="block text-body-sm form-label color-foreground mb-sm">
                 Associated Project ID
               </label>
-              <UnifiedInput                 {...register('projectId')}
+              <Input                 {...register('projectId')}
                 placeholder="Enter project ID if applicable"
               />
             </div>
@@ -284,7 +291,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 <label htmlFor="submissionDeadline" className="block text-body-sm form-label color-foreground mb-sm">
                   Submission Deadline
                 </label>
-                <UnifiedInput                   type="datetime-local"
+                <Input                   type="datetime-local"
                   {...register('submissionDeadline')}
                 />
               </div>
@@ -293,7 +300,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 <label htmlFor="questionsDeadline" className="block text-body-sm form-label color-foreground mb-sm">
                   Questions Deadline
                 </label>
-                <UnifiedInput                   type="datetime-local"
+                <Input                   type="datetime-local"
                   {...register('questionsDeadline')}
                 />
               </div>
@@ -304,7 +311,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 <label htmlFor="contactName" className="block text-body-sm form-label color-foreground mb-sm">
                   Contact Name
                 </label>
-                <UnifiedInput                   {...register('contactName')}
+                <Input                   {...register('contactName')}
                   placeholder="Enter contact person name"
                 />
               </div>
@@ -313,7 +320,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 <label htmlFor="contactEmail" className="block text-body-sm form-label color-foreground mb-sm">
                   Contact Email
                 </label>
-                <UnifiedInput                   type="email"
+                <Input                   type="email"
                   {...register('contactEmail')}
                   placeholder="contact@example.com"
                  

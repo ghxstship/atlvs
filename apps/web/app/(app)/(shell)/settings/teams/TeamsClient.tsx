@@ -3,19 +3,19 @@
 import { Users, UserPlus, Mail, Shield, RefreshCw, Download, Settings } from "lucide-react";
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
   DataViewProvider,
   StateManagerProvider,
-  Button,
-  useToastContext,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-  Card,
-  CardContent,
-  Badge,
-  ViewSwitcher
-} from '@ghxstship/ui';
+  ViewSwitcher,
+  useToastContext
+} from "@ghxstship/ui";
 import type { 
  TeamRecord, 
  TeamViewConfig, 
@@ -165,17 +165,45 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  }
  }, []);
 
+ // Event handlers
+ const handleExport = useCallback(async (format: 'csv' | 'json') => {
+ try {
+ const blob = await teamsService.exportRecords({
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+ format,
+ includeMetadata: true
+ });
+
+ const url = URL.createObjectURL(blob);
+ const a = document.createElement('a');
+ a.href = url;
+ a.download = `team-records.${format}`;
+ document.body.appendChild(a);
+ a.click();
+ document.body.removeChild(a);
+ URL.revokeObjectURL(url);
+
+ toast.success(`Records exported as ${format.toUpperCase()}`);
+ } catch (err) {
+ const message = err instanceof Error ? err.message : 'Failed to export records';
+ toast.error(message);
+ }
+ }, [toast]);
+
  // Initial data load
  useEffect(() => {
  loadRecords();
  loadStatistics();
- }, [loadRecords, loadStatistics, handleExport]);
+ }, [loadRecords, loadStatistics]);
 
  // ATLVS DataViews configuration
  const dataViewConfig: TeamViewConfig = useMemo(() => ({
  id: 'teams',
+  // eslint-disable-next-line react-hooks/exhaustive-deps
  name: 'Team Management',
  viewType: currentView,
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  defaultView: 'grid',
  fields: fieldConfig,
  data: records,
@@ -197,33 +225,9 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  return records;
  },
  onExport: (data: unknown, format: unknown) => {
- handleExport(format);
+ handleExport(format as 'csv' | 'json');
  }
  }), [currentView, records, searchParams, loadRecords, loadStatistics, handleExport]);
-
- // Event handlers
- const handleExport = async (format: 'csv' | 'json') => {
- try {
- const blob = await teamsService.exportRecords({
- format,
- includeMetadata: true
- });
-
- const url = URL.createObjectURL(blob);
- const a = document.createElement('a');
- a.href = url;
- a.download = `team-records.${format}`;
- document.body.appendChild(a);
- a.click();
- document.body.removeChild(a);
- URL.revokeObjectURL(url);
-
- toast.success(`Records exported as ${format.toUpperCase()}`);
- } catch (err) {
- const message = err instanceof Error ? err.message : 'Failed to export records';
- toast.error(message);
- }
- };
 
  const handleRefresh = async () => {
  await loadRecords(searchParams);

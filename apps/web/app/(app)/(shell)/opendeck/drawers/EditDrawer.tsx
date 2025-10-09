@@ -186,7 +186,7 @@ export default function EditDrawer({
           <Select
             id="edit-status"
             value={formData.status}
-            onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
+            onChange={(e) => setFormData({ ...formData, status: e.target.e.target.value as any })}
             disabled={loading}
           >
             <option value="draft">Draft</option>

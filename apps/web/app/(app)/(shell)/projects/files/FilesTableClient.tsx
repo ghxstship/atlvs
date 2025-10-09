@@ -5,7 +5,7 @@ import { useMemo, useState } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
-import { Trash2, FileEdit, FileText, Tag, X as XIcon } from 'lucide-react';
+import { FileEdit, FileText, Save, Tag, Trash2, X, XIcon, as } from "lucide-react";
 import { useRouter } from 'next/navigation';
 
 export type FileRow = { id: string; name: string; path: string; mime_type: string | null; size: number | null; created_at: string };

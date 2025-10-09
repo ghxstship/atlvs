@@ -23,6 +23,7 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
     setDomains(data.domains || []);
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { fetchDomains(); }, [orgId]);
 
   async function addDomain() {

@@ -25,25 +25,25 @@ import { type ControllerRenderProps, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import {
- Drawer,
- Form,
- FormControl,
- FormField,
- FormItem,
- FormLabel,
- FormMessage,
- Input,
- Textarea,
- Button,
- useToastContext,
- Tabs,
- TabsContent,
- TabsList,
- TabsTrigger,
- Badge,
- Alert,
- AlertDescription
-} from '@ghxstship/ui';
+  Alert,
+  AlertDescription,
+  Badge,
+  Button,
+  Drawer,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Textarea,
+  useToastContext
+} from "@ghxstship/ui";
 import type { AccountDrawerProps, AccountRecord, ProfileFormData, PasswordFormData } from '../types';
 import { accountService } from '../lib/account-service';
 

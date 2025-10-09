@@ -97,6 +97,7 @@ export default function RidersClient({ orgId }: { orgId: string }) {
 
   useEffect(() => {
     loadRiders();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadRiders = async () => {

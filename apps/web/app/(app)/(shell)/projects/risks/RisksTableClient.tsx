@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Edit3, FileText, Activity as ActivityIcon, MessageSquare, AlertTriangle } from 'lucide-react';
+import { Activity, ActivityIcon, AlertTriangle, Edit, Edit3, FileText, MessageSquare, as } from "lucide-react";
 
 export type RiskRow = { 
   id: string; 
@@ -297,7 +297,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
                   name="impact" 
                   className="rounded border  px-md py-xs" 
                   value={form.getValues('impact') || ''} 
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('impact', e.target.value as any, { shouldDirty: true })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('impact', e.target.e.target.value as any, { shouldDirty: true })}
                 >
                   <option value="very_low">Very Low</option>
                   <option value="low">Low</option>
@@ -314,7 +314,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
                   name="probability" 
                   className="rounded border  px-md py-xs" 
                   value={form.getValues('probability') || ''} 
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('probability', e.target.value as any, { shouldDirty: true })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('probability', e.target.e.target.value as any, { shouldDirty: true })}
                 >
                   <option value="very_low">Very Low</option>
                   <option value="low">Low</option>
@@ -332,7 +332,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
                 name="status" 
                 className="rounded border  px-md py-xs" 
                 value={form.getValues('status') || ''} 
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('status', e.target.value as any, { shouldDirty: true })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('status', e.target.e.target.value as any, { shouldDirty: true })}
               >
                 <option value="identified">Identified</option>
                 <option value="assessed">Assessed</option>

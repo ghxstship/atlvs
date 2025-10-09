@@ -1,7 +1,14 @@
 'use client';
 import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, CheckSquare, Eye, Download, Users } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Card, Badge, Button } from '@ghxstship/ui';
+import { Card, Badge, Button ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
 import { FilesService } from '../lib/files-service';
 import type { DigitalAsset, AssetFilters } from '../types';
 import type { Procedure } from './types';

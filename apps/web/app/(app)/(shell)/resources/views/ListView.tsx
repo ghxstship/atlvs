@@ -1,7 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Badge } from '@ghxstship/ui';
+import {
+  Badge,
+  ListView
+} from "@ghxstship/ui";
 import { FileText, BookOpen, GraduationCap, File, Clipboard, Star } from 'lucide-react';
 import type { Resource } from '../lib/resources-service';
 

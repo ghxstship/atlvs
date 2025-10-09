@@ -4,7 +4,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Activity, BarChart3, Calendar, Copy, DollarSign, Download, Edit3, Eye, Layout, LayoutGrid, LineChart, PieChart, Plus, Settings, Share2, Trash2, TrendingUp, Users } from 'lucide-react';
+import { Activity, BarChart3, Calendar, Copy, DollarSign, Download, Edit3, Eye, Layout, LayoutGrid, LineChart, PieChart, Plus, Settings, Share, Share2, Trash2, TrendingUp, Users } from "lucide-react";
 import CreateDashboardClient from './CreateDashboardClient';
 
 interface Widget {
@@ -49,13 +49,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
 
   const supabase = createBrowserClient();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    loadDashboards();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [organizationId]);
-
-  const loadDashboards = async () => {
+  const loadDashboards = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -191,7 +185,11 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
     } finally {
       setLoading(false);
     }
-  };
+  }, [organizationId]);
+
+  useEffect(() => {
+    loadDashboards();
+  }, [loadDashboards]);
 
   const createDashboard = async (name: string, description: string) => {
     try {

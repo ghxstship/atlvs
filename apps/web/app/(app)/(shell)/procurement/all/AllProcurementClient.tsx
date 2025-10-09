@@ -40,6 +40,7 @@ export default function AllProcurementClient({ orgId, userId, userEmail }: AllPr
  const [error, setError] = useState<string | null>(null);
  const [selectedRecords, setSelectedRecords] = useState<string[]>([]);
  const [drawerOpen, setDrawerOpen] = useState(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
  const [drawerRecord, setDrawerRecord] = useState<DataRecord | null>(null);
  const [drawerMode, setDrawerMode] = useState<'create' | 'edit' | 'view'>('view');
 

@@ -1,18 +1,23 @@
 'use client';
 
+import Image from 'next/image';
 import { User, Mail, Phone, MapPin, Calendar, MoreHorizontal, Edit, Eye, Trash2, UserCheck, Building } from "lucide-react";
 import { useState } from 'react';
 import {
- Card,
- Badge,
- Button,
- Avatar,
- Checkbox,
- DropdownMenu,
- DropdownMenuContent,
- DropdownMenuItem,
- DropdownMenuTrigger
-} from '@ghxstship/ui';
+  Avatar,
+  Badge,
+  Button,
+  Card,
+  Checkbox,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
 
 import type { UserProfile, FieldConfig } from '../types';
 
@@ -171,7 +176,7 @@ export default function ProfileGridView({
  <div className="flex items-start gap-md mb-md">
  <Avatar className="h-icon-2xl w-icon-2xl">
  {profile.avatar_url ? (
- <img src={profile.avatar_url} alt={profile.full_name} />
+ <Image src={profile.avatar_url} alt={profile.full_name} width={48} height={48} />
  ) : (
  <div className="flex items-center justify-center h-full w-full bg-primary/10 text-primary font-semibold">
  {profile.full_name.split(' ').map(n => n[0]).join('').toUpperCase()}

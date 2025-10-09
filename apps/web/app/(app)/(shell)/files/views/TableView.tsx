@@ -16,7 +16,13 @@ import {
   Pin,
   PinOff
 } from 'lucide-react';
-import { Button, Checkbox, Input, DropdownMenu, Badge } from '@ghxstship/ui';
+import { Button, Checkbox, Input, Dropdown, Badge ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
 import type { DigitalAsset } from '../types';
 
 interface TableViewProps {
@@ -251,7 +257,7 @@ export default function TableView({
       ...prev,
       [columnKey]: value
     }));
-  }, []);
+  }, [setFilters]);
 
   // Toggle column freezing
   const toggleColumnFreeze = useCallback((columnKey: string) => {
@@ -264,7 +270,7 @@ export default function TableView({
       }
       return newFrozen;
     });
-  }, []);
+  }, [setFrozenColumns]);
 
   // Handle column resize
   const handleColumnResize = useCallback((columnKey: string, width: number) => {
@@ -272,7 +278,7 @@ export default function TableView({
       ...prev,
       [columnKey]: width
     }));
-  }, []);
+  }, [setColumnWidths]);
 
   // Bulk actions
   const selectedFileObjects = files.filter(file => selectedFiles.has(file.id));

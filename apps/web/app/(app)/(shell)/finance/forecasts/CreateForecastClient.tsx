@@ -208,7 +208,7 @@ export default function CreateForecastClient({
               </label>
               <Select
                 value={formData.currency}
-                onValueChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
+                onChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
               >
                 <option value="USD">USD - US Dollar</option>
                 <option value="EUR">EUR - Euro</option>
@@ -228,7 +228,7 @@ export default function CreateForecastClient({
                 <TrendingUp className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
                 <Select
                   value={formData.confidenceLevel}
-                  onValueChange={(value: any) => setFormData(prev => ({ ...prev, confidenceLevel: value }))}
+                  onChange={(value: any) => setFormData(prev => ({ ...prev, confidenceLevel: value }))}
                 >
                   <option value="high">High Confidence (90%+)</option>
                   <option value="medium">Medium Confidence (70-90%)</option>

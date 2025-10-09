@@ -1,18 +1,70 @@
 import React, { useState } from 'react';
 import {
+  Button,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  Input,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Separator,
+  Textarea
+} from "@ghxstship/ui";
+import { Button ,
   Drawer,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription
+  DrawerDescription,
+  DrawerFooter
 } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Input } from '@ghxstship/ui';
-import { Label } from '@ghxstship/ui';
-import { Textarea } from '@ghxstship/ui';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ghxstship/ui';
-import { Separator } from '@ghxstship/ui';
-import { Save, X, Plus, AlertCircle } from 'lucide-react';
+import { Input ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { Label ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { Textarea ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { Separator ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { AlertCircle, Plus, Save, Settings, X } from "lucide-react";
 import { marketplaceService } from '../lib/marketplace-service';
 import type { UpsertListingDto } from '../types';
 
@@ -161,7 +213,7 @@ export default function CreateDrawer({
                   <Label htmlFor="type">Type *</Label>
                   <Select
                     value={formData.type || 'offer'}
-                    onValueChange={(value) => updateFormData('type', value)}
+                    onChange={(e) => updateFormData('type', value)}
                   >
                     <SelectTrigger>
                       <SelectValue />
@@ -193,7 +245,7 @@ export default function CreateDrawer({
                   <Label htmlFor="category">Category *</Label>
                   <Select
                     value={formData.category || 'services'}
-                    onValueChange={(value) => updateFormData('category', value)}
+                    onChange={(e) => updateFormData('category', value)}
                   >
                     <SelectTrigger>
                       <SelectValue />
@@ -251,7 +303,7 @@ export default function CreateDrawer({
                   <Label htmlFor="currency">Currency</Label>
                   <Select
                     value={formData.currency || 'USD'}
-                    onValueChange={(value) => updateFormData('currency', value)}
+                    onChange={(e) => updateFormData('currency', value)}
                   >
                     <SelectTrigger>
                       <SelectValue />
@@ -447,7 +499,7 @@ export default function CreateDrawer({
                 <Label htmlFor="preferredContactMethod">Preferred Contact Method</Label>
                 <Select
                   value={formData.preferredContactMethod || 'platform'}
-                  onValueChange={(value) => updateFormData('preferredContactMethod', value)}
+                  onChange={(e) => updateFormData('preferredContactMethod', value)}
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -472,7 +524,7 @@ export default function CreateDrawer({
                   <Label htmlFor="status">Initial Status</Label>
                   <Select
                     value={formData.status || 'draft'}
-                    onValueChange={(value) => updateFormData('status', value)}
+                    onChange={(e) => updateFormData('status', value)}
                   >
                     <SelectTrigger>
                       <SelectValue />

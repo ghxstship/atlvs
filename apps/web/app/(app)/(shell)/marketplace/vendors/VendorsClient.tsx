@@ -159,6 +159,7 @@ export default function VendorsClient({ orgId, userId }: VendorsClientProps) {
 
  useEffect(() => {
  loadVendors();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [orgId]);
 
  const loadVendors = async () => {

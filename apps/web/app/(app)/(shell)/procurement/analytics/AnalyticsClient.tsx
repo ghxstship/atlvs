@@ -1,7 +1,7 @@
 'use client';
 
-import { AlertTriangle, Badge, BarChart3, Button, Calendar, Card, CardContent, CardDescription, CardHeader, CardTitle, CheckCircle, Clock, DollarSign, Download, Filter, LineChart, PieChart, ShoppingCart, Tabs, TabsContent, TabsList, TabsTrigger, Target, TrendingDown, TrendingUp, Users } from 'lucide-react';
-import React, { useState, useCallback, useState, useEffect } from 'react';
+import { AlertTriangle, BarChart3, Calendar, CheckCircle, Clock, DollarSign, Download, Filter, LineChart, PieChart, ShoppingCart, Target, TrendingDown, TrendingUp, Users } from 'lucide-react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 
 interface AnalyticsClientProps {
@@ -38,6 +38,7 @@ interface VendorPerformance {
 export default function AnalyticsClient({ className, orgId }: AnalyticsClientProps) {
  const [loading, setLoading] = useState(false);
  const [timeRange, setTimeRange] = useState('30d');
+ const [activeTab, setActiveTab] = useState('spend-analysis');
  const [metrics, setMetrics] = useState<AnalyticsMetric[]>([]);
  const [spendAnalysis, setSpendAnalysis] = useState<SpendAnalysis[]>([]);
  const [vendorPerformance, setVendorPerformance] = useState<VendorPerformance[]>([]);
@@ -235,18 +236,17 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  </p>
  </CardContent>
  </Card>
- ))}
- </div>
+))}
+</div>
 
- {/* Analytics Tabs */}
- <Tabs defaultValue="spend-analysis" className="space-y-md">
- <TabsList>
- <TabsTrigger value="spend-analysis">
- <PieChart className="h-icon-xs w-icon-xs mr-2" />
- Spend Analysis
- </TabsTrigger>
- <TabsTrigger value="vendor-performance">
- <BarChart3 className="h-icon-xs w-icon-xs mr-2" />
+      {/* Analytics Tabs */}
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-md">
+      <TabsList>
+      <TabsTrigger value="spend-analysis">
+        <PieChart className="h-icon-xs w-icon-xs mr-2" />
+        Spend Analysis
+      </TabsTrigger>
+      <TabsTrigger value="vendor-performance">
  Vendor Performance
  </TabsTrigger>
  <TabsTrigger value="trends">

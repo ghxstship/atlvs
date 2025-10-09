@@ -1,7 +1,36 @@
 'use client';
 
+
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  Input,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Textarea
+} from "@ghxstship/ui";
+
 import { useState, useCallback, useEffect } from 'react';
-import { Card, Button, Badge, Input, Textarea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Tabs, TabsContent, TabsList, TabsTrigger, Drawer , CardBody} from '@ghxstship/ui';
 import { AlertCircle, Award, Briefcase, Calendar, Camera, CheckCircle, Clock, DollarSign, Edit, Eye, FileText, Globe, Link2, Mail, MapPin, Phone, Plus, Shield, Star, Trash2, Upload, User } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useForm } from 'react-hook-form';
@@ -218,7 +247,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
                 <label className="text-body-sm form-label">Business Type</label>
                 <Select 
                   value={watch('business_type')} 
-                  onValueChange={(value: any) => setValue('business_type', value as any)}
+                  onChange={(value: any) => setValue('business_type', e.target.value as any)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select type" />
@@ -261,7 +290,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
                 <label className="text-body-sm form-label">Primary Category</label>
                 <Select 
                   value={watch('primary_category')} 
-                  onValueChange={(value: any) => setValue('primary_category', value)}
+                  onChange={(value: any) => setValue('primary_category', value)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select category" />
@@ -278,7 +307,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
                 <label className="text-body-sm form-label">Availability</label>
                 <Select 
                   value={watch('availability_status')} 
-                  onValueChange={(value: any) => setValue('availability_status', value as any)}
+                  onChange={(value: any) => setValue('availability_status', e.target.value as any)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select status" />

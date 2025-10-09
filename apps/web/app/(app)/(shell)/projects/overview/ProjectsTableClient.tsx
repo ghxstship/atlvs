@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Edit3, FileText, Activity as ActivityIcon, MessageSquare } from 'lucide-react';
+import { Activity, ActivityIcon, Edit, Edit3, FileText, MessageSquare, as } from "lucide-react";
 
 export type ProjectRow = { id: string; name: string; status: string; starts_at: string | null };
 

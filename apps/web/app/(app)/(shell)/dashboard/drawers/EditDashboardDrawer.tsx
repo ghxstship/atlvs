@@ -5,7 +5,23 @@ import { useEffect, useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { AppDrawer, Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, Switch } from '@ghxstship/ui';
+import {
+  AppDrawer,
+  Button,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Switch
+} from "@ghxstship/ui";
 import type { DashboardListItem } from "../types";
 
 const editDashboardSchema = z.object({

@@ -108,7 +108,7 @@ export default function EndorsementFormView({
  </Label>
  <Select
  value={formData.relationship}
- onValueChange={(value) => onFieldChange('relationship', value)}
+ onChange={(e) => onFieldChange('relationship', value)}
  >
  <SelectTrigger >
  <SelectValue />
@@ -268,7 +268,7 @@ export default function EndorsementFormView({
  </Label>
  <Select
  value={String(formData.rating)}
- onValueChange={(value) => onFieldChange('rating', parseInt(value))}
+ onChange={(e) => onFieldChange('rating', parseInt(value))}
  >
  <SelectTrigger >
  <SelectValue />

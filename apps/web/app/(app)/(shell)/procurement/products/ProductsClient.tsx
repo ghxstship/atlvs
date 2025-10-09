@@ -301,7 +301,7 @@ export default function ProductsClient({ orgId }: { orgId: string }) {
                 <label className="text-body-sm form-label">Status</label>
                 <select 
                   value={formData.status} 
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, status: e.target.value as 'active' | 'inactive' | 'discontinued' }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, status: e.target.e.target.value as 'active' | 'inactive' | 'discontinued' }))}
                   className="w-full  px-md py-sm border border-input bg-background rounded-md"
                 >
                   <option value="active">Active</option>

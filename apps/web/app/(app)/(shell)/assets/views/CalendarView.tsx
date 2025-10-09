@@ -14,7 +14,17 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { Asset, AssetViewState } from '../types';
 import { apiClient } from '../lib/api';
 import { realtimeService } from '../lib/realtime';
-import { Badge, Button, Checkbox, Select } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  CalendarView,
+  Checkbox,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@ghxstship/ui";
 import { Calendar as CalendarIcon, CalendarIcon, ChevronLeft, ChevronRight, Clock, MapPin, Plus, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Settings, User } from 'lucide-react';
 
 interface CalendarViewProps {
@@ -359,7 +369,7 @@ export default function CalendarView({
         </div>
 
         <div className="flex items-center gap-xs">
-          <Select value={calendarView} onValueChange={(value: CalendarViewType) => setCalendarView(value)}>
+          <Select value={calendarView} onChange={(value: CalendarViewType) => setCalendarView(value)}>
             <SelectTrigger className="w-component-xl">
               <SelectValue />
             </SelectTrigger>

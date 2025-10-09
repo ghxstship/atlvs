@@ -171,7 +171,7 @@ export default function CreateVendorClient({ mode, vendor, onSuccess, onCancel }
  <Select
  
  value={formData.business_type}
- onValueChange={(value) => setFormData(prev => ({ ...prev, business_type: value as unknown }))}
+ onChange={(e) => setFormData(prev => ({ ...prev, business_type: e.target.value as unknown }))}
  disabled={isReadOnly}
  >
  <option value="individual">Individual/Freelancer</option>
@@ -251,7 +251,7 @@ export default function CreateVendorClient({ mode, vendor, onSuccess, onCancel }
  <Select
  
  value={formData.primary_category}
- onValueChange={(value) => setFormData(prev => ({ ...prev, primary_category: value }))}
+ onChange={(e) => setFormData(prev => ({ ...prev, primary_category: value }))}
  disabled={isReadOnly}
  >
  <option value="">Select primary category</option>
@@ -379,7 +379,7 @@ export default function CreateVendorClient({ mode, vendor, onSuccess, onCancel }
  <Select
  
  value={formData.currency}
- onValueChange={(value) => setFormData(prev => ({ ...prev, currency: value }))}
+ onChange={(e) => setFormData(prev => ({ ...prev, currency: value }))}
  disabled={isReadOnly}
  >
  <option value="USD">USD</option>
@@ -393,7 +393,7 @@ export default function CreateVendorClient({ mode, vendor, onSuccess, onCancel }
  <Select
  
  value={formData.availability_status}
- onValueChange={(value) => setFormData(prev => ({ ...prev, availability_status: value as unknown }))}
+ onChange={(e) => setFormData(prev => ({ ...prev, availability_status: e.target.value as unknown }))}
  disabled={isReadOnly}
  >
  <option value="available">Available</option>
@@ -404,7 +404,7 @@ export default function CreateVendorClient({ mode, vendor, onSuccess, onCancel }
  <Select
  
  value={formData.response_time}
- onValueChange={(value) => setFormData(prev => ({ ...prev, response_time: value }))}
+ onChange={(e) => setFormData(prev => ({ ...prev, response_time: value }))}
  disabled={isReadOnly}
  >
  <option value="1 hour">Within 1 hour</option>

@@ -115,8 +115,10 @@ export default function ProgrammingClient({ orgId }: { orgId: string }) {
   ];
 
   // Load data from Supabase
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadData = async () => {

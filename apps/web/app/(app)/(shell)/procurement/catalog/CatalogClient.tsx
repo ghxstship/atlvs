@@ -171,7 +171,7 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
         <div className="flex gap-sm">
           <select 
             value={typeFilter} 
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTypeFilter(e.target.value as typeof typeFilter)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTypeFilter(e.target.e.target.value as typeof typeFilter)}
             className=" px-md py-sm border border-input bg-background rounded-md text-body-sm"
           >
             <option value="all">All Types</option>
@@ -181,7 +181,7 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
           
           <select 
             value={statusFilter} 
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.value as typeof statusFilter)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.e.target.value as typeof statusFilter)}
             className=" px-md py-sm border border-input bg-background rounded-md text-body-sm"
           >
             <option value="all">All Status</option>

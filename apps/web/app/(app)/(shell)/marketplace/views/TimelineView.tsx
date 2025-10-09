@@ -1,6 +1,9 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Badge } from '@ghxstship/ui';
+import {
+  Badge,
+  Button
+} from "@ghxstship/ui";
 import { Button } from '@ghxstship/ui';
 import { Clock, Calendar, User, DollarSign, MapPin } from 'lucide-react';
 import { marketplaceService } from '../lib/marketplace-service';

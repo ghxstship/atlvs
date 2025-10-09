@@ -2,8 +2,22 @@
 
 import React, { useState, useMemo } from 'react';
 import { ChevronUp, ChevronDown, MoreHorizontal, Edit, Trash2, Eye } from 'lucide-react';
-import { Button } from '@ghxstship/ui';
-import { Checkbox } from '@ghxstship/ui';
+import {
+  Button,
+  Checkbox,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
+import { Checkbox ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
 import {
   Table,
   TableBody,
@@ -13,9 +27,9 @@ import {
   TableRow
 } from '@ghxstship/ui';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
+  Dropdown,
+  
+  DropdownItem,
   DropdownMenuTrigger
 } from '@ghxstship/ui';
 import type { ProgrammingEntity, SortOptions } from '../types';

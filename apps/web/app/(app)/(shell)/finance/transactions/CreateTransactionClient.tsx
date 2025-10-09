@@ -197,7 +197,7 @@ export default function CreateTransactionClient({
               </label>
               <Select
                 value={formData.kind}
-                onValueChange={(value: string) => setFormData(prev => ({ ...prev, kind: value as 'revenue' | 'expense' }))}
+                onChange={(value: string) => setFormData(prev => ({ ...prev, kind: e.target.value as 'revenue' | 'expense' }))}
               >
                 <option value="revenue">Revenue (Money In)</option>
                 <option value="expense">Expense (Money Out)</option>
@@ -228,7 +228,7 @@ export default function CreateTransactionClient({
               </label>
               <Select
                 value={formData.currency}
-                onValueChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
+                onChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
               >
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
@@ -247,7 +247,7 @@ export default function CreateTransactionClient({
               <Building className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
               <Select
                 value={formData.accountId}
-                onValueChange={(value: any) => setFormData(prev => ({ ...prev, accountId: value }))}
+                onChange={(value: any) => setFormData(prev => ({ ...prev, accountId: value }))}
               >
                 <option value="">Select an account...</option>
                 {accounts.map((account: any) => (

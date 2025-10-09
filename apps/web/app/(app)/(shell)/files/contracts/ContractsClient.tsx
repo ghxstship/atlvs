@@ -3,23 +3,52 @@
 import { FileText, Plus, Filter, Download, Upload, AlertTriangle, Clock, CheckCircle, XCircle, RefreshCw } from "lucide-react";
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { 
- DataViewProvider, 
- StateManagerProvider, 
- ViewSwitcher, 
- DataActions,
- Drawer,
- DataViews,
- GridView,
- ListView,
- KanbanView,
- CalendarView,
- TimelineView,
- DashboardView
+import {
+  Badge,
+  Button,
+  CalendarView,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  DashboardView,
+  DataActions,
+  DataViewProvider,
+  DataViews,
+  Drawer,
+  GridView,
+  KanbanView,
+  ListView,
+  StateManagerProvider,
+  TimelineView,
+  ViewSwitcher
+} from "@ghxstship/ui";
+import { Button ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
 } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
+import { Card, CardContent, CardHeader, CardTitle ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { Badge ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
 
 import { contractsService } from './lib/contracts-service';
 import { 

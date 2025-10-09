@@ -1,5 +1,10 @@
 "use client";
 
+
+import {
+  AppDrawer
+} from "@ghxstship/ui";
+
 import { useState, useEffect } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import AppDrawer from "@ghxstship/ui";

@@ -2,7 +2,16 @@
 import { Activity, Award, Button, Calendar, Clock, FileText, Input, Play, Plus, Search, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Settings, Textarea, Trash2, TrendingUp, User } from 'lucide-react';
 import { type ChangeEvent, type FormEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import { createBrowserClient } from '@ghxstship/auth';
-import { AppDrawer, Button, Input, Select } from '@ghxstship/ui';
+import {
+  AppDrawer,
+  Button,
+  Input,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@ghxstship/ui";
 import { usePostHog } from 'posthog-js/react';
 import directoryService from '../lib/directoryService';
 import type { Person, UpdatePersonData } from '../types';
@@ -109,7 +118,7 @@ export default function EditPersonDrawer({ orgId, person, open, onClose, onUpdat
  }, []);
 
  const handleStatusChange = useCallback((value: string) => {
- setFormState((prev: unknown) => ({ ...prev, status: value as Person['status'] }));
+ setFormState((prev: unknown) => ({ ...prev, status: e.target.value as Person['status'] }));
  // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 

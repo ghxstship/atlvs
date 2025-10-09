@@ -3,14 +3,30 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { Button } from '@ghxstship/ui';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Input,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Textarea
+} from "@ghxstship/ui";
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { Input } from '@ghxstship/ui';
 import { Label } from '@ghxstship/ui';
 import { Textarea } from '@ghxstship/ui';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ghxstship/ui';
 import { Separator } from '@ghxstship/ui';
-import { ArrowLeft, Save, AlertCircle } from 'lucide-react';
+import { AlertCircle, ArrowLeft, Save, Settings } from "lucide-react";
 import { marketplaceService } from '../../lib/marketplace-service';
 import type { MarketplaceListing, UpsertListingDto } from '../../types';
 
@@ -34,8 +50,10 @@ export default function MarketplaceEditClient({
   const [formData, setFormData] = useState<Partial<MarketplaceListing>(initialListing);
 
   // Update form data when initial listing changes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setFormData(initialListing);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialListing]);
 
   const updateFormData = (field: string, value: unknown) => {
@@ -162,7 +180,7 @@ export default function MarketplaceEditClient({
                 <Label htmlFor="type">Type *</Label>
                 <Select
                   value={formData.type || 'offer'}
-                  onValueChange={(value: string) => updateFormData('type', value)}
+                  onChange={(value: string) => updateFormData('type', value)}
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -179,7 +197,7 @@ export default function MarketplaceEditClient({
                 <Label htmlFor="category">Category *</Label>
                 <Select
                   value={formData.category || 'services'}
-                  onValueChange={(value: string) => updateFormData('category', value)}
+                  onChange={(value: string) => updateFormData('category', value)}
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -231,7 +249,7 @@ export default function MarketplaceEditClient({
                 <Label htmlFor="currency">Currency</Label>
                 <Select
                   value={formData.pricing?.currency || 'USD'}
-                  onValueChange={(value: string) => updateNestedFormData('pricing', 'currency', value)}
+                  onChange={(value: string) => updateNestedFormData('pricing', 'currency', value)}
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -411,7 +429,7 @@ export default function MarketplaceEditClient({
               <Label htmlFor="preferredContactMethod">Preferred Contact Method</Label>
               <Select
                 value={formData.contactInfo?.preferredMethod || 'platform'}
-                onValueChange={(value: string) => updateNestedFormData('contactInfo', 'preferredMethod', value)}
+                onChange={(value: string) => updateNestedFormData('contactInfo', 'preferredMethod', value)}
               >
                 <SelectTrigger>
                   <SelectValue />
@@ -437,7 +455,7 @@ export default function MarketplaceEditClient({
                 <Label htmlFor="status">Status</Label>
                 <Select
                   value={formData.status || 'draft'}
-                  onValueChange={(value: string) => updateFormData('status', value)}
+                  onChange={(value: string) => updateFormData('status', value)}
                 >
                   <SelectTrigger>
                     <SelectValue />

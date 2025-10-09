@@ -320,7 +320,7 @@ export default function ChartView({
         <div className="grid grid-cols-1 md:grid-cols-4 gap-md mb-6">
           <div>
             <label className="block text-sm font-medium mb-2">Chart Type</label>
-            <Select value={chartType} onValueChange={(value: unknown) => setChartType(value)}>
+            <Select value={chartType} onChange={(value: unknown) => setChartType(value)}>
               <Select.Trigger>
                 <Select.Value />
               </Select.Trigger>
@@ -335,7 +335,7 @@ export default function ChartView({
 
           <div>
             <label className="block text-sm font-medium mb-2">Metric</label>
-            <Select value={metric} onValueChange={(value: unknown) => setMetric(value)}>
+            <Select value={metric} onChange={(value: unknown) => setMetric(value)}>
               <Select.Trigger>
                 <Select.Value />
               </Select.Trigger>
@@ -350,7 +350,7 @@ export default function ChartView({
 
           <div>
             <label className="block text-sm font-medium mb-2">Group By</label>
-            <Select value={groupBy} onValueChange={(value: unknown) => setGroupBy(value)}>
+            <Select value={groupBy} onChange={(value: unknown) => setGroupBy(value)}>
               <Select.Trigger>
                 <Select.Value />
               </Select.Trigger>
@@ -366,7 +366,7 @@ export default function ChartView({
           {groupBy === 'date' && (
             <div>
               <label className="block text-sm font-medium mb-2">Date Range</label>
-              <Select value={dateRange} onValueChange={(value: unknown) => setDateRange(value)}>
+              <Select value={dateRange} onChange={(value: unknown) => setDateRange(value)}>
                 <Select.Trigger>
                   <Select.Value />
                 </Select.Trigger>

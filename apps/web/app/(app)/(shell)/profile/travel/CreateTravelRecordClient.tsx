@@ -139,7 +139,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
               id="travel_type" 
               className="rounded border  px-md py-xs" 
               value={form.getValues('travel_type') || 'business'} 
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('travel_type', e.target.value as any, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('travel_type', e.target.e.target.value as any, { shouldDirty: true })}
             >
               <option value="business">Business</option>
               <option value="personal">Personal</option>
@@ -251,7 +251,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
                 id="visa_status" 
                 className="rounded border  px-md py-xs" 
                 value={form.getValues('visa_status') || 'pending'} 
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('visa_status', e.target.value as any, { shouldDirty: true })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('visa_status', e.target.e.target.value as any, { shouldDirty: true })}
               >
                 <option value="pending">Pending</option>
                 <option value="approved">Approved</option>

@@ -5,17 +5,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Card, Badge, Button } from '@ghxstship/ui';
-import { 
-  Activity, 
-  Clock, 
-  User, 
-  Edit, 
-  Trash2, 
-  Eye,
-  Filter,
-  Calendar,
-  Download
-} from 'lucide-react';
+import { Activity, Calendar, Clock, Download, Edit, Eye, Filter, History, Trash2, User } from "lucide-react";
 
 interface ActivityRecord {
   id: string;
@@ -37,6 +27,7 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
 
   useEffect(() => {
     loadActivities();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, userId, filter]);
 
   const loadActivities = async () => {

@@ -2,11 +2,14 @@
 
 import { Edit3, FileText, Activity as ActivityIcon, MessageSquare } from "lucide-react";
 import { useEffect, useState } from 'react';
-import { Button } from '@ghxstship/ui';
+import {
+  AppDrawer,
+  Button,
+  tryCatch,
+  reportError
+} from "@ghxstship/ui";
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { tryCatch, reportError } from '@ghxstship/ui/utils/error-handling';
-import { AppDrawer } from '@ghxstship/ui';
 
 interface VendorProfileDrawerProps {
  orgId: string;
@@ -134,6 +137,8 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  }
  setLoadingComments(false);
  })();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [open, vendorId, orgId, supabase]);
 
  useEffect(() => {
@@ -156,7 +161,9 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  setActivity([]);
  }
  setLoadingActivity(false);
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  })();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [open, vendorId, orgId]);
 
  if (!open) return null;

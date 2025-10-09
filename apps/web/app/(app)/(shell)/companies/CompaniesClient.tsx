@@ -174,11 +174,9 @@ export default function CompaniesClient({ orgId, userId: _userId, userEmail: _us
       setError(err instanceof Error ? err.message : 'Failed to load companies');
       return [];
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   // Load data on mount and when filters change
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);

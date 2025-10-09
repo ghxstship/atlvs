@@ -5,17 +5,25 @@
 import { Send, DollarSign, Calendar, CheckCircle, XCircle, Star, Award, AlertCircle, FileText, Key } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from 'react';
 import {
- Card,
- Button,
- Badge,
- UnifiedInput,
- Textarea,
- Select,
- SelectContent,
- SelectItem,
- SelectTrigger,
- SelectValue
-} from '@ghxstship/ui';
+  AppDrawer,
+  Badge,
+  Button,
+  Card,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  Input,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Textarea,
+  UnifiedInput
+} from "@ghxstship/ui";
 import { createBrowserClient } from '@ghxstship/auth';
 import { AppDrawer } from '@ghxstship/ui';
 
@@ -122,6 +130,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  useEffect(() => {
  loadProject();
  loadProposals();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [projectId]);
 
  async function loadProject() {
@@ -133,8 +142,9 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  
  setProject(data as OpenDeckProject | null);
  }
+// eslint-disable-next-line react-hooks/exhaustive-deps
 
- async function loadProposals() {
+ const loadProposals = useCallback(async () => {
  setLoading(true);
  try {
  let query = supabase
@@ -166,7 +176,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  } finally {
  setLoading(false);
  }
- }
+ }, [projectId, mode, vendorId, supabase]);
 
  async function updateProposalStatus(proposalId: string, status: ProposalStatus) {
  try {
@@ -193,16 +203,16 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
 
  const handleInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
  const { name, value } = event.target;
- updateForm(name as keyof ProposalFormData, value as ProposalFormData[keyof ProposalFormData]);
+ updateForm(name as keyof ProposalFormData, e.target.value as ProposalFormData[keyof ProposalFormData]);
  }, [updateForm]);
 
  const handleTextareaChange = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
  const { name, value } = event.target;
- updateForm(name as keyof ProposalFormData, value as ProposalFormData[keyof ProposalFormData]);
+ updateForm(name as keyof ProposalFormData, e.target.value as ProposalFormData[keyof ProposalFormData]);
  }, [updateForm]);
 
  const handleFeeTypeChange = useCallback((value: string) => {
- updateForm('feeType', value as ProposalFeeType);
+ updateForm('feeType', e.target.value as ProposalFeeType);
  }, [updateForm]);
 
  const handleOpenDrawer = useCallback((proposal?: OpenDeckProposal | null) => {
@@ -622,7 +632,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  <label htmlFor="bidAmount" className="text-body-sm form-label">
  {formData.feeType === 'hourly' ? 'Hourly Rate' : 'Total Amount'}
  </label>
- <UnifiedInput
+ <Input
  
  
  type="number"
@@ -641,7 +651,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  <label htmlFor="estimatedHours" className="text-body-sm form-label">
  Estimated Hours
  </label>
- <UnifiedInput
+ <Input
  
  
  type="number"
@@ -658,7 +668,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  <label htmlFor="proposedTimeline" className="text-body-sm form-label">
  Proposed Timeline
  </label>
- <UnifiedInput
+ <Input
  
  
  value={formData.proposedTimeline}
@@ -672,7 +682,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  <label htmlFor="startAvailability" className="text-body-sm form-label">
  Start Availability
  </label>
- <UnifiedInput
+ <Input
  
  
  type="date"

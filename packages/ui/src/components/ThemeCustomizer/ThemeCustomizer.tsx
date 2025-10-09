@@ -33,14 +33,13 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
   className,
 }) => {
   const { theme, setTheme } = useTheme();
-  // eslint-disable-next-line no-hardcoded-colors -- Default values for theme customizer color picker
   const [customColors, setCustomColors] = useState({
-    primary: '#000000',
-    secondary: '#64748b',
-    accent: '#3b82f6',
-    success: '#22c55e',
-    warning: '#f59e0b',
-    error: '#ef4444',
+    primary: 'hsl(var(--color-primary))',
+    secondary: 'hsl(var(--color-secondary))',
+    accent: 'hsl(var(--color-accent))',
+    success: 'hsl(var(--color-success))',
+    warning: 'hsl(var(--color-warning))',
+    error: 'hsl(var(--color-destructive))',
   });
 
   const handleColorChange = (colorKey: string, value: string) => {

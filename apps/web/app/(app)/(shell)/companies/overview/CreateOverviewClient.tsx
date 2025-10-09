@@ -218,7 +218,7 @@ export default function CreateOverviewClient({
               </label>
               <Select
                 value={formData.type}
-                onValueChange={(value: any) => handleInputChange('type', value)}
+                onChange={(value: any) => handleInputChange('type', value)}
               >
                 {OVERVIEW_TYPES.map(type => (
                   <option key={type.value} value={type.value}>
@@ -258,7 +258,7 @@ export default function CreateOverviewClient({
                 </label>
                 <Select
                   value={formData.priority}
-                  onValueChange={(value: any) => handleInputChange('priority', value)}
+                  onChange={(value: any) => handleInputChange('priority', value)}
                 >
                   {PRIORITIES.map(priority => (
                     <option key={priority.value} value={priority.value}>
@@ -274,7 +274,7 @@ export default function CreateOverviewClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value: any) => handleInputChange('status', value)}
+                  onChange={(value: any) => handleInputChange('status', value)}
                 >
                   {STATUSES.map(status => (
                     <option key={status.value} value={status.value}>
@@ -301,7 +301,7 @@ export default function CreateOverviewClient({
               </label>
               <Select
                 value={formData.companyId}
-                onValueChange={(value: any) => handleInputChange('companyId', value)}
+                onChange={(value: any) => handleInputChange('companyId', value)}
               >
                 <option value="">No company association</option>
                 {companies.map(company => (
@@ -318,7 +318,7 @@ export default function CreateOverviewClient({
               </label>
               <Select
                 value={formData.assignedTo}
-                onValueChange={(value: any) => handleInputChange('assignedTo', value)}
+                onChange={(value: any) => handleInputChange('assignedTo', value)}
               >
                 <option value="">Unassigned</option>
                 {teamMembers.map(member => (

@@ -2,7 +2,13 @@
 
 import React, { useState, useMemo } from 'react';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, Eye, Edit, Download, Trash2, Share, Plus, CalendarIcon } from 'lucide-react';
-import { Button, Card, Badge, DropdownMenu } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  CalendarView,
+  Card,
+  DropdownMenu
+} from "@ghxstship/ui";
 import {
   format,
   startOfMonth,

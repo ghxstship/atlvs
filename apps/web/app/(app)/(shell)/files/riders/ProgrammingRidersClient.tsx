@@ -21,11 +21,14 @@ import {
  SelectTrigger,
  SelectValue,
  Tabs,
- TabsContent,
- TabsList,
- TabsTrigger,
- type DataRecord
-} from '@ghxstship/ui';
+ type DataRecord,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from "@ghxstship/ui";
 import type { DataViewConfig, FieldConfig, FilterConfig, SortConfig } from '@ghxstship/ui/src/components/DataViews/types';
 
 import type {
@@ -126,6 +129,7 @@ export default function ProgrammingRidersClient({
  return () => {
  supabase.removeChannel(channel);
  };
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [supabase, orgId]);
 
  // Fetch riders with filters
@@ -356,8 +360,8 @@ export default function ProgrammingRidersClient({
 
  <Select
  value={filters.kind || ''}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, kind: value as RiderKind || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, kind: e.target.value as RiderKind || undefined }))
  }
  >
  <SelectTrigger className="w-40">
@@ -380,8 +384,8 @@ export default function ProgrammingRidersClient({
 
  <Select
  value={filters.status || ''}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, status: value as RiderStatus || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, status: e.target.value as RiderStatus || undefined }))
  }
  >
  <SelectTrigger className="w-40">
@@ -401,8 +405,8 @@ export default function ProgrammingRidersClient({
 
  <Select
  value={filters.event_id || ''}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, event_id: value || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, event_id: e.target.value || undefined }))
  }
  >
  <SelectTrigger className="w-container-xs">

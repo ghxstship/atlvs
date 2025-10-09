@@ -12,8 +12,14 @@ import {
  SelectContent,
  SelectItem,
  SelectTrigger,
- SelectValue
-} from '@ghxstship/ui';
+ SelectValue,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from "@ghxstship/ui";
 
 import type {
  ProgrammingWorkshop,
@@ -111,6 +117,8 @@ export default function ProgrammingWorkshopsClient({
  return () => {
  supabase.removeChannel(channel);
  };
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [supabase, orgId]);
 
  // Fetch workshops with filters
@@ -337,8 +345,8 @@ export default function ProgrammingWorkshopsClient({
 
  <Select
  value={filters.category || ''}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, category: value as WorkshopCategory || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, category: e.target.value as WorkshopCategory || undefined }))
  }
  >
  <SelectTrigger className="w-40">
@@ -361,8 +369,8 @@ export default function ProgrammingWorkshopsClient({
 
  <Select
  value={filters.status || ''}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, status: value as WorkshopStatus || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, status: e.target.value as WorkshopStatus || undefined }))
  }
  >
  <SelectTrigger className="w-40">
@@ -383,8 +391,8 @@ export default function ProgrammingWorkshopsClient({
 
  <Select
  value={filters.skill_level || ''}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, skill_level: value as WorkshopSkillLevel || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, skill_level: e.target.value as WorkshopSkillLevel || undefined }))
  }
  >
  <SelectTrigger className="w-40">
@@ -402,8 +410,8 @@ export default function ProgrammingWorkshopsClient({
 
  <Select
  value={filters.format || ''}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, format: value as WorkshopFormat || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, format: e.target.value as WorkshopFormat || undefined }))
  }
  >
  <SelectTrigger className="w-40">
@@ -419,8 +427,8 @@ export default function ProgrammingWorkshopsClient({
 
  <Select
  value={filters.project_id || ''}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, project_id: value || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, project_id: e.target.value || undefined }))
  }
  >
  <SelectTrigger className="w-container-xs">

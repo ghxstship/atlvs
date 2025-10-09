@@ -254,7 +254,7 @@ export default function EditHistoryDrawer({
  <Label htmlFor="entry_type">Entry Type *</Label>
  <Select
  value={getValues('entry_type')}
- onValueChange={(value) => setValue('entry_type', value as HistoryEntryType)}
+ onChange={(e) => setValue('entry_type', e.target.value as HistoryEntryType)}
  >
  <SelectTrigger>
  <SelectValue />
@@ -276,7 +276,7 @@ export default function EditHistoryDrawer({
  <Label htmlFor="visibility">Visibility</Label>
  <Select
  value={getValues('visibility')}
- onValueChange={(value) => setValue('visibility', value as HistoryVisibility)}
+ onChange={(e) => setValue('visibility', e.target.value as HistoryVisibility)}
  >
  <SelectTrigger>
  <SelectValue />
@@ -371,7 +371,7 @@ export default function EditHistoryDrawer({
  <Label htmlFor="employment_type">Employment Type</Label>
  <Select
  value={getValues('employment_type') || ''}
- onValueChange={(value) => setValue('employment_type', value as EmploymentType)}
+ onChange={(e) => setValue('employment_type', e.target.value as EmploymentType)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select type" />
@@ -406,7 +406,7 @@ export default function EditHistoryDrawer({
  <Label htmlFor="education_level">Education Level</Label>
  <Select
  value={getValues('education_level') || ''}
- onValueChange={(value) => setValue('education_level', value as EducationLevel)}
+ onChange={(e) => setValue('education_level', e.target.value as EducationLevel)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select level" />
@@ -441,7 +441,7 @@ export default function EditHistoryDrawer({
  <Label htmlFor="project_status">Project Status</Label>
  <Select
  value={getValues('project_status') || ''}
- onValueChange={(value) => setValue('project_status', value as ProjectStatus)}
+ onChange={(e) => setValue('project_status', e.target.value as ProjectStatus)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select status" />

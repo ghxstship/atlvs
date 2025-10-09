@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Settings, Bell, Shield, CreditCard, Globe, Users, Eye, Lock, Mail, Smartphone, Save, RefreshCw, AlertCircle, CheckCircle, Trash2 } from "lucide-react";
 import { useState, useEffect } from 'react';
 import { 
@@ -214,7 +215,7 @@ export default function SettingsClient({ orgId, userId }: SettingsClientProps) {
  <div className="flex items-center gap-sm">
  <div className="h-component-md w-component-md bg-muted rounded flex items-center justify-center">
  {settings.logo_url ? (
- <img src={settings.logo_url} alt="Logo" className="h-full w-full object-cover rounded" />
+ <Image src={settings.logo_url} alt="Logo" width={48} height={48} className="h-full w-full object-cover rounded" />
  ) : (
  <Users className="h-icon-lg w-icon-lg color-muted" />
  )}
@@ -241,7 +242,7 @@ export default function SettingsClient({ orgId, userId }: SettingsClientProps) {
  <label className="text-body-sm font-medium mb-xs block">Profile Visibility</label>
  <Select
  value={settings.profile_visibility}
- onValueChange={(value: unknown) => updateSettings({ profile_visibility: value })}
+ onChange={(value: unknown) => updateSettings({ profile_visibility: value })}
  >
  <option value="public">Public - Visible to everyone</option>
  <option value="marketplace_only">Marketplace Only - Visible to marketplace users</option>
@@ -334,7 +335,7 @@ export default function SettingsClient({ orgId, userId }: SettingsClientProps) {
  <label className="text-body-sm font-medium mb-xs block">Default Response Time</label>
  <Select
  value={settings.default_response_time}
- onValueChange={(value) => updateSettings({ default_response_time: value })}
+ onChange={(e) => updateSettings({ default_response_time: value })}
  >
  <option value="1 hour">Within 1 hour</option>
  <option value="4 hours">Within 4 hours</option>
@@ -354,7 +355,7 @@ export default function SettingsClient({ orgId, userId }: SettingsClientProps) {
  <Select
  
  value={settings.currency}
- onValueChange={(value) => updateSettings({ currency: value })}
+ onChange={(e) => updateSettings({ currency: value })}
  >
  <option value="USD">USD</option>
  <option value="EUR">EUR</option>
@@ -413,7 +414,7 @@ export default function SettingsClient({ orgId, userId }: SettingsClientProps) {
  <label className="text-body-sm font-medium mb-xs block">Session Timeout (minutes)</label>
  <Select
  value={settings.session_timeout.toString()}
- onValueChange={(value) => updateSettings({ session_timeout: parseInt(value) })}
+ onChange={(e) => updateSettings({ session_timeout: parseInt(value) })}
  >
  <option value="15">15 minutes</option>
  <option value="30">30 minutes</option>
@@ -445,7 +446,7 @@ export default function SettingsClient({ orgId, userId }: SettingsClientProps) {
  <Select
  
  value={settings.payment_terms}
- onValueChange={(value) => updateSettings({ payment_terms: value })}
+ onChange={(e) => updateSettings({ payment_terms: value })}
  >
  <option value="Due on receipt">Due on receipt</option>
  <option value="Net 15">Net 15</option>
@@ -466,7 +467,7 @@ export default function SettingsClient({ orgId, userId }: SettingsClientProps) {
  <label className="text-body-sm font-medium mb-xs block">Escrow Preference</label>
  <Select
  value={settings.escrow_preference}
- onValueChange={(value: unknown) => updateSettings({ escrow_preference: value })}
+ onChange={(value: unknown) => updateSettings({ escrow_preference: value })}
  >
  <option value="always">Always use escrow</option>
  <option value="large_projects">Use for large projects only</option>

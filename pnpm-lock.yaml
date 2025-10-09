@@ -492,6 +492,8 @@ importers:
 
   packages/domain: {}
 
+  packages/eslint-config: {}
+
   packages/i18n:
     dependencies:
       next:

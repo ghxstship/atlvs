@@ -1,6 +1,6 @@
 'use client';
 
-import { DollarSign, Clock, CheckCircle, XCircle, AlertCircle, Building } from "lucide-react";
+import { AlertCircle, Building, CheckCircle, Clock, DollarSign, Edit, XCircle } from "lucide-react";
 import { useMemo } from 'react';
 import { DataGrid, Badge, Button } from '@ghxstship/ui';
 import type { JobBid } from '../types';

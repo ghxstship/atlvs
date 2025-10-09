@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Building, Globe, Mail, Phone, MapPin, Users, Edit, Eye, Trash2 } from "lucide-react";
 import { Card, Button, Badge } from '@ghxstship/ui';
 import type { Company } from '../types';
@@ -97,9 +98,11 @@ export default function DirectoryGridView({
  </Badge>
  </div>
  {company.logo_url && (
- <img
+ <Image
  src={company.logo_url}
  alt={`${company.name} logo`}
+ width={64}
+ height={64}
  className="w-icon-2xl h-icon-2xl rounded-lg object-cover"
  />
  )}

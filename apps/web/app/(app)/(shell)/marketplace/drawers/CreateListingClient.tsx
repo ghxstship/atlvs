@@ -170,7 +170,7 @@ export default function CreateListingClient({ mode, listing, onSuccess, onCancel
  <Select
  
  value={formData.type}
- onValueChange={(value) => setFormData(prev => ({ ...prev, type: value as unknown }))}
+ onChange={(e) => setFormData(prev => ({ ...prev, type: e.target.value as unknown }))}
  disabled={isReadOnly}
  >
  <option value="offer">Offer</option>
@@ -181,7 +181,7 @@ export default function CreateListingClient({ mode, listing, onSuccess, onCancel
  <Select
  
  value={formData.category}
- onValueChange={(value) => setFormData(prev => ({ ...prev, category: value as unknown }))}
+ onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value as unknown }))}
  disabled={isReadOnly}
  >
  <option value="equipment">Equipment</option>
@@ -218,7 +218,7 @@ export default function CreateListingClient({ mode, listing, onSuccess, onCancel
  <Select
  
  value={formData.pricing?.currency || 'USD'}
- onValueChange={(value) => setFormData(prev => ({
+ onChange={(e) => setFormData(prev => ({
  ...prev,
  pricing: { ...prev.pricing, currency: value }
  }))}

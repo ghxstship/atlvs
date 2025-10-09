@@ -254,7 +254,7 @@ export default function CreateContractClient({
                 </label>
                 <Select
                   value={formData.contractType}
-                  onValueChange={(value: any) => handleInputChange('contractType', value)}
+                  onChange={(value: any) => handleInputChange('contractType', value)}
                 >
                   {CONTRACT_TYPES.map(type => (
                     <option key={type.value} value={type.value}>
@@ -270,7 +270,7 @@ export default function CreateContractClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value: any) => handleInputChange('status', value)}
+                  onChange={(value: any) => handleInputChange('status', value)}
                 >
                   {CONTRACT_STATUSES.map(status => (
                     <option key={status.value} value={status.value}>
@@ -297,7 +297,7 @@ export default function CreateContractClient({
               </label>
               <Select
                 value={formData.companyId}
-                onValueChange={(value: any) => handleInputChange('companyId', value)}
+                onChange={(value: any) => handleInputChange('companyId', value)}
               >
                 <option value="">Select a company</option>
                 {companies.map(company => (
@@ -314,7 +314,7 @@ export default function CreateContractClient({
               </label>
               <Select
                 value={formData.projectId}
-                onValueChange={(value: any) => handleInputChange('projectId', value)}
+                onChange={(value: any) => handleInputChange('projectId', value)}
               >
                 <option value="">No project association</option>
                 {projects.map(project => (
@@ -377,7 +377,7 @@ export default function CreateContractClient({
                 </label>
                 <Select
                   value={formData.currency}
-                  onValueChange={(value: any) => handleInputChange('currency', value)}
+                  onChange={(value: any) => handleInputChange('currency', value)}
                 >
                   {CURRENCIES.map(currency => (
                     <option key={currency.value} value={currency.value}>

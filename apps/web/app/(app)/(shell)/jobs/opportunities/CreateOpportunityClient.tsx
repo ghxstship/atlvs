@@ -6,7 +6,14 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Plus, Loader2, AlertCircle } from 'lucide-react';import { Button, UnifiedInput, Select, Textarea, Drawer } from '@ghxstship/ui';
+import { Plus, Loader2, AlertCircle } from 'lucide-react';import {
+  Button,
+  Drawer,
+  Input,
+  Select,
+  Textarea,
+  UnifiedInput
+} from "@ghxstship/ui";
 import { Button, Select, Textarea, Drawer } from '@ghxstship/ui';
 
 import { usePostHog } from 'posthog-js/react';
@@ -179,7 +186,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
               <label htmlFor="title" className="block text-body-sm form-label color-foreground mb-sm">
                 Title *
               </label>
-              <UnifiedInput                 id="title"
+              <Input                 id="title"
                 {...register('title')}
                 placeholder="Enter opportunity title"
                
@@ -233,7 +240,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 <label htmlFor="estimatedValue" className="block text-body-sm form-label color-foreground mb-sm">
                   Estimated Value
                 </label>
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   step="0.01"
                   {...register('estimatedValue', { valueAsNumber: true })}
                   placeholder="0.00"
@@ -259,7 +266,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 <label htmlFor="probability" className="block text-body-sm form-label color-foreground mb-sm">
                   Probability (%)
                 </label>
-                <UnifiedInput                   type="number"
+                <Input                   type="number"
                   min="0"
                   max="100"
                   {...register('probability', { valueAsNumber: true })}
@@ -272,7 +279,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 <label htmlFor="expectedCloseDate" className="block text-body-sm form-label color-foreground mb-sm">
                   Expected Close Date
                 </label>
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   {...register('expectedCloseDate')}
                 />
               </div>
@@ -283,7 +290,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 <label htmlFor="clientName" className="block text-body-sm form-label color-foreground mb-sm">
                   Client Name
                 </label>
-                <UnifiedInput                   {...register('clientName')}
+                <Input                   {...register('clientName')}
                   placeholder="Enter client name"
                 />
               </div>
@@ -292,7 +299,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 <label htmlFor="clientContact" className="block text-body-sm form-label color-foreground mb-sm">
                   Client Contact
                 </label>
-                <UnifiedInput                   {...register('clientContact')}
+                <Input                   {...register('clientContact')}
                   placeholder="Enter contact information"
                 />
               </div>
@@ -302,7 +309,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
               <label htmlFor="source" className="block text-body-sm form-label color-foreground mb-sm">
                 Source
               </label>
-              <UnifiedInput                 {...register('source')}
+              <Input                 {...register('source')}
                 placeholder="How did you find this opportunity?"
               />
             </div>

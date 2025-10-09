@@ -1,15 +1,14 @@
 "use client";
 
-import { Accessibility, Building, Calendar, Car, Clock, Coffee, DollarSign, Edit, ExternalShare2, Eye, FileText, Image, Mail, MapPin, Monitor, Navigation, Phone, Share2, Tag, Train, Users, Wifi } from 'lucide-react';
+import Image from 'next/image';
+import { Accessibility, Building, Calendar, Car, Clock, Coffee, DollarSign, Edit, Eye, FileText, Mail, MapPin, Monitor, Navigation, Phone, Share2, Tag, Train, Users, Wifi } from 'lucide-react';
 import {
- Button,
- Badge,
- Tabs,
- TabsList,
- TabsTrigger,
- TabsContent
+  AppDrawer,
+  Badge,
+  Button,
+  Tabs,
+  TabsContent
 } from "@ghxstship/ui";
-import { AppDrawer } from "@ghxstship/ui";
 import { format, parseISO, formatDistanceToNow } from "date-fns";
 import type { Location } from "./LocationsClient";
 import type { LucideIcon } from "lucide-react";
@@ -40,7 +39,7 @@ export default function ViewLocationDrawer({
  // Custom tabs for location details
  const tabs = [
  {
- key: "overview",
+ id: "overview",
  label: "Overview",
  content: (
  <div className="space-y-md">
@@ -48,17 +47,13 @@ export default function ViewLocationDrawer({
  {location.images && location.images.length > 0 && (
  <div className="space-y-sm">
  <h4 className="font-semibold flex items-center gap-xs">
- <Image className="h-icon-xs w-icon-xs" />
+ <Eye className="h-icon-xs w-icon-xs" />
  Photos
  </h4>
  <div className="grid grid-cols-2 gap-sm">
  {location.images.slice(0, 4).map((image, index) => (
  <div key={index} className="aspect-video bg-muted rounded-lg overflow-hidden">
- <img
- src={image}
- alt={`${location.name} ${index + 1}`}
- className="w-full h-full object-cover"
- />
+ <Image src={image} alt={`${location.name} - Photo ${index + 1}`} width={400} height={300} className="w-full h-full object-cover" />
  </div>
  ))}
  </div>
@@ -107,7 +102,7 @@ export default function ViewLocationDrawer({
  </p>
  {(location.coordinates || location.address) && (
  <Button
- variant="outline"
+ variant="secondary"
  size="sm"
  onClick={onNavigate}
  className="mt-xs"
@@ -197,7 +192,7 @@ export default function ViewLocationDrawer({
  </div>
  <div className="flex flex-wrap gap-xs">
  {location.tags.map((tag, index) => (
- <Badge key={index} variant="outline">
+ <Badge key={index} variant="secondary">
  {tag}
  </Badge>
  ))}
@@ -215,7 +210,7 @@ export default function ViewLocationDrawer({
  )
  },
  {
- key: "amenities",
+ id: "amenities",
  label: "Amenities & Access",
  content: (
  <div className="space-y-md">
@@ -294,13 +289,10 @@ export default function ViewLocationDrawer({
  )
  },
  {
- key: "contact",
+ id: "contact",
  label: "Contact",
  content: (
  <div className="space-y-md">
- {location.contact_name || location.contact_phone || location.contact_email ? (
- <>
- {/* Contact Person */}
  {location.contact_name && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
@@ -311,7 +303,6 @@ export default function ViewLocationDrawer({
  </div>
  )}
 
- {/* Phone */}
  {location.contact_phone && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
@@ -319,7 +310,7 @@ export default function ViewLocationDrawer({
  <span>Phone</span>
  </div>
  <a
- href={`tel:${location.contact_phone as any as any}`}
+ href={`tel:${location.contact_phone}`}
  className="font-medium text-primary hover:underline"
  >
  {location.contact_phone}
@@ -327,7 +318,6 @@ export default function ViewLocationDrawer({
  </div>
  )}
 
- {/* Email */}
  {location.contact_email && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
@@ -335,15 +325,15 @@ export default function ViewLocationDrawer({
  <span>Email</span>
  </div>
  <a
- href={`mailto:${location.contact_email as any as any}`}
+ href={`mailto:${location.contact_email}`}
  className="font-medium text-primary hover:underline"
  >
  {location.contact_email}
  </a>
  </div>
  )}
- </>
- ) : (
+
+ {(!location.contact_name && !location.contact_phone && !location.contact_email) && (
  <div className="text-center py-lg text-muted-foreground">
  <Phone className="mx-auto h-icon-lg w-icon-lg mb-sm opacity-50" />
  <p>No contact information available</p>
@@ -356,7 +346,7 @@ export default function ViewLocationDrawer({
  <div className="space-y-sm">
  {location.contact_phone && (
  <Button
- variant="outline"
+ variant="secondary"
  className="w-full justify-start"
  onClick={() => window.open(`tel:${location.contact_phone}`, "_blank")}
  >
@@ -366,7 +356,7 @@ export default function ViewLocationDrawer({
  )}
  {location.contact_email && (
  <Button
- variant="outline"
+ variant="secondary"
  className="w-full justify-start"
  onClick={() => window.open(`mailto:${location.contact_email}`, "_blank")}
  >
@@ -376,7 +366,7 @@ export default function ViewLocationDrawer({
  )}
  {(location.coordinates || location.address) && (
  <Button
- variant="outline"
+ variant="secondary"
  className="w-full justify-start"
  onClick={onNavigate}
  >
@@ -390,7 +380,7 @@ export default function ViewLocationDrawer({
  )
  },
  {
- key: "floorplans",
+ id: "floorplans",
  label: "Floor Plans",
  content: (
  <div className="space-y-md">
@@ -400,11 +390,7 @@ export default function ViewLocationDrawer({
  <div className="grid grid-cols-1 gap-sm">
  {location.floor_plans.map((plan, index) => (
  <div key={index} className="border rounded-lg overflow-hidden">
- <img
- src={plan}
- alt={`Floor plan ${index + 1}`}
- className="w-full"
- />
+ <Image src={plan} alt={`Floor plan ${index + 1}`} width={400} height={300} className="w-full" />
  </div>
  ))}
  </div>
@@ -425,32 +411,42 @@ export default function ViewLocationDrawer({
  open={open}
  onClose={() => onOpenChange(false)}
  title={location.name}
- mode="view"
  tabs={tabs}
- actions={[
- {
- key: "navigate",
- label: "Navigate",
- icon: <Navigation className="h-icon-xs w-icon-xs" />,
- onClick: onNavigate
- },
- {
- key: "share",
- label: "Share",
- icon: <Share2 className="h-icon-xs w-icon-xs" />,
- onClick: async () => {
+ headerActions={
+ <div className="flex items-center gap-xs">
+ {onNavigate && (
+ <Button
+ variant="secondary"
+ size="sm"
+ onClick={onNavigate}
+ title="Navigate"
+ >
+ <Navigation className="h-icon-xs w-icon-xs" />
+ </Button>
+ )}
+ <Button
+ variant="secondary"
+ size="sm"
+ onClick={async () => {
  const text = `${location.name}\n${location.address || ""}, ${location.city || ""}, ${location.state || ""}`;
  await navigator.clipboard.writeText(text);
- // Toast would show "Location copied to clipboard"
+ }}
+ title="Share"
+ >
+ <Share2 className="h-icon-xs w-icon-xs" />
+ </Button>
+ {onEdit && (
+ <Button
+ variant="secondary"
+ size="sm"
+ onClick={onEdit}
+ title="Edit"
+ >
+ <Edit className="h-icon-xs w-icon-xs" />
+ </Button>
+ )}
+ </div>
  }
- },
- {
- key: "edit",
- label: "Edit",
- icon: <Edit className="h-icon-xs w-icon-xs" />,
- onClick: onEdit
- },
- ]}
  />
  );
 }

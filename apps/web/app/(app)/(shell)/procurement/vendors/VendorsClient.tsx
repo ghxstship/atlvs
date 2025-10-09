@@ -142,7 +142,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
         <div className="flex gap-sm">
           <select
             value={statusFilter}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.value as any)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.e.target.value as any)}
             className=" px-md py-sm border border-input rounded-md bg-background"
           >
             <option value="all">All Status</option>

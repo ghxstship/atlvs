@@ -1,6 +1,19 @@
 "use client";
 
-import { Card, Badge, Button, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ghxstship/ui";
+import {
+  Badge,
+  Button,
+  Card,
+  Checkbox,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import type { Activation } from "../ActivationsClient";
 import { Calendar, Check, CheckCircle, Copy, Edit, Eye, Play, Trash2, MoreVertical, MapPin, Clock, DollarSign, Building } from 'lucide-react';

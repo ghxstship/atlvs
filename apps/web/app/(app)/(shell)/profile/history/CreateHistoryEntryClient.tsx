@@ -132,7 +132,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
               id="entry_type" 
               className="rounded border  px-md py-xs" 
               value={form.getValues('entry_type') || 'employment'} 
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('entry_type', e.target.value as any, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('entry_type', e.target.e.target.value as any, { shouldDirty: true })}
             >
               <option value="employment">Employment</option>
               <option value="education">Education</option>

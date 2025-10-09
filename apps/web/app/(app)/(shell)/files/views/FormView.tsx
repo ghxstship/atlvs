@@ -13,7 +13,13 @@ import {
   Share,
   MoreHorizontal
 } from 'lucide-react';
-import { Card, Button, Input, Select, DropdownMenu, Badge, Textarea } from '@ghxstship/ui';
+import { Card, Button, Input, Select, Dropdown, Badge, Textarea ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
 import type { DigitalAsset } from '../types';
 
 interface FormViewProps {
@@ -228,7 +234,7 @@ export default function FormView({
                   {isEditing ? (
                     <Select
                       value={formData.category || ''}
-                      onValueChange={(value) => handleFieldChange('category', value)}
+                      onChange={(e) => handleFieldChange('category', value)}
                     >
                       <Select.Trigger>
                         <Select.Value placeholder="Select category" />
@@ -280,7 +286,7 @@ export default function FormView({
                   {isEditing ? (
                     <Select
                       value={formData.access_level || ''}
-                      onValueChange={(value) => handleFieldChange('access_level', value)}
+                      onChange={(e) => handleFieldChange('access_level', value)}
                     >
                       <Select.Trigger>
                         <Select.Value placeholder="Select access level" />

@@ -1,6 +1,6 @@
 'use client';
 
-import { Shield, Clock, CheckCircle, XCircle, AlertTriangle, FileText, Calendar } from "lucide-react";
+import { AlertTriangle, Calendar, CheckCircle, Clock, Edit, FileText, Shield, XCircle } from "lucide-react";
 import { useMemo } from 'react';
 import { DataGrid, Badge, Button } from '@ghxstship/ui';
 import type { JobCompliance } from '../types';

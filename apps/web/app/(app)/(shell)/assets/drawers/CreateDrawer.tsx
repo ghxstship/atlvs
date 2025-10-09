@@ -15,13 +15,26 @@ import Image from "next/image";
 import { Asset } from '../types';
 import { apiClient } from '../lib/api';
 import {
+  Button,
   Drawer,
   DrawerContent,
+  DrawerDescription,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription
-} from '@ghxstship/ui';
-import { Badge, Button, Checkbox, Drawer, Input, Label, Select, Separator, Tabs, TabsContent, TabsList, TabsTrigger, Textarea } from '@ghxstship/ui';
+  Input,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Separator,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Textarea
+} from "@ghxstship/ui";
 import { AlertCircle, CheckCircle, Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle, Image as ImageIcon, Loader2, Save, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Upload, X } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -249,7 +262,7 @@ export default function CreateDrawer({
                 <div className="grid grid-cols-2 gap-md">
                   <div className="space-y-xs">
                     <Label htmlFor="category">Category *</Label>
-                    <Select onValueChange={(value) => setValue('category', value as any)}>
+                    <Select onChange={(e) => setValue('category', e.target.value as any)}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select category" />
                       </SelectTrigger>
@@ -268,7 +281,7 @@ export default function CreateDrawer({
 
                   <div className="space-y-xs">
                     <Label htmlFor="status">Status</Label>
-                    <Select onValueChange={(value) => setValue('status', value as any)}>
+                    <Select onChange={(e) => setValue('status', e.target.value as any)}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select status" />
                       </SelectTrigger>
@@ -331,7 +344,7 @@ export default function CreateDrawer({
 
                   <div className="space-y-xs">
                     <Label htmlFor="condition">Condition</Label>
-                    <Select onValueChange={(value) => setValue('condition', value as any)}>
+                    <Select onChange={(e) => setValue('condition', e.target.value as any)}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select condition" />
                       </SelectTrigger>

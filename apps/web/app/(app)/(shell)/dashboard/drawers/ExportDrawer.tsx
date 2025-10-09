@@ -2,7 +2,14 @@
 
 import React, { useState, useCallback } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, AlertTriangle, Calendar, CheckCircle, Code, Download, FileSpreadsheet, FileText, Filter, Image, Loader2, Settings, X } from 'lucide-react';
-import { Badge, Button, Checkbox, DatePicker, Input, Label, RadioGroup, RadioGroupItem, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator, Textarea } from '@ghxstship/ui';
+import { Badge, Button, Checkbox, DatePicker, Input, Label, RadioGroup, RadioGroupItem, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator, Textarea ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
 import { cn } from '@ghxstship/ui/lib/utils';
 
 // Export Format Types
@@ -345,7 +352,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
             <Label>Export Format</Label>
             <Select
               value={exportConfig.format}
-              onValueChange={(value: ExportFormat) => handleConfigChange('format', value)}
+              onChange={(value: ExportFormat) => handleConfigChange('format', value)}
             >
               <SelectTrigger>
                 <SelectValue />
@@ -404,7 +411,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
           <Label>Record Limit</Label>
           <Select
             value={exportConfig.limit?.toString() || 'all'}
-            onValueChange={(value) => handleConfigChange('limit', value === 'all' ? undefined : Number(value))}
+            onChange={(e) => handleConfigChange('limit', value === 'all' ? undefined : Number(value))}
           >
             <SelectTrigger>
               <SelectValue />
@@ -484,7 +491,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
                     <Label>Delimiter</Label>
                     <Select
                       value={exportConfig.csvOptions?.delimiter || ','}
-                      onValueChange={(value: ',' | ';' | '\t') =>
+                      onChange={(value: ',' | ';' | '\t') =>
                         handleConfigChange('csvOptions', {
                           ...exportConfig.csvOptions,
                           delimiter: value
@@ -528,7 +535,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
                       <Label>Orientation</Label>
                       <Select
                         value={exportConfig.pdfOptions?.orientation || 'portrait'}
-                        onValueChange={(value: 'portrait' | 'landscape') =>
+                        onChange={(value: 'portrait' | 'landscape') =>
                           handleConfigChange('pdfOptions', {
                             ...exportConfig.pdfOptions,
                             orientation: value
@@ -549,7 +556,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
                       <Label>Page Size</Label>
                       <Select
                         value={exportConfig.pdfOptions?.pageSize || 'a4'}
-                        onValueChange={(value: 'a4' | 'letter' | 'legal') =>
+                        onChange={(value: 'a4' | 'letter' | 'legal') =>
                           handleConfigChange('pdfOptions', {
                             ...exportConfig.pdfOptions,
                             pageSize: value

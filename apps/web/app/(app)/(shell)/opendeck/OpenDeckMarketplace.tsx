@@ -2,8 +2,15 @@
 
 
 
+
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "@ghxstship/ui";
+
 import { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 import { Briefcase, DollarSign, FileText, LayoutDashboard, MessageSquare, Search, Settings, Star, User } from 'lucide-react';
 import OpenDeckDashboard from './OpenDeckDashboard';
 import VendorProfileClient from './VendorProfileClient';

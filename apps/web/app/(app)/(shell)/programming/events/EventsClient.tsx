@@ -1,7 +1,7 @@
 'use client';
 
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import {
   Drawer,
   type Button,
@@ -96,12 +96,9 @@ export default function EventsClient({ orgId }: { orgId: string }) {
     }
   ];
 
-  useEffect(() => {
-    loadEvents();
-  }, [orgId]);
-
-  const loadEvents = async () => {
+  const loadEvents = useCallback(async () => {
     if (!orgId) return;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     
     try {
       setLoading(true);
@@ -133,15 +130,18 @@ export default function EventsClient({ orgId }: { orgId: string }) {
         call_sheets_count: event.call_sheets?.[0]?.count || 0
       }));
       
-      setData(transformedData);
     } catch (error) {
       console.error('Error loading events:', error);
     } finally {
       setLoading(false);
     }
-  };
+  }, [orgId, sb]);
 
-  const computeEventStatus = (event: any) => {
+  useEffect(() => {
+    loadEvents();
+  }, [loadEvents]);
+
+  const computeEventStatus = (event: any): string => {
     const now = new Date();
     const startDate = event.starts_at ? new Date(event.starts_at) : null;
     const endDate = event.ends_at ? new Date(event.ends_at) : null;

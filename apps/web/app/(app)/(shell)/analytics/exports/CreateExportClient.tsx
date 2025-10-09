@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createClient } from '@/lib/supabase/client';
 import { Card, Badge, Button, Drawer } from '@ghxstship/ui';
-import { Plus, X, Download, Calendar, FileText, Database } from 'lucide-react';
+import { Calendar, Database, Download, FileText, Filter, Plus, X } from "lucide-react";
 
 const ExportJobSchema = z.object({
   name: z.string().min(1, 'Export job name is required'),

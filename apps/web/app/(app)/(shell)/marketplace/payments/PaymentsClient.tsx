@@ -1,6 +1,6 @@
 'use client';
 
-import { DollarSign, CreditCard, Shield, Clock, CheckCircle, AlertCircle, Download, Filter, Search, Plus, ArrowUpRight, ArrowDownLeft, Wallet } from "lucide-react";
+import { AlertCircle, ArrowDownLeft, ArrowUpRight, CheckCircle, Clock, CreditCard, DollarSign, Download, Filter, History, Plus, Search, Shield, Wallet } from "lucide-react";
 import { useState, useEffect } from 'react';
 import { 
  Card,
@@ -302,7 +302,7 @@ export default function PaymentsClient({ orgId, userId }: PaymentsClientProps) {
  onChange={(e) => setSearchQuery(e.target.value)}
  className="flex-1"
  />
- <Select value={filter} onValueChange={(value: unknown) => setFilter(value)}>
+ <Select value={filter} onChange={(value: unknown) => setFilter(value)}>
  <option value="all">All Types</option>
  <option value="incoming">Incoming</option>
  <option value="outgoing">Outgoing</option>

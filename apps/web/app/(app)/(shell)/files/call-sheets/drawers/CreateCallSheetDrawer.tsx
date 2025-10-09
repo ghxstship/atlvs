@@ -271,7 +271,7 @@ export default function CreateCallSheetDrawer({
 
  <div>
  <Label htmlFor="project_id">Project</Label>
- <Select onValueChange={(value) => form.setValue('project_id', value)}>
+ <Select onChange={(e) => form.setValue('project_id', value)}>
  <SelectTrigger>
  <SelectValue placeholder="Select project" />
  </SelectTrigger>

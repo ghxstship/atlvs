@@ -1,8 +1,25 @@
 'use client';
 
+
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Input,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Textarea
+} from "@ghxstship/ui";
+
 import { AlertCircle, BarChart3, CheckCircle, Clock, Filter, MessageSquare, Plus, Search, Send, Star, ThumbsDown, ThumbsUp, TrendingUp, Users } from 'lucide-react';
 import React, { useState, useCallback, useState, useEffect } from 'react';
-import { Badge, Button, Card, CardBody, CardContent, CardDescription, CardHeader, CardTitle, Input, Tabs, TabsContent, TabsList, TabsTrigger, Textarea } from '@ghxstship/ui';
 
 interface FeedbackClientProps {
  className?: string;
@@ -514,7 +531,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  value={newFeedback.type}
  onChange={(e) => setNewFeedback({
  ...newFeedback,
- type: e.target.value as unknown
+ type: e.target.e.target.value as unknown
  })}
  className="w-full mt-1 px-sm py-xs border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
  >

@@ -1,7 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Badge } from '@ghxstship/ui';
+import {
+  Badge,
+  ListView
+} from "@ghxstship/ui";
 import type { Listing } from '../lib/opendeck-service';
 
 interface ListViewProps {

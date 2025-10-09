@@ -2,13 +2,14 @@
 
 import { Edit, Trash2, Calendar, MapPin, User, Clock, CheckCircle, XCircle, AlertCircle, FileText, Tag, MessageSquare } from "lucide-react";
 import {
- Badge,
- Button,
- Card,
- CardContent,
- CardHeader,
- CardTitle
-} from '@ghxstship/ui';
+  AppDrawer,
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle
+} from "@ghxstship/ui";
 import { AppDrawer } from '@ghxstship/ui';
 
 import type { ProgrammingRider } from '../types';

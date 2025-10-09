@@ -177,7 +177,7 @@ export default function AccountGridView({
  />
  </div>
  
- <Select value={typeFilter} onValueChange={(value: unknown) => setTypeFilter(value)}>
+ <Select value={typeFilter} onChange={(value: unknown) => setTypeFilter(value)}>
  <SelectTrigger className="w-full sm:w-container-xs">
  <Filter className="h-icon-xs w-icon-xs mr-2" />
  <SelectValue placeholder="Type" />
@@ -192,7 +192,7 @@ export default function AccountGridView({
  </SelectContent>
  </Select>
 
- <Select value={statusFilter} onValueChange={(value: unknown) => setStatusFilter(value)}>
+ <Select value={statusFilter} onChange={(value: unknown) => setStatusFilter(value)}>
  <SelectTrigger className="w-full sm:w-component-xl">
  <SelectValue placeholder="Status" />
  </SelectTrigger>

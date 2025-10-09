@@ -2,13 +2,33 @@
 
 import React, { useState, useMemo } from 'react';
 import { ChevronLeft, ChevronRight, Plus, MoreHorizontal, Edit, Trash2, Eye } from 'lucide-react';
-import { Button } from '@ghxstship/ui';
-import { Card, CardContent } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
 import {
+  Button,
+  CalendarView,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
+import { Card, CardContent ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
+import { Badge ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
+import {
+  Dropdown,
+  
+  DropdownItem,
   DropdownMenuTrigger
 } from '@ghxstship/ui';
 import type { ProgrammingEntity } from '../types';

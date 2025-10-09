@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { User, Mail, Phone, Building, Calendar, Edit, Eye, MoreHorizontal } from "lucide-react";
 import {
  Card,
@@ -125,7 +126,7 @@ export default function ProfileListView({
  {/* Avatar */}
  <Avatar className="h-icon-xl w-icon-xl">
  {profile.avatar_url ? (
- <img src={profile.avatar_url} alt={profile.full_name} />
+ <Image src={profile.avatar_url} alt={profile.full_name} width={48} height={48} />
  ) : (
  <div className="flex items-center justify-center h-full w-full bg-primary/10 text-primary font-semibold">
  {profile.full_name.split(' ').map(n => n[0]).join('').toUpperCase()}

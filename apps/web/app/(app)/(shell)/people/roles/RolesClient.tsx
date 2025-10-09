@@ -212,7 +212,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
                 />
                 <select
                   value={newRole.level}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewRole({...newRole, level: e.target.value as any})}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewRole({...newRole, level: e.target.e.target.value as any})}
                   className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <option value="">{t('selectLevel')}</option>

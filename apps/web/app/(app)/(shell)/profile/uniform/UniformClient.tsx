@@ -19,14 +19,15 @@ import {
   CheckCircle,
   AlertCircle
 } from 'lucide-react';import {
-  Card,
+  Badge,
   Button,
-  UnifiedInput,
+  Card,
+  Drawer,
+  Input,
   Select,
   Textarea,
-  Badge,
-  Drawer
-} from '@ghxstship/ui';
+  UnifiedInput
+} from "@ghxstship/ui";
 import {
   Card,
   Button,
@@ -607,20 +608,20 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
             </Select>
           </div>
 
-          <UnifiedInput             label="Item Name"
+          <Input             label="Item Name"
             placeholder="Enter item name"
             {...form.register('item_name')}
            
           />
 
           <div className="grid grid-cols-2 gap-md">
-            <UnifiedInput               label="Brand"
+            <Input               label="Brand"
               placeholder="Brand or manufacturer"
               {...form.register('brand')}
              
             />
 
-            <UnifiedInput               label="Size"
+            <Input               label="Size"
               placeholder="Size (e.g., L, 34W x 32L)"
               {...form.register('size')}
              
@@ -628,13 +629,13 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
           </div>
 
           <div className="grid grid-cols-2 gap-md">
-            <UnifiedInput               label="Color"
+            <Input               label="Color"
               placeholder="Color or pattern"
               {...form.register('color')}
              
             />
 
-            <UnifiedInput               label="Material"
+            <Input               label="Material"
               placeholder="Material composition"
               {...form.register('material')}
              
@@ -642,27 +643,27 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
           </div>
 
           <div className="grid grid-cols-3 gap-md">
-            <UnifiedInput               label="Purchase Date"
+            <Input               label="Purchase Date"
               type="date"
               {...form.register('purchase_date')}
              
             />
 
-            <UnifiedInput               label="Cost ($)"
+            <Input               label="Cost ($)"
               type="number"
               placeholder="0"
               {...form.register('cost', { valueAsNumber: true })}
              
             />
 
-            <UnifiedInput               label="Replacement Due"
+            <Input               label="Replacement Due"
               type="date"
               {...form.register('replacement_due')}
              
             />
           </div>
 
-          <UnifiedInput             label="Supplier"
+          <Input             label="Supplier"
             placeholder="Supplier or vendor"
             {...form.register('supplier')}
            

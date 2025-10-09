@@ -167,7 +167,7 @@ export default function CreateListingDrawer({ open, loading, onClose, onSubmit }
  <label className="form-label">Listing Type</label>
  <Select
  value={control._formValues.type}
- onValueChange={(value) => setValue('type', value as ListingFormValues['type'])}
+ onChange={(e) => setValue('type', e.target.value as ListingFormValues['type'])}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select type" />
@@ -198,7 +198,7 @@ export default function CreateListingDrawer({ open, loading, onClose, onSubmit }
  <label className="form-label">Category</label>
  <Select
  value={control._formValues.category}
- onValueChange={(value) => setValue('category', value as ListingFormValues['category'])}
+ onChange={(e) => setValue('category', e.target.value as ListingFormValues['category'])}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select category" />
@@ -268,7 +268,7 @@ export default function CreateListingDrawer({ open, loading, onClose, onSubmit }
  <label className="form-label">Preferred Contact Method</label>
  <Select
  value={control._formValues.preferredContactMethod}
- onValueChange={(value) => setValue('preferredContactMethod', value as ListingFormValues['preferredContactMethod'])}
+ onChange={(e) => setValue('preferredContactMethod', e.target.value as ListingFormValues['preferredContactMethod'])}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select method" />

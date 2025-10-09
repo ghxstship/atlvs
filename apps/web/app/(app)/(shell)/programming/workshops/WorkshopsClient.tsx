@@ -128,6 +128,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
 
   useEffect(() => {
     loadWorkshops();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadWorkshops = async () => {

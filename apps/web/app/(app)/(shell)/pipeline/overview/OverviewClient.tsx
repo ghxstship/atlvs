@@ -1,7 +1,7 @@
 'use client';
 
 
-import React, { useState, useCallback, useState, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Badge, Button, Card, Progress } from '@ghxstship/ui';
 import { Activity, AlertTriangle, ArrowRight, Award, BarChart3, Building, Calendar, Car, CheckCircle, Clock, Coffee, DollarSign, Key, Monitor, Music, Plane, Target, TrendingUp, Truck, Users, Wrench, Zap } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -27,6 +27,7 @@ interface PipelineStats {
     id: string;
     title: string;
     type: 'training' | 'contract' | 'advancing' | 'onboarding';
+  // eslint-disable-next-line react-hooks/exhaustive-deps
     dueDate: string;
     priority: 'low' | 'medium' | 'high' | 'critical';
   }>;
@@ -64,13 +65,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
   const [loading, setLoading] = useState(true);
   const sb = createBrowserClient();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    loadOverviewData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [orgId]);
-
-  const loadOverviewData = async () => {
+  const loadOverviewData = useCallback(async () => {
     setLoading(true);
     try {
       // In production, these would be actual Supabase queries
@@ -166,7 +161,11 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
       console.error('Error loading overview data:', error);
     }
     setLoading(false);
-  };
+  }, [orgId]);
+
+  useEffect(() => {
+    loadOverviewData();
+  }, [loadOverviewData]);
 
   if (loading) {
     return (

@@ -11,17 +11,26 @@
  */
 
 import React, { useState, useCallback, useMemo } from 'react';
+import Image from 'next/image';
 import { Asset, AssetViewState } from '../types';
 import { apiClient } from '../lib/api';
 import { realtimeService } from '../lib/realtime';
-import { Button } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Checkbox } from '@ghxstship/ui';
 import {
+  Badge,
+  Button,
+  Checkbox,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
+  ListView
+} from "@ghxstship/ui";
+import {
+  Dropdown,
+  
+  DropdownItem,
+  
   DropdownMenuSeparator
 } from '@ghxstship/ui';
 import {
@@ -213,7 +222,7 @@ export default function ListView({
     if (asset) {
       onAssetSelect?.(asset, selected);
     }
-  }, [assets, onAssetSelect]);
+  }, [assets, onAssetSelect, setSelectedItems]);
 
   // Handle bulk selection
   const handleSelectAll = useCallback((selected: boolean) => {
@@ -225,7 +234,7 @@ export default function ListView({
       setSelectedItems(new Set());
       assets.forEach(asset => onAssetSelect?.(asset, false));
     }
-  }, [assets, onAssetSelect]);
+  }, [assets, onAssetSelect, setSelectedItems]);
 
   // Handle group expansion
   const handleGroupToggle = useCallback((groupKey: string) => {
@@ -238,7 +247,7 @@ export default function ListView({
       }
       return newSet;
     });
-  }, []);
+  }, [setExpandedGroups]);
 
   // Get status display
   const getStatusDisplay = (status: string) => {
@@ -281,9 +290,11 @@ export default function ListView({
         {/* Asset icon */}
         <div className={`${config.padding} flex items-center`}>
           {asset.image_urls?.[0] ? (
-            <img
+            <Image
               src={asset.image_urls[0]}
               alt={asset.name}
+              width={48}
+              height={48}
               className={`rounded ${config.iconSize} object-cover bg-gray-100`}
             />
           ) : (

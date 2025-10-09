@@ -2,18 +2,18 @@
 
 import { Activity, AlertTriangle, Building, Calendar, CheckCircle, Clock, DollarSign, Edit, Eye, FileText, Link, MapPin, MessageSquare, Users, XCircle } from 'lucide-react';
 import {
- Drawer,
- DrawerContent,
- DrawerHeader,
- DrawerTitle,
- DrawerDescription,
- DrawerFooter,
- Button,
- Badge,
- Tabs,
- TabsList,
- TabsTrigger,
- TabsContent
+  Badge,
+  Button,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
 } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import type { Activation } from "./ActivationsClient";

@@ -6,8 +6,7 @@ dist/
 build/
 .turbo/
 coverage/
-# Temporarily excluding files with significant TypeScript/syntax errors requiring manual review
-apps/web/app/(app)/(shell)/*/lib/*.ts
-apps/web/app/(app)/(shell)/*/lib/*.tsx
-apps/web/app/(app)/(shell)/*/*/*.tsx
-apps/web/app/(app)/(shell)/*/*/*/*.ts
+# Exclude templates and migration scripts
+templates/
+scripts/
+tests/performance/

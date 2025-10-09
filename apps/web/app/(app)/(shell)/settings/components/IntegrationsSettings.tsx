@@ -404,7 +404,7 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
               <Label htmlFor="webhook-events">Events</Label>
               <Select
                 value=""
-                onValueChange={(value) => {
+                onChange={(e) => {
                   if (!selectedEvents.includes(value)) {
                     setSelectedEvents(prev => [...prev, value]);
                   }
@@ -514,7 +514,7 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
               <Label htmlFor="rate-limit">API Rate Limit (requests/hour)</Label>
               <Select
                 value={apiRateLimit.toString()}
-                onValueChange={(value) => setApiRateLimit(parseInt(value))}
+                onChange={(e) => setApiRateLimit(parseInt(value))}
               >
                 <SelectTrigger>
                   <SelectValue />

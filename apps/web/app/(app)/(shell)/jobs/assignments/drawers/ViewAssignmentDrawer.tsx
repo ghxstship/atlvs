@@ -1,7 +1,11 @@
 'use client';
 
 import { Users, Clock, CheckCircle, AlertCircle, Calendar, FileText, Edit } from "lucide-react";
-import { Badge, Button } from '@ghxstship/ui';
+import {
+  AppDrawer,
+  Badge,
+  Button
+} from "@ghxstship/ui";
 import { AppDrawer } from '@ghxstship/ui';
 import type { JobAssignment, AssignmentDrawerProps } from '../types';
 

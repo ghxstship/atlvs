@@ -191,7 +191,7 @@ export function EditListingDrawer({ open, listing, loading, onClose, onSubmit }:
  <label className="form-label">Type</label>
  <Select
  value={control._formValues.type}
- onValueChange={(value) => setValue('type', value as ListingEditValues['type'])}
+ onChange={(e) => setValue('type', e.target.value as ListingEditValues['type'])}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select type" />
@@ -208,7 +208,7 @@ export function EditListingDrawer({ open, listing, loading, onClose, onSubmit }:
  <label className="form-label">Category</label>
  <Select
  value={control._formValues.category}
- onValueChange={(value) => setValue('category', value as ListingEditValues['category'])}
+ onChange={(e) => setValue('category', e.target.value as ListingEditValues['category'])}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select category" />
@@ -230,7 +230,7 @@ export function EditListingDrawer({ open, listing, loading, onClose, onSubmit }:
  <label className="form-label">Status</label>
  <Select
  value={control._formValues.status}
- onValueChange={(value) => setValue('status', value as ListingEditValues['status'])}
+ onChange={(e) => setValue('status', e.target.value as ListingEditValues['status'])}
  >
  <SelectTrigger>
  <SelectValue />
@@ -315,8 +315,8 @@ export function EditListingDrawer({ open, listing, loading, onClose, onSubmit }:
  <label className="form-label">Preferred Contact Method</label>
  <Select
  value={control._formValues.preferredContactMethod}
- onValueChange={(value) =>
- setValue('preferredContactMethod', value as ListingEditValues['preferredContactMethod'])
+ onChange={(e) =>
+ setValue('preferredContactMethod', e.target.value as ListingEditValues['preferredContactMethod'])
  }
  >
  <SelectTrigger>

@@ -3,17 +3,19 @@
 import { Plus, Edit, Trash2, Eye, Calendar, DollarSign, MapPin, Users, Paperclip, Search, AlertCircle, Key } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from 'react';
 import {
- Card,
- Button,
- Badge,
- UnifiedInput,
- Textarea,
- Select,
- SelectContent,
- SelectItem,
- SelectTrigger,
- SelectValue
-} from '@ghxstship/ui';
+  AppDrawer,
+  Badge,
+  Button,
+  Card,
+  Input,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Textarea,
+  UnifiedInput
+} from "@ghxstship/ui";
 import { createBrowserClient } from '@ghxstship/auth';
 import { AppDrawer } from '@ghxstship/ui';
 
@@ -151,6 +153,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
 
  useEffect(() => {
  loadProjects();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [userId, orgId]);
 
  const loadProjects = useCallback(async () => {
@@ -186,16 +189,16 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  updateForm(name as keyof ProjectFormData, checked as ProjectFormData[keyof ProjectFormData]);
  return;
  }
- updateForm(name as keyof ProjectFormData, value as ProjectFormData[keyof ProjectFormData]);
+ updateForm(name as keyof ProjectFormData, e.target.value as ProjectFormData[keyof ProjectFormData]);
  }, [updateForm]);
 
  const handleTextareaChange = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
  const { name, value } = event.target;
- updateForm(name as keyof ProjectFormData, value as ProjectFormData[keyof ProjectFormData]);
+ updateForm(name as keyof ProjectFormData, e.target.value as ProjectFormData[keyof ProjectFormData]);
  }, [updateForm]);
 
  const handleSelectChange = useCallback(<Key extends keyof ProjectFormData>(field: Key) => (value: string) => {
- updateForm(field, value as ProjectFormData[Key]);
+ updateForm(field, e.target.value as ProjectFormData[Key]);
  }, [updateForm]);
 
  const handleOpenDrawer = useCallback((project?: OpenDeckProject) => {
@@ -460,7 +463,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  <div className="brand-marketplace flex-1">
  <div className="brand-marketplace relative">
  <Search className="absolute left-3 top-xs/2 -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
- <UnifiedInput
+ <Input
  placeholder="Search projects..."
  value={searchQuery}
  onChange={(event: ChangeEvent<HTMLInputElement>) => setSearchQuery(event.target.value)}
@@ -548,7 +551,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  <label htmlFor="title" className="text-body-sm form-label">
  Project Title
  </label>
- <UnifiedInput
+ <Input
  
  
  value={formData.title}
@@ -613,7 +616,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  <label htmlFor="skillsRequired" className="text-body-sm form-label">
  Required Skills
  </label>
- <UnifiedInput
+ <Input
  
  
  value={formData.skillsRequired}
@@ -657,7 +660,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  <label htmlFor="budgetMin" className="text-body-sm form-label">
  {formData.budgetType === 'hourly' ? 'Min Rate' : 'Min Budget'}
  </label>
- <UnifiedInput
+ <Input
  
  
  type="number"
@@ -672,7 +675,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  <label htmlFor="budgetMax" className="text-body-sm form-label">
  {formData.budgetType === 'hourly' ? 'Max Rate' : 'Max Budget'}
  </label>
- <UnifiedInput
+ <Input
  
  
  type="number"
@@ -691,7 +694,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  <label htmlFor="startDate" className="text-body-sm form-label">
  Start Date
  </label>
- <UnifiedInput
+ <Input
  
  
  type="date"
@@ -703,7 +706,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  <label htmlFor="endDate" className="text-body-sm form-label">
  End Date
  </label>
- <UnifiedInput
+ <Input
  
  
  type="date"
@@ -717,7 +720,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  <label htmlFor="duration" className="text-body-sm form-label">
  Duration
  </label>
- <UnifiedInput
+ <Input
  
  
  value={formData.duration}

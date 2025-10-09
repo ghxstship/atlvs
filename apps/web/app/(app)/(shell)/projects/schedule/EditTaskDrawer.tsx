@@ -256,7 +256,7 @@ export default function EditTaskDrawer({
  </label>
  <Select
  value={formData.project_id}
- onValueChange={(value) => setFormData({ ...formData, project_id: value })}
+ onChange={(e) => setFormData({ ...formData, project_id: value })}
  >
  <option value="">Select a project</option>
  {projects.map((project) => (
@@ -313,7 +313,7 @@ export default function EditTaskDrawer({
  </label>
  <Select
  value={formData.status}
- onValueChange={(value) => setFormData({ ...formData, status: value as typeof formData.status })}
+ onChange={(e) => setFormData({ ...formData, status: e.target.value as typeof formData.status })}
  >
  <option value="todo">To Do</option>
  <option value="in_progress">In Progress</option>
@@ -329,7 +329,7 @@ export default function EditTaskDrawer({
  </label>
  <Select
  value={formData.priority}
- onValueChange={(value) => setFormData({ ...formData, priority: value as typeof formData.priority })}
+ onChange={(e) => setFormData({ ...formData, priority: e.target.value as typeof formData.priority })}
  >
  <option value="low">Low</option>
  <option value="medium">Medium</option>
@@ -346,7 +346,7 @@ export default function EditTaskDrawer({
  </label>
  <Select
  value={formData.assignee_id}
- onValueChange={(value) => setFormData({ ...formData, assignee_id: value })}
+ onChange={(e) => setFormData({ ...formData, assignee_id: value })}
  >
  <option value="">Unassigned</option>
  {users.map((user) => (

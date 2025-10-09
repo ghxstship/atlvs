@@ -1,7 +1,11 @@
 'use client';
 
 import { FileText, Clock, CheckCircle, XCircle, AlertTriangle, Calendar, Edit, Building, DollarSign, MapPin, Mail, User } from "lucide-react";
-import { Badge, Button } from '@ghxstship/ui';
+import {
+  AppDrawer,
+  Badge,
+  Button
+} from "@ghxstship/ui";
 import { AppDrawer } from '@ghxstship/ui';
 import type { JobRfp, RfpDrawerProps } from '../types';
 

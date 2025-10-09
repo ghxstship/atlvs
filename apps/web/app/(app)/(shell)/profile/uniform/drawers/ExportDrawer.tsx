@@ -178,7 +178,7 @@ export default function ExportDrawer({
  {/* Export Scope */}
  <div>
  <label className="block text-sm font-medium mb-sm">Export Scope</label>
- <Select value={watchedScope} onValueChange={(value) => setValue('scope', value as unknown)}>
+ <Select value={watchedScope} onChange={(e) => setValue('scope', e.target.value as unknown)}>
  <SelectTrigger>
  <SelectValue />
  </SelectTrigger>

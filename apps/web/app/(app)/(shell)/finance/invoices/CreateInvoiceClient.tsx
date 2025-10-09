@@ -220,7 +220,7 @@ export default function CreateInvoiceClient({
               </label>
               <Select
                 value={formData.currency}
-                onValueChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
+                onChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
               >
                 <option value="USD">USD - US Dollar</option>
                 <option value="EUR">EUR - Euro</option>

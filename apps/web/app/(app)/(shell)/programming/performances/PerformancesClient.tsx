@@ -119,6 +119,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
 
   useEffect(() => {
     loadPerformances();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadPerformances = async () => {

@@ -228,7 +228,7 @@ export default function CreateAssetClient({
                 </label>
                 <Select
                   value={formData.category}
-                  onValueChange={(value: any) => handleInputChange('category', value)}
+                  onChange={(value: any) => handleInputChange('category', value)}
                 >
                   {ASSET_CATEGORIES.map(category => (
                     <option key={category.value} value={category.value}>
@@ -244,7 +244,7 @@ export default function CreateAssetClient({
                 </label>
                 <Select
                   value={formData.type}
-                  onValueChange={(value: any) => handleInputChange('type', value)}
+                  onChange={(value: any) => handleInputChange('type', value)}
                 >
                   {ASSET_TYPES.map(type => (
                     <option key={type.value} value={type.value}>
@@ -260,7 +260,7 @@ export default function CreateAssetClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value: any) => handleInputChange('status', value)}
+                  onChange={(value: any) => handleInputChange('status', value)}
                 >
                   {ASSET_STATUSES.map(status => (
                     <option key={status.value} value={status.value}>

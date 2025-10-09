@@ -2,7 +2,14 @@
 
 import React, { useState, useCallback, useState, useMemo } from 'react';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertTriangle, Archive, CheckCircle, CheckSquare, ChevronDown, ChevronRight, Clock, Copy, Download, Edit, Loader2, Settings, Square, Trash2, Upload, X } from 'lucide-react';
-import { Badge, Button, Checkbox, Input, Label, Progress, ScrollArea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator, Textarea } from '@ghxstship/ui';
+import { Badge, Button, Checkbox, Input, Label, Progress, ScrollArea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator, Textarea ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
 import { cn } from '@ghxstship/ui/lib/utils';
 
 // Bulk Operation Types
@@ -229,7 +236,7 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
               {field.type === 'select' && (
                 <Select
                   value={operationData[field.name] as string}
-                  onValueChange={(value) => handleFieldChange(field.name, value)}
+                  onChange={(e) => handleFieldChange(field.name, value)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder={field.placeholder} />

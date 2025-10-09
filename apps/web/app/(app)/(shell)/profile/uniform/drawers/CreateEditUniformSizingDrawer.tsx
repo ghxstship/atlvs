@@ -174,7 +174,7 @@ export default function CreateEditUniformSizingDrawer({
  <label className="block text-sm font-medium mb-xs">Size Category</label>
  <Select
  value={watch('size_category') || ''}
- onValueChange={(value) => setValue('size_category', value as unknown)}
+ onChange={(e) => setValue('size_category', e.target.value as unknown)}
  disabled={mode === 'view'}
  >
  <SelectTrigger>

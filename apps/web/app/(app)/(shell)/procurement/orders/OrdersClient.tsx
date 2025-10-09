@@ -264,7 +264,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
                 <label className="text-body-sm form-label">Status</label>
                 <select 
                   value={formData.status} 
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, status: e.target.value as OrderStatus }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, status: e.target.e.target.value as OrderStatus }))}
                   className="w-full  px-md py-sm border border-input bg-background rounded-md"
                 >
                   <option value="draft">Draft</option>

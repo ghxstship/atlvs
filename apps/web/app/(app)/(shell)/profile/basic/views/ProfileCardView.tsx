@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { User, Mail, Phone, MapPin, Briefcase, Calendar, Globe, Edit, Eye, Download } from "lucide-react";
 import { 
  Card, 
@@ -71,11 +72,7 @@ export default function ProfileCardView({
  <div className="flex items-start gap-md">
  <Avatar className="h-component-md w-component-md">
  {profile.avatar_url ? (
- <img 
- src={profile.avatar_url} 
- alt="Profile" 
- className="h-full w-full object-cover" 
- />
+ <Image src={profile.avatar_url} alt="Profile" width={48} height={48} className="h-full w-full object-cover" />
  ) : (
  <User className="h-icon-lg w-icon-lg" />
  )}

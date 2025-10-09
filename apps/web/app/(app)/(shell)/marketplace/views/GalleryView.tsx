@@ -1,11 +1,26 @@
+import Image from 'next/image';
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Badge } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
 import {
+  Badge,
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
+import { Button ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
+import {
+  Dropdown,
+  
+  DropdownItem,
   DropdownMenuTrigger
 } from '@ghxstship/ui';
 import {
@@ -123,11 +138,7 @@ export default function ImageView({
               {/* Image */}
               <div className="absolute inset-0">
                 {primaryImage ? (
-                  <img
-                    src={primaryImage}
-                    alt={listing.title}
-                    className="w-full h-full object-cover"
-                  />
+                  <Image src={primaryImage} alt={listing.title} width={48} height={48} className="w-full h-full object-cover" />
                 ) : (
                   <div className="w-full h-full bg-muted flex items-center justify-center">
                     <ImageIcon className="h-icon-2xl w-icon-2xl text-muted-foreground" />

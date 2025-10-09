@@ -16,7 +16,14 @@ import { Asset } from '../types';
 import { apiClient } from '../lib/api';
 import DetailDrawer from '../drawers/DetailDrawer';
 import CreateDrawer from '../drawers/CreateDrawer';
-import { Badge, Button, Card, CardBody, CardContent, CardHeader, CardTitle, Separator } from '@ghxstship/ui';
+import { Badge, Button, Card, CardBody, CardContent, CardHeader, CardTitle, Separator,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from "@ghxstship/ui";
 import { AlertTriangle, ArrowLeft, Calendar, CheckCircle, Clock, Copy, DollarSign, Download, Edit, History, MapPin, Package, Settings, Trash2, User } from 'lucide-react';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 

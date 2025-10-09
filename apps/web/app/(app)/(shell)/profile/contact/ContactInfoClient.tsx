@@ -4,7 +4,12 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, UnifiedInput, Card } from '@ghxstship/ui';
+import {
+  Button,
+  Card,
+  Input,
+  UnifiedInput
+} from "@ghxstship/ui";
 import { Save, Phone, Mail, MapPin } from 'lucide-react';
 
 interface UserProfile {
@@ -38,6 +43,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
 
   useEffect(() => {
     loadProfile();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, userId]);
 
   const loadProfile = async () => {
@@ -128,7 +134,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
           <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
             <div className="stack-sm">
               <label className="text-body-sm form-label">Primary Phone</label>
-              <UnifiedInput                 value={formData.phone_primary}
+              <Input                 value={formData.phone_primary}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, phone_primary: e.target.value }))}
                 placeholder="+1 (555) 123-4567"
               />
@@ -136,7 +142,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
             
             <div className="stack-sm">
               <label className="text-body-sm form-label">Secondary Phone</label>
-              <UnifiedInput                 value={formData.phone_secondary}
+              <Input                 value={formData.phone_secondary}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, phone_secondary: e.target.value }))}
                 placeholder="+1 (555) 987-6543"
               />
@@ -156,7 +162,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
           <div className="stack-md">
             <div className="stack-sm">
               <label className="text-body-sm form-label">Address Line 1</label>
-              <UnifiedInput                 value={formData.address_line1}
+              <Input                 value={formData.address_line1}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, address_line1: e.target.value }))}
                 placeholder="123 Main Street"
               />
@@ -164,7 +170,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
             
             <div className="stack-sm">
               <label className="text-body-sm form-label">Address Line 2</label>
-              <UnifiedInput                 value={formData.address_line2}
+              <Input                 value={formData.address_line2}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, address_line2: e.target.value }))}
                 placeholder="Apt 4B, Suite 200"
               />
@@ -173,7 +179,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
             <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
               <div className="stack-sm">
                 <label className="text-body-sm form-label">City</label>
-                <UnifiedInput                   value={formData.city}
+                <Input                   value={formData.city}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, city: e.target.value }))}
                   placeholder="San Francisco"
                 />
@@ -181,7 +187,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">State/Province</label>
-                <UnifiedInput                   value={formData.state_province}
+                <Input                   value={formData.state_province}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, state_province: e.target.value }))}
                   placeholder="California"
                 />
@@ -189,7 +195,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Postal Code</label>
-                <UnifiedInput                   value={formData.postal_code}
+                <Input                   value={formData.postal_code}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, postal_code: e.target.value }))}
                   placeholder="94102"
                 />
@@ -198,7 +204,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
             
             <div className="stack-sm">
               <label className="text-body-sm form-label">Country</label>
-              <UnifiedInput                 value={formData.country}
+              <Input                 value={formData.country}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, country: e.target.value }))}
                 placeholder="United States"
               />

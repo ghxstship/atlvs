@@ -199,7 +199,7 @@ export default function CreateQualificationClient({
               </label>
               <Select
                 value={formData.companyId}
-                onValueChange={(value: any) => handleInputChange('companyId', value)}
+                onChange={(value: any) => handleInputChange('companyId', value)}
               >
                 <option value="">Select a company</option>
                 {companies.map(company => (
@@ -240,7 +240,7 @@ export default function CreateQualificationClient({
                 </label>
                 <Select
                   value={formData.qualificationType}
-                  onValueChange={(value: any) => handleInputChange('qualificationType', value)}
+                  onChange={(value: any) => handleInputChange('qualificationType', value)}
                 >
                   {QUALIFICATION_TYPES.map(type => (
                     <option key={type.value} value={type.value}>
@@ -256,7 +256,7 @@ export default function CreateQualificationClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value: any) => handleInputChange('status', value)}
+                  onChange={(value: any) => handleInputChange('status', value)}
                 >
                   {QUALIFICATION_STATUSES.map(status => (
                     <option key={status.value} value={status.value}>

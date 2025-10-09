@@ -217,7 +217,7 @@ export default function CreateRatingClient({
               </label>
               <Select
                 value={formData.companyId}
-                onValueChange={(value: any) => handleInputChange('companyId', value)}
+                onChange={(value: any) => handleInputChange('companyId', value)}
               >
                 <option value="">Select a company</option>
                 {companies.map(company => (
@@ -234,7 +234,7 @@ export default function CreateRatingClient({
               </label>
               <Select
                 value={formData.projectId}
-                onValueChange={(value: any) => handleInputChange('projectId', value)}
+                onChange={(value: any) => handleInputChange('projectId', value)}
               >
                 <option value="">No project association</option>
                 {projects.map(project => (
@@ -251,7 +251,7 @@ export default function CreateRatingClient({
               </label>
               <Select
                 value={formData.category}
-                onValueChange={(value: any) => handleInputChange('category', value)}
+                onChange={(value: any) => handleInputChange('category', value)}
               >
                 {RATING_CATEGORIES.map(category => (
                   <option key={category.value} value={category.value}>

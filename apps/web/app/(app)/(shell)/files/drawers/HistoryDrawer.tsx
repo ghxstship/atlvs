@@ -1,21 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import {
-  X,
-  Clock,
-  User,
-  FileText,
-  Edit,
-  Trash2,
-  Download,
-  Share,
-  Eye,
-  AlertCircle,
-  CheckCircle,
-  Info
-} from 'lucide-react';
-import { Button, Badge, Separator, ScrollArea } from '@ghxstship/ui';
+import React, { useState, useEffect, useCallback } from 'react';
+import { AlertCircle, CheckCircle, Clock, Download, Edit, Eye, FileText, History, Info, Share, Trash2, User, X } from "lucide-react";
+import { Button, Badge, Separator, ScrollArea ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
 import type { DigitalAsset } from '../types';
 
 interface HistoryDrawerProps {
@@ -45,13 +39,7 @@ export default function HistoryDrawer({
   const [isLoading, setIsLoading] = useState(false);
   const [selectedEntry, setSelectedEntry] = useState<AuditLogEntry | null>(null);
 
-  useEffect(() => {
-    if (isOpen && file) {
-      loadAuditLogs();
-    }
-  }, [isOpen, file]);
-
-  const loadAuditLogs = async () => {
+  const loadAuditLogs = useCallback(async () => {
     if (!file) return;
 
     setIsLoading(true);
@@ -97,7 +85,13 @@ export default function HistoryDrawer({
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [file]);
+
+  useEffect(() => {
+    if (isOpen && file) {
+      loadAuditLogs();
+    }
+  }, [isOpen, file, loadAuditLogs]);
 
   const getActionIcon = (action: string) => {
     switch (action) {

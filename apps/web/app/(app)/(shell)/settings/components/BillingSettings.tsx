@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { CreditCard, DollarSign, Receipt, Calendar, AlertCircle, CheckCircle, Crown } from "lucide-react";
+import { AlertCircle, Calendar, CheckCircle, CreditCard, Crown, DollarSign, Edit, History, Receipt } from "lucide-react";
 import { createBrowserClient } from '@ghxstship/auth';
 import {
   Card,

@@ -1,17 +1,69 @@
 import React, { useState } from 'react';
 import {
+  Badge,
+  Button,
+  Checkbox,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Separator
+} from "@ghxstship/ui";
+import { Button ,
   Drawer,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription
+  DrawerDescription,
+  DrawerFooter
 } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Separator } from '@ghxstship/ui';
-import { Checkbox } from '@ghxstship/ui';
-import { Label } from '@ghxstship/ui';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ghxstship/ui';
+import { Badge ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { Separator ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { Checkbox ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { Label ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
 import {
   CheckSquare,
   Trash2,
@@ -280,7 +332,7 @@ export default function BulkDrawer({
                 {selectedAction === 'status' && (
                   <div className="space-y-sm">
                     <Label>New Status</Label>
-                    <Select value={statusValue} onValueChange={(value: 'active' | 'archived') => setStatusValue(value)}>
+                    <Select value={statusValue} onChange={(value: 'active' | 'archived') => setStatusValue(value)}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -295,7 +347,7 @@ export default function BulkDrawer({
                 {selectedAction === 'feature' && (
                   <div className="space-y-sm">
                     <Label>Featured Status</Label>
-                    <Select value={featureValue.toString()} onValueChange={(value) => setFeatureValue(value === 'true')}>
+                    <Select value={featureValue.toString()} onChange={(e) => setFeatureValue(value === 'true')}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>

@@ -16,10 +16,14 @@ import {
   KanbanBoard,
   ListView,
   Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Skeleton,
   StateManagerProvider,
-  ViewSwitcher,
-  Skeleton
-} from '@ghxstship/ui';
+  ViewSwitcher
+} from "@ghxstship/ui";
 import { ExpensesService } from './lib/expenses-service';
 import CreateExpenseDrawer from './drawers/CreateExpenseDrawer';
 import ExpenseGridView from './views/ExpenseGridView';

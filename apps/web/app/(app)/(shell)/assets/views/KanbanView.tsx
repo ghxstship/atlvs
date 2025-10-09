@@ -11,20 +11,20 @@
  */
 
 import React, { useState, useCallback, useMemo } from 'react';
+import Image from 'next/image';
 import { Asset, AssetViewState } from '../types';
 import { apiClient } from '../lib/api';
-import { realtimeService } from '../lib/realtime';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Checkbox } from '@ghxstship/ui';
+import { subscribeToAssets, unsubscribe, type AssetChangePayload } from '../lib/realtime';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator
-} from '@ghxstship/ui';
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Checkbox
+} from "@ghxstship/ui";
+import { Dropdown, type DropdownItem } from '@ghxstship/ui';
 import {
   MoreHorizontal,
   Edit,
@@ -49,17 +49,24 @@ interface KanbanViewProps {
   className?: string;
 }
 
+type AssetRecord = Asset & {
+  assignedToUser?: { name: string; avatar?: string; email?: string };
+  locationInfo?: { name: string };
+  supplierInfo?: { name: string };
+  warrantyExpiry?: Date | null;
+};
+
 interface KanbanColumn {
   id: string;
   title: string;
   status: string;
-  assets: Asset[];
+  assets: AssetRecord[];
   wipLimit?: number;
   color: string;
 }
 
 interface KanbanCard {
-  asset: Asset;
+  asset: AssetRecord;
   isSelected: boolean;
   isDragging: boolean;
 }
@@ -104,11 +111,44 @@ export default function KanbanView({
   onAssetAction,
   className = ''
 }: KanbanViewProps) {
-  const [assets, setAssets] = useState<Asset[]>([]);
+  const [assets, setAssets] = useState<AssetRecord[]>([]);
   const [loading, setLoading] = useState(false);
-  const [selectedCards, setSelectedCards] = useState<Set<string>(new Set());
-  const [draggedAsset, setDraggedAsset] = useState<Asset | null>(null);
+  const [selectedCards, setSelectedCards] = useState<Set<string>>(new Set());
+  const [draggedAsset, setDraggedAsset] = useState<AssetRecord | null>(null);
   const [dragOverColumn, setDragOverColumn] = useState<string | null>(null);
+
+  const normalizeAsset = useCallback((record: any): AssetRecord => {
+    const assignedRelation = record?.assigned_to;
+    const locationRelation = record?.location;
+    const supplierRelation = record?.supplier;
+
+    return {
+      ...record,
+      assigned_to:
+        typeof assignedRelation === 'string'
+          ? assignedRelation
+          : assignedRelation?.id ?? record?.assigned_to ?? undefined,
+      assignedToUser:
+        assignedRelation && typeof assignedRelation === 'object'
+          ? {
+              name: assignedRelation.name as string,
+              avatar: assignedRelation.avatar as string | undefined,
+              email: assignedRelation.email as string | undefined
+            }
+          : undefined,
+      locationInfo:
+        locationRelation && typeof locationRelation === 'object'
+          ? { name: locationRelation.name as string }
+          : undefined,
+      supplierInfo:
+        supplierRelation && typeof supplierRelation === 'object'
+          ? { name: supplierRelation.name as string }
+          : undefined,
+      warrantyExpiry: record?.warranty_expiry
+        ? new Date(record.warranty_expiry as string | number | Date)
+        : undefined
+    } as AssetRecord;
+  }, []);
 
   // Fetch assets
   const fetchAssets = useCallback(async () => {
@@ -119,7 +159,8 @@ export default function KanbanView({
         viewState.sort,
         { ...viewState.pagination, pageSize: 200 } // Load more for kanban
       );
-      setAssets(response.data);
+      const enriched = (response.data ?? []).map((item: any) => normalizeAsset(item));
+      setAssets(enriched);
       onViewStateChange({
         pagination: {
           ...viewState.pagination,
@@ -131,29 +172,37 @@ export default function KanbanView({
     } finally {
       setLoading(false);
     }
-  }, [viewState.filters, viewState.sort, viewState.pagination, onViewStateChange]);
+  }, [viewState.filters, viewState.sort, viewState.pagination, onViewStateChange, normalizeAsset]);
 
   // Set up realtime subscription
   React.useEffect(() => {
-    const unsubscribe = realtimeService.subscribeToAssets(
+    const channel = subscribeToAssets(
       'org-id', // Would come from context
-      (event, record, oldRecord) => {
-        if (event === 'INSERT') {
-          setAssets(prev => [record, ...prev]);
-        } else if (event === 'UPDATE') {
+      (payload: AssetChangePayload) => {
+        if (payload.eventType === 'INSERT' && payload.new) {
+          const next = normalizeAsset(payload.new);
+          setAssets(prev => {
+            if (prev.some(asset => asset.id === next.id)) {
+              return prev.map(asset => (asset.id === next.id ? { ...asset, ...next } : asset));
+            }
+            return [next, ...prev];
+          });
+        } else if (payload.eventType === 'UPDATE' && payload.new) {
+          const updated = normalizeAsset(payload.new);
           setAssets(prev =>
-            prev.map(asset =>
-              asset.id === record.id ? { ...asset, ...record } : asset
-            )
+            prev.map(asset => (asset.id === updated.id ? { ...asset, ...updated } : asset))
           );
-        } else if (event === 'DELETE') {
-          setAssets(prev => prev.filter(asset => asset.id !== record.id));
+        } else if (payload.eventType === 'DELETE' && payload.old) {
+          const removed = payload.old as AssetRecord;
+          setAssets(prev => prev.filter(asset => asset.id !== removed.id));
         }
       }
     );
 
-    return unsubscribe;
-  }, []);
+    return () => {
+      void unsubscribe(channel);
+    };
+  }, [normalizeAsset]);
 
   // Load data on mount and when filters change
   React.useEffect(() => {
@@ -169,13 +218,56 @@ export default function KanbanView({
       }
       acc[status].push(asset);
       return acc;
-    }, {} as Record<string, Asset[]>);
+    }, {} as Record<string, AssetRecord[]>);
 
     return KANBAN_COLUMNS.map(column => ({
       ...column,
       assets: grouped[column.status] || []
     }));
   }, [assets]);
+
+  const buildDropdownItems = useCallback((asset: AssetRecord): DropdownItem[] => [
+    {
+      id: 'view',
+      label: 'View Details',
+      icon: Eye,
+      onClick: () => onAssetAction?.('view', asset)
+    },
+    {
+      id: 'edit',
+      label: 'Edit Asset',
+      icon: Edit,
+      onClick: () => onAssetAction?.('edit', asset)
+    },
+    {
+      id: 'separator-1',
+      label: 'separator',
+      separator: true
+    },
+    {
+      id: 'duplicate',
+      label: 'Duplicate',
+      icon: Copy,
+      onClick: () => onAssetAction?.('duplicate', asset)
+    },
+    {
+      id: 'export',
+      label: 'Export',
+      icon: Download,
+      onClick: () => onAssetAction?.('export', asset)
+    },
+    {
+      id: 'separator-2',
+      label: 'separator',
+      separator: true
+    },
+    {
+      id: 'delete',
+      label: 'Delete',
+      icon: Trash2,
+      onClick: () => onAssetAction?.('delete', asset)
+    }
+  ], [onAssetAction]);
 
   // Handle card selection
   const handleCardSelect = useCallback((assetId: string, selected: boolean) => {
@@ -192,10 +284,10 @@ export default function KanbanView({
     if (asset) {
       onAssetSelect?.(asset, selected);
     }
-  }, [assets, onAssetSelect]);
+  }, [assets, onAssetSelect, setSelectedCards]);
 
   // Handle drag start
-  const handleDragStart = useCallback((asset: Asset) => {
+  const handleDragStart = useCallback((asset: AssetRecord) => {
     setDraggedAsset(asset);
   }, []);
 
@@ -243,9 +335,12 @@ export default function KanbanView({
   }, []);
 
   // Render kanban card
-  const renderKanbanCard = (asset: Asset) => {
+  const renderKanbanCard = (asset: AssetRecord) => {
     const isSelected = selectedCards.has(asset.id);
     const isDragging = draggedAsset?.id === asset.id;
+    const assignee = asset.assignedToUser;
+    const location = asset.locationInfo;
+    const warrantyExpiry = asset.warrantyExpiry ?? null;
 
     return (
       <Card
@@ -263,13 +358,15 @@ export default function KanbanView({
             <div className="flex items-center gap-xs">
               <Checkbox
                 checked={isSelected}
-                onChange={(checked) => handleCardSelect(asset.id, checked)}
-                onClick={(e) => e.stopPropagation()}
+                onChange={(event) => handleCardSelect(asset.id, event.target.checked)}
+                onClick={(event) => event.stopPropagation()}
               />
               {asset.image_urls?.[0] ? (
-                <img
+                <Image
                   src={asset.image_urls[0]}
                   alt={asset.name}
+                  width={48}
+                  height={48}
                   className="w-icon-lg h-icon-lg rounded object-cover bg-gray-100"
                 />
               ) : (
@@ -278,45 +375,21 @@ export default function KanbanView({
                 </div>
               )}
             </div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-icon-md w-icon-md p-0"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <MoreHorizontal className="h-3 w-3" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('view', asset); }}>
-                  <Eye className="mr-2 h-icon-xs w-icon-xs" />
-                  View Details
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('edit', asset); }}>
-                  <Edit className="mr-2 h-icon-xs w-icon-xs" />
-                  Edit Asset
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('duplicate', asset); }}>
-                  <Copy className="mr-2 h-icon-xs w-icon-xs" />
-                  Duplicate
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('export', asset); }}>
-                  <Download className="mr-2 h-icon-xs w-icon-xs" />
-                  Export
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  onClick={(e) => { e.stopPropagation(); onAssetAction?.('delete', asset); }}
-                  className="text-red-600"
-                >
-                  <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
-                  Delete
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <div onClick={(event) => event.stopPropagation()}>
+              <Dropdown
+                align="end"
+                trigger={
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-icon-md w-icon-md p-0"
+                  >
+                    <MoreHorizontal className="h-3 w-3" />
+                  </Button>
+                }
+                items={buildDropdownItems(asset)}
+              />
+            </div>
           </div>
         </CardHeader>
 
@@ -327,7 +400,7 @@ export default function KanbanView({
                 {asset.name}
               </CardTitle>
               <div className="flex items-center gap-xs mt-1">
-                <Badge variant="outline" className="font-mono text-xs">
+                <Badge variant="secondary" className="font-mono text-xs">
                   {asset.asset_tag}
                 </Badge>
               </div>
@@ -348,29 +421,29 @@ export default function KanbanView({
               </span>
             </div>
 
-            {asset.assigned_to && (
+            {assignee?.name && (
               <div className="flex items-center gap-xs text-xs text-gray-600">
                 <User className="w-3 h-3" />
                 <span className="truncate">
-                  {asset.assigned_to.name}
+                  {assignee.name}
                 </span>
               </div>
             )}
 
-            {asset.location && (
+            {location?.name && (
               <div className="flex items-center gap-xs text-xs text-gray-600">
                 <MapPin className="w-3 h-3" />
                 <span className="truncate">
-                  {asset.location.name}
+                  {location?.name}
                 </span>
               </div>
             )}
 
-            {asset.warranty_expiry && (
+            {warrantyExpiry && (
               <div className="flex items-center gap-xs text-xs text-gray-600">
                 <Clock className="w-3 h-3" />
                 <span>
-                  {new Date(asset.warranty_expiry) > new Date() ? 'Warranty' : 'Expired'}
+                  {warrantyExpiry > new Date() ? 'Warranty Active' : 'Warranty Expired'}
                 </span>
               </div>
             )}
@@ -381,7 +454,7 @@ export default function KanbanView({
   };
 
   // Render kanban column
-  const renderKanbanColumn = (column: KanbanColumn & { assets: Asset[] }) => {
+  const renderKanbanColumn = (column: KanbanColumn & { assets: AssetRecord[] }) => {
     const isDragOver = dragOverColumn === column.id;
     const wipLimitExceeded = column.wipLimit && column.assets.length > column.wipLimit;
 
@@ -395,8 +468,8 @@ export default function KanbanView({
           e.preventDefault();
           handleDragOver(column.id);
         }}
-        onDrop={(e) => {
-          e.preventDefault();
+        onDrop={(event) => {
+          event.preventDefault();
           handleDrop(column.id);
         }}
       >
@@ -494,7 +567,7 @@ export default function KanbanView({
           {KANBAN_COLUMNS.filter(col => col.wipLimit).map(col => (
             <Badge
               key={col.id}
-              variant={kanbanData.find(k => k.id === col.id)?.assets.length > col.wipLimit! ? "destructive" : "secondary"}
+              variant={(kanbanData.find(k => k.id === col.id)?.assets.length ?? 0) > (col.wipLimit ?? 0) ? 'error' : 'secondary'}
               className="text-xs"
             >
               {col.title}: {kanbanData.find(k => k.id === col.id)?.assets.length || 0}/{col.wipLimit}

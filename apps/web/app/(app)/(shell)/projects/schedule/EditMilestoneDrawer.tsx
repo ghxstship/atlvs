@@ -206,7 +206,7 @@ export default function EditMilestoneDrawer({
  </label>
  <Select
  value={formData.project_id}
- onValueChange={(value) => setFormData({ ...formData, project_id: value })}
+ onChange={(e) => setFormData({ ...formData, project_id: value })}
  >
  <option value="">Select a project</option>
  {projects.map((project) => (
@@ -283,7 +283,7 @@ export default function EditMilestoneDrawer({
  </label>
  <Select
  value={formData.status}
- onValueChange={(value) => setFormData({ ...formData, status: value as typeof formData.status })}
+ onChange={(e) => setFormData({ ...formData, status: e.target.value as typeof formData.status })}
  >
  <option value="pending">Pending</option>
  <option value="completed">Completed</option>

@@ -390,8 +390,8 @@ export default function NotificationsSettingsClient() {
  <Label htmlFor={`frequency-${preference.type}`}>Frequency</Label>
  <Select
  value={current.frequency}
- onValueChange={(value) =>
- handleFrequencyChange(preference.type, value as NotificationFrequency)
+ onChange={(e) =>
+ handleFrequencyChange(preference.type, e.target.value as NotificationFrequency)
  }
  >
  <SelectTrigger id={`frequency-${preference.type}`}><SelectValue placeholder="Select frequency" /></SelectTrigger>
@@ -412,11 +412,11 @@ export default function NotificationsSettingsClient() {
  <label key={value} className="flex items-center gap-sm">
  <input
  type="checkbox"
- checked={current.categories?.includes(value as NotificationCategory) ?? false}
+ checked={current.categories?.includes(e.target.value as NotificationCategory) ?? false}
  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
  handleCategoryToggle(
  preference.type,
- value as NotificationCategory,
+ e.target.value as NotificationCategory,
  event.target.checked,
  )
  }
@@ -490,7 +490,7 @@ export default function NotificationsSettingsClient() {
  <Label htmlFor="global-quiet-timezone">Timezone</Label>
  <Select
  value={globalState.quietHoursTimezone}
- onValueChange={(value) => handleQuietHoursChange('quietHoursTimezone', value)}
+ onChange={(e) => handleQuietHoursChange('quietHoursTimezone', value)}
  disabled={!globalState.quietHoursEnabled}
  >
  <SelectTrigger ><SelectValue placeholder="Select timezone" /></SelectTrigger>
@@ -509,7 +509,7 @@ export default function NotificationsSettingsClient() {
  <Label htmlFor="global-digest-frequency">Digest Frequency</Label>
  <Select
  value={globalState.digestFrequency}
- onValueChange={(value) => handleQuietHoursChange('digestFrequency', value)}
+ onChange={(e) => handleQuietHoursChange('digestFrequency', value)}
  disabled={!globalState.digestEnabled}
  >
  <SelectTrigger ><SelectValue placeholder="Select digest frequency" /></SelectTrigger>
@@ -557,7 +557,7 @@ export default function NotificationsSettingsClient() {
  <div className="space-y-md">
  <div className="space-y-sm">
  <Label>Channel</Label>
- <Select value={testType} onValueChange={(value) => setTestType(value as NotificationType)}>
+ <Select value={testType} onChange={(e) => setTestType(e.target.value as NotificationType)}>
  <SelectTrigger>
  <SelectValue placeholder="Select channel" />
  </SelectTrigger>

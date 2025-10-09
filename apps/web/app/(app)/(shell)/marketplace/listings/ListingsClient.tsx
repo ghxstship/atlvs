@@ -155,6 +155,7 @@ export default function ListingsClient({ orgId, userId }: ListingsClientProps) {
 
  useEffect(() => {
  loadListings();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [orgId, filters]);
 
  const loadListings = async () => {

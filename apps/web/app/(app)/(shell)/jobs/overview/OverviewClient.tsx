@@ -89,6 +89,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
 
   useEffect(() => {
     loadOverviewData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadOverviewData = async () => {

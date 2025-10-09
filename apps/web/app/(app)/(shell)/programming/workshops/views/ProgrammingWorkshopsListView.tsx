@@ -13,14 +13,19 @@ import {
  TableHead,
  TableHeader,
  TableRow,
- DropdownMenu,
- DropdownMenuContent,
- DropdownMenuItem,
- DropdownMenuTrigger,
+ Dropdown,
+ 
+ DropdownItem,
+ 
  Collapsible,
  CollapsibleContent,
- CollapsibleTrigger
-} from '@ghxstship/ui';
+ CollapsibleTrigger,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from "@ghxstship/ui";
 
 import type { ProgrammingWorkshop, WorkshopSort } from '../types';
 
@@ -154,7 +159,7 @@ export default function ProgrammingWorkshopsListView({
  <Checkbox
  checked={selectedWorkshops.length === workshops.length}
  onCheckedChange={handleSelectAll}
- aria-
+ aria-label="Select all"
  />
  </TableHead>
  <TableHead className="w-icon-2xl"></TableHead>

@@ -1,5 +1,8 @@
 'use client';
 
+
+import { Edit } from "lucide-react";
+
 import React from 'react';
 import { DetailLayout } from '@ghxstship/ui/templates';
 

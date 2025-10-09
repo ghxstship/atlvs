@@ -198,7 +198,7 @@ export default function CreateCompanyClient({
                 </label>
                 <Select
                   value={formData.industry}
-                  onValueChange={(value: any) => handleInputChange('industry', value)}
+                  onChange={(value: any) => handleInputChange('industry', value)}
                 >
                   {INDUSTRIES.map(industry => (
                     <option key={industry.value} value={industry.value}>
@@ -214,7 +214,7 @@ export default function CreateCompanyClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value: any) => handleInputChange('status', value)}
+                  onChange={(value: any) => handleInputChange('status', value)}
                 >
                   {STATUSES.map(status => (
                     <option key={status.value} value={status.value}>

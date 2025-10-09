@@ -187,7 +187,7 @@ export default function CreateTrackingClient({
                 </label>
                 <Select
                   value={formData.trackingType}
-                  onValueChange={(value: any) => handleInputChange('trackingType', value)}
+                  onChange={(value: any) => handleInputChange('trackingType', value)}
                 >
                   {TRACKING_TYPES.map(type => (
                     <option key={type.value} value={type.value}>
@@ -203,7 +203,7 @@ export default function CreateTrackingClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value: any) => handleInputChange('status', value)}
+                  onChange={(value: any) => handleInputChange('status', value)}
                 >
                   {TRACKING_STATUSES.map(status => (
                     <option key={status.value} value={status.value}>
@@ -283,7 +283,7 @@ export default function CreateTrackingClient({
               </label>
               <Select
                 value={formData.condition}
-                onValueChange={(value: any) => handleInputChange('condition', value)}
+                onChange={(value: any) => handleInputChange('condition', value)}
               >
                 {ASSET_CONDITIONS.map(condition => (
                   <option key={condition.value} value={condition.value}>

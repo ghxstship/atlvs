@@ -2,7 +2,14 @@
 
 import React, { useState, useRef } from 'react';
 import { X, Upload, FileText, CheckCircle, AlertCircle, Download, Trash2, Settings, Eye, File } from 'lucide-react';
-import { Button, Progress, Badge, Separator, Select } from '@ghxstship/ui';
+import { Button, Progress, Badge, Separator, Select ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
 import { filesImportService } from '../lib/import';
 import type { FileImportInput } from '../lib/validations';
 
@@ -348,7 +355,7 @@ export default function ImportDrawer({
                   <div className="grid grid-cols-2 gap-sm">
                     <Select
                       value={importOptions.category}
-                      onValueChange={(value) => setImportOptions(prev => ({
+                      onChange={(e) => setImportOptions(prev => ({
                         ...prev,
                         category: value
                       }))}
@@ -367,7 +374,7 @@ export default function ImportDrawer({
 
                     <Select
                       value={importOptions.access_level}
-                      onValueChange={(value: unknown) => setImportOptions(prev => ({
+                      onChange={(value: unknown) => setImportOptions(prev => ({
                         ...prev,
                         access_level: value
                       }))}

@@ -4,7 +4,18 @@ import { Button, Input, Label, Save, Select, SelectContent, SelectItem, SelectTr
 import { useEffect, useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { AppDrawer, Button, Input, Label, Select, Separator } from '@ghxstship/ui';
+import {
+  AppDrawer,
+  Button,
+  Input,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Separator
+} from "@ghxstship/ui";
 import { CreateProcurementRequestSchema, type CreateProcurementRequest } from '../types';
 import type { ProcurementRequest } from '../types';
 
@@ -109,7 +120,7 @@ export default function EditRequestDrawer({
  <Label htmlFor="category">Category *</Label>
  <Select
  value={watch('category')}
- onValueChange={(value) => setValue('category', value as unknown)}
+ onChange={(e) => setValue('category', e.target.value as unknown)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select category" />
@@ -133,7 +144,7 @@ export default function EditRequestDrawer({
  <Label htmlFor="priority">Priority *</Label>
  <Select
  value={watch('priority')}
- onValueChange={(value) => setValue('priority', value as unknown)}
+ onChange={(e) => setValue('priority', e.target.value as unknown)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select priority" />
@@ -174,7 +185,7 @@ export default function EditRequestDrawer({
  <Label htmlFor="currency">Currency</Label>
  <Select
  value={watch('currency')}
- onValueChange={(value) => setValue('currency', value)}
+ onChange={(e) => setValue('currency', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select currency" />

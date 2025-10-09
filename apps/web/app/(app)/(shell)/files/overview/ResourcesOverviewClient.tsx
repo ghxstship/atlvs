@@ -3,7 +3,11 @@
 
 import { FileText, Download, Upload, Users, TrendingUp, Clock, Star, FolderOpen, Plus, Search, Filter, BarChart } from "lucide-react";
 import React from 'react';
-import { Card } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card
+} from "@ghxstship/ui";
 import { Button } from '@ghxstship/ui';
 import { Badge } from '@ghxstship/ui';
 

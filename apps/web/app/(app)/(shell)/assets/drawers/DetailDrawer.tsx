@@ -1,5 +1,30 @@
 "use client";
 
+
+import {
+  Badge,
+  Button,
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  Separator,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "@ghxstship/ui";
+import { AlertTriangle, ChevronLeft, ChevronRight, Copy, Download, Edit, History, ImageIcon, Loader2, Settings, Share, Trash2 } from "lucide-react";
+
 /**
  * Assets Detail Drawer
  *
@@ -12,8 +37,6 @@
 
 import React, { useCallback, useMemo, useState } from "react";
 import Image from "next/image";
-import { AlertTriangle, Badge, Button, Calendar, CheckCircle, ChevronLeft, ChevronRight, Clock, Copy, DollarSign, Download, Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, Edit, History, Image as ImageIcon, Loader2, MapPin, Package, Settings, Share, Tabs, TabsContent, TabsList, TabsTrigger, Trash2, User, cn } from 'lucide-react';
-import { Badge, Button, Drawer, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Separator, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 import { Separator } from '@ghxstship/ui/components/Separator';
 import { Asset, EnrichedAsset } from '../types';
 import { apiClient } from '../lib/api';
@@ -311,7 +334,7 @@ export default function DetailDrawer({
           <Tabs
             className="w-full"
             value={activeTab}
-            onValueChange={(value) => setActiveTab(value as DetailDrawerTab)}
+            onChange={(e) => setActiveTab(e.target.value as DetailDrawerTab)}
           >
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="overview">Overview</TabsTrigger>

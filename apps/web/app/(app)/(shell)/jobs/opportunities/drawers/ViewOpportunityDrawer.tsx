@@ -1,7 +1,11 @@
 'use client';
 
 import { TrendingUp, Clock, CheckCircle, XCircle, AlertTriangle, Calendar, FileText, Edit, Building, DollarSign, MapPin } from "lucide-react";
-import { Badge, Button } from '@ghxstship/ui';
+import {
+  AppDrawer,
+  Badge,
+  Button
+} from "@ghxstship/ui";
 import { AppDrawer } from '@ghxstship/ui';
 import type { JobOpportunity, OpportunityDrawerProps } from '../types';
 

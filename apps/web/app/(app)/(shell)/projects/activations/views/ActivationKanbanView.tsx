@@ -1,7 +1,20 @@
 "use client";
 
 import { useMemo } from 'react';
-import { Card, Badge, Button, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ghxstship/ui";
+import {
+  Badge,
+  Button,
+  Card,
+  Checkbox,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import type { Activation } from "../ActivationsClient";
 import { Check, CheckCircle, Edit, Eye, Play, Trash2, X, AlertCircle, MoreVertical, Clock } from 'lucide-react';

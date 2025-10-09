@@ -1,7 +1,15 @@
 'use client';
 
 import { useMemo, useState, useEffect } from 'react';
-import { Drawer, Button, Select, Textarea, Badge, UnifiedInput } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Drawer,
+  Input,
+  Select,
+  Textarea,
+  UnifiedInput
+} from "@ghxstship/ui";
 import { Plus, Calendar, User, Tag, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useRouter } from 'next/navigation';
@@ -98,7 +106,7 @@ export default function CreateTaskClient({ orgId }: { orgId: string }) {
       <Drawer open={open} onClose={() => setOpen(false)} title={t('create.newTitle')} description={submitting ? t('drawer.saving') : undefined}>
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}
         <form className="stack-sm" onSubmit={(e: any) => { e.preventDefault(); onSubmit(form.getValues()); }} aria-live="polite">
-          <UnifiedInput
+          <Input
             id="title"
             label={t('grid.title')}
             description={t('create.titleHelp')}
@@ -113,7 +121,7 @@ export default function CreateTaskClient({ orgId }: { orgId: string }) {
               id="status" 
               className="rounded border  px-md py-xs" 
               value={form.getValues('status') || 'pending'} 
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('status', e.target.value as 'pending' | 'in_progress' | 'completed' | 'blocked' | 'cancelled', { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('status', e.target.e.target.value as 'pending' | 'in_progress' | 'completed' | 'blocked' | 'cancelled', { shouldDirty: true })}
             >
               {statusOptions.map((option: any) => (
                 <option key={option.value} value={option.value}>

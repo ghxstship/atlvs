@@ -1,6 +1,6 @@
 "use client";
 
-import { Plus, X, Calendar, Clock, MapPin, DollarSign, Users, Music, Settings, FileText, Tag } from "lucide-react";
+import { Calendar, Check, Clock, DollarSign, FileText, MapPin, Music, Plus, Settings, Tag, Users, X } from "lucide-react";
 import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

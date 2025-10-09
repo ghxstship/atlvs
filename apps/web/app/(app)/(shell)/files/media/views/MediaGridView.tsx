@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, Download, Eye, Edit } from 'lucide-react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import type { MediaAsset } from '../types';
@@ -75,11 +76,7 @@ export default function MediaGridView({
  
  <div className="aspect-square bg-muted/50 rounded-md mb-sm flex items-center justify-center relative overflow-hidden">
  {asset.thumbnail_url || (asset.category === 'image' && asset.file_url) ? (
- <img 
- src={asset.thumbnail_url || asset.file_url} 
- alt={asset.title}
- className="w-full h-full object-cover"
- />
+ <Image src={asset.thumbnail_url || asset.file_url} alt={asset.title} width={48} height={48} className="w-full h-full object-cover" />
  ) : (
  <IconComponent className="w-icon-2xl h-icon-2xl color-muted" />
  )}

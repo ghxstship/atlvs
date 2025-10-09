@@ -4,7 +4,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Badge, Button, Card, getStatusColor } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Activity, BarChart3, Calendar, Clock, Copy, DollarSign, Download, Edit3, Eye, FileText, Filter, LineChart, MoreVertical, Pause, PieChart, Play, Plus, Search, Settings, Share2, Table, Trash2, TrendingUp, Users } from 'lucide-react';
+import { Activity, BarChart3, Calendar, Clock, Copy, DollarSign, Download, Edit, Edit3, Eye, FileText, Filter, LineChart, MoreVertical, Pause, PieChart, Play, Plus, Search, Settings, Share2, Table, Trash2, TrendingUp, Users } from "lucide-react";
 import CreateReportClient from './CreateReportClient';
 
 interface ReportField {
@@ -63,13 +63,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
 
   const supabase = createBrowserClient();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    loadReports();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [organizationId]);
-
-  const loadReports = async () => {
+  const loadReports = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -211,7 +205,11 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
     } finally {
       setLoading(false);
     }
-  };
+  }, [organizationId]);
+
+  useEffect(() => {
+    loadReports();
+  }, [loadReports]);
 
   const createReport = async (reportData: Partial<Report>) => {
     try {

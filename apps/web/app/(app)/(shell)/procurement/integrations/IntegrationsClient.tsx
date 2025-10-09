@@ -1,8 +1,25 @@
 'use client';
 
+
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Input,
+  Switch,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "@ghxstship/ui";
+
 import { AlertCircle, BarChart3, CardBody, CheckCircle, Cloud, CreditCard, Database, ExternalFileText, ExternalLink, FileText, Filter, Globe, Lock, Plus, RefreshCw, Search, Settings, ShoppingCart, Truck, Webhook, XCircle, Zap } from 'lucide-react';
 import React, { useState, useCallback, useState, useEffect } from 'react';
-import { Badge, Button, Card, CardBody, CardContent, CardDescription, CardHeader, CardTitle, Input, Switch, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 // Simple Switch component replacement
 const Switch = ({ checked, onCheckedChange }: { checked: boolean; onCheckedChange: (checked: boolean) => void }) => (
  <button

@@ -38,6 +38,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
 
   useEffect(() => {
     loadEvents();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, currentDate]);
 
   const loadEvents = async () => {

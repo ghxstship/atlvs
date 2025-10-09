@@ -1,6 +1,6 @@
 import { RealtimeChannel, RealtimePostgresChangesPayload } from '@supabase/supabase-js';
 import { createClient } from '@/lib/supabase/client';
-import { tryCatch, reportError } from '@ghxstship/ui/utils/error-handling';
+import { tryCatch, reportError } from '@ghxstship/ui';
 import type { MarketplaceListing, MarketplaceProject, VendorProfile } from '../types';
 
 // Real-time subscriptions for marketplace operations

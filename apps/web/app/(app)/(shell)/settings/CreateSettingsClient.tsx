@@ -16,7 +16,14 @@ import {
  Download
 } from "lucide-react";
 import { useState, useEffect, useCallback } from 'react';
-import { Button, useToastContext } from '@ghxstship/ui';
+import { Button, useToastContext,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from "@ghxstship/ui";
 import type { 
  SettingRecord, 
  SettingsFieldConfig,
@@ -286,7 +293,7 @@ export default function CreateSettingsClient({ orgId, userId }: CreateSettingsCl
  };
 
  const handleSearchChange = (value: string) => {
- const params = { ...searchParams, query: value || undefined };
+ const params = { ...searchParams, query: e.target.value || undefined };
  setSearchParams(params);
  void loadSettings(params);
  };
@@ -424,7 +431,7 @@ export default function CreateSettingsClient({ orgId, userId }: CreateSettingsCl
  </div>
  <select
  value={searchParams.category ?? 'all'}
- onChange={(event) => handleCategoryFilter(event.target.value as SettingCategory | 'all')}
+ onChange={(event) => handleCategoryFilter(event.target.e.target.value as SettingCategory | 'all')}
  className="rounded-md border border-border bg-background px-sm py-xs text-sm outline-none focus:ring-2 focus:ring-primary"
  >
  <option value="all">All Categories</option>

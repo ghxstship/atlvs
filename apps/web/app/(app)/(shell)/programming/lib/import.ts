@@ -507,13 +507,13 @@ export class ProgrammingImportService {
           data.title = value;
           break;
         case 'description':
-          data.description = value || undefined;
+          data.description = e.target.value || undefined;
           break;
         case 'type':
-          data.type = value as ProgrammingEvent['type'];
+          data.type = e.target.value as ProgrammingEvent['type'];
           break;
         case 'status':
-          data.status = (value as ProgrammingEvent['status']) || 'scheduled';
+          data.status = (e.target.value as ProgrammingEvent['status']) || 'scheduled';
           break;
         case 'start_date':
         case 'start date':
@@ -524,7 +524,7 @@ export class ProgrammingImportService {
           data.end_date = value ? new Date(value) : new Date();
           break;
         case 'location':
-          data.location = value || undefined;
+          data.location = e.target.value || undefined;
           break;
         case 'capacity':
           data.capacity = value ? parseInt(value, 10) : undefined;
@@ -547,10 +547,10 @@ export class ProgrammingImportService {
           data.title = value;
           break;
         case 'description':
-          data.description = value || undefined;
+          data.description = e.target.value || undefined;
           break;
         case 'venue':
-          data.venue = value || undefined;
+          data.venue = e.target.value || undefined;
           break;
         case 'date':
           data.date = value ? new Date(value) : new Date();
@@ -559,7 +559,7 @@ export class ProgrammingImportService {
           data.duration = value ? parseInt(value, 10) : undefined;
           break;
         case 'status':
-          data.status = (value as Performance['status']) || 'planned';
+          data.status = (e.target.value as Performance['status']) || 'planned';
           break;
       }
     });
@@ -579,7 +579,7 @@ export class ProgrammingImportService {
           data.title = value;
           break;
         case 'description':
-          data.description = value || undefined;
+          data.description = e.target.value || undefined;
           break;
         case 'instructor':
           data.instructor = value;
@@ -596,7 +596,7 @@ export class ProgrammingImportService {
           data.capacity = value ? parseInt(value, 10) : undefined;
           break;
         case 'status':
-          data.status = (value as Workshop['status']) || 'planned';
+          data.status = (e.target.value as Workshop['status']) || 'planned';
           break;
       }
     });

@@ -37,6 +37,24 @@ export type { SidebarProps } from './Sidebar/Sidebar';
 export { Drawer } from './Drawer/Drawer';
 export type { DrawerProps } from './Drawer/Drawer';
 
+// Drawer Compound Components
+export {
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose,
+} from './Drawer/DrawerCompound';
+export type {
+  DrawerContentProps,
+  DrawerHeaderProps,
+  DrawerTitleProps,
+  DrawerDescriptionProps,
+  DrawerFooterProps,
+  DrawerCloseProps,
+} from './Drawer/DrawerCompound';
+
 // Footer
 export { Footer } from './Footer/Footer';
 export type { FooterProps } from './Footer/Footer';

@@ -19,14 +19,15 @@ import {
   BarChart3,
   Star
 } from 'lucide-react';import {
-  Card,
+  Badge,
   Button,
-  UnifiedInput,
+  Card,
+  Drawer,
+  Input,
   Select,
   Textarea,
-  Badge,
-  Drawer
-} from '@ghxstship/ui';
+  UnifiedInput
+} from "@ghxstship/ui";
 import {
   Card,
   Button,
@@ -571,20 +572,20 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
         description={editingReview ? 'Update performance review details' : 'Add a new performance review'}
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="stack-md">
-          <UnifiedInput             label="Review Period"
+          <Input             label="Review Period"
             placeholder="e.g., Q4 2023 Annual Review"
             {...form.register('review_period')}
            
           />
 
           <div className="grid grid-cols-2 gap-md">
-            <UnifiedInput               label="Reviewer Name"
+            <Input               label="Reviewer Name"
               placeholder="Name of reviewer"
               {...form.register('reviewer_name')}
              
             />
 
-            <UnifiedInput               label="Reviewer Title"
+            <Input               label="Reviewer Title"
               placeholder="Reviewer's job title"
               {...form.register('reviewer_title')}
              
@@ -602,14 +603,14 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
               <option value={1}>1 - Unsatisfactory</option>
             </Select>
 
-            <UnifiedInput               label="Review Date"
+            <Input               label="Review Date"
               type="date"
               {...form.register('review_date')}
              
             />
           </div>
 
-          <UnifiedInput             label="Next Review Date (Optional)"
+          <Input             label="Next Review Date (Optional)"
             type="date"
             {...form.register('next_review_date')}
            
@@ -619,7 +620,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
           <div>
             <label className="block text-body-sm form-label mb-sm">Strengths</label>
             <div className="flex gap-sm mb-sm">
-              <UnifiedInput                 placeholder="Add a strength"
+              <Input                 placeholder="Add a strength"
                 value={strengthInput}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStrengthInput(e.target.value)}
                 onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addStrength())}
@@ -650,7 +651,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
           <div>
             <label className="block text-body-sm form-label mb-sm">Areas for Improvement</label>
             <div className="flex gap-sm mb-sm">
-              <UnifiedInput                 placeholder="Add an area for improvement"
+              <Input                 placeholder="Add an area for improvement"
                 value={improvementInput}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setImprovementInput(e.target.value)}
                 onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addImprovement())}
@@ -681,7 +682,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
           <div>
             <label className="block text-body-sm form-label mb-sm">Goals Achieved</label>
             <div className="flex gap-sm mb-sm">
-              <UnifiedInput                 placeholder="Add a goal that was achieved"
+              <Input                 placeholder="Add a goal that was achieved"
                 value={goalAchievedInput}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setGoalAchievedInput(e.target.value)}
                 onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addGoalAchieved())}
@@ -708,7 +709,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
           <div>
             <label className="block text-body-sm form-label mb-sm">Goals for Next Period</label>
             <div className="flex gap-sm mb-sm">
-              <UnifiedInput                 placeholder="Add a goal for the next period"
+              <Input                 placeholder="Add a goal for the next period"
                 value={nextGoalInput}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNextGoalInput(e.target.value)}
                 onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addNextGoal())}

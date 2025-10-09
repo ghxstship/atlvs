@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, Clock, DollarSign, Edit, ExternalLink, ExternalTicket, FileText, MapPin, Music, Settings, Tag, Target, Ticket, Trash2, Users } from 'lucide-react';
+import { Calendar, Check, Clock, DollarSign, Edit, ExternalLink, ExternalTicket, FileText, MapPin, Music, Settings, Tag, Target, Ticket, Trash2, Users } from "lucide-react";
 import {
  Button,
  Badge,

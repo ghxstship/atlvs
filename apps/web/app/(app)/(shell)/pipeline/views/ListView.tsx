@@ -1,5 +1,10 @@
 'use client';
 
+
+import {
+  ListView
+} from "@ghxstship/ui";
+
 export function ListView({ data }: any) {
   return (
     <div className="space-y-xs">

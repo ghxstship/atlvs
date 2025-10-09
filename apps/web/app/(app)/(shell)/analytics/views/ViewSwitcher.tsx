@@ -11,6 +11,11 @@
 
 'use client';
 
+
+import {
+  ViewSwitcher
+} from "@ghxstship/ui";
+
 import React from 'react';
 import { Grid, List, Kanban, Calendar, Image, Timeline, BarChart, Gantt, FileText } from 'lucide-react';
 import type { ViewType } from '../types';

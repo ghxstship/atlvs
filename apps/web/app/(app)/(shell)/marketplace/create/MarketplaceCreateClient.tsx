@@ -19,7 +19,7 @@ import {
   cn,
   Input
 } from '@ghxstship/ui';
-import { ArrowLeft, Save, AlertCircle } from 'lucide-react';
+import { AlertCircle, ArrowLeft, Save, Settings } from "lucide-react";
 import { marketplaceService } from '../lib/marketplace-service';
 import type { UpsertListingDto } from '../types';
 
@@ -156,7 +156,7 @@ export default function MarketplaceCreateClient({
                 </label>
                 <Select
                   value={formData.type || 'offer'}
-                  onValueChange={(value) => updateFormData('type', value as UpsertListingDto['type'])}
+                  onChange={(e) => updateFormData('type', e.target.value as UpsertListingDto['type'])}
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -190,7 +190,7 @@ export default function MarketplaceCreateClient({
                 </label>
                 <Select
                   value={formData.category || 'services'}
-                  onValueChange={(value) => updateFormData('category', value as UpsertListingDto['category'])}
+                  onChange={(e) => updateFormData('category', e.target.value as UpsertListingDto['category'])}
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -257,7 +257,7 @@ export default function MarketplaceCreateClient({
                 </label>
                 <Select
                   value={formData.currency || 'USD'}
-                  onValueChange={(value) => updateFormData('currency', value as UpsertListingDto['currency'])}
+                  onChange={(e) => updateFormData('currency', e.target.value as UpsertListingDto['currency'])}
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -497,7 +497,7 @@ export default function MarketplaceCreateClient({
               </label>
               <Select
                 value={formData.preferredContactMethod || 'platform'}
-                onValueChange={(value) => updateFormData('preferredContactMethod', value as UpsertListingDto['preferredContactMethod'])}
+                onChange={(e) => updateFormData('preferredContactMethod', e.target.value as UpsertListingDto['preferredContactMethod'])}
               >
                 <SelectTrigger>
                   <SelectValue />
@@ -525,7 +525,7 @@ export default function MarketplaceCreateClient({
               </label>
                 <Select
                   value={formData.status || 'draft'}
-                  onValueChange={(value) => updateFormData('status', value as UpsertListingDto['status'])}
+                  onChange={(e) => updateFormData('status', e.target.value as UpsertListingDto['status'])}
                 >
                   <SelectTrigger>
                     <SelectValue />

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import React, { useState, useMemo } from 'react';
 import {
   Eye,
@@ -13,7 +14,13 @@ import {
   Search,
   Filter
 } from 'lucide-react';
-import { Card, Button, Input, Badge, DropdownMenu, Checkbox } from '@ghxstship/ui';
+import { Card, Button, Input, Badge, Dropdown, Checkbox ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
 import type { DigitalAsset } from '../types';
 
 interface ImageViewProps {
@@ -292,12 +299,7 @@ export default function ImageView({
                       {/* File Preview */}
                       <div className="aspect-square bg-gray-100 relative overflow-hidden">
                         {file.category === 'image' ? (
-                          <img
-                            src={getThumbnailUrl(file)}
-                            alt={file.title}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                          />
+                          <Image src={getThumbnailUrl(file)} alt={file.title} width={48} height={48} className="w-full h-full object-cover" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center bg-gray-50">
                             <CategoryIcon className="w-icon-2xl h-icon-2xl text-gray-400" />
@@ -370,11 +372,7 @@ export default function ImageView({
             {/* File Content */}
             <div className="bg-white rounded-lg overflow-hidden">
               {lightboxFile.category === 'image' ? (
-                <img
-                  src={getThumbnailUrl(lightboxFile)}
-                  alt={lightboxFile.title}
-                  className="max-w-full max-h-[70vh] object-contain"
-                />
+                <Image src={getThumbnailUrl(lightboxFile)} alt={lightboxFile.title} width={48} height={48} className="max-w-full max-h-[70vh] object-contain" />
               ) : (
                 <div className="p-xl text-center">
                   <div className="w-component-lg h-component-lg mx-auto mb-4 bg-gray-100 rounded-lg flex items-center justify-center">

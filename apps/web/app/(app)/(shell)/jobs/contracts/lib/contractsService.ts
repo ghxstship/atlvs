@@ -1,4 +1,4 @@
-import { tryCatch, reportError } from '@ghxstship/ui/utils/error-handling';
+import { tryCatch, reportError } from '@ghxstship/ui';
 import type {
   JobContract,
   ContractsResponse,

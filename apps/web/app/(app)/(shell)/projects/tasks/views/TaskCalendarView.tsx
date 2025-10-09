@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, ChevronLeft, ChevronRight, ListTodo, Clock, AlertCircle, Users, Tag } from "lucide-react";
+import { AlertCircle, Calendar, ChevronLeft, ChevronRight, Clock, Edit, ListTodo, Tag, Users } from "lucide-react";
 import { useState, useMemo } from 'react';
 import { Badge, Card, Button } from "@ghxstship/ui";
 import { 

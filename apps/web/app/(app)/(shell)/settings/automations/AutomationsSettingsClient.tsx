@@ -1,6 +1,6 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
-import { useEffect, useMemo, useState } from 'react';
+import { Activity, Award, Calendar, Clock, Edit, FileText, Play, Plus, Search, Settings, Trash2, TrendingUp, User } from "lucide-react";
+import { useEffect, useMemo, useState, useCallback } from 'react';
 import {
  Card,
  Button,
@@ -63,12 +63,10 @@ export default function AutomationsSettingsClient() {
 
  const isEditing = useMemo(() => editingRuleId !== null, [editingRuleId]);
 
- useEffect(() => {
- void loadAutomationRules();
- }, [toast]);
-
- const loadAutomationRules = async () => {
+ const loadAutomationRules = useCallback(async () => {
  try {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
  setLoading(true);
  const rules = await fetchAutomationRules();
  setAutomationRules(rules);
@@ -78,7 +76,11 @@ export default function AutomationsSettingsClient() {
  } finally {
  setLoading(false);
  }
- };
+ }, [toast]);
+
+ useEffect(() => {
+ void loadAutomationRules();
+ }, [loadAutomationRules]);
 
  const resetForm = () => {
  setForm(emptyForm);

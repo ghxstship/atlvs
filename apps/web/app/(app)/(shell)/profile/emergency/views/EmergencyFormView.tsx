@@ -3,18 +3,19 @@
 import { ShieldAlert, CheckCircle2 } from "lucide-react";
 import { useMemo, type ChangeEvent } from 'react';
 import {
- Button,
- Card,
- UnifiedInput,
- Textarea,
- Select,
- SelectTrigger,
- SelectValue,
- SelectContent,
- SelectItem,
- Checkbox,
- Badge
-} from '@ghxstship/ui';
+  Badge,
+  Button,
+  Card,
+  Checkbox,
+  Input,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Textarea,
+  UnifiedInput
+} from "@ghxstship/ui";
 import type { EmergencyContact, EmergencyContactFormData, FieldConfig } from '../types';
 import {
  CONTACT_FIELD_CONFIG,
@@ -77,7 +78,7 @@ function renderField(
  {config.label}
  </label>
  <Textarea
- value={(value as string) ?? ''}
+ value={(e.target.value as string) ?? ''}
  onChange={(event: ChangeEvent<HTMLTextAreaElement>) =>
  onFieldChange(config.key as keyof EmergencyContactFormData, event.target.value)
  }
@@ -95,7 +96,7 @@ function renderField(
  {config.label}
  </label>
  <Select
- value={(value as string) ?? ''}
+ value={(e.target.value as string) ?? ''}
  onValueChange={(selected) =>
  onFieldChange(config.key as keyof EmergencyContactFormData, selected as EmergencyContactFormData[keyof EmergencyContactFormData])
  }
@@ -121,8 +122,8 @@ function renderField(
  <label className="text-sm font-medium text-muted-foreground mb-1 block">
  {config.label}
  </label>
- <UnifiedInput
- value={(value as string | number | undefined) ?? ''}
+ <Input
+ value={(e.target.value as string | number | undefined) ?? ''}
  type={config.type === 'number' ? 'number' : config.type === 'email' ? 'email' : 'text'}
  placeholder={config.placeholder}
  onChange={(event: ChangeEvent<HTMLInputElement>) =>

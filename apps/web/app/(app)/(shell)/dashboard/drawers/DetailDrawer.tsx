@@ -1,9 +1,28 @@
 'use client';
 
+
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Badge,
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  ScrollArea,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "@ghxstship/ui";
+
 import React, { useState, useMemo } from 'react';
 import Image from "next/image";
-import { AlertCircle, Calendar, CheckCircle, Clock, Copy, Download, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, Edit, ExternalEye, ExternalLink, Link, MapPin, MoreHorizontal, Share, Tag, Trash2, User, X } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Card, CardBody, CardHeader, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, ScrollArea, Separator, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
+import { AlertCircle, Calendar, CheckCircle, Clock, Copy, Download, Dropdown,  DropdownItem, DropdownMenuSeparator,  Edit, ExternalEye, ExternalLink, Link, MapPin, MoreHorizontal, Share, Tag, Trash2, User, X } from 'lucide-react';
 import { cn } from '@ghxstship/ui/lib/utils';
 import { format } from 'date-fns';
 

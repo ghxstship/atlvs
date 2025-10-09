@@ -146,7 +146,7 @@ export default function EndorsementListView({
  <div className="grid grid-cols-1 md:grid-cols-3 gap-md pt-4 border-t">
  <Select
  value={filters.relationship || 'all'}
- onValueChange={(value) => onFiltersChange({ relationship: value as unknown })}
+ onChange={(e) => onFiltersChange({ relationship: e.target.value as unknown })}
  >
  <SelectTrigger>
  <SelectValue placeholder="All Relationships" />
@@ -163,7 +163,7 @@ export default function EndorsementListView({
 
  <Select
  value={String(filters.rating || 'all')}
- onValueChange={(value) => onFiltersChange({ 
+ onChange={(e) => onFiltersChange({ 
  rating: value === 'all' ? 'all' : parseInt(value) 
  })}
  >
@@ -182,7 +182,7 @@ export default function EndorsementListView({
 
  <Select
  value={filters.verification_status || 'all'}
- onValueChange={(value) => onFiltersChange({ verification_status: value as unknown })}
+ onChange={(e) => onFiltersChange({ verification_status: e.target.value as unknown })}
  >
  <SelectTrigger>
  <SelectValue placeholder="All Statuses" />

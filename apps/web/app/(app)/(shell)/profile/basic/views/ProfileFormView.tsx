@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Camera, Save, User, Plus, X, Eye, EyeOff } from "lucide-react";
 import { useState } from 'react';
 import { 
@@ -107,7 +108,7 @@ export default function ProfileFormView({
  case 'select':
  return fieldWrapper(
  <Select
- value={value as string || ''}
+ value={e.target.value as string || ''}
  onValueChange={(newValue) => handleInputChange(fieldConfig.key, newValue)}
  >
  <SelectTrigger>
@@ -126,7 +127,7 @@ export default function ProfileFormView({
  case 'textarea':
  return fieldWrapper(
  <Textarea
- value={value as string || ''}
+ value={e.target.value as string || ''}
  onChange={(e) => handleInputChange(fieldConfig.key, e.target.value)}
  placeholder={fieldConfig.placeholder}
  maxLength={fieldConfig.validation?.maxLength}
@@ -135,7 +136,7 @@ export default function ProfileFormView({
  );
 
  case 'tags':
- const tags = (value as string[]) || [];
+ const tags = (e.target.value as string[]) || [];
  return fieldWrapper(
  <div className="space-y-xs">
  <div className="flex flex-wrap gap-xs">
@@ -202,7 +203,7 @@ export default function ProfileFormView({
  return fieldWrapper(
  <Input
  type={fieldConfig.type}
- value={value as string || ''}
+ value={e.target.value as string || ''}
  onChange={(e) => handleInputChange(fieldConfig.key, e.target.value)}
  placeholder={fieldConfig.placeholder}
  minLength={fieldConfig.validation?.minLength}
@@ -245,11 +246,7 @@ export default function ProfileFormView({
  <div className="relative">
  <Avatar className="h-component-lg w-component-lg">
  {formData.avatar_url ? (
- <img 
- src={formData.avatar_url} 
- alt="Profile" 
- className="h-full w-full object-cover" 
- />
+ <Image src={formData.avatar_url} alt="Profile" width={48} height={48} className="h-full w-full object-cover" />
  ) : (
  <User className="h-icon-2xl w-icon-2xl" />
  )}

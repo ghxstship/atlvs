@@ -4,15 +4,21 @@ import { Calendar, Clock, Download, Filter, Grid3X3, List, MoreHorizontal, Plus,
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import {
- Button,
- Input,
- Select,
- Tabs,
- TabsList,
- TabsTrigger,
- TabsContent,
- Badge,
- EmptyState
+  Badge,
+  Button,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  EmptyState,
+  Input,
+  Select,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
 } from "@ghxstship/ui";
 import type {
  ProgrammingLineup,
@@ -113,14 +119,13 @@ export default function ProgrammingLineupsClient({
  return newSet;
  });
  }
- }
- )
+ })
  .subscribe();
 
  return () => {
  supabase.removeChannel(channel);
  };
- }, [supabase, orgId]);
+  }, [supabase, orgId, setSelectedLineups]);
 
  // Data fetching
  const fetchLineups = useCallback(async () => {
@@ -309,10 +314,10 @@ export default function ProgrammingLineupsClient({
  
  <Select
  value={filters.status || ""}
- onValueChange={(value) =>
+ onChange={(e) =>
  setFilters((prev: unknown) => ({
  ...prev,
- status: value ? (value as LineupStatus) : undefined
+ status: value ? (e.target.value as LineupStatus) : undefined
  }))
  }
  >
@@ -326,10 +331,10 @@ export default function ProgrammingLineupsClient({
 
  <Select
  value={filters.performer_type || ""}
- onValueChange={(value) =>
+ onChange={(e) =>
  setFilters((prev: unknown) => ({
  ...prev,
- performer_type: value ? (value as PerformerType) : undefined
+ performer_type: value ? (e.target.value as PerformerType) : undefined
  }))
  }
  >
@@ -343,8 +348,8 @@ export default function ProgrammingLineupsClient({
 
  <Select
  value={filters.event_id || ""}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, event_id: value || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, event_id: e.target.value || undefined }))
  }
  >
  <option value="">All Events</option>
@@ -358,8 +363,8 @@ export default function ProgrammingLineupsClient({
  {uniqueStages.length > 0 && (
  <Select
  value={filters.stage || ""}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, stage: value || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, stage: e.target.value || undefined }))
  }
  >
  <option value="">All Stages</option>
@@ -393,7 +398,7 @@ export default function ProgrammingLineupsClient({
  </div>
 
  {/* View Tabs */}
- <Tabs value={currentView} onValueChange={(value) => setCurrentView(value as ViewType)}>
+ <Tabs value={currentView} onChange={(e) => setCurrentView(e.target.value as ViewType)}>
  <TabsList>
  <TabsTrigger value="list">
  <List className="mr-2 h-icon-xs w-icon-xs" />

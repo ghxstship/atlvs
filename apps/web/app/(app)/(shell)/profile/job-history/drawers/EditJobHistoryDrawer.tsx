@@ -292,7 +292,7 @@ export default function EditJobHistoryDrawer({
  <Label htmlFor="employment_type">Employment Type *</Label>
  <Select
  value={getValues('employment_type')}
- onValueChange={(value) => setValue('employment_type', value as EmploymentType)}
+ onChange={(e) => setValue('employment_type', e.target.value as EmploymentType)}
  >
  <SelectTrigger>
  <SelectValue />
@@ -311,7 +311,7 @@ export default function EditJobHistoryDrawer({
  <Label htmlFor="visibility">Visibility</Label>
  <Select
  value={getValues('visibility')}
- onValueChange={(value) => setValue('visibility', value as JobVisibility)}
+ onChange={(e) => setValue('visibility', e.target.value as JobVisibility)}
  >
  <SelectTrigger>
  <SelectValue />

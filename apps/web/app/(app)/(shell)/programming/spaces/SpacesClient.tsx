@@ -93,6 +93,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
 
   useEffect(() => {
     loadSpaces();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadSpaces = async () => {

@@ -1,17 +1,69 @@
 import React, { useState } from 'react';
 import {
+  Badge,
+  Button,
+  Checkbox,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Separator
+} from "@ghxstship/ui";
+import { Button ,
   Drawer,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription
+  DrawerDescription,
+  DrawerFooter
 } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Label } from '@ghxstship/ui';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ghxstship/ui';
-import { Checkbox } from '@ghxstship/ui';
-import { Separator } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
+import { Label ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { Checkbox ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { Separator ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { Badge ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
 import {
   Download,
   FileText,
@@ -100,6 +152,7 @@ export default function ExportDrawer({
       // Set default fields
       setSelectedFields(availableFields.filter(f => f.required).map(f => f.key));
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, filters]);
 
   const handleExport = async () => {
@@ -202,7 +255,7 @@ export default function ExportDrawer({
             <div className="space-y-md">
               <div>
                 <Label htmlFor="format">Export Format</Label>
-                <Select value={format} onValueChange={(value: 'csv' | 'json' | 'excel' | 'pdf') => setFormat(value)}>
+                <Select value={format} onChange={(value: 'csv' | 'json' | 'excel' | 'pdf') => setFormat(value)}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>

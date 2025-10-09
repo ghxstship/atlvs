@@ -2,9 +2,16 @@
 
 
 
+
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "@ghxstship/ui";
+
 import { LayoutDashboard, Briefcase, User, Search, MessageSquare, DollarSign, Star, FileText, Settings } from "lucide-react";
 import { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 import MarketplaceDashboard from './MarketplaceDashboard';
 import MarketplaceVendorProfileClient from './MarketplaceVendorProfileClient';
 import ProjectPostingClient from './ProjectPostingClient';

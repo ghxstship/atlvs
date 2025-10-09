@@ -122,7 +122,7 @@ export default function HistoryFormView({
  </Label>
  <Select
  value={formData.entry_type}
- onValueChange={(value) => onFieldChange('entry_type', value)}
+ onChange={(e) => onFieldChange('entry_type', value)}
  >
  <SelectTrigger >
  <SelectValue />
@@ -131,7 +131,7 @@ export default function HistoryFormView({
  {Object.entries(ENTRY_TYPE_LABELS).map(([value, label]) => (
  <SelectItem key={value} value={value}>
  <span className="flex items-center gap-xs">
- <span>{getEntryTypeIcon(value as unknown)}</span>
+ <span>{getEntryTypeIcon(e.target.value as unknown)}</span>
  {label}
  </span>
  </SelectItem>
@@ -268,7 +268,7 @@ export default function HistoryFormView({
  <Label htmlFor="employment_type">Employment Type</Label>
  <Select
  value={formData.employment_type}
- onValueChange={(value) => onFieldChange('employment_type', value)}
+ onChange={(e) => onFieldChange('employment_type', value)}
  >
  <SelectTrigger >
  <SelectValue />
@@ -304,7 +304,7 @@ export default function HistoryFormView({
  <Label htmlFor="education_level">Education Level</Label>
  <Select
  value={formData.education_level}
- onValueChange={(value) => onFieldChange('education_level', value)}
+ onChange={(e) => onFieldChange('education_level', value)}
  >
  <SelectTrigger >
  <SelectValue />
@@ -340,7 +340,7 @@ export default function HistoryFormView({
  <Label htmlFor="project_status">Project Status</Label>
  <Select
  value={formData.project_status}
- onValueChange={(value) => onFieldChange('project_status', value)}
+ onChange={(e) => onFieldChange('project_status', value)}
  >
  <SelectTrigger >
  <SelectValue />
@@ -510,7 +510,7 @@ export default function HistoryFormView({
  </Label>
  <Select
  value={formData.visibility}
- onValueChange={(value) => onFieldChange('visibility', value)}
+ onChange={(e) => onFieldChange('visibility', value)}
  >
  <SelectTrigger >
  <SelectValue />

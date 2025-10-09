@@ -1,9 +1,17 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
-import { Card, Button, Badge, UnifiedInput, Skeleton } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  Input,
+  Skeleton,
+  UnifiedInput
+} from "@ghxstship/ui";
+import { Edit } from "lucide-react";
 
 interface BidsClientProps {
   user: User;
@@ -63,12 +71,10 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
   const [typeFilter, setTypeFilter] = useState('all');
   const [showCreateDialog, setShowCreateDialog] = useState(false);
 
-  useEffect(() => {
-    loadBids();
-  }, [orgId]);
-
-  const loadBids = async () => {
+  const loadBids = useCallback(async () => {
     try {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
       setLoading(true);
       const response = await fetch('/api/v1/jobs/bids', {
         headers: {
@@ -88,7 +94,11 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [orgId]);
+
+  useEffect(() => {
+    loadBids();
+  }, [loadBids]);
 
   const filteredBids = bids.filter((bid: any) => {
     const matchesSearch = bid.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -206,7 +216,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
 
       <div className="flex gap-md mb-lg">
         <div className="flex-1">
-          <UnifiedInput             placeholder="Search bids..."
+          <Input             placeholder="Search bids..."
             value={searchTerm}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
             className="w-full"
@@ -335,7 +345,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
               <div className="stack-md">
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Title</label>
-                  <UnifiedInput name="title" required />
+                  <Input name="title" required />
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Description</label>
@@ -353,11 +363,11 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Amount</label>
-                  <UnifiedInput name="amount" type="number" required />
+                  <Input name="amount" type="number" required />
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Opportunity ID</label>
-                  <UnifiedInput name="opportunityId" required />
+                  <Input name="opportunityId" required />
                 </div>
               </div>
               <div className="flex gap-sm mt-lg">

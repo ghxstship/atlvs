@@ -1,7 +1,11 @@
 import { useState, useCallback, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { SecurityLogger } from '@ghxstship/auth';
-import { Button } from '@ghxstship/ui';
+import {
+  Button,
+  Select,
+  SelectItem
+} from "@ghxstship/ui";
 import { Shield, AlertTriangle, Eye, Download, Filter } from 'lucide-react';
 
 interface SecurityDashboardProps {

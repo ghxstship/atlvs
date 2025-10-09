@@ -10,21 +10,25 @@
  * @module assets/views/CardView
  */
 
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback } from 'react';
+import Image from 'next/image';
 import { Asset, AssetViewState } from '../types';
 import { apiClient } from '../lib/api';
 import { realtimeService } from '../lib/realtime';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Checkbox } from '@ghxstship/ui';
 import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Checkbox,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator
-} from '@ghxstship/ui';
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
 import {
   MoreHorizontal,
   Edit,
@@ -138,7 +142,7 @@ export default function CardView({
     if (asset) {
       onAssetSelect?.(asset, selected);
     }
-  }, [assets, onAssetSelect]);
+  }, [assets, onAssetSelect, setSelectedCards]);
 
   // Handle bulk selection
   const handleSelectAll = useCallback((selected: boolean) => {
@@ -150,7 +154,7 @@ export default function CardView({
       setSelectedCards(new Set());
       assets.forEach(asset => onAssetSelect?.(asset, false));
     }
-  }, [assets, onAssetSelect]);
+  }, [assets, onAssetSelect, setSelectedCards]);
 
   // Get status color and icon
   const getStatusDisplay = (status: string) => {
@@ -257,9 +261,11 @@ export default function CardView({
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-sm">
               {asset.image_urls?.[0] ? (
-                <img
+                <Image
                   src={asset.image_urls[0]}
                   alt={asset.name}
+                  width={64}
+                  height={64}
                   className="w-icon-2xl h-icon-2xl rounded-lg object-cover bg-gray-100"
                 />
               ) : (
@@ -272,7 +278,7 @@ export default function CardView({
                   {asset.name}
                 </CardTitle>
                 <div className="flex items-center gap-xs mt-1">
-                  <Badge variant="outline" className="font-mono text-xs">
+                  <Badge variant="secondary" className="font-mono text-xs">
                     {asset.asset_tag}
                   </Badge>
                   <Badge
@@ -310,10 +316,10 @@ export default function CardView({
             )}
 
             {/* Location info */}
-            {asset.location && (
+            {asset.location_id && (
               <div className="flex items-center gap-xs text-sm text-gray-600">
                 <MapPin className="w-icon-xs h-icon-xs" />
-                <span className="truncate">{asset.location.name}</span>
+                <span className="truncate">Location: {asset.location_id.substring(0, 8)}</span>
               </div>
             )}
 

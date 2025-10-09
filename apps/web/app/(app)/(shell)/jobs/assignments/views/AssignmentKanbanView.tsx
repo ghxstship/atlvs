@@ -1,6 +1,6 @@
 'use client';
 
-import { Users, Clock, CheckCircle, AlertCircle, Calendar } from "lucide-react";
+import { AlertCircle, Calendar, CheckCircle, Clock, Edit, Users } from "lucide-react";
 import { useMemo } from 'react';
 import { KanbanBoard, Badge, Card } from '@ghxstship/ui';
 import type { JobAssignment } from '../types';

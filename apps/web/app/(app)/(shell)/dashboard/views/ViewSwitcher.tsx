@@ -1,8 +1,19 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import { BarChart3, Calendar, Clock, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, FormInput, GanttChart, Image, KanbanSquare, LayoutGrid, List, MoreHorizontal, Settings } from 'lucide-react';
-import { Badge, Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@ghxstship/ui';
+import { BarChart3, Calendar, Clock, Dropdown,  DropdownItem,  FormInput, GanttChart, Image, KanbanSquare, LayoutGrid, List, MoreHorizontal, Settings } from 'lucide-react';
+import {
+  Badge,
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
 import { cn } from '@ghxstship/ui/lib/utils';
 
 // View Types

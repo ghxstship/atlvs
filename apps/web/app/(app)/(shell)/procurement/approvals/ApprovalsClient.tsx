@@ -1,10 +1,32 @@
 'use client';
 
+
+import {
+  AppDrawer,
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Input,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "@ghxstship/ui";
+
 import { AlertTriangle, BarChart3, Calendar, CheckCircle, Clock, Download, Edit, Eye, Filter, Grid3X3, LayoutDashboard, List, MoreHorizontal, Plus, RefreshCw, Search, Settings, Trash2, TrendingUp, Upload, Users, XCircle } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { AppDrawer, Badge, Button, Card, Checkbox, Input, Select, SelectTrigger, SelectValue, SelectContent, SelectItem, Tabs, TabsList, TabsTrigger, TabsContent } from '@ghxstship/ui';
 import { ApprovalsService } from './lib/approvalsService';
 import { CreatePolicyClient } from './CreatePolicyClient';
 import type { 
@@ -494,7 +516,7 @@ export default function ApprovalsClient({
  {/* Status Filter */}
  <Select
  value={filters.status}
- onValueChange={(value) => handleFilterChange({ status: value })}
+ onChange={(e) => handleFilterChange({ status: value })}
  >
  <SelectTrigger className="max-w-compact">
  <SelectValue placeholder="All Status" />
@@ -511,7 +533,7 @@ export default function ApprovalsClient({
  {/* Priority Filter */}
  <Select
  value={filters.priority}
- onValueChange={(value) => handleFilterChange({ priority: value })}
+ onChange={(e) => handleFilterChange({ priority: value })}
  >
  <SelectTrigger className="max-w-compact">
  <SelectValue placeholder="All Priorities" />
@@ -528,7 +550,7 @@ export default function ApprovalsClient({
  </Card>
 
  {/* View Mode Tabs */}
- <Tabs value={viewMode} onValueChange={(value) => setViewMode(value as ApprovalViewMode)}>
+ <Tabs value={viewMode} onChange={(e) => setViewMode(e.target.value as ApprovalViewMode)}>
  <div className="flex items-center justify-between">
  <TabsList>
  <TabsTrigger value="dashboard">

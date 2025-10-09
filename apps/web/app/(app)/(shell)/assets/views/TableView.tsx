@@ -11,26 +11,60 @@
  */
 
 import React, { useState, useCallback, useMemo } from 'react';
+import Image from 'next/image';
 import { Asset, AssetFilters, AssetSort, AssetViewState } from '../types';
 import { apiClient } from '../lib/api';
 import { realtimeService } from '../lib/realtime';
 import {
+  Badge,
+  Button,
+  Checkbox,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  Input,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
   TableRow
-} from '@ghxstship/ui';
-import { Button } from '@ghxstship/ui';
-import { Input } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Checkbox } from '@ghxstship/ui';
-import {
+} from "@ghxstship/ui";
+import { Button ,
   DropdownMenu,
+  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
+import { Input ,
+  DropdownMenu,
   DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
+import { Badge ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
+import { Checkbox ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
+import {
+  Dropdown,
+  
+  DropdownItem,
+  
   DropdownMenuSeparator
 } from '@ghxstship/ui';
 import {
@@ -136,7 +170,7 @@ const COLUMNS: ColumnConfig[] = [
         damaged: 'bg-orange-100 text-orange-800'
       };
       return (
-        <Badge className={`text-xs capitalize ${statusColors[value as keyof typeof statusColors] || 'bg-gray-100'}`}>
+        <Badge className={`text-xs capitalize ${statusColors[e.target.value as keyof typeof statusColors] || 'bg-gray-100'}`}>
           {value?.replace('_', ' ')}
         </Badge>
       );
@@ -158,7 +192,7 @@ const COLUMNS: ColumnConfig[] = [
         needs_repair: 'bg-red-100 text-red-800'
       };
       return (
-        <Badge className={`text-xs capitalize ${conditionColors[value as keyof typeof conditionColors] || 'bg-gray-100'}`}>
+        <Badge className={`text-xs capitalize ${conditionColors[e.target.value as keyof typeof conditionColors] || 'bg-gray-100'}`}>
           {value?.replace('_', ' ')}
         </Badge>
       );
@@ -183,9 +217,11 @@ const COLUMNS: ColumnConfig[] = [
     render: (value) => (
       <div className="flex items-center gap-xs">
         {value?.avatar && (
-          <img
+          <Image
             src={value.avatar}
             alt={value.name}
+            width={32}
+            height={32}
             className="w-icon-md h-icon-md rounded-full"
           />
         )}
@@ -349,7 +385,7 @@ export default function TableView({
       return newSet;
     });
     onAssetSelect?.(assets.find(a => a.id === assetId)!, selected);
-  }, [assets, onAssetSelect]);
+  }, [assets, onAssetSelect, setSelectedRows]);
 
   // Handle bulk selection
   const handleSelectAll = useCallback((selected: boolean) => {
@@ -361,7 +397,7 @@ export default function TableView({
       setSelectedRows(new Set());
       assets.forEach(asset => onAssetSelect?.(asset, false));
     }
-  }, [assets, onAssetSelect]);
+  }, [assets, onAssetSelect, setSelectedRows]);
 
   // Get visible columns
   const visibleColumns = useMemo(() =>

@@ -1,4 +1,4 @@
-import { tryCatch, reportError } from '@ghxstship/ui/utils/error-handling';
+import { tryCatch, reportError } from '@ghxstship/ui';
 // import Papa from 'papaparse'; // TODO: Install papaparse
 import type { MarketplaceListing, UpsertListingDto } from '../types';
 import { marketplaceMutationService } from './mutations';

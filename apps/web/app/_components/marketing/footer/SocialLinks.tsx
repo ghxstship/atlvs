@@ -1,4 +1,4 @@
-import { Github, Linkedin, Youtube } from 'lucide-react';
+import { Github, Linkedin, X, Youtube } from "lucide-react";
 
 // Custom X (Twitter) icon component
 const XIcon = ({ className }: { className?: string }) => (

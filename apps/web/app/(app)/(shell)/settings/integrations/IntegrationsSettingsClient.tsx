@@ -253,10 +253,10 @@ export default function IntegrationsSettingsClient() {
  <Label htmlFor="type">Type</Label>
  <Select
  value={formData.type}
- onValueChange={(value) =>
+ onChange={(e) =>
  setFormData((prev: unknown) => ({
  ...prev,
- type: value as CreateIntegrationInput['type']
+ type: e.target.value as CreateIntegrationInput['type']
  }))
  }
  >

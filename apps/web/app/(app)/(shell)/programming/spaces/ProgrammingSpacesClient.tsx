@@ -14,10 +14,14 @@ import {
  SelectTrigger,
  SelectValue,
  Tabs,
- TabsContent,
- TabsList,
- TabsTrigger
-} from '@ghxstship/ui';
+ TabsTrigger,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from "@ghxstship/ui";
 
 import type {
  ProgrammingSpace,
@@ -111,6 +115,8 @@ export default function ProgrammingSpacesClient({
  return () => {
  supabase.removeChannel(channel);
  };
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [supabase, orgId]);
 
  // Fetch spaces with filters
@@ -346,8 +352,8 @@ export default function ProgrammingSpacesClient({
 
  <Select
  value={filters.kind || ''}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, kind: value as SpaceKind || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, kind: e.target.value as SpaceKind || undefined }))
  }
  >
  <SelectTrigger className="w-40">
@@ -371,8 +377,8 @@ export default function ProgrammingSpacesClient({
 
  <Select
  value={filters.status || ''}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, status: value as SpaceStatus || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, status: e.target.value as SpaceStatus || undefined }))
  }
  >
  <SelectTrigger className="w-40">
@@ -392,8 +398,8 @@ export default function ProgrammingSpacesClient({
  {buildings.length > 0 && (
  <Select
  value={filters.building || ''}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, building: value || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, building: e.target.value || undefined }))
  }
  >
  <SelectTrigger className="w-40">
@@ -412,8 +418,8 @@ export default function ProgrammingSpacesClient({
 
  <Select
  value={filters.project_id || ''}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, project_id: value || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, project_id: e.target.value || undefined }))
  }
  >
  <SelectTrigger className="w-container-xs">

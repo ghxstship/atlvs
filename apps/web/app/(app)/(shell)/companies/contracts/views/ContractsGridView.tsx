@@ -1,6 +1,6 @@
 'use client';
 
-import { FileText, Calendar, DollarSign, Building, AlertTriangle } from "lucide-react";
+import { AlertTriangle, Building, Calendar, DollarSign, Edit, FileText } from "lucide-react";
 import { Badge, Button, Card } from '@ghxstship/ui';
 import type { CompanyContract } from '../types';
 

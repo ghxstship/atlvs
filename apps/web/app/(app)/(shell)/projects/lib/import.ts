@@ -307,13 +307,13 @@ export class ProjectImports {
           project.name = value;
           break;
         case 'description':
-          project.description = value || undefined;
+          project.description = e.target.value || undefined;
           break;
         case 'status':
-          project.status = value as any;
+          project.status = e.target.value as any;
           break;
         case 'priority':
-          project.priority = value as any;
+          project.priority = e.target.value as any;
           break;
         case 'budget':
           project.budget = value ? parseFloat(value) : undefined;
@@ -326,18 +326,18 @@ export class ProjectImports {
           break;
         case 'starts_at':
         case 'start_date':
-          project.starts_at = value || undefined;
+          project.starts_at = e.target.value || undefined;
           break;
         case 'ends_at':
         case 'end_date':
         case 'due_date':
-          project.ends_at = value || undefined;
+          project.ends_at = e.target.value || undefined;
           break;
         case 'tags':
           project.tags = value ? value.split(';').map(t => t.trim()) : undefined;
           break;
         case 'notes':
-          project.notes = value || undefined;
+          project.notes = e.target.value || undefined;
           break;
       }
     });
@@ -472,19 +472,19 @@ export class TaskImports {
           task.title = value;
           break;
         case 'description':
-          task.description = value || undefined;
+          task.description = e.target.value || undefined;
           break;
         case 'status':
-          task.status = value as any;
+          task.status = e.target.value as any;
           break;
         case 'priority':
-          task.priority = value as any;
+          task.priority = e.target.value as any;
           break;
         case 'project':
           task.project_id = projectMap.get(value.toLowerCase());
           break;
         case 'assignee':
-          task.assignee_id = value || undefined; // Would need user lookup
+          task.assignee_id = e.target.value || undefined; // Would need user lookup
           break;
         case 'estimated_hours':
           task.estimated_hours = value ? parseFloat(value) : undefined;
@@ -493,10 +493,10 @@ export class TaskImports {
           task.actual_hours = value ? parseFloat(value) : undefined;
           break;
         case 'start_date':
-          task.start_date = value || undefined;
+          task.start_date = e.target.value || undefined;
           break;
         case 'due_date':
-          task.due_date = value || undefined;
+          task.due_date = e.target.value || undefined;
           break;
         case 'tags':
           task.tags = value ? value.split(';').map(t => t.trim()) : undefined;

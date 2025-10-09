@@ -1,6 +1,19 @@
 'use client';
 
 
+
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Input
+} from "@ghxstship/ui";
+import { CheckCircle, Mail } from "lucide-react";
+
 import React from "react";
 
 import { useState } from 'react'

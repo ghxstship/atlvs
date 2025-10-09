@@ -12,9 +12,6 @@ import {
  Select,
  Checkbox,
  Tabs,
- TabsList,
- TabsTrigger,
- TabsContent,
  toast
 } from "@ghxstship/ui";
 import { format, parseISO, isAfter, isBefore, isToday, addDays } from "date-fns";
@@ -125,7 +122,7 @@ export default function InspectionsClient({
  const [selectedInspector, setSelectedInspector] = useState<string>("all");
  const [sortField, setSortField] = useState<string>("scheduled_date");
  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
- const [selectedInspections, setSelectedInspections] = useState<Set<string>(new Set());
+ const [selectedInspections, setSelectedInspections] = useState<Set<string>>(new Set());
  const [fieldVisibility, setFieldVisibility] = useState(FIELD_CONFIG);
  const [dateRange, setDateRange] = useState<{ start?: Date; end?: Date }>({});
 
@@ -595,7 +592,7 @@ export default function InspectionsClient({
  return (
  <Button
  key={view.id}
- variant={viewType === view.id ? "default" : "outline"}
+ variant={viewType === view.id ? "secondary" : "outline"}
  size="sm"
  onClick={() => setViewType(view.id as ViewType)}
  className="rounded-none first:rounded-l-md last:rounded-r-md"
@@ -766,7 +763,7 @@ export default function InspectionsClient({
  
  <ViewInspectionDrawer
  open={viewDrawerOpen}
- onClose={() => setViewDrawerOpen(false)}
+ onOpenChange={setViewDrawerOpen}
  inspection={selectedInspection}
  onEdit={() => {
  setViewDrawerOpen(false);

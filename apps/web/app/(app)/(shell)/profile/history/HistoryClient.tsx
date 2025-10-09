@@ -18,14 +18,15 @@ import {
   Trash2,
   Clock
 } from 'lucide-react';import {
-  Card,
+  Badge,
   Button,
-  UnifiedInput,
+  Card,
+  Drawer,
+  Input,
   Select,
   Textarea,
-  Badge,
-  Drawer
-} from '@ghxstship/ui';
+  UnifiedInput
+} from "@ghxstship/ui";
 import {
   Card,
   Button,
@@ -517,20 +518,20 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
             <option value="other">Other</option>
           </Select>
 
-          <UnifiedInput             label="Title"
+          <Input             label="Title"
             placeholder="Position title, degree, project name, etc."
             {...form.register('title')}
            
           />
 
           <div className="grid grid-cols-2 gap-md">
-            <UnifiedInput               label="Organization"
+            <Input               label="Organization"
               placeholder="Company, school, or organization"
               {...form.register('organization')}
              
             />
 
-            <UnifiedInput               label="Location"
+            <Input               label="Location"
               placeholder="City, state, country"
               {...form.register('location')}
              
@@ -538,13 +539,13 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
           </div>
 
           <div className="grid grid-cols-2 gap-md">
-            <UnifiedInput               label="Start Date"
+            <Input               label="Start Date"
               type="date"
               {...form.register('start_date')}
              
             />
 
-            <UnifiedInput               label="End Date"
+            <Input               label="End Date"
               type="date"
               {...form.register('end_date')}
              
@@ -575,7 +576,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
           <div>
             <label className="block text-body-sm form-label mb-sm">Skills Gained</label>
             <div className="flex gap-sm mb-sm">
-              <UnifiedInput                 placeholder="Add a skill"
+              <Input                 placeholder="Add a skill"
                 value={skillInput}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSkillInput(e.target.value)}
                 onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addSkill())}
@@ -605,7 +606,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
           <div>
             <label className="block text-body-sm form-label mb-sm">Key Achievements</label>
             <div className="flex gap-sm mb-sm">
-              <UnifiedInput                 placeholder="Add an achievement"
+              <Input                 placeholder="Add an achievement"
                 value={achievementInput}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAchievementInput(e.target.value)}
                 onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addAchievement())}

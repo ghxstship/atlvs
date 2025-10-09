@@ -77,3 +77,7 @@ export type { KbdProps } from './Kbd/Kbd';
 // Code
 export { Code } from './Code/Code';
 export type { CodeProps } from './Code/Code';
+
+// Tabs
+export { Tabs, TabsList, TabsTrigger, TabsContent } from './Tabs/Tabs';
+export type { TabsProps, TabsListProps, TabsTriggerProps, TabsContentProps } from './Tabs/Tabs';

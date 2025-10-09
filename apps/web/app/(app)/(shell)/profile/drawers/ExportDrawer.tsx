@@ -224,7 +224,7 @@ export default function ExportDrawer({
  {/* Format Selection */}
  <div className="space-y-sm">
  <Label htmlFor="format">Export Format</Label>
- <Select value={format} onValueChange={(value) => setFormat(value as unknown)}>
+ <Select value={format} onChange={(e) => setFormat(e.target.value as unknown)}>
  <SelectTrigger>
  <SelectValue placeholder="Select export format" />
  </SelectTrigger>

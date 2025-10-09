@@ -6,8 +6,15 @@
 'use client';
 
 import React from 'react';
-import { Badge, Button, Card } from '@ghxstship/ui';
-import { BookOpen, Calendar, Clipboard, Download, Edit, ExternalEye, ExternalLink, Eye, File, FileText, GraduationCap, Share2, Star, Tag, User, X } from 'lucide-react';
+import { Badge, Button, Card ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { BookOpen, Calendar, Clipboard, Download, Edit, ExternalEye, ExternalLink, Eye, File, FileText, GraduationCap, Share, Share2, Star, Tag, User, X } from "lucide-react";
 import type { Resource } from '../lib/resources-service';
 
 interface DetailDrawerProps {

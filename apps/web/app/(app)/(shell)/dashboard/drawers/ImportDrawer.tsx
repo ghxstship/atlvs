@@ -15,7 +15,14 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertTriangle, CheckCircle, Download, Eye, File, FileText, Loader2, RefreshCw, Settings, Table, TableBody, TableCell, TableHead, TableHeader, TableRow, Trash2, Upload, X } from 'lucide-react';
-import { Badge, Button, Checkbox, Input, Label, Progress, ScrollArea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator, Table, TableBody, TableCell, TableHead, TableHeader, TableRow, Textarea } from '@ghxstship/ui';
+import { Badge, Button, Checkbox, Input, Label, Progress, ScrollArea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator, Table, TableBody, TableCell, TableHead, TableHeader, TableRow, Textarea ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
 import { cn } from '@ghxstship/ui/lib/utils';
 
 // Import Format Types
@@ -327,7 +334,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
           <Label htmlFor="format">Import Format</Label>
           <Select
             value={importConfig.format}
-            onValueChange={(value: ImportFormat) => handleConfigChange('format', value)}
+            onChange={(value: ImportFormat) => handleConfigChange('format', value)}
           >
             <SelectTrigger>
               <SelectValue />
@@ -397,7 +404,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
               <Label>Delimiter</Label>
               <Select
                 value={importConfig.delimiter}
-                onValueChange={(value: ImportConfig['delimiter']) => handleConfigChange('delimiter', value)}
+                onChange={(value: ImportConfig['delimiter']) => handleConfigChange('delimiter', value)}
               >
                 <SelectTrigger>
                   <SelectValue />
@@ -426,7 +433,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
           <Label>Encoding</Label>
           <Select
             value={importConfig.encoding}
-            onValueChange={(value: ImportConfig['encoding']) => handleConfigChange('encoding', value)}
+            onChange={(value: ImportConfig['encoding']) => handleConfigChange('encoding', value)}
           >
             <SelectTrigger>
               <SelectValue />
@@ -489,7 +496,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
                   <Label className="text-sm">Map to Field:</Label>
                   <Select
                     value={mapping?.targetField || ''}
-                    onValueChange={(value) => handleFieldMapping(header, value)}
+                    onChange={(e) => handleFieldMapping(header, value)}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select field" />

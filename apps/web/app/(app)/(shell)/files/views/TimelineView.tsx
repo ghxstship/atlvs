@@ -14,7 +14,13 @@ import {
   MoreHorizontal,
   GitBranch
 } from 'lucide-react';
-import { Card, Button, Badge, DropdownMenu, Select } from '@ghxstship/ui';
+import { Card, Button, Badge, Dropdown, Select ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
 import { format, isSameDay, startOfDay, endOfDay } from 'date-fns';
 import type { DigitalAsset } from '../types';
 
@@ -173,7 +179,7 @@ export default function TimelineView({
         <div className="flex items-center gap-md">
           <div className="flex items-center gap-xs">
             <label className="text-sm font-medium">Sort:</label>
-            <Select value={sortOrder} onValueChange={(value: 'newest' | 'oldest') => setSortOrder(value)}>
+            <Select value={sortOrder} onChange={(value: 'newest' | 'oldest') => setSortOrder(value)}>
               <Select.Trigger className="w-component-xl">
                 <Select.Value />
               </Select.Trigger>
@@ -186,7 +192,7 @@ export default function TimelineView({
 
           <div className="flex items-center gap-xs">
             <label className="text-sm font-medium">Group by:</label>
-            <Select value={groupBy} onValueChange={(value: 'day' | 'week' | 'month') => setGroupBy(value)}>
+            <Select value={groupBy} onChange={(value: 'day' | 'week' | 'month') => setGroupBy(value)}>
               <Select.Trigger className="w-component-lg">
                 <Select.Value />
               </Select.Trigger>

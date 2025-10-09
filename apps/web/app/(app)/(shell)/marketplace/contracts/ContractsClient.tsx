@@ -303,13 +303,13 @@ export default function ContractsClient({ orgId, userId }: ContractsClientProps)
  onChange={(e) => setSearchQuery(e.target.value)}
  className="flex-1"
  />
- <Select value={filter} onValueChange={(value: unknown) => setFilter(value)}>
+ <Select value={filter} onChange={(value: unknown) => setFilter(value)}>
  <option value="all">All Status</option>
  <option value="active">Active</option>
  <option value="pending">Pending</option>
  <option value="completed">Completed</option>
  </Select>
- <Select value={roleFilter} onValueChange={(value: unknown) => setRoleFilter(value)}>
+ <Select value={roleFilter} onChange={(value: unknown) => setRoleFilter(value)}>
  <option value="all">All Roles</option>
  <option value="client">As Client</option>
  <option value="vendor">As Vendor</option>

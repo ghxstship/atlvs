@@ -1,8 +1,28 @@
 'use client';
 
+
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  DatePicker,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "@ghxstship/ui";
+
 import React, { useState, useCallback, useState, useEffect, useMemo } from 'react';
 import { BarChart3, Calendar, Download, Filter, PieChart, RefreshCw, TrendingUp } from 'lucide-react';
-import { Badge, Button, Card, CardBody, CardContent, CardHeader, CardTitle, DatePicker, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 import { ChartView } from '../views/ChartView';
 import { analyticsQueries } from '../lib/queries';
 

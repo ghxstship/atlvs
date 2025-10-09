@@ -1,7 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Card } from '@ghxstship/ui';
+import {
+  CalendarView,
+  Card
+} from "@ghxstship/ui";
 import { Calendar as CalendarIcon, CalendarIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface CalendarViewProps {

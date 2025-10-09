@@ -124,7 +124,7 @@ ipcMain.handle('set-store-value', (_, key: string, value: unknown) => {
 })
 
 ipcMain.handle('delete-store-value', (_, key: string) => {
-  store.delete(key)
+  store.delete(key as 'windowState')
 })
 
 // Auto-updater events

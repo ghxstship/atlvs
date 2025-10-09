@@ -189,7 +189,7 @@ export default function CreateProjectClient({ mode, project, onSuccess, onCancel
  <Select
  
  value={formData.category}
- onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}
+ onChange={(e) => setFormData(prev => ({ ...prev, category: value }))}
  disabled={isReadOnly}
  >
  <option value="">Select category</option>
@@ -204,7 +204,7 @@ export default function CreateProjectClient({ mode, project, onSuccess, onCancel
  <Select
  
  value={formData.experience_level}
- onValueChange={(value) => setFormData(prev => ({ ...prev, experience_level: value as unknown }))}
+ onChange={(e) => setFormData(prev => ({ ...prev, experience_level: e.target.value as unknown }))}
  disabled={isReadOnly}
  >
  <option value="entry">Entry Level</option>
@@ -234,7 +234,7 @@ export default function CreateProjectClient({ mode, project, onSuccess, onCancel
  <Select
  
  value={formData.budget_type}
- onValueChange={(value) => setFormData(prev => ({ ...prev, budget_type: value as unknown }))}
+ onChange={(e) => setFormData(prev => ({ ...prev, budget_type: e.target.value as unknown }))}
  disabled={isReadOnly}
  >
  <option value="not_specified">Not Specified</option>
@@ -271,7 +271,7 @@ export default function CreateProjectClient({ mode, project, onSuccess, onCancel
  <Select
  
  value={formData.currency}
- onValueChange={(value) => setFormData(prev => ({ ...prev, currency: value }))}
+ onChange={(e) => setFormData(prev => ({ ...prev, currency: value }))}
  disabled={isReadOnly}
  >
  <option value="USD">USD</option>
@@ -320,7 +320,7 @@ export default function CreateProjectClient({ mode, project, onSuccess, onCancel
  <Select
  
  value={formData.location_type}
- onValueChange={(value) => setFormData(prev => ({ ...prev, location_type: value as unknown }))}
+ onChange={(e) => setFormData(prev => ({ ...prev, location_type: e.target.value as unknown }))}
  disabled={isReadOnly}
  >
  <option value="remote">Remote</option>
@@ -367,7 +367,7 @@ export default function CreateProjectClient({ mode, project, onSuccess, onCancel
  <Select
  
  value={formData.visibility}
- onValueChange={(value) => setFormData(prev => ({ ...prev, visibility: value as unknown }))}
+ onChange={(e) => setFormData(prev => ({ ...prev, visibility: e.target.value as unknown }))}
  disabled={isReadOnly}
  >
  <option value="public">Public</option>

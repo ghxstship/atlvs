@@ -3,7 +3,14 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Activity, AlertCircle, BarChart3, Bell, Edit, Layout, Plus, Trash2, TrendingUp } from 'lucide-react';
-import { Card, Button, Badge, Stack, HStack, Grid } from '@ghxstship/ui';
+import { Card, Button, Badge, Stack, HStack, Grid ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
 
 type ProjectsStats = {
   total: number;
@@ -87,6 +94,7 @@ interface DashboardLayout {
   columns: number;
   gutters: 'sm' | 'md' | 'lg';
   padding: 'sm' | 'md' | 'lg';
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 }
 
 interface Dashboard {
@@ -822,7 +830,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                   onChange={(event) =>
                     setWidgetDraft((prev) => ({
                       ...(prev ?? createDefaultDraft()),
-                      type: event.target.value as DashboardWidget['type']
+                      type: event.target.e.target.value as DashboardWidget['type']
                     }))
                   }
                 >

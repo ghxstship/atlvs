@@ -1,6 +1,9 @@
 'use client';
 
-import { Drawer } from '@ghxstship/ui';
+import {
+  AppDrawer,
+  Drawer
+} from "@ghxstship/ui";
 import type {
  DataRecord as DrawerRecord,
  FieldConfig as DrawerFieldConfig

@@ -4,15 +4,21 @@ import { Plus, Search, Filter, Download, Upload, MoreHorizontal, List, Grid3X3, 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import {
- Button,
- Input,
- Select,
- Tabs,
- TabsList,
- TabsTrigger,
- TabsContent,
- Badge,
- EmptyState
+  Badge,
+  Button,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  EmptyState,
+  Input,
+  Select,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
 } from "@ghxstship/ui";
 import type {
  ProgrammingPerformance,
@@ -111,14 +117,13 @@ export default function ProgrammingPerformancesClient({
  return newSet;
  });
  }
- }
- )
+ })
  .subscribe();
 
  return () => {
  supabase.removeChannel(channel);
  };
- }, [supabase, orgId]);
+  }, [supabase, orgId, setSelectedPerformances]);
 
  // Data fetching
  const fetchPerformances = useCallback(async () => {
@@ -309,8 +314,8 @@ export default function ProgrammingPerformancesClient({
  
  <Select
  value={filters.status || ""}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, status: value || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, status: e.target.value || undefined }))
  }
  >
  <option value="">All Statuses</option>
@@ -323,8 +328,8 @@ export default function ProgrammingPerformancesClient({
 
  <Select
  value={filters.performance_type || ""}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, performance_type: value || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, performance_type: e.target.value || undefined }))
  }
  >
  <option value="">All Types</option>
@@ -337,8 +342,8 @@ export default function ProgrammingPerformancesClient({
 
  <Select
  value={filters.event_id || ""}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, event_id: value || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, event_id: e.target.value || undefined }))
  }
  >
  <option value="">All Events</option>
@@ -352,8 +357,8 @@ export default function ProgrammingPerformancesClient({
  {uniqueVenues.length > 0 && (
  <Select
  value={filters.venue || ""}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, venue: value || undefined }))
+ onChange={(e) =>
+ setFilters((prev: unknown) => ({ ...prev, venue: e.target.value || undefined }))
  }
  >
  <option value="">All Venues</option>
@@ -387,7 +392,7 @@ export default function ProgrammingPerformancesClient({
  </div>
 
  {/* View Tabs */}
- <Tabs value={currentView} onValueChange={(value) => setCurrentView(value as ViewType)}>
+ <Tabs value={currentView} onChange={(e) => setCurrentView(e.target.value as ViewType)}>
  <TabsList>
  <TabsTrigger value="list">
  <List className="mr-2 h-icon-xs w-icon-xs" />

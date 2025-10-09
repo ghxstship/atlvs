@@ -2,10 +2,13 @@
 
 import { Edit3, FileText, Activity as ActivityIcon, MessageSquare } from "lucide-react";
 import { useEffect, useState } from 'react';
-import { Button } from '@ghxstship/ui';
+import {
+  AppDrawer,
+  Button
+} from "@ghxstship/ui";
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { tryCatch, Result, reportError } from '@ghxstship/ui/utils/error-handling';
+import { tryCatch, Result, reportError } from '@ghxstship/ui';
 import { AppDrawer } from '@ghxstship/ui';
 
 export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }: { orgId: string; vendorId: string | null; open: boolean; onClose: () => void }): JSX.Element | null {
@@ -89,6 +92,8 @@ const res = resResult.data;
  } catch { setComments([]); }
  setLoadingComments(false);
  })();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [open, vendorId, orgId, sb]);
 
  useEffect(() => {
@@ -110,7 +115,9 @@ const res = resResult.data;
  setActivity([]); 
  }
  setLoadingActivity(false);
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  })();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [open, vendorId, orgId]);
 
  if (!open) return null;

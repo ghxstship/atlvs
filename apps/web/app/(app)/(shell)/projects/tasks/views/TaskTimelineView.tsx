@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertCircle, Briefcase, Calendar, Clock, ListTodo, Tag, TrendingUp, Users } from "lucide-react";
+import { AlertCircle, Briefcase, Calendar, Clock, Edit, ListTodo, Tag, TrendingUp, Users } from "lucide-react";
 import { useMemo } from 'react';
 import { Badge, Card } from "@ghxstship/ui";
 import {

@@ -95,7 +95,7 @@ export default function CreateDrawer({ open, onClose, onSuccess, organizationId,
             <Select
               id="type"
               value={formData.type}
-              onChange={(e) => setFormData({ ...formData, type: e.target.value as any })}
+              onChange={(e) => setFormData({ ...formData, type: e.target.e.target.value as any })}
               disabled={loading}
             >
               <option value="guide">Guide</option>
@@ -135,7 +135,7 @@ export default function CreateDrawer({ open, onClose, onSuccess, organizationId,
           <Select
             id="status"
             value={formData.status}
-            onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
+            onChange={(e) => setFormData({ ...formData, status: e.target.e.target.value as any })}
             disabled={loading}
           >
             <option value="draft">Draft</option>

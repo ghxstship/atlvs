@@ -205,7 +205,7 @@ export default function CreateMaintenanceClient({
                 </label>
                 <Select
                   value={formData.type}
-                  onValueChange={(value: any) => handleInputChange('type', value)}
+                  onChange={(value: any) => handleInputChange('type', value)}
                 >
                   {MAINTENANCE_TYPES.map(type => (
                     <option key={type.value} value={type.value}>
@@ -222,7 +222,7 @@ export default function CreateMaintenanceClient({
                 </label>
                 <Select
                   value={formData.priority}
-                  onValueChange={(value: any) => handleInputChange('priority', value)}
+                  onChange={(value: any) => handleInputChange('priority', value)}
                 >
                   {MAINTENANCE_PRIORITIES.map(priority => (
                     <option key={priority.value} value={priority.value}>
@@ -238,7 +238,7 @@ export default function CreateMaintenanceClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value: any) => handleInputChange('status', value)}
+                  onChange={(value: any) => handleInputChange('status', value)}
                 >
                   {MAINTENANCE_STATUSES.map(status => (
                     <option key={status.value} value={status.value}>
@@ -353,7 +353,7 @@ export default function CreateMaintenanceClient({
                 </label>
                 <Select
                   value={formData.currency}
-                  onValueChange={(value: any) => handleInputChange('currency', value)}
+                  onChange={(value: any) => handleInputChange('currency', value)}
                 >
                   {CURRENCIES.map(currency => (
                     <option key={currency.value} value={currency.value}>

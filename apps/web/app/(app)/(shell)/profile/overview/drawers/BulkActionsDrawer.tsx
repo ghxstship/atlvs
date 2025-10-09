@@ -167,9 +167,9 @@ export default function BulkActionsDrawer({
  <FormControl>
  <Select
  value={field.value}
- onValueChange={(value) => {
+ onChange={(e) => {
  field.onChange(value);
- setSelectedAction(value as 'activate' | 'deactivate' | 'delete');
+ setSelectedAction(e.target.value as 'activate' | 'deactivate' | 'delete');
  }}
  >
  <SelectTrigger>

@@ -181,7 +181,7 @@ export default function CreateRevenueClient({
               </label>
               <Select
                 value={formData.currency}
-                onValueChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
+                onChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
               >
                 <option value="USD">USD - US Dollar</option>
                 <option value="EUR">EUR - Euro</option>
@@ -201,7 +201,7 @@ export default function CreateRevenueClient({
                 <Building className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
                 <Select
                   value={formData.source}
-                  onValueChange={(value: any) => setFormData(prev => ({ ...prev, source: value }))}
+                  onChange={(value: any) => setFormData(prev => ({ ...prev, source: value }))}
                 >
                   <option value="services">Professional Services</option>
                   <option value="products">Product Sales</option>

@@ -142,7 +142,7 @@ export function formatUnit(
  * Translation validation helper
  * Checks if a translation key exists
  */
-export function hasTranslation(namespace: string, key: string): boolean {
+export function useHasTranslation(namespace: string, key: string): boolean {
   try {
     const t = useTranslations(namespace);
     t(key);

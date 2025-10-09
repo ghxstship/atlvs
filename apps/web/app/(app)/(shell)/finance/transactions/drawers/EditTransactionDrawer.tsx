@@ -3,7 +3,22 @@
 import React, { useEffect, useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { ArrowUpDown, Button, Calendar, Card, CardContent, CardHeader, CardTitle, Checkbox, Drawer, Input as Input, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea } from 'lucide-react';
-import { Button, Card, CardContent, CardHeader, CardTitle, Checkbox, Drawer, Input, Label, Select } from '@ghxstship/ui';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Checkbox,
+  Drawer,
+  Input,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@ghxstship/ui";
 import type { Transaction, UpdateTransactionData } from '../types';
 
 interface EditTransactionDrawerProps {
@@ -217,7 +232,7 @@ export default function EditTransactionDrawer({
                     name="type"
                     rules={{ required: 'Type is required' }}
                     render={({ field }) => (
-                      <Select value={field.value} onValueChange={(value) => field.onChange(value as TransactionType)}>
+                      <Select value={field.value} onChange={(e) => field.onChange(e.target.value as TransactionType)}>
                         <SelectTrigger id="transaction-type">
                           <SelectValue placeholder="Select type" />
                         </SelectTrigger>
@@ -237,7 +252,7 @@ export default function EditTransactionDrawer({
                     name="status"
                     rules={{ required: 'Status is required' }}
                     render={({ field }) => (
-                      <Select value={field.value} onValueChange={(value) => field.onChange(value as TransactionStatus)}>
+                      <Select value={field.value} onChange={(e) => field.onChange(e.target.value as TransactionStatus)}>
                         <SelectTrigger id="transaction-status">
                           <SelectValue placeholder="Select status" />
                         </SelectTrigger>
@@ -314,7 +329,7 @@ export default function EditTransactionDrawer({
                     control={control}
                     name="reference_type"
                     render={({ field }) => (
-                      <Select value={field.value} onValueChange={(value) => field.onChange(value as ReferenceType)}>
+                      <Select value={field.value} onChange={(e) => field.onChange(e.target.value as ReferenceType)}>
                         <SelectTrigger id="reference-type">
                           <SelectValue placeholder="Select reference" />
                         </SelectTrigger>

@@ -5,7 +5,16 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Button, Drawer, UnifiedInput, Textarea, Select, Card, Badge } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  Drawer,
+  Input,
+  Select,
+  Textarea,
+  UnifiedInput
+} from "@ghxstship/ui";
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Calendar, Clock, MapPin, Users } from 'lucide-react';
@@ -58,10 +67,12 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
   });
 
   // Load projects when drawer opens
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isOpen && projects.length === 0) {
       loadProjects();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const loadProjects = async () => {
@@ -155,7 +166,7 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="stack-lg">
           <div className="grid grid-cols-1 gap-md">
-            <UnifiedInput               label="Event Name"
+            <Input               label="Event Name"
               placeholder="Enter event name"
               {...form.register('name')}
              
@@ -208,14 +219,14 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
             </Select>
 
             <div className="grid grid-cols-2 gap-md">
-              <UnifiedInput                 label="Start Time"
+              <Input                 label="Start Time"
                 type="datetime-local"
                 {...form.register('start_at')}
                
                 required
               />
 
-              <UnifiedInput                 label="End Time"
+              <Input                 label="End Time"
                 type="datetime-local"
                 {...form.register('end_at')}
                
@@ -224,13 +235,13 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid grid-cols-2 gap-md">
-              <UnifiedInput                 label="Location"
+              <Input                 label="Location"
                 placeholder="Enter location (optional)"
                 {...form.register('location')}
                
               />
 
-              <UnifiedInput                 label="Capacity"
+              <Input                 label="Capacity"
                 type="number"
                 placeholder="Enter capacity (optional)"
                 {...form.register('capacity', { valueAsNumber: true })}

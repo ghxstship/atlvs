@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { Card, Badge, Button, Checkbox } from "@ghxstship/ui";
 import type { Location } from "../LocationsClient";
 import type { LucideIcon } from "lucide-react";
@@ -67,11 +68,7 @@ export default function LocationGalleryView({
  {/* Image Gallery */}
  <div className="relative h-container-xs bg-muted">
  {location.images && location.images[0] && (
- <img
- src={location.images[0]}
- alt={location.name}
- className="w-full h-full object-cover"
- />
+ <Image src={location.images[0]} alt={location.name} width={48} height={48} className="w-full h-full object-cover" />
  )}
  
  {/* Selection Checkbox */}

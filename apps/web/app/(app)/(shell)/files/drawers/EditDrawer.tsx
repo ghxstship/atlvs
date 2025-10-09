@@ -239,7 +239,7 @@ export default function EditDrawer({
                   </label>
                   <Select
                     value={watch('category')}
-                    onValueChange={(value) => setValue('category', value as EditFileForm['category'])}
+                    onChange={(e) => setValue('category', e.target.value as EditFileForm['category'])}
                   >
                     <SelectTrigger className={errors.category ? 'border-red-300' : ''}>
                       <SelectValue />
@@ -268,7 +268,7 @@ export default function EditDrawer({
                   </label>
                   <Select
                     value={watch('access_level')}
-                    onValueChange={(value) => setValue('access_level', value as EditFileForm['access_level'])}
+                    onChange={(e) => setValue('access_level', e.target.value as EditFileForm['access_level'])}
                   >
                     <SelectTrigger className={errors.access_level ? 'border-red-300' : ''}>
                       <SelectValue />

@@ -155,7 +155,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
         
         <select 
           value={statusFilter} 
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.value as typeof statusFilter)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.e.target.value as typeof statusFilter)}
           className=" px-md py-sm border border-input bg-background rounded-md text-body-sm"
         >
           <option value="all">All Status</option>

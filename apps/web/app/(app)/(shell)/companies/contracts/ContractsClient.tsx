@@ -54,15 +54,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
 
   const supabase = createBrowserClient();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    loadContracts();
-    loadCompanies();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [orgId, typeFilter, statusFilter]);
-
-  const loadContracts = async () => {
+  const loadContracts = useCallback(async () => {
     try {
       setLoading(true);
       let query = supabase
@@ -96,9 +88,9 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
     } finally {
       setLoading(false);
     }
-  };
+  }, [orgId, typeFilter, statusFilter, supabase]);
 
-  const loadCompanies = async () => {
+  const loadCompanies = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from('companies')
@@ -112,7 +104,12 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
     } catch (error) {
       console.error('Error loading companies:', error);
     }
-  };
+  }, [orgId, supabase]);
+
+  useEffect(() => {
+    loadContracts();
+    loadCompanies();
+  }, [loadContracts, loadCompanies]);
 
   const handleCreateContract = () => {
     setSelectedContract(null);
@@ -238,6 +235,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
       case 'sow':
         return <FileText className="h-icon-sm w-icon-sm color-success" />;
       case 'nda':
+  // eslint-disable-next-line react-hooks/exhaustive-deps
         return <FileText className="h-icon-sm w-icon-sm color-secondary" />;
       case 'service':
         return <FileText className="h-icon-sm w-icon-sm color-warning" />;

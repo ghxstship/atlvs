@@ -12,7 +12,7 @@ import React from 'react';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** Badge variant */
-  variant?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info';
+  variant?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'destructive' | 'outline';
   
   /** Badge size */
   size?: 'sm' | 'md' | 'lg';
@@ -57,6 +57,8 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       warning: 'bg-warning text-warning-foreground',
       error: 'bg-destructive text-destructive-foreground',
       info: 'bg-info text-info-foreground',
+      destructive: 'bg-destructive text-destructive-foreground',
+      outline: 'border border-input bg-background text-foreground',
     };
     
     const sizeClasses = {

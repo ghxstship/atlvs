@@ -1,5 +1,8 @@
 'use client';
 
+
+import { Settings } from "lucide-react";
+
 import React, { useState } from 'react';
 import { SettingsLayout } from '@ghxstship/ui/templates';
 

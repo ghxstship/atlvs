@@ -1,11 +1,19 @@
 'use client';
 
 
-import { CalendarIcon } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { CalendarIcon, Edit } from "lucide-react";
+import { useState, useEffect, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, UnifiedInput, Skeleton } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  Input,
+  Skeleton,
+  UnifiedInput
+} from "@ghxstship/ui";
 import { ProgressBar } from "../../../../_components/ui"
 import { 
   MagnifyingGlassIcon,
@@ -65,6 +73,7 @@ const STATUS_OPTIONS = [
   { value: 'declined', label: 'Declined' },
   { value: 'cancelled', label: 'Cancelled' },
 ];
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 
 const TYPE_OPTIONS = [
   { value: 'all', label: 'All Types' },
@@ -85,11 +94,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
 
   const supabase = createBrowserClient();
 
-  useEffect(() => {
-    loadAssignments();
-  }, [orgId]);
-
-  const loadAssignments = async () => {
+  const loadAssignments = useCallback(async () => {
     try {
       setLoading(true);
       
@@ -127,7 +132,11 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
     } finally {
       setLoading(false);
     }
-  };
+  }, [orgId, supabase]);
+
+  useEffect(() => {
+    loadAssignments();
+  }, [loadAssignments]);
 
   const filteredAssignments = assignments.filter((assignment: any) => {
     const matchesSearch = (assignment.job_title && assignment.job_title.toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -238,7 +247,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
       <Card className="p-md">
         <div className="flex flex-col sm:flex-row gap-md">
           <div className="flex-1">
-            <UnifiedInput               placeholder="Search assignments..."
+            <Input               placeholder="Search assignments..."
               value={searchTerm}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               className="w-full"
@@ -376,11 +385,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                         <div className="flex items-center gap-sm text-body-sm color-foreground/70">
                           <div className="flex items-center gap-xs">
                             {assignment.assignee_avatar ? (
-                              <img 
-                                src={assignment.assignee_avatar} 
-                                alt={assignment.assignee_name}
-                                className="h-icon-xs w-icon-xs rounded-full"
-                              />
+                              <Image src={assignment.assignee_avatar} alt={assignment.assignee_name} width={48} height={48} className="h-icon-xs w-icon-xs rounded-full" />
                             ) : (
                               <UserIcon className="h-icon-xs w-icon-xs" />
                             )}

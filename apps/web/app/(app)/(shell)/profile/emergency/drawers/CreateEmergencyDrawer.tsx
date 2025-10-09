@@ -113,7 +113,7 @@ export default function CreateDrawer({
  <Label htmlFor="status">Status</Label>
  <Select
  value={watch('status')}
- onValueChange={(value) => setValue('status', value as unknown)}
+ onChange={(e) => setValue('status', e.target.value as unknown)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select status" />

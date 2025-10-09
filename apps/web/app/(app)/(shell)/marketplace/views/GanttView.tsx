@@ -1,6 +1,12 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
+import {
+  Badge,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle
+} from "@ghxstship/ui";
 import { Badge } from '@ghxstship/ui';
 import { GitBranch, Calendar, Clock, User } from 'lucide-react';
 import { marketplaceService } from '../lib/marketplace-service';
@@ -17,6 +23,7 @@ export default function GanttView({ orgId }: GanttViewProps) {
     refetchInterval: 30000
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const projects = projectsResponse || [];
 
   // Calculate timeline bounds

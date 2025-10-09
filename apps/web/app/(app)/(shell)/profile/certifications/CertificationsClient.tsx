@@ -4,7 +4,13 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, UnifiedInput, Card, Badge } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  Input,
+  UnifiedInput
+} from "@ghxstship/ui";
 import { Award, Calendar, ExternalLink, ExternalTrash2, Plus, Save, Trash2 } from 'lucide-react';
 
 interface Certification {
@@ -42,6 +48,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
 
   useEffect(() => {
     loadCertifications();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, userId]);
 
   const loadCertifications = async () => {
@@ -190,7 +197,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md mb-md">
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Certification Name *</label>
-                <UnifiedInput                   value={formData.name}
+                <Input                   value={formData.name}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                   placeholder="AWS Solutions Architect"
                 />
@@ -198,7 +205,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Issuing Organization *</label>
-                <UnifiedInput                   value={formData.issuing_organization}
+                <Input                   value={formData.issuing_organization}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, issuing_organization: e.target.value }))}
                   placeholder="Amazon Web Services"
                 />
@@ -206,7 +213,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Certification Number</label>
-                <UnifiedInput                   value={formData.certification_number}
+                <Input                   value={formData.certification_number}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, certification_number: e.target.value }))}
                   placeholder="AWS-SAA-123456"
                 />
@@ -214,7 +221,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Issue Date</label>
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.issue_date}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, issue_date: e.target.value }))}
                 />
@@ -222,7 +229,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Expiry Date</label>
-                <UnifiedInput                   type="date"
+                <Input                   type="date"
                   value={formData.expiry_date}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, expiry_date: e.target.value }))}
                 />
@@ -230,7 +237,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Verification URL</label>
-                <UnifiedInput                   value={formData.verification_url}
+                <Input                   value={formData.verification_url}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, verification_url: e.target.value }))}
                   placeholder="https://verify.aws.com/..."
                 />

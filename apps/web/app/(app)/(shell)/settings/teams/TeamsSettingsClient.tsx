@@ -86,6 +86,8 @@ export default function TeamsSettingsClient() {
 
  useEffect(() => {
  void load();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const emailDomain = useMemo(() => extractDomain(email), [email]);
@@ -330,7 +332,7 @@ export default function TeamsSettingsClient() {
  </div>
  <div className="space-y-sm">
  <Label htmlFor="invite-role">Role</Label>
- <Select value={role} onValueChange={(value) => setRole(value as RoleValue)}>
+ <Select value={role} onChange={(e) => setRole(e.target.value as RoleValue)}>
  <SelectTrigger >
  <SelectValue />
  </SelectTrigger>
@@ -421,7 +423,7 @@ export default function TeamsSettingsClient() {
  </div>
  <div className="space-y-sm">
  <Label htmlFor="bulk-role">Role for All</Label>
- <Select value={bulkRole} onValueChange={(value) => setBulkRole(value as RoleValue)}>
+ <Select value={bulkRole} onChange={(e) => setBulkRole(e.target.value as RoleValue)}>
  <SelectTrigger >
  <SelectValue />
  </SelectTrigger>

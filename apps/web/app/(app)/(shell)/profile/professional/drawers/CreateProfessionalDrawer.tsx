@@ -190,7 +190,7 @@ export default function CreateProfessionalDrawer({
  <Label htmlFor="department">Department</Label>
  <Select
  value={watch('department')}
- onValueChange={(value) => setValue('department', value)}
+ onChange={(e) => setValue('department', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select department" />
@@ -211,7 +211,7 @@ export default function CreateProfessionalDrawer({
  <Label htmlFor="employment_type">Employment Type</Label>
  <Select
  value={watch('employment_type')}
- onValueChange={(value) => setValue('employment_type', value as EmploymentType)}
+ onChange={(e) => setValue('employment_type', e.target.value as EmploymentType)}
  >
  <SelectTrigger>
  <SelectValue />
@@ -237,7 +237,7 @@ export default function CreateProfessionalDrawer({
  <Label htmlFor="status">Status</Label>
  <Select
  value={watch('status')}
- onValueChange={(value) => setValue('status', value as ProfileStatus)}
+ onChange={(e) => setValue('status', e.target.value as ProfileStatus)}
  >
  <SelectTrigger>
  <SelectValue />
@@ -264,7 +264,7 @@ export default function CreateProfessionalDrawer({
  <Label htmlFor="manager_id">Manager</Label>
  <Select
  value={watch('manager_id')}
- onValueChange={(value) => setValue('manager_id', value)}
+ onChange={(e) => setValue('manager_id', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select manager" />

@@ -1,5 +1,5 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, Download, Filter, Phone, MapPin, ShieldCheck } from 'lucide-react';
+import { Activity, Award, Calendar, Clock, Download, FileText, Filter, Mail, MapPin, Phone, Play, Plus, Search, Settings, ShieldCheck, Trash2, TrendingUp, User } from "lucide-react";
 import { useMemo, type ChangeEvent } from 'react';
 import { Card, Badge, Button, Checkbox, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ghxstship/ui';
 import type { ContactInfo, ContactFilters, ContactSort } from '../types';
@@ -117,7 +117,7 @@ export default function ContactListView({
  <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
  <Select
  value={filters.verification_status || 'all'}
- onValueChange={(value) => onChangeFilters({ verification_status: value as ContactFilters['verification_status'] })}
+ onChange={(e) => onChangeFilters({ verification_status: e.target.value as ContactFilters['verification_status'] })}
  >
  <SelectTrigger>
  <SelectValue placeholder="Verification status" />
@@ -132,7 +132,7 @@ export default function ContactListView({
 
  <Select
  value={filters.preferred_contact_method || 'all'}
- onValueChange={(value) => onChangeFilters({ preferred_contact_method: value as ContactFilters['preferred_contact_method'] })}
+ onChange={(e) => onChangeFilters({ preferred_contact_method: e.target.value as ContactFilters['preferred_contact_method'] })}
  >
  <SelectTrigger>
  <SelectValue placeholder="Preferred contact method" />
@@ -148,7 +148,7 @@ export default function ContactListView({
 
  <Select
  value={filters.has_emergency_contact ? 'true' : 'false'}
- onValueChange={(value) => onChangeFilters({ has_emergency_contact: value === 'true' })}
+ onChange={(e) => onChangeFilters({ has_emergency_contact: value === 'true' })}
  >
  <SelectTrigger>
  <SelectValue placeholder="Emergency contact filter" />

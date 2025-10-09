@@ -3,14 +3,14 @@
 import { FileText, Contact2, Users, Table, BarChart3, RefreshCw, ShieldAlert, ShieldCheck, type LucideIcon } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
- Button,
- Card,
- Tabs,
- TabsList,
- TabsTrigger,
- TabsContent,
- Badge
-} from '@ghxstship/ui';
+  Badge,
+  Button,
+  Card,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "@ghxstship/ui";
 import type {
  EmergencyContact,
  EmergencyContactFilters,
@@ -163,17 +163,16 @@ function EmergencyClient({ orgId, userId }: EmergencyClientProps) {
  }));
  setFormErrors(prev => {
  if (!prev[field]) return prev;
- const next = { ...prev };
  delete next[field];
  return next;
  });
- }, []);
+}, [setFormErrors]);
 
- const handleNewContact = useCallback(() => {
- setSelectedContactId(null);
- setFormData(createEmptyFormData());
- setFormErrors({});
- }, []);
+  const handleNewContact = useCallback(() => {
+    setSelectedContactId(null);
+    setFormData(createEmptyFormData());
+    setFormErrors({});
+  }, [setSelectedContactId, setFormData, setFormErrors]);
 
  const handleSave = useCallback(async () => {
  const errors = validateEmergencyForm(formData);
@@ -209,6 +208,8 @@ function EmergencyClient({ orgId, userId }: EmergencyClientProps) {
  } finally {
  setSaving(false);
  }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [fetchAnalytics, fetchContacts, formData, selectedContact, view]);
 
   const handleVerify = useCallback(async (contactId: string) => {
@@ -392,7 +393,7 @@ function EmergencyClient({ orgId, userId }: EmergencyClientProps) {
  </div>
  </Card>
 
- <Tabs value={view} onValueChange={(value) => setView(value as EmergencyViewType)}>
+ <Tabs value={view} onChange={(e) => setView(e.target.value as EmergencyViewType)}>
  <TabsList className="grid grid-cols-5 w-full">
  {Object.entries(VIEW_CONFIG).map(([key, { label }]) => {
  const Icon = iconMap[key as EmergencyViewType] ?? FileText;

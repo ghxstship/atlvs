@@ -1,6 +1,6 @@
 "use client";
 
-import { Plus, Search, Filter, Download, Upload, MoreHorizontal, Calendar, List, Map, Timeline, Trash2 } from "lucide-react";
+import { Plus, Search, Filter, Download, Upload, MoreHorizontal, Calendar, List, Map, Clock, Trash2 } from "lucide-react";
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createBrowserClient } from "@ghxstship/auth";
 import {
@@ -12,7 +12,13 @@ import {
  TabsTrigger,
  TabsContent,
  Badge,
- EmptyState
+ EmptyState,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
 } from "@ghxstship/ui";
 import type {
  ProgrammingItinerary,
@@ -65,7 +71,7 @@ export default function ProgrammingItinerariesClient({
  const [itineraries, setItineraries] = useState<ProgrammingItinerary[]>(initialItineraries);
  const [loading, setLoading] = useState(false);
  const [error, setError] = useState<string | null>(null);
- const [selectedItineraries, setSelectedItineraries] = useState<Set<string>(new Set());
+ const [selectedItineraries, setSelectedItineraries] = useState<Set<string>>(new Set());
  const [currentView, setCurrentView] = useState<ViewType>("list");
 
  // Filter and search state
@@ -96,16 +102,16 @@ export default function ProgrammingItinerariesClient({
  },
  (payload) => {
  if (payload.eventType === "INSERT") {
- setItineraries((prev: unknown) => [payload.new as ProgrammingItinerary, ...prev]);
+ setItineraries((prev) => [payload.new as ProgrammingItinerary, ...prev]);
  } else if (payload.eventType === "UPDATE") {
- setItineraries((prev: unknown) =>
+ setItineraries((prev) =>
  prev.map((itinerary) =>
  itinerary.id === payload.new.id ? (payload.new as ProgrammingItinerary) : itinerary
  )
  );
  } else if (payload.eventType === "DELETE") {
- setItineraries((prev: unknown) => prev.filter((itinerary) => itinerary.id !== payload.old.id));
- setSelectedItineraries((prev: unknown) => {
+ setItineraries((prev) => prev.filter((itinerary) => itinerary.id !== payload.old.id));
+ setSelectedItineraries((prev) => {
  const newSet = new Set(prev);
  newSet.delete(payload.old.id);
  return newSet;
@@ -200,7 +206,7 @@ export default function ProgrammingItinerariesClient({
  }
 
  // Optimistic update - real-time subscription will handle the actual update
- setItineraries((prev: unknown) => prev.filter((e) => e.id !== itinerary.id));
+ setItineraries((prev) => prev.filter((e) => e.id !== itinerary.id));
  } catch (err) {
  console.error("Error deleting itinerary:", err);
  setError(err instanceof Error ? err.message : "Failed to delete itinerary");
@@ -233,7 +239,7 @@ export default function ProgrammingItinerariesClient({
  };
 
  const handleSelectionChange = (id: string, selected: boolean) => {
- setSelectedItineraries((prev: unknown) => {
+ setSelectedItineraries((prev) => {
  const newSet = new Set(prev);
  if (selected) {
  newSet.add(id);
@@ -298,45 +304,45 @@ export default function ProgrammingItinerariesClient({
  
  <Select
  value={filters.status || ""}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, status: value || undefined }))
+ onChange={(e) =>
+ setFilters((prev) => ({ ...prev, status: (e.target.value || undefined) as any }))
  }
- >
- <option value="">All Statuses</option>
- {Object.entries(STATUS_BADGE).map(([value, config]) => (
- <option key={value} value={value}>
- {config.label}
- </option>
- ))}
- </Select>
+ options={[
+ { value: "", label: "All Statuses" },
+ ...Object.entries(STATUS_BADGE).map(([value, config]) => ({
+ value,
+ label: config.label
+ }))
+ ]}
+ />
 
  <Select
  value={filters.type || ""}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, type: value || undefined }))
+ onChange={(e) =>
+ setFilters((prev) => ({ ...prev, type: (e.target.value || undefined) as any }))
  }
- >
- <option value="">All Types</option>
- {Object.entries(TYPE_BADGE).map(([value, config]) => (
- <option key={value} value={value}>
- {config.label}
- </option>
- ))}
- </Select>
+ options={[
+ { value: "", label: "All Types" },
+ ...Object.entries(TYPE_BADGE).map(([value, config]) => ({
+ value,
+ label: config.label
+ }))
+ ]}
+ />
 
  <Select
  value={filters.project_id || ""}
- onValueChange={(value) =>
- setFilters((prev: unknown) => ({ ...prev, project_id: value || undefined }))
+ onChange={(e) =>
+ setFilters((prev) => ({ ...prev, project_id: e.target.value || undefined }))
  }
- >
- <option value="">All Projects</option>
- {projects.map((project) => (
- <option key={project.id} value={project.id}>
- {project.name}
- </option>
- ))}
- </Select>
+ options={[
+ { value: "", label: "All Projects" },
+ ...projects.map((project) => ({
+ value: project.id,
+ label: project.name
+ }))
+ ]}
+ />
  </div>
 
  <div className="flex items-center gap-sm">
@@ -367,7 +373,7 @@ export default function ProgrammingItinerariesClient({
  List
  </TabsTrigger>
  <TabsTrigger value="timeline">
- <Timeline className="mr-2 h-icon-xs w-icon-xs" />
+ <Clock className="mr-2 h-icon-xs w-icon-xs" />
  Timeline
  </TabsTrigger>
  <TabsTrigger value="calendar">
@@ -421,7 +427,7 @@ export default function ProgrammingItinerariesClient({
  {/* Drawers */}
  <CreateProgrammingItineraryDrawer
  open={createDrawerOpen}
- onClose={() => setCreateDrawerOpen(false)}
+ onOpenChange={setCreateDrawerOpen}
  orgId={orgId}
  currentUserId={currentUserId}
  projects={projects}
@@ -433,7 +439,7 @@ export default function ProgrammingItinerariesClient({
  <>
  <EditProgrammingItineraryDrawer
  open={editDrawerOpen}
- onClose={() => setEditDrawerOpen(false)}
+ onOpenChange={setEditDrawerOpen}
  itinerary={selectedItinerary}
  orgId={orgId}
  currentUserId={currentUserId}
@@ -444,7 +450,7 @@ export default function ProgrammingItinerariesClient({
 
  <ViewProgrammingItineraryDrawer
  open={viewDrawerOpen}
- onClose={() => setViewDrawerOpen(false)}
+ onOpenChange={setViewDrawerOpen}
  itinerary={selectedItinerary}
  onEdit={() => {
  setViewDrawerOpen(false);

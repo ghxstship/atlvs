@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { Calendar, Clock, Edit, MapPin, Users, Activity, Tag, Briefcase, Radio, Settings, FileText } from "lucide-react";
 import { AppDrawer, Badge, Button, Card } from "@ghxstship/ui";
 import { format, parseISO, differenceInHours } from "date-fns";
@@ -263,11 +264,7 @@ export default function ViewProgrammingEventDrawer({
  )}
  </div>
  {user && user.avatar_url && (
- <img
- src={user.avatar_url}
- alt={user.full_name || user.email}
- className="h-icon-lg w-icon-lg rounded-full"
- />
+ <Image src={user.avatar_url} alt={user.full_name || user.email} width={48} height={48} className="h-icon-lg w-icon-lg rounded-full" />
  )}
  </div>
  </Card>

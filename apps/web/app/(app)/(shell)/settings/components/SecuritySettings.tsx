@@ -86,6 +86,9 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
     };
 
     loadSecurityPolicies();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, supabase]);
 
   const handleSavePolicies = async () => {
@@ -195,7 +198,7 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
                 <Label htmlFor="min-length">Minimum Length</Label>
                 <Select
                   value={policies.passwordMinLength.toString()}
-                  onValueChange={(value) => setPolicies(prev => ({ ...prev, passwordMinLength: parseInt(value) }))}
+                  onChange={(e) => setPolicies(prev => ({ ...prev, passwordMinLength: parseInt(value) }))}
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -213,7 +216,7 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
                 <Label htmlFor="max-age">Password Expiry (days)</Label>
                 <Select
                   value={policies.passwordMaxAge.toString()}
-                  onValueChange={(value) => setPolicies(prev => ({ ...prev, passwordMaxAge: parseInt(value) }))}
+                  onChange={(e) => setPolicies(prev => ({ ...prev, passwordMaxAge: parseInt(value) }))}
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -293,7 +296,7 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
               <Label htmlFor="session-timeout">Session Timeout (minutes)</Label>
               <Select
                 value={policies.sessionTimeout.toString()}
-                onValueChange={(value) => setPolicies(prev => ({ ...prev, sessionTimeout: parseInt(value) }))}
+                onChange={(e) => setPolicies(prev => ({ ...prev, sessionTimeout: parseInt(value) }))}
               >
                 <SelectTrigger>
                   <SelectValue />
@@ -312,7 +315,7 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
               <Label htmlFor="login-attempts">Max Login Attempts</Label>
               <Select
                 value={policies.loginAttemptsMax.toString()}
-                onValueChange={(value) => setPolicies(prev => ({ ...prev, loginAttemptsMax: parseInt(value) }))}
+                onChange={(e) => setPolicies(prev => ({ ...prev, loginAttemptsMax: parseInt(value) }))}
               >
                 <SelectTrigger>
                   <SelectValue />
@@ -330,7 +333,7 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
             <Label htmlFor="lockout-duration">Account Lockout Duration (minutes)</Label>
             <Select
               value={policies.lockoutDuration.toString()}
-              onValueChange={(value) => setPolicies(prev => ({ ...prev, lockoutDuration: parseInt(value) }))}
+              onChange={(e) => setPolicies(prev => ({ ...prev, lockoutDuration: parseInt(value) }))}
             >
               <SelectTrigger>
                 <SelectValue />

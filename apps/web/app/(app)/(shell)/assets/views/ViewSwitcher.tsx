@@ -12,8 +12,20 @@
 
 import React, { useState, useCallback } from 'react';
 import { AssetViewState } from '../types';
-import { Badge, Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@ghxstship/ui';
-import { BarChart3, Calendar, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Gallery, GitBranch, Grid3X3, Kanban, List, MoreHorizontal, Settings, Table } from 'lucide-react';
+import {
+  Badge,
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  ViewSwitcher
+} from "@ghxstship/ui";
+import { BarChart3, Calendar, Dropdown,  DropdownItem,  Gallery, GitBranch, Grid3X3, Kanban, List, MoreHorizontal, Settings, Table } from 'lucide-react';
 
 interface ViewSwitcherProps {
   currentView: AssetViewState['viewType'];

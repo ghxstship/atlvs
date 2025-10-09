@@ -69,11 +69,129 @@ export * from './views';
 // ATOMIC COMPONENTS
 // ========================================
 
-// Atoms - Single-purpose components
-export * from './atoms';
+// Atoms - Single-purpose components (excluding conflicting Tabs)
+export {
+  Button,
+  Input,
+  Badge,
+  Avatar,
+  Checkbox,
+  Switch,
+  Skeleton,
+  Spinner,
+  Separator,
+  Label,
+  Radio,
+  Select,
+  Textarea,
+  Progress,
+  Tag,
+  Link,
+  Kbd,
+  Code,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from './atoms';
 
-// Molecules - Composite components
-export * from './molecules';
+// Type exports for atoms
+export type {
+  ButtonProps,
+  InputProps,
+  BadgeProps,
+  AvatarProps,
+  CheckboxProps,
+  SwitchProps,
+  SkeletonProps,
+  SpinnerProps,
+  SeparatorProps,
+  LabelProps,
+  RadioProps,
+  SelectProps,
+  SelectOption,
+  TextareaProps,
+  ProgressProps,
+  TagProps,
+  LinkProps,
+  KbdProps,
+  CodeProps,
+  TabsProps,
+  TabsListProps,
+  TabsTriggerProps,
+  TabsContentProps,
+} from './atoms';
+
+// Molecules - Composite components (excluding conflicting Tabs)
+export {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  Alert,
+  Dialog,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogContent,
+  Tooltip,
+  Accordion,
+  Dropdown,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+  DropdownMenuGroup,
+  Pagination,
+  Toast,
+  ToastContainer,
+  Popover,
+  EmptyState,
+  Modal,
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from './molecules';
+
+// Type exports for molecules
+export type {
+  CardProps,
+  CardHeaderProps,
+  CardBodyProps,
+  CardFooterProps,
+  AlertProps,
+  DialogProps,
+  TooltipProps,
+  AccordionProps,
+  AccordionItem,
+  DropdownProps,
+  DropdownItem,
+  DropdownMenuProps,
+  DropdownMenuTriggerProps,
+  DropdownMenuContentProps,
+  DropdownMenuItemProps,
+  DropdownMenuLabelProps,
+  DropdownMenuGroupProps,
+  PaginationProps,
+  ToastProps,
+  ToastContainerProps,
+  PopoverProps,
+  EmptyStateProps,
+  ModalProps,
+  TableProps,
+  CollapsibleProps,
+} from './molecules';
 
 // Organisms - Complex components (excluding conflicting types from views)
 export {
@@ -142,6 +260,7 @@ export * from './templates';
 
 // Utilities
 export * from './utils';
+export { tryCatch, reportError, tryCatchSync } from './utils/error-handling';
 
 // Hooks
 export * from './hooks';

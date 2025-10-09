@@ -175,7 +175,7 @@ export default function EditActivationDrawer({
  <Select
  
  value={formData.status}
- onChange={(e) => setFormData({ ...formData, status: e.target.value as unknown })}
+ onChange={(e) => setFormData({ ...formData, status: e.target.e.target.value as unknown })}
  >
  <option value="planning">Planning</option>
  <option value="ready">Ready</option>
@@ -190,7 +190,7 @@ export default function EditActivationDrawer({
  <Select
  
  value={formData.activation_type}
- onChange={(e) => setFormData({ ...formData, activation_type: e.target.value as unknown })}
+ onChange={(e) => setFormData({ ...formData, activation_type: e.target.e.target.value as unknown })}
  >
  <option value="full_launch">Full Launch</option>
  <option value="soft_launch">Soft Launch</option>

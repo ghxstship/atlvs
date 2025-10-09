@@ -5,7 +5,18 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 // import { z } from 'zod';
-import { AppDrawer, Button, Card, Input, Label, Select } from '@ghxstship/ui';
+import {
+  AppDrawer,
+  Button,
+  Card,
+  Input,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@ghxstship/ui";
 import type { CreateBudgetData, Budget } from '../types';
 
 const CreateBudgetSchema = z.object({
@@ -115,7 +126,7 @@ export default function CreateBudgetDrawer({
  <div className="grid grid-cols-2 gap-md">
  <div>
  <Label htmlFor="category">Category</Label>
- <Select onValueChange={(value) => setValue('category', value)}>
+ <Select onChange={(e) => setValue('category', value)}>
  <SelectTrigger>
  <SelectValue placeholder="Select category" />
  </SelectTrigger>
@@ -132,7 +143,7 @@ export default function CreateBudgetDrawer({
 
  <div>
  <Label htmlFor="status">Status</Label>
- <Select onValueChange={(value) => setValue('status', value as unknown)}>
+ <Select onChange={(e) => setValue('status', e.target.value as unknown)}>
  <SelectTrigger>
  <SelectValue placeholder="Select status" />
  </SelectTrigger>
@@ -170,7 +181,7 @@ export default function CreateBudgetDrawer({
 
  <div>
  <Label htmlFor="currency">Currency</Label>
- <Select onValueChange={(value) => setValue('currency', value)}>
+ <Select onChange={(e) => setValue('currency', value)}>
  <SelectTrigger>
  <SelectValue placeholder="Select currency" />
  </SelectTrigger>

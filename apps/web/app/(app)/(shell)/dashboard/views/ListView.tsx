@@ -1,8 +1,14 @@
 'use client';
 
 import React, { useState, useMemo, useCallback } from 'react';
-import { Calendar, CheckSquare, ChevronRight, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Eye, FileText, MoreHorizontal, Search, Square, Tag, User } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Input } from '@ghxstship/ui';
+import { Calendar, CheckSquare, ChevronRight, Dropdown,  DropdownItem,  Eye, FileText, MoreHorizontal, Search, Square, Tag, User } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Checkbox, Dropdown,  DropdownItem,  Input ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
 import { cn } from '@ghxstship/ui/lib/utils';
 
 // List Item Configuration
@@ -212,7 +218,7 @@ export const ListView: React.FC<ListViewProps> = ({
           </Avatar>
         );
       case 'icon':
-        const IconComponent = value as React.ComponentType<{ className?: string }> | undefined;
+        const IconComponent = e.target.value as React.ComponentType<{ className?: string }> | undefined;
         return IconComponent ? <IconComponent className={cn('h-icon-xs w-icon-xs', field.className)} /> : null;
       default:
         return <span className={field.className}>{String(value || '')}</span>;

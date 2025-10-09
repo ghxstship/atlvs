@@ -5,7 +5,7 @@ import NextLink from 'next/link';
 import { Card, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
-import { CalendarDays, Users, MapPin, Clock, FileText, Music } from 'lucide-react';
+import { Calendar, CalendarDays, Clock, FileText, MapPin, Music, Users } from "lucide-react";
 
 interface ProgrammingStats {
   totalEvents: number;

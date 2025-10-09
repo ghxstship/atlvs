@@ -1,13 +1,11 @@
 "use client";
 
+import Image from 'next/image';
 import { Activity, Calendar, Clock, Download, Edit, Eye, FileText, Globe, HardDrive, Link, Lock, MessageSquare, Share2, Tag, User, Users } from 'lucide-react';
 import {
   Button,
   Badge,
   Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
   AppDrawer
 } from "@ghxstship/ui";
 import { format, parseISO, formatDistanceToNow } from "date-fns";
@@ -98,9 +96,11 @@ export default function ViewFileDrawer({
           {/* File Preview (for images) */}
           {file.category === "image" && (
             <div className="bg-muted rounded-lg p-md">
-              <img
+              <Image
                 src={file.file_url || ''}
                 alt={file.name}
+                width={800}
+                height={600}
                 className="max-w-full max-h-content-lg mx-auto object-contain rounded"
               />
             </div>

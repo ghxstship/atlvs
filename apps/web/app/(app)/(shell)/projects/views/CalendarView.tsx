@@ -2,7 +2,11 @@
 
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
-import { Button } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  CalendarView
+} from "@ghxstship/ui";
 import { Badge } from '@ghxstship/ui';
 import { Card, CardContent } from '@ghxstship/ui';
 import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameMonth, isSameDay, addMonths, subMonths } from 'date-fns';

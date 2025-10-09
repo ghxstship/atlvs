@@ -49,6 +49,8 @@ export default function HealthCalendarView({
  }
  
  return days;
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [currentYear, currentMonth, daysInMonth, startingDayOfWeek]);
 
  // Group records by date

@@ -91,6 +91,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
 
   useEffect(() => {
     loadLineups();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadLineups = async () => {

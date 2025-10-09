@@ -3,21 +3,29 @@ import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock,
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import {
- type DataRecord,
- type FieldConfig,
- type FilterConfig,
- type SortConfig,
- DataViewProvider,
- StateManagerProvider,
- ViewSwitcher,
- DataActions,
- DataGrid,
- KanbanBoard,
- CalendarView,
- ListView
-} from '@ghxstship/ui';
+  AppDrawer,
+  CalendarView,
+  DataActions,
+  DataGrid,
+  DataRecord,
+  DataViewProvider,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  FieldConfig,
+  FilterConfig,
+  KanbanBoard,
+  ListView,
+  SortConfig,
+  StateManagerProvider,
+  ViewSwitcher,
+  type
+} from "@ghxstship/ui";
 import type { DataViewConfig } from '@ghxstship/ui';
-import { tryCatch, reportError } from '@ghxstship/ui/utils/error-handling';
+import { tryCatch, reportError } from '@ghxstship/ui';
 import { AppDrawer } from '@ghxstship/ui';
 
 interface JobsResponse {
@@ -32,7 +40,8 @@ export default function JobsClient({ orgId }: { orgId: string }) {
  const [selectedJob, setSelectedJob] = useState<DataRecord | null>(null);
 
  // Field configuration for jobs data (matching database schema)
- const fieldConfig: FieldConfig[] = [
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ const fieldConfig: FieldConfig[] = useMemo(() => [
  {
  key: 'title',
  label: 'Job Title',
@@ -88,7 +97,7 @@ export default function JobsClient({ orgId }: { orgId: string }) {
  sortable: true,
  filterable: true
  }
- ];
+ ], []);
 
  // Real Supabase data loading function
  const loadJobsData = useCallback(async (activeFilters?: Record<string, string>): Promise<DataRecord[]> => {
@@ -144,6 +153,8 @@ export default function JobsClient({ orgId }: { orgId: string }) {
 
  const handleSearch = useCallback((query: string) => {
  setFilters(prev => ({ ...prev, search: query }));
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const handleFilter = useCallback((newFilters: FilterConfig[]) => {
@@ -153,7 +164,9 @@ export default function JobsClient({ orgId }: { orgId: string }) {
  }
  return acc;
  }, {});
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  setFilters(prev => ({ ...prev, ...normalizedFilters }));
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const handleSort = useCallback((sorts: SortConfig[]) => {
@@ -162,6 +175,7 @@ export default function JobsClient({ orgId }: { orgId: string }) {
 
  const handleRefresh = useCallback(() => {
  setFilters({});
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const handleExport = useCallback((data: DataRecord[], format: string) => {

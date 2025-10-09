@@ -23,6 +23,9 @@ export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputE
   
   /** Size */
   size?: 'sm' | 'md' | 'lg';
+
+  /** Convenience callback fired with the checked state */
+  onCheckedChange?: (checked: boolean) => void;
 }
 
 /**
@@ -44,6 +47,9 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       className = '',
       disabled,
       checked,
+      defaultChecked,
+      onChange,
+      onCheckedChange,
       ...props
     },
     ref
@@ -61,14 +67,24 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     };
     
     return (
-      <div className="flex items-start gap-2">
+      <div className={`flex items-start gap-2 ${className}`}>
         <div className="relative flex items-center">
           <input
             ref={ref}
             type="checkbox"
             disabled={disabled}
             checked={checked}
+            defaultChecked={defaultChecked}
             className="sr-only peer"
+            onChange={(event) => {
+              if (disabled) {
+                onChange?.(event);
+                return;
+              }
+
+              onChange?.(event);
+              onCheckedChange?.(event.target.checked);
+            }}
             {...props}
           />
           <div

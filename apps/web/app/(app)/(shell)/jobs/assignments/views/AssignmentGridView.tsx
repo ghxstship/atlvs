@@ -1,6 +1,6 @@
 'use client';
 
-import { Users, Clock, CheckCircle, AlertCircle } from "lucide-react";
+import { AlertCircle, CheckCircle, Clock, Edit, Users } from "lucide-react";
 import { useMemo } from 'react';
 import { DataGrid, Badge, Button } from '@ghxstship/ui';
 import type { JobAssignment } from '../types';

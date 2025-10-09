@@ -7,11 +7,33 @@ import { createBrowserClient } from '@/lib/supabase/client';
 import { ModuleTemplate } from '@ghxstship/ui/core/templates/ModuleTemplate';
 import { DataViewProvider } from '@ghxstship/ui/providers/DataViewProvider';
 import { StateManagerProvider } from '@ghxstship/ui/providers/StateManagerProvider';
-import { ViewSwitcher, StateManagerProvider, DataViewProvider } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  DataActions,
+  DataViewProvider,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  StateManagerProvider,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  ViewSwitcher
+} from "@ghxstship/ui";
 import { DataActions } from '@ghxstship/ui';
 import { UnifiedDrawer } from '@ghxstship/ui/unified/drawers/UnifiedDrawer';
 import { useToast } from '@ghxstship/ui/hooks/useToast';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 import { Card } from '@ghxstship/ui';
 import { Badge } from '@ghxstship/ui';
 import { Button } from '@ghxstship/ui';
@@ -67,6 +89,8 @@ const VirtualProfileList = ({ items, height = 600 }: { items: unknown[], height?
  if (node) {
  virtualizer.measure();
  }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const virtualizer = useVirtualizer({

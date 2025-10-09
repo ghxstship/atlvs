@@ -2,13 +2,11 @@
 
 import { Eye, Edit, Download, FileText, Calendar, User, MapPin, Shield, Award, ClipboardCheck, TrendingUp, FileCheck, CheckCircle, XCircle, AlertTriangle, Clock, Activity, MessageSquare } from "lucide-react";
 import {
- Button,
- Badge,
- Tabs,
- TabsList,
- TabsTrigger,
- TabsContent,
- Progress
+  AppDrawer,
+  Badge,
+  Button,
+  Progress,
+  Tabs
 } from "@ghxstship/ui";
 import { AppDrawer } from "@ghxstship/ui";
 import { format, parseISO, formatDistanceToNow } from "date-fns";

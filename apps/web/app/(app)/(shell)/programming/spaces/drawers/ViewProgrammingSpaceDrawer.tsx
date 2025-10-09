@@ -2,13 +2,14 @@
 
 import { Edit, Trash2, MapPin, Users, Square, Calendar, Clock, Shield } from "lucide-react";
 import {
- Badge,
- Button,
- Card,
- CardContent,
- CardHeader,
- CardTitle
-} from '@ghxstship/ui';
+  AppDrawer,
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle
+} from "@ghxstship/ui";
 import AppDrawer, { type DrawerAction } from '@ghxstship/ui';
 
 import type { ProgrammingSpace } from '../types';

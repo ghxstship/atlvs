@@ -2,9 +2,24 @@
 
 
 
+
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "@ghxstship/ui";
+
 import { useState, useCallback, useEffect } from 'react';
-import { Card, Button, Badge, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
-import { ArrowDownRight, ArrowUpRight, Award, BarChart3, Briefcase, Building, Calendar, Clock, DollarSign, FileText, Globe, MessageSquare, Package, Shield, Star, Target, TrendingUp, Users, Zap } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Award, BarChart3, Briefcase, Building, Calendar, Clock, DollarSign, FileText, Globe, LineChart, MessageSquare, Package, Shield, Star, Target, TrendingUp, Users, Zap } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
 

@@ -17,13 +17,14 @@ import {
   TrendingUp,
   Calendar
 } from 'lucide-react';import {
-  Card,
+  Badge,
   Button,
-  UnifiedInput,
+  Card,
+  Input,
   Select,
   Textarea,
-  Badge
-} from '@ghxstship/ui';
+  UnifiedInput
+} from "@ghxstship/ui";
 import { Card, Button, Select, Textarea, Badge } from '@ghxstship/ui';
 
 
@@ -98,6 +99,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
 
   useEffect(() => {
     loadProfessionalProfile();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, userId]);
 
   const loadProfessionalProfile = async () => {
@@ -279,28 +281,28 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-              <UnifiedInput                 label="Job Title"
+              <Input                 label="Job Title"
                 placeholder="Enter your job title"
                 {...form.register('job_title')}
                
                 disabled={!editing}
               />
 
-              <UnifiedInput                 label="Department"
+              <Input                 label="Department"
                 placeholder="Enter your department"
                 {...form.register('department')}
                
                 disabled={!editing}
               />
 
-              <UnifiedInput                 label="Employee ID"
+              <Input                 label="Employee ID"
                 placeholder="Enter employee ID"
                 {...form.register('employee_id')}
                
                 disabled={!editing}
               />
 
-              <UnifiedInput                 label="Hire Date"
+              <Input                 label="Hire Date"
                 type="date"
                 {...form.register('hire_date')}
                
@@ -358,7 +360,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
             
             {editing && (
               <div className="flex gap-sm mb-md">
-                <UnifiedInput                   placeholder="Add a skill"
+                <Input                   placeholder="Add a skill"
                   value={skillInput}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSkillInput(e.target.value)}
                   onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addSkill())}
@@ -431,7 +433,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
                 <label className="block text-body-sm form-label mb-sm">Mentorship Interests</label>
                 {editing && (
                   <div className="flex gap-sm mb-md">
-                    <UnifiedInput                       placeholder="Add mentorship interest"
+                    <Input                       placeholder="Add mentorship interest"
                       value={mentorshipInput}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMentorshipInput(e.target.value)}
                       onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addMentorshipInterest())}
@@ -474,14 +476,14 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-              <UnifiedInput                 label="LinkedIn URL"
+              <Input                 label="LinkedIn URL"
                 placeholder="https://linkedin.com/in/username"
                 {...form.register('linkedin_url')}
                
                 disabled={!editing}
               />
 
-              <UnifiedInput                 label="Website URL"
+              <Input                 label="Website URL"
                 placeholder="https://yourwebsite.com"
                 {...form.register('website_url')}
                

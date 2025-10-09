@@ -3,7 +3,15 @@
 
 import React from "react";
 
-import { Badge, Button, Card, UnifiedInput, cn } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  Input,
+  UnifiedInput,
+  cn
+} from "@ghxstship/ui";
+import { Edit } from "lucide-react";
 import { useState, useEffect } from 'react'
 import { createClient } from "../../../../../lib/supabase/client"
 
@@ -75,7 +83,7 @@ export default function Client({ className }: ClientProps) {
       </div>
 
       <div className="mb-md">
-        <UnifiedInput onChange={(e: React.ChangeEvent<HTMLInputElement>) => {}} placeholder="Search health records..." className="w-full sm:w-auto sm:max-w-sm" aria- />
+        <Input onChange={(e: React.ChangeEvent<HTMLInputElement>) => {}} placeholder="Search health records..." className="w-full sm:w-auto sm:max-w-sm" aria-label="Search health records" />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">

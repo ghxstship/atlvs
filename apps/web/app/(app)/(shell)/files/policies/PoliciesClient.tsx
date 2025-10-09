@@ -1,7 +1,20 @@
 'use client';
 import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, Eye, Shield, Users } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { DataViewProvider, StateManagerProvider, Drawer, ViewSwitcher, DataActions } from '@ghxstship/ui';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  DataActions,
+  DataViewProvider,
+  Drawer,
+  StateManagerProvider,
+  ViewSwitcher
+} from "@ghxstship/ui";
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { ResourcesService } from '../lib/resources-service';
 import { getFieldConfigsForType } from '../lib/field-config';

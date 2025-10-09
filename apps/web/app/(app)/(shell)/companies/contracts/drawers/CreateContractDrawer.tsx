@@ -4,7 +4,18 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 // import { z } from 'zod';
-import { Button, Drawer, Input, Label, Select, Switch } from '@ghxstship/ui';
+import {
+  Button,
+  Drawer,
+  Input,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Switch
+} from "@ghxstship/ui";
 
 const contractSchema = z.object({
  company_id: z.string().min(1, 'Company is required'),
@@ -97,7 +108,7 @@ export default function CreateContractDrawer({
  {/* Company Selection */}
  <div className="space-y-sm">
  <Label htmlFor="company_id">Company *</Label>
- <Select onValueChange={(value) => setValue('company_id', value)}>
+ <Select onChange={(e) => setValue('company_id', value)}>
  <SelectTrigger>
  <SelectValue placeholder="Select a company" />
  </SelectTrigger>
@@ -141,7 +152,7 @@ export default function CreateContractDrawer({
  {/* Type */}
  <div className="space-y-sm">
  <Label htmlFor="type">Contract Type *</Label>
- <Select onValueChange={(value) => setValue('type', value as unknown)}>
+ <Select onChange={(e) => setValue('type', e.target.value as unknown)}>
  <SelectTrigger>
  <SelectValue placeholder="Select contract type" />
  </SelectTrigger>
@@ -177,7 +188,7 @@ export default function CreateContractDrawer({
 
  <div className="space-y-sm">
  <Label htmlFor="currency">Currency</Label>
- <Select onValueChange={(value) => setValue('currency', value)}>
+ <Select onChange={(e) => setValue('currency', value)}>
  <SelectTrigger>
  <SelectValue placeholder="USD" />
  </SelectTrigger>

@@ -469,7 +469,7 @@ export default function SecuritySettingsClient() {
  <Label htmlFor="session-timeout">Idle Timeout</Label>
  <Select
  value={String(currentSettings.sessionSettings?.idleTimeout ?? 1800)}
- onValueChange={(value) =>
+ onChange={(e) =>
  handleNumberChange('sessionSettings', 'idleTimeout', Number(value))
  }
  >

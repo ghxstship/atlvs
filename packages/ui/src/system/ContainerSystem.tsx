@@ -468,7 +468,7 @@ export const withContainer = (
   Component: React.ComponentType<any>,
   containerVariants: any
 ) => {
-  return React.forwardRef<HTMLDivElement, any>((props, ref) => {
+  const WithContainer = React.forwardRef<HTMLDivElement, any>((props, ref) => {
     const { className, variant, ...rest } = props;
     return (
       <div ref={ref} className={twMerge(containerVariants({ variant }), className)}>
@@ -476,6 +476,10 @@ export const withContainer = (
       </div>
     );
   });
+  
+  WithContainer.displayName = `WithContainer(${Component.displayName || Component.name || 'Component'})`;
+  
+  return WithContainer;
 };
 
 // =============================================================================

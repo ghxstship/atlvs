@@ -1,13 +1,28 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Input,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Textarea
+} from "@ghxstship/ui";
 import { Button } from '@ghxstship/ui';
 import { Input } from '@ghxstship/ui';
 import { Label } from '@ghxstship/ui';
 import { Textarea } from '@ghxstship/ui';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ghxstship/ui';
 import { Badge } from '@ghxstship/ui';
-import { FileText, Save, X, Plus, Trash2 } from 'lucide-react';
+import { FileText, Plus, Save, Settings, Trash2, X } from "lucide-react";
 import { marketplaceService } from '../lib/marketplace-service';
 import type { MarketplaceListing, ListingFilters } from '../types';
 
@@ -187,7 +202,7 @@ export default function FormView({
                       <Label htmlFor="type">Type *</Label>
                       <Select
                         value={formData.type || 'offer'}
-                        onValueChange={(value) => updateFormData('type', value)}
+                        onChange={(e) => updateFormData('type', value)}
                       >
                         <SelectTrigger>
                           <SelectValue />
@@ -204,7 +219,7 @@ export default function FormView({
                       <Label htmlFor="category">Category *</Label>
                       <Select
                         value={formData.category || 'services'}
-                        onValueChange={(value) => updateFormData('category', value)}
+                        onChange={(e) => updateFormData('category', value)}
                       >
                         <SelectTrigger>
                           <SelectValue />
@@ -252,7 +267,7 @@ export default function FormView({
                       <Label htmlFor="currency">Currency</Label>
                       <Select
                         value={formData.pricing?.currency || 'USD'}
-                        onValueChange={(value) => updateNestedFormData('pricing', 'currency', value)}
+                        onChange={(e) => updateNestedFormData('pricing', 'currency', value)}
                       >
                         <SelectTrigger>
                           <SelectValue />
@@ -326,7 +341,7 @@ export default function FormView({
                       <Label htmlFor="status">Status</Label>
                       <Select
                         value={formData.status || 'draft'}
-                        onValueChange={(value) => updateFormData('status', value)}
+                        onChange={(e) => updateFormData('status', value)}
                       >
                         <SelectTrigger>
                           <SelectValue />

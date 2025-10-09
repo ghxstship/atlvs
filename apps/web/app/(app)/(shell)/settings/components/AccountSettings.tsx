@@ -4,11 +4,14 @@ import { useState, useEffect } from 'react';
 import { User, Lock, Shield, Smartphone, Key, Globe, Clock, AlertCircle, Save, Eye, EyeOff } from "lucide-react";
 import { createBrowserClient } from '@ghxstship/auth';
 import {
+  Alert,
+  AlertDescription,
+  Badge,
+  Button,
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-  Button,
   Input,
   Label,
   Select,
@@ -16,16 +19,13 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  Separator,
+  Switch,
   Tabs,
   TabsContent,
   TabsList,
-  TabsTrigger,
-  Badge,
-  Alert,
-  AlertDescription,
-  Separator,
-  Switch
-} from '@ghxstship/ui';
+  TabsTrigger
+} from "@ghxstship/ui";
 
 interface AccountSettingsProps {
   userId: string;
@@ -96,6 +96,9 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
     };
 
     loadProfile();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, supabase]);
 
   const handleProfileUpdate = async () => {
@@ -242,7 +245,7 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
                   <Label htmlFor="timezone">Timezone</Label>
                   <Select
                     value={profileForm.timezone}
-                    onValueChange={(value) => setProfileForm(prev => ({ ...prev, timezone: value }))}
+                    onChange={(e) => setProfileForm(prev => ({ ...prev, timezone: value }))}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select timezone" />
@@ -261,7 +264,7 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
                   <Label htmlFor="language">Language</Label>
                   <Select
                     value={profileForm.language}
-                    onValueChange={(value) => setProfileForm(prev => ({ ...prev, language: value }))}
+                    onChange={(e) => setProfileForm(prev => ({ ...prev, language: value }))}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select language" />

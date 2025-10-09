@@ -2,10 +2,19 @@
 
 import React, { useState, useMemo } from 'react';
 import { ChevronUp, ChevronDown, ArrowUpDown, MoreHorizontal, Eye, Edit, Trash2 } from 'lucide-react';
-import { Button } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Checkbox,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
 import { Badge } from '@ghxstship/ui';
 import { Checkbox } from '@ghxstship/ui';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@ghxstship/ui';
+import { Dropdown,  DropdownItem, DropdownMenuTrigger } from '@ghxstship/ui';
 import { format } from 'date-fns';
 
 // View-specific props interface

@@ -129,7 +129,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
               id="record_type" 
               className="rounded border  px-md py-xs" 
               value={form.getValues('record_type') || 'medical'} 
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('record_type', e.target.value as any, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('record_type', e.target.e.target.value as any, { shouldDirty: true })}
             >
               <option value="medical">Medical</option>
               <option value="vaccination">Vaccination</option>
@@ -203,7 +203,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
               id="severity" 
               className="rounded border  px-md py-xs" 
               value={form.getValues('severity') || ''} 
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('severity', e.target.value as any || undefined, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('severity', e.target.e.target.value as any || undefined, { shouldDirty: true })}
             >
               <option value="">Select severity...</option>
               <option value="low">Low</option>
@@ -218,7 +218,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
               id="status" 
               className="rounded border  px-md py-xs" 
               value={form.getValues('status') || 'active'} 
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('status', e.target.value as any, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('status', e.target.e.target.value as any, { shouldDirty: true })}
             >
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>

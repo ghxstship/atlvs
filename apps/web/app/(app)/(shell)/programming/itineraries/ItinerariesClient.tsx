@@ -3,7 +3,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { Plus, Search, Calendar } from 'lucide-react';
-import { Button } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  Input
+} from "@ghxstship/ui";
 import { UnifiedInput } from '@ghxstship/ui';
 import { Badge } from '@ghxstship/ui';
 import { Drawer } from '@ghxstship/ui';
@@ -53,6 +63,7 @@ export default function ItinerariesClient({ user, orgId }: ItinerariesClientProp
 
   useEffect(() => {
     fetchItineraries();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const fetchItineraries = async () => {
@@ -118,7 +129,7 @@ export default function ItinerariesClient({ user, orgId }: ItinerariesClientProp
       <div className="flex-1">
         <div className="relative">
           <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted h-icon-xs w-icon-xs" />
-          <UnifiedInput             placeholder="Search itineraries..."
+          <Input             placeholder="Search itineraries..."
             value={searchTerm}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
             className="pl-2xl"

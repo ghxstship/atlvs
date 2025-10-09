@@ -174,3 +174,42 @@ export const DialogFooter: React.FC<{ children: React.ReactNode; className?: str
 };
 
 DialogFooter.displayName = 'DialogFooter';
+
+export const DialogHeader: React.FC<{ children: React.ReactNode; className?: string }> = ({
+  children,
+  className = '',
+}) => {
+  return (
+    <div className={`space-y-1.5 text-center sm:text-left ${className}`}>
+      {children}
+    </div>
+  );
+};
+
+DialogHeader.displayName = 'DialogHeader';
+
+export const DialogTitle: React.FC<{ children: React.ReactNode; className?: string }> = ({
+  children,
+  className = '',
+}) => {
+  return (
+    <h2 className={`text-lg font-semibold leading-none tracking-tight ${className}`}>
+      {children}
+    </h2>
+  );
+};
+
+DialogTitle.displayName = 'DialogTitle';
+
+export const DialogContent: React.FC<{ children: React.ReactNode; className?: string }> = ({
+  children,
+  className = '',
+}) => {
+  return (
+    <div className={`mt-2 ${className}`}>
+      {children}
+    </div>
+  );
+};
+
+DialogContent.displayName = 'DialogContent';

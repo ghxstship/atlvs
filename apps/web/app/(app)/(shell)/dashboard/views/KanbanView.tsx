@@ -1,8 +1,14 @@
 'use client';
 
 import React, { useState, useMemo, useCallback } from 'react';
-import { CheckSquare, ChevronRight, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, Filter, GripVertical, MoreHorizontal, Plus, Search, Settings, Square } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Card, CardBody, CardContent, CardHeader, CardTitle, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Input } from '@ghxstship/ui';
+import { CheckSquare, ChevronRight, Dropdown,  DropdownItem, DropdownMenuSeparator,  Filter, GripVertical, MoreHorizontal, Plus, Search, Settings, Square } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Card, CardBody, CardContent, CardHeader, CardTitle, Checkbox, Dropdown,  DropdownItem,  Input,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from "@ghxstship/ui";
 import { cn } from '@ghxstship/ui/lib/utils';
 
 // Kanban Column Configuration

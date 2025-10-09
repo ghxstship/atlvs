@@ -3,7 +3,7 @@
 
 import React, { useState, useCallback, useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Heart, Activity, Pill, AlertCircle, Save, Plus, X, Edit2, Trash2 } from 'lucide-react';
+import { Activity, AlertCircle, Edit, Edit2, Heart, Pill, Plus, Save, Trash2, X } from "lucide-react";
 import { Badge, Button, Card, CardContent, CardHeader, Input, Select, useToast } from '@ghxstship/ui';
 
 interface HealthInfo {

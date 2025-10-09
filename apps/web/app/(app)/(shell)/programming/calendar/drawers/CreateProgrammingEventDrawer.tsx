@@ -244,7 +244,7 @@ export default function CreateProgrammingEventDrawer({
  </label>
  <Select
  value={formData.project_id}
- onValueChange={(value) => setFormData({ ...formData, project_id: value })}
+ onChange={(e) => setFormData({ ...formData, project_id: value })}
  >
  <option value="">No project</option>
  {projects.map((project) => (
@@ -261,7 +261,7 @@ export default function CreateProgrammingEventDrawer({
  </label>
  <Select
  value={formData.event_type}
- onValueChange={(value) => setFormData({ ...formData, event_type: value as typeof formData.event_type })}
+ onChange={(e) => setFormData({ ...formData, event_type: e.target.value as typeof formData.event_type })}
  >
  <option value="performance">Performance</option>
  <option value="activation">Activation</option>
@@ -283,7 +283,7 @@ export default function CreateProgrammingEventDrawer({
  </label>
  <Select
  value={formData.status}
- onValueChange={(value) => setFormData({ ...formData, status: value as typeof formData.status })}
+ onChange={(e) => setFormData({ ...formData, status: e.target.value as typeof formData.status })}
  >
  <option value="draft">Draft</option>
  <option value="scheduled">Scheduled</option>

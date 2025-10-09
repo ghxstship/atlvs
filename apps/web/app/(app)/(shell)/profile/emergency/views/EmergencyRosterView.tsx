@@ -1,6 +1,6 @@
 'use client';
 
-import { Search, Filter, ShieldAlert, ShieldCheck, PhoneCall, Mail, MapPin, User, UserCheck, Trash2 } from "lucide-react";
+import { Edit, Filter, Mail, MapPin, PhoneCall, Search, ShieldAlert, ShieldCheck, Trash2, User, UserCheck } from "lucide-react";
 import { useMemo, type ChangeEvent } from 'react';
 import {
  Badge,
@@ -110,7 +110,7 @@ export default function EmergencyRosterView({
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-sm">
  <Select
  value={filters.priority ?? 'all'}
- onValueChange={(value) => onFiltersChange({ priority: value as EmergencyContactFilters['priority'] })}
+ onChange={(e) => onFiltersChange({ priority: e.target.value as EmergencyContactFilters['priority'] })}
  >
  <SelectTrigger>
  <SelectValue placeholder="Priority level" />
@@ -126,8 +126,8 @@ export default function EmergencyRosterView({
 
  <Select
  value={filters.verification_status ?? 'all'}
- onValueChange={(value) =>
- onFiltersChange({ verification_status: value as EmergencyContactFilters['verification_status'] })
+ onChange={(e) =>
+ onFiltersChange({ verification_status: e.target.value as EmergencyContactFilters['verification_status'] })
  }
  >
  <SelectTrigger>
@@ -143,7 +143,7 @@ export default function EmergencyRosterView({
 
  <Select
  value={filters.is_primary ?? 'all'}
- onValueChange={(value) => onFiltersChange({ is_primary: value as EmergencyContactFilters['is_primary'] })}
+ onChange={(e) => onFiltersChange({ is_primary: e.target.value as EmergencyContactFilters['is_primary'] })}
  >
  <SelectTrigger>
  <SelectValue placeholder="Primary/backup" />
@@ -157,7 +157,7 @@ export default function EmergencyRosterView({
 
  <Select
  value={filters.availability ?? 'all'}
- onValueChange={(value) => onFiltersChange({ availability: value as EmergencyContactFilters['availability'] })}
+ onChange={(e) => onFiltersChange({ availability: e.target.value as EmergencyContactFilters['availability'] })}
  >
  <SelectTrigger>
  <SelectValue placeholder="Availability" />

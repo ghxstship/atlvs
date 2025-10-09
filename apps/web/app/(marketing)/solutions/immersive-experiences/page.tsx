@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
-import { ArrowRight, Globe, Layers, Orbit, PlayCircle, Sparkles, Users, Zap } from 'lucide-react';
+import { ArrowRight, Building, Globe, Layers, Orbit, PlayCircle, Sparkles, Users, Zap } from "lucide-react";
 
 import {
   MarketingCard,

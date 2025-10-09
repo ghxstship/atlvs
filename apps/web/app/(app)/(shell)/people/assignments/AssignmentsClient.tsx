@@ -187,7 +187,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
 
  filters.forEach((filter) => {
  if (filter.value !== undefined && filter.value !== null && filter.value !== '') {
- query = query.eq(filter.field, filter.value as string | number | boolean);
+ query = query.eq(filter.field, filter.e.target.value as string | number | boolean);
  }
  });
 

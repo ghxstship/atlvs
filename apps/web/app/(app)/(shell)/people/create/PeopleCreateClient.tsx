@@ -1,10 +1,31 @@
 'use client';
 
-import { AlertCircle, Badge, Building, Button, Calendar, Card, CheckCircle, FileText, Input, Mail, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Send, Tabs, TabsContent, TabsList, TabsTrigger, Textarea, UserPlus, Users, X } from 'lucide-react';
+
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Input,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "@ghxstship/ui";
+import { AlertCircle, Building, CheckCircle, FileText, Mail, Send, UserPlus, Users, X } from "lucide-react";
+
 import { useRouter } from 'next/navigation';
 import { type ChangeEvent, type FormEvent, useCallback, useEffect, useState } from 'react';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Badge, Button, Card, Input, Select, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 
 interface PeopleCreateClientProps {
   orgId: string;
@@ -595,7 +616,7 @@ ${inviterName}`;
                     <label className="block text-sm font-medium mb-2">Expiry Period</label>
                     <Select
                       value={formData.expiresInDays.toString()}
-                      onValueChange={(value) => setFormData(prev => ({ ...prev, expiresInDays: parseInt(value) }))}
+                      onChange={(e) => setFormData(prev => ({ ...prev, expiresInDays: parseInt(value) }))}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Select expiry period" />

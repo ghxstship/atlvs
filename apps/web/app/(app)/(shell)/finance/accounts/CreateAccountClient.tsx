@@ -176,7 +176,7 @@ export default function CreateAccountClient({
                 </div>
                 <Select
                   value={formData.kind}
-                  onValueChange={(value: any) => setFormData(prev => ({ ...prev, kind: value }))}
+                  onChange={(value: any) => setFormData(prev => ({ ...prev, kind: value }))}
                 >
                   <option value="bank">Bank Account</option>
                   <option value="card">Credit Card</option>
@@ -192,7 +192,7 @@ export default function CreateAccountClient({
               </label>
               <Select
                 value={formData.currency}
-                onValueChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
+                onChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
               >
                 <option value="USD">USD - US Dollar</option>
                 <option value="EUR">EUR - Euro</option>

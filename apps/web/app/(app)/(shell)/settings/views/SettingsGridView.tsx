@@ -179,7 +179,7 @@ export default function SettingsGridView({
  />
  </div>
  
- <Select value={categoryFilter} onValueChange={(value: unknown) => setCategoryFilter(value)}>
+ <Select value={categoryFilter} onChange={(value: unknown) => setCategoryFilter(value)}>
  <SelectTrigger className="w-full sm:w-container-xs">
  <Filter className="h-icon-xs w-icon-xs mr-2" />
  <SelectValue placeholder="Category" />
@@ -198,7 +198,7 @@ export default function SettingsGridView({
  </SelectContent>
  </Select>
 
- <Select value={typeFilter} onValueChange={(value: unknown) => setTypeFilter(value)}>
+ <Select value={typeFilter} onChange={(value: unknown) => setTypeFilter(value)}>
  <SelectTrigger className="w-full sm:w-component-xl">
  <SelectValue placeholder="Type" />
  </SelectTrigger>

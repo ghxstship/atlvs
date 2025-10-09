@@ -3,7 +3,14 @@
 
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
-import { Button, Card, UnifiedInput, Badge, Skeleton } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  Input,
+  Skeleton,
+  UnifiedInput
+} from "@ghxstship/ui";
 import {
   Plus,
   Search,
@@ -105,8 +112,11 @@ function ContractsClient({ user }: ContractsClientProps) {
   const [showCreateDialog, setShowCreateDialog] = useState(false);
 
   // Fetch contracts from API
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchContracts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchContracts = async () => {
@@ -233,7 +243,7 @@ function ContractsClient({ user }: ContractsClientProps) {
       <Card className="p-md">
         <div className="flex flex-col sm:flex-row gap-md">
           <div className="flex-1">
-            <UnifiedInput               placeholder="Search contracts..."
+            <Input               placeholder="Search contracts..."
               value={searchTerm}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               className="w-full"

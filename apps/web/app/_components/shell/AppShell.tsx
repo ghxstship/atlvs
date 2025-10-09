@@ -2,7 +2,7 @@ import { ReactNode, Suspense } from 'react';
 import Link from 'next/link';
 import { AppShell as AppShellTemplate, Stack, Button, Avatar } from '@ghxstship/ui';
 // TODO: ThemeToggle not exported from @ghxstship/ui - implement if needed
-import { Command as CommandIcon, Settings2 } from 'lucide-react';
+import { Command, CommandIcon, Search, Settings2, as } from "lucide-react";
 
 import { requireAuth } from '../lib/sessionContext';
 import { routeRegistry, toNavSections, filterByEntitlements, filterByRole } from '../../../lib/navigation/routeRegistry';

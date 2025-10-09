@@ -286,7 +286,7 @@ export default function CreateAssignmentClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value: any) => handleInputChange('status', value)}
+                  onChange={(value: any) => handleInputChange('status', value)}
                 >
                   {ASSIGNMENT_STATUSES.map(status => (
                     <option key={status.value} value={status.value}>
@@ -302,7 +302,7 @@ export default function CreateAssignmentClient({
                 </label>
                 <Select
                   value={formData.priority}
-                  onValueChange={(value: any) => handleInputChange('priority', value)}
+                  onChange={(value: any) => handleInputChange('priority', value)}
                 >
                   {PRIORITY_LEVELS.map(priority => (
                     <option key={priority.value} value={priority.value}>

@@ -258,7 +258,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
             </div>
             <div className="brand-opendeck grid gap-xs">
               <label htmlFor="vendor" className="text-body-sm">{t('grid.vendor')}</label>
-              <select id="vendor" className="rounded border  px-md py-xs" value={form.vendorId || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, vendorId: e.target.value || undefined })}>
+              <select id="vendor" className="rounded border  px-md py-xs" value={form.vendorId || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, vendorId: e.target.e.target.value || undefined })}>
                 <option value="">{t('noVendor')}</option>
                 {vendors.map(v => (
                   <option key={v.id} value={v.id}>{v.name}</option>

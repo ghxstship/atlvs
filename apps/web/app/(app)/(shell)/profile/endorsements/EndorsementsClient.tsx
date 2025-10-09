@@ -17,14 +17,15 @@ import {
   Calendar,
   Trash2
 } from 'lucide-react';import {
-  Card,
+  Badge,
   Button,
-  UnifiedInput,
+  Card,
+  Drawer,
+  Input,
   Select,
   Textarea,
-  Badge,
-  Drawer
-} from '@ghxstship/ui';
+  UnifiedInput
+} from "@ghxstship/ui";
 import {
   Card,
   Button,
@@ -370,20 +371,20 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
         description={editingEndorsement ? 'Update endorsement details' : 'Add a new professional endorsement'}
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="stack-md">
-          <UnifiedInput             label="Endorser Name"
+          <Input             label="Endorser Name"
             placeholder="Enter endorser's full name"
             {...form.register('endorser_name')}
            
           />
 
           <div className="grid grid-cols-2 gap-md">
-            <UnifiedInput               label="Title"
+            <Input               label="Title"
               placeholder="Job title"
               {...form.register('endorser_title')}
              
             />
 
-            <UnifiedInput               label="Company"
+            <Input               label="Company"
               placeholder="Company name"
               {...form.register('endorser_company')}
              
@@ -401,7 +402,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
               <option value="other">Other</option>
             </Select>
 
-            <UnifiedInput               label="Date Received"
+            <Input               label="Date Received"
               type="date"
               {...form.register('date_received')}
              
@@ -419,7 +420,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
           <div>
             <label className="block text-body-sm form-label mb-sm">Skills Endorsed</label>
             <div className="flex gap-sm mb-sm">
-              <UnifiedInput                 placeholder="Add a skill"
+              <Input                 placeholder="Add a skill"
                 value={skillInput}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSkillInput(e.target.value)}
                 onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addSkill())}

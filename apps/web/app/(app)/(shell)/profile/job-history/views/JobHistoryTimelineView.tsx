@@ -1,6 +1,6 @@
 'use client';
 
-import { MapPin, Calendar, Building, Award, Edit, Trash2, Eye, Clock, DollarSign, Briefcase, Users, Star, CheckCircle } from "lucide-react";
+import { Award, Briefcase, Building, Calendar, CheckCircle, Clock, DollarSign, Edit, Eye, History, MapPin, Star, Trash2, Users } from "lucide-react";
 import { useMemo } from 'react';
 import {
  Card,

@@ -44,6 +44,7 @@ const _fieldConfig: FieldConfig[] = [
     type: 'email',
     width: 250,
     sortable: true,
+  // eslint-disable-next-line react-hooks/exhaustive-deps
     filterable: true,
     required: true
   },

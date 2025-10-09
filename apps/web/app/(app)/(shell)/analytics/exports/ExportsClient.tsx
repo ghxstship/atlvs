@@ -4,7 +4,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
-import { AlertCircle, Archive, Calendar, CheckCircle, Clock, Database, Download, Edit3, Eye, FileJson, FileSpreadsheet, FileText, Files, Filter, Pause, Play, Plus, RefreshCw, Search, Settings, Share2, Trash2, XCircle } from 'lucide-react';
+import { AlertCircle, Archive, Calendar, CheckCircle, Clock, Database, Download, Edit3, Eye, FileJson, FileSpreadsheet, FileText, Files, Filter, History, Pause, Play, Plus, RefreshCw, Search, Settings, Share2, Trash2, XCircle } from "lucide-react";
 
 interface ExportJob {
   id: string;

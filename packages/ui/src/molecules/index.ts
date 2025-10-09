@@ -15,7 +15,7 @@ export { Alert } from './Alert/Alert';
 export type { AlertProps } from './Alert/Alert';
 
 // Dialog
-export { Dialog, DialogFooter } from './Dialog/Dialog';
+export { Dialog, DialogFooter, DialogHeader, DialogTitle, DialogContent } from './Dialog/Dialog';
 export type { DialogProps } from './Dialog/Dialog';
 
 // Tooltip
@@ -33,6 +33,25 @@ export type { AccordionProps, AccordionItem } from './Accordion/Accordion';
 // Dropdown
 export { Dropdown } from './Dropdown/Dropdown';
 export type { DropdownProps, DropdownItem } from './Dropdown/Dropdown';
+
+// DropdownMenu (Radix UI compatible)
+export {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+  DropdownMenuGroup,
+} from './DropdownMenu/DropdownMenu';
+export type {
+  DropdownMenuProps,
+  DropdownMenuTriggerProps,
+  DropdownMenuContentProps,
+  DropdownMenuItemProps,
+  DropdownMenuLabelProps,
+  DropdownMenuGroupProps,
+} from './DropdownMenu/DropdownMenu';
 
 // Pagination
 export { Pagination } from './Pagination/Pagination';
@@ -53,3 +72,7 @@ export type { EmptyStateProps } from './EmptyState/EmptyState';
 // Modal
 export { Modal } from './Modal/Modal';
 export type { ModalProps } from './Modal/Modal';
+
+// Table
+export { Table, TableHeader, TableBody, TableRow, TableHead, TableCell, Collapsible, CollapsibleTrigger, CollapsibleContent } from './Table/Table';
+export type { TableProps, CollapsibleProps } from './Table/Table';

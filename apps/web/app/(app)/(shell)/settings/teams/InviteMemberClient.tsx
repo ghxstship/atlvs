@@ -1,7 +1,11 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { Button, UnifiedInput } from '@ghxstship/ui';
+import {
+  Button,
+  Input,
+  UnifiedInput
+} from "@ghxstship/ui";
 import Link from 'next/link';
 
 const ROLES = ['viewer', 'contributor', 'manager', 'admin'] as const;
@@ -54,6 +58,8 @@ export default function InviteMemberClient({ orgId, role }: Props) {
     fetchInvites();
     fetchUsage();
     fetchDomains();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   async function submit(mode: 'invite' | 'addExisting') {
@@ -185,7 +191,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
           Invite teammates by email. Team plan supports unlimited seats for emails matching your active organization domains.
         </div>
         <div className="flex flex-col gap-sm sm:flex-row sm:items-center">
-          <UnifiedInput
+          <Input
             type="email"
             value={email}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}

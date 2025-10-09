@@ -2,7 +2,14 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Alert, Button, Card, CardBody, CardContent, CardHeader } from '@ghxstship/ui';
+import { Alert, Button, Card, CardBody, CardContent, CardHeader,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from "@ghxstship/ui";
 import { ArrowLeft, Edit, DollarSign } from 'lucide-react';
 import { User } from '@supabase/supabase-js';
 import ViewRevenueDrawer from '../drawers/ViewRevenueDrawer';

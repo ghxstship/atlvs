@@ -329,7 +329,7 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
             <label className="block text-body-sm form-label mb-xs">Widget Type</label>
             <select
               value={widgetData.type}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWidgetData({ ...widgetData, type: e.target.value as any })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWidgetData({ ...widgetData, type: e.target.e.target.value as any })}
               className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
             >
               {WIDGET_TYPES.map((type: any) => (
@@ -357,7 +357,7 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
               <label className="block text-body-sm form-label mb-xs">Chart Type</label>
               <select
                 value={widgetData.chartType}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWidgetData({ ...widgetData, chartType: e.target.value as any })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWidgetData({ ...widgetData, chartType: e.target.e.target.value as any })}
                 className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
               >
                 {CHART_TYPES.map((type: any) => (
@@ -373,7 +373,7 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
             <label className="block text-body-sm form-label mb-xs">Widget Size</label>
             <select
               value={widgetData.size}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWidgetData({ ...widgetData, size: e.target.value as any })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWidgetData({ ...widgetData, size: e.target.e.target.value as any })}
               className="w-full  px-md py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               {WIDGET_SIZES.map((size: any) => (

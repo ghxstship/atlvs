@@ -316,7 +316,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
  <select
  className="w-full px-md py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
  value={formData.type}
- onChange={(event: ChangeEvent<HTMLSelectElement>) => updateField('type', event.target.value as ResourceType)}
+ onChange={(event: ChangeEvent<HTMLSelectElement>) => updateField('type', event.target.e.target.value as ResourceType)}
  >
  {resourceTypeOptions.map(option => (
  <option key={option.value} value={option.value}>
@@ -346,7 +346,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
  <select
  className="w-full px-md py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
  value={formData.status}
- onChange={(event: ChangeEvent<HTMLSelectElement>) => updateField('status', event.target.value as ResourceStatus)}
+ onChange={(event: ChangeEvent<HTMLSelectElement>) => updateField('status', event.target.e.target.value as ResourceStatus)}
  >
  {statusOptions.map(option => (
  <option key={option.value} value={option.value}>
@@ -361,7 +361,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
  <select
  className="w-full px-md py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
  value={formData.visibility}
- onChange={(event: ChangeEvent<HTMLSelectElement>) => updateField('visibility', event.target.value as ResourceVisibility)}
+ onChange={(event: ChangeEvent<HTMLSelectElement>) => updateField('visibility', event.target.e.target.value as ResourceVisibility)}
  >
  {visibilityOptions.map(option => (
  <option key={option.value} value={option.value}>

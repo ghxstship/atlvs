@@ -14,7 +14,14 @@ import { useRouter } from 'next/navigation';
 import { Asset } from '../types';
 import { apiClient } from '../lib/api';
 import CreateDrawer from '../drawers/CreateDrawer';
-import { Button, Card, CardBody, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
+import { Button, Card, CardBody, CardContent, CardHeader, CardTitle,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from "@ghxstship/ui";
 import { ArrowLeft, Loader2, Plus, Save } from 'lucide-react';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 import type { User as UIUser } from '@ghxstship/ui/config/types';

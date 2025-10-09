@@ -1,28 +1,40 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
+  Badge,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  ScrollArea,
+  Separator
+} from "@ghxstship/ui";
+import { Badge ,
   Drawer,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription
+  DrawerDescription,
+  DrawerFooter
 } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
-import { Separator } from '@ghxstship/ui';
-import { ScrollArea } from '@ghxstship/ui';
-import {
-  History,
-  Clock,
-  User,
-  Edit,
-  Plus,
-  Trash2,
-  Archive,
-  Star,
-  Eye,
-  AlertCircle,
-  CheckCircle
-} from 'lucide-react';
+import { Separator ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { ScrollArea ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
+import { AlertCircle, Archive, CheckCircle, Clock, Edit, Eye, History, Plus, Star, Trash2, User, Users } from "lucide-react";
 import { marketplaceService } from '../lib/marketplace-service';
 
 interface HistoryDrawerProps {

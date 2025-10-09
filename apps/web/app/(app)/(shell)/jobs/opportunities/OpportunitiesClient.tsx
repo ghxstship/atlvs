@@ -1,9 +1,18 @@
 'use client';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
-import { Card, Button, Badge, UnifiedInput, Select, Skeleton } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  Input,
+  Select,
+  Skeleton,
+  UnifiedInput
+} from "@ghxstship/ui";
+import { Edit } from "lucide-react";
 
 interface OpportunitiesClientProps {
   user: User;
@@ -62,12 +71,10 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
   const [showCreateDialog, setShowCreateDialog] = useState(false);
   const [selectedOpportunity, setSelectedOpportunity] = useState<Opportunity | null>(null);
 
-  useEffect(() => {
-    loadOpportunities();
-  }, [orgId]);
-
-  const loadOpportunities = async () => {
+  const loadOpportunities = useCallback(async () => {
     try {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
       setLoading(true);
       const response = await fetch('/api/v1/jobs/opportunities', {
         headers: {
@@ -87,7 +94,11 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
     } finally {
       setLoading(false);
     }
-  };
+  }, [orgId]);
+
+  useEffect(() => {
+    loadOpportunities();
+  }, [loadOpportunities]);
 
   const filteredOpportunities = opportunities.filter((opportunity: any) => {
     const matchesSearch = opportunity.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -174,7 +185,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
 
         <div className="flex gap-md mb-lg">
           <div className="flex-1">
-            <UnifiedInput               placeholder="Search opportunities..."
+            <Input               placeholder="Search opportunities..."
               value={searchTerm}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               className="w-full"
@@ -234,7 +245,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
 
       <div className="flex gap-md mb-lg">
         <div className="flex-1">
-          <UnifiedInput             placeholder="Search opportunities..."
+          <Input             placeholder="Search opportunities..."
             value={searchTerm}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
             className="w-full"
@@ -365,7 +376,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
               <div className="stack-md">
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Title</label>
-                  <UnifiedInput />
+                  <Input />
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Description</label>
@@ -383,11 +394,11 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Client Name</label>
-                  <UnifiedInput />
+                  <Input />
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Estimated Value</label>
-                  <UnifiedInput type="number" />
+                  <Input type="number" />
                 </div>
               </div>
               <div className="flex gap-sm mt-lg">

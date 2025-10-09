@@ -1,6 +1,6 @@
 'use client';
 
-import { Search, Filter, Download, Star, Calendar, User, Building, Shield, Eye, EyeOff, MoreVertical, Award } from "lucide-react";
+import { Award, Building, Calendar, Download, Edit, Eye, EyeOff, Filter, MoreVertical, Search, Shield, Star, User } from "lucide-react";
 import { useState } from 'react';
 import {
  Card,
@@ -148,7 +148,7 @@ export default function EndorsementGridView({
  <div className="grid grid-cols-1 md:grid-cols-3 gap-md pt-4 border-t">
  <Select
  value={filters.relationship || 'all'}
- onValueChange={(value) => onFiltersChange({ relationship: value as unknown })}
+ onChange={(e) => onFiltersChange({ relationship: e.target.value as unknown })}
  >
  <SelectTrigger>
  <SelectValue placeholder="All Relationships" />
@@ -165,7 +165,7 @@ export default function EndorsementGridView({
 
  <Select
  value={String(filters.rating || 'all')}
- onValueChange={(value) => onFiltersChange({ 
+ onChange={(e) => onFiltersChange({ 
  rating: value === 'all' ? 'all' : parseInt(value) 
  })}
  >
@@ -184,7 +184,7 @@ export default function EndorsementGridView({
 
  <Select
  value={filters.verification_status || 'all'}
- onValueChange={(value) => onFiltersChange({ verification_status: value as unknown })}
+ onChange={(e) => onFiltersChange({ verification_status: e.target.value as unknown })}
  >
  <SelectTrigger>
  <SelectValue placeholder="All Statuses" />

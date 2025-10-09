@@ -2,13 +2,35 @@
 
 import React, { useState } from 'react';
 import { MoreHorizontal, Edit, Trash2, Eye, Calendar, MapPin, Users, ChevronRight } from 'lucide-react';
-import { Button } from '@ghxstship/ui';
-import { Checkbox } from '@ghxstship/ui';
-import { Badge } from '@ghxstship/ui';
 import {
+  Badge,
+  Button,
+  Checkbox,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  ListView
+} from "@ghxstship/ui";
+import { Checkbox ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
+import { Badge ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
+import {
+  Dropdown,
+  
+  DropdownItem,
   DropdownMenuTrigger
 } from '@ghxstship/ui';
 import type { ProgrammingEntity } from '../types';

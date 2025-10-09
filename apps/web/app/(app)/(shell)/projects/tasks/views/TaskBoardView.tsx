@@ -3,7 +3,20 @@
 import { MoreVertical, Clock, Users, Calendar, Tag, AlertCircle, CheckCircle, Eye, Edit, Copy, Trash2, ChevronUp, ChevronDown, Briefcase } from 'lucide-react';
 import Image from "next/image";
 import { useState, useMemo } from 'react';
-import { Card, Badge, Button, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@ghxstship/ui";
+import {
+  Badge,
+  Button,
+  Card,
+  Checkbox,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
 import { format, parseISO, differenceInDays } from "date-fns";
 
 interface User {

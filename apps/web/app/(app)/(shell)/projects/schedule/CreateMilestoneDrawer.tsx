@@ -160,7 +160,7 @@ export default function CreateMilestoneDrawer({
  </label>
  <Select
  value={formData.project_id}
- onValueChange={(value) => setFormData({ ...formData, project_id: value })}
+ onChange={(e) => setFormData({ ...formData, project_id: value })}
  disabled={!!projectId}
  >
  <option value="">Select a project</option>

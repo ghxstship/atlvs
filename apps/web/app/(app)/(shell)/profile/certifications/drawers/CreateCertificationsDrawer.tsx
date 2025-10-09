@@ -119,7 +119,7 @@ export default function CreateDrawer({
             <Label htmlFor="status">Status</Label>
             <Select
               value={watch('status')}
-              onValueChange={(value) => setValue('status', value as FormData['status'])}
+              onChange={(e) => setValue('status', e.target.value as FormData['status'])}
             >
               <SelectTrigger id="status">
                 <SelectValue placeholder="Select status" />

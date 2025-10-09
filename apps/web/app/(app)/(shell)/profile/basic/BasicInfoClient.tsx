@@ -1,10 +1,18 @@
 'use client';
 
 
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, UnifiedInput, Card, Avatar, Badge } from '@ghxstship/ui';
+import {
+  Avatar,
+  Badge,
+  Button,
+  Card,
+  Input,
+  UnifiedInput
+} from "@ghxstship/ui";
 import { Camera, Save, User } from 'lucide-react';
 
 interface UserProfile {
@@ -37,6 +45,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
 
   useEffect(() => {
     loadProfile();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, userId]);
 
   const loadProfile = async () => {
@@ -138,7 +147,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
         <div className="relative">
           <Avatar className="h-component-lg w-component-lg">
             {formData.avatar_url ? (
-              <img src={formData.avatar_url} alt="Profile" className="h-full w-full object-cover" />
+              <Image src={formData.avatar_url} alt="Profile" width={48} height={48} className="h-full w-full object-cover" />
             ) : (
               <User className="h-icon-2xl w-icon-2xl" />
             )}
@@ -168,7 +177,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
       <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
         <div className="stack-sm">
           <label className="text-body-sm form-label">Avatar URL</label>
-          <UnifiedInput             value={formData.avatar_url}
+          <Input             value={formData.avatar_url}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, avatar_url: e.target.value }))}
             placeholder="https://example.com/avatar.jpg"
           />
@@ -176,7 +185,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
 
         <div className="stack-sm">
           <label className="text-body-sm form-label">Date of Birth</label>
-          <UnifiedInput             type="date"
+          <Input             type="date"
             value={formData.date_of_birth}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, date_of_birth: e.target.value }))}
           />
@@ -199,7 +208,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
 
         <div className="stack-sm">
           <label className="text-body-sm form-label">Nationality</label>
-          <UnifiedInput             value={formData.nationality}
+          <Input             value={formData.nationality}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, nationality: e.target.value }))}
             placeholder="e.g., American, British, Canadian"
           />
@@ -225,7 +234,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
         </div>
         
         <div className="flex gap-sm">
-          <UnifiedInput             placeholder="Add a language"
+          <Input             placeholder="Add a language"
             onKeyPress={(e: any) => {
               if (e.key === 'Enter') {
                 handleLanguageAdd(e.currentTarget.value);

@@ -2,7 +2,16 @@
 
 import React from 'react';
 import { KanbanSquare, Plus, MoreHorizontal } from 'lucide-react';
-import { Button } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from "@ghxstship/ui";
 import { Badge } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { Droppable, Draggable } from 'react-beautiful-dnd';

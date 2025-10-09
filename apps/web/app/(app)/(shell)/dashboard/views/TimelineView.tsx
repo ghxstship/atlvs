@@ -1,8 +1,14 @@
 'use client';
 
 import React, { useState, useMemo, useCallback } from 'react';
-import { Calendar, ChevronDown, ChevronRight, Circle, Clock, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, Filter, MapPin, Minus, MoreHorizontal, Plus, Search, Tag, User } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Card, CardBody, CardContent, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Input } from '@ghxstship/ui';
+import { Calendar, ChevronDown, ChevronRight, Circle, Clock, Dropdown, DropdownItem, DropdownMenuSeparator, Edit, Filter, MapPin, Minus, MoreHorizontal, Plus, Search, Tag, User } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Card, CardBody, CardContent, Dropdown,  DropdownItem,  Input,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from "@ghxstship/ui";
 import { cn } from '@ghxstship/ui/lib/utils';
 import { format, isSameDay, parseISO } from 'date-fns';
 

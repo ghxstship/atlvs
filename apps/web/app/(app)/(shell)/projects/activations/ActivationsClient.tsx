@@ -12,14 +12,16 @@ import {
  Select,
  Checkbox,
  Tabs,
- TabsList,
- TabsTrigger,
- TabsContent,
- DropdownMenu,
- DropdownMenuContent,
- DropdownMenuItem,
- DropdownMenuTrigger,
- toast
+ Dropdown,
+ 
+ DropdownItem,
+ 
+ toast,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
 } from "@ghxstship/ui";
 import { format, parseISO } from "date-fns";
 import CreateActivationDrawer from "./drawers/CreateActivationDrawer";
@@ -109,7 +111,7 @@ export default function ActivationsClient({
  const [selectedProject, setSelectedProject] = useState<string>("all");
  const [sortField, setSortField] = useState<string>("scheduled_date");
  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
- const [selectedActivations, setSelectedActivations] = useState<Set<string>(new Set());
+ const [selectedActivations, setSelectedActivations] = useState<Set<string>>(new Set());
  const [fieldVisibility, setFieldVisibility] = useState(FIELD_CONFIG);
 
  // Drawers
@@ -237,30 +239,37 @@ export default function ActivationsClient({
  } else {
  setSelectedActivations(new Set(sortedActivations.map((a) => a.id)));
  }
- }, [selectedActivations, sortedActivations]);
+  }, [selectedActivations, sortedActivations, setSelectedActivations]);
 
  const handleSelectActivation = useCallback((id: string) => {
- setSelectedActivations((prev: unknown) => {
+ setSelectedActivations((prev: Set<string>) => {
  const next = new Set(prev);
  if (next.has(id)) {
  next.delete(id);
  } else {
  next.add(id);
  }
- return next;
- });
- }, []);
+});
+// eslint-disable-next-line react-hooks/exhaustive-deps
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [selectedActivations, setSelectedActivations]);
 
- // Handle actions
- const handleView = useCallback((activation: Activation) => {
- setSelectedActivation(activation);
- setViewDrawerOpen(true);
- }, []);
+// Handle actions
+const handleView = useCallback(
+  (activation: Activation) => {
+    setSelectedActivation(activation);
+    setViewDrawerOpen(true);
+  },
+  [setSelectedActivation, setViewDrawerOpen]
+);
 
- const handleEdit = useCallback((activation: Activation) => {
- setSelectedActivation(activation);
- setEditDrawerOpen(true);
- }, []);
+const handleEdit = useCallback(
+  (activation: Activation) => {
+    setSelectedActivation(activation);
+    setEditDrawerOpen(true);
+  },
+  [setSelectedActivation, setEditDrawerOpen]
+);
 
  const handleDelete = useCallback(async (activation: Activation) => {
  if (!confirm(`Are you sure you want to delete "${activation.name}"?`)) return;
@@ -429,7 +438,7 @@ export default function ActivationsClient({
  return (
  <Button
  key={view.id}
- variant={viewType === view.id ? "default" : "outline"}
+ variant={viewType === view.id ? "secondary" : "outline"}
  size="sm"
  onClick={() => setViewType(view.id as ViewType)}
  className="rounded-none first:rounded-l-md last:rounded-r-md"

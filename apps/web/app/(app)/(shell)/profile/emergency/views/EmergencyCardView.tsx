@@ -1,6 +1,6 @@
 'use client';
 
-import { ShieldAlert, PhoneCall, Mail, MapPin, Clock, ShieldCheck, UserPlus, ArrowRight } from "lucide-react";
+import { ArrowRight, Clock, Edit, Mail, MapPin, PhoneCall, ShieldAlert, ShieldCheck, UserPlus } from "lucide-react";
 import { Card, Badge, Button } from '@ghxstship/ui';
 import type { EmergencyContact } from '../types';
 import { formatPhone, formatAddress } from '../types';

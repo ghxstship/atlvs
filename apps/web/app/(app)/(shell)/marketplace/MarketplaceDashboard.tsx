@@ -1,5 +1,21 @@
 'use client';
 
+
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "@ghxstship/ui";
+
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -21,8 +37,7 @@ import {
 } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Badge, Button, Card, Tabs, TabsList, TabsTrigger } from '@ghxstship/ui';
-import { reportError, type AppError } from '@ghxstship/ui/utils/error-handling';
+import { reportError, type AppError } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 
 import type { MarketplaceDashboardStats } from './types';
@@ -479,7 +494,7 @@ export default function MarketplaceDashboard({ orgId, userId, userRole }: Market
       {userRole === 'both' && (
         <div className="brand-marketplace flex items-center justify-between">
           <h2 className="text-heading-3">OPENDECK Dashboard</h2>
-          <Tabs value={activeView} onValueChange={(value: string) => setActiveView(value as 'vendor' | 'client')}>
+          <Tabs value={activeView} onChange={(value: string) => setActiveView(e.target.value as 'vendor' | 'client')}>
             <TabsList>
               <TabsTrigger value="vendor">
                 <Building className="h-icon-xs w-icon-xs mr-sm" />

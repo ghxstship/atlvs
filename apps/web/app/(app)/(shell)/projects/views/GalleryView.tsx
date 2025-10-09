@@ -1,11 +1,26 @@
 "use client";
 
+import Image from 'next/image';
 import React, { useState } from 'react';
-import { Image, Video, File, Eye, Download, MoreHorizontal } from 'lucide-react';
-import { Button } from '@ghxstship/ui';
+import { Image as ImageIcon, Video, File, Eye, Download, MoreHorizontal } from 'lucide-react';
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
 import { Badge } from '@ghxstship/ui';
 import { Card, CardContent } from '@ghxstship/ui';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@ghxstship/ui';
+import { Dropdown,  DropdownItem, DropdownMenuTrigger } from '@ghxstship/ui';
 
 export interface ImageViewProps {
   data: unknown[];
@@ -37,7 +52,7 @@ export default function ImageView({
   const [selectedItem, setSelectedItem] = useState<(null);
 
   const getFileIcon = (fileType: string) => {
-    if (fileType?.startsWith('image/')) return <Image className="h-icon-lg w-icon-lg" />;
+    if (fileType?.startsWith('image/')) return <ImageIcon className="h-icon-lg w-icon-lg" />;
     if (fileType?.startsWith('video/')) return <Video className="h-icon-lg w-icon-lg" />;
     return <File className="h-icon-lg w-icon-lg" />;
   };
@@ -86,11 +101,7 @@ export default function ImageView({
               <div className="aspect-square bg-muted rounded-lg mb-3 flex items-center justify-center overflow-hidden">
                 {item[imageField] ? (
                   item.file_type?.startsWith('image/') ? (
-                    <img
-                      src={item[imageField]}
-                      alt={item[titleField]}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                    />
+                    <Image src={item[imageField]} alt={item[titleField]} width={48} height={48} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
                   ) : (
                     <div className={`${getFileTypeColor(item.file_type)}`}>
                       {getFileIcon(item.file_type)}
@@ -165,11 +176,7 @@ export default function ImageView({
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="max-w-4xl max-h-[90vh] p-md">
             {selectedItem[imageField] && selectedItem.file_type?.startsWith('image/') && (
-              <img
-                src={selectedItem[imageField]}
-                alt={selectedItem[titleField]}
-                className="max-w-full max-h-full object-contain"
-              />
+              <Image src={selectedItem[imageField]} alt={selectedItem[titleField]} width={48} height={48} className="max-w-full max-h-full object-contain" />
             )}
             <Button
               variant="secondary"

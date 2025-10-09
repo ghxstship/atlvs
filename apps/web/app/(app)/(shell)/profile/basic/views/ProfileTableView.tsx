@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { User, Edit, Eye, Download, ArrowUpDown, MoreHorizontal } from "lucide-react";
 import { useMemo } from 'react';
 import { 
@@ -209,11 +210,7 @@ export default function ProfileTableView({
  <div className="flex items-center gap-sm">
  <Avatar className="h-icon-lg w-icon-lg">
  {profile.avatar_url ? (
- <img 
- src={profile.avatar_url} 
- alt="Profile" 
- className="h-full w-full object-cover" 
- />
+ <Image src={profile.avatar_url} alt="Profile" width={48} height={48} className="h-full w-full object-cover" />
  ) : (
  <User className="h-icon-xs w-icon-xs" />
  )}

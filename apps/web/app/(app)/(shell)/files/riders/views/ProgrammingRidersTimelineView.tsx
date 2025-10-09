@@ -2,16 +2,20 @@
 
 import { MoreHorizontal, Edit, Eye, Calendar, Clock, MapPin, User, CheckCircle, XCircle, AlertCircle } from "lucide-react";
 import {
- Badge,
- Button,
- Card,
- CardContent,
- CardHeader,
- DropdownMenu,
- DropdownMenuContent,
- DropdownMenuItem,
- DropdownMenuTrigger
-} from '@ghxstship/ui';
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
 
 import type { ProgrammingRider } from '../types';
 

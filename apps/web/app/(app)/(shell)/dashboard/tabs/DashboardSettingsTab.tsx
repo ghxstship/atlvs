@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Bell, Database, Key, Settings, Shield, Users } from 'lucide-react';
+import { Bell, Database, Edit, Key, Settings, Shield, Users } from "lucide-react";
 import { Badge, Button, Card, CardBody, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 
 interface DashboardSettingsTabProps {

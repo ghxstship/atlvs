@@ -11,7 +11,14 @@ import {
   Calendar,
   Filter
 } from 'lucide-react';
-import { Button, Select, Checkbox, Badge, Progress, Separator } from '@ghxstship/ui';
+import { Button, Select, Checkbox, Badge, Progress, Separator ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
 import { filesExportService } from '../lib/export';
 import type { FileExportInput } from '../lib/validations';
 
@@ -258,7 +265,7 @@ export default function ExportDrawer({
                   <div className="grid grid-cols-3 gap-sm">
                     <Select
                       value={exportOptions.filters.category}
-                      onValueChange={(value) => setExportOptions(prev => ({
+                      onChange={(e) => setExportOptions(prev => ({
                         ...prev,
                         filters: { ...prev.filters, category: value }
                       }))}
@@ -277,7 +284,7 @@ export default function ExportDrawer({
 
                     <Select
                       value={exportOptions.filters.access_level}
-                      onValueChange={(value) => setExportOptions(prev => ({
+                      onChange={(e) => setExportOptions(prev => ({
                         ...prev,
                         filters: { ...prev.filters, access_level: value }
                       }))}
@@ -295,7 +302,7 @@ export default function ExportDrawer({
 
                     <Select
                       value={exportOptions.filters.status}
-                      onValueChange={(value) => setExportOptions(prev => ({
+                      onChange={(e) => setExportOptions(prev => ({
                         ...prev,
                         filters: { ...prev.filters, status: value }
                       }))}

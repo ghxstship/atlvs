@@ -219,7 +219,7 @@ export default function CreateReportClient({
                 </label>
                 <Select
                   value={formData.type}
-                  onValueChange={(value: any) => handleInputChange('type', value)}
+                  onChange={(value: any) => handleInputChange('type', value)}
                 >
                   {REPORT_TYPES.map(type => (
                     <option key={type.value} value={type.value}>
@@ -235,7 +235,7 @@ export default function CreateReportClient({
                 </label>
                 <Select
                   value={formData.format}
-                  onValueChange={(value: any) => handleInputChange('format', value)}
+                  onChange={(value: any) => handleInputChange('format', value)}
                 >
                   {REPORT_FORMATS.map(format => (
                     <option key={format.value} value={format.value}>
@@ -263,7 +263,7 @@ export default function CreateReportClient({
                 </label>
                 <Select
                   value={formData.frequency}
-                  onValueChange={(value: any) => handleInputChange('frequency', value)}
+                  onChange={(value: any) => handleInputChange('frequency', value)}
                 >
                   {REPORT_FREQUENCIES.map(frequency => (
                     <option key={frequency.value} value={frequency.value}>
@@ -279,7 +279,7 @@ export default function CreateReportClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value: any) => handleInputChange('status', value)}
+                  onChange={(value: any) => handleInputChange('status', value)}
                 >
                   {REPORT_STATUSES.map(status => (
                     <option key={status.value} value={status.value}>

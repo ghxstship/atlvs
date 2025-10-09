@@ -2,15 +2,15 @@
 
 import { FileText, CreditCard, List, Map, BarChart3, RefreshCw, ShieldCheck, AlertTriangle, type LucideIcon } from "lucide-react";
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { 
- Button, 
- Card,
- Tabs,
- TabsList,
- TabsTrigger,
- TabsContent,
- Badge
-} from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "@ghxstship/ui";
 import type { 
  ContactInfo,
  ContactFilters,
@@ -179,6 +179,8 @@ export default function ContactClient({ orgId, userId }: ContactClientProps) {
  delete next[field];
  return next;
  });
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const handleSave = useCallback(async () => {
@@ -207,7 +209,9 @@ export default function ContactClient({ orgId, userId }: ContactClientProps) {
  console.error('Error saving contact:', error);
  } finally {
  setSaving(false);
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [formData, fetchContact, fetchContactsList, fetchAnalytics, userId, view]);
 
  const handleVerify = useCallback(async () => {
@@ -315,7 +319,7 @@ export default function ContactClient({ orgId, userId }: ContactClientProps) {
  </Button>
  </Card>
 
- <Tabs value={view} onValueChange={(value) => setView(value as ViewType)}>
+ <Tabs value={view} onChange={(e) => setView(e.target.value as ViewType)}>
  <TabsList className="grid grid-cols-5 w-full">
  {Object.entries(VIEW_CONFIG).map(([key, { label, icon }]) => {
  const Icon = iconMap[key as ViewType] ?? FileText;

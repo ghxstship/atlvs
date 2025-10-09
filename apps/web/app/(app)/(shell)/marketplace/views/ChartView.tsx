@@ -1,6 +1,12 @@
 import React, { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
+import {
+  Badge,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle
+} from "@ghxstship/ui";
 import { Badge } from '@ghxstship/ui';
 import { BarChart3, TrendingUp, PieChart, Activity } from 'lucide-react';
 import { marketplaceService } from '../lib/marketplace-service';

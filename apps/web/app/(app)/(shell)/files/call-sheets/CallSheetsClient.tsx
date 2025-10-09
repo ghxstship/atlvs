@@ -5,18 +5,26 @@ import { CheckCircle, Clock, FileText, Plus, Users, Calendar as CalendarIcon, Ca
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createBrowserClient } from '@ghxstship/auth';
 import {
- Badge,
- Button,
- Card,
- DataActions,
- DataGrid,
- DataViewProvider,
- KanbanBoard,
- ListView,
- StateManagerProvider,
- ViewSwitcher,
- type DataRecord
-} from '@ghxstship/ui';
+  AppDrawer,
+  Badge,
+  Button,
+  Card,
+  DataActions,
+  DataGrid,
+  DataRecord,
+  DataViewProvider,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  KanbanBoard,
+  ListView,
+  StateManagerProvider,
+  ViewSwitcher,
+  type
+} from "@ghxstship/ui";
 import type { DataViewConfig, FieldConfig, FilterConfig, SortConfig } from '@ghxstship/ui/src/components/DataViews/types';
 import { AppDrawer } from '@ghxstship/ui';
 

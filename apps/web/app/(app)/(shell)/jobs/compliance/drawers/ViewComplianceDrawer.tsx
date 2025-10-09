@@ -1,7 +1,11 @@
 'use client';
 
 import { Shield, Clock, CheckCircle, XCircle, AlertTriangle, Calendar, FileText, Edit, Upload } from "lucide-react";
-import { Badge, Button } from '@ghxstship/ui';
+import {
+  AppDrawer,
+  Badge,
+  Button
+} from "@ghxstship/ui";
 import { AppDrawer } from '@ghxstship/ui';
 import type { JobCompliance, ComplianceDrawerProps } from '../types';
 

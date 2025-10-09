@@ -2,11 +2,26 @@
 
 import React from 'react';
 import { Eye, Edit, Trash2, MoreHorizontal, Calendar, User, DollarSign, Target, AlertTriangle } from 'lucide-react';
-import { Button } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Checkbox,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
 import { Badge } from '@ghxstship/ui';
 import { Checkbox } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@ghxstship/ui';
+import { Dropdown,  DropdownItem, DropdownMenuTrigger } from '@ghxstship/ui';
 import { format } from 'date-fns';
 
 export interface CardViewProps {

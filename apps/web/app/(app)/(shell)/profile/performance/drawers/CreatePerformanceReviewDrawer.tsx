@@ -220,7 +220,7 @@ export default function CreatePerformanceReviewDrawer({
  <Label htmlFor="review_type">Review Type</Label>
  <Select
  value={watch('review_type')}
- onValueChange={(value) => setValue('review_type', value as unknown)}
+ onChange={(e) => setValue('review_type', e.target.value as unknown)}
  >
  <SelectTrigger>
  <SelectValue />
@@ -254,7 +254,7 @@ export default function CreatePerformanceReviewDrawer({
  <Label htmlFor="status">Status</Label>
  <Select
  value={watch('status')}
- onValueChange={(value) => setValue('status', value as unknown)}
+ onChange={(e) => setValue('status', e.target.value as unknown)}
  >
  <SelectTrigger>
  <SelectValue />
@@ -272,7 +272,7 @@ export default function CreatePerformanceReviewDrawer({
  <Label htmlFor="visibility">Visibility</Label>
  <Select
  value={watch('visibility')}
- onValueChange={(value) => setValue('visibility', value as unknown)}
+ onChange={(e) => setValue('visibility', e.target.value as unknown)}
  >
  <SelectTrigger>
  <SelectValue />

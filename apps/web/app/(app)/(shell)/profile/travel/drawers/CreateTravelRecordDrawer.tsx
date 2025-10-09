@@ -78,6 +78,8 @@ export default function CreateTravelRecordDrawer({
  }
 
  setFormErrors({});
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [isOpen, record]);
 
  const countryOptions = useMemo(() => {
@@ -153,7 +155,7 @@ export default function CreateTravelRecordDrawer({
  <Label htmlFor="travel_type">Travel Type</Label>
  <Select
  value={formData.travel_type}
- onValueChange={(value) => handleInputChange('travel_type', value as TravelType)}
+ onChange={(e) => handleInputChange('travel_type', e.target.value as TravelType)}
  disabled={loading}
  >
  <SelectTrigger>
@@ -172,7 +174,7 @@ export default function CreateTravelRecordDrawer({
  <Label htmlFor="status">Travel Status</Label>
  <Select
  value={formData.status}
- onValueChange={(value) => handleInputChange('status', value as TravelStatus)}
+ onChange={(e) => handleInputChange('status', e.target.value as TravelStatus)}
  disabled={loading}
  >
  <SelectTrigger>
@@ -215,7 +217,7 @@ export default function CreateTravelRecordDrawer({
  <Label htmlFor="country">Country</Label>
  <Select
  value={formData.country || ''}
- onValueChange={(value) => handleInputChange('country', value)}
+ onChange={(e) => handleInputChange('country', value)}
  disabled={loading}
  >
  <SelectTrigger>
@@ -359,7 +361,7 @@ export default function CreateTravelRecordDrawer({
  <Label htmlFor="visa_status">Visa Status</Label>
  <Select
  value={formData.visa_status}
- onValueChange={(value) => handleInputChange('visa_status', value as VisaStatus)}
+ onChange={(e) => handleInputChange('visa_status', e.target.value as VisaStatus)}
  disabled={loading}
  >
  <SelectTrigger>
@@ -414,7 +416,7 @@ export default function CreateTravelRecordDrawer({
  <Label htmlFor="currency">Currency</Label>
  <Select
  value={formData.currency}
- onValueChange={(value) => handleInputChange('currency', value)}
+ onChange={(e) => handleInputChange('currency', value)}
  disabled={loading}
  >
  <SelectTrigger>

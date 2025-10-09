@@ -139,7 +139,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
               id="item_type" 
               className="rounded border  px-md py-xs" 
               value={form.getValues('item_type') || 'shirt'} 
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('item_type', e.target.value as any, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('item_type', e.target.e.target.value as any, { shouldDirty: true })}
             >
               <option value="shirt">Shirt</option>
               <option value="pants">Pants</option>
@@ -195,7 +195,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
               id="condition" 
               className="rounded border  px-md py-xs" 
               value={form.getValues('condition') || 'new'} 
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('condition', e.target.value as any, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('condition', e.target.e.target.value as any, { shouldDirty: true })}
             >
               <option value="new">New</option>
               <option value="good">Good</option>

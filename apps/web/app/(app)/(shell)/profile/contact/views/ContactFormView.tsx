@@ -1,6 +1,6 @@
 'use client';
 
-import { Save, Phone, MapPin, AlertTriangle, Globe, Shield, CheckCircle } from "lucide-react";
+import { AlertTriangle, CheckCircle, Globe, Mail, MapPin, Phone, Save, Shield } from "lucide-react";
 import { useState, type ChangeEvent } from 'react';
 import { 
  Card, 
@@ -82,7 +82,7 @@ export default function ContactFormView({
  <Label>{config.label}</Label>
  <Input
  type="tel"
- value={value as string}
+ value={e.target.value as string}
  onChange={(e: ChangeEvent<HTMLInputElement>) => 
  onFieldChange(config.key as keyof ContactFormData, e.target.value)
  }
@@ -102,7 +102,7 @@ export default function ContactFormView({
  <div key={config.key} className="col-span-2">
  <Label>{config.label}</Label>
  <Textarea
- value={value as string}
+ value={e.target.value as string}
  onChange={(e: ChangeEvent<HTMLTextAreaElement>) => 
  onFieldChange(config.key as keyof ContactFormData, e.target.value)
  }
@@ -117,7 +117,7 @@ export default function ContactFormView({
  return (
  <div key={config.key} className="flex items-center gap-xs">
  <Checkbox
- checked={value as boolean}
+ checked={e.target.value as boolean}
  onCheckedChange={(checked) => 
  onFieldChange(config.key as keyof ContactFormData, checked)
  }
@@ -132,7 +132,7 @@ export default function ContactFormView({
  <Label>{config.label}</Label>
  <Input
  type={config.type}
- value={value as string}
+ value={e.target.value as string}
  onChange={(e: ChangeEvent<HTMLInputElement>) => 
  onFieldChange(config.key as keyof ContactFormData, e.target.value)
  }
@@ -246,7 +246,7 @@ export default function ContactFormView({
  <Label>{field.label}</Label>
  <Select
  value={formData.country || ''}
- onValueChange={(value) => onFieldChange('country', value)}
+ onChange={(e) => onFieldChange('country', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select country" />
@@ -345,7 +345,7 @@ export default function ContactFormView({
  </div>
  <Select
  value={formData.billing_country || ''}
- onValueChange={(value) => onFieldChange('billing_country', value)}
+ onChange={(e) => onFieldChange('billing_country', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select country" />
@@ -405,7 +405,7 @@ export default function ContactFormView({
  <Label>Timezone</Label>
  <Select
  value={formData.timezone || ''}
- onValueChange={(value) => onFieldChange('timezone', value)}
+ onChange={(e) => onFieldChange('timezone', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select timezone" />
@@ -424,7 +424,7 @@ export default function ContactFormView({
  <Label>Preferred Contact Method</Label>
  <Select
  value={formData.preferred_contact_method || 'email'}
- onValueChange={(value) => onFieldChange('preferred_contact_method', value)}
+ onChange={(e) => onFieldChange('preferred_contact_method', value)}
  >
  <SelectTrigger>
  <SelectValue />

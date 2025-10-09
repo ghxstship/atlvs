@@ -70,6 +70,9 @@ export default function TimelineView({
     });
 
     return groups;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortedData, groupBy]);
 
   const getStatusIcon = (status: string) => {

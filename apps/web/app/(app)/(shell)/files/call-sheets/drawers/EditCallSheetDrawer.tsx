@@ -249,7 +249,7 @@ export default function EditCallSheetDrawer({
  <Label htmlFor="status">Status</Label>
  <Select
  value={form.watch('status')}
- onValueChange={(value) => form.setValue('status', value as unknown)}
+ onChange={(e) => form.setValue('status', e.target.value as unknown)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select status" />
@@ -309,7 +309,7 @@ export default function EditCallSheetDrawer({
  <Label htmlFor="project_id">Project</Label>
  <Select
  value={form.watch('project_id')}
- onValueChange={(value) => form.setValue('project_id', value)}
+ onChange={(e) => form.setValue('project_id', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select project" />
@@ -328,7 +328,7 @@ export default function EditCallSheetDrawer({
  <Label htmlFor="event_id">Event</Label>
  <Select
  value={form.watch('event_id')}
- onValueChange={(value) => form.setValue('event_id', value)}
+ onChange={(e) => form.setValue('event_id', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select event" />

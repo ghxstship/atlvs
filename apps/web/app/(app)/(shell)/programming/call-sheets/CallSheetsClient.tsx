@@ -92,6 +92,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
 
   useEffect(() => {
     loadCallSheets();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId]);
 
   const loadCallSheets = async () => {

@@ -3,7 +3,22 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea, toast } from 'lucide-react';
-import { Button, Drawer, Input, Select } from '@ghxstship/ui';
+import {
+  Button,
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  Input,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@ghxstship/ui";
 import { DirectoryService } from '../lib/directory-service';
 import type { CreateCompanyForm } from '../types';
 
@@ -148,7 +163,7 @@ export default function CreateCompanyDrawer({
                 <label className="block text-sm font-medium mb-2">Industry</label>
                 <Select
                   value={industryValue}
-                  onValueChange={(value) => form.setValue('industry', value)}
+                  onChange={(e) => form.setValue('industry', value)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select industry" />
@@ -167,8 +182,8 @@ export default function CreateCompanyDrawer({
                 <label className="block text-sm font-medium mb-2">Company Size</label>
                 <Select
                   value={sizeValue}
-                  onValueChange={(value) =>
-                    form.setValue('size', (value || undefined) as CreateCompanyForm['size'])
+                  onChange={(e) =>
+                    form.setValue('size', (e.target.value || undefined) as CreateCompanyForm['size'])
                   }
                 >
                   <SelectTrigger>

@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Edit3, FileText, Activity as ActivityIcon, MessageSquare, MapPin, Users } from 'lucide-react';
+import { Activity, ActivityIcon, Edit, Edit3, FileText, MapPin, MessageSquare, Users, as } from "lucide-react";
 
 export type LocationRow = { 
   id: string; 
@@ -264,7 +264,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
                 name="type" 
                 className="rounded border  px-md py-xs" 
                 value={form.getValues('type') || ''} 
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('type', e.target.value as any, { shouldDirty: true })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('type', e.target.e.target.value as any, { shouldDirty: true })}
               >
                 <option value="venue">Venue</option>
                 <option value="office">Office</option>

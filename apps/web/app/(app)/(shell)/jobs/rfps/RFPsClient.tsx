@@ -1,11 +1,18 @@
 'use client';
 
 
-import { CalendarIcon } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { CalendarIcon, Download, Edit } from "lucide-react";
+import { useState, useEffect, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, UnifiedInput, Skeleton } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  Input,
+  Skeleton,
+  UnifiedInput
+} from "@ghxstship/ui";
 import { 
   MagnifyingGlassIcon,
   PlusIcon,
@@ -87,12 +94,9 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
 
   const supabase = createBrowserClient();
 
-  useEffect(() => {
-    loadRFPs();
-  }, [orgId]);
-
-  const loadRFPs = async () => {
+  const loadRFPs = useCallback(async () => {
     try {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       setLoading(true);
       
       const { data, error } = await supabase
@@ -108,7 +112,11 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [orgId, supabase]);
+
+  useEffect(() => {
+    loadRFPs();
+  }, [loadRFPs]);
 
   const filteredRFPs = rfps.filter((rfp: any) => {
     const matchesSearch = rfp.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -219,7 +227,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
       <Card className="p-md">
         <div className="flex flex-col sm:flex-row gap-md">
           <div className="flex-1">
-            <UnifiedInput               placeholder="Search RFPs..."
+            <Input               placeholder="Search RFPs..."
               value={searchTerm}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               className="w-full"

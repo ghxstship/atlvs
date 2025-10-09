@@ -2,10 +2,18 @@
 
 import React, { useMemo } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, Area, AreaChart } from 'recharts';
-import { Card, CardContent, CardHeader, CardTitle, Tooltip } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Tooltip
+} from "@ghxstship/ui";
 import { Badge } from '@ghxstship/ui';
 import { Button } from '@ghxstship/ui';
-import { Download, TrendingUp, TrendingDown, Minus, Pie, BarChart } from 'lucide-react';
+import { BarChart, Download, Minus, Pie, PieChart, TrendingDown, TrendingUp } from "lucide-react";
 import type { ProgrammingEntity } from '../types';
 
 interface ChartViewProps<T extends ProgrammingEntity> {

@@ -225,7 +225,7 @@ export default function ContractsClient({ orgId }: ContractsClientProps) {
  if (!filter || typeof filter.field !== 'string') continue;
  const value = filter.value;
  if (value === undefined || value === null || value === '') continue;
- query = query.eq(filter.field, value as string | number | boolean);
+ query = query.eq(filter.field, e.target.value as string | number | boolean);
  }
 
  const { data, error } = await query.order('created_at', { ascending: false });

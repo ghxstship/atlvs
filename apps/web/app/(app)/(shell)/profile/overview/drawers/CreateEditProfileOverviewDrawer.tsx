@@ -6,29 +6,29 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 // import { z } from 'zod';
 import {
- Drawer,
- Form,
- FormField,
- FormItem,
- FormLabel,
- FormControl,
- FormMessage,
- Input,
- Textarea,
- Select,
- SelectContent,
- SelectItem,
- SelectTrigger,
- SelectValue,
- Button,
- Badge,
- Avatar,
- Progress,
- Tabs,
- TabsContent,
- TabsList,
- TabsTrigger
-} from '@ghxstship/ui';
+  Avatar,
+  Badge,
+  Button,
+  Drawer,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
+  Progress,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Textarea
+} from "@ghxstship/ui";
 import type { ProfileOverview } from '../types';
 import { getStatusColor, getCompletionColor, getProfileCompletionTasks } from '../types';
 

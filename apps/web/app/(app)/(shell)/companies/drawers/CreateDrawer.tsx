@@ -216,7 +216,7 @@ export default function CreateDrawer({
                 <Select
                   value={formData.size || ''}
                   label="Company Size"
-                  onChange={(e) => handleChange('size', e.target.value || undefined)}
+                  onChange={(e) => handleChange('size', e.target.e.target.value || undefined)}
                   disabled={loading}
                 >
                   <MenuItem value="">None</MenuItem>

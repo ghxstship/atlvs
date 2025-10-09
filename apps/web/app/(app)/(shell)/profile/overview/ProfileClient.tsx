@@ -4,15 +4,15 @@ import { User, Briefcase, Award, Phone, Shield, Heart, Clock, Plane, Shirt, Acti
 import { useState, useMemo, useCallback } from 'react';
 import { createBrowserClient } from '@ghxstship/auth';
 import {
- Tabs,
- TabsList,
- TabsTrigger,
- TabsContent,
- Card,
- Badge,
- Button,
- useToast
-} from '@ghxstship/ui';
+  Badge,
+  Button,
+  Card,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  useToast
+} from "@ghxstship/ui";
 
 // Import all Profile module clients
 import ProfileOverviewClient from './ProfileOverviewClient';

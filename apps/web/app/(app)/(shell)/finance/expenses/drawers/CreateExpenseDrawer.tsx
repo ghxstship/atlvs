@@ -5,7 +5,19 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 // import { z } from 'zod';
-import { Badge, Button, Card, Drawer, Input, Label, Select } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  Drawer,
+  Input,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@ghxstship/ui";
 import { ExpensesService } from '../lib/expenses-service';
 import type { ExpenseDrawerProps, CreateExpenseData } from '../types';
 
@@ -186,7 +198,7 @@ export default function CreateExpenseDrawer({
  <Label htmlFor="currency">Currency</Label>
  <Select
  value={watch('currency')}
- onValueChange={(value) => setValue('currency', value)}
+ onChange={(e) => setValue('currency', value)}
  disabled={mode === 'view'}
  >
  <SelectTrigger>
@@ -207,7 +219,7 @@ export default function CreateExpenseDrawer({
  <Label htmlFor="category">Category *</Label>
  <Select
  value={watch('category')}
- onValueChange={(value) => setValue('category', value)}
+ onChange={(e) => setValue('category', value)}
  disabled={mode === 'view'}
  >
  <SelectTrigger>

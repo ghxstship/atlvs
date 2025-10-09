@@ -79,7 +79,7 @@ export default function CreatePersonDrawer({ orgId, open, onClose, onCreated }: 
  }, []);
 
  const handleStatusChange = useCallback((value: string) => {
- setFormData(prev => ({ ...prev, status: value as PersonStatus }));
+ setFormData(prev => ({ ...prev, status: e.target.value as PersonStatus }));
  // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 

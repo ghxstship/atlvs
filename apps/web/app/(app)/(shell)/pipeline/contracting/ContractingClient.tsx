@@ -273,7 +273,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   <label className="block text-body-sm form-label mb-xs">Contract Type</label>
                   <select
                     value={formData.type}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, type: e.target.value as Contract['type'] }))}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, type: e.target.e.target.value as Contract['type'] }))}
                     className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                   >
                     {CONTRACT_TYPES.map(type => (

@@ -1,6 +1,6 @@
 'use client';
 
-import { TrendingUp, Clock, CheckCircle, XCircle, AlertTriangle, Building, DollarSign, Calendar } from "lucide-react";
+import { AlertTriangle, Building, Calendar, CheckCircle, Clock, DollarSign, Edit, TrendingUp, XCircle } from "lucide-react";
 import { useMemo } from 'react';
 import { DataGrid, Badge, Button } from '@ghxstship/ui';
 import type { JobOpportunity } from '../types';

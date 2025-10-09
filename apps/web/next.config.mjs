@@ -1,8 +1,5 @@
 const experimentalConfig = {
-  turbo: {},
   optimizeCss: true,
-  instrumentationHook: true,
-  serverComponentsExternalPackages: ['@supabase/supabase-js'],
   disableOptimizedLoading: true,
 }
 
@@ -15,6 +12,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   experimental: experimentalConfig,
+  turbopack: {},
+  serverExternalPackages: ['@supabase/supabase-js'],
   output: 'standalone',
   generateBuildId: async () => {
     return 'build-' + Date.now()

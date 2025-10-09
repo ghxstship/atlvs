@@ -268,7 +268,7 @@ export default function CreateJobHistoryDrawer({
  <Label htmlFor="employment_type">Employment Type *</Label>
  <Select
  value={getValues('employment_type')}
- onValueChange={(value) => setValue('employment_type', value as EmploymentType)}
+ onChange={(e) => setValue('employment_type', e.target.value as EmploymentType)}
  >
  <SelectTrigger>
  <SelectValue />
@@ -287,7 +287,7 @@ export default function CreateJobHistoryDrawer({
  <Label htmlFor="visibility">Visibility</Label>
  <Select
  value={getValues('visibility')}
- onValueChange={(value) => setValue('visibility', value as JobVisibility)}
+ onChange={(e) => setValue('visibility', e.target.value as JobVisibility)}
  >
  <SelectTrigger>
  <SelectValue />
@@ -387,7 +387,7 @@ export default function CreateJobHistoryDrawer({
  <Label htmlFor="company_size">Company Size</Label>
  <Select
  value={getValues('company_size') || ''}
- onValueChange={(value) => setValue('company_size', value as CompanySize)}
+ onChange={(e) => setValue('company_size', e.target.value as CompanySize)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select company size" />
@@ -406,7 +406,7 @@ export default function CreateJobHistoryDrawer({
  <Label htmlFor="industry">Industry</Label>
  <Select
  value={getValues('industry') || ''}
- onValueChange={(value) => setValue('industry', value)}
+ onChange={(e) => setValue('industry', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select industry" />

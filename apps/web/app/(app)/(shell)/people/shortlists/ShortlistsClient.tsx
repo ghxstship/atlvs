@@ -213,7 +213,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
               </label>
               <select
                 value={newShortlist.purpose}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewShortlist(prev => ({ ...prev, purpose: e.target.value as any }))}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewShortlist(prev => ({ ...prev, purpose: e.target.e.target.value as any }))}
                 className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="">{t('selectPurpose')}</option>

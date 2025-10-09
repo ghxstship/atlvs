@@ -18,14 +18,15 @@ import {
   Trash2,
   Activity
 } from 'lucide-react';import {
-  Card,
+  Badge,
   Button,
-  UnifiedInput,
+  Card,
+  Drawer,
+  Input,
   Select,
   Textarea,
-  Badge,
-  Drawer
-} from '@ghxstship/ui';
+  UnifiedInput
+} from "@ghxstship/ui";
 import {
   Card,
   Button,
@@ -451,7 +452,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
             </Select>
           </div>
 
-          <UnifiedInput             label="Title"
+          <Input             label="Title"
             placeholder="Enter record title"
             {...form.register('title')}
            
@@ -466,26 +467,26 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
           />
 
           <div className="grid grid-cols-2 gap-md">
-            <UnifiedInput               label="Date Recorded"
+            <Input               label="Date Recorded"
               type="date"
               {...form.register('date_recorded')}
              
             />
 
-            <UnifiedInput               label="Expiry Date (Optional)"
+            <Input               label="Expiry Date (Optional)"
               type="date"
               {...form.register('expiry_date')}
              
             />
           </div>
 
-          <UnifiedInput             label="Healthcare Provider"
+          <Input             label="Healthcare Provider"
             placeholder="Doctor, clinic, or hospital name"
             {...form.register('provider')}
            
           />
 
-          <UnifiedInput             label="Document URL (Optional)"
+          <Input             label="Document URL (Optional)"
             placeholder="Link to medical document or report"
             {...form.register('document_url')}
            

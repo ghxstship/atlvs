@@ -166,7 +166,7 @@ export default function HealthTimelineView({
  <div className="grid grid-cols-1 md:grid-cols-4 gap-md pt-4 border-t">
  <Select
  value={filters.record_type || 'all'}
- onValueChange={(value) => onFiltersChange({ record_type: value as unknown })}
+ onChange={(e) => onFiltersChange({ record_type: e.target.value as unknown })}
  >
  <SelectTrigger>
  <SelectValue placeholder="All Types" />
@@ -183,7 +183,7 @@ export default function HealthTimelineView({
 
  <Select
  value={filters.severity || 'all'}
- onValueChange={(value) => onFiltersChange({ severity: value as unknown })}
+ onChange={(e) => onFiltersChange({ severity: e.target.value as unknown })}
  >
  <SelectTrigger>
  <SelectValue placeholder="All Severities" />
@@ -200,7 +200,7 @@ export default function HealthTimelineView({
 
  <Select
  value={filters.category || 'all'}
- onValueChange={(value) => onFiltersChange({ category: value as unknown })}
+ onChange={(e) => onFiltersChange({ category: e.target.value as unknown })}
  >
  <SelectTrigger>
  <SelectValue placeholder="All Categories" />
@@ -217,7 +217,7 @@ export default function HealthTimelineView({
 
  <Select
  value={filters.is_active || 'all'}
- onValueChange={(value) => onFiltersChange({ is_active: value as unknown })}
+ onChange={(e) => onFiltersChange({ is_active: e.target.value as unknown })}
  >
  <SelectTrigger>
  <SelectValue placeholder="All Records" />

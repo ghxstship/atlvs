@@ -1,8 +1,21 @@
 'use client';
 
-import { Badge, Building, Button, Calendar, Card, Check, Checkbox, Clock, DollarSign, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, Edit, ExternalEye, ExternalLink, Eye, MoreHorizontal, Receipt, Trash2, User, X } from 'lucide-react';
+import { Badge, Building, Button, Calendar, Card, Check, Checkbox, Clock, DollarSign, Dropdown,  DropdownItem, DropdownMenuSeparator,  Edit, ExternalEye, ExternalLink, Eye, MoreHorizontal, Receipt, Trash2, User, X } from 'lucide-react';
 import { useState } from 'react';
-import { Badge, Button, Card, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  Checkbox,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
 import { ExpensesService } from '../lib/expenses-service';
 import type { Expense } from '../types';
 

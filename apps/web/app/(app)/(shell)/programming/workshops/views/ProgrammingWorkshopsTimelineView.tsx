@@ -2,17 +2,21 @@
 
 import { MoreHorizontal, Edit, Eye, Calendar, Users, Clock, MapPin, DollarSign, Award, User } from "lucide-react";
 import {
- Badge,
- Button,
- Card,
- CardContent,
- CardHeader,
- CardTitle,
- DropdownMenu,
- DropdownMenuContent,
- DropdownMenuItem,
- DropdownMenuTrigger
-} from '@ghxstship/ui';
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@ghxstship/ui";
 
 import type { ProgrammingWorkshop } from '../types';
 

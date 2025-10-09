@@ -262,7 +262,7 @@ export default function CreateAdvancingClient({
               </label>
               <Select
                 value={formData.status}
-                onValueChange={(value: any) => handleInputChange('status', value)}
+                onChange={(value: any) => handleInputChange('status', value)}
               >
                 {ADVANCE_STATUSES.map(status => (
                   <option key={status.value} value={status.value}>
@@ -301,7 +301,7 @@ export default function CreateAdvancingClient({
                 </label>
                 <Select
                   value={formData.currency}
-                  onValueChange={(value: any) => handleInputChange('currency', value)}
+                  onChange={(value: any) => handleInputChange('currency', value)}
                 >
                   {CURRENCIES.map(currency => (
                     <option key={currency.value} value={currency.value}>

@@ -274,7 +274,7 @@ export default function UniformSizingListView({
  <span className="text-muted-foreground capitalize">
  {key.replace('_', ' ')}:
  </span>
- <span>{value as string}</span>
+ <span>{e.target.value as string}</span>
  </div>
  ))
  ) : (

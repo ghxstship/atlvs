@@ -187,7 +187,7 @@ export default function CreateExpenseClient({
               </label>
               <Select
                 value={formData.currency}
-                onValueChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
+                onChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
               >
                 <option value="USD">USD - US Dollar</option>
                 <option value="EUR">EUR - Euro</option>
@@ -205,7 +205,7 @@ export default function CreateExpenseClient({
               </label>
               <Select
                 value={formData.category}
-                onValueChange={(value: any) => setFormData(prev => ({ ...prev, category: value }))}
+                onChange={(value: any) => setFormData(prev => ({ ...prev, category: value }))}
               >
                 <option value="general">General</option>
                 <option value="travel">Travel</option>

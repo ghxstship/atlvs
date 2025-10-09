@@ -83,7 +83,7 @@ export default function EnhancedMetricWidget({
  };
 
  const progress = displayMetric.target 
- ? Math.min(100, ((displayMetric.value as number) / displayMetric.target) * 100)
+ ? Math.min(100, ((displayMetric.e.target.value as number) / displayMetric.target) * 100)
  : undefined;
 
  return (

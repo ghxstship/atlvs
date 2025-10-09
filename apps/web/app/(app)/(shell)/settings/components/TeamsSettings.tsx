@@ -282,7 +282,7 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
                   </div>
                   <div className="space-y-xs">
                     <Label htmlFor="invite-role">Role</Label>
-                    <Select value={inviteRole} onValueChange={(value: unknown) => setInviteRole(value)}>
+                    <Select value={inviteRole} onChange={(value: unknown) => setInviteRole(value)}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -332,7 +332,7 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
                 <div className="flex items-center gap-sm">
                   <Select
                     value={member.role}
-                    onValueChange={(value: unknown) => handleUpdateRole(member.id, value)}
+                    onChange={(value: unknown) => handleUpdateRole(member.id, value)}
                   >
                     <SelectTrigger className="w-component-xl">
                       <SelectValue />

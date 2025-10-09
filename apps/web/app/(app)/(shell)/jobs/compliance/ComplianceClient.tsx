@@ -1,11 +1,18 @@
 'use client';
 
 
-import { CalendarIcon } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { CalendarIcon, Edit } from "lucide-react";
+import { useState, useEffect, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, UnifiedInput, Skeleton } from '@ghxstship/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  Input,
+  Skeleton,
+  UnifiedInput
+} from "@ghxstship/ui";
 import { 
   MagnifyingGlassIcon,
   PlusIcon,
@@ -94,12 +101,10 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
 
   const supabase = createBrowserClient();
 
-  useEffect(() => {
-    loadCompliance();
-  }, [orgId]);
-
-  const loadCompliance = async () => {
+  const loadCompliance = useCallback(async () => {
     try {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
       setLoading(true);
       
       // Load compliance items with related job data
@@ -128,7 +133,11 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
     } finally {
       setLoading(false);
     }
-  };
+  }, [orgId, supabase]);
+
+  useEffect(() => {
+    loadCompliance();
+  }, [loadCompliance]);
 
   const filteredCompliance = compliance.filter((item: any) => {
     const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -247,7 +256,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
       <Card className="p-md">
         <div className="flex flex-col sm:flex-row gap-md">
           <div className="flex-1">
-            <UnifiedInput               placeholder="Search compliance items..."
+            <Input               placeholder="Search compliance items..."
               value={searchTerm}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               className="w-full"

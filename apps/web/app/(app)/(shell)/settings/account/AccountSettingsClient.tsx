@@ -1,22 +1,22 @@
 'use client';
 
-import { User, Lock, Shield, Smartphone, Key, Globe, Clock, AlertCircle } from "lucide-react";
+import { AlertCircle, Clock, Globe, Key, Lock, Settings, Shield, Smartphone, User } from "lucide-react";
 import { useCallback, useEffect, useState } from 'react';
 import type { ChangeEvent } from 'react';
 import {
- Card,
- Button,
- Tabs,
- TabsContent,
- TabsList,
- TabsTrigger,
- Badge,
- Alert,
- Loader,
- Input,
- Label,
- useToastContext
-} from '@ghxstship/ui';
+  Alert,
+  Badge,
+  Button,
+  Card,
+  Input,
+  Label,
+  Loader,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  useToastContext
+} from "@ghxstship/ui";
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 import useSupabaseBrowserClient from '@/app/_hooks/useSupabaseBrowserClient';
 import {

@@ -1,4 +1,9 @@
 'use client';
+
+import {
+  AppDrawer
+} from "@ghxstship/ui";
+
 import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
 import { useState } from 'react';
 import AppDrawer, { type DrawerFieldConfig } from '@ghxstship/ui';

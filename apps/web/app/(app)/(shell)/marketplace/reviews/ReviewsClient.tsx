@@ -1,6 +1,6 @@
 'use client';
 
-import { Star, ThumbsUp, ThumbsDown, MessageSquare, Filter, Search, Plus, Flag, Calendar, User, Award, TrendingUp } from "lucide-react";
+import { Award, Calendar, Filter, Flag, MessageSquare, Plus, Search, Share, Star, ThumbsDown, ThumbsUp, TrendingUp, User } from "lucide-react";
 import { useState, useEffect } from 'react';
 import { 
  Card,
@@ -62,6 +62,7 @@ export default function ReviewsClient({ orgId, userId }: ReviewsClientProps) {
 
  useEffect(() => {
  loadReviews();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [orgId]);
 
  const loadReviews = async () => {

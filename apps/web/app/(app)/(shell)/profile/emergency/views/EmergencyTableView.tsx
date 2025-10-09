@@ -1,5 +1,5 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, Download, ArrowUpDown, ShieldCheck, ShieldAlert } from 'lucide-react';
+import { Activity, ArrowUpDown, Award, Calendar, Clock, Download, Edit, FileText, Play, Plus, Search, Settings, ShieldAlert, ShieldCheck, Trash2, TrendingUp, User } from "lucide-react";
 import { useMemo } from 'react';
 import {
  Card,
@@ -101,7 +101,7 @@ export default function EmergencyTableView({
  />
  <Select
  value={filters.priority ?? 'all'}
- onValueChange={(value) => onFiltersChange({ priority: value as EmergencyContactFilters['priority'] })}
+ onChange={(e) => onFiltersChange({ priority: e.target.value as EmergencyContactFilters['priority'] })}
  >
  <SelectTrigger className="w-40">
  <SelectValue placeholder="Priority" />
@@ -116,7 +116,7 @@ export default function EmergencyTableView({
  </Select>
  <Select
  value={filters.verification_status ?? 'all'}
- onValueChange={(value) => onFiltersChange({ verification_status: value as EmergencyContactFilters['verification_status'] })}
+ onChange={(e) => onFiltersChange({ verification_status: e.target.value as EmergencyContactFilters['verification_status'] })}
  >
  <SelectTrigger className="w-40">
  <SelectValue placeholder="Verification" />

@@ -7,26 +7,16 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Plane, 
-  Edit, 
-  Save, 
-  Plus,
-  MapPin,
-  Calendar,
-  Clock,
-  Trash2,
-  CreditCard,
-  Globe
-} from 'lucide-react';import {
-  Card,
+import { Calendar, Clock, CreditCard, Edit, Globe, History, MapPin, Plane, Plus, Save, Trash2 } from "lucide-react";import {
+  Badge,
   Button,
-  UnifiedInput,
+  Card,
+  Drawer,
+  Input,
   Select,
   Textarea,
-  Badge,
-  Drawer
-} from '@ghxstship/ui';
+  UnifiedInput
+} from "@ghxstship/ui";
 import {
   Card,
   Button,
@@ -122,6 +112,10 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
       form.setValue('duration_days', diffDays);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form.watch('start_date'), form.watch('end_date')]);
 
   const loadTravelRecords = async () => {
@@ -567,39 +561,39 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
           </Select>
 
           <div className="grid grid-cols-2 gap-md">
-            <UnifiedInput               label="Destination"
+            <Input               label="Destination"
               placeholder="City, location"
               {...form.register('destination')}
              
             />
 
-            <UnifiedInput               label="Country"
+            <Input               label="Country"
               placeholder="Country name"
               {...form.register('country')}
              
             />
           </div>
 
-          <UnifiedInput             label="Purpose"
+          <Input             label="Purpose"
             placeholder="Purpose of travel"
             {...form.register('purpose')}
            
           />
 
           <div className="grid grid-cols-3 gap-md">
-            <UnifiedInput               label="Start Date"
+            <Input               label="Start Date"
               type="date"
               {...form.register('start_date')}
              
             />
 
-            <UnifiedInput               label="End Date"
+            <Input               label="End Date"
               type="date"
               {...form.register('end_date')}
              
             />
 
-            <UnifiedInput               label="Duration (Days)"
+            <Input               label="Duration (Days)"
               type="number"
               {...form.register('duration_days', { valueAsNumber: true })}
              
@@ -608,13 +602,13 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
           </div>
 
           <div className="grid grid-cols-2 gap-md">
-            <UnifiedInput               label="Accommodation"
+            <Input               label="Accommodation"
               placeholder="Hotel, residence, etc."
               {...form.register('accommodation')}
              
             />
 
-            <UnifiedInput               label="Transportation"
+            <Input               label="Transportation"
               placeholder="Flight, car, ship, etc."
               {...form.register('transportation')}
              
@@ -646,13 +640,13 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
           </div>
 
           <div className="grid grid-cols-2 gap-md">
-            <UnifiedInput               label="Passport Used"
+            <Input               label="Passport Used"
               placeholder="Passport number or type"
               {...form.register('passport_used')}
              
             />
 
-            <UnifiedInput               label="Expenses ($)"
+            <Input               label="Expenses ($)"
               type="number"
               placeholder="0"
               {...form.register('expenses', { valueAsNumber: true })}

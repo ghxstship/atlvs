@@ -5,24 +5,24 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
- Drawer,
- Button,
- Input,
- Label,
- Textarea,
- Select,
- SelectContent,
- SelectItem,
- SelectTrigger,
- SelectValue,
- useToast,
- Card,
- Badge,
- Tabs,
- TabsList,
- TabsTrigger,
- TabsContent
-} from '@ghxstship/ui';
+  Badge,
+  Button,
+  Card,
+  Drawer,
+  Input,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Textarea,
+  useToast
+} from "@ghxstship/ui";
 // import { z } from 'zod';
 
 import type { FieldConfig, CreateProfileFormData } from '../types';
@@ -230,7 +230,7 @@ export default function CreateProfileDrawer({
  <Label htmlFor="status">Status *</Label>
  <Select
  value={watchedValues.status}
- onValueChange={(value) => setValue('status', value as unknown)}
+ onChange={(e) => setValue('status', e.target.value as unknown)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select status" />
@@ -277,7 +277,7 @@ export default function CreateProfileDrawer({
  <Label htmlFor="department">Department</Label>
  <Select
  value={watchedValues.department}
- onValueChange={(value) => setValue('department', value)}
+ onChange={(e) => setValue('department', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select department" />
@@ -296,7 +296,7 @@ export default function CreateProfileDrawer({
  <Label htmlFor="employment_type">Employment Type</Label>
  <Select
  value={watchedValues.employment_type}
- onValueChange={(value) => setValue('employment_type', value as unknown)}
+ onChange={(e) => setValue('employment_type', e.target.value as unknown)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select employment type" />
@@ -333,7 +333,7 @@ export default function CreateProfileDrawer({
  <Label htmlFor="timezone">Timezone</Label>
  <Select
  value={watchedValues.timezone}
- onValueChange={(value) => setValue('timezone', value)}
+ onChange={(e) => setValue('timezone', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select timezone" />
@@ -442,7 +442,7 @@ export default function CreateProfileDrawer({
  <Label htmlFor="emergency_contact_relationship">Relationship</Label>
  <Select
  value={watchedValues.emergency_contact_relationship}
- onValueChange={(value) => setValue('emergency_contact_relationship', value)}
+ onChange={(e) => setValue('emergency_contact_relationship', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select relationship" />

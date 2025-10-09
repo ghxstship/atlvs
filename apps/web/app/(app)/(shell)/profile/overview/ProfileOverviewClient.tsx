@@ -1,23 +1,12 @@
 'use client';
 
 
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Card, Badge, Button } from '@ghxstship/ui';
-import { 
-  User, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Calendar, 
-  Award, 
-  Briefcase,
-  Edit,
-  Camera,
-  CheckCircle,
-  AlertCircle
-} from 'lucide-react';
+import { AlertCircle, Award, Briefcase, Calendar, Camera, CheckCircle, Edit, History, Mail, MapPin, Phone, User } from "lucide-react";
 
 interface ProfileOverview {
   id: string;
@@ -55,6 +44,7 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
   useEffect(() => {
     loadProfileOverview();
     loadRecentActivity();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orgId, userId]);
 
   const loadProfileOverview = async () => {
@@ -147,11 +137,7 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
           <div className="relative">
             <div className="h-component-lg w-component-lg rounded-full bg-secondary flex items-center justify-center">
               {profile?.avatar_url ? (
-                <img 
-                  src={profile.avatar_url} 
-                  alt={profile.full_name || 'User'}
-                  className="h-component-lg w-component-lg rounded-full object-cover"
-                />
+                <Image src={profile.avatar_url} alt={profile.full_name || 'User'} width={48} height={48} className="h-component-lg w-component-lg rounded-full object-cover" />
               ) : (
                 <User className="h-icon-lg w-icon-lg color-muted" />
               )}

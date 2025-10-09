@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Building, Globe, Upload, Trash2, CheckCircle, AlertTriangle, Settings as SettingsIcon } from "lucide-react";
 import { createBrowserClient } from '@ghxstship/auth';
@@ -260,7 +261,7 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
                 <Label htmlFor="org-industry">Industry</Label>
                 <Select
                   value={organization?.industry || ''}
-                  onValueChange={(value) => setOrganization(prev => prev ? { ...prev, industry: value } : null)}
+                  onChange={(e) => setOrganization(prev => prev ? { ...prev, industry: value } : null)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select industry" />
@@ -282,7 +283,7 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
                 <Label htmlFor="org-size">Organization Size</Label>
                 <Select
                   value={organization?.size || ''}
-                  onValueChange={(value) => setOrganization(prev => prev ? { ...prev, size: value } : null)}
+                  onChange={(e) => setOrganization(prev => prev ? { ...prev, size: value } : null)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select size" />
@@ -302,7 +303,7 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
                 <div className="flex items-center gap-md">
                   <div className="w-component-md h-component-md bg-muted rounded-lg flex items-center justify-center">
                     {organization?.logo_url ? (
-                      <img src={organization.logo_url} alt="Logo" className="w-full h-full object-cover rounded-lg" />
+                      <Image src={organization.logo_url} alt="Logo" width={48} height={48} className="w-full h-full object-cover rounded-lg" />
                     ) : (
                       <Building className="h-icon-lg w-icon-lg text-muted-foreground" />
                     )}

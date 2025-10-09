@@ -1,4 +1,3 @@
-import { Badge, Building, Button, CreditCard, DollarSign, Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, Input, Minus, Save, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Switch, Tabs, TabsContent, TabsList, TabsTrigger, Textarea, TrendingUp, X } from 'lucide-react';
 /**
  * Create Account Drawer Component
  * Specialized drawer for creating/editing GL Accounts
@@ -6,8 +5,32 @@ import { Badge, Building, Button, CreditCard, DollarSign, Drawer, DrawerContent,
 
 'use client';
 
+
+import {
+  Badge,
+  Button,
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  Input,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Switch,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "@ghxstship/ui";
+import { Building, CreditCard, DollarSign, Minus, Save, TrendingUp, X } from "lucide-react";
+
 import React, { useState, useCallback, useState, useEffect } from 'react';
-import { Badge, Button, Drawer, Input, Select, Switch, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
 import type { GLAccount, AccountType, AccountFormData } from '../types';
 import { accountsService } from '../lib/accountsService';
 
@@ -247,7 +270,7 @@ export default function CreateAccountDrawer({
  </label>
  <Select 
  value={formData.type} 
- onValueChange={(value) => handleInputChange('type', value as AccountType)}
+ onChange={(e) => handleInputChange('type', e.target.value as AccountType)}
  >
  <SelectTrigger>
  <SelectValue />
@@ -337,7 +360,7 @@ export default function CreateAccountDrawer({
  </label>
  <Select 
  value={formData.subtype} 
- onValueChange={(value) => handleInputChange('subtype', value)}
+ onChange={(e) => handleInputChange('subtype', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select subtype..." />
@@ -358,7 +381,7 @@ export default function CreateAccountDrawer({
  </label>
  <Select 
  value={formData.parent_account_id} 
- onValueChange={(value) => handleInputChange('parent_account_id', value)}
+ onChange={(e) => handleInputChange('parent_account_id', value)}
  >
  <SelectTrigger>
  <SelectValue placeholder="Select parent account..." />
@@ -381,7 +404,7 @@ export default function CreateAccountDrawer({
  </label>
  <Select 
  value={formData.currency} 
- onValueChange={(value) => handleInputChange('currency', value)}
+ onChange={(e) => handleInputChange('currency', value)}
  >
  <SelectTrigger>
  <SelectValue />

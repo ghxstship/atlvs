@@ -1,9 +1,39 @@
 'use client';
 
+
+import {
+  AppDrawer,
+  Badge,
+  Button,
+  CalendarView,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  DataActions,
+  DataGrid,
+  DataViewProvider,
+  KanbanBoard,
+  ListView,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  ViewSwitcher
+} from "@ghxstship/ui";
+
 import { AlertTriangle, Building, Calendar, CheckCircle, Clock, DollarSign, Download, Edit, Eye, FileText, Filter, Gavel, Plus, RefreshCw, Search, TrendingUp, Users } from 'lucide-react';
 import React, { useState, useCallback, useState, useEffect } from 'react';
-import { AppDrawer, Badge, Button, CalendarView, Card, CardBody, CardContent, CardDescription, CardHeader, CardTitle, DataActions, DataGrid, DataViewProvider, Input, KanbanBoard, ListView, Tabs, TabsContent, TabsList, TabsTrigger, ViewSwitcher } from '@ghxstship/ui';
-import type { FilterConfig, SortConfig, DataViewConfig, FieldConfig, DataRecord } from '@ghxstship/ui';
+import type { FilterConfig, SortConfig, DataViewConfig, FieldConfig, DataRecord ,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from '@ghxstship/ui';
 
 interface ContractsClientProps {
  className?: string;

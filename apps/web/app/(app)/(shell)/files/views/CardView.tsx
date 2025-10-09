@@ -16,7 +16,13 @@ import {
   Calendar,
   Clock
 } from 'lucide-react';
-import { Card, Button, Checkbox, DropdownMenu, Badge } from '@ghxstship/ui';
+import { Card, Button, Checkbox, Dropdown, Badge ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from '@ghxstship/ui';
 import type { DigitalAsset } from '../types';
 
 interface CardViewProps {

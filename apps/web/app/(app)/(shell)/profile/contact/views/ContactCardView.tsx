@@ -1,6 +1,6 @@
 'use client';
 
-import { Phone, MapPin, ShieldCheck, AlertTriangle, Mail, Globe, Clock, User } from "lucide-react";
+import { AlertTriangle, Clock, Edit, Globe, Mail, MapPin, Phone, ShieldCheck, User } from "lucide-react";
 import { Card, Badge, Button } from '@ghxstship/ui';
 import type { ContactInfo } from '../types';
 import { formatPhoneNumber, formatAddress } from '../types';

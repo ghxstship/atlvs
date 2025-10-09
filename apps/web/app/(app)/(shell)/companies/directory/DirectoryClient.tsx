@@ -52,19 +52,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
 
   const supabase = createBrowserClient();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    loadCompanies();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [orgId]);
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    filterCompanies();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [companies, searchQuery, industryFilter, statusFilter, sizeFilter]);
-
-  const loadCompanies = async () => {
+  const loadCompanies = useCallback(async () => {
     try {
       setLoading(true);
       const { data, error } = await supabase
@@ -80,9 +68,9 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
     } finally {
       setLoading(false);
     }
-  };
+  }, [orgId, supabase]);
 
-  const filterCompanies = () => {
+  const filterCompanies = useCallback(() => {
     let filtered = companies;
 
     // Search filter
@@ -113,7 +101,15 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
     }
 
     setFilteredCompanies(filtered);
-  };
+  }, [companies, searchQuery, industryFilter, statusFilter, sizeFilter]);
+
+  useEffect(() => {
+    loadCompanies();
+  }, [loadCompanies]);
+
+  useEffect(() => {
+    filterCompanies();
+  }, [filterCompanies]);
 
   const handleCreateCompany = () => {
     setSelectedCompany(null);

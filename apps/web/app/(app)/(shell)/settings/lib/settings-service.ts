@@ -344,12 +344,12 @@ class SettingsService {
 
       return {
         categories: Object.entries(categoryCount).map(([value, count]) => ({
-          value: value as unknown,
+          value: e.target.value as unknown,
           label: value.charAt(0).toUpperCase() + value.slice(1),
           count
         })),
         types: Object.entries(typeCount).map(([value, count]) => ({
-          value: value as unknown,
+          value: e.target.value as unknown,
           label: value.charAt(0).toUpperCase() + value.slice(1),
           count
         })),

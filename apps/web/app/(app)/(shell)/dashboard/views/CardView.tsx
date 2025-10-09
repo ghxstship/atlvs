@@ -2,8 +2,14 @@
 
 import React, { useState, useMemo, useCallback } from 'react';
 import Image from "next/image";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, Edit, Eye, Filter, Grid3X3, Heart, List, MoreHorizontal, Search, Share, Trash2 } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Card, CardBody, CardContent, CardHeader, CardTitle, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Input } from '@ghxstship/ui';
+import { Dropdown,  DropdownItem, DropdownMenuSeparator,  Edit, Eye, Filter, Grid3X3, Heart, List, MoreHorizontal, Search, Share, Trash2 } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Card, CardBody, CardContent, CardHeader, CardTitle, Checkbox, Dropdown,  DropdownItem,  Input,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from "@ghxstship/ui";
 import { cn } from '@ghxstship/ui/lib/utils';
 
 // Card Layout Types

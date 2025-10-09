@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { User } from "lucide-react";
 import { Card, Badge, Avatar } from '@ghxstship/ui';
 import type { UserProfile, FieldConfig } from '../types';
@@ -76,7 +77,7 @@ export default function ProfileKanbanView({
  <div className="flex items-center gap-sm mb-sm">
  <Avatar className="h-icon-lg w-icon-lg">
  {profile.avatar_url ? (
- <img src={profile.avatar_url} alt={profile.full_name} />
+ <Image src={profile.avatar_url} alt={profile.full_name} width={48} height={48} />
  ) : (
  <div className="flex items-center justify-center h-full w-full bg-primary/10 text-primary font-semibold text-xs">
  {profile.full_name.split(' ').map(n => n[0]).join('').toUpperCase()}

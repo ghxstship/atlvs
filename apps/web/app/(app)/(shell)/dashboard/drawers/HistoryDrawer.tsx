@@ -1,8 +1,20 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { AlertTriangle, CheckCircle, ChevronDown, ChevronRight, Clock, Download, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Edit, Eye, Filter, Info, MoreHorizontal, Plus, Search, Settings, Trash2, Upload, User, X } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Card, CardBody, CardContent, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Input, ScrollArea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator } from '@ghxstship/ui';
+import { AlertTriangle, CheckCircle, ChevronDown, ChevronRight, Clock, Download, Dropdown, DropdownItem, Edit, Eye, Filter, History, Info, MoreHorizontal, Plus, Search, Settings, Trash2, Upload, User, Users, X } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage, Badge, Button, Card, CardBody, CardContent, Dropdown,  DropdownItem,  Input, ScrollArea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Separator ,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter
+} from "@ghxstship/ui";
 import { cn } from '@ghxstship/ui/lib/utils';
 import { format, formatDistanceToNow, isThisMonth, isThisWeek, isToday, isYesterday } from 'date-fns';
 
@@ -531,7 +543,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
             <div className="grid grid-cols-2 gap-xs">
               <Select
                 value={filter.type?.[0] || ''}
-                onValueChange={(value) => handleFilterChange('type', value ? [value as ActivityType] : undefined)}
+                onChange={(e) => handleFilterChange('type', value ? [e.target.value as ActivityType] : undefined)}
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Filter by type" />
@@ -549,7 +561,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
 
               <Select
                 value={filter.user?.[0] || ''}
-                onValueChange={(value) => handleFilterChange('user', value ? [value] : undefined)}
+                onChange={(e) => handleFilterChange('user', value ? [value] : undefined)}
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Filter by user" />

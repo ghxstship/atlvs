@@ -1,6 +1,6 @@
 'use client';
 
-import { Save, Plus, X, Calendar, User, FileText, Shield, Bell } from "lucide-react";
+import { Bell, Calendar, FileText, Plus, Save, Settings, Shield, User, X } from "lucide-react";
 import { useState } from 'react';
 import {
  Button,
@@ -96,7 +96,7 @@ export default function HealthFormView({
  </Label>
  <Select
  value={formData.record_type}
- onValueChange={(value) => onFieldChange('record_type', value)}
+ onChange={(e) => onFieldChange('record_type', value)}
  >
  <SelectTrigger >
  <SelectValue />
@@ -105,7 +105,7 @@ export default function HealthFormView({
  {Object.entries(RECORD_TYPE_LABELS).map(([value, label]) => (
  <SelectItem key={value} value={value}>
  <span className="flex items-center gap-xs">
- <span>{getRecordTypeIcon(value as unknown)}</span>
+ <span>{getRecordTypeIcon(e.target.value as unknown)}</span>
  {label}
  </span>
  </SelectItem>
@@ -216,7 +216,7 @@ export default function HealthFormView({
  <Label htmlFor="severity">Severity Level</Label>
  <Select
  value={formData.severity}
- onValueChange={(value) => onFieldChange('severity', value)}
+ onChange={(e) => onFieldChange('severity', value)}
  >
  <SelectTrigger >
  <SelectValue />
@@ -235,7 +235,7 @@ export default function HealthFormView({
  <Label htmlFor="category">Category</Label>
  <Select
  value={formData.category}
- onValueChange={(value) => onFieldChange('category', value)}
+ onChange={(e) => onFieldChange('category', value)}
  >
  <SelectTrigger >
  <SelectValue />
@@ -256,7 +256,7 @@ export default function HealthFormView({
  </Label>
  <Select
  value={formData.privacy_level}
- onValueChange={(value) => onFieldChange('privacy_level', value)}
+ onChange={(e) => onFieldChange('privacy_level', value)}
  >
  <SelectTrigger >
  <SelectValue />

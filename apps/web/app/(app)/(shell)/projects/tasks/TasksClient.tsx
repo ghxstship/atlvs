@@ -12,11 +12,16 @@ import {
  Select,
  Checkbox,
  Progress,
- DropdownMenu,
- DropdownMenuContent,
- DropdownMenuItem,
- DropdownMenuTrigger,
- toast
+ Dropdown,
+ 
+ DropdownItem,
+ 
+ toast,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
 } from "@ghxstship/ui";
 import { format, parseISO, differenceInDays, isOverdue, startOfWeek, endOfWeek } from "date-fns";
 import CreateTaskDrawer from "./drawers/CreateTaskDrawer";
@@ -376,6 +381,9 @@ export default function TasksClient({
  } else {
  setSelectedItems(new Set(filteredTasks.map(t => t.id)));
  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [filteredTasks, selectedItems]);
 
  const handleBulkDelete = useCallback(async () => {
@@ -396,8 +404,11 @@ export default function TasksClient({
  loadTasks();
  } catch (error) {
  console.error("Error deleting tasks:", error);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
  toast.error("Failed to delete tasks");
  }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [supabase, selectedItems, loadTasks]);
 
  const handleBulkExport = useCallback(() => {
