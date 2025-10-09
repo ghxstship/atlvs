@@ -37,6 +37,19 @@
   --color-border: 214 32% 91%;
   --color-input: 214 32% 91%;
   --color-ring: 158 64% 52%;
+  --color-shadow: 222 47% 11%;
+
+  /* Semantic Surface System */
+  --surface-base: var(--color-card);
+  --surface-subtle: 0 0% 100%;
+  --surface-muted: 210 40% 98%;
+  --surface-emphasis: 214 32% 94%;
+  --surface-overlay: 0 0% 100%;
+
+  /* Semantic Border System */
+  --border-subtle: 214 32% 91%;
+  --border-strong: 215 16% 47%;
+  --border-muted: 210 28% 90%;
 
   /* Brand Accent Tokens (Contextual) */
   --accent-opendeck: 195 100% 50%; /* Blue var(--accent) */
@@ -86,6 +99,8 @@
   --shadow-lg: 0 10px 15px -3px hsl(var(--color-foreground) / 0.1), 0 var(--spacing-1) 6px -4px hsl(var(--color-foreground) / 0.1);
   --shadow-xl: 0 var(--spacing-5) 25px -5px hsl(var(--color-foreground) / 0.1), 0 10px 10px -5px hsl(var(--color-foreground) / 0.04);
   --shadow-2xl: 0 25px 50px -12px hsl(var(--color-foreground) / 0.25);
+  --shadow-ambient: 0 18px 40px -15px hsl(var(--color-shadow) / 0.18);
+  --shadow-directional: 0 24px 32px -12px hsl(var(--color-shadow) / 0.22);
   
   /* Pop-Art Shadow System - Bold, Offset Shadows */
   --shadow-pop-sm: 2px 2px 0 hsl(var(--color-foreground)), var(--spacing-1) var(--spacing-1) 0 hsl(var(--color-accent));
@@ -198,6 +213,15 @@
   --color-accent: 158 64% 48%;
   --color-accent-foreground: 222 47% 11%;
   --color-ring: 158 64% 48%;
+  --color-shadow: 0 0% 0%;
+  --surface-base: 222 47% 15%;
+  --surface-subtle: 222 47% 11%;
+  --surface-muted: 217 33% 17%;
+  --surface-emphasis: 210 40% 22%;
+  --surface-overlay: 222 47% 20%;
+  --border-subtle: 217 33% 22%;
+  --border-strong: 210 40% 85%;
+  --border-muted: 217 33% 19%;
   
   /* Enhanced shadow system for dark theme */
   --shadow-color: 0 0% 0%;
@@ -689,6 +713,38 @@ body {
   box-shadow: var(--elevation-surface);
   padding: var(--spacing-lg);
   transition: var(--transition-default);
+}
+
+.surface-base {
+  background-color: hsl(var(--surface-base));
+}
+
+.surface-subtle {
+  background-color: hsl(var(--surface-subtle));
+}
+
+.surface-muted {
+  background-color: hsl(var(--surface-muted));
+}
+
+.surface-emphasis {
+  background-color: hsl(var(--surface-emphasis));
+}
+
+.surface-overlay {
+  background-color: hsl(var(--surface-overlay));
+}
+
+.border-subtle {
+  border-color: hsl(var(--border-subtle));
+}
+
+.border-strong {
+  border-color: hsl(var(--border-strong));
+}
+
+.border-muted {
+  border-color: hsl(var(--border-muted));
 }
 
 .card-pop {
