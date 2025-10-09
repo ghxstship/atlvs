@@ -14,7 +14,7 @@ on:
 
 env:
   NODE_VERSION: '20'
-  PNPM_VERSION: '8'
+  PNPM_VERSION: '10.15.1'
 
 jobs:
   build-macos:
@@ -29,7 +29,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: ${{ env.PNPM_VERSION }}
       
@@ -43,7 +43,7 @@ jobs:
           pnpm package:mac
       
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: macos-app
           path: apps/desktop/release/*.dmg
@@ -60,7 +60,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: ${{ env.PNPM_VERSION }}
       
@@ -74,7 +74,7 @@ jobs:
           pnpm package:win
       
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: windows-app
           path: apps/desktop/release/*.exe
@@ -91,7 +91,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: ${{ env.PNPM_VERSION }}
       
@@ -105,7 +105,7 @@ jobs:
           pnpm package:linux
       
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: linux-app
           path: |

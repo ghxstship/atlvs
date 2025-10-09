@@ -8,7 +8,8 @@ on:
   workflow_dispatch:
 
 env:
-  NODE_VERSION: '18'
+  NODE_VERSION: '20'
+  PNPM_VERSION: '10.15.1'
   COMPLIANCE_THRESHOLD: 95
 
 jobs:
@@ -23,16 +24,21 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: 'pnpm'
 
       - name: Install Dependencies
         run: |
-          npm ci
-          npm install -g @lhci/cli
+          pnpm install --frozen-lockfile
+          pnpm add -g @lhci/cli
 
       - name: Run Master Application Inventory
         id: inventory
@@ -186,10 +192,10 @@ jobs:
           echo "🔍 TypeScript & ESLint Validation..."
           
           # Type checking
-          npm run type-check || exit 1
+          pnpm typecheck || exit 1
           
           # ESLint validation
-          npm run lint || exit 1
+          pnpm lint || exit 1
           
           echo "✅ TypeScript & ESLint validation passed"
 
@@ -198,7 +204,7 @@ jobs:
           echo "🔍 Bundle Size Analysis..."
           
           # Build the application
-          npm run build
+          pnpm build
           
           # Check bundle size (example threshold: 200KB)
           BUNDLE_SIZE=$(du -k .next/static/chunks/pages/_app-*.js 2>/dev/null | cut -f1 || echo "0")
@@ -216,8 +222,8 @@ jobs:
           echo "🔍 Accessibility Testing..."
           
           # Start the application
-          npm run build
-          npm run start &
+          pnpm build
+          pnpm start &
           APP_PID=$!
           
           # Wait for app to start
@@ -309,19 +315,24 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: 'pnpm'
 
       - name: Install Dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Production Build Test
         run: |
           echo "🏗️ Testing production build..."
-          npm run build
+          pnpm build
           
           # Test that build artifacts exist
           if [ ! -d ".next" ]; then
@@ -373,7 +384,7 @@ jobs:
           echo "⚡ Running performance benchmark..."
           
           # Start the application
-          npm run start &
+          pnpm start &
           APP_PID=$!
           
           # Wait for app to start

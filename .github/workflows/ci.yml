@@ -6,8 +6,13 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '10.15.1'
+
 jobs:
   ci:
+    name: Continuous Integration
     runs-on: ubuntu-latest
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -17,21 +22,46 @@ jobs:
       SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
       SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          version: 10.15.1
-      - name: Use Node.js 20
+          fetch-depth: 0
+          
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+          
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
-      - run: pnpm typecheck
-      - run: pnpm build
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Run linter
+        run: pnpm lint
+        
+      - name: Check code formatting (Prettier)
+        run: pnpm format:check
+        continue-on-error: true
+        
+      - name: Type check
+        run: pnpm typecheck
+        
+      - name: Security audit
+        run: pnpm audit --audit-level=high
+        continue-on-error: true
+        
+      - name: Build application
+        run: pnpm build
+        env:
+          NODE_ENV: production
 
   preview:
+    name: Preview Deployment
     runs-on: ubuntu-latest
     needs: ci
     if: ${{ github.event_name == 'pull_request' }}
@@ -43,17 +73,25 @@ jobs:
       SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
       SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          version: 10.15.1
-      - name: Use Node.js 20
+          version: ${{ env.PNPM_VERSION }}
+          
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Build application
+        run: pnpm build
 
       - name: Deploy Preview to Vercel
         if: ${{ env.VERCEL_TOKEN != '' && env.VERCEL_ORG_ID != '' && env.VERCEL_PROJECT_ID != '' }}
@@ -78,6 +116,7 @@ jobs:
           finalize: true
 
   production:
+    name: Production Deployment
     runs-on: ubuntu-latest
     needs: ci
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
@@ -89,17 +128,25 @@ jobs:
       SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
       SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          version: 10.15.1
-      - name: Use Node.js 20
+          version: ${{ env.PNPM_VERSION }}
+          
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Build application
+        run: pnpm build
 
       - name: Deploy to Vercel Production
         if: ${{ env.VERCEL_TOKEN != '' && env.VERCEL_ORG_ID != '' && env.VERCEL_PROJECT_ID != '' }}
@@ -124,22 +171,31 @@ jobs:
           finalize: true
 
   smoke:
+    name: Smoke Tests
     runs-on: ubuntu-latest
     needs: ci
     env:
       CI_BYPASS_TOKEN: ${{ secrets.CI_BYPASS_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          version: 10.15.1
-      - name: Use Node.js 20
+          version: ${{ env.PNPM_VERSION }}
+          
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm -r run build
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Build all packages
+        run: pnpm -r run build
       - name: Start web and smoke test
         run: |
           pnpm --filter web start -- -p 3000 &

@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  NODE_VERSION: '22.x'
+  NODE_VERSION: '20'
   PNPM_VERSION: '10.15.1'
   ZERO_TOLERANCE_MODE: 'true'
 
