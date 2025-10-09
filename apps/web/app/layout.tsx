@@ -50,14 +50,24 @@ export const viewport = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  // Load active brand configuration
-  const { getActiveBrandId, loadBrandConfig } = await import('@ghxstship/shared/platform/brand/server');
-  const activeBrandId = await getActiveBrandId();
-  const brandConfig = await loadBrandConfig(activeBrandId);
+  // Load active brand configuration with error handling
+  let brandConfig;
+  let activeBrandId = 'ghxstship'; // default fallback
+  
+  try {
+    const { getActiveBrandId, loadBrandConfig } = await import('@ghxstship/shared/platform/brand/server');
+    activeBrandId = await getActiveBrandId();
+    brandConfig = await loadBrandConfig(activeBrandId);
+  } catch (error) {
+    console.error('Error loading brand configuration:', error);
+    // Load default fallback brand config
+    const ghxstshipBrand = await import('@branding/config/ghxstship.brand.json');
+    brandConfig = ghxstshipBrand.default;
+  }
   
   // Generate theme CSS from brand configuration
   const themeCSS = generateThemeCSS(brandConfig.theme);
-  const fontImports = generateFontImports(brandConfig.assets.fonts);
+  const fontImports = ''; // Font imports handled via Next.js font loading
 
   return (
     <html lang="en" suppressHydrationWarning>

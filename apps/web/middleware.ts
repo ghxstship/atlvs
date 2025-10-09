@@ -74,26 +74,46 @@ export async function middleware(request: NextRequest) {
 
   const response = NextResponse.next();
 
-  const supabase = createServerClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return request.cookies.getAll();
-        },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => {
-            response.cookies.set(name, value, options);
-          });
+  // Validate environment variables
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.error('Missing Supabase environment variables in middleware');
+    // Allow access without authentication if env vars are not configured
+    return response;
+  }
+
+  let session = null;
+  
+  try {
+    const supabase = createServerClient<Database>(
+      supabaseUrl,
+      supabaseAnonKey,
+      {
+        cookies: {
+          getAll() {
+            return request.cookies.getAll();
+          },
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value, options }) => {
+              response.cookies.set(name, value, options);
+            });
+          }
         }
       }
-    }
-  );
+    );
 
-  const {
-    data: { session }
-  } = await supabase.auth.getSession();
+    const {
+      data: { session: authSession }
+    } = await supabase.auth.getSession();
+    
+    session = authSession;
+  } catch (error) {
+    console.error('Error in middleware auth check:', error);
+    // Allow access without authentication if Supabase client fails
+    return response;
+  }
 
   if (!session && !isAuthRoute) {
     const signinUrl = new URL('/auth/signin', request.url);

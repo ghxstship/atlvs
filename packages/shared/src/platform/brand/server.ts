@@ -146,31 +146,49 @@ function readConfigFromFileSystem(brandId: string): BrandConfiguration | null {
 }
 
 async function readBrandConfig(brandId: string): Promise<BrandConfiguration> {
-  const configFromFs = readConfigFromFileSystem(brandId);
-  if (configFromFs) {
-    return configFromFs;
+  try {
+    const configFromFs = readConfigFromFileSystem(brandId);
+    if (configFromFs) {
+      return configFromFs;
+    }
+  } catch (error) {
+    console.warn(`Error reading brand config from FS for ${brandId}:`, error);
   }
 
-  console.error(`Failed to locate brand config for ${brandId}`);
-
-  const bundledConfig = loadBundledBrandConfig(brandId);
-  if (bundledConfig) {
-    return bundledConfig;
+  // Try bundled config
+  try {
+    const bundledConfig = loadBundledBrandConfig(brandId);
+    if (bundledConfig) {
+      return bundledConfig;
+    }
+  } catch (error) {
+    console.warn(`Error loading bundled brand config for ${brandId}:`, error);
   }
 
+  // Try default as fallback
   if (brandId !== 'default') {
-    const defaultConfigFromFs = readConfigFromFileSystem('default');
-    if (defaultConfigFromFs) {
-      return defaultConfigFromFs;
+    try {
+      const defaultConfigFromFs = readConfigFromFileSystem('default');
+      if (defaultConfigFromFs) {
+        return defaultConfigFromFs;
+      }
+    } catch (error) {
+      console.warn(`Error reading default brand config from FS:`, error);
     }
 
-    const bundledDefault = loadBundledBrandConfig('default');
-    if (bundledDefault) {
-      return bundledDefault;
+    try {
+      const bundledDefault = loadBundledBrandConfig('default');
+      if (bundledDefault) {
+        return bundledDefault;
+      }
+    } catch (error) {
+      console.warn(`Error loading bundled default brand config:`, error);
     }
   }
 
-  throw new Error(`Brand configuration not found for id: ${brandId}`);
+  // Last resort: return ghxstship bundled config
+  console.error(`Failed to locate brand config for ${brandId}, using ghxstship as fallback`);
+  return bundledBrandConfigs.ghxstship || bundledBrandConfigs.default;
 }
 
 export async function loadBrandConfig(brandId: string): Promise<BrandConfiguration> {
