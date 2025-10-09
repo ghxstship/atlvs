@@ -1,15 +1,14 @@
-'use client';
-
 import React from 'react';
 import DashboardClient from './DashboardClient';
+import { createClient } from '@/lib/supabase/server';
 
-interface DashboardPageProps {
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export default function DashboardPage({ searchParams }: DashboardPageProps) {
-  // Extract org info from searchParams or context
-  const orgId = (searchParams.orgId as string) || 'default-org';
+export default async function DashboardPage() {
+  // Get organization from server-side auth
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  
+  // Get user's organization from metadata or use default
+  const orgId = user?.user_metadata?.organization_id || 'default-org';
 
   return <DashboardClient orgId={orgId} />;
 }
