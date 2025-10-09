@@ -1,6 +1,9 @@
 packages:
-  - apps/*
+  - apps/web
   - packages/*
+  # Excluding inactive apps from workspace
+  # - apps/desktop
+  # - apps/mobile
 
 overrides:
   esbuild@<=0.24.2: '>=0.25.0'

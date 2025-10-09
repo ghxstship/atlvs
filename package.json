@@ -3,7 +3,7 @@
   "private": true,
   "packageManager": "pnpm@10.15.1",
   "workspaces": [
-    "apps/*",
+    "apps/web",
     "packages/*"
   ],
   "scripts": {
