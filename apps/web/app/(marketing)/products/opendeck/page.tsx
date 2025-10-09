@@ -4,6 +4,7 @@ import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Award, Briefcase, CheckCircle, Filter, Globe, Play, Search, ShoppingBag, Star, Users, Zap } from 'lucide-react';
 import { anton } from '../../../_components/lib/typography';
 import { MarketingSection } from '../../../_components/marketing';
+import { OctopusDoodle } from '../../../_components/marketing/OctopusDoodle';
 
 export const metadata: Metadata = {
   title: 'OPENDECK - Find Talent That Actually Shows Up | GHXSTSHIP',
@@ -188,67 +189,9 @@ export default function OPENDECKPage() {
               </div>
             </div>
 
-            {/* Marketplace Preview */}
+            {/* Octopus Doodle Animation */}
             <div className="relative">
-              <Card className="bg-background border shadow-popover overflow-hidden">
-                <div className="flex items-center gap-sm px-md py-sm bg-secondary/50 border-b">
-                  <div className="flex gap-sm">
-                    <div className="w-3 h-3 rounded-full bg-destructive"></div>
-                    <div className="w-3 h-3 rounded-full bg-warning"></div>
-                    <div className="w-3 h-3 rounded-full bg-success"></div>
-                  </div>
-                  <div className="flex-1 text-center">
-                    <div className="inline-flex items-center gap-sm  px-md py-xs bg-background rounded-md text-body-sm color-muted">
-                      <div className="w-3 h-3 color-success">🔒</div>
-                      opendeck.ghxstship.com
-                    </div>
-                  </div>
-                </div>
-
-                <CardContent className="p-lg stack-md">
-                  <div className="flex items-center justify-between">
-                    <h3 className={`${anton.className} text-heading-3 uppercase`}>FEATURED TALENT</h3>
-                    <Badge variant="outline" className="color-secondary border-secondary">
-                      Trending
-                    </Badge>
-                  </div>
-
-                  <div className="stack-sm">
-                    {[
-                      { name: 'Captain Blackwater', role: 'Film Director', rating: 4.9, projects: 127, location: 'Los Angeles, CA' },
-                      { name: 'Maya Chen', role: 'Creative Director', rating: 4.8, projects: 89, location: 'New York, NY' },
-                      { name: 'Alex Rivera', role: 'Motion Designer', rating: 5.0, projects: 156, location: 'London, UK' },
-                    ].map((talent, i) => (
-                      <div key={i} className="flex items-center gap-sm p-sm bg-secondary/30 rounded-lg">
-                        <div className="w-icon-xl h-icon-xl bg-gradient-to-r from-secondary to-primary rounded-full flex items-center justify-center">
-                          <span className="text-background text-heading-4 text-body-sm">
-                            {talent.name.split(' ').map(n => n[0]).join('')}
-                          </span>
-                        </div>
-                        <div className="flex-1">
-                          <div>{talent.name}</div>
-                          <div className="text-body-sm color-muted">{talent.role}</div>
-                          <div className="text-body-sm color-muted">{talent.location}</div>
-                        </div>
-                        <div className="text-right">
-                          <div className="flex items-center gap-xs mb-xs">
-                            <Star className="h-3 w-3 fill-warning color-warning" />
-                            <span>{talent.rating}</span>
-                          </div>
-                          <div className="text-body-sm color-muted">{talent.projects} projects</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="pt-sm border-t">
-                    <div className="flex items-center justify-between text-body-sm color-muted">
-                      <span>25,847 active creators</span>
-                      <span>Updated 2 min ago</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <OctopusDoodle variant="marketplace" className="w-full h-full" />
             </div>
           </div>
         </div>

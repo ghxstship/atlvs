@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle, Play, Star, Users, Zap } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { Button } from '@ghxstship/ui';
+import { OctopusDoodle } from './OctopusDoodle';
 
 const stats = [
   { label: 'Active Users', value: '50K+', icon: Users },
@@ -118,7 +119,7 @@ export function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-md">
               <Link href="/auth/signup">
-                <Button variant="pop" size="lg" className="w-full sm:w-auto group">
+                <Button variant="primary" size="lg" className="w-full sm:w-auto group">
                   Start Free Trial
                   <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -131,87 +132,9 @@ export function HeroSection() {
 
           </div>
 
-          {/* Right Column - Visual */}
+          {/* Right Column - Octopus Doodle Animation */}
           <div className="relative">
-            {/* Main Dashboard Preview */}
-            <div className="relative bg-background border-2 border-black rounded-2xl pop-shadow-lg overflow-hidden max-w-full lg:max-h-[60svh]">
-              {/* Browser Chrome */}
-              <div className="flex items-center gap-xl px-md py-sm bg-secondary/50 border-b border-black">
-                <div className="flex gap-xl">
-                  <div className="w-3 h-3 rounded-full bg-destructive"></div>
-                  <div className="w-3 h-3 rounded-full bg-warning"></div>
-                  <div className="w-3 h-3 rounded-full bg-success"></div>
-                </div>
-                {/* Removed URL box for cleaner look */}
-              </div>
-
-              {/* Dashboard Content */}
-              <div className="p-lg stack-2xl">
-                {/* Header */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-heading-3 text-foreground uppercase">BLACKWATER REVERB</h3>
-                    <p className="text-body-sm color-muted">Main Deck Takeover</p>
-                  </div>
-                  <div className="flex items-center gap-xl">
-                    <div className="w-2 h-2 bg-success rounded-full"></div>
-                    <span className="text-body-sm color-muted">Live</span>
-                  </div>
-                </div>
-
-                {/* Progress Cards */}
-                <div className="grid grid-cols-3 gap-xl">
-                  <div className="bg-secondary/30 rounded-lg p-sm pop-shadow-sm border border-black">
-                    <div className="text-body-sm color-muted mb-xs">Budget</div>
-                    <span className="text-body-sm">$75K</span>
-                    <div className="w-full bg-secondary rounded-full h-1 mt-xs">
-                      <div className="bg-accent h-1 rounded-full w-3/4"></div>
-                    </div>
-                  </div>
-                  <div className="bg-secondary/30 rounded-lg p-sm pop-shadow-sm border border-black">
-                    <div className="text-body-sm color-muted mb-xs">Timeline</div>
-                    <span className="text-body-sm">85%</span>
-                    <div className="w-full bg-secondary rounded-full h-1 mt-xs">
-                      <div className="bg-accent h-1 rounded-full w-icon-xs/5"></div>
-                    </div>
-                  </div>
-                  <div className="bg-secondary/30 rounded-lg p-sm pop-shadow-sm border border-black">
-                    <div className="text-body-sm color-muted mb-xs">Team</div>
-                    <span className="text-body-sm">12</span>
-                    <div className="flex -cluster-xs mt-xs">
-                      {[1, 2, 3].map((i: number) => (
-                        <div key={i} className="w-icon-xs h-icon-xs bg-accent rounded-full border border-background"></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Activity Feed */}
-                <div className="stack-2xl">
-                  <div className="text-body-sm form-label color-muted">Recent Activity</div>
-                  {[
-                    { user: 'Captain Blackwater', action: 'approved budget revision', time: '2m ago' },
-                    { user: 'First Mate Torres', action: 'updated crew schedule', time: '5m ago' },
-                    { user: 'Quartermaster Jin', action: 'ordered new equipment', time: '12m ago' },
-                  ].map((activity, i) => (
-                    <div key={i} className="flex items-center gap-xl text-body-sm">
-                      <div className="w-2 h-2 bg-accent rounded-full"></div>
-                      <span className="form-label">{activity.user}</span>
-                      <span className="color-muted">{activity.action}</span>
-                      <span className="color-muted ml-auto">{activity.time}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Floating Elements */}
-            <div className="absolute -top-md -right-4 bg-accent color-accent-foreground rounded-full p-sm pop-shadow-md border-2 border-black glow-primary">
-              <Zap className="h-icon-md w-icon-md" />
-            </div>
-            <div className="absolute -bottom-4 -left-4 bg-accent color-accent-foreground rounded-full p-sm pop-shadow-md border-2 border-black glow-accent">
-              <Star className="h-icon-md w-icon-md" />
-            </div>
+            <OctopusDoodle variant="dashboard" className="w-full h-full" />
           </div>
         </div>
 
