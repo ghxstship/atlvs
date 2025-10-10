@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
+import type { Database } from '@/types/database';
 
-// Middleware with comprehensive error handling
+// Middleware with comprehensive error handling and full authentication
 export async function middleware(request: NextRequest) {
   try {
     const { pathname } = request.nextUrl;
@@ -87,7 +88,7 @@ export async function middleware(request: NextRequest) {
     let session = null;
     
     try {
-      const supabase = createServerClient(
+      const supabase = createServerClient<Database>(
         supabaseUrl,
         supabaseAnonKey,
         {
