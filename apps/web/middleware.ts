@@ -2,148 +2,141 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import type { Database } from '@/types/database';
 
-// Middleware with robust guards to prevent runtime errors
+// Middleware with comprehensive error handling
 export async function middleware(request: NextRequest) {
   try {
-    // Early return for static assets - DO NOT process these through middleware
     const { pathname } = request.nextUrl;
 
-    // Fallback to default handling if pathname is unavailable for any reason
+    // Fallback to default handling if pathname is unavailable
     if (!pathname) {
       return NextResponse.next();
     }
 
-  // Skip framework/static assets explicitly to avoid hitting auth logic
-  if (
-    pathname.startsWith('/_next/') ||
-    pathname.startsWith('/favicon.ico') ||
-    pathname.startsWith('/assets/') ||
-    pathname.match(/\.([a-zA-Z0-9]+)$/)
-  ) {
-    return NextResponse.next();
-  }
+    // Skip framework/static assets explicitly to avoid hitting auth logic
+    if (
+      pathname.startsWith('/_next/') ||
+      pathname.startsWith('/favicon.ico') ||
+      pathname.startsWith('/assets/') ||
+      pathname.match(/\.([a-zA-Z0-9]+)$/)
+    ) {
+      return NextResponse.next();
+    }
 
-  // Skip API routes
-  if (pathname.startsWith('/api/')) {
-    return NextResponse.next();
-  }
+    // Skip API routes
+    if (pathname.startsWith('/api/')) {
+      return NextResponse.next();
+    }
 
-  // Public routes that don't require authentication
-  const publicRoutes = [
-    '/',
-    '/home',
-    '/pricing',
-    '/demo',
-    '/opendeck',
-    '/ghxstship',
-    '/partnerships',
-    '/privacy',
-    '/terms',
-    '/cookies',
-    '/security',
-    '/accessibility',
-    '/contact',
-    '/products',
-    '/solutions',
-    '/resources',
-    '/community',
-    '/company'
-  ];
+    // Public routes that don't require authentication
+    const publicRoutes = [
+      '/',
+      '/home',
+      '/pricing',
+      '/demo',
+      '/opendeck',
+      '/ghxstship',
+      '/partnerships',
+      '/privacy',
+      '/terms',
+      '/cookies',
+      '/security',
+      '/accessibility',
+      '/contact',
+      '/products',
+      '/solutions',
+      '/resources',
+      '/community',
+      '/company'
+    ];
 
-  const publicPrefixes = [
-    '/auth/',
-    '/opendeck/',
-    '/products/',
-    '/solutions/',
-    '/resources/',
-    '/company/',
-    '/careers/',
-    '/community/',
-  ];
+    const publicPrefixes = [
+      '/auth/',
+      '/opendeck/',
+      '/products/',
+      '/solutions/',
+      '/resources/',
+      '/company/',
+      '/careers/',
+      '/community/',
+    ];
 
-  // Check if route is public
-  if (publicRoutes.includes(pathname) || publicPrefixes.some(prefix => pathname.startsWith(prefix))) {
-    return NextResponse.next();
-  }
+    // Check if route is public
+    if (publicRoutes.includes(pathname) || publicPrefixes.some(prefix => pathname.startsWith(prefix))) {
+      return NextResponse.next();
+    }
 
-  const isAuthRoute = pathname.startsWith('/auth/');
-  const isPublicRoute =
-    publicRoutes.includes(pathname) || publicPrefixes.some(prefix => pathname.startsWith(prefix));
+    const isAuthRoute = pathname.startsWith('/auth/');
+    const isPublicRoute =
+      publicRoutes.includes(pathname) || publicPrefixes.some(prefix => pathname.startsWith(prefix));
 
-  if (!isAuthRoute && isPublicRoute) {
-    return NextResponse.next();
-  }
+    if (!isAuthRoute && isPublicRoute) {
+      return NextResponse.next();
+    }
 
-  const response = NextResponse.next();
+    const response = NextResponse.next();
 
-  // Validate environment variables
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    // Validate environment variables
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  if (!supabaseUrl || !supabaseAnonKey) {
-    console.error('Missing Supabase environment variables in middleware');
-    // Allow access without authentication if env vars are not configured
-    return response;
-  }
-
-  let session = null;
-  
-  try {
-    // Check if createServerClient is available
-    if (!createServerClient) {
-      console.error('createServerClient is not available');
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.error('Missing Supabase environment variables in middleware');
+      // Allow access without authentication if env vars are not configured
       return response;
     }
 
-    const supabase = createServerClient<Database>(
-      supabaseUrl,
-      supabaseAnonKey,
-      {
-        cookies: {
-          getAll() {
-            try {
-              return request.cookies.getAll();
-            } catch (e) {
-              console.error('Error getting cookies:', e);
-              return [];
-            }
-          },
-          setAll(cookiesToSet) {
-            try {
-              cookiesToSet.forEach(({ name, value, options }) => {
-                response.cookies.set(name, value, options);
-              });
-            } catch (e) {
-              console.error('Error setting cookies:', e);
+    let session = null;
+    
+    try {
+      const supabase = createServerClient<Database>(
+        supabaseUrl,
+        supabaseAnonKey,
+        {
+          cookies: {
+            getAll() {
+              try {
+                return request.cookies.getAll();
+              } catch (e) {
+                console.error('Error getting cookies:', e);
+                return [];
+              }
+            },
+            setAll(cookiesToSet) {
+              try {
+                cookiesToSet.forEach(({ name, value, options }) => {
+                  response.cookies.set(name, value, options);
+                });
+              } catch (e) {
+                console.error('Error setting cookies:', e);
+              }
             }
           }
         }
-      }
-    );
+      );
 
-    const {
-      data: { session: authSession }
-    } = await supabase.auth.getSession();
-    
-    session = authSession;
-  } catch (error) {
-    console.error('Error in middleware auth check:', error);
-    // Allow access without authentication if Supabase client fails
+      const {
+        data: { session: authSession }
+      } = await supabase.auth.getSession();
+      
+      session = authSession;
+    } catch (error) {
+      console.error('Error in middleware auth check:', error);
+      // Allow access without authentication if Supabase client fails
+      return response;
+    }
+
+    if (!session && !isAuthRoute) {
+      const signinUrl = new URL('/auth/signin', request.url);
+      signinUrl.searchParams.set('next', pathname);
+      return NextResponse.redirect(signinUrl, 307);
+    }
+
+    if (session && isAuthRoute) {
+      const nextUrl = request.nextUrl.searchParams.get('next') ?? '/dashboard';
+      return NextResponse.redirect(new URL(nextUrl, request.url));
+    }
+
     return response;
-  }
-
-  if (!session && !isAuthRoute) {
-    const signinUrl = new URL('/auth/signin', request.url);
-    signinUrl.searchParams.set('next', pathname);
-    return NextResponse.redirect(signinUrl, 307);
-  }
-
-  if (session && isAuthRoute) {
-    const nextUrl = request.nextUrl.searchParams.get('next') ?? '/dashboard';
-    return NextResponse.redirect(new URL(nextUrl, request.url));
-  }
-
-  return response;
   } catch (error) {
     console.error('❌ CRITICAL: Middleware caught unhandled error:', {
       error: error instanceof Error ? error.message : String(error),
