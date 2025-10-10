@@ -29,22 +29,37 @@ const nextConfig = {
   webpack: (config, { webpack, nextRuntime, isServer }) => {
     // For Edge Runtime: completely exclude realtime-js since it uses Node.js APIs
     // and is NOT used in middleware (middleware only uses auth.getSession())
-    if (nextRuntime === 'edge' && isServer) {
+    if (nextRuntime === 'edge') {
+      // Exclude realtime-js and other Node.js-only Supabase dependencies
       config.plugins.push(
-        new webpack.IgnorePlugin({
-          resourceRegExp: /@supabase\/realtime-js/,
-          contextRegExp: /./,
+        new webpack.NormalModuleReplacementPlugin(
+          /@supabase\/realtime-js/,
+          require.resolve('./lib/edge-runtime-stubs.js')
+        )
+      );
+      
+      config.plugins.push(
+        new webpack.NormalModuleReplacementPlugin(
+          /@supabase\/node-fetch/,
+          'node-fetch'
+        )
+      );
+      
+      // Provide necessary environment polyfills
+      config.plugins.push(
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
         })
       );
       
-      // Provide process polyfills for Edge Runtime compatibility with Supabase
-      config.plugins.push(
-        new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-          'process.version': JSON.stringify('v18.0.0'),
-          'process.versions': JSON.stringify({ node: '18.0.0' }),
-        })
-      );
+      // Mark problematic modules as external for Edge Runtime
+      config.externals = config.externals || [];
+      if (!Array.isArray(config.externals)) {
+        config.externals = [config.externals];
+      }
+      config.externals.push({
+        '@supabase/realtime-js': 'commonjs @supabase/realtime-js',
+      });
     }
     
     return config;
