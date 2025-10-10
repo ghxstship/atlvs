@@ -2,9 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import type { Database } from '@/types/database';
 
-// Middleware with robust guards to prevent runtime errors on undefined pathname
+// Middleware with robust guards to prevent runtime errors
 export async function middleware(request: NextRequest) {
   try {
+    // Early return for static assets - DO NOT process these through middleware
     const { pathname } = request.nextUrl;
 
     // Fallback to default handling if pathname is unavailable for any reason
@@ -88,18 +89,33 @@ export async function middleware(request: NextRequest) {
   let session = null;
   
   try {
+    // Check if createServerClient is available
+    if (!createServerClient) {
+      console.error('createServerClient is not available');
+      return response;
+    }
+
     const supabase = createServerClient<Database>(
       supabaseUrl,
       supabaseAnonKey,
       {
         cookies: {
           getAll() {
-            return request.cookies.getAll();
+            try {
+              return request.cookies.getAll();
+            } catch (e) {
+              console.error('Error getting cookies:', e);
+              return [];
+            }
           },
           setAll(cookiesToSet) {
-            cookiesToSet.forEach(({ name, value, options }) => {
-              response.cookies.set(name, value, options);
-            });
+            try {
+              cookiesToSet.forEach(({ name, value, options }) => {
+                response.cookies.set(name, value, options);
+              });
+            } catch (e) {
+              console.error('Error setting cookies:', e);
+            }
           }
         }
       }
@@ -129,11 +145,19 @@ export async function middleware(request: NextRequest) {
 
   return response;
   } catch (error) {
-    console.error('Middleware error:', error);
-    // Return a basic response to prevent 500 errors
+    console.error('❌ CRITICAL: Middleware caught unhandled error:', {
+      error: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+      pathname: request.nextUrl?.pathname,
+      timestamp: new Date().toISOString()
+    });
+    // Return a basic response to prevent 500 errors - ALWAYS succeed
     return NextResponse.next();
   }
 }
+
+// Emergency fallback export in case the named export fails
+export default middleware;
 
 export const config = {
   matcher: [
